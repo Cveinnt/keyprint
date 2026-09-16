@@ -83,6 +83,13 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--max-tokens", type=int, default=64)
     generate.add_argument("--condition", choices=("ordinary", "marked"), default="marked")
     generate.add_argument("--output", type=Path)
+    serve = commands.add_parser("serve", help="Serve a local, text-only OpenAI client endpoint")
+    serve.add_argument("--backend", choices=("mlx", "transformers"), default="mlx")
+    serve.add_argument("--model", type=Path, required=True)
+    serve.add_argument("--key", type=Path, required=True)
+    serve.add_argument("--api-key", type=Path, required=True, help="A separate private key file; clients use its hex encoding")
+    serve.add_argument("--port", type=int, default=8765)
+    serve.add_argument("--output", type=Path, default=Path("private-keyprint-server"))
     args = parser.parse_args(argv)
     try:
         if args.command is None:
@@ -94,9 +101,22 @@ def main(argv: list[str] | None = None) -> int:
                 stream.flush()
                 os.fsync(stream.fileno())
             print(f"Private key created: {args.path}\nKeep it private and backed up.")
-        elif args.command == "generate":
+        elif args.command in ("generate", "serve"):
             loader = Keyprint.from_mlx if args.backend == "mlx" else Keyprint.from_transformers
-            candidate = loader(args.model, key=load_key(args.key))
+            key = load_key(args.key)
+            if args.command == "serve":
+                import uvicorn
+                from .server import create_app
+                token = load_key(args.api_key)
+                if token == key:
+                    raise ValueError("API and watermark keys must be different")
+                if not 1024 <= args.port <= 65535:
+                    raise ValueError("port must be between 1024 and 65535")
+                app = create_app(lambda: loader(args.model, key=key), api_key=token.hex(), output=args.output)
+                print(f"Local preview: http://127.0.0.1:{args.port}/v1 (one user text message; no streaming)")
+                uvicorn.run(app, host="127.0.0.1", port=args.port, workers=1, access_log=False)
+                return 0
+            candidate = loader(args.model, key=key)
             result = candidate.generate(args.prompt, max_tokens=args.max_tokens,
                                         condition=args.condition, output=args.output)
             print(result.text)

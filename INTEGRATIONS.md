@@ -11,7 +11,10 @@ derivative manifest and behavior comparisons, without changing the released
 bundle. A Transformers CPU float32 adapter now generates text with
 SmolLM2-135M-Instruct at revision `12fd25f77366fa6b3b4b768ec3050bf629380bac`.
 Its ByteLevel profile is explicitly experimental and receives no reference
-scientific acceptances. SGLang/vLLM and hosted-provider integration remain open.
+scientific acceptances. A local OpenAI-client endpoint and experimental local
+rewriter are implemented. A separate vLLM CPU source-level pilot completed two
+batched generations. Broad framework and hosted-provider product readiness
+remain open; details below.
 
 The repository is temporarily private while this work is reviewed. The old
 PyPI research package and website remain public. No new launch date is set.
@@ -28,17 +31,82 @@ Qwen3-8B-4bit checkpoint. Installed-wheel tests passed on Linux/macOS and Python
 
 | Integration | Feasible route | Current Keyprint status |
 | --- | --- | --- |
-| OpenAI Python client against a self-hosted server | Standard client with a custom base URL; watermarking happens in our inference server | Not implemented or tested |
+| OpenAI Python client against a self-hosted server | Standard client with a custom base URL; watermarking happens in our inference server | Real HTTP request using OpenAI 3.14.1, pinned Qwen/MLX and idempotency replay passed; one user message, no streaming/tools |
 | OpenAI-hosted GPT models | Public API has model-dependent sampling controls, including logit bias and limited returned log probabilities; it has no arbitrary per-token custom sampler callback | Current candidate cannot be inserted into hosted generation |
 | Anthropic-hosted Claude | Messages API generates the response remotely; no custom pre-sampling logits hook is documented | Current candidate cannot be inserted into hosted generation |
-| SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Feasibility confirmed from source; adapter and actual-server validation missing |
-| vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Adapter and actual-server validation missing |
+| SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Pinned ARM CPU source build: two batched SmolLM2 requests, 128 matching returned tokens; NUMA workaround required, production lifecycle unvalidated |
+| vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Experimental CPU 0.29.0+cpu: two batched SmolLM2 requests, 128 returned tokens matched the private selection journals; production server lifecycle and broader models unvalidated |
 | Hugging Face Transformers | Keyprint owns a single-response CPU sampling loop and KV cache | SmolLM2 real generation tested on the private branch; broader model and quality coverage missing |
 | MLX | Public `run_response` caller and pinned local example | One exact model/tokenizer tested |
 
 An OpenAI-compatible endpoint is not an OpenAI-hosted model. Reading a Claude
 response into Python is not watermarking it. SDK interfaces must make this
 distinction explicit, including in examples and error messages.
+
+See [provider usage](PROVIDERS.md). The completed-response helpers parse actual
+OpenAI and Anthropic SDK object types, reject unsupported response modes and
+run an explicit local rewrite. They return both texts and lexical checks. No
+hosted model call was made in these tests. A rewrite can pass lexical checks
+while reversing meaning; it always requires review and has no detector claim.
+
+### Experimental vLLM CPU pilot
+
+`keyprint.experimental.vllm.KeyprintLogitsProcessor` runs only with the pinned
+CPU version, float32 logits and a validated ByteLevel binding. It owns filtering
+and exact integer sampling, then passes a one-token mask to vLLM. Framework
+temperature must be 1, top-p 1 and top-k disabled; penalties, seeded sampling,
+logprobs, constraints, stop strings and speculation are rejected. Prefix
+validation prevents silent resampling. Journals distinguish tentative selections
+from subsequently confirmed prefixes; compare the final response independently.
+
+The pilot ran inside official ARM64 image
+`vllm/vllm-openai-cpu@sha256:527ec4e8188f2ad480aca5863ab3b7e7c39cfda84f6c0bbb06525363a3eb5a0f`.
+It used mounted source with that image's NumPy 2.3.5, SciPy 1.18.1 and tokenizers
+0.23.2, rather than the distribution's research pins. Consequently **there is
+no supported `keyprint[vllm]` installation extra yet**. The immutable image is
+the reproduction environment. `tools/validate_vllm.py` requires read-only model
+assets at `/model`, a private key file and a private trace directory configured
+through `KEYPRINT_KEY_FILE` and `KEYPRINT_TRACE_DIR`. Model revision is the
+SmolLM2 checkpoint above. Both 64-token responses reached the token cap; this
+validates integration and token-path alignment, not answer quality or overhead.
+
+`tools/test_vllm_contract.py` exercises the real upstream batch-state API with
+small logits fixtures. Engine cancellation, network serving, streaming, GPU
+precision, cache reuse and a second tokenizer family still need validation.
+The adapter is excluded from the normal CLI and carries no reference evidence.
+
+### Experimental SGLang ARM CPU pilot
+
+`keyprint.experimental.sglang.KeyprintLogitsProcessor` binds CPU source revision
+`13d593b6cf885c5c4d50eea88c82b9e28cf5941e` (`sglang-cpu 0.5.20.dev791+g13d593b6c`).
+It shares the exact sampler with the vLLM pilot, while keeping each request's
+state across SGLang processor reconstruction. Prefix mismatches fail instead
+of silently reinitializing the watermark. Tests cover reconstruction, changed
+keys, unsupported settings and journal cleanup when a request is collected.
+
+The unmodified ARM build crashed in NUMA initialization on the local Docker VM.
+The recorded pilot skips optional NUMA memory binding while retaining CPU thread
+binding. This is a **modified runtime**, not an unmodified upstream support pass.
+`tools/sglang-arm.Dockerfile` preserves the workaround and exports run receipts
+without needing to unpack the full image. It uses named build contexts
+`keyprint_source` (this checkout) and `model_assets` (the pinned SmolLM2 files),
+plus BuildKit secret `keyprint_key` (a private 32-byte file). The model run has no
+network access. Read `exit-code.txt` and `contract-exit-code.txt`: exporting
+receipts successfully does not itself mean the contained run passed.
+
+Two 64-token marked responses completed; all 128 returned IDs matched the
+durable selection journals. Both reached the token cap. The environment used
+NumPy 2.3.5, tokenizers 0.22.2 and torch 2.12.0+cpu, separately from distribution
+pins. Full resolved versions are recorded in the private run's runtime lock.
+Rebuilding from source can resolve newer dependencies; it needs a fresh check.
+There is no supported `keyprint[sglang]` extra or GPU claim yet.
+
+Only trusted offline execution is tested. Overlap, prefix caching, speculation,
+logprobs and constrained sampling are rejected. Arbitrary serialized processors
+must never be accepted on a public endpoint. Cancellation, long-running service,
+detector controls, quality and comparative overhead remain open. Verify retained
+outputs with `tools/check_native_receipts.py`; it checks journal chains and exact
+token paths, not detection accuracy or the full mathematical sampling law.
 
 ## Hosted-provider options worth evaluating
 
@@ -59,11 +127,12 @@ scoped acceptances onto a different algorithm or postprocessing mode.
 
 ## Portable-engine work required
 
-The implementation currently hard-codes vocabulary dimensions, byte decoding,
+The preserved reference implementation hard-codes vocabulary dimensions, byte decoding,
 EOS and channel token IDs, normalization policy, and a particular tokenizer.
-Accepting a different model name is insufficient. Introduce a versioned model
-binding for tokenizer bytes, special tokens, decoding, context construction,
-and generated channels. Each binding needs fixtures and real-model evaluation.
+Accepting a different model name is insufficient. The portable ByteLevel binding
+now records tokenizer bytes, special tokens, EOS and decoding identity. Other
+tokenizer families and generated channels still need explicit bindings, fixtures
+and real-model evaluation.
 
 The exact-integer sampler operates on the post-filter weights. A conventional
 logits processor that reweights before the framework's top-k/temperature/sample

@@ -8,6 +8,7 @@ import secrets
 import tempfile
 
 from .integrity import verify
+from .rewrite import Rewrite
 
 
 class KeyprintError(RuntimeError):
@@ -96,6 +97,22 @@ class Keyprint:
         return self._run(self._backend.model, ids, max_tokens=max_tokens,
                          condition=condition, output=output)
 
+    def rewrite(self, text: str, *, max_tokens: int = 256,
+                output: str | Path | None = None, condition: str = "marked") -> Rewrite:
+        """Experimental local rewriting; returns original, candidate and checks."""
+        from .rewrite import rewrite
+        return rewrite(self, text, max_tokens=max_tokens, output=output, condition=condition)
+
+    def rewrite_openai(self, response: Any, **settings: Any) -> Rewrite:
+        """Rewrite completed text locally; makes no OpenAI API call."""
+        from .rewrite import openai_text
+        return self.rewrite(openai_text(response), **settings)
+
+    def rewrite_anthropic(self, response: Any, **settings: Any) -> Rewrite:
+        """Rewrite a completed text-only message locally; makes no Claude call."""
+        from .rewrite import anthropic_text
+        return self.rewrite(anthropic_text(response), **settings)
+
     def _run(self, model: Callable[..., Any], ids: list[int], *, max_tokens: int,
              condition: str, output: str | Path | None,
              backend: Any = None, cache_factory: Any = None) -> Generation:
@@ -117,6 +134,8 @@ class Keyprint:
                 backend=backend, cache_factory=cache_factory,
             )
         report["package_scope"] = "Namespaced reference port; no new model-family or scientific acceptance."
+        count = len(report.get("payload", {}).get("committed_token_ids", []))
+        report["usage"] = {"prompt_tokens": len(ids), "completion_tokens": count, "total_tokens": len(ids) + count}
         with (directory / "report.json").open("x", encoding="utf-8") as stream:
             json.dump({"report": report, "reservations": reservations}, stream, ensure_ascii=False, allow_nan=False)
         if report["kind"] == "error":

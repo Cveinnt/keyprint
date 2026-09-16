@@ -1,3 +1,6 @@
-include CONTRIBUTING.md INTEGRATIONS.md CHANGELOG.md
+include CONTRIBUTING.md INTEGRATIONS.md CHANGELOG.md PROVIDERS.md
 recursive-include tests *.py
 recursive-include examples *.py
+recursive-include tools *.py *.json
+include tools/sglang-arm.Dockerfile
+include tools/SGLANG_LICENSE

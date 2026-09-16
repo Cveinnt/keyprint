@@ -169,6 +169,8 @@ class TransformersModel:
                 if text != decoded:
                     raise ValueError("tokenizer rendering differs from the declared byte binding")
                 report["text"] = text
+                report["usage"] = {"prompt_tokens": len(encoded), "completion_tokens": len(committed),
+                                   "total_tokens": len(encoded) + len(committed)}
                 report["source_receipt"] = session.source_receipt()
                 journal.append({"phase": "complete", "completion": report["completion"]})
         except BaseException as exc:

@@ -104,11 +104,17 @@ checks the exact model/tokenizer asset hashes. Other MLX models are rejected.
 | Python / NumPy | Supplied-logit reference pipeline and offline demo |
 | MLX | Exact pinned Qwen3-8B-4bit model on Apple Silicon |
 | Transformers | Experimental local CPU float32 text generation; SmolLM2 integration tested |
-| SGLang / vLLM | Not implemented or validated; launch blockers |
-| OpenAI Python client | No compatible inference endpoint yet |
+| vLLM | Experimental CPU 0.29.0 adapter: two batched SmolLM2 generations; not a production integration |
+| SGLang | Experimental pinned ARM CPU source build: two batched SmolLM2 generations; NUMA workaround required |
+| OpenAI Python client | Real local HTTP request tested; single-message Chat Completions subset |
 | OpenAI-hosted GPT / Anthropic-hosted Claude | Their public APIs do not expose this custom sampler hook; no native integration |
+| Completed GPT / Claude prose | Explicit experimental local rewrite; original retained, meaning and detection unvalidated |
 
-The portable backend runs one response at a time. Streaming, batching, tools,
+See [provider examples](PROVIDERS.md) for `keyprint serve` and
+`watermark.rewrite_openai(response)` / `watermark.rewrite_anthropic(message)`.
+These helpers never imply that a hosted provider ran the Keyprint sampler.
+
+The normal portable backend runs one response at a time. Streaming, batching, tools,
 reasoning channels, beam search, speculative decoding, quantized checkpoints
 and grammar constraints are unsupported. An AI setup wizard would not solve
 these compatibility gaps. Explicit extras, short commands and useful errors do.
@@ -127,7 +133,7 @@ automatically to this namespaced port, portable profile or another model.
 ## Development and provenance
 
 ```sh
-pip install '.[test,transformers]'
+pip install '.[test,transformers,server,clients]'
 python -m pytest tests
 ```
 
