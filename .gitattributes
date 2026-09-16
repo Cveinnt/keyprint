@@ -1,0 +1,3 @@
+# Preserved reference sources and generated namespace port retain exact bytes.
+sdk/keyprint_v3/_bundle/** linguist-vendored
+src/keyprint/_engine/** linguist-vendored whitespace=-blank-at-eof
