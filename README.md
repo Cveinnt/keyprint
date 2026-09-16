@@ -11,11 +11,11 @@ implementation or detect arbitrary Claude text.
 
 ## Run your first comparison
 
-Python 3.12+ is required. From a downloaded copy of this repository:
+Python 3.12+ is required. Install the [PyPI prerelease](https://pypi.org/project/keyprint-research-v3/0.0.4rc3/) from a downloaded copy of this repository:
 
 ```sh
 python3.12 -m venv .venv
-.venv/bin/python -m pip install "https://keyprint.vercel.app/sdk/v3-rc3/keyprint_research_v3-0.0.4rc3-py3-none-any.whl#sha256=5473b86d08959997b7f2492575622e05596d60acb6744bf4a50613a5db3adb22"
+.venv/bin/python -m pip install keyprint-research-v3==0.0.4rc3
 .venv/bin/python examples/compare.py
 ```
 
