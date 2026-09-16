@@ -5,7 +5,7 @@ import importlib
 import json
 import sys
 
-__version__ = '0.0.4rc3'
+__version__ = '0.0.4rc4'
 _BASE = Path(__file__).resolve().parent
 _BUNDLE = _BASE / '_bundle'
 

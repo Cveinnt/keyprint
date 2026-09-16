@@ -43,7 +43,7 @@ class PublicSurface(unittest.TestCase):
         json.dumps(report, allow_nan=False)
 
     def test_public_version_and_scientific_identities(self):
-        self.assertEqual(keyprint_v3.__version__, "0.0.4rc3")
+        self.assertEqual(keyprint_v3.__version__, "0.0.4rc4")
         self.assertIn("DurableJournal", keyprint_v3.__all__)
         self.assertEqual(self.candidate.core_identity["runtime_profile_sha256"], CORE)
         self.assertEqual(self.candidate.identity["facade_profile_sha256"], FACADE)

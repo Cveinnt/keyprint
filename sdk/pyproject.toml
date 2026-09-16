@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "keyprint-research-v3"
-version = "0.0.4rc3"
+version = "0.0.4rc4"
 description = "Independent experimental watermark reconstruction, frozen v3 core with explicit uncertainty reports"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -13,7 +13,17 @@ license = "MIT"
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/*.txt"]
 dependencies = ["numpy==2.5.2", "scipy==1.17.1", "tokenizers==0.23.1"]
 
+[project.optional-dependencies]
+mlx = ["mlx==0.32.2; sys_platform == 'darwin' and platform_machine == 'arm64'", "mlx-lm==0.31.2; sys_platform == 'darwin' and platform_machine == 'arm64'", "transformers==5.16.1"]
+
+[project.urls]
+Homepage = "https://keyprint.vercel.app/"
+Documentation = "https://github.com/Cveinnt/keyprint#readme"
+Repository = "https://github.com/Cveinnt/keyprint"
+Issues = "https://github.com/Cveinnt/keyprint/issues"
+
 [project.scripts]
+keyprint = "keyprint_v3.cli:main"
 keyprint-v3 = "keyprint_v3.__main__:main"
 
 [tool.setuptools]

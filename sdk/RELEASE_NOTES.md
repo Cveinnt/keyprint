@@ -1,3 +1,13 @@
+# Keyprint SDK 0.0.4rc4 (unreleased)
+
+- Add `keyprint demo`, `doctor`, `verify` and `generate`; human-readable output
+  by default, full fixture reports with `--json`.
+- Package the pinned local MLX example and an optional `mlx` dependency group.
+- Add project URLs to distribution metadata and command-level regression tests.
+- Preserve the frozen scientific bundle and legacy JSON entrypoints.
+- Distribution/import renaming and SGLang/vLLM/hosted-provider integrations
+  remain unfinished. This branch is not a new public compatibility claim.
+
 # Keyprint SDK 0.0.4rc3
 
 rc3 corrects packaging and public API documentation for the independent research

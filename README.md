@@ -1,5 +1,23 @@
 # Keyprint
 
+> Development branch: rc4 is not published. Social launch is postponed pending
+> the naming and integration work in [the readiness audit](INTEGRATIONS.md).
+> The PyPI commands below continue to install the existing rc3 release.
+
+Try the new readable CLI from this branch in a separate environment:
+
+```sh
+python3.12 -m venv .source-venv
+source .source-venv/bin/activate
+pip install ./sdk
+keyprint demo
+keyprint doctor
+keyprint verify
+```
+
+Add `--json` for full reports. `keyprint generate` is the local prose command;
+it requires the optional MLX dependencies and pinned checkpoint below.
+
 [![SDK checks](https://github.com/Cveinnt/keyprint/actions/workflows/test.yml/badge.svg)](https://github.com/Cveinnt/keyprint/actions/workflows/test.yml)
 
 **Follow a text watermark through the choices a model makes.**
@@ -51,15 +69,16 @@ Qwen3-8B-4bit checkpoint on Apple Silicon macOS. It takes your prompt, creates
 a fresh private key, and generates ordinary and marked responses. Model weights
 are several GB; the explicit download below runs once. Generation stays local.
 
-From the cloned repository and environment above:
+On this development branch, install the source and optional MLX dependencies.
+The new command is not included in the published rc3 package:
 
 ```sh
-.venv/bin/python -m pip install mlx==0.32.2 mlx-lm==0.31.2 transformers==5.16.1
-.venv/bin/python examples/doctor.py --mlx
-.venv/bin/hf download mlx-community/Qwen3-8B-4bit \
+pip install './sdk[mlx]'
+keyprint doctor
+hf download mlx-community/Qwen3-8B-4bit \
   --revision 545dc4251c05440727734bcd94334791f6ab0192 \
   --local-dir models/qwen3-8b-4bit
-.venv/bin/python examples/generate_mlx.py \
+keyprint generate \
   --model models/qwen3-8b-4bit \
   --prompt "Explain why the sky is blue in two short sentences." \
   --max-tokens 64
@@ -77,8 +96,9 @@ random draws, so wording differences cannot be attributed solely to watermarking
 The default 64-token cap can truncate a response. Neither timing nor two outputs
 establishes serving overhead, semantic equivalence, or detection accuracy.
 
-These examples live in GitHub and use the unchanged PyPI release. For application
-integration, see [the model caller contract](sdk/README.md#supplied-model-caller-and-journal).
+The published rc3 example remains available on the repository's main branch.
+This development CLI is packaged in rc4 without changes to the frozen sampler.
+For application integration, see [the model caller contract](sdk/README.md#supplied-model-caller-and-journal).
 
 ## Integration coverage
 
