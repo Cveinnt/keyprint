@@ -35,7 +35,7 @@ Qwen3-8B-4bit checkpoint. Installed-wheel tests passed on Linux/macOS and Python
 | OpenAI-hosted GPT models | Public API has model-dependent sampling controls, including logit bias and limited returned log probabilities; it has no arbitrary per-token custom sampler callback | Current candidate cannot be inserted into hosted generation |
 | Anthropic-hosted Claude | Messages API generates the response remotely; no custom pre-sampling logits hook is documented | Current candidate cannot be inserted into hosted generation |
 | SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Pinned ARM CPU source build: two batched SmolLM2 requests, 128 matching returned tokens; NUMA workaround required, production lifecycle unvalidated |
-| vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Experimental CPU 0.29.0+cpu: two batched SmolLM2 requests, 128 returned tokens matched the private selection journals; production server lifecycle and broader models unvalidated |
+| vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Experimental CPU 0.29.0+cpu: latest two batched SmolLM2 requests returned 125 tokens matching private selection journals; production server lifecycle and broader models unvalidated |
 | Hugging Face Transformers | Keyprint owns a single-response CPU sampling loop and KV cache | SmolLM2 real generation tested on the private branch; broader model and quality coverage missing |
 | MLX | Public `run_response` caller and pinned local example | One exact model/tokenizer tested |
 
@@ -67,8 +67,12 @@ no supported `keyprint[vllm]` installation extra yet**. The immutable image is
 the reproduction environment. `tools/validate_vllm.py` requires read-only model
 assets at `/model`, a private key file and a private trace directory configured
 through `KEYPRINT_KEY_FILE` and `KEYPRINT_TRACE_DIR`. Model revision is the
-SmolLM2 checkpoint above. Both 64-token responses reached the token cap; this
-validates integration and token-path alignment, not answer quality or overhead.
+SmolLM2 checkpoint above. The initial two responses reached the 64-token cap.
+The final source run returned 125 tokens total: one EOS completion and one
+token-capped response. All token IDs matched the selection journals. Two repeat
+runs lost workers under a 3 GiB container limit; the successful final run used
+4 GiB, two CPU threads and a 256 MiB KV cache, with zero recorded OOM events.
+This validates integration and token-path alignment, not answer quality or overhead.
 
 `tools/test_vllm_contract.py` exercises the real upstream batch-state API with
 small logits fixtures. Engine cancellation, network serving, streaming, GPU
