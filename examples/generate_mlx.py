@@ -1,5 +1,6 @@
-"""Compatibility entrypoint; prefer the installed keyprint generate command."""
-from keyprint_v3.mlx_generate import main
+"""CLI shortcut for the pinned MLX backend."""
+import sys
+from keyprint.cli import main
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(["generate", "--backend", "mlx", *sys.argv[1:]]))

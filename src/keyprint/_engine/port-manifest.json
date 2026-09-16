@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "kind": "namespaced_derivative_not_frozen_release",
+  "reference_release": "keyprint-research-v3==0.0.4rc3",
+  "changes": [
+    "qualify research imports",
+    "private legacy package path",
+    "remove sys.path mutation",
+    "private importlib.resources lookup"
+  ],
+  "empirical_acceptance_transfers": false,
+  "files": {
+    "legacy/__init__.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/__init__.py",
+      "source_sha256": "704c58b0da63f465aa4f4da075b1d92232e5e8595099ba3d026a5200d9893d8c",
+      "ported_sha256": "704c58b0da63f465aa4f4da075b1d92232e5e8595099ba3d026a5200d9893d8c"
+    },
+    "legacy/_impl/__init__.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "legacy/_impl/release/tokenizer/qwen3-8b-4bit/config.json": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/release/tokenizer/qwen3-8b-4bit/config.json",
+      "source_sha256": "e5485285fd7e289e76e9cffa112f6dc2e3426519082f7db9b69041589f81a218",
+      "ported_sha256": "e5485285fd7e289e76e9cffa112f6dc2e3426519082f7db9b69041589f81a218"
+    },
+    "legacy/_impl/release/tokenizer/qwen3-8b-4bit/tokenizer.json": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/release/tokenizer/qwen3-8b-4bit/tokenizer.json",
+      "source_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "ported_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    "legacy/_impl/research/__init__.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "legacy/_impl/research/byte_trie_numeric.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/byte_trie_numeric.py",
+      "source_sha256": "c448cad55cd74e34dd083204eac1c386090ab55fdeed84ca34441f20b3dd0a37",
+      "ported_sha256": "c448cad55cd74e34dd083204eac1c386090ab55fdeed84ca34441f20b3dd0a37"
+    },
+    "legacy/_impl/research/byte_trie_session.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/byte_trie_session.py",
+      "source_sha256": "b7ddf1e360b8a745386fe0cf69fa9309ae7c0d029178208ca271ff8a338e1a7a",
+      "ported_sha256": "b7ddf1e360b8a745386fe0cf69fa9309ae7c0d029178208ca271ff8a338e1a7a"
+    },
+    "legacy/_impl/research/byte_trie_source_policy.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/byte_trie_source_policy.py",
+      "source_sha256": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365",
+      "ported_sha256": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365"
+    },
+    "legacy/_impl/research/byte_trie_tournament.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/byte_trie_tournament.py",
+      "source_sha256": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+      "ported_sha256": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd"
+    },
+    "legacy/_impl/research/check_canonical_event_alignment.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/check_canonical_event_alignment.py",
+      "source_sha256": "f32d8365ccdf3af66f1c7d991cf60ad0888e91418be2f1a1c0a1979f41d0dcd5",
+      "ported_sha256": "f32d8365ccdf3af66f1c7d991cf60ad0888e91418be2f1a1c0a1979f41d0dcd5"
+    },
+    "legacy/_impl/research/grouped_canonical_prototype.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/grouped_canonical_prototype.py",
+      "source_sha256": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+      "ported_sha256": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c"
+    },
+    "legacy/_impl/research/grouped_model_support_boundary.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/grouped_model_support_boundary.py",
+      "source_sha256": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+      "ported_sha256": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb"
+    },
+    "legacy/_impl/research/grouped_null_score.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/grouped_null_score.py",
+      "source_sha256": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+      "ported_sha256": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a"
+    },
+    "legacy/_impl/research/grouped_tokenizer_binding.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/grouped_tokenizer_binding.py",
+      "source_sha256": "6e165e59bbe520c268d2ddbd5c055b6a59760cb6a5c52f2739e1f9cdc5536c15",
+      "ported_sha256": "6e165e59bbe520c268d2ddbd5c055b6a59760cb6a5c52f2739e1f9cdc5536c15"
+    },
+    "legacy/_impl/research/token_channel_host.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_channel_host.py",
+      "source_sha256": "dfd9de381512e47d0228ce697a2c9283e3c4f3cdc95ff7076640582d8a41fb3f",
+      "ported_sha256": "dfd9de381512e47d0228ce697a2c9283e3c4f3cdc95ff7076640582d8a41fb3f"
+    },
+    "legacy/_impl/research/token_runtime_binding.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_runtime_binding.py",
+      "source_sha256": "6760e294ff594694ec7afb10afca66ae66f93b8c083e9c8ec8466dcf08c9dad6",
+      "ported_sha256": "6760e294ff594694ec7afb10afca66ae66f93b8c083e9c8ec8466dcf08c9dad6"
+    },
+    "legacy/_impl/research/token_runtime_host.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_runtime_host.py",
+      "source_sha256": "8233754abb7a4ec4a80bb63a2955372468b068e53e32f72324f54a7bd782fdce",
+      "ported_sha256": "8233754abb7a4ec4a80bb63a2955372468b068e53e32f72324f54a7bd782fdce"
+    },
+    "legacy/_impl/research/token_runtime_profile.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_runtime_profile.py",
+      "source_sha256": "fd1db53497a06a273bbf8319277909c790c8149f50d06e7553f83a90d5198a75",
+      "ported_sha256": "fd1db53497a06a273bbf8319277909c790c8149f50d06e7553f83a90d5198a75"
+    },
+    "legacy/_impl/research/token_runtime_scoring.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_runtime_scoring.py",
+      "source_sha256": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+      "ported_sha256": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de"
+    },
+    "legacy/_impl/research/token_runtime_sparse_host.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_runtime_sparse_host.py",
+      "source_sha256": "28a0b1b8ff5e6265d05fba137d817d13b3acd5f08b206369f703b2f35d90b1b9",
+      "ported_sha256": "28a0b1b8ff5e6265d05fba137d817d13b3acd5f08b206369f703b2f35d90b1b9"
+    },
+    "legacy/_impl/research/token_source_host.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_source_host.py",
+      "source_sha256": "9bf4e6ff72c50e1fa9113921a767df1ec92ae59c14ad42973531e78d57f62c10",
+      "ported_sha256": "9bf4e6ff72c50e1fa9113921a767df1ec92ae59c14ad42973531e78d57f62c10"
+    },
+    "legacy/_impl/research/token_source_policy.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_source_policy.py",
+      "source_sha256": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68",
+      "ported_sha256": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68"
+    },
+    "legacy/_impl/research/token_source_sparse_execution.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/_impl/research/token_source_sparse_execution.py",
+      "source_sha256": "5eeec99a3e50405f707334e3bb1ddc2ed21ee7b80481c1adf241b8800f0bad51",
+      "ported_sha256": "5eeec99a3e50405f707334e3bb1ddc2ed21ee7b80481c1adf241b8800f0bad51"
+    },
+    "legacy/docs/distribution-provenance.json": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/docs/distribution-provenance.json",
+      "source_sha256": "89a4e1c0f074a1d0cb8495f48ef1e2a8d329bc14e20e94d0f43ed67ad9d27af8",
+      "ported_sha256": "89a4e1c0f074a1d0cb8495f48ef1e2a8d329bc14e20e94d0f43ed67ad9d27af8"
+    },
+    "legacy/docs/public-sdk-replay.json": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/docs/public-sdk-replay.json",
+      "source_sha256": "8e7a26cebfb9844199cc1cd58608ccccd84d574ef8e01f67fd98276ae9acd034",
+      "ported_sha256": "8e7a26cebfb9844199cc1cd58608ccccd84d574ef8e01f67fd98276ae9acd034"
+    },
+    "legacy/docs/research-provenance.json": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/docs/research-provenance.json",
+      "source_sha256": "8d0a8133b58cc8c4b1a40e52cac19c57e3c55e6794ac5be5ec8a3eea44d8a4f8",
+      "ported_sha256": "8d0a8133b58cc8c4b1a40e52cac19c57e3c55e6794ac5be5ec8a3eea44d8a4f8"
+    },
+    "legacy/quickstart.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/quickstart.py",
+      "source_sha256": "0cb5bac9ab79b74deece2451bebece25ce9104e50b3ba486ac83cd20271350ed",
+      "ported_sha256": "0cb5bac9ab79b74deece2451bebece25ce9104e50b3ba486ac83cd20271350ed"
+    },
+    "legacy/verify.py": {
+      "source": "sdk/keyprint_v3/_bundle/release/keyprint-0.0.3rc1/installed-audit/keyprint/verify.py",
+      "source_sha256": "ecb1d3763289ccd061e7ef89b302771eb53f6af7effa95fd73585f1025496312",
+      "ported_sha256": "ffa9e2d4f5cb698a16ce89a938a4581354563ba8cc414aa13805506cfb2dc78a"
+    },
+    "research/keyprint_candidate_v2/__init__.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_candidate_v2/__init__.py",
+      "source_sha256": "e034566859a9d2b92832f17dcd0a64baa2ac465ce610e17884e2997c60ec492a",
+      "ported_sha256": "e034566859a9d2b92832f17dcd0a64baa2ac465ce610e17884e2997c60ec492a"
+    },
+    "research/keyprint_candidate_v2/adapter.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_candidate_v2/adapter.py",
+      "source_sha256": "1020ead26e77893f98b739873b19ac3c81605cfaa928d3e651cf9e5b5799a56d",
+      "ported_sha256": "97c35dcf4f60a2944f0e4cc68db03d30985ecfd7a732e697cc233952f056d1af"
+    },
+    "research/keyprint_candidate_v3/__init__.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_candidate_v3/__init__.py",
+      "source_sha256": "97f76413dcab94bdb28cf9d65a6e2a7f63e7e76384431db158ff818846a61f27",
+      "ported_sha256": "97f76413dcab94bdb28cf9d65a6e2a7f63e7e76384431db158ff818846a61f27"
+    },
+    "research/keyprint_candidate_v3/adapter.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_candidate_v3/adapter.py",
+      "source_sha256": "5878841f3e38708c515397d65fa2d0591a63e9aaac1dc43c16e7863178694bea",
+      "ported_sha256": "8683a2c6c8369f98b02c506c9b069e09817de808a0164a49aa30b76c43223d99"
+    },
+    "research/keyprint_candidate_v3_caller.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_candidate_v3_caller.py",
+      "source_sha256": "c93a55b6c17070c11f38c9155748aa22730e9b98a91fae420407e5aae4696782",
+      "ported_sha256": "9144c1be47726a5f0ac480609d83d784587e5cd5a152446beda17da25533feda"
+    },
+    "research/keyprint_exact_categorical_v2.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_exact_categorical_v2.py",
+      "source_sha256": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37",
+      "ported_sha256": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37"
+    },
+    "research/keyprint_reporting_v2.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_reporting_v2.py",
+      "source_sha256": "36075cd4180fec0fcbffb61b623fe602c4a8837482bc4c98a6b7851670b01582",
+      "ported_sha256": "36075cd4180fec0fcbffb61b623fe602c4a8837482bc4c98a6b7851670b01582"
+    },
+    "research/keyprint_stable_support_filter_v3.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_stable_support_filter_v3.py",
+      "source_sha256": "4ef7abbd49ec02db7cdc9b23a8f1905071666f197ac84c5d35ebd357e56da259",
+      "ported_sha256": "4ef7abbd49ec02db7cdc9b23a8f1905071666f197ac84c5d35ebd357e56da259"
+    },
+    "research/keyprint_v3_public_api.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_v3_public_api.py",
+      "source_sha256": "28e167448f9927db5d8a6033593889f3f7555c0d4f2726b46da466fb92f615e5",
+      "ported_sha256": "ef6d625f60de0b7aee0d8968fd3cfeb806a7b4ae26c27d51df00b762d22d7cb4"
+    },
+    "research/keyprint_v3_public_api_rc2.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_v3_public_api_rc2.py",
+      "source_sha256": "52c30b409f49ab0ac5d738d8956cc59db44da6a4bbf6cd89428b4e37c52ccaeb",
+      "ported_sha256": "9b397623e3658b4268ad59f9c05ef119da78e9966f77f75b2321571b4b170a40"
+    },
+    "research/keyprint_v3_reporting_contract.py": {
+      "source": "sdk/keyprint_v3/_bundle/research/keyprint_v3_reporting_contract.py",
+      "source_sha256": "2ea6e39d44431b0a7ec8d75bc34e5ed2d1dfedfe45935edf9680efc92a1a4adc",
+      "ported_sha256": "82f4f4bb7feace1edc5f642a97a8b9b7977cc77edd5f72e4173a4bb8c5fadb72"
+    }
+  }
+}

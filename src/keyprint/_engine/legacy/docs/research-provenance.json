@@ -1,0 +1,127 @@
+{
+  "status": "staged_not_published",
+  "source_sha256": {
+    "research/grouped_canonical_prototype.py": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+    "research/grouped_tokenizer_binding.py": "6da275a553bd3343b0442a276a24035d74922f4d097baae17aadf0a70f72b9b0",
+    "research/token_source_policy.py": "9a7343e3c69c02c35b2e686a58254e42f6aa61508eae2e8e3d2d78f785452933",
+    "research/byte_trie_numeric.py": "e5912d68dfef821f8b2fce294584168001ae93a1dc820bb65338702ec2e12e7b",
+    "research/byte_trie_source_policy.py": "58ce9adb8076fc495c3997f122d98a8c7e701749915084e1766d919c9b11418d",
+    "research/byte_trie_session.py": "6c15310eba97dbbe36fdbd6f0d7ab4c03f71dbd723f03426dcf5fc471771d99d",
+    "research/byte_trie_tournament.py": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+    "research/grouped_null_score.py": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+    "research/token_runtime_binding.py": "03ad1750de774c1744320d046d7a89d0f92425a442cda1c49f5294c8fef0188c",
+    "research/token_runtime_profile.py": "15ee4fc79ee6fc579e5b0acdaaf877119ea93083909203a5695cc0e14b20b629",
+    "research/token_runtime_scoring.py": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+    "research/grouped_model_support_boundary.py": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+    "research/token_source_sparse_execution.py": "c75bbe0efe378fa792d6b4528ce9662ecd8c074ab975c16faf24165fb71e6b21",
+    "research/check_canonical_event_alignment.py": "e8478bac4cfb14744ef95e61b722bc8fc1af7d7a143e266b9639b3a3a8071765",
+    "research/token_source_host.py": "a66bef1d2a30a62e7acd96aaaebea755aa1563af97860fabc9341b775af2861e",
+    "research/token_channel_host.py": "098169cd8ddc81e0401c0a1da95ad22f02a5d245b24cc15c842e3ca088cc7ecf",
+    "research/token_runtime_host.py": "1dbb91cf413bc7bd9e4a82adc187f57cfd052bf5dd11899640994f4527ed00bd",
+    "research/token_runtime_sparse_host.py": "210bfde5bb3f6319bae06852032f1fc7208fb71cf5f87051a020f16e2f099cd9",
+    "release/tokenizer/qwen3-8b-4bit/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "release/tokenizer/qwen3-8b-4bit/config.json": "e5485285fd7e289e76e9cffa112f6dc2e3426519082f7db9b69041589f81a218",
+    "research/build_current_candidate_sdk_2026-09-09.py": "2c11bcc5ae035e8f69203dc3bcca290e4ca943203df38fbe5141a70909f13393"
+  },
+  "adaptations": {
+    "grouped_canonical_prototype": {
+      "source_sha256": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+      "packaged_sha256": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+      "changes": "package-relative imports"
+    },
+    "grouped_tokenizer_binding": {
+      "source_sha256": "6da275a553bd3343b0442a276a24035d74922f4d097baae17aadf0a70f72b9b0",
+      "packaged_sha256": "6e165e59bbe520c268d2ddbd5c055b6a59760cb6a5c52f2739e1f9cdc5536c15",
+      "changes": "package-relative imports"
+    },
+    "token_source_policy": {
+      "source_sha256": "9a7343e3c69c02c35b2e686a58254e42f6aa61508eae2e8e3d2d78f785452933",
+      "packaged_sha256": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68",
+      "changes": "package-relative imports"
+    },
+    "byte_trie_numeric": {
+      "source_sha256": "e5912d68dfef821f8b2fce294584168001ae93a1dc820bb65338702ec2e12e7b",
+      "packaged_sha256": "c448cad55cd74e34dd083204eac1c386090ab55fdeed84ca34441f20b3dd0a37",
+      "changes": "package-relative imports"
+    },
+    "byte_trie_source_policy": {
+      "source_sha256": "58ce9adb8076fc495c3997f122d98a8c7e701749915084e1766d919c9b11418d",
+      "packaged_sha256": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365",
+      "changes": "package-relative imports"
+    },
+    "byte_trie_session": {
+      "source_sha256": "6c15310eba97dbbe36fdbd6f0d7ab4c03f71dbd723f03426dcf5fc471771d99d",
+      "packaged_sha256": "b7ddf1e360b8a745386fe0cf69fa9309ae7c0d029178208ca271ff8a338e1a7a",
+      "changes": "package-relative imports"
+    },
+    "byte_trie_tournament": {
+      "source_sha256": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+      "packaged_sha256": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+      "changes": "package-relative imports"
+    },
+    "grouped_null_score": {
+      "source_sha256": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+      "packaged_sha256": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+      "changes": "package-relative imports"
+    },
+    "token_runtime_binding": {
+      "source_sha256": "03ad1750de774c1744320d046d7a89d0f92425a442cda1c49f5294c8fef0188c",
+      "packaged_sha256": "6760e294ff594694ec7afb10afca66ae66f93b8c083e9c8ec8466dcf08c9dad6",
+      "changes": "package-relative imports"
+    },
+    "token_runtime_profile": {
+      "source_sha256": "15ee4fc79ee6fc579e5b0acdaaf877119ea93083909203a5695cc0e14b20b629",
+      "packaged_sha256": "fd1db53497a06a273bbf8319277909c790c8149f50d06e7553f83a90d5198a75",
+      "changes": "package-relative imports"
+    },
+    "token_runtime_scoring": {
+      "source_sha256": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+      "packaged_sha256": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+      "changes": "package-relative imports"
+    },
+    "grouped_model_support_boundary": {
+      "source_sha256": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+      "packaged_sha256": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+      "changes": "package-relative imports"
+    },
+    "token_source_sparse_execution": {
+      "source_sha256": "c75bbe0efe378fa792d6b4528ce9662ecd8c074ab975c16faf24165fb71e6b21",
+      "packaged_sha256": "5eeec99a3e50405f707334e3bb1ddc2ed21ee7b80481c1adf241b8800f0bad51",
+      "changes": "package-relative imports"
+    },
+    "check_canonical_event_alignment": {
+      "source_sha256": "e8478bac4cfb14744ef95e61b722bc8fc1af7d7a143e266b9639b3a3a8071765",
+      "packaged_sha256": "f32d8365ccdf3af66f1c7d991cf60ad0888e91418be2f1a1c0a1979f41d0dcd5",
+      "changes": "pure definitions extracted; package-relative imports; no MLX host/model loading"
+    },
+    "token_source_host": {
+      "source_sha256": "a66bef1d2a30a62e7acd96aaaebea755aa1563af97860fabc9341b775af2861e",
+      "packaged_sha256": "9bf4e6ff72c50e1fa9113921a767df1ec92ae59c14ad42973531e78d57f62c10",
+      "changes": "pure definitions extracted; package-relative imports; no MLX host/model loading"
+    },
+    "token_channel_host": {
+      "source_sha256": "098169cd8ddc81e0401c0a1da95ad22f02a5d245b24cc15c842e3ca088cc7ecf",
+      "packaged_sha256": "dfd9de381512e47d0228ce697a2c9283e3c4f3cdc95ff7076640582d8a41fb3f",
+      "changes": "pure definitions extracted; package-relative imports; no MLX host/model loading"
+    },
+    "token_runtime_host": {
+      "source_sha256": "1dbb91cf413bc7bd9e4a82adc187f57cfd052bf5dd11899640994f4527ed00bd",
+      "packaged_sha256": "8233754abb7a4ec4a80bb63a2955372468b068e53e32f72324f54a7bd782fdce",
+      "changes": "pure definitions extracted; package-relative imports; no MLX host/model loading"
+    },
+    "token_runtime_sparse_host": {
+      "source_sha256": "210bfde5bb3f6319bae06852032f1fc7208fb71cf5f87051a020f16e2f099cd9",
+      "packaged_sha256": "28a0b1b8ff5e6265d05fba137d817d13b3acd5f08b206369f703b2f35d90b1b9",
+      "changes": "pure definitions extracted; package-relative imports; no MLX host/model loading"
+    }
+  },
+  "scope": "Current 30-layer token/source sampler, channel state machine and literal scorer; caller supplies filtered logits and uniforms.",
+  "exclusions": [
+    "MLX model host/loaders",
+    "model weights",
+    "private study keys",
+    "calibrated detector claim",
+    "legacy SDK migration"
+  ],
+  "source_assets_notice": "Tokenizer and configuration copied from the existing pinned Qwen research assets; public redistribution notices/license review remains required."
+}

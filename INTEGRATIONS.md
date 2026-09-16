@@ -3,6 +3,19 @@
 Reviewed September 16, 2026. This is an engineering audit and implementation plan,
 not a claim that the planned adapters are available.
 
+### Current private development branch
+
+`clean-keyprint-sdk` builds the unpublished `keyprint==0.1.0a1` package and
+public Python namespace. The reference engine is namespaced with a recorded
+derivative manifest and behavior comparisons, without changing the released
+bundle. A Transformers CPU float32 adapter now generates text with
+SmolLM2-135M-Instruct at revision `12fd25f77366fa6b3b4b768ec3050bf629380bac`.
+Its ByteLevel profile is explicitly experimental and receives no reference
+scientific acceptances. SGLang/vLLM and hosted-provider integration remain open.
+
+The repository is temporarily private while this work is reviewed. The old
+PyPI research package and website remain public. No new launch date is set.
+
 ## What works now
 
 The published rc3 SDK supports supplied NumPy logits and a separately supplied
@@ -20,7 +33,7 @@ Qwen3-8B-4bit checkpoint. Installed-wheel tests passed on Linux/macOS and Python
 | Anthropic-hosted Claude | Messages API generates the response remotely; no custom pre-sampling logits hook is documented | Current candidate cannot be inserted into hosted generation |
 | SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Feasibility confirmed from source; adapter and actual-server validation missing |
 | vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Adapter and actual-server validation missing |
-| Hugging Face Transformers | Generation logits-processor/custom sampling integration | Adapter and multi-tokenizer validation missing |
+| Hugging Face Transformers | Keyprint owns a single-response CPU sampling loop and KV cache | SmolLM2 real generation tested on the private branch; broader model and quality coverage missing |
 | MLX | Public `run_response` caller and pinned local example | One exact model/tokenizer tested |
 
 An OpenAI-compatible endpoint is not an OpenAI-hosted model. Reading a Claude
@@ -73,7 +86,7 @@ serializes callables with dill; do not expose arbitrary client-supplied
 serialized Python on an untrusted public endpoint. Register approved processors
 server-side and select them by a constrained identifier.
 
-## Naming migration
+## Naming migration (original findings, now implemented on private branch)
 
 The next-release branch adds `keyprint demo`, `keyprint doctor`, and
 `keyprint verify`, with readable output and opt-in `--json`. The old CLI remains

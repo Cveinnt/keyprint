@@ -1,162 +1,147 @@
 # Keyprint
 
-> Development branch: rc4 is not published. Social launch is postponed pending
-> the naming and integration work in [the readiness audit](INTEGRATIONS.md).
-> The PyPI commands below continue to install the existing rc3 release.
+**Text watermarking you can inspect, generate and test locally.**
 
-Try the new readable CLI from this branch in a separate environment:
+Private development preview. The launch is postponed while integrations and
+claims are audited. This branch builds **`keyprint 0.1.0a1`**; that name/version
+has not been published to PyPI. The old `keyprint-research-v3` release is a
+separate research reference, not the install command for this branch.
+
+## Start here
+
+Python 3.12 or 3.13. From this checkout:
 
 ```sh
-python3.12 -m venv .source-venv
-source .source-venv/bin/activate
-pip install ./sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip install .
 keyprint demo
-keyprint doctor
-keyprint verify
 ```
-
-Add `--json` for full reports. `keyprint generate` is the local prose command;
-it requires the optional MLX dependencies and pinned checkpoint below.
-
-[![SDK checks](https://github.com/Cveinnt/keyprint/actions/workflows/test.yml/badge.svg)](https://github.com/Cveinnt/keyprint/actions/workflows/test.yml)
-
-**Follow a text watermark through the choices a model makes.**
-
-[Play with the demo](https://keyprint.vercel.app/#experiment) · [Compare 144 real output pairs](https://keyprint.vercel.app/#outputs) · [Read the investigation](https://keyprint.vercel.app/research/)
-
-Keyprint is an independent research candidate built from Anthropic's public
-watermark description. Explore the mechanism, inspect the sampler, and reproduce
-the recorded quality arithmetic. It does not identify Anthropic's private
-implementation or detect arbitrary Claude text.
-
-## Run your first comparison
-
-Python 3.12+ is required. Clone this repository and install the [PyPI prerelease](https://pypi.org/project/keyprint-research-v3/0.0.4rc3/):
-
-```sh
-git clone https://github.com/Cveinnt/keyprint.git
-cd keyprint
-python3.12 -m venv .venv
-.venv/bin/python -m pip install keyprint-research-v3==0.0.4rc3
-.venv/bin/python examples/doctor.py
-.venv/bin/python examples/compare.py
-```
-
-On Windows, use `py -3.12 -m venv .venv`, then `.venv\Scripts\python.exe`
-instead of `.venv/bin/python`. Windows runtime validation is not yet recorded.
-
-Expected fixture output:
 
 ```text
-ordinary: 'BDABCAAD' (generation_trace)
-marked  : 'CDAABDCB' (generation_trace)
+Ordinary  BDABCAAD
+Marked    CDAABDCB
 ```
 
-This eight-step A/B/C/D illustration uses supplied logits, a public key and
-repeatable seeded draws. It loads no model, requires no API key, and does not
-generate prose. Both conditions start from the same supplied heads and draw
-stream; changing the weights can change which choices are selected. The saved
-`fixture-comparison.json` retains both complete reports and their interpretations.
-Choose a fresh `--output` path to run it again. A positive or negative diagnostic
-is not an authorship verdict.
+This offline fixture shows how a private-key weighting step changes token
+selection. It needs no account, model download or API key. The example uses
+public demonstration randomness and A/B/C/D choices; it does not generate prose.
 
-For existing prose examples, use the [recorded output viewer](https://keyprint.vercel.app/#outputs).
+`keyprint doctor` checks installation imports and source integrity.
+`keyprint verify` checks the namespaced engine against its manifest. Neither
+checks model compatibility or detector accuracy. Add `--json` for full reports.
 
-## Generate your own prose locally
+## Generate real text
 
-The runnable [MLX example](examples/generate_mlx.py) supports one pinned
-Qwen3-8B-4bit checkpoint on Apple Silicon macOS. It takes your prompt, creates
-a fresh private key, and generates ordinary and marked responses. Model weights
-are several GB; the explicit download below runs once. Generation stays local.
-
-On this development branch, install the source and optional MLX dependencies.
-The new command is not included in the published rc3 package:
+The Transformers backend runs locally on CPU. Download the explicit model
+revision once, then generation requires no network access:
 
 ```sh
-pip install './sdk[mlx]'
-keyprint doctor
+pip install '.[transformers]'
+hf download HuggingFaceTB/SmolLM2-135M-Instruct \
+  --revision 12fd25f77366fa6b3b4b768ec3050bf629380bac \
+  --include '*.json' '*.safetensors' '*.jinja' \
+  --local-dir models/smollm2
+keyprint keygen
+keyprint generate --backend transformers --model models/smollm2 \
+  --key keyprint.key --prompt 'Explain why the sky is blue.'
+```
+
+The command prints text and the location of its private report. It records
+failures without retrying them. `--max-tokens 128` changes the response cap;
+`--condition ordinary` generates the unmarked control under the same base
+filter. Different runs use independent randomness, so wording changes alone
+are not evidence of a watermark's effect on quality.
+
+SmolLM2 is a small integration example, not a quality benchmark or recommended
+production model. The portable profile supports explicit ByteLevel BPE token
+bindings and rejects unsupported tokenizers. Its evidence is separate from
+the pinned Qwen research profile. See [integration coverage](INTEGRATIONS.md).
+
+## Python API
+
+```python
+from pathlib import Path
+from keyprint import Keyprint
+
+watermark = Keyprint.from_transformers(
+    "models/smollm2",
+    key=Path("keyprint.key").read_bytes(),
+)
+result = watermark.generate("Explain why the sky is blue.")
+print(result.text)
+print(result.artifacts)  # private journal and report
+```
+
+Reuse the same private key to inspect matching-key diagnostics with
+`watermark.score(result.text)`. These are **uncalibrated diagnostics**, without
+an authorship verdict, detection threshold or false-positive guarantee.
+Retokenizing visible text can differ from the generated token path.
+
+Keys are exactly 32 bytes. `keyprint keygen` creates an owner-only file without
+printing the key or overwriting an existing file. `Keyprint.new_key()` returns
+fresh bytes for applications; store them securely yourself. Keep keys and
+journals private. Losing the key prevents later matching-key inspection.
+
+For Apple Silicon, the reference backend remains available:
+
+```sh
+pip install '.[mlx]'
 hf download mlx-community/Qwen3-8B-4bit \
   --revision 545dc4251c05440727734bcd94334791f6ab0192 \
   --local-dir models/qwen3-8b-4bit
-keyprint generate \
-  --model models/qwen3-8b-4bit \
-  --prompt "Explain why the sky is blue in two short sentences." \
-  --max-tokens 64
+keyprint generate --backend mlx --model models/qwen3-8b-4bit \
+  --key keyprint.key --prompt 'Explain why the sky is blue.'
 ```
 
-The example checks checkpoint and tokenizer hashes before loading. It refuses
-other models instead of silently using the wrong vocabulary. Already downloaded
-this exact revision? Pass its local directory to `--model` and skip the download.
+Python uses `Keyprint.from_mlx("models/qwen3-8b-4bit", key=...)`. This backend
+checks the exact model/tokenizer asset hashes. Other MLX models are rejected.
 
-Outputs, full reports, the private key and durable journals go to
-`private-keyprint-run/` (owner-only directory). **Do not publish the key or
-journals.** Use a fresh `--output private-keyprint-run-2` for another attempt.
-Failures are retained, never silently retried. Each condition uses independent
-random draws, so wording differences cannot be attributed solely to watermarking.
-The default 64-token cap can truncate a response. Neither timing nor two outputs
-establishes serving overhead, semantic equivalence, or detection accuracy.
+## What works, and what does not
 
-The published rc3 example remains available on the repository's main branch.
-This development CLI is packaged in rc4 without changes to the frozen sampler.
-For application integration, see [the model caller contract](sdk/README.md#supplied-model-caller-and-journal).
-
-## Integration coverage
-
-| Stack | Current support |
+| Stack | Scope |
 | --- | --- |
-| Plain Python / NumPy | Installed SDK and supplied-logit fixtures; no model needed |
-| MLX + pinned Qwen3-8B-4bit | Runnable local generation example above |
-| OpenAI / Anthropic hosted APIs | No adapter; this sampler needs access before token selection, which their public generation APIs do not expose |
-| Transformers / vLLM | No supported adapter yet; model access alone does not establish tokenizer or sampler compatibility |
-| LangChain / LlamaIndex | No wrapper; orchestration cannot supply the missing sampling access |
+| Python / NumPy | Supplied-logit reference pipeline and offline demo |
+| MLX | Exact pinned Qwen3-8B-4bit model on Apple Silicon |
+| Transformers | Experimental local CPU float32 text generation; SmolLM2 integration tested |
+| SGLang / vLLM | Not implemented or validated; launch blockers |
+| OpenAI Python client | No compatible inference endpoint yet |
+| OpenAI-hosted GPT / Anthropic-hosted Claude | Their public APIs do not expose this custom sampler hook; no native integration |
 
-An AI setup wizard is not required. `examples/doctor.py` checks package presence,
-dependency conflicts and bundle integrity without changing your environment or
-loading a model. It does not certify model compatibility. CI builds and tests an
-installed wheel on Linux and macOS with Python 3.12 and 3.13; model generation is
-a separate local check. Windows is not a validated runtime for this release.
+The portable backend runs one response at a time. Streaming, batching, tools,
+reasoning channels, beam search, speculative decoding, quantized checkpoints
+and grammar constraints are unsupported. An AI setup wizard would not solve
+these compatibility gaps. Explicit extras, short commands and useful errors do.
 
-## Inspect or change the implementation
+## Research scope
 
-The `sdk/` tree comes from the published 0.0.4rc3 source archive. Install it in a
-separate environment if you want to change code:
+Keyprint is an independent candidate inspired by Anthropic's public watermark
+description. It does not identify their private implementation, detect arbitrary
+Claude text, or prove that competing approaches cannot work.
+
+The published reference ledger has **22 scoped acceptances out of 25**. Output
+quality, reader indistinguishability and serving overhead remain open. Those
+acceptances belong to the recorded reference configuration. They do not transfer
+automatically to this namespaced port, portable profile or another model.
+
+## Development and provenance
 
 ```sh
-python3.12 -m venv .source-venv
-.source-venv/bin/python -m pip install ./sdk
-.source-venv/bin/python -m unittest discover -s sdk/tests
-.source-venv/bin/python -m keyprint_v3 verify
+pip install '.[test,transformers]'
+python -m pytest tests
 ```
 
-- [Public API exports](sdk/keyprint_v3/__init__.py) and [CLI](sdk/keyprint_v3/__main__.py)
-- [Reporting facade](sdk/keyprint_v3/_bundle/research/keyprint_v3_public_api_rc2.py)
-- [Exact categorical sampler](sdk/keyprint_v3/_bundle/research/keyprint_exact_categorical_v2.py)
-- [Post-filter support policy](sdk/keyprint_v3/_bundle/research/keyprint_stable_support_filter_v3.py)
-- [Supported API tests](sdk/tests/test_public_surface.py)
-- [Release notes](sdk/RELEASE_NOTES.md) and [third-party notices](sdk/THIRD_PARTY_NOTICES.md)
+- [`src/keyprint`](src/keyprint): supported Python API and adapters.
+- [`sdk`](sdk): preserved prior reference distribution and tests.
+- [`port-manifest.json`](src/keyprint/_engine/port-manifest.json): original and
+  ported engine hashes. Import rewrites create a new execution identity.
+- [`tools/port_reference.py`](tools/port_reference.py): reproducible namespace
+  transformation; refuses to overwrite an existing port.
+- [Contributing](CONTRIBUTING.md) and [integration audit](INTEGRATIONS.md).
 
-The historical paths inside `_bundle` preserve immutable evidence and are not
-supported import paths. Use `keyprint_v3` in application code. `verify` checks
-bundled file hashes, not authorship, provenance signatures or detector accuracy.
+Tests compare the port against the preserved reference in separate interpreters,
+check private artifacts and failure behavior, and reject unsupported tokenizer
+bindings. Real-model checks are recorded separately from fixture tests.
 
-## What the evidence establishes
-
-The [25-requirement ledger](https://keyprint.vercel.app/clue-ledger.json) has
-22 scoped acceptances. Output quality, reader indistinguishability and serving
-overhead remain open. These are local tests derived from the public description,
-not 25 independent promises from Anthropic. The evidence does not establish a
-unique reconstruction, universal domain coverage or deployment error rates.
-
-[Recompute the published quality arithmetic](https://keyprint.vercel.app/reproduce/README.md)
-without downloading a model. This replay verifies stored inputs and arithmetic;
-it does not independently rerate the outputs or reproduce model generation.
-
-## Help test the limits
-
-Useful contributions include minimal numerical counterexamples, independent
-domain evaluations and clearer explanations. Include version, platform, a
-minimal reproducer and the complete interpretation from any report. See
-[CONTRIBUTING.md](CONTRIBUTING.md). Please exclude private keys and private text.
-
-MIT project code by Vincent Wu (Cveinnt). Upstream tokenizer/data terms remain
-separate. No affiliation with Anthropic.
+MIT. Copyright Vincent Wu (Cveinnt). See [LICENSE](LICENSE) and
+[third-party notices](sdk/THIRD_PARTY_NOTICES.md).

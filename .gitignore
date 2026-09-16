@@ -1,5 +1,6 @@
 .venv/
 .source-venv/
+*.key
 __pycache__/
 *.pyc
 *.egg-info/
