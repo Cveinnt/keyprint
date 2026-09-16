@@ -1,0 +1,9 @@
+.venv/
+.source-venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+fixture-comparison*.json
+.DS_Store

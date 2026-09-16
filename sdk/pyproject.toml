@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools==81.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keyprint-research-v3"
+version = "0.0.4rc3"
+description = "Independent experimental watermark reconstruction, frozen v3 core with explicit uncertainty reports"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{name = "Vincent Wu (Cveinnt)"}]
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/*.txt"]
+dependencies = ["numpy==2.5.2", "scipy==1.17.1", "tokenizers==0.23.1"]
+
+[project.scripts]
+keyprint-v3 = "keyprint_v3.__main__:main"
+
+[tool.setuptools]
+packages = ["keyprint_v3"]
+
+[tool.setuptools.package-data]
+keyprint_v3 = ["bundle-manifest.json", "_bundle/**/*", "docs/*"]

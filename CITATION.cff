@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use Keyprint, cite this research preview and specify the evidence snapshot."
+type: software
+title: "Keyprint: an independent text-watermark research candidate"
+authors:
+  - family-names: Wu
+    given-names: Vincent
+version: 0.0.4rc3
+date-released: 2026-09-16
+url: "https://keyprint.vercel.app/"
+license: MIT

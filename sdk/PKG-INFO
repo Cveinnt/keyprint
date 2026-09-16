@@ -1,0 +1,171 @@
+Metadata-Version: 2.4
+Name: keyprint-research-v3
+Version: 0.0.4rc3
+Summary: Independent experimental watermark reconstruction, frozen v3 core with explicit uncertainty reports
+Author: Vincent Wu (Cveinnt)
+License-Expression: MIT
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: THIRD_PARTY_NOTICES.md
+License-File: licenses/Qwen-Apache-2.0.txt
+License-File: licenses/SynthID-Text-reference-Apache-2.0.txt
+Requires-Dist: numpy==2.5.2
+Requires-Dist: scipy==1.17.1
+Requires-Dist: tokenizers==0.23.1
+Dynamic: license-file
+
+# Keyprint v3 research preview · 0.0.4rc3
+
+MIT project code by Vincent Wu (Cveinnt). This is an independent reconstruction
+of public watermarking clues, not Anthropic's implementation or private key.
+
+The bundled historical architecture snapshot records 13 of 25 scoped requirements
+validated at that snapshot's date. The separate [current evidence ledger](https://keyprint.vercel.app/clue-ledger.json)
+records 22 of 25 at rc3 preparation; output-quality preservation, blinded reader
+indistinguishability and latency remain open. This later evidence does not replace
+the immutable bundled snapshot or establish calibrated detection. Review the
+[research evidence](https://keyprint.vercel.app/research/) for scope and limitations.
+This package is an independent research preview, not an efficacy or authorship claim.
+
+## Offline examples
+
+Use **Python 3.12 or newer**. Install the supplied wheel with its pinned direct
+dependencies. No language model or API account is needed for these examples.
+The package uses the `keyprint_v3` namespace.
+
+```sh
+python -m pip install ./keyprint_research_v3-0.0.4rc3-py3-none-any.whl
+python -m keyprint_v3 demo
+python -m keyprint_v3 demo --condition ordinary
+printf 'The sky is blue.\n' | python -m keyprint_v3 score-fixture
+python -m keyprint_v3 verify
+```
+
+The demo uses a public key, supplied logits and deterministic fixture bits. It
+does not generate language with a model. `score-fixture` reads stdin and uses that
+same public fixture key; it cannot detect production Claude text. `verify` checks
+bundled file integrity only. Keep the complete JSON interpretation when sharing
+any output. Never extract a score or verification status as an authorship verdict.
+
+Successful commands emit JSON. Startup or argument errors use stderr and a
+nonzero exit status; they are not public reports. In particular, a corrupt or
+missing bundled file fails during import, before the CLI can emit JSON. Treat
+nonzero exit status or missing JSON as unavailable. `verify` checks the frozen
+bundle against its local manifest; it is not a signed provenance check and does
+not validate every outer package file.
+
+## Python API
+
+```python
+from keyprint_v3 import PublicCandidate
+
+candidate = PublicCandidate()
+report = candidate.score_literal("Your supplied text", bytes(range(32)))
+print(report["interpretation"])
+```
+
+For actual experiments supply an explicit 32-byte key and independent unbiased
+random bits to the generation API. No key discovery, model loading, downloading,
+detector fitting or network request occurs automatically. Generation accepts one
+complete float32 model head of shape `(1, 151936)` per step. Both conditions use
+the same declared mapped-vocabulary, temperature, top-k and stable-tail filter.
+Support preservation begins **after** this filter; excluded raw tails do not
+remain eligible. Default settings are temperature 0.7, top-k 100 and scaled gap
+600. Frozen empirical settings must not be changed after seeing results.
+
+The reporting facade identifies itself separately from the frozen scientific
+runtime. Reports distinguish its target identity from the inherited score law,
+preserve exact sampling integers as decimal strings, and expose unavailable
+calibration, unknown error rates and inadequate evidence. Errors do not imply
+human authorship. Generated text is content data, not provenance metadata.
+
+The source bundle preserves the original relative layout and bytes so runtime
+hashes remain reproducible. It contains the inherited internal `keyprint`
+namespace. Import this SDK in a fresh Python process: an already imported
+incompatible research module is rejected, never silently replaced. Underscored
+bundle modules and historical v1 utilities are internal provenance, not public
+v3 APIs. `PublicCandidate`, `PublicPipeline`, `PublicReportError`, `DurableJournal`
+and the CLI are the supported entrypoints. Caller/model integration requires a
+separately tested MLX environment; MLX and model weights are not bundled.
+
+### Supplied-logit generation
+
+This complete offline example uses one supplied model-head fixture. Use a fresh
+independent unbiased bit source for each actual experiment. Deterministic zero
+bits belong only in explicit fixtures such as the CLI demo.
+
+```python
+import secrets
+import numpy as np
+from keyprint_v3 import PublicCandidate
+
+candidate = PublicCandidate()
+key = secrets.token_bytes(32)  # Retain privately if you need to score this run later.
+head = np.full((1, 151936), -np.inf, dtype=np.float32)
+head[0, 32:34] = (0, -1)
+with candidate.pipeline(key, condition="marked") as pipeline:
+    report = pipeline.step(head, secrets.randbits)
+    if report["kind"] != "error":
+        report = pipeline.finish()  # Caller stop; no synthetic EOS is added.
+print(report["interpretation"])
+```
+
+### Supplied-model caller and journal
+
+`PublicCandidate.run_response` accepts a model and tokenized prompt that you
+already own. The production backend is MLX. It performs no model loading or
+downloading. The example below assumes `model`, `prompt_ids`, `key` and a callable
+`reserve(action, metadata)` have already been supplied. `reserve` can enforce
+your experiment's budget before model/cache/sample/random-bit operations.
+
+```python
+import secrets
+from keyprint_v3 import PublicCandidate, DurableJournal
+
+candidate = PublicCandidate()
+with DurableJournal("private-run/response-001.jsonl") as journal:
+    report = candidate.run_response(
+        model, prompt_ids, key=key, condition="marked",
+        random_bits=secrets.randbits, journal=journal, reserve=reserve,
+        max_tokens=128,
+    )
+print(report["interpretation"])
+```
+
+Create `private-run` beforehand as a directory restricted to your account. Journal
+files inherit the process umask; they contain experiment metadata and random draws.
+`DurableJournal` creates a new file exclusively and rejects an existing path.
+Each response requires a fresh journal; retain failed-attempt journals and use a
+new path for a new attempt. Candidate, pipeline and journal objects have a single
+owning thread. Check `report["kind"]` for errors; an error never establishes human authorship.
+MLX and model integration are separate from the offline examples above.
+
+Public generation reports expose hashes and sampling records, not the complete
+private distribution/trace artifact. They cannot independently resolve those
+hashes or prove the point-to-token mapping. An available literal replay can still
+contain zero eligible events and therefore no available statistic.
+
+See `THIRD_PARTY_NOTICES.md` for Qwen tokenizer and other upstream notices.
+No Anthropic affiliation, conclusive provenance, ownership or human-authorship
+claim follows from a positive, negative, weak, unavailable or wrong-key result.
+
+## Reporting correction in rc2
+
+Valid generated text can be unavailable for literal scoring when the locked tokenizer normalizes its bytes (for example decomposed accents). rc2 preserves the completed visible, reasoning and tool carriers, labels the affected literal diagnostic unavailable, and retains the reason in `literal_replay_status`. It never substitutes generation-path statistics, zero counts or a detector verdict. Scientific core, tokenizer, filter and sampling transcripts are unchanged; this is a separately identified reporting revision. Old rc1 artifacts remain preserved. Full browser and release acceptance require review of the new package.
+
+## Migration from rc2
+
+rc3 corrects the Python floor, exports the existing journal class through the
+supported package namespace, and updates outer package documentation. The frozen
+bundle and its manifest are byte-identical to rc2. Core and reporting-facade
+identities therefore remain unchanged; the installed distribution version is
+`0.0.4rc3`. Use a fresh process after upgrading. See `RELEASE_NOTES.md` for the
+distinction between historical bundled evidence and the current external ledger.
+
+The unchanged facade still emits
+`integration_status="public_python_rc2_facade_package_browser_acceptance_pending"`
+and `all_reporting_surfaces_accepted=false`. These are its frozen acceptance
+metadata, not a live package-audit or deployment-status feed. This packaging
+revision does not rewrite them or establish universal reporting-surface acceptance.
+Use separately dated package/browser evidence to assess those surfaces.
