@@ -1,0 +1,32 @@
+name: Publish audited SDK to PyPI
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pypi-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'Cveinnt/keyprint' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/keyprint-research-v3/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Download and verify the frozen 0.0.4rc3 distributions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir dist
+          curl --fail --location --retry 3 --output dist/keyprint_research_v3-0.0.4rc3-py3-none-any.whl https://github.com/Cveinnt/keyprint/releases/download/v0.0.4rc3/keyprint_research_v3-0.0.4rc3-py3-none-any.whl
+          curl --fail --location --retry 3 --output dist/keyprint_research_v3-0.0.4rc3.tar.gz https://github.com/Cveinnt/keyprint/releases/download/v0.0.4rc3/keyprint_research_v3-0.0.4rc3.tar.gz
+          echo '5473b86d08959997b7f2492575622e05596d60acb6744bf4a50613a5db3adb22  dist/keyprint_research_v3-0.0.4rc3-py3-none-any.whl' | sha256sum --check --strict
+          echo '8586531222d1c54a6050d2284f582d4e685a1f658398a56d6aeb9c8925acb66e  dist/keyprint_research_v3-0.0.4rc3.tar.gz' | sha256sum --check --strict
+      - name: Publish verified distributions using PyPI Trusted Publishing
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33
+        with:
+          packages-dir: dist/
