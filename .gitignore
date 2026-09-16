@@ -7,3 +7,5 @@ build/
 dist/
 fixture-comparison*.json
 .DS_Store
+private-keyprint-run*/
+models/
