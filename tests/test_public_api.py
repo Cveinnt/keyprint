@@ -47,6 +47,8 @@ def test_invalid_key_rejected(key):
         Keyprint(key=key)
 
 
+@pytest.mark.skipif(not (ROOT / "sdk/keyprint_v3/__init__.py").exists(),
+                    reason="reference parity needs the repository's preserved SDK tree")
 def test_reference_parity(tmp_path):
     # Separate interpreters prevent importing the old nested keyprint package
     # over the new public namespace. Compare behavior, not re-labeled hashes.
