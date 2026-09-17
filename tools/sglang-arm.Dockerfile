@@ -1,7 +1,7 @@
 # Derived from SGLang docker/arm64.Dockerfile at 13d593b6cf885c5c4d50eea88c82b9e28cf5941e.
 # SPDX-License-Identifier: Apache-2.0
 # Trusted offline ARM Docker pilot only; skips optional NUMA memory binding.
-FROM ubuntu:24.04 AS pilot
+FROM ubuntu:24.04@sha256:69cecf4bbf72d2d44a9eef1b71fb98c7fb973d78af11399deccef19beb008ad9 AS runtime
 SHELL ["/bin/bash", "-c"]
 
 ARG SGLANG_REPO=https://github.com/sgl-project/sglang.git
@@ -63,6 +63,7 @@ end=s.index('  // OMP threads binding', start)
 p.write_text(s[:start] + '  // Keyprint ARM Docker pilot: NUMA topology is unavailable in this VM.\n  // Keep CPU thread binding; skip optional memory-node binding.\n\n' + s[end:])
 PYFIX
 RUN source /root/.local/bin/env && source /opt/.venv/bin/activate && cd /sgl-workspace/sglang/python/sglang/kernels/aot && uv pip install --reinstall .
+FROM runtime AS pilot
 COPY --from=keyprint_source /src /keyprint/src
 COPY --from=keyprint_source /tools/validate_sglang.py /keyprint/validate_sglang.py
 COPY --from=model_assets / /model

@@ -1,0 +1,8 @@
+[
+  {"id":"science","prompt":"Explain why the sky is blue in two short sentences. Use no more than 45 words.","max_tokens":192,"review":"Check scattering explanation and factual accuracy."},
+  {"id":"email","prompt":"Write a short email to Maya asking to move our meeting from Tuesday at 09:30 to Wednesday at 14:00. Include both original and proposed times. Do not invent a date or a reason. Use at most 60 words.","max_tokens":192,"required_literals":["Maya","Tuesday","09:30","Wednesday","14:00"],"review":"Check original versus proposed time, names and invented details."},
+  {"id":"negation","prompt":"Rewrite this instruction in one sentence, preserving its meaning: Do not delete the backup until Maya confirms that the restore succeeded.","max_tokens":128,"review":"Must retain the prohibition and the condition for deleting the backup."},
+  {"id":"spanish","prompt":"En español, explica en dos frases por qué las hojas cambian de color en otoño. Usa menos de 50 palabras.","max_tokens":192,"review":"Check Spanish language and seasonal explanation."},
+  {"id":"french","prompt":"Écris un bref courriel en français à Maya pour demander une relecture. Indique que le délai est vendredi à 09:30. Ne change pas le nom ni l'heure. Moins de 50 mots.","max_tokens":192,"required_literals":["Maya","09:30"],"review":"Check French, Friday deadline, name and exact time."},
+  {"id":"json","prompt":"Return only valid JSON, without markdown or explanation, containing exactly these fields and values: name is Maya, count is 3, enabled is false.","max_tokens":128,"expected_json":{"name":"Maya","count":3,"enabled":false},"review":"Strict JSON parsing and exact field/value comparison; no grammar-constrained decoding is used."}
+]

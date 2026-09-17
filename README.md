@@ -61,6 +61,8 @@ elapsed time. Each result separates generation from inspection time. These are
 individual local observations, not a serving-throughput benchmark.
 See [sampling performance](PERFORMANCE.md) for reproducible arithmetic and
 real-model parity checks, with the remaining performance limits.
+See [actual inference testing](INFERENCE_TESTING.md) for paired text comparisons,
+real SDK-over-HTTP checks, CI artifacts and observed quality failures.
 
 Keys stay in the local Python process. A fresh key is saved in the owner-only
 session directory unless `--key PATH` supplies an existing key. The independent
