@@ -2,6 +2,11 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Add a packaged local playground: real paired generations, custom prompts,
+  editable text, prefix signal curves, an independent-key control and JSON
+  reports. Restore the previous live run on refresh without generating again.
+- Add typed `Keyprint.inspect()` results while retaining the raw diagnostic
+  report. Unavailable measurements remain unavailable, never zero or a verdict.
 - Add the `keyprint` distribution, `keyprint` Python namespace and readable CLI.
 - Add key creation, local generation, installation diagnostics and source checks.
 - Port reference imports into a private namespace without changing `sys.path`.

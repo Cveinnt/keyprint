@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Keyprint — the local playground</title>
+    <link rel="stylesheet" href="/app.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <a href="#top" class="wordmark">Keyprint<span> / </span></a
+        ><span class="eyebrow">An experiment in text watermarking</span
+        ><a href="#method">How to read this</a>
+      </header>
+      <section id="top" class="intro">
+        <p class="eyebrow">
+          The local playground · private development preview
+        </p>
+        <h1>Ordinary words.<br />A pattern underneath.</h1>
+        <div class="intro-bottom">
+          <p>
+            Generate a paragraph. Change a few words.<br />Explore what happens
+            to its keyed signal.
+          </p>
+          <a class="technical" href="#explore"
+            >Explore the signal ↓<br />Real measurements · on your computer</a
+          >
+        </div>
+      </section>
+      <section class="experiment" aria-labelledby="generate-title">
+        <div class="section-heading">
+          <span class="number">01</span>
+          <h2 id="generate-title">Give it something to say.</h2>
+          <span id="model-label" class="eyebrow">Connecting to your model</span>
+        </div>
+        <div class="prompt-layout">
+          <div>
+            <label for="prompt">Your prompt</label
+            ><textarea id="prompt" rows="3" maxlength="6000">
+In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
+            <div class="presets" aria-label="Example prompts">
+              <button
+                type="button"
+                data-prompt="In 60 words, explain how a seed becomes a tree to a curious adult."
+              >
+                A seed becomes a tree</button
+              ><button
+                type="button"
+                data-prompt="In 60 words, write a warm email inviting a friend to a picnic this weekend. Do not invent a specific date or address."
+              >
+                An invitation</button
+              ><button
+                type="button"
+                data-prompt="Explique en français pourquoi le ciel est bleu, en 60 mots accessibles."
+              >
+                En français
+              </button>
+            </div>
+          </div>
+          <div class="run-panel">
+            <label for="cap">Response limit</label
+            ><select id="cap">
+              <option value="128">128 tokens</option>
+              <option value="192" selected>192 tokens</option>
+              <option value="256">256 tokens</option></select
+            ><button id="generate" class="primary" disabled>
+              Generate both versions <span aria-hidden="true">↗</span>
+            </button>
+            <p>
+              Two independent samples from the same model and prompt. One
+              ordinary, one marked.
+            </p>
+          </div>
+        </div>
+        <p id="status" role="status" aria-live="polite">
+          Loading the session. The prefilled example runs once when ready.
+        </p>
+        <div id="outputs" class="outputs" aria-busy="true">
+          <article>
+            <div class="output-heading">
+              <h3>Ordinary</h3>
+              <span id="ordinary-meta" class="eyebrow">Baseline sampling</span>
+            </div>
+            <p id="ordinary-text" class="generated placeholder">
+              Your model’s ordinary response will appear here.
+            </p>
+          </article>
+          <article>
+            <div class="output-heading">
+              <h3>With Keyprint</h3>
+              <span id="marked-meta" class="eyebrow">Keyed sampling</span>
+            </div>
+            <p id="marked-text" class="generated placeholder">
+              The marked response will appear here. No canned output is
+              substituted.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section id="explore" class="explore" aria-labelledby="explore-title">
+        <div class="section-heading">
+          <span class="number">02</span>
+          <h2 id="explore-title">Make it your own. Follow the signal.</h2>
+        </div>
+        <div class="lab-grid">
+          <div class="editor">
+            <label for="edited">Edit the marked response</label
+            ><textarea
+              id="edited"
+              rows="9"
+              maxlength="6000"
+              disabled
+              placeholder="Generate a response above, then change words, remove a sentence, or paste your own text."
+            ></textarea>
+            <div class="edit-actions">
+              <button id="half" disabled>Keep first half</button
+              ><button id="restore" disabled>Restore original</button
+              ><button id="inspect" class="primary" disabled>
+                Update signal
+              </button>
+            </div>
+            <p id="edit-status" role="status" aria-live="polite">
+              Your text is sent only to this local SDK process.
+            </p>
+          </div>
+          <div class="measurement">
+            <div class="chart-title">
+              <h3>A pattern, measured.</h3>
+              <span class="eyebrow">One-bit fraction</span>
+            </div>
+            <div class="legend">
+              <span class="original">Original · matching key</span
+              ><span class="control">Original · other key</span
+              ><span class="edited">Edited · matching key</span>
+            </div>
+            <svg
+              id="chart"
+              viewBox="0 0 560 270"
+              role="img"
+              aria-labelledby="chart-title chart-description"
+            >
+              <title id="chart-title">
+                Literal watermark diagnostic by text prefix
+              </title>
+              <desc id="chart-description">
+                No measurements yet. Generate a response to inspect it.
+              </desc>
+            </svg>
+            <label class="scrub-label" for="scrub"
+              >Drag the chart or slider to explore the original text</label
+            ><input
+              id="scrub"
+              type="range"
+              min="0"
+              max="15"
+              value="15"
+              disabled
+            />
+            <p id="prefix-readout" class="eyebrow">Waiting for measurements</p>
+            <p id="prefix" class="prefix">
+              Measured prefixes will appear here.
+            </p>
+            <div class="metrics">
+              <div>
+                <span id="fraction">—</span><label>Matching-key fraction</label>
+              </div>
+              <div>
+                <span id="events">—</span><label>Eligible events</label>
+              </div>
+              <div><span id="bits">—</span><label>Measured bits</label></div>
+            </div>
+            <p id="measurement-status">
+              Uncalibrated diagnostic. No detection verdict.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="method" class="method">
+        <div class="section-heading">
+          <span class="number">03</span>
+          <h2>What the lines can tell you.</h2>
+        </div>
+        <div class="method-grid">
+          <p>
+            The key influences choices during generation. Inspection replays the
+            visible text and counts the resulting keyed bits. The chart shows
+            the fraction of those bits equal to one, measured again at each text
+            prefix.
+          </p>
+          <p>
+            The dotted 50% line is a visual reference,
+            <em>not a detection threshold</em>. The other key is a control.
+            Higher values are not confidence percentages. Editing can
+            strengthen, weaken, or leave the diagnostic unchanged.
+          </p>
+          <p>
+            These are independent model samples. Their wording difference alone
+            does not establish a quality effect. Prefixes can tokenize
+            differently; no individual word is labeled “watermarked.” A weak or
+            unavailable signal does not prove human authorship.
+          </p>
+        </div>
+        <details>
+          <summary>Inspect the measurement report</summary>
+          <div class="report-toolbar">
+            <p>
+              Current displayed experiment. Keys and generation journals are
+              excluded.
+            </p>
+            <button id="download" disabled>Download JSON</button>
+          </div>
+          <pre id="report">Run an experiment to see its report.</pre>
+        </details>
+        <details>
+          <summary>Use the same SDK in Python</summary>
+          <pre>
+from pathlib import Path
+from keyprint import Keyprint
+
+wm = Keyprint.from_mlx("models/qwen3-8b-4bit",
+    key=Path("keyprint.key").read_bytes())
+result = wm.generate("Explain how a seed becomes a tree.")
+inspection = wm.inspect(result.text)
+print(result.text)
+print(inspection.fraction)  # observed fraction, not confidence</pre>
+          <p>
+            Use the pinned model documented in the README. Transformers has a
+            separate experimental backend. This preview makes no hosted GPT or
+            Claude call.
+          </p>
+        </details>
+      </section>
+      <footer>
+        <span>Keyprint / Vincent Wu</span
+        ><span>Independent research. Deployment calibration remains open.</span>
+      </footer>
+    </main>
+  </body>
+</html>

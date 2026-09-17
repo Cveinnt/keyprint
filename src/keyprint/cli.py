@@ -8,7 +8,9 @@ import os
 from pathlib import Path
 import platform
 import random
+import secrets
 import sys
+import tempfile
 
 
 def comparison() -> dict:
@@ -63,6 +65,20 @@ def load_key(path: Path) -> bytes:
     return key
 
 
+def cached_model(backend: str) -> Path:
+    """Resolve only documented, pinned assets; never download implicitly."""
+    models = {
+        "mlx": ("mlx-community--Qwen3-8B-4bit", "545dc4251c05440727734bcd94334791f6ab0192"),
+        "transformers": ("HuggingFaceTB--SmolLM2-135M-Instruct", "12fd25f77366fa6b3b4b768ec3050bf629380bac"),
+    }
+    root = Path(os.environ.get("HF_HUB_CACHE", Path(os.environ.get("HF_HOME", Path.home() / ".cache/huggingface")) / "hub"))
+    name, revision = models[backend]
+    path = root / ("models--" + name) / "snapshots" / revision
+    if not (path / "config.json").is_file():
+        raise ValueError("No pinned model cached. Follow README 'Generate real text', then use --model PATH. No download was started.")
+    return path
+
+
 def main(argv: list[str] | None = None) -> int:
     from . import Keyprint, KeyprintError, __version__, verify
     parser = argparse.ArgumentParser(prog="keyprint", description="Generate and inspect text watermarks locally.")
@@ -83,6 +99,13 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--max-tokens", type=int, default=64)
     generate.add_argument("--condition", choices=("ordinary", "marked"), default="marked")
     generate.add_argument("--output", type=Path)
+    playground = commands.add_parser("playground", help="Open a real-model generation and editing playground")
+    playground.add_argument("--backend", choices=("mlx", "transformers"),
+                            default="mlx" if platform.system() == "Darwin" and platform.machine() == "arm64" else "transformers")
+    playground.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
+    playground.add_argument("--key", type=Path, help="Optional private key; otherwise create a fresh session key")
+    playground.add_argument("--port", type=int, default=8766)
+    playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
     serve = commands.add_parser("serve", help="Serve a local, text-only OpenAI client endpoint")
     serve.add_argument("--backend", choices=("mlx", "transformers"), default="mlx")
     serve.add_argument("--model", type=Path, required=True)
@@ -94,6 +117,32 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command is None:
             parser.print_help()
+        elif args.command == "playground":
+            try:
+                import uvicorn
+                from .playground import create_playground
+            except ImportError as exc:
+                raise ImportError("The playground needs the [server] extra. From this checkout: pip install '.[server]'") from exc
+            path = args.model if args.model is not None else cached_model(args.backend)
+            if not path.is_dir():
+                raise ValueError("--model must be an existing local directory")
+            if not 1024 <= args.port <= 65535:
+                raise ValueError("port must be between 1024 and 65535")
+            directory = args.output or Path(tempfile.mkdtemp(prefix="keyprint-playground-"))
+            key = load_key(args.key) if args.key else Keyprint.new_key()
+            loader = Keyprint.from_mlx if args.backend == "mlx" else Keyprint.from_transformers
+            token = secrets.token_urlsafe(32)
+            app = create_playground(lambda: loader(path, key=key), token=token, output=directory, port=args.port)
+            if args.key is None:
+                descriptor = os.open(directory / "session.key", os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+                with os.fdopen(descriptor, "wb") as stream:
+                    stream.write(key)
+            print(f"Keyprint playground\nModel: {path}\nPrivate artifacts: {directory}\n"
+                  f"Open after model loading: http://127.0.0.1:{args.port}/#session={token}\n"
+                  "The prefilled example runs once on page load. No hosted API calls.\n"
+                  "Keep the session URL private. Ctrl+C stops the server.", flush=True)
+            uvicorn.run(app, host="127.0.0.1", port=args.port, workers=1, access_log=False)
+            return 0
         elif args.command == "keygen":
             descriptor = os.open(args.path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
             with os.fdopen(descriptor, "wb") as stream:
@@ -130,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
                 print("Keyprint | offline sampling demo\n")
                 for condition, report in reports.items():
                     print(f"{condition.capitalize():8}  {report.get('rendered_carriers', {}).get('visible_text', 'Failed')}")
-                print(f"\n{scope}\nNext: keyprint generate --help")
+                print(f"\n{scope}\nReal-model interactive demo: keyprint playground --help")
             return int(any(report["kind"] == "error" for report in reports.values()))
         else:
             result = doctor() if args.command == "doctor" else verify()

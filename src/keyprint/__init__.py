@@ -2,6 +2,7 @@
 from .api import Keyprint, Generation, KeyprintError
 from .integrity import verify
 from .rewrite import Rewrite
+from .inspection import Inspection
 
 __version__ = "0.1.0a1"
-__all__ = ["Keyprint", "Generation", "Rewrite", "KeyprintError", "verify"]
+__all__ = ["Keyprint", "Generation", "Rewrite", "Inspection", "KeyprintError", "verify"]

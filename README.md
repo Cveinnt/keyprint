@@ -9,7 +9,9 @@ separate research reference, not the install command for this branch.
 
 ## Start here
 
-Python 3.12 or 3.13. From this checkout:
+Python 3.12 or 3.13. The [interactive playground](#the-interactive-playground)
+is the main demo: generate, edit, and inspect real text with a local model.
+For a model-free installation check first, run from this checkout:
 
 ```sh
 python3 -m venv .venv
@@ -30,6 +32,37 @@ public demonstration randomness and A/B/C/D choices; it does not generate prose.
 `keyprint doctor` checks installation imports and source integrity.
 `keyprint verify` checks the namespaced engine against its manifest. Neither
 checks model compatibility or detector accuracy. Add `--json` for full reports.
+
+## The interactive playground
+
+After installing a backend and downloading its pinned model below:
+
+```sh
+pip install '.[server]'
+keyprint playground
+```
+
+Open the local session URL printed in your terminal. On Apple Silicon the
+default backend is MLX; elsewhere it is Transformers. The command finds the
+documented pinned model in the Hugging Face cache. For models downloaded to
+another directory, use `keyprint playground --backend transformers --model
+models/smollm2` or `keyprint playground --backend mlx --model models/qwen3-8b-4bit`.
+Missing assets produce an actionable error, never an implicit download.
+
+The prefilled prompt runs two real generations on first load. Refreshing restores
+the previous live run from this process instead of generating again. Enter your
+own prompt, compare ordinary and marked responses, edit the marked text, and
+inspect the changing signal alongside an independent-key control. The chart
+recomputes literal diagnostics at text prefixes. Its fractions are observed bit
+counts, **not confidence percentages or calibrated detection**. Both responses
+use independent randomness; wording differences are not a quality experiment.
+
+Keys stay in the local Python process. A fresh key is saved in the owner-only
+session directory unless `--key PATH` supplies an existing key. The independent
+control key is also retained privately for reproduction. Prompts, reports
+and private generation journals stay in that directory. The browser receives no
+watermark key or journal. Keep the session URL private. This is a bounded local preview,
+not a public production server; closing the tab does not cancel an in-flight run.
 
 ## Generate real text
 
@@ -71,10 +104,16 @@ watermark = Keyprint.from_transformers(
 result = watermark.generate("Explain why the sky is blue.")
 print(result.text)
 print(result.artifacts)  # private journal and report
+inspection = watermark.inspect(result.text)
+print(inspection.fraction)  # observed one-bit fraction, not confidence
 ```
 
 Reuse the same private key to inspect matching-key diagnostics with
-`watermark.score(result.text)`. These are **uncalibrated diagnostics**, without
+`watermark.inspect(result.text)`. The typed result exposes `events`, `ones`,
+`trials`, `fraction` and the unchanged scientific `report`. An optional
+`key=other_key` inspects the same text with another key as a control.
+`watermark.score(result.text)` remains available for the raw report.
+These are **uncalibrated diagnostics**, without
 an authorship verdict, detection threshold or false-positive guarantee.
 Retokenizing visible text can differ from the generated token path.
 

@@ -9,6 +9,7 @@ import tempfile
 
 from .integrity import verify
 from .rewrite import Rewrite
+from .inspection import Inspection
 
 
 class KeyprintError(RuntimeError):
@@ -69,9 +70,25 @@ class Keyprint:
 
     def score(self, text: str) -> dict[str, Any]:
         """Return an uncalibrated matching-key diagnostic, never authorship."""
+        return self._score(text, self._key)
+
+    def inspect(self, text: str, *, key: bytes | None = None) -> Inspection:
+        """Inspect visible-text counts, optionally using another key as a control.
+
+        This does not generate text or call a hosted API. No detector threshold
+        or confidence is inferred from the observed fraction of one bits.
+        """
+        chosen = self._key if key is None else key
+        if type(chosen) is not bytes or len(chosen) != 32:
+            raise ValueError("key must be exactly 32 bytes")
+        return Inspection.from_report(self._score(text, chosen))
+
+    def _score(self, text: str, key: bytes) -> dict[str, Any]:
+        if not isinstance(text, str) or len(text) > 16000:
+            raise ValueError("text must be a string of at most 16000 characters")
         if hasattr(self._backend, "score"):
-            return self._backend.score(text, self._key)
-        report = self._candidate.score_literal(text, self._key)
+            return self._backend.score(text, key)
+        report = self._candidate.score_literal(text, key)
         if report["kind"] == "error":
             raise KeyprintError(report)
         return report
