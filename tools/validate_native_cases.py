@@ -62,6 +62,7 @@ def main():
                 pair = [{'text':r['text'], 'token_ids':r['output_ids'],
                          'completion':'eos' if r['meta_info']['finish_reason']['type'] == 'stop' else 'length'} for r in responses]
             elapsed = time.perf_counter()-started
+            assert len(pair) == len(conditions), 'framework omitted a requested response'
             for condition, response in zip(conditions, pair):
                 outputs.append(response)
                 diagnostic = {}

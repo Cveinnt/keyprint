@@ -68,11 +68,18 @@ def write_report(output, report):
                            html.escape(json.dumps({k:v for k,v in row.items() if k != "text"}, indent=2, ensure_ascii=False)) + '</pre></details></article>')
         sections.append('<section><h2>' + html.escape(case["id"]) + '</h2><p>' + html.escape(case["prompt"]) +
                         '</p><p><em>' + html.escape(case["review"]) + '</em></p><div class="pair">' + ''.join(columns) + '</div></section>')
+    client_sections = []
+    for name, result in report.get("clients", {}).items():
+        if "original" in result and "text" in result:
+            client_sections.append('<section><h2>' + html.escape(name.replace('_', ' ')) +
+                '</h2><p>Constructed provider response object; real local model rewrite. No hosted API call.</p><div class="pair">' +
+                '<article><h3>Original</h3><pre>' + html.escape(result['original']) + '</pre></article>' +
+                '<article><h3>Local rewrite</h3><pre>' + html.escape(result['text']) + '</pre></article></div></section>')
     (public / "comparison.html").write_text('''<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>Keyprint inference comparisons</title><style>body{max-width:1160px;margin:48px auto;padding:0 24px;background:#f7f5ee;color:#292923;font:18px/1.55 Georgia,serif}h1{font-size:42px}h2{font-size:28px}section{border-top:1px solid #ccc6b7;padding:24px 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}article{background:#fffdf8;padding:22px;min-width:0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:16px/1.6 Georgia,serif}details pre{font:12px/1.5 monospace}summary{cursor:pointer}@media(max-width:650px){.pair{grid-template-columns:1fr}}</style>
 <h1>Actual inference. Both texts.</h1><p>Independent ordinary and marked samples. All attempts retained. Mechanical flags are not semantic approval; fractions are not detection confidence.</p>''' +
         '<p>' + html.escape(report["backend"]) + ' · ' + str(len(report["screening_failures"])) +
-        ' generated outputs flagged by mechanical screens. Semantic quality remains unapproved.</p>' + ''.join(sections) +
+        ' generated outputs flagged by mechanical screens. Semantic quality remains unapproved.</p>' + ''.join(sections) + ''.join(client_sections) +
         '<section><h2>Client checks</h2><pre>' + html.escape(json.dumps(report.get("clients", {}), indent=2, ensure_ascii=False)) + '</pre></section>')
 
 
