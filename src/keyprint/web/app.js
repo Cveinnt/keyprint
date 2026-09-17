@@ -46,6 +46,33 @@ async function api(path, body, id) {
   return data;
 }
 
+function watchProgress(status) {
+  let stopped = false,
+    timer;
+  const stages = {
+    generating_ordinary: "Generating the ordinary response",
+    inspecting_ordinary: "Measuring the ordinary response",
+    generating_marked: "Generating the watermarked response",
+    inspecting_marked: "Measuring the watermarked response",
+    inspecting_edit: "Measuring your edited text",
+  };
+  async function poll() {
+    try {
+      const progress = await api("/api/progress");
+      if (!stopped && progress.active && stages[progress.stage])
+        status.textContent = `${stages[progress.stage]} · ${progress.seconds.toFixed(0)}s elapsed. Work continues locally.`;
+    } catch {
+      // Losing a progress update must not retry or replace the model request.
+    }
+    if (!stopped) timer = setTimeout(poll, 1000);
+  }
+  timer = setTimeout(poll, 500);
+  return () => {
+    stopped = true;
+    clearTimeout(timer);
+  };
+}
+
 function report() {
   const data = {
     experiment,
@@ -202,7 +229,10 @@ function showGeneration(data, retained = false) {
       result.text || "(Empty model response)";
     $(condition + "-text").classList.remove("placeholder");
     $(condition + "-meta").textContent =
-      `${result.usage?.completion_tokens ?? "?"} tokens · ${result.completion === "eos" ? "complete" : "limit reached"}`;
+      `${result.usage?.completion_tokens ?? "?"} tokens · ${result.completion === "eos" ? "complete" : "limit reached"}` +
+      (result.timing
+        ? ` · ${result.timing.generation_seconds.toFixed(1)}s generation · ${result.timing.inspection_seconds.toFixed(1)}s inspection`
+        : "");
   }
   $("edited").disabled = false;
   $("edited").value = data.outputs.marked.text;
@@ -242,8 +272,10 @@ async function run(action) {
     action === "generate"
       ? "Generating two real responses, then measuring both. The previous result stays visible until completion."
       : "Replaying edited text with the SDK…";
+  const stopProgress = watchProgress(status);
   try {
     const data = await api("/api/experiment", body, pending.id);
+    stopProgress();
     pending = null;
     if (action === "generate") {
       showGeneration(data);
@@ -257,10 +289,12 @@ async function run(action) {
     report();
     if (action === "inspect" && $("edited").value !== text) markDirty();
   } catch (error) {
+    stopProgress();
     if (error.settled) pending = null;
     status.classList.add("error");
     status.textContent = error.message + " No automatic retry.";
   } finally {
+    stopProgress();
     setBusy(false);
   }
 }

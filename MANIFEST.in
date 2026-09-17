@@ -1,5 +1,5 @@
 include CONTRIBUTING.md INTEGRATIONS.md CHANGELOG.md PROVIDERS.md
-include RELEASE_GOAL.md
+include RELEASE_GOAL.md PERFORMANCE.md
 recursive-include tests *.py
 recursive-include examples *.py
 recursive-include tools *.py *.json

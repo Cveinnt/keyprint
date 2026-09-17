@@ -54,6 +54,8 @@ def test_packaged_page_auth_host_and_origin_boundaries(tmp_path):
         assert client.get("/app.js").status_code == 200
         assert client.get("/app.css").status_code == 200
         assert client.get("/api/session").status_code == 401
+        assert client.get("/api/progress").status_code == 401
+        assert client.get("/api/progress", headers=HEADERS).json() == {"active": False}
         assert client.get("/api/session", headers=HEADERS).status_code == 200
         assert client.get("/", headers={"Host": "attacker.example"}).status_code == 403
         assert client.post("/api/experiment", json=BODY,
@@ -68,6 +70,7 @@ def test_real_route_generates_both_conditions_and_replays_without_extra_work(tmp
         restored = client.get("/api/session", headers=HEADERS).json()
         assert restored["latest"] == data and restored["prompt"] == BODY["text"]
         assert set(data["outputs"]) == {"ordinary", "marked"}
+        assert all(value >= 0 for output in data["outputs"].values() for value in output["timing"].values())
         result = data["outputs"]["marked"]["inspection"]
         assert result["series"][-1]["characters"] == len(data["outputs"]["marked"]["text"])
         assert result["series"][-1]["matching"] == result["fraction"]
@@ -92,6 +95,7 @@ def test_failed_attempt_stays_failed_and_is_not_silently_retried(tmp_path):
             response = client.post("/api/experiment", json=BODY, headers=HEADERS)
             assert response.status_code == 500 and "secret internals" not in response.text
         assert len(list((tmp_path / "runs").glob("*/ordinary"))) == 1
+        assert client.get("/api/progress", headers=HEADERS).json() == {"active": False}
 
 
 def test_model_work_cannot_interleave(tmp_path):
@@ -103,12 +107,16 @@ def test_model_work_cannot_interleave(tmp_path):
         first = threads.submit(client.post, "/api/experiment", json=BODY, headers=HEADERS)
         try:
             assert models[0].started.wait(5)
+            progress = client.get("/api/progress", headers=HEADERS).json()
+            assert progress["active"] and progress["stage"] == "generating_ordinary"
+            assert progress["seconds"] >= 0
             response = client.post("/api/experiment", json=BODY, headers={**HEADERS, "Idempotency-Key": "other"})
             assert response.status_code == 503
         finally:
             models[0].release.set()
         assert first.result().status_code == 200
         assert models[0].calls == ["ordinary", "marked"]
+        assert client.get("/api/progress", headers=HEADERS).json() == {"active": False}
 
 
 @pytest.mark.parametrize("body", [{**BODY, "max_tokens": True}, {**BODY, "text": " "},
@@ -132,3 +140,18 @@ def test_unavailable_replay_is_not_zero_signal_or_discarded_generation():
     assert result["fraction"] is None and result["trials"] is None
     assert all(point["matching"] is None for point in result["series"])
     assert result["report"]["availability"] == "unavailable"
+
+
+def test_full_text_reports_reuse_final_prefix_including_unavailable():
+    class Counter:
+        def __init__(self):
+            self.calls = []
+        def inspect(self, text, *, key=None):
+            self.calls.append((text, key))
+            return Inspection(1, 15, 30, {"kind": "literal_diagnostic", "call": len(self.calls)})
+    model = Counter()
+    result = inspect_text(model, "A sufficiently long sentence for sixteen prefixes.", bytes(range(32)))
+    assert len(model.calls) == 32
+    assert result["report"]["call"] == 31
+    assert result["control_report"]["call"] == 32
+    assert result["series"][-1]["matching"] == result["fraction"]

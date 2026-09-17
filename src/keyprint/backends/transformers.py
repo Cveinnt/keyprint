@@ -15,6 +15,7 @@ import tempfile
 from typing import Any
 
 from .bytelevel import ByteLevelBinding
+from ..sampling import identity as sampling_identity, sparse_sample, sparse_softmax
 
 
 class TransformersModel:
@@ -37,6 +38,7 @@ class TransformersModel:
                          "engine_manifest_sha256": verify()["manifest_sha256"],
                          "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                          "binding_source_sha256": hashlib.sha256(Path(__file__).with_name("bytelevel.py").read_bytes()).hexdigest(),
+                         "sampling_execution": sampling_identity(),
                          "dependencies": {name: importlib.metadata.version(name) for name in ("torch", "transformers", "numpy", "tokenizers")},
                          "temperature": temperature, "top_k": top_k,
                          "empirical_acceptance_transfers": False,
@@ -97,7 +99,6 @@ class TransformersModel:
         from .._engine.legacy._impl.research.token_source_sparse_execution import SparseTokenSourceSession
         from .._engine.research.keyprint_candidate_v3_caller import DurableJournal
         from .._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
-        from .._engine.research.keyprint_exact_categorical_v2 import sample_float_weights, supported_softmax
 
         if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 16000:
             raise ValueError("prompt must contain 1 to 16000 characters")
@@ -141,7 +142,7 @@ class TransformersModel:
                             raw[0, index] = -np.inf
                     filtered = stable_support_filter(raw, temperature=self.temperature, top_k=self.top_k,
                                                      mapped_vocabulary_size=len(self.binding.pieces))
-                    base = np.array(supported_softmax(tuple(map(float, filtered.filtered_logits[0]))), dtype=np.float64)
+                    base = sparse_softmax(filtered.filtered_logits[0])
                     prepared = session.prepare(base)
                     journal.append({"phase": "prepared", "raw_logits_sha256": raw_hash,
                                     "weights_sha256": hashlib.sha256(prepared.probabilities.tobytes()).hexdigest()})
@@ -152,7 +153,7 @@ class TransformersModel:
                         journal.append({"phase": "random_returned", "bits": count, "value": value})
                         return value
 
-                    draw = sample_float_weights(tuple(map(float, prepared.probabilities)), random_bits)
+                    draw = sparse_sample(prepared.probabilities, random_bits)
                     selected = draw.token_index
                     # Persist intent before any irreversible session mutation.
                     journal.append({"phase": "commit_requested", "token_id": selected, "draw": asdict(draw)})

@@ -54,8 +54,10 @@ def inspect_text(model: Keyprint, text: str, control_key: bytes) -> dict:
         control = measure(text[:end], key=control_key)
         series.append({"characters": end, "matching": matching.fraction,
                        "control": control.fraction})
-    matching = measure(text)
-    control = measure(text, key=control_key)
+    # The final prefix is the complete text. Reuse those exact reports rather
+    # than replaying it twice more after plotting it.
+    if not positions:
+        matching, control = measure(text), measure(text, key=control_key)
     return {"series": series, "events": matching.events, "ones": matching.ones,
             "trials": matching.trials, "fraction": matching.fraction,
             "control_fraction": control.fraction, "report": matching.report,
@@ -85,6 +87,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
     lock = asyncio.Lock()
     records: dict[str, tuple[str, JSONResponse]] = {}
     latest: dict = {}
+    progress: dict | None = None
     hosts = {f"127.0.0.1:{port}", f"localhost:{port}"}
 
     @asynccontextmanager
@@ -129,21 +132,45 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model[0].identity,
                 "scope": "Live local generation and uncalibrated literal diagnostics"}
 
+    @app.get("/api/progress")
+    async def current_progress():
+        # Worker replaces the snapshot atomically; no model state crosses
+        # threads. This reports real stages, not invented completion percent.
+        snapshot = progress
+        return ({"active": True, "stage": snapshot["stage"],
+                 "seconds": time.perf_counter() - snapshot["started"]}
+                if snapshot else {"active": False})
+
     def execute(params: Experiment, run: Path) -> dict:
+        nonlocal progress
         started = time.perf_counter()
-        if params.action == "inspect":
-            return {"inspection": inspect_text(model[0], params.text, control_key),
-                    "seconds": time.perf_counter() - started}
-        outputs = {}
-        for condition in ("ordinary", "marked"):
-            result = model[0].generate(params.text, max_tokens=params.max_tokens,
-                                       condition=condition, output=run / condition)
-            payload = result.report.get("payload", result.report)
-            outputs[condition] = {"text": result.text, "usage": result.report.get("usage"),
-                                  "completion": payload.get("completion"),
-                                  "inspection": inspect_text(model[0], result.text, control_key)}
-        return {"outputs": outputs, "seconds": time.perf_counter() - started,
-                "independent_randomness": True, "calibrated": False}
+        def stage(name: str):
+            nonlocal progress
+            progress = {"stage": name, "started": started}
+        try:
+            if params.action == "inspect":
+                stage("inspecting_edit")
+                return {"inspection": inspect_text(model[0], params.text, control_key),
+                        "seconds": time.perf_counter() - started}
+            outputs = {}
+            for condition in ("ordinary", "marked"):
+                stage("generating_" + condition)
+                generation_start = time.perf_counter()
+                result = model[0].generate(params.text, max_tokens=params.max_tokens,
+                                           condition=condition, output=run / condition)
+                generation_seconds = time.perf_counter() - generation_start
+                stage("inspecting_" + condition)
+                inspection_start = time.perf_counter()
+                inspection = inspect_text(model[0], result.text, control_key)
+                payload = result.report.get("payload", result.report)
+                outputs[condition] = {"text": result.text, "usage": result.report.get("usage"),
+                                      "completion": payload.get("completion"), "inspection": inspection,
+                                      "timing": {"generation_seconds": generation_seconds,
+                                                 "inspection_seconds": time.perf_counter() - inspection_start}}
+            return {"outputs": outputs, "seconds": time.perf_counter() - started,
+                    "independent_randomness": True, "calibrated": False}
+        finally:
+            progress = None
 
     @app.post("/api/experiment")
     async def experiment(request: Request):

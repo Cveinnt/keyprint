@@ -2,6 +2,12 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Remove full-vocabulary Python arithmetic on excluded logits and zero weights
+  in the portable Transformers and experimental serving adapters. Preserve
+  represented probabilities, exact token selection and random-draw transcripts;
+  record the new execution source separately. The frozen MLX engine is unchanged.
+- Show actual playground stages and separate generation/inspection timings.
+  Reuse the final prefix measurement instead of scoring the same text again.
 - Add a packaged local playground: real paired generations, custom prompts,
   editable text, prefix signal curves, an independent-key control and JSON
   reports. Restore the previous live run on refresh without generating again.

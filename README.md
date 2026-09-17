@@ -56,6 +56,11 @@ inspect the changing signal alongside an independent-key control. The chart
 recomputes literal diagnostics at text prefixes. Its fractions are observed bit
 counts, **not confidence percentages or calibrated detection**. Both responses
 use independent randomness; wording differences are not a quality experiment.
+While work runs, the page shows the actual generation or inspection stage and
+elapsed time. Each result separates generation from inspection time. These are
+individual local observations, not a serving-throughput benchmark.
+See [sampling performance](PERFORMANCE.md) for reproducible arithmetic and
+real-model parity checks, with the remaining performance limits.
 
 Keys stay in the local Python process. A fresh key is saved in the owner-only
 session directory unless `--key PATH` supplies an existing key. The independent
