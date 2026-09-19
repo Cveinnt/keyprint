@@ -158,6 +158,62 @@ exactly, so a tokenization mismatch does not explain these four misses.
 
 ## Compare and confirm a text-only score change
 
+### Prompt-free predictability development
+
+```sh
+python tools/develop_predictability_filter.py --study private-weighted-power \
+  --model models/qwen3-8b-4bit --output private-predictability-development
+python tools/audit_predictability_filter.py --development private-predictability-development \
+  --study private-weighted-power --model models/qwen3-8b-4bit
+python tools/develop_predictability_null.py --development private-predictability-development \
+  --source private-corpus/databricks-dolly-15k.jsonl \
+  --null-study private-weighted-null --model models/qwen3-8b-4bit \
+  --output private-predictability-null
+```
+
+This separate research tool uses the fixed prefix `Continue the text.` and
+preceding literal tokens to estimate next-token entropy with pinned Qwen weights.
+The fixed sampling filter is temperature 0.7 and top-k 100. It selects only
+previously unused canonical contexts with entropy at least 0.5 bits, then applies
+the unchanged linear weights and two-key reference rule. Selection cannot use
+the original prompt, watermark key, current token probability or observed bits.
+All 24 opened paired outputs remain in the report, including misses and errors.
+Per-position model-head hashes, token IDs and entropy diagnostics stay private.
+Text inference uses fixed batches of 64 positions; only the final batch is padded
+and padded future heads are discarded. Its cache is never reused for another
+text. A separate audit recomputes every reported score and compares 32-token and
+96-token literal prefixes with fresh caches. It requires identical selected
+positions and entropy differences below 0.01 bits for shared prefix tokens.
+
+The declaration is saved before model inference. It fixes both the entropy
+cutoff and a gate for further development: recover at least one additional
+short marked answer, retain overall marked hits, and introduce no ordinary or
+wrong-key hits. Passing that gate would justify an ordinary-corpus control
+screen, not a production detector. The null command also requires a passed
+integrity audit and unchanged candidate-source hashes before loading a model.
+It retains all 500 previously opened controls, errors and unavailable results;
+it does not choose a threshold from them. This method still requires an 8B model and
+additional inference. It neither establishes low-cost detection nor extends
+support to other models, frameworks or hosted providers. Source responses are
+already opened development data; fresh confirmation remains necessary.
+
+The September 19 opened-data screen improved marked hits from 8/12 to 10/12
+and short-answer hits from 1/5 to 3/5, without ordinary or wrong-key hits in the
+24 outputs. Cases 04 and 11 were recovered; 08 and 09 still missed. Case 08's
+per-key reference tail was 0.0052866, above the unchanged 0.005 cutoff; it remains
+a miss. Do not round it into acceptance or relax the threshold after seeing it.
+
+The first version used a shorter final inference batch. A fresh-cache prefix
+check found up to 0.1841 bits of entropy variation when batch shape changed,
+although that prefix's selected positions were unchanged. That failed audit and
+its source snapshots remain retained. Fixed-size batches reproduced the same
+10/12 and 3/5 results. All 48 shortened-prefix checks then produced identical
+raw model-head hashes, entropy values and selected positions, and all 48
+key/text reference scores were independently recomputed. The improvement remains development evidence; it does not
+close the detection release gate or establish the false-positive rate.
+
+### Fixed layer-score comparison
+
 ```sh
 python tools/compare_score_baselines.py --study private-detection-screen \
   --output private-score-development

@@ -75,6 +75,15 @@ The replay is a private-state diagnostic, not a replacement detector. Investigat
 prompt-free predictability estimates next, with a separate frozen candidate and
 fresh power/null evaluation before any claim changes.
 
+The fixed predictability-filter development screen recovered two short-answer
+misses: 10/12 marked hits overall and 3/5 in the short range, with zero ordinary
+or wrong-key hits across the 24 opened outputs. Two short answers still miss.
+An initial variable-batch numerical audit failed; the fixed-batch rerun retained
+the same detection counts and passed all 48 prefix stability checks with exact
+model-head identity. This adds an 8B-model inference dependency and has
+not established a deployment false-positive rate or low-cost detection. The
+candidate stays outside the SDK until independent validation supports it.
+
 ## First-use acceptance
 
 - A developer can install the published package and follow one tested path to
