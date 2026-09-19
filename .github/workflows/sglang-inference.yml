@@ -1,0 +1,82 @@
+name: SGLang actual inference
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/keyprint/experimental/**'
+      - 'src/keyprint/backends/bytelevel.py'
+      - 'src/keyprint/_engine/**'
+      - 'tools/*sglang*'
+      - 'tools/validate_native_cases.py'
+      - 'tools/validate_compatibility.py'
+      - 'tools/check_native_receipts.py'
+      - 'tools/inference_cases.json'
+      - '.github/workflows/sglang-inference.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/keyprint/experimental/**'
+      - 'src/keyprint/backends/bytelevel.py'
+      - 'src/keyprint/_engine/**'
+      - 'tools/*sglang*'
+      - 'tools/validate_native_cases.py'
+      - 'tools/validate_compatibility.py'
+      - 'tools/check_native_receipts.py'
+      - 'tools/inference_cases.json'
+      - '.github/workflows/sglang-inference.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sglang-inference-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  cpu-comparisons:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 40
+    env:
+      INFERENCE_RUN_ID: sglang-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Download pinned public model and create an ephemeral test key
+        run: |
+          python -m pip install huggingface_hub==1.31.0
+          python - <<'PY'
+          import os, secrets
+          from huggingface_hub import snapshot_download
+          snapshot_download('HuggingFaceTB/SmolLM2-135M-Instruct',
+              revision='12fd25f77366fa6b3b4b768ec3050bf629380bac', local_dir='model-fixture',
+              allow_patterns=['*.json', '*.safetensors', '*.txt', '*.jinja'])
+          with os.fdopen(os.open('inference.key', os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), 'wb') as handle:
+              handle.write(secrets.token_bytes(32))
+          PY
+      - name: Build pinned CPU runtime and generate every ordinary and marked pair offline
+        run: |
+          docker buildx build --platform linux/arm64 --target comparison-receipts \
+            --build-arg "KEYPRINT_RUN_ID=$INFERENCE_RUN_ID" --no-cache-filter comparisons \
+            --build-context keyprint_source=. --build-context model_assets=./model-fixture \
+            --secret id=keyprint_key,src=inference.key \
+            --output type=local,dest=sglang-results --file tools/sglang-arm.Dockerfile .
+      - name: Verify actual exit status, all pairs, runtime source and returned token journals
+        run: PYTHONPATH=src python tools/check_sglang_results.py sglang-results --run-id "$INFERENCE_RUN_ID"
+      - name: Retain generated comparisons, including partial or failed runs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: sglang-inference-comparisons
+          path: |
+            sglang-results/public/
+            sglang-results/exit-code.txt
+            sglang-results/contract-exit-code.txt
+            sglang-results/run-id.txt
+            sglang-results/runtime-lock.txt
+            sglang-results/numa-source-sha256.txt
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Remove ephemeral keys and private journals
+        if: always()
+        run: |
+          rm -f inference.key sglang-results/control.key
+          rm -rf sglang-results/traces

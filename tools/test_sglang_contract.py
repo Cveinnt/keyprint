@@ -1,5 +1,6 @@
 """SGLang CPU contract tests, including processor recreation across batches."""
 import gc
+import importlib.metadata
 import json
 from pathlib import Path
 import tempfile
@@ -9,6 +10,7 @@ import torch
 from sglang.srt.sampling.sampling_params import SamplingParams
 from keyprint.backends.bytelevel import ByteLevelBinding
 from keyprint.experimental.sglang import KeyprintLogitsProcessor, _LIVE_REQUESTS, validate
+from keyprint.experimental.sglang_runtime import verify_runtime, REVISION
 
 
 class Request:
@@ -19,6 +21,11 @@ class Request:
 
 
 class Contracts(unittest.TestCase):
+    def test_installed_runtime_source_matches_pinned_contract(self):
+        distribution = importlib.metadata.distribution('sglang-cpu')
+        identity = verify_runtime(distribution.version, Path(distribution.locate_file('sglang')))
+        self.assertEqual(identity['source_revision'], REVISION)
+
     def test_recreated_processor_keeps_request_state_and_rejects_key_change(self):
         data = {"model": {"type": "BPE", "vocab": {"<eos>": 0, "A": 1, "B": 2, "C": 3}},
                 "decoder": {"type": "ByteLevel"}, "normalizer": None,

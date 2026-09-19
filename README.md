@@ -161,7 +161,7 @@ checks the exact model/tokenizer asset hashes. Other MLX models are rejected.
 | MLX | Exact pinned Qwen3-8B-4bit model on Apple Silicon |
 | Transformers | Experimental local CPU float32 text generation; SmolLM2 integration tested |
 | vLLM | Experimental CPU 0.29.0 adapter: two batched SmolLM2 generations; not a production integration |
-| SGLang | Experimental pinned ARM CPU source build: two batched SmolLM2 generations; NUMA workaround required |
+| SGLang | Experimental pinned ARM CPU source build: six ordinary/marked SmolLM2 pairs with returned-token verification; NUMA workaround required, quality unvalidated |
 | OpenAI Python client | Real local HTTP request tested; single-message Chat Completions subset |
 | OpenAI-hosted GPT / Anthropic-hosted Claude | Their public APIs do not expose this custom sampler hook; no native integration |
 | Completed GPT / Claude prose | Explicit experimental local rewrite; original retained, meaning and detection unvalidated |

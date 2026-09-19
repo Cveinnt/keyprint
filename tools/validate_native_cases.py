@@ -1,5 +1,6 @@
 """Actual paired inference in the separately pinned offline CPU framework pilots."""
 import argparse
+import importlib.metadata
 import json
 import os
 from pathlib import Path
@@ -30,20 +31,27 @@ def main():
               'scope':'Actual paired framework inference; no quality, detector or production acceptance',
               'engineering_failures':[]}
     outputs = []
-    if args.backend == 'vllm':
-        from vllm import LLM, SamplingParams
-        from keyprint.experimental.vllm import KeyprintLogitsProcessor
-        engine = LLM(model='/model', dtype='float32', max_model_len=512, enforce_eager=True,
-                     max_num_seqs=2, max_num_batched_tokens=512, kv_cache_memory_bytes=256*1024*1024,
-                     enable_prefix_caching=False, logits_processors=[KeyprintLogitsProcessor])
-    else:
-        import sglang as sgl
-        from keyprint.experimental.sglang import KeyprintLogitsProcessor
-        engine = sgl.Engine(model_path='/model', device='cpu', dtype='float32', tp_size=1,
-            max_running_requests=2, context_length=512, max_total_tokens=1024,
-            disable_overlap_schedule=True, disable_radix_cache=True, disable_cuda_graph=True,
-            enable_custom_logit_processor=True, mem_fraction_static=.5)
+    engine = None
     try:
+        if args.backend == 'vllm':
+            from vllm import LLM, SamplingParams
+            from keyprint.experimental.vllm import KeyprintLogitsProcessor
+            engine = LLM(model='/model', dtype='float32', max_model_len=512, enforce_eager=True,
+                         max_num_seqs=2, max_num_batched_tokens=512, kv_cache_memory_bytes=256*1024*1024,
+                         enable_prefix_caching=False, logits_processors=[KeyprintLogitsProcessor])
+        else:
+            import sglang as sgl
+            from keyprint.experimental.sglang import KeyprintLogitsProcessor
+            from keyprint.experimental.sglang_runtime import verify_runtime
+            distribution = importlib.metadata.distribution('sglang-cpu')
+            # Fail in the parent before allocating workers, and retain the
+            # verified source identity alongside the actual inference result.
+            report['runtime_identity'] = verify_runtime(distribution.version,
+                                                         Path(distribution.locate_file('sglang')))
+            engine = sgl.Engine(model_path='/model', device='cpu', dtype='float32', tp_size=1,
+                max_running_requests=2, context_length=512, max_total_tokens=1024,
+                disable_overlap_schedule=True, disable_radix_cache=True, disable_cuda_graph=True,
+                enable_custom_logit_processor=True, mem_fraction_static=.5)
         for index, case in enumerate(cases):
             conditions = ['ordinary','marked'] if index%2 == 0 else ['marked','ordinary']
             started = time.perf_counter()
@@ -88,7 +96,7 @@ def main():
         write_report(root,report)
         raise
     finally:
-        if args.backend == 'sglang':engine.shutdown()
+        if args.backend == 'sglang' and engine is not None:engine.shutdown()
     write_report(root,report)
 
 

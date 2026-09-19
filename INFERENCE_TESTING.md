@@ -321,6 +321,48 @@ The manifest retains this discrepancy and attribution to Wikipedia contributors
 and WikiText's authors. Source passages stay outside `public/`; derived scores,
 article metadata and provenance are exportable research artifacts.
 
+The completed September 19 screen retained all 10,000 articles and 20,000
+text/key replays, with zero errors. It produced 115 false hits (1.15%; IID-only
+97.5% upper bound 1.38%). At 300 words: 70/5,000 hits (upper 1.77%). At 600 words:
+45/5,000 (upper 1.20%). Maximum doubled-grid difference was `1.34e-12`. These
+results do not establish a deployment bound below 1%. Collecting more samples
+at a nominal 1% rule is not a sound strategy for forcing its confidence upper
+bound below 1%; a stricter operating rule would need fresh confirmation.
+
+## Learned marginal weights: negative development result
+
+`tools/develop_layer_weights.py` tests one fixed recipe for using layer signal
+more efficiently. It fits Jeffreys-smoothed marginal probabilities on the same
+24 previously opened marked training responses (7,206 events), clips to
+`[.5,.75]`, converts to positive log odds, then rounds to integer weights with
+maximum 256 and minimum 1. The ceiling is a regularizer, not an empirical claim.
+Evaluation keys differ from training keys. Training events may overlap across
+documents, so the fit does not imply independent-trial parameter confidence.
+
+`tools/learned_layer_weights.py` evaluates the fixed fitted weights against the
+same ideal fair-bit null. It removes the common integer factor before FFT
+inversion; this avoids unnecessary lattice size and roundoff without changing
+the score ordering or null tail. Tests compare complete small null spaces and
+an independent equal-weight binomial calculation. No SDK code changes.
+
+```sh
+python tools/develop_layer_weights.py \
+  --training private-initial-screen private-score-confirmation \
+  --power private-corpus-power private-weighted-power \
+  --null-old private-null-corpus --null-fresh private-weighted-null \
+  --source databricks-dolly-15k.jsonl --output private-learned-weights
+```
+
+The primary two-key family threshold is `.005`; `.01` is descriptive only, not
+another chance to declare a hit. At `.005`, learned and original linear weights
+both detected 10/12 marked texts in the first opened power set and 8/12 in the
+second. Neither flagged an ordinary output. Both flagged 5/1,000 opened null
+controls. At `.01`, learned weights had 11/1,000 null hits versus the original
+14/1,000, but no improvement in marked detections. All 48 generated outputs and
+1,000 ordinary controls were retained with zero scoring errors. The learned
+weights did not recover the short-answer misses and are not promoted into the
+SDK. This is development on opened data, not fresh validation or a new acceptance.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
@@ -333,6 +375,59 @@ The SGLang Dockerfile exposes a reusable `runtime` target before its historical
 pilot and receipt-export stages. It retains the documented ARM NUMA workaround.
 Neither framework pilot qualifies GPU serving, streaming, cancellation,
 speculation, cache reuse or arbitrary model/tokenizer families.
+
+The `comparison-receipts` target runs the full paired native-case script and
+exports its receipts directly. The revised build fetches Git blobs on demand,
+does not retain uv caches in image layers, and builds the patched CPU kernel
+once with `--no-build-isolation` against upstream's installed PyTorch dependency.
+This addresses the earlier second-PyTorch-environment disk failure. It does not
+change the NUMA workaround or establish inference success: check both exported
+exit-code files, comparison outputs and token journals. Resolved dependency
+versions remain recorded per build and are separate from distribution pins.
+Each pilot/comparison build requires a unique `KEYPRINT_RUN_ID` build argument
+and the appropriate `--no-cache-filter` setting described in `INTEGRATIONS.md`.
+The exported run ID prevents confusing a cached result with the declared attempt.
+
+The September 19 source-identity rerun returned ten texts (five complete pairs,
+731 tokens matching their condition-specific selection journals), then reached
+the original 420-second deadline while generating the JSON pair. All three
+callback contract checks passed, but the full inference run did not. Its partial
+outputs and failed exit status are retained. The complete-suite deadline is now
+900 seconds, followed by forced termination after 15 seconds if needed. This
+changes the engineering timeout only, not the prompts, token limits or sampling.
+
+The next complete run returned all twelve texts and 620 tokens, passed both
+process exits and all three callback contract checks, and passed the independent
+receipt verifier. All outputs reached EOS. Three outputs failed mechanical
+screens, but those screens undercount semantic problems: the ordinary email
+turned a rescheduling request into two meetings, the ordinary negation changed
+the required action, the marked science answer introduced an ocean-reflection
+error, and both Spanish/French pairs were inadequate. Both JSON outputs matched
+the requested values. These are small independent samples, not an estimate of
+watermark-induced quality loss. No output-quality acceptance follows.
+
+`.github/workflows/sglang-inference.yml` runs the same six pairs on an ARM CPU
+runner when relevant adapter or test-runner code changes, or on manual dispatch.
+It downloads the pinned public model before generation; inference itself runs
+without network access. The CI key is generated per attempt and is never an
+account credential. No GPU, hosted model API or publishing secret is needed.
+The workflow retains all available public comparison texts, including failures,
+but never uploads keys or private token journals. A green engineering check does
+not approve semantic quality, detector calibration or production serving.
+
+After exporting a local `comparison-receipts` run, verify it with:
+
+```sh
+PYTHONPATH=src python tools/check_sglang_results.py private-sglang-results \
+  --run-id <the-unique-KEYPRINT_RUN_ID-used-for-this-attempt>
+```
+
+The verifier requires both process exits to be zero, the declared run ID, the
+exact six-case suite, all twelve ordinary/marked outputs, the pinned runtime
+source identity, and exact returned-token matches to the private journals. It
+also checks that each displayed condition matches its generation journal.
+Missing, partial, cached or internally inconsistent results fail closed. The
+replay uses only Python's standard library and the checked-out Keyprint source.
 
 ## September 17 local findings
 

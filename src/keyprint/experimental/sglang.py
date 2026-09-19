@@ -12,6 +12,7 @@ from ..backends.bytelevel import ByteLevelBinding
 from ..cli import load_key
 from ..integrity import verify
 from .native import RequestSampler
+from .sglang_runtime import verify_runtime
 
 _LIVE_REQUESTS = weakref.WeakKeyDictionary()
 
@@ -37,8 +38,9 @@ def validate(params):
 
 class KeyprintLogitsProcessor(CustomLogitProcessor):
     def __init__(self):
-        if importlib.metadata.version("sglang-cpu") != "0.5.20.dev791+g13d593b6c":
-            raise ValueError("pilot requires pinned SGLang CPU source build")
+        distribution = importlib.metadata.distribution("sglang-cpu")
+        self.runtime_identity = verify_runtime(distribution.version,
+                                               Path(distribution.locate_file("sglang")))
         verify()
         from sglang.srt.runtime_context import get_server_args
         args = get_server_args()

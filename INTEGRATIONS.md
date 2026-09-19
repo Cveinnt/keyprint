@@ -34,7 +34,7 @@ Qwen3-8B-4bit checkpoint. Installed-wheel tests passed on Linux/macOS and Python
 | OpenAI Python client against a self-hosted server | Standard client with a custom base URL; watermarking happens in our inference server | Real HTTP request using OpenAI 3.14.1, pinned Qwen/MLX and idempotency replay passed; one user message, no streaming/tools |
 | OpenAI-hosted GPT models | Public API has model-dependent sampling controls, including logit bias and limited returned log probabilities; it has no arbitrary per-token custom sampler callback | Current candidate cannot be inserted into hosted generation |
 | Anthropic-hosted Claude | Messages API generates the response remotely; no custom pre-sampling logits hook is documented | Current candidate cannot be inserted into hosted generation |
-| SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Pinned ARM CPU source build: two batched SmolLM2 requests, 128 matching returned tokens; NUMA workaround required, production lifecycle unvalidated |
+| SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Pinned ARM CPU source build: six ordinary/marked SmolLM2 pairs, 620 matching returned tokens; NUMA workaround required, output quality and production lifecycle unvalidated |
 | vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Experimental CPU 0.29.0+cpu: latest two batched SmolLM2 requests returned 125 tokens matching private selection journals; production server lifecycle and broader models unvalidated |
 | Hugging Face Transformers | Keyprint owns a single-response CPU sampling loop and KV cache | SmolLM2 real generation tested on the private branch; broader model and quality coverage missing |
 | MLX | Public `run_response` caller and pinned local example | One exact model/tokenizer tested |
@@ -88,6 +88,23 @@ state across SGLang processor reconstruction. Prefix mismatches fail instead
 of silently reinitializing the watermark. Tests cover reconstruction, changed
 keys, unsupported settings and journal cleanup when a request is collected.
 
+The September 19 rebuild of that same checkout produced version label
+`0.5.21.dev69+g13d593b6c`. The earlier string-only guard killed the worker before
+any output was returned. The adapter now accepts those two observed labels only
+when four installed source files match SHA-256 fingerprints from the pinned
+commit: custom processor, sampling parameters, sampler and server arguments.
+Unknown labels, missing files and changed source fail closed. The comparison
+runner performs this check before allocating workers and retains its identity.
+These fingerprints cover the Python sampling contract, not all upstream code
+or compiled kernels; actual runtime evidence remains separate.
+
+The complete September 19 comparison run returned all twelve texts across six
+cases, with 620 final token IDs exactly matching condition-specific selection
+journals. All three contract checks passed. Both JSON outputs parsed with the
+requested values; multilingual, factual and email instruction failures remain.
+This qualifies the recorded CPU callback path only, not semantic quality or
+the production serving lifecycle. Earlier failed and partial runs are retained.
+
 The unmodified ARM build crashed in NUMA initialization on the local Docker VM.
 The recorded pilot skips optional NUMA memory binding while retaining CPU thread
 binding. This is a **modified runtime**, not an unmodified upstream support pass.
@@ -97,6 +114,15 @@ without needing to unpack the full image. It uses named build contexts
 plus BuildKit secret `keyprint_key` (a private 32-byte file). The model run has no
 network access. Read `exit-code.txt` and `contract-exit-code.txt`: exporting
 receipts successfully does not itself mean the contained run passed.
+
+Pass a fresh `--build-arg KEYPRINT_RUN_ID=<unique-attempt-id>` for every pilot or
+comparison attempt, and use `--no-cache-filter pilot` or
+`--no-cache-filter comparisons` respectively. BuildKit secret contents do not
+invalidate cached `RUN` results; changing only a key file must not be mistaken
+for fresh inference. The exported `run-id.txt` must match the declared attempt.
+The runtime compilation remains cacheable. The `comparison-receipts` target
+runs all six ordinary/marked cases and exports results without loading a second
+copy of the complete runtime image.
 
 Two 64-token marked responses completed; all 128 returned IDs matched the
 durable selection journals. Both reached the token cap. The environment used

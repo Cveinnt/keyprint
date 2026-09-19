@@ -27,17 +27,29 @@ demos the release objective. A green test suite alone does not satisfy it.
 - [ ] Release: exact wheel, docs, demo and compatibility matrix agree; final CI
   and clean-install checks pass; publication and announcement claims match evidence.
 
-September 19 verification: revision `bfe1309` has ten passing CI jobs, including
-actual CPU inference and OpenAI SDK HTTP checks, plus 167 passing local Python
-tests. The latest frozen Qwen weighted-reference run completed all 24 outputs:
+September 19 verification: revision `4003838` has ten passing CI jobs, including
+actual CPU inference and OpenAI SDK HTTP checks, plus 170 passing local Python
+tests. The subsequent SGLang runtime/source and result-integrity changes pass
+195 local tests; their CI result must be verified separately. The latest frozen
+Qwen weighted-reference run completed all 24 outputs:
 8/12 marked detections, no ordinary or wrong-key hits, and four truncated
 outputs. Within the original 100–400-word control range it detected only 1/5
 marked answers; longer marked answers were 7/7. The separate fresh 500-document
 null screen had five false hits, an IID-only upper bound of 2.32%. Neither result
-qualifies a production detector. A larger article-length null screen is separate
-research, not an SDK verdict. Local paired runs also exist for Transformers and
-vLLM. SmolLM2 rewrites lost an approval condition, Qwen French changed exact time
-formatting, and the fresh SGLang runtime build failed with disk exhaustion.
+qualifies a production detector. The completed 10,000-passage WikiText screen
+had 115 false hits (1.15%; IID-only 97.5% upper bound 1.38%). A learned marginal
+weight development candidate did not improve marked detections and was not
+promoted into the SDK. These are separate research results, not SDK verdicts.
+Local paired runs also exist for Transformers and vLLM. SmolLM2 rewrites lost an
+approval condition, and Qwen French changed exact time formatting. After fixing
+disk capacity and verifying the SGLang runtime source, a comparison attempt
+returned ten texts with 731 matching tokens before its 420-second timeout.
+Both negation outputs dropped the backup instruction. Its three callback
+contract checks passed, but the partial suite is not integration acceptance.
+The subsequent complete SGLang run passed all six pairs and three contract
+checks, with 620 matching returned tokens and verified condition labels. All
+twelve outputs reached EOS. Factual, email, negation and multilingual failures
+remain in those outputs; the CPU callback pass is not quality acceptance.
 Calibration, broad compatibility and production acceptance remain open. Keep
 launch held.
 
