@@ -81,12 +81,19 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
         run: python tools/validate_compatibility.py --backend transformers --model model-fixture --output inference-results --http-client
+      - name: Real inference after client timeout, conflict and busy requests
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+        run: python tools/validate_server_lifecycle.py --model model-fixture --output lifecycle-results
       - name: Retain synthetic texts and comparison results, never keys or journals
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: actual-inference-comparisons
-          path: inference-results/public/
+          path: |
+            inference-results/public/
+            lifecycle-results/public/
           if-no-files-found: warn
           retention-days: 14
   provider-contract:

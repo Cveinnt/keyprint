@@ -30,6 +30,20 @@ Anthropic SDK request confirms that the Messages endpoint is unsupported (404).
 Provider-object rewrite checks construct real SDK response objects from a fixed
 synthetic document and run the local model. They are not hosted GPT/Claude calls.
 
+To exercise client timeout recovery separately:
+
+```sh
+python tools/validate_server_lifecycle.py --model models/smollm2 \
+  --output private-lifecycle-run
+```
+
+This check deliberately pauses the first accepted request before inference so a
+real OpenAI SDK client times out. It verifies busy/conflict rejection, releases
+the worker to generate real text, and recovers the exact result with the same
+request ID without a second generation. A fresh request then checks worker reuse.
+The test also checks graceful shutdown. This validates process-lifetime recovery,
+not latency, crash recovery or model preemption. Only `public/` is exportable.
+
 ## CI
 
 The Transformers job builds and installs the wheel, downloads
@@ -38,6 +52,8 @@ The Transformers job builds and installs the wheel, downloads
 disabled. CPU PyTorch avoids installing an unused CUDA stack. A pinned upload
 artifact action retains only `public/` for 14 days, including failed-run reports.
 The job summary separates engineering failures from text-screening flags.
+The same installed-wheel job runs the timeout-recovery check and retains its
+public lifecycle report alongside the paired-text comparison.
 
 A green job means the bounded runtime and protocol contracts passed. It does
 not mean that generated prose is correct or safe to publish. This small model

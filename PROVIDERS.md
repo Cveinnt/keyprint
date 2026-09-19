@@ -47,14 +47,22 @@ Chat Completions subset, not a full OpenAI API replacement or production server.
 
 Requests run on one model worker. Busy requests return 503 without starting
 generation. Use no automatic retries: a timeout does not cancel the model run.
-The same idempotency key and body replay the recorded response during this
-process lifetime; a different body returns 409. Restarting clears that memory.
+Repeat the same idempotency key and body to recover the accepted attempt: 409
+means it is still running; after completion, the original response is replayed.
+A different body returns 409. Accepted work survives a disconnected or cancelled
+HTTP handler, and graceful shutdown waits for it to finish. This is result
+recovery, not model cancellation. Replay works only during this process lifetime;
+restarting clears that memory.
 The server stops accepting new attempts after 256 records. Inspect private
 artifacts before restarting; do not treat a restart as retry authorization.
 
 Validated with a real OpenAI 3.14.1 client, HTTP socket, pinned Qwen/MLX generation
 and identical-response idempotency replay. Provider SDK contract tests exercise
 authentication, rejection, single-worker ownership and failure behavior.
+The installed-wheel lifecycle check also forces a real OpenAI client timeout,
+then verifies actual local inference, replay without duplicate generation,
+busy/conflict rejection and worker reuse. Its deliberate barrier is a lifecycle
+test, not a latency measurement. See [reproduction steps](INFERENCE_TESTING.md).
 
 ## Inspect a local rewrite of GPT or Claude prose
 

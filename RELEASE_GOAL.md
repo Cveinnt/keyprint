@@ -3,6 +3,36 @@
 Deliver a focused, dependable watermarking library with Pretext-level ease of
 use and an interactive demonstration that makes its real capability visible.
 Publicity remains postponed until the release candidate meets this bar.
+The user's September 19 direction makes production quality of both SDK and
+demos the release objective. A green test suite alone does not satisfy it.
+
+## Current release gates
+
+- [ ] First-use flow: a fresh install reaches a useful, real result through one
+  documented path; dependency/model costs and failures are understandable.
+- [ ] Supported configurations: real inference, returned-token verification and
+  supported client contracts pass on each advertised framework/version/model.
+  Do not advertise an adapter based only on a fixture or earlier source version.
+- [ ] Output quality: retained negation, factual, multilingual and constrained
+  output failures are resolved or the affected feature is excluded explicitly
+  from the supported release. Lexical checks cannot approve semantic fidelity.
+- [ ] Detection: preregistered thresholds and held-out ordinary/wrong-key controls
+  establish false-positive bounds and power for the claimed configurations.
+- [ ] Serving reliability: bounded concurrency, cancellation, retries, cache
+  reuse and private-key handling are exercised on actual supported inference.
+- [ ] Demo quality: prefilled and custom-input paths work; results and provenance
+  are visible; loading, error, weak-signal and recovery states are usable; keyboard
+  and mobile flows pass browser checks. The main demo demonstrates the capability
+  without presenting canned output or an uncalibrated fraction as a verdict.
+- [ ] Release: exact wheel, docs, demo and compatibility matrix agree; final CI
+  and clean-install checks pass; publication and announcement claims match evidence.
+
+September 19 verification: revision `3194aff` has ten passing CI jobs, including
+actual CPU inference and OpenAI SDK HTTP checks. Local paired-text runs exist for
+MLX, Transformers and vLLM. These remain scoped engineering evidence. SmolLM2
+rewrites lost an approval condition, Qwen French changed exact time formatting,
+and the fresh SGLang runtime build failed with disk exhaustion. Calibration,
+broad compatibility and production acceptance remain open. Keep launch held.
 
 ## First-use acceptance
 

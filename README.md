@@ -50,7 +50,9 @@ models/smollm2` or `keyprint playground --backend mlx --model models/qwen3-8b-4b
 Missing assets produce an actionable error, never an implicit download.
 
 The prefilled prompt runs two real generations on first load. Refreshing restores
-the previous live run from this process instead of generating again. Enter your
+the previous live run from this process instead of generating again. If work is
+still running, refresh reconnects to it and waits for its result. A failed attempt
+stays failed until you explicitly start another experiment. Enter your
 own prompt, compare ordinary and marked responses, edit the marked text, and
 inspect the changing signal alongside an independent-key control. The chart
 recomputes literal diagnostics at text prefixes. Its fractions are observed bit

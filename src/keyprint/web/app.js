@@ -371,21 +371,46 @@ chart();
       throw new Error(
         "Open the complete session URL printed by “keyprint playground”",
       );
-    const session = await api("/api/session");
+    let session = await api("/api/session");
     $("model-label").textContent = session.identity.profile?.startsWith(
       "portable",
     )
       ? "Transformers · experimental CPU"
       : "Qwen3-8B · local MLX";
+    if (session.running) {
+      setBusy(true);
+      $("status").textContent =
+        "Reconnecting to the running experiment. No new generation started.";
+      const stopProgress = watchProgress($("status"));
+      try {
+        while (session.running) {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          session = await api("/api/session");
+        }
+      } finally {
+        stopProgress();
+        setBusy(false);
+      }
+    }
     if (session.latest) {
       $("prompt").value = session.prompt;
       showGeneration(session.latest, true);
       setBusy(false);
+      if (session.last_attempt?.http_status >= 400) {
+        $("status").textContent =
+          "The latest attempt failed. Showing the previous completed run; no automatic retry.";
+        $("status").classList.add("error");
+      }
       return;
     }
+    if (session.last_attempt)
+      throw new Error(
+        "The previous attempt did not produce a completed pair. No automatic retry; start a new experiment explicitly.",
+      );
     setBusy(false);
     await run("generate");
   } catch (error) {
+    setBusy(false);
     $("status").textContent = error.message;
     $("status").classList.add("error");
     $("outputs").setAttribute("aria-busy", "false");

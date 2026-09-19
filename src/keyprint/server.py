@@ -70,6 +70,7 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
     worker = ThreadPoolExecutor(max_workers=1, thread_name_prefix="keyprint-model")
     lock = asyncio.Lock()
     records: dict[str, tuple[str, JSONResponse]] = {}
+    attempts: set[asyncio.Task] = set()
     model: list[Keyprint] = []
 
     @asynccontextmanager
@@ -78,6 +79,10 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
             model.append(await asyncio.get_running_loop().run_in_executor(worker, load_model))
             yield
         finally:
+            # Accepted work belongs to the service, not to a socket. Graceful
+            # shutdown drains it before disposing the model's owning worker.
+            if attempts:
+                await asyncio.gather(*attempts, return_exceptions=True)
             worker.shutdown(wait=True, cancel_futures=False)
 
     app = FastAPI(title="Keyprint local preview", lifespan=lifespan,
@@ -124,45 +129,49 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
             return error("Model is busy; no generation started for this request", 503)
         if len(records) >= max_requests:
             return error("Session request limit reached; inspect retained artifacts before restarting", 429)
-        async with lock:
-            # No other request can reach this point until the one model worker
-            # finishes, including when its original HTTP caller disconnects.
-            records[idempotency] = (digest, error("Attempt started; do not automatically retry", 409, request_id))
-            with (output / (request_id + "-started.json")).open("x") as stream:
-                json.dump({"request_id": request_id, "request_sha256": digest, "state": "started"}, stream)
-                stream.flush()
-                os.fsync(stream.fileno())
-            future = asyncio.get_running_loop().run_in_executor(worker, lambda: model[0].generate(
-                params.messages[0].content, max_tokens=cap, output=output / request_id))
+        # Acquisition completes without suspension while unlocked. Record and
+        # own the attempt before yielding to any model work or HTTP response.
+        await lock.acquire()
+        records[idempotency] = (digest, error("Attempt running; repeat the same request ID to recover its result", 409, request_id))
+
+        async def execute() -> JSONResponse:
+            response = error("Generation failed; inspect the server's private report. No automatic retry.", 500, request_id)
             try:
-                result = await asyncio.shield(future)
-            except asyncio.CancelledError:
-                # Finish the bounded attempt before releasing the single-model
-                # lock. Its private journal is retained; no response is replayed.
+                with (output / (request_id + "-started.json")).open("x") as stream:
+                    json.dump({"request_id": request_id, "request_sha256": digest, "state": "started"}, stream)
+                    stream.flush()
+                    os.fsync(stream.fileno())
                 try:
-                    await asyncio.shield(future)
+                    result = await asyncio.get_running_loop().run_in_executor(worker, lambda: model[0].generate(
+                        params.messages[0].content, max_tokens=cap, output=output / request_id))
+                except ValueError:
+                    response = error("Prompt is outside this model's supported input contract", 400, request_id)
                 except Exception:
                     pass
-                raise
-            except ValueError:
-                response = error("Prompt is outside this model's supported input contract", 400, request_id)
+                else:
+                    payload = result.report.get("payload", result.report)
+                    usage = result.report.get("usage")
+                    response = JSONResponse({"id": request_id, "object": "chat.completion",
+                        "created": int(time.time()), "model": "keyprint",
+                        "choices": [{"index": 0, "message": {"role": "assistant", "content": result.text},
+                                     "finish_reason": "stop" if payload.get("completion") == "eos" else "length",
+                                     "logprobs": None}], "usage": usage,
+                        "keyprint": {"mode": "local_marked_generation", "hosted_provider": False,
+                                     "detection_calibrated": False}}, headers={"x-request-id": request_id})
+                with (output / (request_id + "-finished.json")).open("x") as stream:
+                    json.dump({"request_id": request_id, "http_status": response.status_code}, stream)
+                    stream.flush()
+                    os.fsync(stream.fileno())
             except Exception:
-                response = error("Generation failed; inspect the server's private report. No automatic retry.", 500, request_id)
-            else:
-                payload = result.report.get("payload", result.report)
-                usage = result.report.get("usage")
-                response = JSONResponse({"id": request_id, "object": "chat.completion",
-                    "created": int(time.time()), "model": "keyprint",
-                    "choices": [{"index": 0, "message": {"role": "assistant", "content": result.text},
-                                 "finish_reason": "stop" if payload.get("completion") == "eos" else "length",
-                                 "logprobs": None}], "usage": usage,
-                    "keyprint": {"mode": "local_marked_generation", "hosted_provider": False,
-                                 "detection_calibrated": False}}, headers={"x-request-id": request_id})
-            records[idempotency] = (digest, response)
-            with (output / (request_id + "-finished.json")).open("x") as stream:
-                json.dump({"request_id": request_id, "http_status": response.status_code}, stream)
-                stream.flush()
-                os.fsync(stream.fileno())
+                response = error("Attempt could not be recorded; inspect private artifacts. No automatic retry.", 500, request_id)
+            finally:
+                records[idempotency] = (digest, response)
+                lock.release()
             return response
+
+        task = asyncio.create_task(execute())
+        attempts.add(task)
+        task.add_done_callback(attempts.discard)
+        return await asyncio.shield(task)
 
     return app

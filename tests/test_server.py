@@ -1,4 +1,6 @@
 import threading
+import asyncio
+import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -8,6 +10,7 @@ pytest.importorskip("fastapi")
 from fastapi.testclient import TestClient
 from keyprint import Generation
 from keyprint.server import create_app
+from starlette.requests import Request
 
 TOKEN = "local-test-token-" * 3
 HEADERS = {"Authorization": "Bearer " + TOKEN}
@@ -116,3 +119,96 @@ def test_model_loaded_and_used_on_same_worker(tmp_path):
 
     with TestClient(create_app(OwnedModel, api_key=TOKEN, output=tmp_path / "runs")) as client:
         assert client.post("/v1/chat/completions", json=BODY, headers=HEADERS).status_code == 200
+
+
+@pytest.mark.parametrize("fail", [False, True])
+def test_cancelled_http_handler_does_not_orphan_attempt_or_unlock_worker(tmp_path, fail):
+    model = Model(block=True, fail=fail)
+    app = create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")
+    endpoint = next(route.endpoint for route in app.routes if route.path == "/v1/chat/completions")
+
+    def request(key, body=BODY):
+        async def receive():
+            return {"type": "http.request", "body": json.dumps(body).encode(), "more_body": False}
+        return Request({"type": "http", "method": "POST", "path": "/v1/chat/completions",
+                        "headers": [(b"content-type", b"application/json"), (b"idempotency-key", key.encode())]}, receive)
+
+    async def exercise():
+        async with app.router.lifespan_context(app):
+            first = asyncio.create_task(endpoint(request("interrupted")))
+            try:
+                assert await asyncio.to_thread(model.started.wait, 5)
+                first.cancel()
+                with pytest.raises(asyncio.CancelledError):
+                    await first
+                assert (await endpoint(request("interrupted"))).status_code == 409
+                assert (await endpoint(request("other"))).status_code == 503
+                model.release.set()
+                async with asyncio.timeout(5):
+                    while True:
+                        recovered = await endpoint(request("interrupted"))
+                        if recovered.status_code != 409:
+                            break
+                        await asyncio.sleep(.01)
+                assert recovered.status_code == (500 if fail else 200)
+                assert (await endpoint(request("interrupted"))).body == recovered.body
+                assert (await endpoint(request("interrupted", {**BODY, "max_tokens": 3}))).status_code == 409
+                assert model.calls == ["hello"]
+                finished = list((tmp_path / "runs").glob("*-finished.json"))
+                assert len(finished) == 1
+                assert json.loads(finished[0].read_text())["http_status"] == recovered.status_code
+            finally:
+                model.release.set()
+                if not first.done():
+                    await first
+    asyncio.run(exercise())
+
+
+def test_record_failure_keeps_terminal_attempt_without_generation(tmp_path, monkeypatch):
+    model = Model()
+    original = Path.open
+    def fail_start(path, *args, **kwargs):
+        if path.name.endswith("-started.json"):
+            raise OSError("private disk failure")
+        return original(path, *args, **kwargs)
+    with TestClient(create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")) as client:
+        monkeypatch.setattr(Path, "open", fail_start)
+        headers = {**HEADERS, "Idempotency-Key": "disk-failed"}
+        first = client.post("/v1/chat/completions", json=BODY, headers=headers)
+        assert first.status_code == 500 and "private disk failure" not in first.text
+        monkeypatch.setattr(Path, "open", original)
+        assert client.post("/v1/chat/completions", json=BODY, headers=headers).json() == first.json()
+        assert model.calls == []
+        assert client.post("/v1/chat/completions", json=BODY, headers=HEADERS).status_code == 200
+
+
+def test_graceful_shutdown_drains_disconnected_attempt(tmp_path):
+    model = Model(block=True)
+    app = create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")
+    endpoint = next(route.endpoint for route in app.routes if route.path == "/v1/chat/completions")
+    async def receive():
+        return {"type":"http.request", "body":json.dumps(BODY).encode(), "more_body":False}
+    request = Request({"type":"http", "method":"POST", "path":"/v1/chat/completions",
+                       "headers":[(b"content-type", b"application/json")]}, receive)
+    async def exercise():
+        lifespan = app.router.lifespan_context(app)
+        await lifespan.__aenter__()
+        attempt = asyncio.create_task(endpoint(request))
+        shutdown = None
+        try:
+            assert await asyncio.to_thread(model.started.wait, 5)
+            attempt.cancel()
+            with pytest.raises(asyncio.CancelledError):
+                await attempt
+            shutdown = asyncio.create_task(lifespan.__aexit__(None, None, None))
+            await asyncio.sleep(.02)
+            assert not shutdown.done()
+            model.release.set()
+            await asyncio.wait_for(shutdown, 5)
+            finished = list((tmp_path / "runs").glob("*-finished.json"))
+            assert len(finished) == 1 and json.loads(finished[0].read_text())["http_status"] == 200
+        finally:
+            model.release.set()
+            if shutdown is None:
+                await lifespan.__aexit__(None, None, None)
+    asyncio.run(exercise())

@@ -2,6 +2,10 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Keep accepted server and playground work alive after a cancelled HTTP handler.
+  Recover completed results without duplicate generation; drain accepted work
+  during graceful shutdown and reconnect the playground after a refresh.
+- Add a real OpenAI-client timeout recovery test with local inference to CI.
 - Remove full-vocabulary Python arithmetic on excluded logits and zero weights
   in the portable Transformers and experimental serving adapters. Preserve
   represented probabilities, exact token selection and random-draw transcripts;

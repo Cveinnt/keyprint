@@ -86,7 +86,9 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         stream.write(control_key)
     lock = asyncio.Lock()
     records: dict[str, tuple[str, JSONResponse]] = {}
+    attempts: set[asyncio.Task] = set()
     latest: dict = {}
+    last_attempt: dict = {}
     progress: dict | None = None
     hosts = {f"127.0.0.1:{port}", f"localhost:{port}"}
 
@@ -96,6 +98,8 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
             model.append(await asyncio.get_running_loop().run_in_executor(worker, load_model))
             yield
         finally:
+            if attempts:
+                await asyncio.gather(*attempts, return_exceptions=True)
             worker.shutdown(wait=True, cancel_futures=False)
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
@@ -130,6 +134,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
     @app.get("/api/session")
     async def session():
         return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model[0].identity,
+                "running": lock.locked(), "last_attempt": last_attempt or None,
                 "scope": "Live local generation and uncalibrated literal diagnostics"}
 
     @app.get("/api/progress")
@@ -198,31 +203,39 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
             return error("An experiment is running; no new work started", 503)
         if len(records) >= max_requests:
             return error("Session limit reached; restart the playground for a new session", 429)
-        async with lock:
-            run_id = uuid.uuid4().hex
-            run = output / run_id
-            run.mkdir(mode=0o700)
-            records[identity] = (digest, error("Attempt started; no automatic retry", 409, run_id))
-            (run / "request.json").write_text(json.dumps(params.model_dump(), ensure_ascii=False))
-            future = asyncio.get_running_loop().run_in_executor(worker, execute, params, run)
+        await lock.acquire()
+        run_id = uuid.uuid4().hex
+        run = output / run_id
+        records[identity] = (digest, error("Attempt running; repeat the same request ID to recover its result", 409, run_id))
+        last_attempt.update(run_id=run_id, action=params.action, http_status=None)
+
+        async def finish_attempt() -> JSONResponse:
+            response = error("Experiment failed. Inspect the private run folder; no automatic retry was made.", 500, run_id)
             try:
-                result = await asyncio.shield(future)
-            except asyncio.CancelledError:
+                run.mkdir(mode=0o700)
+                (run / "request.json").write_text(json.dumps(params.model_dump(), ensure_ascii=False))
                 try:
-                    await asyncio.shield(future)
+                    result = await asyncio.get_running_loop().run_in_executor(worker, execute, params, run)
                 except Exception:
                     pass
-                raise
-            except Exception:
-                response = error("Experiment failed. Inspect the private run folder; no automatic retry was made.", 500, run_id)
-            else:
-                result["run_id"] = run_id
-                (run / "result.json").write_text(json.dumps(result, ensure_ascii=False, allow_nan=False))
-                if params.action == "generate":
+                else:
+                    result["run_id"] = run_id
+                    (run / "result.json").write_text(json.dumps(result, ensure_ascii=False, allow_nan=False))
+                    response = JSONResponse(result)
+                (run / "status.json").write_text(json.dumps({"http_status": response.status_code}))
+                if response.status_code == 200 and params.action == "generate":
                     latest.update(prompt=params.text, result=result)
-                response = JSONResponse(result)
-            records[identity] = (digest, response)
-            (run / "status.json").write_text(json.dumps({"http_status": response.status_code}))
+            except Exception:
+                response = error("Experiment could not be recorded. Inspect private artifacts; no automatic retry.", 500, run_id)
+            finally:
+                records[identity] = (digest, response)
+                last_attempt.update(http_status=response.status_code)
+                lock.release()
             return response
+
+        task = asyncio.create_task(finish_attempt())
+        attempts.add(task)
+        task.add_done_callback(attempts.discard)
+        return await asyncio.shield(task)
 
     return app

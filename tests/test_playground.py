@@ -1,4 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor
+import asyncio
+import json
 from pathlib import Path
 import threading
 
@@ -8,6 +10,7 @@ pytest.importorskip("fastapi")
 from fastapi.testclient import TestClient
 from keyprint import Generation, Inspection
 from keyprint.playground import create_playground, inspect_text
+from starlette.requests import Request
 
 TOKEN = "playground-fixture-token-" * 2
 HEADERS = {"Authorization": "Bearer " + TOKEN, "Idempotency-Key": "experiment-one"}
@@ -155,3 +158,47 @@ def test_full_text_reports_reuse_final_prefix_including_unavailable():
     assert result["report"]["call"] == 31
     assert result["control_report"]["call"] == 32
     assert result["series"][-1]["matching"] == result["fraction"]
+
+
+def test_cancelled_page_keeps_complete_pair_and_refresh_result(tmp_path):
+    models = []
+    def load():
+        models.append(Model(block=True))
+        return models[0]
+    app = create_playground(load, token=TOKEN, output=tmp_path / "runs")
+    endpoints = {route.path: route.endpoint for route in app.routes}
+    def request(key):
+        async def receive():
+            return {"type": "http.request", "body": json.dumps(BODY).encode(), "more_body": False}
+        return Request({"type": "http", "method": "POST", "path": "/api/experiment",
+                        "headers": [(b"content-type", b"application/json"), (b"idempotency-key", key.encode())]}, receive)
+
+    async def exercise():
+        async with app.router.lifespan_context(app):
+            first = asyncio.create_task(endpoints["/api/experiment"](request("gone")))
+            try:
+                assert await asyncio.to_thread(models[0].started.wait, 5)
+                first.cancel()
+                with pytest.raises(asyncio.CancelledError):
+                    await first
+                waiting = await endpoints["/api/session"]()
+                assert waiting["running"] and waiting["last_attempt"]["http_status"] is None
+                assert (await endpoints["/api/experiment"](request("new"))).status_code == 503
+                models[0].release.set()
+                async with asyncio.timeout(5):
+                    while True:
+                        result = await endpoints["/api/experiment"](request("gone"))
+                        if result.status_code != 409:
+                            break
+                        await asyncio.sleep(.01)
+                assert result.status_code == 200
+                assert models[0].calls == ["ordinary", "marked"]
+                restored = await endpoints["/api/session"]()
+                assert restored["latest"] == json.loads(result.body)
+                assert not restored["running"] and restored["last_attempt"]["http_status"] == 200
+                assert (await endpoints["/api/progress"]()) == {"active": False}
+            finally:
+                models[0].release.set()
+                if not first.done():
+                    await first
+    asyncio.run(exercise())
