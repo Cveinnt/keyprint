@@ -20,6 +20,8 @@ function setBusy(value) {
   busy = value;
   for (const id of ["generate", "inspect", "half", "restore"])
     $(id).disabled = value || (id !== "generate" && !experiment);
+  for (const control of [$("prompt"), $("cap"), ...document.querySelectorAll("[data-prompt]")])
+    control.disabled = value;
   $("outputs").setAttribute("aria-busy", String(value));
   $("generate").textContent = value
     ? "Running local experiment…"
@@ -219,22 +221,39 @@ function markDirty() {
       "Showing the last measured text, not your pending edits.";
 }
 
-function showGeneration(data, retained = false) {
-  experiment = data;
-  if (retained && Number.isInteger(data.max_tokens) && data.max_tokens >= 32 && data.max_tokens <= 1024) {
+function restoreLimit(limit) {
+  if (Number.isInteger(limit) && limit >= 32 && limit <= 1024) {
     const cap = $("cap");
-    const value = String(data.max_tokens);
+    const value = String(limit);
     if (![...cap.options].some((option) => option.value === value)) {
-      cap.add(new Option(`${data.max_tokens} tokens`, value));
+      cap.add(new Option(`${limit} tokens`, value));
     }
     cap.value = value;
   }
+}
+
+function restoreRequest(session) {
+  const request = session.last_attempt?.request;
+  if (request?.action === "generate") {
+    $("prompt").value = request.text;
+    restoreLimit(request.max_tokens);
+  }
+}
+
+function renderOutputs() {
+  if (!experiment) return;
+  for (const condition of ["ordinary", "marked"])
+    renderResponse($(condition + "-text"), experiment.outputs[condition].text,
+      $("reading-mode").value === "exact");
+}
+
+function showGeneration(data, retained = false) {
+  experiment = data;
+  if (retained) restoreLimit(data.max_tokens);
   editMeasurement = null;
   measuredText = null;
   for (const condition of ["ordinary", "marked"]) {
     const result = data.outputs[condition];
-    $(condition + "-text").textContent =
-      result.text || "(Empty model response)";
     $(condition + "-text").classList.remove("placeholder");
     $(condition + "-meta").textContent =
       `${result.usage?.completion_tokens ?? "?"} tokens · ${result.completion === "eos" ? "complete" : result.completion === "length" ? "limit reached" : "completion unavailable"}` +
@@ -242,6 +261,7 @@ function showGeneration(data, retained = false) {
         ? ` · ${result.timing.generation_seconds.toFixed(1)}s generation · ${result.timing.inspection_seconds.toFixed(1)}s inspection`
         : "");
   }
+  renderOutputs();
   $("edited").disabled = false;
   $("edited").value = data.outputs.marked.text;
   $("scrub").disabled = false;
@@ -316,6 +336,7 @@ async function run(action) {
 }
 
 $("generate").addEventListener("click", () => run("generate"));
+$("reading-mode").addEventListener("change", renderOutputs);
 $("inspect").addEventListener("click", () => run("inspect"));
 $("edited").addEventListener("input", markDirty);
 $("scrub").addEventListener("input", chart);
@@ -381,6 +402,7 @@ $("download").addEventListener("click", () => {
 });
 
 chart();
+setBusy(true);
 (async () => {
   try {
     if (!token)
@@ -394,6 +416,7 @@ chart();
       ? "Transformers · experimental CPU"
       : "Qwen3-8B · local MLX";
     if (session.running) {
+      restoreRequest(session);
       setBusy(true);
       $("status").textContent =
         "Reconnecting to the running experiment. No new generation started.";
@@ -413,16 +436,19 @@ chart();
       showGeneration(session.latest, true);
       setBusy(false);
       if (session.last_attempt?.http_status >= 400) {
+        restoreRequest(session);
         $("status").textContent =
           "The latest attempt failed. Showing the previous completed run; no automatic retry.";
         $("status").classList.add("error");
       }
       return;
     }
-    if (session.last_attempt)
+    if (session.last_attempt) {
+      restoreRequest(session);
       throw new Error(
         "The previous attempt did not produce a completed pair. No automatic retry; start a new experiment explicitly.",
       );
+    }
     setBusy(false);
     await run("generate");
   } catch (error) {

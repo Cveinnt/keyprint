@@ -51,13 +51,18 @@ Missing assets produce an actionable error, never an implicit download.
 
 The prefilled prompt runs two real generations on first load. Refreshing restores
 the previous live run from this process instead of generating again. If work is
-still running, refresh reconnects to it and waits for its result. A failed attempt
+still running, refresh restores its prompt and response limit immediately and
+waits for its result. Those controls stay locked while work runs. A failed attempt
 stays failed until you explicitly start another experiment. Enter your
 own prompt, compare ordinary and marked responses, edit the marked text, and
 inspect the changing signal alongside an independent-key control. The chart
 recomputes literal diagnostics at text prefixes. Its fractions are observed bit
 counts, **not confidence percentages or calibrated detection**. Both responses
 use independent randomness; wording differences are not a quality experiment.
+Reading view formats basic headings, lists, bold text and code blocks. Switch to
+Exact text to see every original character. Formatting never changes the text
+used for editing, inspection or export; generated HTML, links and images remain
+inert text. Long response panels are keyboard-focusable and scrollable.
 While work runs, the page shows the actual generation or inspection stage and
 elapsed time. Each result separates generation from inspection time. These are
 individual local observations, not a serving-throughput benchmark.

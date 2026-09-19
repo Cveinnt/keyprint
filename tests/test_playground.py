@@ -55,6 +55,7 @@ def test_packaged_page_auth_host_and_origin_boundaries(tmp_path):
         assert TOKEN not in page.text
         assert "frame-ancestors 'none'" in page.headers["Content-Security-Policy"]
         assert client.get("/app.js").status_code == 200
+        assert client.get("/reader.js").status_code == 200
         assert client.get("/app.css").status_code == 200
         assert client.get("/api/session").status_code == 401
         assert client.get("/api/progress").status_code == 401
@@ -99,6 +100,9 @@ def test_failed_attempt_stays_failed_and_is_not_silently_retried(tmp_path):
             assert response.status_code == 500 and "secret internals" not in response.text
         assert len(list((tmp_path / "runs").glob("*/ordinary"))) == 1
         assert client.get("/api/progress", headers=HEADERS).json() == {"active": False}
+        session = client.get("/api/session", headers=HEADERS).json()
+        assert session["last_attempt"]["request"] == BODY
+        assert session["last_attempt"]["http_status"] == 500
 
 
 def test_model_work_cannot_interleave(tmp_path):
@@ -113,6 +117,10 @@ def test_model_work_cannot_interleave(tmp_path):
             progress = client.get("/api/progress", headers=HEADERS).json()
             assert progress["active"] and progress["stage"] == "generating_ordinary"
             assert progress["seconds"] >= 0
+            session = client.get("/api/session", headers=HEADERS).json()
+            assert session["running"] and session["latest"] is None
+            assert session["last_attempt"]["request"] == BODY
+            assert session["last_attempt"]["http_status"] is None
             response = client.post("/api/experiment", json=BODY, headers={**HEADERS, "Idempotency-Key": "other"})
             assert response.status_code == 503
         finally:
@@ -120,6 +128,7 @@ def test_model_work_cannot_interleave(tmp_path):
         assert first.result().status_code == 200
         assert models[0].calls == ["ordinary", "marked"]
         assert client.get("/api/progress", headers=HEADERS).json() == {"active": False}
+        assert client.get("/api/session", headers=HEADERS).json()["last_attempt"]["request"] == BODY
 
 
 @pytest.mark.parametrize("body", [{**BODY, "max_tokens": True}, {**BODY, "text": " "},

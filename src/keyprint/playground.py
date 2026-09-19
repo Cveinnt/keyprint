@@ -131,10 +131,14 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         return Response(files("keyprint").joinpath(f"web/app.{extension}").read_text(),
                         media_type="text/javascript" if extension == "js" else "text/css")
 
+    @app.get("/reader.js")
+    async def reader():
+        return Response(files("keyprint").joinpath("web/reader.js").read_text(), media_type="text/javascript")
+
     @app.get("/api/session")
     async def session():
         return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model[0].identity,
-                "running": lock.locked(), "last_attempt": last_attempt or None,
+                "running": lock.locked(), "last_attempt": last_attempt.copy() or None,
                 "scope": "Live local generation and uncalibrated literal diagnostics"}
 
     @app.get("/api/progress")
@@ -207,7 +211,8 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         run_id = uuid.uuid4().hex
         run = output / run_id
         records[identity] = (digest, error("Attempt running; repeat the same request ID to recover its result", 409, run_id))
-        last_attempt.update(run_id=run_id, action=params.action, http_status=None)
+        last_attempt.update(run_id=run_id, action=params.action, http_status=None,
+                            request=params.model_dump())
 
         async def finish_attempt() -> JSONResponse:
             response = error("Experiment failed. Inspect the private run folder; no automatic retry was made.", 500, run_id)
