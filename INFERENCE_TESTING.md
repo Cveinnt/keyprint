@@ -271,6 +271,56 @@ corpus's 100–400-word range remain in the result. The SDK's literal counts mus
 agree with independent bit extraction. Neither runner changes SDK detection
 verdicts, establishes semantic quality, or transfers to arbitrary models/keys.
 
+The completed fresh run retained all 24 outputs with zero runtime errors:
+8/12 marked texts detected, 0/12 ordinary texts flagged and 0/12 marked texts
+flagged under the wrong key. Four outputs reached the 1,024-token cap.
+Descriptively, detection was 1/5 for marked answers within the original
+100–400-word control range, versus 7/7 above that range. These tiny subgroups
+are not length-specific power guarantees; do not discard the four misses.
+Source-based review also found a changed league timeline and an unsupported
+renaming claim in the marked Walton summary. In the Edinburgh pair, the marked
+answer transferred the city's nickname to the university, while the ordinary
+answer added an incorrect English regnal number. These are retained quality
+failures, not a causal estimate of watermark-induced degradation.
+
+## Article-length null controls
+
+`tools/prepare_wikitext_controls.py` prepares a second source without inspecting
+scores. Both training shards of `Salesforce/wikitext`, revision
+`b08601e04326c79dfdd32d625aee71d232d685c3`, configuration
+`wikitext-103-raw-v1`, are SHA-256 pinned. Top-level articles span shard
+boundaries; section headings remain in their source text. Exact normalized
+titles and 300-word openings are grouped transitively. One representative per
+group is hash-ranked, with alternating 300/600-word prefixes from the same pool
+of articles at least 600 words long. The default selects 5,000 per length.
+Preparation found 29,444 articles, 28,362 long enough, and 28,088 exact groups.
+
+```sh
+# Use a separate data environment; pyarrow is not an SDK dependency.
+uv run --with 'pyarrow==25.0.1' python tools/prepare_wikitext_controls.py \
+  --source-dir pinned-wikitext-shards --output private-wikitext-controls
+python tools/validate_wikitext_null.py --controls private-wikitext-controls \
+  --prior-study private-weighted-null --output private-wikitext-null
+```
+
+The validator freezes two fresh keys and keeps the same sole primary rule:
+`2 * min(two key reference tails) <= .01`. It checks the doubled FFT grid on
+every text/key replay and retains all failures. Each article is one observation
+across both keys and belongs to only one length stratum. Per-length and pooled
+97.5% one-sided binomial upper bounds are descriptive under IID assumptions,
+not simultaneous confidence bounds or fixed-key deployment guarantees. Shared
+authors, topics and near duplicates may remain dependent. Do not combine this
+new-key null screen with earlier power counts into an accepted deployment rate.
+
+Source spacing, punctuation and `@-@` artifacts are preserved; no detokenization
+or score-based cleanup is performed. This is an English encyclopedia corpus,
+not natural chat, multilingual coverage or independent authorship verification.
+The [pinned source card](https://huggingface.co/datasets/Salesforce/wikitext/blob/b08601e04326c79dfdd32d625aee71d232d685c3/README.md)
+has conflicting license labels: CC BY-SA 3.0/GFDL metadata and CC BY-SA 4.0 prose.
+The manifest retains this discrepancy and attribution to Wikipedia contributors
+and WikiText's authors. Source passages stay outside `public/`; derived scores,
+article metadata and provenance are exportable research artifacts.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in

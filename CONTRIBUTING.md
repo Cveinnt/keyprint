@@ -4,7 +4,10 @@ The launch is on hold. Keep fixes on a branch and preserve evidence provenance.
 
 Use Python 3.12 or 3.13 and a separate virtual environment. Install
 `pip install '.[test]'` for base tests, or `pip install '.[test,transformers]'`
-for the optional runner tests. Run `python -m pytest tests` from the checkout.
+for the optional runner tests. Run `python -m pytest` from the checkout.
+Default discovery covers `tests/`. The preserved `sdk/tests/` suite and native
+framework probes under `tools/` run explicitly in their separate environments;
+they are not silently collected into a base SDK installation.
 Build with `python -m build`; test the resulting installed wheel outside the
 source tree. CI keeps the old reference suite separate from the new package.
 

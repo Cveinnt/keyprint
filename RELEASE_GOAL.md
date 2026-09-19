@@ -27,12 +27,19 @@ demos the release objective. A green test suite alone does not satisfy it.
 - [ ] Release: exact wheel, docs, demo and compatibility matrix agree; final CI
   and clean-install checks pass; publication and announcement claims match evidence.
 
-September 19 verification: revision `3194aff` has ten passing CI jobs, including
-actual CPU inference and OpenAI SDK HTTP checks. Local paired-text runs exist for
-MLX, Transformers and vLLM. These remain scoped engineering evidence. SmolLM2
-rewrites lost an approval condition, Qwen French changed exact time formatting,
-and the fresh SGLang runtime build failed with disk exhaustion. Calibration,
-broad compatibility and production acceptance remain open. Keep launch held.
+September 19 verification: revision `bfe1309` has ten passing CI jobs, including
+actual CPU inference and OpenAI SDK HTTP checks, plus 167 passing local Python
+tests. The latest frozen Qwen weighted-reference run completed all 24 outputs:
+8/12 marked detections, no ordinary or wrong-key hits, and four truncated
+outputs. Within the original 100–400-word control range it detected only 1/5
+marked answers; longer marked answers were 7/7. The separate fresh 500-document
+null screen had five false hits, an IID-only upper bound of 2.32%. Neither result
+qualifies a production detector. A larger article-length null screen is separate
+research, not an SDK verdict. Local paired runs also exist for Transformers and
+vLLM. SmolLM2 rewrites lost an approval condition, Qwen French changed exact time
+formatting, and the fresh SGLang runtime build failed with disk exhaustion.
+Calibration, broad compatibility and production acceptance remain open. Keep
+launch held.
 
 ## First-use acceptance
 

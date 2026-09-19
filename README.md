@@ -190,7 +190,7 @@ automatically to this namespaced port, portable profile or another model.
 
 ```sh
 pip install '.[test,transformers,server,clients]'
-python -m pytest tests
+python -m pytest
 ```
 
 - [`src/keyprint`](src/keyprint): supported Python API and adapters.
