@@ -214,6 +214,63 @@ accepts up to 16,000 characters, matching the SDK's character bound; generation
 prompts remain capped at 6,000. Token/profile bounds can still make a pasted
 text's diagnostic unavailable, which must not be shown as zero signal.
 
+## Conditional-layer detector development
+
+`tools/develop_layer_detector.py` fits a research-only conditional layer density
+from 24 previously opened marked responses, then evaluates previously opened
+corpus controls and generated texts under different keys. It draws on
+[SynthID Text's autoregressive layer likelihood](https://github.com/google-deepmind/synthid-text/blob/addb4a158143c7c6851a1308f78b89fceed59683/src/synthid_text/detector_bayesian.py),
+with an independent NumPy/SciPy implementation. Coefficients, ridge penalty,
+mixture fractions, source hashes and a fixed cutoff are retained. No prompt,
+model probabilities or private journal is needed for text scoring.
+
+Each conditional binary density is normalized. Under independent fair null
+bits, its likelihood ratio has mean one. The implementation averages whole-text
+evidence across five fixed contamination fractions; it does not maximize across
+them. A two-key Markov/union cutoff is conservative under this idealized null.
+It is not a posterior or fixed-key deployment guarantee. Exhaustive small-space
+tests check normalization and tail bounds. The September 19 development run
+produced 0/500 null hits but only 5/12 marked detections. Keep that failed power
+result; do not promote the trained scorer into the SDK.
+
+## Fresh weighted-reference validation
+
+The original linear 10-to-1 score can also be evaluated against its numerical
+weighted-Bernoulli null, instead of fitting a rare-tail cutoff to 500 documents.
+Integer weights `290 - 9*i`, for layers `i=0..29`, preserve the original score.
+For `n` eligible events, the centered sum's characteristic function is
+`product(cos(weight*t))**n`. The method follows the general
+[DFT characteristic-function approach](https://arxiv.org/abs/1702.01326).
+
+`tools/weighted_null.py` inverts that function on a finite lattice. It adds a
+Hoeffding alias bound and a `1e-9` numerical margin, refuses failed probability
+mass checks, and returns one for nonpositive statistics. The margin is not a
+formal proof of floating-point accuracy. Tests compare exhaustive enumeration,
+an independent binomial calculation and a doubled grid. Validation doubles the
+grid for every positive observed score and refuses differences above `1e-10`.
+
+```sh
+python tools/validate_weighted_null.py --source databricks-dolly-15k.jsonl \
+  --prior-study private-null-corpus --output private-weighted-null
+python tools/validate_weighted_power.py --source databricks-dolly-15k.jsonl \
+  --null-study private-weighted-null --model models/qwen3-8b-4bit \
+  --output private-weighted-power
+```
+
+The null runner freezes 500 previously unused exact-deduplicated source groups
+and two new keys before scoring. Its sole primary decision is
+`2 * min(two key reference tails) <= .01`. Uniform binomial results are a
+descriptive secondary comparison, not a second opportunity to declare a hit.
+The first fresh run produced 5/500 weighted false hits, with an IID-only 97.5%
+upper bound of 2.32%. This does not establish a deployment bound below 1%.
+
+The power runner freezes twelve new source tasks across six categories, uses
+unchanged prompts, alternates ordinary/marked order and key assignment, and
+allows 1,024 tokens. All outputs, truncations and answers outside the null
+corpus's 100–400-word range remain in the result. The SDK's literal counts must
+agree with independent bit extraction. Neither runner changes SDK detection
+verdicts, establishes semantic quality, or transfers to arbitrary models/keys.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
