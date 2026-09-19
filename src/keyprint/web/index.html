@@ -64,7 +64,9 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             ><select id="cap">
               <option value="128">128 tokens</option>
               <option value="192" selected>192 tokens</option>
-              <option value="256">256 tokens</option></select
+              <option value="256">256 tokens</option>
+              <option value="512">512 tokens · longer answers</option>
+              <option value="1024">1,024 tokens · longest, slower</option></select
             ><button id="generate" class="primary" disabled>
               Generate both versions <span aria-hidden="true">↗</span>
             </button>
@@ -110,7 +112,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             ><textarea
               id="edited"
               rows="9"
-              maxlength="6000"
+              maxlength="16000"
               disabled
               placeholder="Generate a response above, then change words, remove a sentence, or paste your own text."
             ></textarea>

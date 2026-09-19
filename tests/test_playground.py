@@ -123,10 +123,34 @@ def test_model_work_cannot_interleave(tmp_path):
 
 
 @pytest.mark.parametrize("body", [{**BODY, "max_tokens": True}, {**BODY, "text": " "},
-    {**BODY, "max_tokens": 257}, {**BODY, "text": "x" * 6001}, {**BODY, "extra": "bad"}])
+    {**BODY, "max_tokens": 1025}, {**BODY, "text": "x" * 6001},
+    {"action": "inspect", "text": "x" * 16001}, {**BODY, "extra": "bad"}])
 def test_invalid_input_rejected(tmp_path, body):
     with client_for(tmp_path) as client:
         assert client.post("/api/experiment", json=body, headers=HEADERS).status_code == 400
+
+
+def test_longer_budget_is_forwarded_and_long_output_remains_inspectable(tmp_path):
+    observed = []
+
+    class LongOutput(Model):
+        def generate(self, prompt, *, max_tokens, condition, output):
+            observed.append(max_tokens)
+            result = super().generate(prompt, max_tokens=max_tokens, condition=condition, output=output)
+            return Generation("Long output. " * 500, {"completion": "length", "usage": {"completion_tokens": max_tokens}}, result.artifacts)
+
+    with client_for(tmp_path, LongOutput) as client:
+        response = client.post("/api/experiment", json={**BODY, "max_tokens": 1024}, headers=HEADERS)
+        assert response.status_code == 200
+        text = response.json()["outputs"]["marked"]["text"]
+        assert len(text) > 6000 and observed == [1024, 1024]
+        assert response.json()["max_tokens"] == 1024
+        assert client.get("/api/session", headers=HEADERS).json()["latest"]["max_tokens"] == 1024
+        assert response.json()["outputs"]["marked"]["completion"] == "length"
+        inspected = client.post("/api/experiment", json={"action": "inspect", "text": text},
+                               headers={**HEADERS, "Idempotency-Key": "inspect-long"})
+        assert inspected.status_code == 200
+        assert inspected.json()["inspection"]["series"][-1]["characters"] == len(text)
 
 
 def test_oversized_body_rejected(tmp_path):

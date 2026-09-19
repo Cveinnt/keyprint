@@ -28,8 +28,8 @@ EXAMPLE = "In 60 words, explain how a seed becomes a tree to a curious adult."
 class Experiment(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     action: Literal["generate", "inspect"]
-    text: str = Field(min_length=1, max_length=6000)
-    max_tokens: int = Field(default=192, ge=32, le=256)
+    text: str = Field(min_length=1, max_length=16000)
+    max_tokens: int = Field(default=192, ge=32, le=1024)
 
 
 def inspect_text(model: Keyprint, text: str, control_key: bytes) -> dict:
@@ -172,7 +172,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                                       "completion": payload.get("completion"), "inspection": inspection,
                                       "timing": {"generation_seconds": generation_seconds,
                                                  "inspection_seconds": time.perf_counter() - inspection_start}}
-            return {"outputs": outputs, "seconds": time.perf_counter() - started,
+            return {"outputs": outputs, "max_tokens": params.max_tokens, "seconds": time.perf_counter() - started,
                     "independent_randomness": True, "calibrated": False}
         finally:
             progress = None
@@ -188,10 +188,10 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 return error("Request exceeds 64 KiB", 413)
         try:
             params = Experiment.model_validate_json(bytes(raw))
-            if not params.text.strip():
+            if not params.text.strip() or (params.action == "generate" and len(params.text) > 6000):
                 raise ValueError("empty text")
         except (ValidationError, ValueError):
-            return error("Use 1 to 6000 characters and a token cap from 32 to 256", 400)
+            return error("Use 1–6000 characters for prompts, 1–16000 for inspection, and a token cap from 32 to 1024", 400)
         identity = request.headers.get("idempotency-key", "")
         if not identity or len(identity) > 128 or not identity.isascii():
             return error("An idempotency key is required", 400)

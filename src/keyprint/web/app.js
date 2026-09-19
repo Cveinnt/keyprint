@@ -221,6 +221,14 @@ function markDirty() {
 
 function showGeneration(data, retained = false) {
   experiment = data;
+  if (retained && Number.isInteger(data.max_tokens) && data.max_tokens >= 32 && data.max_tokens <= 1024) {
+    const cap = $("cap");
+    const value = String(data.max_tokens);
+    if (![...cap.options].some((option) => option.value === value)) {
+      cap.add(new Option(`${data.max_tokens} tokens`, value));
+    }
+    cap.value = value;
+  }
   editMeasurement = null;
   measuredText = null;
   for (const condition of ["ordinary", "marked"]) {
@@ -229,7 +237,7 @@ function showGeneration(data, retained = false) {
       result.text || "(Empty model response)";
     $(condition + "-text").classList.remove("placeholder");
     $(condition + "-meta").textContent =
-      `${result.usage?.completion_tokens ?? "?"} tokens · ${result.completion === "eos" ? "complete" : "limit reached"}` +
+      `${result.usage?.completion_tokens ?? "?"} tokens · ${result.completion === "eos" ? "complete" : result.completion === "length" ? "limit reached" : "completion unavailable"}` +
       (result.timing
         ? ` · ${result.timing.generation_seconds.toFixed(1)}s generation · ${result.timing.inspection_seconds.toFixed(1)}s inspection`
         : "");
@@ -242,8 +250,16 @@ function showGeneration(data, retained = false) {
     data.outputs.marked.inspection.series.length - 1,
   );
   $("scrub").value = $("scrub").max;
+  const capped = Object.values(data.outputs).filter(
+    (result) => result.completion === "length",
+  ).length;
+  const outcome = capped
+    ? `${capped === 2 ? "Both responses" : "One response"} reached the token limit. Choose a larger limit or ask for a shorter answer, then generate a new pair.`
+    : Object.values(data.outputs).every((result) => result.completion === "eos")
+      ? "Both responses finished."
+      : "Completion state unavailable; inspect the exported report.";
   $("status").textContent =
-    `${retained ? "Previous live run restored" : "Live run complete"} · ${data.seconds.toFixed(1)}s generation and inspection. Independent samples; differences alone are not a quality test.`;
+    `${retained ? "Previous live run restored" : "Live run finished"} · ${data.seconds.toFixed(1)}s generation and inspection. ${outcome} Independent samples; differences alone are not a quality test.`;
   $("edit-status").textContent =
     "Change words, remove a sentence, or paste text. Then update the signal.";
   showMetrics(data.outputs.marked.inspection, "Original marked response");

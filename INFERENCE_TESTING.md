@@ -187,6 +187,33 @@ errors and truncations remain visible. Matching-key sensitivity, wrong-key hits
 and ordinary two-key exceedances are separate counts. No thresholds are retuned
 and no semantic-quality acceptance is inferred from detection results.
 
+## Completion-budget diagnosis
+
+```sh
+python tools/validate_completion_extension.py --study private-corpus-power \
+  --model models/qwen3-8b-4bit --output private-completion-extension
+```
+
+This experiment selects every original 512-token response ending at the limit.
+It replays each saved prefix, requiring exact raw logits, sampled tokens, complete
+probability records and random-bit requests/values to match before permitting
+fresh randomness beyond token 512. The sole generation change is a 1,024-token
+cap. Original outputs remain unchanged, and each extended output retains its
+prefix audit, completion, usage and errors. Already-complete source outputs are
+not regenerated. Selection is based only on completion.
+
+This is controlled replay of already-observed paths, not fresh independent
+quality evidence or production resume/crash recovery. Timings include replay and
+cannot be reported as continuation latency. The observer is instance-local and
+returns the original sampler results; frozen engine source is unchanged.
+
+The playground now offers caps up to 1,024 tokens without changing its short
+prefilled example or automatically retrying truncated answers. Its status tells
+users when an answer reached the limit and how to request a new pair. Inspection
+accepts up to 16,000 characters, matching the SDK's character bound; generation
+prompts remain capped at 6,000. Token/profile bounds can still make a pasted
+text's diagnostic unavailable, which must not be shown as zero signal.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
