@@ -87,6 +87,54 @@ edits, unrelated domains, different keys/models or production detection power.
 The statistic has no normal-distribution or authorship-probability interpretation.
 It is not a quality experiment; prose still requires review.
 
+## Diagnose saved MLX signal capacity
+
+```sh
+python tools/analyze_mlx_capacity.py --study private-detection-screen \
+  --model models/qwen3-8b-4bit --output private-capacity-replay \
+  --cases heldout-00-ordinary heldout-00-marked heldout-01-marked
+```
+
+This diagnostic replays existing generations using their original prompts and
+saved random-bit transcripts. It requires matching sampler identity, exact raw
+logit hashes, base/prepared probability hashes, selected tokens and random draws.
+It fails on disagreement; it never relaxes a mismatch or draws fresh randomness.
+The original generation files stay unchanged. Per-step diagnostics remain private;
+only aggregate `public/` reports may be exported.
+
+Entropy, expected bit lift, distribution distance and per-token log ratios help
+distinguish limited token choice from an inefficient text statistic. A token can
+have many one bits while providing no watermark information if its probability
+is unchanged. The probability ratios require model weights, original prompts and
+private execution state: they are an oracle diagnostic, not a text-only detector.
+This analysis uses already-opened data. It cannot validate a new detector or
+replace fresh confirmation after a proposed change is frozen.
+
+## Compare and confirm a text-only score change
+
+```sh
+python tools/compare_score_baselines.py --study private-detection-screen \
+  --output private-score-development
+python tools/validate_score_confirmation.py \
+  --comparison private-score-development/comparison.json \
+  --key private-detection-screen/owner.key --model models/qwen3-8b-4bit \
+  --output private-score-confirmation
+```
+
+The first command compares uniform weights with the linear 10-to-1 layer weights
+documented in [DeepMind's SynthID Text detector](https://github.com/google-deepmind/synthid-text/blob/main/src/synthid_text/detector_mean.py).
+It independently replays literal event bits and requires the original uniform
+counts/statistics to match. Scores use length normalization, without a p-value
+or confidence interpretation. These already-opened texts are development data;
+an improvement here is not confirmation.
+
+The second command freezes both weights and their previously selected thresholds
+before generating 12 ordinary/marked pairs from different prompts. It keeps the
+original generation key and model, introduces a fresh other-key control, retains
+every attempt and applies strict greater-than decisions without tuning. This
+tests a proposed scoring change on fresh text; its small, same-key/model scope
+still cannot certify deployment error rates or generalize to new domains.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
