@@ -138,6 +138,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
     @app.get("/api/session")
     async def session():
         return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model[0].identity,
+                "edited": latest.get("edited"),
                 "running": lock.locked(), "last_attempt": last_attempt.copy() or None,
                 "scope": "Live local generation and uncalibrated literal diagnostics"}
 
@@ -229,7 +230,9 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                     response = JSONResponse(result)
                 (run / "status.json").write_text(json.dumps({"http_status": response.status_code}))
                 if response.status_code == 200 and params.action == "generate":
-                    latest.update(prompt=params.text, result=result)
+                    latest.update(prompt=params.text, result=result, edited=None)
+                elif response.status_code == 200 and params.action == "inspect":
+                    latest["edited"] = {"text": params.text, "result": result}
             except Exception:
                 response = error("Experiment could not be recorded. Inspect private artifacts; no automatic retry.", 500, run_id)
             finally:

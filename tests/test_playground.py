@@ -91,6 +91,31 @@ def test_edit_is_measured_without_generation(tmp_path):
         response = client.post("/api/experiment", json={"action": "inspect", "text": "Edited."}, headers=HEADERS)
         assert response.status_code == 200 and response.json()["inspection"]["trials"] == 30
         assert not list((tmp_path / "runs").glob("*/marked"))
+        session = client.get("/api/session", headers=HEADERS).json()
+        assert session["edited"] == {"text": "Edited.", "result": response.json()}
+
+
+def test_new_pair_clears_previous_edit_but_failed_inspection_retains_it(tmp_path):
+    class FailedEdit(Model):
+        def inspect(self, text, *, key=None):
+            if text.startswith("FAIL"):
+                raise RuntimeError("private model failure")
+            return super().inspect(text, key=key)
+
+    with client_for(tmp_path, FailedEdit) as client:
+        client.post("/api/experiment", json=BODY, headers=HEADERS)
+        inspected = client.post("/api/experiment", json={"action": "inspect", "text": "Saved edit."},
+                               headers={**HEADERS, "Idempotency-Key": "edit"})
+        failed = client.post("/api/experiment", json={"action": "inspect", "text": "FAIL edited text"},
+                            headers={**HEADERS, "Idempotency-Key": "failed-edit"})
+        assert failed.status_code == 500
+        session = client.get("/api/session", headers=HEADERS).json()
+        assert session["edited"] == {"text": "Saved edit.", "result": inspected.json()}
+        assert session["last_attempt"]["request"]["text"] == "FAIL edited text"
+        assert session["last_attempt"]["http_status"] == 500
+        assert client.post("/api/experiment", json=BODY,
+                           headers={**HEADERS, "Idempotency-Key": "new-pair"}).status_code == 200
+        assert client.get("/api/session", headers=HEADERS).json()["edited"] is None
 
 
 def test_failed_attempt_stays_failed_and_is_not_silently_retried(tmp_path):

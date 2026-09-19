@@ -247,6 +247,28 @@ function renderOutputs() {
       $("reading-mode").value === "exact");
 }
 
+function restoreInspection(session) {
+  if (session.edited) {
+    editMeasurement = session.edited.result;
+    measuredText = session.edited.text;
+    $("edited").value = measuredText;
+    showMetrics(editMeasurement.inspection, "Restored measured edit");
+    $("edit-status").textContent = "Previous measured edit restored. No new inspection started.";
+  }
+  const attempt = session.last_attempt;
+  if (attempt?.request?.action === "inspect") {
+    $("edited").value = attempt.request.text;
+    if (attempt.http_status !== 200) {
+      markDirty();
+      $("edit-status").textContent = attempt.http_status == null
+        ? "Reconnecting to the inspection of this text. Previous measurements remain visible."
+        : "This inspection failed. Your text is restored; measurements still describe the last successful text. No automatic retry.";
+    }
+  }
+  chart();
+  report();
+}
+
 function showGeneration(data, retained = false) {
   experiment = data;
   if (retained) restoreLimit(data.max_tokens);
@@ -416,6 +438,11 @@ setBusy(true);
       ? "Transformers · experimental CPU"
       : "Qwen3-8B · local MLX";
     if (session.running) {
+      if (session.latest) {
+        $("prompt").value = session.prompt;
+        showGeneration(session.latest, true);
+        restoreInspection(session);
+      }
       restoreRequest(session);
       setBusy(true);
       $("status").textContent =
@@ -434,6 +461,7 @@ setBusy(true);
     if (session.latest) {
       $("prompt").value = session.prompt;
       showGeneration(session.latest, true);
+      restoreInspection(session);
       setBusy(false);
       if (session.last_attempt?.http_status >= 400) {
         restoreRequest(session);

@@ -63,6 +63,9 @@ Reading view formats basic headings, lists, bold text and code blocks. Switch to
 Exact text to see every original character. Formatting never changes the text
 used for editing, inspection or export; generated HTML, links and images remain
 inert text. Long response panels are keyboard-focusable and scrollable.
+Measured edits also survive a refresh within the same server process. A failed
+inspection restores its input alongside the last successful measurement, clearly
+labeled as stale. A new completed generation clears the previous pair's edit.
 While work runs, the page shows the actual generation or inspection stage and
 elapsed time. Each result separates generation from inspection time. These are
 individual local observations, not a serving-throughput benchmark.
