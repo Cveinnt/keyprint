@@ -2,6 +2,10 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Reject cosmetic-only rewrite candidates whose word sequence is unchanged,
+  including observed model outputs that only wrapped the source in quotes.
+- Add a predeclared longer-text detection feasibility screen with a threshold
+  frozen before held-out inference. This is not deployment calibration.
 - Keep accepted server and playground work alive after a cancelled HTTP handler.
   Recover completed results without duplicate generation; drain accepted work
   during graceful shutdown and reconnect the playground after a refresh.

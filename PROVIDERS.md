@@ -90,6 +90,9 @@ a candidate. `failed_checks` means a lexical or completion check failed;
 detectable watermark was verified. There is no automatic approved status.
 Both texts and checks are saved in the private generation directory. Failed or
 unchanged outputs are retained without retry or substitution.
+Case, punctuation, surrounding quotes and whitespace alone do not count as a
+paraphrase: an unchanged case-folded Unicode word sequence fails the lexical
+screen. Changed words still do not establish preserved meaning or a watermark.
 
 The helpers reject provider responses containing tool use, thinking, citations,
 refusals, incomplete outputs or supported structured-output metadata. Obvious

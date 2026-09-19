@@ -60,6 +60,33 @@ not mean that generated prose is correct or safe to publish. This small model
 is an integration fixture, not a quality benchmark or recommended rewrite model.
 There are no hosted-provider credentials or API calls in this job.
 
+## Longer-text detection feasibility
+
+```sh
+python tools/validate_detection_screen.py --backend mlx \
+  --model models/qwen3-8b-4bit --output private-detection-screen
+```
+
+The script writes its complete plan before loading the model. Twelve ordinary
+calibration prompts determine the maximum observed length-normalized bit excess,
+`(2 * ones - trials) / sqrt(trials)`. It freezes that threshold before generating
+ordinary/marked pairs for twelve different held-out prompts. Each response is
+also inspected under an independent control key. A result exceeds the threshold
+only with a strict greater-than comparison; ties do not count.
+
+English, French and Spanish prompts request about 220 words, with a 512-token
+cap. Truncated outputs and failures remain in the report. Calibration failures
+stop the experiment; held-out failures remain in the attempted denominator.
+The fresh output directory contains private keys and journals. Only `public/`
+is exportable, including the plan, frozen threshold, every generated text and
+summary counts. Do not choose a new threshold after reading held-out results.
+
+This small synthetic screen asks whether the current statistic shows useful
+separation at this length. It cannot qualify rare false positives, short inputs,
+edits, unrelated domains, different keys/models or production detection power.
+The statistic has no normal-distribution or authorship-probability interpretation.
+It is not a quality experiment; prose still requires review.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in

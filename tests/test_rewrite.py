@@ -71,6 +71,26 @@ def test_checks_do_not_pretend_to_measure_meaning():
     assert fidelity_checks("12 dollars", "13 dollars", completion="length")["numbers_preserved"] is False
 
 
+@pytest.mark.parametrize("candidate", [
+    '"Hi Maya, please review the draft by Friday at 09:30. Do not publish it before I approve it."',
+    '“Hi Maya, please review the draft by Friday at 09:30. Do not publish it before I approve it.”',
+    "HI MAYA, PLEASE REVIEW THE DRAFT BY FRIDAY AT 09:30. DO NOT PUBLISH IT BEFORE I APPROVE IT.",
+])
+def test_cosmetic_changes_are_not_a_successful_paraphrase(candidate):
+    from keyprint.rewrite import Rewrite
+    original = "Hi Maya, please review the draft by Friday at 09:30. Do not publish it before I approve it."
+    checks = fidelity_checks(original, candidate, completion="eos")
+    assert checks["changed"] and checks["canonical_changed"]
+    assert checks["word_sequence_changed"] is False
+    assert Rewrite(original, candidate, None, checks).status == "failed_checks"
+
+
+def test_unicode_words_are_compared_without_erasing_accents():
+    original = "Écrivez à Maya demain."
+    assert fidelity_checks(original, "« Écrivez à Maya demain. »", completion="eos")["word_sequence_changed"] is False
+    assert fidelity_checks(original, "Écrivez à Maya aujourd'hui.", completion="eos")["word_sequence_changed"] is True
+
+
 def test_original_and_candidate_retained(tmp_path):
     kp = Keyprint(key=bytes(range(32)))
     def generate(prompt, *, max_tokens, output, condition):

@@ -24,7 +24,7 @@ class Rewrite:
     @property
     def status(self) -> str:
         """Lexical failures block use; passing checks still requires review."""
-        required = ("complete", "canonical_changed", "numbers_preserved",
+        required = ("complete", "canonical_changed", "word_sequence_changed", "numbers_preserved",
                     "urls_preserved", "emails_preserved", "no_new_escaped_line_breaks")
         return "needs_review" if all(self.checks.get(k) for k in required) else "failed_checks"
 
@@ -92,6 +92,10 @@ def fidelity_checks(original: str, text: str, *, completion: str) -> dict[str, A
                 "emails": r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}"}
     checks: dict[str, Any] = {"complete": completion == "eos", "changed": original != text,
                               "canonical_changed": re.sub(r"[ \t\r\n\f\v]", "", original) != re.sub(r"[ \t\r\n\f\v]", "", text),
+                              # A paraphrase must do more than wrap the source in
+                              # quotes or change punctuation, case or whitespace.
+                              # This is a lexical screen, not a semantic check.
+                              "word_sequence_changed": re.findall(r"\w+", original.casefold()) != re.findall(r"\w+", text.casefold()),
                               "watermark_presence": "not_verified", "meaning_preservation": "not_measured"}
     for name, pattern in patterns.items():
         checks[name + "_preserved"] = Counter(re.findall(pattern, original)) == Counter(re.findall(pattern, text))
