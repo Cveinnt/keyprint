@@ -254,7 +254,7 @@ function showGeneration(data, retained = false) {
     (result) => result.completion === "length",
   ).length;
   const outcome = capped
-    ? `${capped === 2 ? "Both responses" : "One response"} reached the token limit. Choose a larger limit or ask for a shorter answer, then generate a new pair.`
+    ? `${capped === 2 ? "Both responses" : "One response"} reached the token limit. ${data.max_tokens >= 1024 ? "Ask for a shorter answer, then generate a new pair." : "Choose a larger limit or ask for a shorter answer, then generate a new pair."}`
     : Object.values(data.outputs).every((result) => result.completion === "eos")
       ? "Both responses finished."
       : "Completion state unavailable; inspect the exported report.";
