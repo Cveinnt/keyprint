@@ -91,6 +91,28 @@ def test_unicode_words_are_compared_without_erasing_accents():
     assert fidelity_checks(original, "Écrivez à Maya aujourd'hui.", completion="eos")["word_sequence_changed"] is True
 
 
+@pytest.mark.parametrize("before,after", [
+    ("Review the draft by Friday at 09:30.", '"Review the draft by Monday at 09:30."'),
+    ("Répondez vendredi à 09:30.", "Veuillez répondre lundi à 09:30."),
+    ("Revisa el texto el miércoles.", "Por favor, revisa el texto el sábado."),
+    ("Monday or Monday again.", "Monday or another day."),
+])
+def test_changed_weekday_blocks_rewrite_even_when_numbers_match(before, after):
+    from keyprint import Rewrite
+    checks = fidelity_checks(before, after, completion="eos")
+    assert checks["numbers_preserved"] is True
+    assert checks["weekday_names_preserved"] is False
+    assert Rewrite(before, after, None, checks).status == "failed_checks"
+
+
+def test_weekday_check_allows_case_but_does_not_claim_event_alignment():
+    assert fidelity_checks("Meet Friday.", "Please meet FRIDAY.", completion="eos")["weekday_names_preserved"]
+    assert fidelity_checks("Read Sundayish.", "Read something else.", completion="eos")["weekday_names_preserved"]
+    reordered = fidelity_checks("Depart Monday, return Friday.", "Depart Friday, return Monday.", completion="eos")
+    assert reordered["weekday_names_preserved"] is True
+    assert reordered["meaning_preservation"] == "not_measured"
+
+
 def test_original_and_candidate_retained(tmp_path):
     kp = Keyprint(key=bytes(range(32)))
     def generate(prompt, *, max_tokens, output, condition):

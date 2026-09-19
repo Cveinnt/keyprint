@@ -24,7 +24,7 @@ class Rewrite:
     @property
     def status(self) -> str:
         """Lexical failures block use; passing checks still requires review."""
-        required = ("complete", "canonical_changed", "word_sequence_changed", "numbers_preserved",
+        required = ("complete", "canonical_changed", "word_sequence_changed", "numbers_preserved", "weekday_names_preserved",
                     "urls_preserved", "emails_preserved", "no_new_escaped_line_breaks")
         return "needs_review" if all(self.checks.get(k) for k in required) else "failed_checks"
 
@@ -99,6 +99,14 @@ def fidelity_checks(original: str, text: str, *, completion: str) -> dict[str, A
                               "watermark_presence": "not_verified", "meaning_preservation": "not_measured"}
     for name, pattern in patterns.items():
         checks[name + "_preserved"] = Counter(re.findall(pattern, original)) == Counter(re.findall(pattern, text))
+    # Full weekday names in the three exercised languages. Preserve multiplicity;
+    # identical names can still be reassigned to different events, so this is not
+    # date parsing or a semantic guarantee. Abbreviations/relative dates are not covered.
+    weekdays = (r"\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday|"
+                r"lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|"
+                r"lunes|martes|miércoles|jueves|viernes|sábado|domingo)\b")
+    checks["weekday_names_preserved"] = (
+        Counter(re.findall(weekdays, original.casefold())) == Counter(re.findall(weekdays, text.casefold())))
     checks["no_new_escaped_line_breaks"] = all(text.count(value) <= original.count(value)
                                               for value in ("\\n", "\\r"))
     return checks

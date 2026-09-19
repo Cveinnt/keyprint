@@ -60,6 +60,12 @@ not mean that generated prose is correct or safe to publish. This small model
 is an integration fixture, not a quality benchmark or recommended rewrite model.
 There are no hosted-provider credentials or API calls in this job.
 
+Rewrite screening checks exact numbers, URLs, email addresses and full weekday
+names in English, French and Spanish. This catches observed Friday-to-Monday
+drift even when the numeric time stays intact. It does not parse dates, cover
+abbreviations/relative dates, or verify which event a weekday belongs to.
+Passing these checks still yields `needs_review`, never automatic acceptance.
+
 ## Longer-text detection feasibility
 
 ```sh
