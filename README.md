@@ -69,6 +69,10 @@ labeled as stale. A new completed generation clears the previous pair's edit.
 While work runs, the page shows the actual generation or inspection stage and
 elapsed time. Each result separates generation from inspection time. These are
 individual local observations, not a serving-throughput benchmark.
+Use **Stop** to end an active generation or inspection at the next safe boundary.
+Controls stay locked until the worker stops; completed responses and measurements
+remain visible. Refresh reconnects to the same attempt, including a pending stop,
+without starting new work. An active model step or inspection must finish first.
 See [sampling performance](PERFORMANCE.md) for reproducible arithmetic and
 real-model parity checks, with the remaining performance limits.
 See [actual inference testing](INFERENCE_TESTING.md) for paired text comparisons,

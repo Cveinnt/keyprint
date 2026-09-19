@@ -8,7 +8,7 @@ import pytest
 
 pytest.importorskip("fastapi")
 from fastapi.testclient import TestClient
-from keyprint import Generation, Inspection
+from keyprint import Generation, Inspection, KeyprintCancelled
 from keyprint.playground import create_playground, inspect_text
 from starlette.requests import Request
 
@@ -26,12 +26,14 @@ class Model:
         self.started, self.release = threading.Event(), threading.Event()
         self.fail, self.block = fail, block
 
-    def generate(self, prompt, *, max_tokens, condition, output):
+    def generate(self, prompt, *, max_tokens, condition, output, cancel_event=None):
         assert threading.get_ident() == self.owner
         self.calls.append(condition)
         self.started.set()
         if self.block:
             assert self.release.wait(10)
+        if cancel_event is not None and cancel_event.is_set():
+            raise KeyprintCancelled({"cancellation_requested": True}, Path(output))
         Path(output).mkdir(mode=0o700)
         if self.fail:
             raise RuntimeError("secret internals must stay private")
@@ -168,9 +170,9 @@ def test_longer_budget_is_forwarded_and_long_output_remains_inspectable(tmp_path
     observed = []
 
     class LongOutput(Model):
-        def generate(self, prompt, *, max_tokens, condition, output):
+        def generate(self, prompt, *, max_tokens, condition, output, cancel_event=None):
             observed.append(max_tokens)
-            result = super().generate(prompt, max_tokens=max_tokens, condition=condition, output=output)
+            result = super().generate(prompt, max_tokens=max_tokens, condition=condition, output=output, cancel_event=cancel_event)
             return Generation("Long output. " * 500, {"completion": "length", "usage": {"completion_tokens": max_tokens}}, result.artifacts)
 
     with client_for(tmp_path, LongOutput) as client:
@@ -260,3 +262,88 @@ def test_cancelled_page_keeps_complete_pair_and_refresh_result(tmp_path):
                 if not first.done():
                     await first
     asyncio.run(exercise())
+
+
+@pytest.mark.parametrize("condition", ["ordinary", "marked"])
+def test_explicit_stop_preserves_previous_pair_and_edit_and_never_restarts(tmp_path, condition):
+    models = []
+    class Controlled(Model):
+        def __init__(self):
+            super().__init__()
+            self.held, self.proceed = threading.Event(), threading.Event()
+        def generate(self, prompt, **kwargs):
+            if prompt == "block" and kwargs["condition"] == condition:
+                self.held.set()
+                assert self.proceed.wait(10)
+            return super().generate(prompt, **kwargs)
+    def load():
+        models.append(Controlled())
+        return models[0]
+    with client_for(tmp_path, load) as client, ThreadPoolExecutor(max_workers=1) as threads:
+        first = client.post("/api/experiment", json=BODY, headers=HEADERS).json()
+        edit = client.post("/api/experiment", json={"action": "inspect", "text": "Saved edit."},
+                          headers={**HEADERS, "Idempotency-Key": "saved-edit"}).json()
+        headers = {**HEADERS, "Idempotency-Key": "stop-new"}
+        assert client.post("/api/cancel", headers={"Idempotency-Key": "stop-new"}).status_code == 401
+        assert client.post("/api/cancel", headers=headers).status_code == 404
+        body = {**BODY, "text": "block"}
+        attempt = threads.submit(client.post, "/api/experiment", json=body, headers=headers)
+        try:
+            assert models[0].held.wait(5)
+            active = client.get("/api/session", headers=HEADERS).json()
+            assert active["last_attempt"]["request_id"] == "stop-new"
+            for _ in range(2):
+                assert client.post("/api/cancel", headers=headers).status_code == 202
+            active = client.get("/api/session", headers=HEADERS).json()
+            assert active["running"] and active["last_attempt"]["cancellation_requested"]
+            progress = client.get("/api/progress", headers=HEADERS).json()
+            assert progress["cancellation_requested"] and progress["stage"] == "generating_" + condition
+            assert client.post("/api/experiment", json=BODY,
+                               headers={**HEADERS, "Idempotency-Key": "busy"}).status_code == 503
+        finally:
+            models[0].proceed.set()
+        stopped = attempt.result()
+        assert stopped.status_code == 410
+        assert client.post("/api/experiment", json=body, headers=headers).json() == stopped.json()
+        restored = client.get("/api/session", headers=HEADERS).json()
+        assert not restored["running"] and restored["last_attempt"]["http_status"] == 410
+        assert restored["latest"] == first
+        assert restored["edited"] == {"text": "Saved edit.", "result": edit}
+        assert models[0].calls == ["ordinary", "marked", "ordinary"] + (["marked"] if condition == "marked" else [])
+        assert client.post("/api/cancel", headers=headers).json() == {"state": "terminal", "http_status": 410}
+        cancelled = json.loads((tmp_path / "runs" / restored["last_attempt"]["run_id"] / "cancelled.json").read_text())
+        assert cancelled["completed_conditions"] == (["ordinary"] if condition == "marked" else [])
+        assert client.post("/api/experiment", json=BODY,
+                           headers={**HEADERS, "Idempotency-Key": "after-stop"}).status_code == 200
+
+
+def test_stop_inspection_keeps_last_measurement_and_does_not_start_generation(tmp_path):
+    models = []
+    class Controlled(Model):
+        def __init__(self):
+            super().__init__()
+            self.hold = False
+            self.held, self.proceed = threading.Event(), threading.Event()
+        def inspect(self, text, **kwargs):
+            if self.hold:
+                self.held.set()
+                assert self.proceed.wait(10)
+            return super().inspect(text, **kwargs)
+    def load():
+        models.append(Controlled())
+        return models[0]
+    with client_for(tmp_path, load) as client, ThreadPoolExecutor(max_workers=1) as threads:
+        saved = client.post("/api/experiment", json={"action": "inspect", "text": "saved"}, headers=HEADERS).json()
+        models[0].hold = True
+        headers = {**HEADERS, "Idempotency-Key": "inspect-stop"}
+        attempt = threads.submit(client.post, "/api/experiment", json={"action": "inspect", "text": "unsaved edits"}, headers=headers)
+        try:
+            assert models[0].held.wait(5)
+            assert client.post("/api/cancel", headers=headers).status_code == 202
+        finally:
+            models[0].proceed.set()
+        assert attempt.result().status_code == 410
+        session = client.get("/api/session", headers=HEADERS).json()
+        assert session["edited"] == {"text": "saved", "result": saved}
+        assert session["last_attempt"]["request"]["text"] == "unsaved edits"
+        assert models[0].calls == []

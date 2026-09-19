@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import secrets
 import time
+from threading import Event
 from typing import Callable, Literal
 import uuid
 
@@ -18,7 +19,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-from .api import Keyprint, KeyprintError
+from .api import Keyprint, KeyprintError, KeyprintCancelled
+from .cancellation import check_cancellation, _CancellationRequested
 from .inspection import Inspection
 from .server import error
 
@@ -32,13 +34,14 @@ class Experiment(BaseModel):
     max_tokens: int = Field(default=192, ge=32, le=1024)
 
 
-def inspect_text(model: Keyprint, text: str, control_key: bytes) -> dict:
+def inspect_text(model: Keyprint, text: str, control_key: bytes, cancel_event: Event | None = None) -> dict:
     """Recompute complete literal diagnostics at bounded character prefixes.
 
     These are not per-token attribution or a calibrated detector trajectory.
     Prefix retokenization is intentional and disclosed in the interface.
     """
     def measure(value: str, key: bytes | None = None) -> Inspection:
+        check_cancellation(cancel_event)
         try:
             return model.inspect(value, **({"key": key} if key is not None else {}))
         except (KeyprintError, ValueError):
@@ -86,6 +89,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         stream.write(control_key)
     lock = asyncio.Lock()
     records: dict[str, tuple[str, JSONResponse]] = {}
+    cancellations: dict[str, Event] = {}
     attempts: set[asyncio.Task] = set()
     latest: dict = {}
     last_attempt: dict = {}
@@ -147,31 +151,50 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         # Worker replaces the snapshot atomically; no model state crosses
         # threads. This reports real stages, not invented completion percent.
         snapshot = progress
-        return ({"active": True, "stage": snapshot["stage"],
-                 "seconds": time.perf_counter() - snapshot["started"]}
-                if snapshot else {"active": False})
+        if snapshot:
+            return {"active": True, "stage": snapshot["stage"],
+                    "seconds": time.perf_counter() - snapshot["started"],
+                    "request_id": last_attempt["request_id"],
+                    "cancellation_requested": last_attempt.get("cancellation_requested", False)}
+        return {"active": False}
 
-    def execute(params: Experiment, run: Path) -> dict:
+    @app.post("/api/cancel")
+    async def cancel(request: Request):
+        identity = request.headers.get("idempotency-key", "")
+        if not identity or len(identity) > 128 or not identity.isascii():
+            return error("An idempotency key is required", 400)
+        previous = records.get(identity)
+        if previous is None:
+            return error("That experiment has not started", 404)
+        signal = cancellations.get(identity)
+        if signal is None:
+            return {"state": "terminal", "http_status": previous[1].status_code}
+        signal.set()
+        last_attempt["cancellation_requested"] = True
+        return JSONResponse({"state": "cancellation_requested"}, status_code=202)
+
+    def execute(params: Experiment, run: Path, cancellation: Event) -> dict:
         nonlocal progress
         started = time.perf_counter()
         def stage(name: str):
             nonlocal progress
             progress = {"stage": name, "started": started}
+        outputs = {}
         try:
             if params.action == "inspect":
                 stage("inspecting_edit")
-                return {"inspection": inspect_text(model[0], params.text, control_key),
+                return {"inspection": inspect_text(model[0], params.text, control_key, cancellation),
                         "seconds": time.perf_counter() - started}
-            outputs = {}
             for condition in ("ordinary", "marked"):
                 stage("generating_" + condition)
+                check_cancellation(cancellation)
                 generation_start = time.perf_counter()
                 result = model[0].generate(params.text, max_tokens=params.max_tokens,
-                                           condition=condition, output=run / condition)
+                                           condition=condition, output=run / condition, cancel_event=cancellation)
                 generation_seconds = time.perf_counter() - generation_start
                 stage("inspecting_" + condition)
                 inspection_start = time.perf_counter()
-                inspection = inspect_text(model[0], result.text, control_key)
+                inspection = inspect_text(model[0], result.text, control_key, cancellation)
                 payload = result.report.get("payload", result.report)
                 outputs[condition] = {"text": result.text, "usage": result.report.get("usage"),
                                       "completion": payload.get("completion"), "inspection": inspection,
@@ -179,6 +202,12 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                                                  "inspection_seconds": time.perf_counter() - inspection_start}}
             return {"outputs": outputs, "max_tokens": params.max_tokens, "seconds": time.perf_counter() - started,
                     "independent_randomness": True, "calibrated": False}
+        except (KeyprintCancelled, _CancellationRequested):
+            (run / "cancelled.json").write_text(json.dumps({
+                "action": params.action, "stage": progress["stage"],
+                "completed_conditions": list(outputs), "seconds": time.perf_counter() - started,
+                "scope": "Stopped attempt; individual generation receipts remain private"}))
+            raise
         finally:
             progress = None
 
@@ -211,9 +240,11 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         await lock.acquire()
         run_id = uuid.uuid4().hex
         run = output / run_id
+        cancellation = Event()
+        cancellations[identity] = cancellation
         records[identity] = (digest, error("Attempt running; repeat the same request ID to recover its result", 409, run_id))
-        last_attempt.update(run_id=run_id, action=params.action, http_status=None,
-                            request=params.model_dump())
+        last_attempt.update(run_id=run_id, request_id=identity, action=params.action, http_status=None,
+                            request=params.model_dump(), cancellation_requested=False)
 
         async def finish_attempt() -> JSONResponse:
             response = error("Experiment failed. Inspect the private run folder; no automatic retry was made.", 500, run_id)
@@ -221,7 +252,9 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 run.mkdir(mode=0o700)
                 (run / "request.json").write_text(json.dumps(params.model_dump(), ensure_ascii=False))
                 try:
-                    result = await asyncio.get_running_loop().run_in_executor(worker, execute, params, run)
+                    result = await asyncio.get_running_loop().run_in_executor(worker, execute, params, run, cancellation)
+                except (KeyprintCancelled, _CancellationRequested):
+                    response = error("Experiment stopped. Previous completed results are unchanged.", 410, run_id)
                 except Exception:
                     pass
                 else:
@@ -237,6 +270,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 response = error("Experiment could not be recorded. Inspect private artifacts; no automatic retry.", 500, run_id)
             finally:
                 records[identity] = (digest, response)
+                cancellations.pop(identity, None)
                 last_attempt.update(http_status=response.status_code)
                 lock.release()
             return response

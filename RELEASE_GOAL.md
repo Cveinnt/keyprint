@@ -27,13 +27,20 @@ demos the release objective. A green test suite alone does not satisfy it.
 - [ ] Release: exact wheel, docs, demo and compatibility matrix agree; final CI
   and clean-install checks pass; publication and announcement claims match evidence.
 
-September 19 verification: revision `a5caf71` passed all ten SDK CI jobs plus
-the dedicated ARM SGLang actual-inference job. Subsequent cooperative cancellation
+September 19 verification: revision `82ce577` passed all ten SDK CI jobs plus
+the dedicated ARM SGLang actual-inference job. Cooperative cancellation
 changes pass 208 tests against a freshly installed wheel. Actual SmolLM2 and
 Qwen runs both stopped after one committed token, retained consumed-work counts,
 replayed terminal cancellation without regeneration, and generated successfully
 on the same worker. This does not preempt model kernels or qualify framework
-cancellation, crash recovery, streaming or the browser playground's stop flow.
+cancellation, crash recovery or streaming. The browser playground now exposes
+Stop for generation and inspection, preserves completed results, and reconnects
+after refresh. Actual Qwen generation cancellation passed browser checks. A
+disclosed pause after a real SDK inspection exercised inspection-stop races on
+desktop and mobile without substituting measurements or generated text.
+The `82ce577` SGLang repeat verified twelve outputs and 960 journal-matching
+tokens, with five mechanical quality flags. Green CI verifies the integration
+and receipt contract, not the generated answers' correctness.
 CI still needs verification at the exact release revision. The latest frozen
 Qwen weighted-reference screen completed all 24 outputs:
 8/12 marked detections, no ordinary or wrong-key hits, and four truncated

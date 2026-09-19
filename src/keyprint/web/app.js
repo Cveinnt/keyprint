@@ -11,7 +11,11 @@ let busy = false,
   experiment = null,
   editMeasurement = null,
   measuredText = null,
-  pending = null;
+  pending = null,
+  activeRequestId = null,
+  activeAction = null,
+  stopAvailable = false,
+  stopRequested = false;
 const ns = "http://www.w3.org/2000/svg";
 const percent = (value) =>
   value == null ? "Unavailable" : (value * 100).toFixed(1) + "%";
@@ -26,6 +30,22 @@ function setBusy(value) {
   $("generate").textContent = value
     ? "Running local experiment…"
     : "Generate both versions ↗";
+  if (!value) {
+    if (stopRequested && ["stop", "stop-edit", ""].includes(document.activeElement?.id || ""))
+      $(activeAction === "inspect" ? "inspect" : "generate").focus();
+    activeRequestId = null;
+    stopAvailable = false;
+    stopRequested = false;
+  }
+  updateStopControls();
+}
+
+function updateStopControls() {
+  for (const id of ["stop", "stop-edit"]) {
+    $(id).disabled = !busy || !stopAvailable || stopRequested ||
+      (id === "stop-edit" && activeAction !== "inspect");
+    $(id).textContent = stopRequested ? "Stopping…" : "Stop";
+  }
 }
 
 async function api(path, body, id) {
@@ -43,6 +63,7 @@ async function api(path, body, id) {
   if (!response.ok) {
     const error = new Error(data.error?.message || "Local request failed");
     error.settled = response.status !== 409;
+    error.status = response.status;
     throw error;
   }
   return data;
@@ -61,8 +82,15 @@ function watchProgress(status) {
   async function poll() {
     try {
       const progress = await api("/api/progress");
-      if (!stopped && progress.active && stages[progress.stage])
-        status.textContent = `${stages[progress.stage]} · ${progress.seconds.toFixed(0)}s elapsed. Work continues locally.`;
+      if (!stopped && progress.active && progress.request_id === activeRequestId) {
+        stopAvailable = true;
+        stopRequested ||= progress.cancellation_requested;
+        updateStopControls();
+        if (stopRequested)
+          status.textContent = "Stopping after the current model step or measurement. Previous results stay visible.";
+        else if (stages[progress.stage])
+          status.textContent = `${stages[progress.stage]} · ${progress.seconds.toFixed(0)}s elapsed. Work continues locally.`;
+      }
     } catch {
       // Losing a progress update must not retry or replace the model request.
     }
@@ -73,6 +101,26 @@ function watchProgress(status) {
     stopped = true;
     clearTimeout(timer);
   };
+}
+
+async function stopExperiment() {
+  if (!busy || !stopAvailable || stopRequested || !activeRequestId) return;
+  const id = activeRequestId;
+  const status = $(activeAction === "inspect" ? "edit-status" : "status");
+  stopRequested = true;
+  updateStopControls();
+  status.textContent = "Stopping after the current model step or measurement. Previous results stay visible.";
+  try {
+    await api("/api/cancel", {}, id);
+    // The original request/session polling owns completion. A stop request
+    // cannot unlock controls or replace a result that already finished.
+  } catch (error) {
+    if (busy && activeRequestId === id) {
+      stopRequested = false;
+      updateStopControls();
+      status.textContent = "Could not request a stop. You can try Stop again or refresh to reconnect.";
+    }
+  }
 }
 
 function report() {
@@ -262,7 +310,9 @@ function restoreInspection(session) {
       markDirty();
       $("edit-status").textContent = attempt.http_status == null
         ? "Reconnecting to the inspection of this text. Previous measurements remain visible."
-        : "This inspection failed. Your text is restored; measurements still describe the last successful text. No automatic retry.";
+        : attempt.http_status === 410
+          ? "Inspection stopped. Your text is restored; measurements still describe the last successful text."
+          : "This inspection failed. Your text is restored; measurements still describe the last successful text. No automatic retry.";
     }
   }
   chart();
@@ -323,6 +373,10 @@ async function run(action) {
   const serialized = JSON.stringify(body);
   if (!pending || pending.serialized !== serialized)
     pending = { serialized, id: crypto.randomUUID() };
+  activeRequestId = pending.id;
+  activeAction = action;
+  stopAvailable = false;
+  stopRequested = false;
   setBusy(true);
   const status = action === "generate" ? $("status") : $("edit-status");
   status.classList.remove("error");
@@ -349,8 +403,13 @@ async function run(action) {
   } catch (error) {
     stopProgress();
     if (error.settled) pending = null;
-    status.classList.add("error");
-    status.textContent = error.message + " No automatic retry.";
+    if (action === "inspect") markDirty();
+    status.classList.toggle("error", error.status !== 410);
+    status.textContent = error.status === 410
+      ? action === "inspect"
+        ? "Inspection stopped. Your edits remain; previous measurements are unchanged."
+        : "Stopped. Previous completed results are unchanged. Generate again when ready."
+      : error.message + " No automatic retry.";
   } finally {
     stopProgress();
     setBusy(false);
@@ -358,6 +417,8 @@ async function run(action) {
 }
 
 $("generate").addEventListener("click", () => run("generate"));
+$("stop").addEventListener("click", stopExperiment);
+$("stop-edit").addEventListener("click", stopExperiment);
 $("reading-mode").addEventListener("change", renderOutputs);
 $("inspect").addEventListener("click", () => run("inspect"));
 $("edited").addEventListener("input", markDirty);
@@ -444,10 +505,15 @@ setBusy(true);
         restoreInspection(session);
       }
       restoreRequest(session);
+      activeRequestId = session.last_attempt?.request_id;
+      activeAction = session.last_attempt?.action;
+      stopAvailable = true;
+      stopRequested = session.last_attempt?.cancellation_requested || false;
       setBusy(true);
-      $("status").textContent =
+      const progressStatus = $(activeAction === "inspect" ? "edit-status" : "status");
+      progressStatus.textContent =
         "Reconnecting to the running experiment. No new generation started.";
-      const stopProgress = watchProgress($("status"));
+      const stopProgress = watchProgress(progressStatus);
       try {
         while (session.running) {
           await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -465,14 +531,21 @@ setBusy(true);
       setBusy(false);
       if (session.last_attempt?.http_status >= 400) {
         restoreRequest(session);
-        $("status").textContent =
-          "The latest attempt failed. Showing the previous completed run; no automatic retry.";
-        $("status").classList.add("error");
+        const cancelled = session.last_attempt.http_status === 410;
+        $("status").textContent = cancelled
+          ? "The latest experiment was stopped. Showing the previous completed run. No new work started."
+          : "The latest attempt failed. Showing the previous completed run; no automatic retry.";
+        $("status").classList.toggle("error", !cancelled);
       }
       return;
     }
     if (session.last_attempt) {
       restoreRequest(session);
+      if (session.last_attempt.http_status === 410) {
+        setBusy(false);
+        $("status").textContent = "The previous experiment was stopped. No new work started. Generate again when ready.";
+        return;
+      }
       throw new Error(
         "The previous attempt did not produce a completed pair. No automatic retry; start a new experiment explicitly.",
       );

@@ -393,6 +393,20 @@ without another attempt. Both reports retain that truncated next text. The
 installed-wheel suite passed 208 tests, including cancellation before work,
 between calls, during a random draw, terminal races and unrelated model errors.
 
+The local playground also supports authenticated `/api/cancel` with the active
+experiment's `Idempotency-Key`. Stop remains pending until generation or the
+current prefix inspection returns. Terminal HTTP 410 is replayable; it does not
+replace the last completed pair or edited-text measurement. Browser checks on
+September 19 exercised actual Qwen generation, keyboard Stop, refresh during
+work, and custom text. A long inspection finished before Stop became available;
+that timing-sensitive test was retained as failed. A separate controlled run
+paused after an actual SDK inspection to verify pending-stop refresh, unchanged
+prior measurements, no subsequent prefix work, and successful fresh inspection.
+Desktop (1280×1000) and mobile (390×844) passed that controlled flow. This pause
+tests lifecycle behavior, not cancellation latency or throughput. The browser
+checks used isolated headless Chrome through Playwright; no provider keys or
+personal browser profile were used.
+
 ### Native callback comparisons
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
