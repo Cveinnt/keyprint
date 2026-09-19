@@ -116,6 +116,46 @@ private execution state: they are an oracle diagnostic, not a text-only detector
 This analysis uses already-opened data. It cannot validate a new detector or
 replace fresh confirmation after a proposed change is frozen.
 
+The same tool now accepts `weighted-*` rows from the frozen two-key power study.
+It resolves each original prompt by source identity, checks its hash, checks the
+selected key commitment, and records the source public-row hashes. For example:
+
+```sh
+python tools/analyze_mlx_capacity.py --study private-weighted-power \
+  --model models/qwen3-8b-4bit --output private-short-capacity \
+  --cases weighted-04-marked weighted-08-marked weighted-09-marked \
+          weighted-10-marked weighted-11-marked
+```
+
+The September 19 replay selected all five marked answers in the earlier
+100–400-word control range, including the one detected answer. All 1,590 model
+steps matched original raw logits, prepared distributions, tokens and saved
+draws, with zero new random draws. Every original result remains unchanged:
+
+| Case | Words | Original text-only flag | Steps with base max probability >90% | Model-path log2 likelihood ratio |
+| --- | ---: | --- | ---: | ---: |
+| 04 | 130 | Miss | 76.2% | 27.18 |
+| 08 | 112 | Miss | 84.6% | 28.73 |
+| 09 | 276 | Miss | 79.9% | 116.14 |
+| 10 | 329 | Hit | 70.5% | 169.34 |
+| 11 | 237 | Miss | 80.2% | 68.40 |
+
+These positive path ratios show marking evidence that the existing text-only
+statistic does not recover in four cases. They require the original prompt,
+model and private execution state; they are not five successful text-only
+detections, confidence percentages or deployment calibration. Most steps offer
+little token choice, while the text score also includes their key-dependent
+bit variation. This motivates testing whether a prompt-free estimate of token
+predictability can recover signal without an unacceptable false-positive rate.
+It does not establish that such an estimator works. Any candidate must be frozen
+before fresh power and null evaluation; do not tune thresholds on these cases.
+
+A separate replay of all 24 original outputs found identical generation/text
+tokenization in 23. The sole mismatch was a long, already-detected marked
+answer (case 07, with 907 shared eligible context/label events out of 912
+generation events and 914 literal events). All five short answers matched
+exactly, so a tokenization mismatch does not explain these four misses.
+
 ## Compare and confirm a text-only score change
 
 ```sh

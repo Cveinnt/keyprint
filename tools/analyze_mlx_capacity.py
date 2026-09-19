@@ -18,6 +18,31 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def source_prompt(plan, row):
+    """Resolve the exact saved prompt; never guess from a display case number."""
+    if "weighted" in row:
+        matches = [task for task in plan["tasks"] if task["source_index"] == row["source_index"]]
+        if len(matches) != 1:
+            raise ValueError("Exactly one original source task required")
+        task = matches[0]
+        if hashlib.sha256(task["prompt"].encode()).hexdigest() != task["prompt_sha256"]:
+            raise ValueError("Original source prompt hash differs")
+        return task["prompt"]
+    return row["prompt"] + plan["prompt_suffix"]
+
+
+def source_key(root, plan, row):
+    if "weighted" not in row:
+        return (root / "owner.key").read_bytes()
+    index = row["key_index"]
+    if type(index) is not int or index not in (0, 1):
+        raise ValueError("Invalid source key index")
+    key = (root / f"owner-{index}.key").read_bytes()
+    if hashlib.sha256(key).hexdigest() != plan["key_commitments"][index]:
+        raise ValueError("Original key commitment differs")
+    return key
+
+
 def read_journal(path):
     previous, events = "0" * 64, []
     for index, line in enumerate(Path(path).read_bytes().splitlines(keepends=True)):
@@ -65,7 +90,7 @@ def replay(backend, candidate, root, plan, name, key, sink):
     start = next(e for e in events if e["kind"] == "response_started")
     heads = [e for e in events if e["kind"] == "prepared_step"]
     draws = iter(e for e in events if e["kind"] == "random_bits_returned")
-    prompt = backend.encode_prompt(public["prompt"] + plan["prompt_suffix"])
+    prompt = backend.encode_prompt(source_prompt(plan, public))
     packed = json.dumps(prompt,sort_keys=True,separators=(",", ":"),allow_nan=False).encode()
     if hashlib.sha256(packed).hexdigest() != start["prompt_sha256"]:
         raise ValueError("Original prompt mismatch")
@@ -86,12 +111,14 @@ def replay(backend, candidate, root, plan, name, key, sink):
             transform(base,session.profile,key,context,(),{"branch_roundups":0,"partition_roundups":0})
             if fresh else base.copy())
         support = np.flatnonzero(base > 0)
-        scores = []
+        scores, weighted_scores = [], []
         for token in support:
             label = session.profile.classes[int(token)]
-            scores.append(sum(session.profile.bits(key,context,label))-15 if fresh and label else 0)
+            bits = session.profile.bits(key,context,label) if fresh and label else None
+            scores.append(sum(bits)-15 if bits is not None else 0)
+            weighted_scores.append(sum((290-9*i)*(2*b-1) for i,b in enumerate(bits)) if bits is not None else 0)
         pending.update(base=base[support].tolist(), marked=marked[support].tolist(),
-                       scores=scores, support=support.tolist(), fresh=fresh)
+                       scores=scores, weighted_scores=weighted_scores, support=support.tolist(), fresh=fresh)
         return prepared
     # Instance-local observation only. Original preparation result is returned
     # unchanged; its distribution and sampled tokens are checked against receipts.
@@ -125,6 +152,8 @@ def replay(backend, candidate, root, plan, name, key, sink):
             raise ValueError(f"Original token/probability/random transcript differs at step {index}")
         row = {"index":index,"token_id":token,"fresh_context":pending["fresh"],
                **metrics(pending["base"],pending["marked"],pending["scores"],pending["support"].index(token))}
+        weighted = metrics(pending["base"], pending["marked"], pending["weighted_scores"], pending["support"].index(token))
+        row["linear_score"] = {k:weighted[k] for k in ("expected_base_centered_bits", "expected_marked_centered_bits", "expected_bit_lift", "base_score_variance", "observed_centered_bits")}
         measured.append(row)
         sink.write(json.dumps(row,allow_nan=False)+"\n"); sink.flush()
         next_input = mx.array([token],dtype=mx.int32)
@@ -144,12 +173,17 @@ def replay(backend, candidate, root, plan, name, key, sink):
         bins.append({"entropy_range_bits":[low,high],"steps":len(selected),
                      "expected_bit_lift":math.fsum(r["expected_bit_lift"] for r in selected),
                      "marked_kl_base_bits":math.fsum(r["marked_kl_base_bits"] for r in selected)})
+    original = ({"matching_reference_tail": public["weighted"][public["key_index"]]["reference_tail"],
+                 "matching_flagged": public["matching_flagged"], "words":public["words"]}
+                if "weighted" in public else {"original_matching_statistic":public["scores"]["matching"]["statistic"]})
     return {"id":name,"steps":len(measured),"new_random_draws":0,"replayed_draws":replayed_draws,
             "all_raw_logits_distributions_tokens_draws_match":True,
             "base_entropy_mean_bits":math.fsum(r["base_entropy_bits"] for r in measured)/len(measured),
             "base_max_probability_over_90pct":sum(r["base_max_probability"]>.9 for r in measured),
             "total_variation_mean":math.fsum(r["total_variation"] for r in measured)/len(measured),
-            "sums":sums,"entropy_bins":bins,"original_matching_statistic":public["scores"]["matching"]["statistic"]}
+            "sums":sums,"entropy_bins":bins,
+            "linear_score_sums":{k:math.fsum(r["linear_score"][k] for r in measured) for k in measured[0]["linear_score"]},
+            **original}
 
 
 def main():
@@ -160,7 +194,7 @@ def main():
     parser.add_argument("--cases",nargs="+",required=True)
     args=parser.parse_args()
     # Only known study rows are permitted, never traversal outside the study.
-    known={p.stem for p in (args.study/"public").glob("heldout-*.json")}
+    known={p.stem for pattern in ("heldout-*.json", "weighted-*.json") for p in (args.study/"public").glob(pattern)}
     if len(args.cases)!=len(set(args.cases)) or not set(args.cases)<=known:
         raise ValueError("Select distinct existing held-out case IDs")
     args.output.mkdir(mode=0o700); public=args.output/"public";public.mkdir()
@@ -168,18 +202,22 @@ def main():
     declaration={"scope":"Opened-data oracle capacity diagnosis; not a calibrated detector or fresh confirmation",
                  "script_sha256":sha(__file__),"cases":args.cases,"study_plan_sha256":sha(args.study/"public/plan.json"),
                  "source_reports":{n:sha(args.study/n/"report.json") for n in args.cases},
-                 "source_journals":{n:sha(args.study/n/"journal.jsonl") for n in args.cases}}
+                 "source_journals":{n:sha(args.study/n/"journal.jsonl") for n in args.cases},
+                 "source_public_rows":{n:sha(args.study/"public"/(n+".json")) for n in args.cases},
+                 "score_scope":"Linear 290-9*i moments along the original model path; not literal text replay or a detector"}
     (public/"plan.json").write_text(json.dumps(declaration,indent=2))
     results=[];error=None;started=time.monotonic()
     try:
         from keyprint import Keyprint
         from keyprint._engine.research.keyprint_candidate_v3 import Candidate
-        key=(args.study/"owner.key").read_bytes()
+        rows={n:json.loads((args.study/"public"/(n+".json")).read_text()) for n in args.cases}
+        keys={n:source_key(args.study,plan,row) for n,row in rows.items()}
+        key=keys[args.cases[0]]
         loaded=Keyprint.from_mlx(args.model,key=key)
         candidate=Candidate(temperature=plan["temperature"],top_k=plan["top_k"])
         for name in args.cases:
             with (args.output/(name+".steps.jsonl")).open("x") as sink:
-                row=replay(loaded._backend,candidate,args.study,plan,name,key,sink)
+                row=replay(loaded._backend,candidate,args.study,plan,name,keys[name],sink)
             results.append(row)
             (public/(name+".json")).write_text(json.dumps(row,indent=2))
             print(json.dumps(row),flush=True)

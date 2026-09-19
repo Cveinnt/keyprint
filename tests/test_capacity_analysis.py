@@ -40,3 +40,24 @@ def test_modified_or_truncated_source_journal_rejected(tmp_path):
     path.write_bytes(first+second.rstrip())
     with pytest.raises(ValueError, match="chain"):
         analysis.read_journal(path)
+
+
+def test_weighted_source_resolution_checks_prompt_and_key_identity(tmp_path):
+    prompt = "Keep the original question."
+    key = b"a" * 32
+    (tmp_path / "owner-1.key").write_bytes(key)
+    task = {"source_index": 12, "prompt": prompt, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest()}
+    plan = {"tasks": [task], "key_commitments": ["unused", hashlib.sha256(key).hexdigest()]}
+    row = {"weighted": [], "source_index": 12, "key_index": 1}
+    assert analysis.source_prompt(plan, row) == prompt
+    assert analysis.source_key(tmp_path, plan, row) == key
+    with pytest.raises(ValueError, match="Exactly one"):
+        analysis.source_prompt({**plan, "tasks": [task, task]}, row)
+    with pytest.raises(ValueError, match="prompt hash"):
+        analysis.source_prompt({**plan, "tasks": [{**task, "prompt": "different"}]}, row)
+    (tmp_path / "owner-1.key").write_bytes(b"b" * 32)
+    with pytest.raises(ValueError, match="key commitment"):
+        analysis.source_key(tmp_path, plan, row)
+    with pytest.raises(ValueError, match="key index"):
+        analysis.source_key(tmp_path, plan, {**row, "key_index": True})
+    assert analysis.source_prompt({"prompt_suffix": " suffix"}, {"prompt": "original"}) == "original suffix"

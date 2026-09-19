@@ -66,6 +66,15 @@ including two truncated outputs and three mechanical screening failures.
 Calibration, broad compatibility and production acceptance remain open. Keep
 launch held.
 
+The `d4d85e3` SDK CI passed all ten jobs after the browser Stop change; the local
+fresh-wheel suite passed 211 tests. An exact replay of all five short marked
+answers then verified 1,590 original model steps with no new random draws.
+All five carry positive model-path marking evidence, but four remain missed by
+the existing text-only rule. Tokenization matches exactly for those five.
+The replay is a private-state diagnostic, not a replacement detector. Investigate
+prompt-free predictability estimates next, with a separate frozen candidate and
+fresh power/null evaluation before any claim changes.
+
 ## First-use acceptance
 
 - A developer can install the published package and follow one tested path to
