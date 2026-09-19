@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import secrets
 import time
+from threading import Event
 from typing import Callable, Literal
 import uuid
 
@@ -17,7 +18,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
-from .api import Keyprint
+from .api import Keyprint, KeyprintCancelled
 
 
 class Message(BaseModel):
@@ -54,8 +55,9 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                max_requests: int = 256) -> FastAPI:
     """One process, one model worker, finite requests; secret keys stay local.
 
-    Requests are retained even after a client disconnect. Idempotency applies
-    only in this process lifetime. No retry, streaming, tools or logprobs.
+    Requests are retained even after a client disconnect. Explicit cancellation
+    is cooperative and retains its terminal result. Idempotency applies only
+    in this process lifetime. No retry, streaming, tools or logprobs.
     """
     if not isinstance(api_key, str) or not 32 <= len(api_key) <= 256 or not api_key.isascii():
         raise ValueError("API token must be 32 to 256 ASCII characters, distinct from the watermark key")
@@ -70,6 +72,7 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
     worker = ThreadPoolExecutor(max_workers=1, thread_name_prefix="keyprint-model")
     lock = asyncio.Lock()
     records: dict[str, tuple[str, JSONResponse]] = {}
+    cancellations: dict[str, Event] = {}
     attempts: set[asyncio.Task] = set()
     model: list[Keyprint] = []
 
@@ -100,6 +103,25 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
     async def models():
         return {"object": "list", "data": [{"id": "keyprint", "object": "model", "created": 0,
                                             "owned_by": "local"}]}
+
+    @app.post("/v1/keyprint/cancel")
+    async def cancel(request: Request):
+        # Local extension, not an OpenAI-hosted or Chat Completions API method.
+        # The target uses the same explicit key as the original generation.
+        target = request.headers.get("idempotency-key", "")
+        if not target or len(target) > 128 or not target.isascii():
+            return error("Supply the original Idempotency-Key to cancel", 400)
+        previous = records.get(target)
+        if previous is None:
+            return error("No accepted attempt has this idempotency key", 404)
+        signal = cancellations.get(target)
+        if signal is None:
+            return {"state": "terminal", "http_status": previous[1].status_code,
+                    "message": "Attempt already ended; repeat its original request to recover the result"}
+        signal.set()
+        return JSONResponse({"state": "cancellation_requested",
+                             "message": "Worker remains busy until a safe boundary; completion may win the race"},
+                            status_code=202)
 
     @app.post("/v1/chat/completions")
     async def completion(request: Request):
@@ -132,6 +154,8 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
         # Acquisition completes without suspension while unlocked. Record and
         # own the attempt before yielding to any model work or HTTP response.
         await lock.acquire()
+        cancellation = Event()
+        cancellations[idempotency] = cancellation
         records[idempotency] = (digest, error("Attempt running; repeat the same request ID to recover its result", 409, request_id))
 
         async def execute() -> JSONResponse:
@@ -143,7 +167,10 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                     os.fsync(stream.fileno())
                 try:
                     result = await asyncio.get_running_loop().run_in_executor(worker, lambda: model[0].generate(
-                        params.messages[0].content, max_tokens=cap, output=output / request_id))
+                        params.messages[0].content, max_tokens=cap, output=output / request_id,
+                        cancel_event=cancellation))
+                except KeyprintCancelled:
+                    response = error("Generation cancelled; private receipts retained. This attempt will not restart.", 410, request_id)
                 except ValueError:
                     response = error("Prompt is outside this model's supported input contract", 400, request_id)
                 except Exception:
@@ -166,6 +193,7 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                 response = error("Attempt could not be recorded; inspect private artifacts. No automatic retry.", 500, request_id)
             finally:
                 records[idempotency] = (digest, response)
+                cancellations.pop(idempotency, None)
                 lock.release()
             return response
 

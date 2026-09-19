@@ -86,6 +86,11 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
         run: python tools/validate_server_lifecycle.py --model model-fixture --output lifecycle-results
+      - name: Cancel actual inference and reuse the worker without replaying the cancelled attempt
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+        run: python tools/validate_cancellation.py --backend transformers --model model-fixture --output cancellation-results
       - name: Retain synthetic texts and comparison results, never keys or journals
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -94,6 +99,7 @@ jobs:
           path: |
             inference-results/public/
             lifecycle-results/public/
+            cancellation-results/public/
           if-no-files-found: warn
           retention-days: 14
   provider-contract:

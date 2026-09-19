@@ -8,7 +8,7 @@ import pytest
 
 pytest.importorskip("fastapi")
 from fastapi.testclient import TestClient
-from keyprint import Generation
+from keyprint import Generation, KeyprintCancelled
 from keyprint.server import create_app
 from starlette.requests import Request
 
@@ -23,13 +23,15 @@ class Model:
         self.started, self.release = threading.Event(), threading.Event()
         self.block, self.fail = block, fail
 
-    def generate(self, prompt, *, max_tokens, output):
+    def generate(self, prompt, *, max_tokens, output, cancel_event=None):
         self.calls.append(prompt)
         self.started.set()
         if self.block:
             assert self.release.wait(10)
         if self.fail:
             raise RuntimeError("private failure that must not reach the client")
+        if cancel_event is not None and cancel_event.is_set():
+            raise KeyprintCancelled({"cancellation_requested": True}, Path(output))
         Path(output).mkdir(mode=0o700)
         return Generation(prompt, {"completion": "eos", "usage": {
             "prompt_tokens": 4, "completion_tokens": 1, "total_tokens": 5}}, output)
@@ -212,3 +214,47 @@ def test_graceful_shutdown_drains_disconnected_attempt(tmp_path):
             if shutdown is None:
                 await lifespan.__aexit__(None, None, None)
     asyncio.run(exercise())
+
+
+def test_explicit_cancellation_keeps_worker_locked_and_never_restarts_attempt(tmp_path):
+    model = Model(block=True)
+    headers = {**HEADERS, "Idempotency-Key": "cancel-me"}
+    with TestClient(create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")) as client:
+        assert client.post("/v1/keyprint/cancel", headers={"Idempotency-Key": "cancel-me"}).status_code == 401
+        assert client.post("/v1/keyprint/cancel", headers=HEADERS).status_code == 400
+        assert client.post("/v1/keyprint/cancel", headers=headers).status_code == 404
+        with ThreadPoolExecutor(max_workers=1) as threads:
+            first = threads.submit(client.post, "/v1/chat/completions", json=BODY, headers=headers)
+            try:
+                assert model.started.wait(5)
+                for _ in range(2):
+                    cancelled = client.post("/v1/keyprint/cancel", headers=headers)
+                    assert cancelled.status_code == 202
+                    assert cancelled.json()["state"] == "cancellation_requested"
+                assert client.post("/v1/chat/completions", json=BODY, headers=headers).status_code == 409
+                assert client.post("/v1/chat/completions", json=BODY, headers=HEADERS).status_code == 503
+                assert model.calls == ["hello"]
+            finally:
+                model.release.set()
+            stopped = first.result()
+            assert stopped.status_code == 410
+        assert client.post("/v1/chat/completions", json=BODY, headers=headers).json() == stopped.json()
+        assert client.post("/v1/keyprint/cancel", headers=headers).json() == {
+            "state": "terminal", "http_status": 410,
+            "message": "Attempt already ended; repeat its original request to recover the result"}
+        assert model.calls == ["hello"]
+        finished = list((tmp_path / "runs").glob("*-finished.json"))
+        assert len(finished) == 1 and json.loads(finished[0].read_text())["http_status"] == 410
+        assert client.post("/v1/chat/completions", json=BODY, headers=HEADERS).status_code == 200
+        assert model.calls == ["hello", "hello"]
+
+
+def test_late_cancellation_preserves_completed_success(tmp_path):
+    model = Model()
+    headers = {**HEADERS, "Idempotency-Key": "already-done"}
+    with TestClient(create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")) as client:
+        original = client.post("/v1/chat/completions", json=BODY, headers=headers)
+        assert original.status_code == 200
+        assert client.post("/v1/keyprint/cancel", headers=headers).json()["http_status"] == 200
+        assert client.post("/v1/chat/completions", json=BODY, headers=headers).json() == original.json()
+        assert model.calls == ["hello"]

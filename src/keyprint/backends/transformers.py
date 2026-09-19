@@ -92,10 +92,11 @@ class TransformersModel:
                 "interpretation": "Uncalibrated matching-key event counts on literal tokenization; no p-value or authorship verdict."}
 
     def generate(self, prompt: str, *, key: bytes, max_tokens: int, condition: str,
-                 output: str | Path | None):
+                 output: str | Path | None, cancel_event=None):
         import numpy as np
         import torch
-        from ..api import Generation, KeyprintError
+        from ..api import Generation, KeyprintError, KeyprintCancelled
+        from ..cancellation import check_cancellation, _CancellationRequested
         from .._engine.legacy._impl.research.token_source_sparse_execution import SparseTokenSourceSession
         from .._engine.research.keyprint_candidate_v3_caller import DurableJournal
         from .._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
@@ -124,6 +125,8 @@ class TransformersModel:
                 ids = torch.tensor([encoded], dtype=torch.long, device="cpu")
                 cache = None
                 for _ in range(max_tokens):
+                    phase = "before_model_forward"
+                    check_cancellation(cancel_event)
                     phase = "model_forward"
                     journal.append({"phase": phase, "index": len(committed)})
                     report["model_calls"] += 1
@@ -134,6 +137,8 @@ class TransformersModel:
                         raise ValueError("model returned an unsupported logit shape or dtype")
                     if np.isnan(raw).any() or np.isposinf(raw).any():
                         raise ValueError("model returned invalid logits")
+                    phase = "before_sample"
+                    check_cancellation(cancel_event)
                     phase = "sample"
                     raw_hash = hashlib.sha256(raw.tobytes()).hexdigest()
                     raw = raw.copy()
@@ -176,11 +181,17 @@ class TransformersModel:
                 journal.append({"phase": "complete", "completion": report["completion"]})
         except BaseException as exc:
             report.update(kind="error", failed_phase=phase, error_type=type(exc).__name__)
+            report["usage"] = {"prompt_tokens": len(encoded), "completion_tokens": len(committed),
+                               "total_tokens": len(encoded) + len(committed)}
+            if isinstance(exc, _CancellationRequested):
+                report["cancellation_requested"] = True
             # Keep even interrupted attempts. Do not rerun or reuse the session.
             with (directory / "report.json").open("x") as stream:
                 json.dump(report, stream, ensure_ascii=False, allow_nan=False)
             if not isinstance(exc, Exception):
                 raise
+            if isinstance(exc, _CancellationRequested):
+                raise KeyprintCancelled(report, directory) from exc
             raise KeyprintError(report, directory) from exc
         finally:
             session.close()

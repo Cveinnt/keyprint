@@ -50,11 +50,47 @@ generation. Use no automatic retries: a timeout does not cancel the model run.
 Repeat the same idempotency key and body to recover the accepted attempt: 409
 means it is still running; after completion, the original response is replayed.
 A different body returns 409. Accepted work survives a disconnected or cancelled
-HTTP handler, and graceful shutdown waits for it to finish. This is result
-recovery, not model cancellation. Replay works only during this process lifetime;
-restarting clears that memory.
+HTTP handler, and graceful shutdown waits for it to finish. Replay works only
+during this process lifetime; restarting clears that memory.
 The server stops accepting new attempts after 256 records. Inspect private
 artifacts before restarting; do not treat a restart as retry authorization.
+
+### Explicit cancellation
+
+The local extension `POST /v1/keyprint/cancel` uses the same authentication token
+and the original `Idempotency-Key` header. It is not an OpenAI-hosted API method.
+From a second client or thread while the original request is in progress:
+
+```python
+import httpx
+
+response = httpx.post(
+    "http://127.0.0.1:8765/v1/keyprint/cancel",
+    headers={
+        "Authorization": "Bearer " + Path("local-api.key").read_bytes().hex(),
+        "Idempotency-Key": "sky-example-1",
+    },
+    timeout=10,
+)
+print(response.json())
+```
+
+HTTP 202 acknowledges a cancellation request, not a stopped model. The worker
+stays busy until a safe boundary before another model call or sample; an active
+model call cannot be preempted. A completed result can win the race and remains
+available. Otherwise the original generation ends with HTTP 410 and private
+receipts retaining consumed work. Replaying that original request returns the
+same terminal 410 without generating again. A new attempt requires a new key.
+Cancellation after completion returns the existing terminal HTTP status without
+changing the result. Unknown keys return 404. No automatic cancellation follows
+from closing a browser or timing out an HTTP client.
+
+Python callers can pass `cancel_event=threading.Event()` to `generate()` and set
+the event from another thread. Keep model loading and generation on their owning
+thread. Catch `KeyprintCancelled` to inspect `.report` and `.artifacts`; a
+cancelled attempt is not a successful partial response. Use a fresh event for
+each attempt and do not clear a requested event. This support covers the local
+MLX/Transformers generation paths, not the experimental SGLang/vLLM engines.
 
 Validated with a real OpenAI 3.14.1 client, HTTP socket, pinned Qwen/MLX generation
 and identical-response idempotency replay. Provider SDK contract tests exercise

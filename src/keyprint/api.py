@@ -6,10 +6,12 @@ from typing import Any, Callable
 import json
 import secrets
 import tempfile
+from threading import Event
 
 from .integrity import verify
 from .rewrite import Rewrite
 from .inspection import Inspection
+from .cancellation import check_cancellation, _CancellationRequested
 
 
 class KeyprintError(RuntimeError):
@@ -18,6 +20,13 @@ class KeyprintError(RuntimeError):
         self.report = report
         self.artifacts = artifacts
         super().__init__("Keyprint operation failed; inspect .report for the phase and consumed work")
+
+
+class KeyprintCancelled(KeyprintError):
+    """Generation stopped at a cooperative boundary; receipts remain available."""
+    def __init__(self, report: dict[str, Any], artifacts: Path | None = None):
+        super().__init__(report, artifacts)
+        self.args = ("Keyprint generation cancelled; inspect .report for consumed work and .artifacts for receipts",)
 
 
 @dataclass(frozen=True)
@@ -100,19 +109,29 @@ class Keyprint:
         return self._candidate.pipeline(self._key, condition=condition, **settings)
 
     def generate(self, prompt: str, *, max_tokens: int = 64,
-                 condition: str = "marked", output: str | Path | None = None) -> Generation:
+                 condition: str = "marked", output: str | Path | None = None,
+                 cancel_event: Event | None = None) -> Generation:
+        """Generate once; an optional Event requests cooperative cancellation.
+
+        Set the event from another thread. A model call already in progress may
+        finish; cancellation is checked before the next call or sample. A
+        stopped attempt raises KeyprintCancelled with retained receipts. Use a
+        fresh Event for each attempt; do not clear or reuse a requested event.
+        """
         if self._backend is None:
             raise ValueError("load a supported backend first, for example Keyprint.from_mlx(...)")
         if condition not in ("ordinary", "marked"):
             raise ValueError("condition must be ordinary or marked")
         if type(max_tokens) is not int or not 1 <= max_tokens <= 1024:
             raise ValueError("max_tokens must be between 1 and 1024")
+        if cancel_event is not None and not isinstance(cancel_event, Event):
+            raise TypeError("cancel_event must be a threading.Event or None")
         if hasattr(self._backend, "generate"):
             return self._backend.generate(prompt, key=self._key, max_tokens=max_tokens,
-                                          condition=condition, output=output)
+                                          condition=condition, output=output, cancel_event=cancel_event)
         ids = self._backend.encode_prompt(prompt)
         return self._run(self._backend.model, ids, max_tokens=max_tokens,
-                         condition=condition, output=output)
+                         condition=condition, output=output, cancel_event=cancel_event)
 
     def rewrite(self, text: str, *, max_tokens: int = 256,
                 output: str | Path | None = None, condition: str = "marked") -> Rewrite:
@@ -132,14 +151,25 @@ class Keyprint:
 
     def _run(self, model: Callable[..., Any], ids: list[int], *, max_tokens: int,
              condition: str, output: str | Path | None,
-             backend: Any = None, cache_factory: Any = None) -> Generation:
+             backend: Any = None, cache_factory: Any = None,
+             cancel_event: Event | None = None) -> Generation:
         from ._engine.research.keyprint_candidate_v3_caller import DurableJournal
         directory = Path(tempfile.mkdtemp(prefix="keyprint-")) if output is None else Path(output)
         if output is not None:
             directory.mkdir(mode=0o700)
         reservations: dict[str, int] = {}
+        cancelled = False
 
         def reserve(action: str, metadata: dict[str, Any]) -> None:
+            nonlocal cancelled
+            if action in ("cache_creation", "model_forward", "sample"):
+                # Never interrupt a random draw or the token commit it belongs
+                # to. The frozen caller records the failure and closes cache.
+                try:
+                    check_cancellation(cancel_event)
+                except _CancellationRequested:
+                    cancelled = True
+                    raise
             reservations[action] = reservations.get(action, 0) + 1
 
         with DurableJournal(directory / "journal.jsonl") as journal:
@@ -151,10 +181,15 @@ class Keyprint:
                 backend=backend, cache_factory=cache_factory,
             )
         report["package_scope"] = "Namespaced reference port; no new model-family or scientific acceptance."
-        count = len(report.get("payload", {}).get("committed_token_ids", []))
+        payload = report.get("payload", {})
+        count = payload.get("committed_tokens", 0) if report["kind"] == "error" else len(payload.get("committed_token_ids", []))
+        if cancelled:
+            report["cancellation_requested"] = True
         report["usage"] = {"prompt_tokens": len(ids), "completion_tokens": count, "total_tokens": len(ids) + count}
         with (directory / "report.json").open("x", encoding="utf-8") as stream:
             json.dump({"report": report, "reservations": reservations}, stream, ensure_ascii=False, allow_nan=False)
         if report["kind"] == "error":
+            if cancelled and payload.get("code") != "journal_failure":
+                raise KeyprintCancelled(report, directory)
             raise KeyprintError(report, directory)
         return Generation(report["rendered_carriers"]["visible_text"], report, directory)

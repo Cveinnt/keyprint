@@ -365,6 +365,36 @@ SDK. This is development on opened data, not fresh validation or a new acceptanc
 
 ## Framework pilots
 
+### Cooperative cancellation
+
+```sh
+python tools/validate_cancellation.py --backend transformers \
+  --model models/smollm2 --output private-cancellation-transformers
+python tools/validate_cancellation.py --backend mlx \
+  --model models/qwen3-8b-4bit --output private-cancellation-mlx
+```
+
+This check uses a real OpenAI client and local HTTP server. It holds a deliberate
+barrier after a real model call and at least one committed token, requests
+cancellation twice, confirms the worker stays busy, then releases the barrier.
+No model output or sampling draw is substituted. The check requires no further
+model calls or token commits, correct partial usage, replayable terminal HTTP
+410 without another attempt, successful fresh inference on the same worker,
+late-cancellation preservation of success, and graceful shutdown. Journals and
+keys remain private; `public/cancellation.json` contains the safe outcome and
+next generated text. This establishes lifecycle behavior, not kernel preemption,
+latency, quality or production framework cancellation. CPU CI runs the same
+check from the installed wheel.
+
+The September 19 fresh-wheel runs passed for Transformers/SmolLM2 and MLX/Qwen.
+Each cancelled attempt retained one committed token. The following 32-token
+generation succeeded on the same worker, ended at its length cap, and replayed
+without another attempt. Both reports retain that truncated next text. The
+installed-wheel suite passed 208 tests, including cancellation before work,
+between calls, during a random draw, terminal races and unrelated model errors.
+
+### Native callback comparisons
+
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
 pinned CPU vLLM or SGLang environments. It compares actual final token IDs with
 hash-chained selection journals; text retokenization is not substituted for host

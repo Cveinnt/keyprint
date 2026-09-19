@@ -1,12 +1,13 @@
 """Runner contract tests use controlled models, not downloaded model behavior."""
 import json
 from types import SimpleNamespace
+from threading import Event
 
 import pytest
 
 torch = pytest.importorskip("torch")
 
-from keyprint import Keyprint, KeyprintError
+from keyprint import Keyprint, KeyprintError, KeyprintCancelled
 from keyprint.backends.bytelevel import ByteLevelBinding
 from keyprint.backends.transformers import TransformersModel
 
@@ -91,3 +92,71 @@ def test_literal_is_uncalibrated_and_rejects_render_change():
     assert kp.score("AAA")["verdict"] is None
     with pytest.raises(ValueError, match="exactly replayable"):
         kp.score("BBB")
+
+
+@pytest.mark.parametrize("cancel_at", [0, 1, 2])
+def test_cooperative_cancel_retains_partial_usage_and_allows_new_attempt(tmp_path, cancel_at):
+    stop = Event()
+    class CancellingModel(Model):
+        def __call__(self, **kwargs):
+            result = super().__call__(**kwargs)
+            if self.calls == cancel_at:
+                stop.set()
+            return result
+    model = CancellingModel()
+    kp = candidate(model)
+    if cancel_at == 0:
+        stop.set()
+    with pytest.raises(KeyprintCancelled) as caught:
+        kp.generate("hello", max_tokens=4, cancel_event=stop, output=tmp_path / "cancelled")
+    report = caught.value.report
+    assert model.calls == cancel_at
+    assert report["model_calls"] == cancel_at
+    assert report["committed_token_ids"] == ([1] if cancel_at == 2 else [])
+    assert report["usage"]["completion_tokens"] == (1 if cancel_at == 2 else 0)
+    assert report["cancellation_requested"] is True
+    assert json.loads((caught.value.artifacts / "report.json").read_text()) == report
+    events = [json.loads(line)["event"] for line in (caught.value.artifacts / "journal.jsonl").read_text().splitlines()]
+    assert [event["token_id"] for event in events if event["phase"] == "committed"] == report["committed_token_ids"]
+    result = kp.generate("hello", max_tokens=4, output=tmp_path / "next")
+    assert result.report["completion"] == "eos"
+
+
+def test_invalid_cancel_event_rejected_before_model(tmp_path):
+    model = Model()
+    with pytest.raises(TypeError, match="threading.Event"):
+        candidate(model).generate("hello", cancel_event=True, output=tmp_path / "bad")
+    assert model.calls == 0 and not (tmp_path / "bad").exists()
+
+
+def test_cancellation_does_not_mask_a_model_failure(tmp_path):
+    stop = Event()
+    class FailingModel(Model):
+        def __call__(self, **kwargs):
+            stop.set()
+            return super().__call__(**kwargs)
+    with pytest.raises(KeyprintError) as caught:
+        candidate(FailingModel(fail=True)).generate("hello", cancel_event=stop, output=tmp_path / "failed")
+    assert not isinstance(caught.value, KeyprintCancelled)
+    assert caught.value.report["error_type"] == "RuntimeError"
+
+
+def test_cancellation_during_random_draw_finishes_that_token_commit(tmp_path, monkeypatch):
+    stop = Event()
+    class TwoTokens(Model):
+        def __call__(self, **kwargs):
+            result = super().__call__(**kwargs)
+            result.logits[:, :, 0:2] = 0
+            return result
+    def draw(bits):
+        stop.set()
+        return (1 << bits) - 1
+    monkeypatch.setattr("keyprint.backends.transformers.secrets.randbits", draw)
+    model = TwoTokens()
+    with pytest.raises(KeyprintCancelled) as caught:
+        candidate(model).generate("hello", condition="ordinary", cancel_event=stop, output=tmp_path / "stopped")
+    assert model.calls == 1
+    assert caught.value.report["committed_token_ids"] == [1]
+    events = [json.loads(line)["event"] for line in (caught.value.artifacts / "journal.jsonl").read_text().splitlines()]
+    phases = [event["phase"] for event in events]
+    assert phases.index("random_returned") < phases.index("commit_requested") < phases.index("committed")

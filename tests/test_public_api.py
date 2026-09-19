@@ -5,11 +5,12 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+from threading import Event
 
 import numpy as np
 import pytest
 
-from keyprint import Keyprint, KeyprintError, verify
+from keyprint import Keyprint, KeyprintError, KeyprintCancelled, verify
 
 KEY = bytes(range(32))
 ROOT = Path(__file__).resolve().parents[1]
@@ -150,3 +151,61 @@ def test_unavailable_and_unsupported_backend_errors():
     with pytest.raises(ValueError, match="backend"):
         candidate.generate("hello")
     assert verify()["files"] == 39
+
+
+@pytest.mark.parametrize("cancel_at", [0, 1, 2])
+def test_reference_cancel_preserves_consumption_and_releases_candidate(tmp_path, cancel_at):
+    stop = Event()
+    calls = []
+    def model(ids, *, cache):
+        calls.append(1)
+        if len(calls) == cancel_at:
+            stop.set()
+        return head(32).reshape(1, 1, 151936).repeat(ids.shape[1], axis=1)
+    kp = Keyprint(key=KEY)
+    if cancel_at == 0:
+        stop.set()
+    with pytest.raises(KeyprintCancelled) as caught:
+        kp._run(model, [32], max_tokens=4, condition="marked", output=tmp_path / "cancelled",
+                backend=FakeBackend, cache_factory=lambda model: [], cancel_event=stop)
+    report = caught.value.report
+    assert len(calls) == cancel_at
+    assert report["payload"]["committed_tokens"] == (1 if cancel_at == 2 else 0)
+    assert report["usage"]["completion_tokens"] == (1 if cancel_at == 2 else 0)
+    assert report["cancellation_requested"] is True
+    assert json.loads((caught.value.artifacts / "report.json").read_text())["report"] == report
+    result = kp._run(model, [32], max_tokens=2, condition="marked", output=tmp_path / "next",
+                     backend=FakeBackend, cache_factory=lambda model: [])
+    assert result.text == "AA"
+
+
+def test_reference_cancellation_does_not_mask_a_model_failure(tmp_path):
+    stop = Event()
+    def model(ids, *, cache):
+        stop.set()
+        raise RuntimeError("actual failure")
+    with pytest.raises(KeyprintError) as caught:
+        Keyprint(key=KEY)._run(model, [32], max_tokens=4, condition="marked", output=tmp_path / "failed",
+                              backend=FakeBackend, cache_factory=lambda model: [], cancel_event=stop)
+    assert not isinstance(caught.value, KeyprintCancelled)
+    assert "cancellation_requested" not in caught.value.report
+
+
+def test_reference_cancellation_during_draw_finishes_that_commit(tmp_path, monkeypatch):
+    stop = Event()
+    calls = []
+    def model(ids, *, cache):
+        calls.append(1)
+        return head(32, 33).reshape(1, 1, 151936).repeat(ids.shape[1], axis=1)
+    def draw(bits):
+        stop.set()
+        return (1 << bits) - 1
+    monkeypatch.setattr("keyprint.api.secrets.randbits", draw)
+    with pytest.raises(KeyprintCancelled) as caught:
+        Keyprint(key=KEY)._run(model, [32], max_tokens=4, condition="ordinary", output=tmp_path / "stopped",
+                              backend=FakeBackend, cache_factory=lambda model: [], cancel_event=stop)
+    assert calls == [1]
+    assert caught.value.report["usage"]["completion_tokens"] == 1
+    events = [json.loads(line)["event"] for line in (caught.value.artifacts / "journal.jsonl").read_text().splitlines()]
+    kinds = [event["kind"] for event in events]
+    assert kinds.index("random_bits_returned") < kinds.index("committed_step")

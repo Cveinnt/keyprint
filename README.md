@@ -134,6 +134,13 @@ These are **uncalibrated diagnostics**, without
 an authorship verdict, detection threshold or false-positive guarantee.
 Retokenizing visible text can differ from the generated token path.
 
+To stop generation cooperatively, pass `cancel_event=stop`, where `stop` is a
+`threading.Event`, and call `stop.set()` from another thread. Catch
+`KeyprintCancelled` to inspect retained work and receipts. Keep the model on its
+owning thread; an active model call cannot be preempted. The local server also
+provides [explicit cancellation](PROVIDERS.md#explicit-cancellation), separate
+from HTTP timeouts and result recovery.
+
 Keys are exactly 32 bytes. `keyprint keygen` creates an owner-only file without
 printing the key or overwriting an existing file. `Keyprint.new_key()` returns
 fresh bytes for applications; store them securely yourself. Keep keys and
