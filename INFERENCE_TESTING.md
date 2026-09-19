@@ -135,6 +135,52 @@ every attempt and applies strict greater-than decisions without tuning. This
 tests a proposed scoring change on fresh text; its small, same-key/model scope
 still cannot certify deployment error rates or generalize to new domains.
 
+## Public human-text false-positive screen
+
+```sh
+python tools/validate_null_corpus.py \
+  --source databricks-dolly-15k.jsonl \
+  --baseline private-score-development/comparison.json \
+  --output private-null-corpus
+```
+
+Download `databricks-dolly-15k.jsonl` from
+[Databricks Dolly](https://huggingface.co/datasets/databricks/databricks-dolly-15k/tree/bdd27f4d94b9c1f951818a7da7fd7aeea5dbff1a).
+The runner requires that revision's exact file checksum. The dataset is copyright
+2023 Databricks, Inc., with some Wikipedia contributions, under CC BY-SA 3.0.
+Contributors were instructed not to use generative AI; this is source provenance,
+not independent authorship verification. Public reports retain indices/hashes and
+scores, not copies of the responses. Keep attribution with exported reports.
+
+Before scoring, the runner groups transitive exact normalized duplicates across
+instructions, contexts and responses, then deterministically selects 1,000
+responses of 100–400 whitespace-separated words. It uses 500 for calibration and
+500 for validation, with two fresh independent keys per split. Each observation
+is one document's maximum across its two keys. The 2,000 individual key scores
+are not 2,000 independent documents. It freezes both 1% empirical thresholds
+before held-out scoring. Missing scores remain unavailable, not negative results.
+
+The reported 97.5% one-sided exact binomial upper bounds assume IID documents;
+related subjects/authors, near duplicates and changed keys limit that assumption.
+Neither these bounds nor the calibration rank confer a deployment guarantee.
+Results cover this English corpus and length range only. Detection power must
+be tested separately on fresh marked outputs under the frozen thresholds.
+
+```sh
+python tools/validate_corpus_power.py --source databricks-dolly-15k.jsonl \
+  --null-study private-null-corpus --model models/qwen3-8b-4bit \
+  --output private-corpus-power
+```
+
+The follow-up chooses the first two eligible source tasks in each of six declared
+categories, using only source metadata and the frozen split, never null scores.
+It generates ordinary/marked pairs with the two held-out keys, alternating order
+and key by task. Source instructions and reference contexts remain unchanged;
+there is no forced response length. Outputs outside the null corpus's word range,
+errors and truncations remain visible. Matching-key sensitivity, wrong-key hits
+and ordinary two-key exceedances are separate counts. No thresholds are retuned
+and no semantic-quality acceptance is inferred from detection results.
+
 ## Framework pilots
 
 `tools/validate_native_cases.py` runs the same cases as ordinary/marked pairs in
