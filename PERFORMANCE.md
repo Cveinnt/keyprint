@@ -1,9 +1,10 @@
 # Sampling performance
 
 The latest complete-path comparison fails the lightweight-runtime target:
-marked Keyprint takes 1.5266 times MLX-LM's time per token on the fixed local
+marked Keyprint takes 1.2812 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
-See [the unmodified engine comparison](#unmodified-mlx-lm-baseline) before using
+Exact partition filtering reduced the preceding 1.5266 ratio, but has not met
+the 1.05 screen. See [integrated partition filtering](#integrated-partition-filtering) before using
 any of the helper or within-SDK results below as a performance claim.
 
 The portable Transformers backend and experimental SGLang/vLLM adapters use
@@ -643,10 +644,54 @@ median candidate/reference selection-time ratios are 0.1064 for random logits,
 0.2729 for rounded ties and 0.1986 for equal logits. The first equal-logit
 slowdown is retained; the final candidate adds an exact all-equal shortcut.
 
-Those are selector timings only. SDK integration still requires independently
-bound source, full-filter and full-caller parity, lifecycle regression, and a new
-declared complete-path serving measurement. The 1.526571 SDK/engine result
-remains the latest measured runtime result; the selector has not closed it.
+Those were selector timings only. The following integration binds its own
+source and qualifies the complete path; the 1.526571 result remains retained
+for the preceding runtime.
+
+### Integrated partition filtering
+
+`experimental-native` now uses the partition selector inside a separately bound
+full-filter implementation. The frozen engine is unchanged. Input validation,
+float64 gap arithmetic, tie-breaking, immutable filtered logits, diagnostics and
+the reference policy identity are preserved; the execution identity additionally
+binds `partition_filter.py`. Per-step filter receipts and both pre-commit and
+post-commit failure accounting remain intact. Journals are not weakened.
+
+Forty-four full-filter cases compare exact output bytes and complete diagnostics
+across extreme temperatures, rounded gap boundaries, ties, signed zeros, unmapped
+padding and invalid inputs. Eighteen native checks pass alongside them. Four
+additional failure tests preserve consumed-work behavior, including invalid
+UTF-8 after commit. The installed wheel passes 798 regression tests with twelve
+unchanged optional native-helper checks skipped; all 80 SDK files match source
+and installation. Full-caller parity again reconciles twelve pairs and 988
+reference/native tokens. Both actual client cancellation/reuse flows pass, as do
+eleven JSON/typed-client requests with 213 tokens and 175 replayed grammar masks.
+
+Only after qualification, the unchanged three-path benchmark ran against the
+new frozen runtime. All 72 measured outputs and three warmups completed; all
+measured outputs reached EOS. The audit reconciles 3,058 tokens, including 995
+upstream engine tokens, and replays native rendering and SDK byte receipts.
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.237856 | 1.245453 |
+| Marked Keyprint / MLX-LM | 1.281173 | 1.289455 |
+| Marked / ordinary Keyprint | 1.034994 | 1.041076 |
+
+The complete SDK cost screen still fails. Within-SDK marking passes, but this
+does not close the larger gap. The same prompt set, repeat count, order, threshold
+and retention rules were used, with independent SDK draws and retained native
+policies. These are separate local experiments, not identical generated paths or
+an isolated causal estimate. OS background activity remains recorded, and no
+batching, HTTP, semantic, detector or production acceptance follows. Further
+optimization must preserve the same receipts and receive its own qualification.
+
+The follow-up instrumented profile retains twelve outputs and 494 tokens.
+Complete support filtering now accounts for 0.83 cumulative seconds, about
+1.67 ms/token under cProfile. Hashing and repeated binding construction remain
+visible costs; these diagnostics do not justify dropping integrity checks or
+weakening durable journals. The uninstrumented complete-path result above is
+the serving evidence.
 
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.

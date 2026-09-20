@@ -71,6 +71,38 @@ def test_native_table_batches_large_explicit_label_sets():
     assert profile.table(key,context,labels)=={label:ref.bits(key,context,label) for label in labels}
 
 
+@pytest.mark.parametrize('failure', ['nan', 'padded_inf', 'wrong_dtype', 'invalid_utf8'])
+def test_filter_and_post_commit_failures_match_reference_receipts(failure):
+    ref = Candidate()
+    native = NativeCandidate(ref)
+    raw = head([32])
+    if failure == 'nan': raw[0, 32] = np.nan
+    elif failure == 'padded_inf': raw[0, -1] = np.inf
+    elif failure == 'wrong_dtype': raw = raw.astype(np.float64)
+    else:
+        token = next(i for i, piece in enumerate(ref._base._binding.token_bytes) if piece == b'\xb5')
+        raw = head([token])
+    observations = []
+    for candidate in (ref, native):
+        pipeline = candidate.pipeline(bytes(range(32)), condition='ordinary')
+        draws = []
+        rng = random.Random(42)
+        def bits(count):
+            draws.append(count)
+            return rng.getrandbits(count)
+        try:
+            with pytest.raises((ValueError, TypeError, UnicodeDecodeError)) as caught:
+                pipeline.step(raw, bits)
+            observations.append((type(caught.value), pipeline.committed_token_ids,
+                                 pipeline._raw.filter_attempts, draws))
+            assert pipeline._raw._terminal
+        finally:
+            pipeline.close()
+    assert observations[0] == observations[1]
+    assert observations[0][2][-1]['status'] == (
+        'failed_after_commit' if failure == 'invalid_utf8' else 'failed_before_commit')
+
+
 def test_modified_binary_identity_is_not_accepted():
     native=NativeCandidate(Candidate())
     target=native.identity

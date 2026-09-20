@@ -250,7 +250,8 @@ for the validation scope; this option does not establish a serving-speed claim.
 
 A separate, unpublished `keyprint-native` wheel enables
 `execution="experimental-native"` on Apple Silicon macOS. It batches the same
-HMAC computation in a bundled library; the core package never compiles or
+HMAC computation in a bundled library and selects top-k support with exact
+reference tie-breaking; the core package never compiles or
 downloads it automatically. Full-caller output parity and both local provider
 cancellation paths have been tested, with a distinct binary-bound identity.
 See [native installation and scope](native/README.md). It is optional, not the

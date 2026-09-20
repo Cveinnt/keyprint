@@ -33,15 +33,15 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
-The optional native HMAC accelerator now has a self-contained macOS ARM64 wheel
+The optional native HMAC accelerator has a self-contained macOS ARM64 wheel
 and explicitly selected SDK execution with a binary-bound identity. Clean
 installation requires no compiler or separate OpenSSL. Full-caller comparison
 matches all 988 reference/native tokens across twelve pairs; both local provider
 clients pass cancellation, terminal replay and worker reuse. The installed SDK
-passes 700 regression tests plus a separate optional-native boundary suite;
-all 79 packaged SDK files match the tested source and installation.
+now passes 798 regression tests plus four additional failure-contract checks;
+all 80 packaged SDK files match the tested source and installation.
 
-The frozen native runtime passes the unchanged local 5% incremental timing
+Before partition integration, the frozen native runtime passed the local 5% incremental timing
 screen on eight declared Dolly tasks: ratio 1.028758, one-sided 95% upper
 1.032226. All 64 measured outputs and sixteen warmups are retained; an audit
 reconciles 10,634 tokens, original prompts, journals, text and byte rendering.
@@ -56,10 +56,13 @@ ordinary execution takes 1.485376 times the engine's time per token, and marked
 execution 1.526571 (upper bound 1.537920). All 72 measured outputs and three
 warmups reconcile, including 3,053 generated tokens. Sampling and bookkeeping
 differ, so this is complete-path evidence rather than a pure marking estimate.
-Profiling directs optimization at full-vocabulary filtering. A development-only
-partition selector preserves exact order in 53 combined harness/selector tests
-and ninety full-width comparisons, but is not integrated. The runtime cost gap
-stays open until full-caller parity and a new complete-path study qualify a fix.
+Profiling directed optimization at full-vocabulary filtering. The partition
+selector is now integrated into separately identified experimental-native
+execution after exact full-filter/caller parity and both provider lifecycle
+checks. A new unchanged 72-output study reduces marked SDK/engine time per token
+to 1.281173 (upper 1.289455), with 3,058 audited tokens including warmups. This
+is progress, but the complete-path 5% target remains unmet. Journals and numerical
+contracts are preserved; further optimization and qualification remain required.
 
 The CLI now uses the same host-aware backend default and pinned-cache fallback
 for generation, serving and the playground. Explicit overrides remain available;

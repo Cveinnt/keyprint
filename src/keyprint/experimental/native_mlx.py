@@ -1,9 +1,11 @@
 """Explicit optional native PRF execution, with independently bound identity."""
 import hashlib
 from pathlib import Path
+import numpy as np
 
-from .fast_mlx import (FastCandidate, _ContextProfile, _SparseV3Host, _upgrade,
+from .fast_mlx import (FastCandidate, _ContextProfile, _SparseV3Host, _SparseV2Host, _upgrade,
                        execution_specification as python_execution)
+from . import partition_filter
 from .fast_public import FastPublicCandidate
 from .batched_tournament import BatchedTokenSourceSession
 from .capped_utf8 import CappedPipeline
@@ -26,6 +28,11 @@ def native_backend():
 def execution_specification(native=None):
     result=python_execution()
     result['native_sdk_source_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    result['support_filter_execution']={
+        'implementation':'exact-partition-top-k-v1',
+        'source_sha256':hashlib.sha256(Path(partition_filter.__file__).read_bytes()).hexdigest(),
+        'policy':'unchanged reference support law; exact cutoff ties by ascending token ID',
+    }
     result['native_prf']=(native or native_backend()).identity
     result['request_local_hmac_context']=False
     result['native_batch_key_state']='per-call only; no persistent keyed state'
@@ -81,6 +88,34 @@ class _NativeHost(_SparseV3Host):
 
     def _upgrade(self,carrier):
         _upgrade(carrier,_NativeSession,native=self._native)
+
+    def step(self, raw_logits, random_bits):
+        self._ready()
+        before = len(self._all_ids)
+        attempt = dict(committed_before=before, committed_after=before,
+                       phase='shared_filter', status='started')
+        self.filter_attempts.append(attempt)
+        try:
+            if not isinstance(raw_logits, np.ndarray) or raw_logits.shape != (1, self.model_size):
+                raise ValueError('v3 requires the complete raw model head')
+            attempt['raw_logits_sha256'] = hashlib.sha256(raw_logits.tobytes()).hexdigest()
+            filtered = partition_filter.partition_support_filter(raw_logits,
+                **self._filter_settings, mapped_vocabulary_size=self.mapped_size)
+            attempt.update(filter_profile_sha256=filtered.identity['filter_profile_sha256'],
+                           admitted_token_ids=list(filtered.admitted_token_ids),
+                           filtered_logits_sha256=hashlib.sha256(filtered.filtered_logits.tobytes()).hexdigest(),
+                           diagnostics=filtered.diagnostics, phase='keyed_sampling')
+            result = _SparseV2Host.step(self, filtered.filtered_logits, random_bits)
+            attempt.update(status='committed', phase='complete')
+            return result
+        except BaseException as exc:
+            attempt.update(status='failed_after_commit' if len(self._all_ids) > before else 'failed_before_commit',
+                           exception_type=type(exc).__name__)
+            if not self._terminal:
+                self._close()
+            raise
+        finally:
+            attempt['committed_after'] = len(self._all_ids)
 
 
 class NativeCandidate(FastCandidate):
