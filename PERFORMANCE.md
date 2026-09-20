@@ -479,6 +479,16 @@ python tools/profile_fast_serving.py --model PINNED_MODEL \
   --confirmation PRIVATE_CONFIRMATION --output NEW_PRIVATE_PROFILE
 ```
 
+Profiling retained sixteen additional outputs on those same tasks (2,647
+committed tokens, no errors). Under instrumentation, marked-path HMAC bit
+production accounted for about 3.47 ms per token cumulatively; these numbers
+are diagnostic, not serving timings. A development-only prototype moved all
+layer-bit generation into one Python call. All 2,115,000 compared bits matched,
+but its median helper-time ratios ranged from 0.9632 to 0.9877 across five sizes.
+That small helper-only gain does not establish a useful end-to-end improvement.
+It remains outside the SDK; no repeated serving run or acceptance was inferred
+from it. Reproduce with `tools/benchmark_sha_bits.py --output NEW_PRIVATE_SCREEN`.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.
