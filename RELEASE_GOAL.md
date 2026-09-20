@@ -33,6 +33,15 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+A development-only native HMAC batch helper now offers a concrete path beyond
+the failed Python-only optimization. All 2,125,890 synthetic full-digest checks
+pass; helper-time ratios range from 0.1820 to 0.2340 of the Python comparator.
+Another 77,490 digests match addresses from sixteen retained real generations.
+Sixty focused tests and a 10,000-call native sanitizer harness pass. SDK runtime
+files are unchanged: portable distribution, complete-caller parity/lifecycle
+checks and a newly declared serving study remain required before integration.
+The unchanged 5% cost target is still unmet by the latest measured SDK runtime.
+
 The CLI now uses the same host-aware backend default and pinned-cache fallback
 for generation, serving and the playground. Explicit overrides remain available;
 missing-cache errors name the pinned download command and perform no download.

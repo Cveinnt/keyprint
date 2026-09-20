@@ -489,6 +489,38 @@ That small helper-only gain does not establish a useful end-to-end improvement.
 It remains outside the SDK; no repeated serving run or acceptance was inferred
 from it. Reproduce with `tools/benchmark_sha_bits.py --output NEW_PRIVATE_SCREEN`.
 
+### Native PRF development screen
+
+The next experiment moves a complete HMAC batch across the Python/native boundary
+once. `tools/native_prf/` contains an explicit local builder and a bounded OpenSSL
+3 EVP helper. It is not loaded by the SDK or built during package installation.
+It returns every digest byte for auditing; reference address serialization,
+the fixed 32-byte key and SHA-256 HMAC construction remain unchanged.
+
+On macOS ARM64 with OpenSSL 3.6.3 and Apple clang 21.0.0, all 2,115,000 timed
+full-digest comparisons and 10,890 SHA boundary comparisons matched the existing
+Python SHAContext and stdlib HMAC. Median native/reference helper-time ratios
+were 0.2340, 0.1820, 0.1898, 0.1883 and 0.1890 at 1, 10, 64, 100 and 1,000 labels.
+Context construction, ctypes input packing and complete output copying are
+included. These helper timings do not measure the complete SDK bit-table path,
+model generation, native-framework overhead or serving acceptance.
+
+All 60 focused native/SHA checks pass, including bounds, binary/Unicode inputs
+and concurrent independent keys. A separate native address/undefined-behavior
+sanitizer harness passes 10,000 repeated calls and output-canary checks. The
+linked OpenSSL library was not rebuilt with sanitizers. Replaying addresses from
+all sixteen retained Dolly profile outputs verifies another 77,490 complete
+digests across 2,647 committed tokens, with report hashes, journal chains and
+commit counts reconciled. This reuses existing texts; it is not new inference or
+full model/sampling replay. See [build and reproduction instructions](tools/native_prf/README.md).
+
+The native prototype is a promising way to reduce the measured Python/crypto
+call overhead, but the previous 1.057928 upper serving ratio remains a failure.
+Before any promotion: qualify a portable binary distribution, bind the native
+implementation identity, verify full-caller sampling/lifecycle parity, and freeze
+that runtime for a new declared serving study. No benchmark threshold or release
+gate changed. No larger serving run was triggered from a helper result alone.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

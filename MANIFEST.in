@@ -6,3 +6,4 @@ recursive-include examples *.py
 recursive-include tools *.py *.json
 include tools/sglang-arm.Dockerfile
 include tools/SGLANG_LICENSE
+recursive-include tools/native_prf *.c *.md
