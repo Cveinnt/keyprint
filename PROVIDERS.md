@@ -1,4 +1,4 @@
-# OpenAI client and completed provider responses
+# OpenAI and Anthropic clients
 
 Private development preview. These are two different integration paths. Neither
 inserts Keyprint into OpenAI-hosted GPT or Anthropic-hosted Claude sampling.
@@ -49,11 +49,49 @@ Requests run on one model worker. Busy requests return 503 without starting
 generation. Use no automatic retries: a timeout does not cancel the model run.
 Repeat the same idempotency key and body to recover the accepted attempt: 409
 means it is still running; after completion, the original response is replayed.
-A different body returns 409. Accepted work survives a disconnected or cancelled
+A different body or endpoint returns 409. Accepted work survives a disconnected or cancelled
 HTTP handler, and graceful shutdown waits for it to finish. Replay works only
 during this process lifetime; restarting clears that memory.
 The server stops accepting new attempts after 256 records. Inspect private
 artifacts before restarting; do not treat a restart as retry authorization.
+
+## Use the Anthropic client with the same local server
+
+```python
+from pathlib import Path
+from anthropic import Anthropic
+
+client = Anthropic(
+    base_url="http://127.0.0.1:8765",  # Root URL; the SDK adds /v1/messages.
+    api_key=Path("local-api.key").read_bytes().hex(),
+    max_retries=0,
+    timeout=120,
+)
+message = client.messages.create(
+    model="keyprint",
+    max_tokens=128,
+    messages=[{"role": "user", "content": "Explain why the sky is blue."}],
+    extra_headers={"Idempotency-Key": "sky-messages-1"},
+)
+print(message.content[0].text)
+print(message.stop_reason, message.usage.output_tokens)
+```
+
+This uses Keyprint's local model and watermark key. The supported
+[Messages format](https://platform.claude.com/docs/en/api/messages/create)
+is one user message containing a string or one text block, `model="keyprint"`,
+`max_tokens` from 1 to 1024, and optional `stream=False`. The client supplies
+`x-api-key` and `anthropic-version: 2023-06-01`. Raw HTTP callers must supply
+those headers too. Beta features, system prompts, multiple turns, images,
+tools, caching and custom sampling settings are rejected before generation.
+
+The returned message contains local input/output token counts and the
+[stop reason](https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons)
+`end_turn` or `max_tokens`. These are local model counts, not Claude billing.
+The two endpoints share one worker, request budget and idempotency namespace.
+Use a new idempotency key when switching endpoints; an existing key cannot
+return a response in the other client's format. The cancellation extension below
+also accepts `x-api-key` with the same local token.
 
 ### Explicit cancellation
 
@@ -92,9 +130,14 @@ cancelled attempt is not a successful partial response. Use a fresh event for
 each attempt and do not clear a requested event. This support covers the local
 MLX/Transformers generation paths, not the experimental SGLang/vLLM engines.
 
-Validated with a real OpenAI 3.14.1 client, HTTP socket, pinned Qwen/MLX generation
-and identical-response idempotency replay. Provider SDK contract tests exercise
-authentication, rejection, single-worker ownership and failure behavior.
+Validated with real OpenAI 3.14.1 and Anthropic 1.6.0 clients over HTTP on pinned
+Qwen/MLX experimental execution and SmolLM2/Transformers CPU. Both clients'
+generated text and usage match retained private receipts; idempotency replays
+the original response. Actual Anthropic-client cancellation on both backends
+retains the first committed token, replays the terminal error and permits a new
+32-token response on the same worker. These are bounded lifecycle checks, not
+output-quality or production-load acceptance. Provider contract tests exercise
+authentication, rejection, cross-protocol conflicts and shared-worker behavior.
 The installed-wheel lifecycle check also forces a real OpenAI client timeout,
 then verifies actual local inference, replay without duplicate generation,
 busy/conflict rejection and worker reuse. Its deliberate barrier is a lifecycle

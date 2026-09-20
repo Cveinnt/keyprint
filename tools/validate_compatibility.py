@@ -84,7 +84,7 @@ def write_report(output, report):
 
 
 def client_check(loader, output):
-    """Real OpenAI SDK + TCP HTTP + actual model inference; no hosted API call."""
+    """Real OpenAI/Anthropic clients over TCP with actual local model inference."""
     import uvicorn
     from openai import OpenAI, APIStatusError
     from anthropic import Anthropic, APIStatusError as AnthropicStatusError
@@ -121,22 +121,41 @@ def client_check(loader, output):
                 else:
                     raise AssertionError("unsupported mode accepted: " + name)
             assert all(code == 400 for code in rejections.values())
-        with Anthropic(base_url=f"http://127.0.0.1:{port}", api_key=token, max_retries=0, timeout=30,
-                       default_headers={"Authorization":"Bearer " + token}) as client:
+        with Anthropic(base_url=f"http://127.0.0.1:{port}", api_key=token, max_retries=0, timeout=120,
+                       _strict_response_validation=True) as client:
+            messages_params = dict(model="keyprint", max_tokens=64,
+                messages=[{"role":"user", "content":[{"type":"text", "text":"Say hello in one short sentence."}]}],
+                extra_headers={"Idempotency-Key":"real-messages-client"})
+            message = client.messages.create(**messages_params)
+            assert client.messages.create(**messages_params).model_dump() == message.model_dump()
+            assert message.content[0].type == "text" and message.content[0].text.strip()
+            assert message.stop_reason in ("end_turn", "max_tokens")
+            assert message._request_id == message.id
             try:
-                client.messages.create(model="keyprint", max_tokens=32, messages=[{"role":"user","content":"Hello"}])
+                client.messages.create(**{**messages_params, "stream": True})
             except AnthropicStatusError as exc:
-                assert exc.status_code == 404
+                assert exc.status_code == 400 and exc.response.json()["type"] == "error"
             else:
-                raise AssertionError("unexpected Anthropic Messages endpoint")
+                raise AssertionError("unsupported Messages streaming accepted")
         assert len(list((output / "http").glob("chatcmpl-*/report.json"))) == 1
+        assert len(list((output / "http").glob("msg_*/report.json"))) == 1
         saved = json.loads(next((output / "http").glob("chatcmpl-*/report.json")).read_text())
         saved = saved.get("report", saved)
         saved_text = saved.get("text", saved.get("rendered_carriers", {}).get("visible_text"))
         assert saved_text == result.choices[0].message.content
+        saved_message = json.loads((output / "http" / message.id / "report.json").read_text())
+        saved_message = saved_message.get("report", saved_message)
+        message_text = saved_message.get("text", saved_message.get("rendered_carriers", {}).get("visible_text"))
+        assert message_text == message.content[0].text
+        assert saved_message["usage"]["prompt_tokens"] == message.usage.input_tokens
+        assert saved_message["usage"]["completion_tokens"] == message.usage.output_tokens
         return {"openai_http":"pass", "text":saved_text, "finish_reason":result.choices[0].finish_reason,
-                "usage":result.usage.model_dump(), "idempotency_exact_replay":True, "model_attempts":1,
-                "unsupported_rejections":rejections, "anthropic_messages":"unsupported, verified HTTP 404",
+                "usage":result.usage.model_dump(), "idempotency_exact_replay":True, "model_attempts":2,
+                "unsupported_rejections":rejections,
+                "anthropic_messages":{"status":"pass", "text":message.content[0].text,
+                    "stop_reason":message.stop_reason, "usage":message.usage.model_dump(),
+                    "idempotency_exact_replay":True, "private_receipt_matches":True,
+                    "streaming_rejection":400},
                 "hosted_provider_calls":False}
     finally:
         server.should_exit = True
@@ -226,7 +245,7 @@ def main():
                 f"Outputs flagged by mechanical screens: {len(report['screening_failures'])}.\n\n" +
                 "Download the comparison artifact to read both texts. This job gates runtime and protocol contracts, " +
                 "not semantic quality or detector acceptance. Provider object rewrites use real local inference; " +
-                "they make no hosted GPT/Claude calls. Native Anthropic Messages remains unsupported.\n")
+                "they make no hosted GPT/Claude calls. Both local client endpoints support only the documented text subset.\n")
     return int(bool(report["engineering_failures"]))
 
 

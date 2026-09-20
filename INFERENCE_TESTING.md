@@ -23,12 +23,26 @@ reports. Open `public/comparison.html` to read ordinary and marked text side by
 side. Every attempt is retained. A failed generation fails the engineering run;
 truncation, missing literals and incorrect JSON are reported separately.
 
-The HTTP check runs an actual OpenAI SDK request through a TCP socket to a local
-model. It verifies generated text against the private report, exact idempotency
-replay, a single model attempt and rejection of unsupported options. An actual
-Anthropic SDK request confirms that the Messages endpoint is unsupported (404).
+The HTTP check runs actual OpenAI and Anthropic SDK requests through a TCP socket
+to one local model worker. It verifies generated text against private reports,
+exact idempotency replay, one generation per client and rejection of unsupported
+options. Anthropic uses the local Messages text subset with its standard API-key
+header; it does not call hosted Claude. Earlier retained runs predate this endpoint.
 Provider-object rewrite checks construct real SDK response objects from a fixed
 synthetic document and run the local model. They are not hosted GPT/Claude calls.
+
+Run just the two real client requests and their receipt/replay checks:
+
+```sh
+python tools/validate_clients.py --backend transformers --model models/smollm2 \
+  --output private-client-run
+```
+
+For the pinned Qwen model use `--backend mlx`, its model path, and optionally
+`--execution experimental-fast`. For actual Anthropic-client cancellation,
+run `tools/validate_cancellation.py` with `--protocol anthropic` and the same
+backend/model/output flags. The deliberately controlled cancellation boundary
+tests retained work and worker reuse, not natural cancellation latency.
 
 To exercise client timeout recovery separately:
 

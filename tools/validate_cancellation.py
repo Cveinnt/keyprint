@@ -35,11 +35,13 @@ def main():
     import httpx
     import uvicorn
     from openai import OpenAI, APIStatusError
+    from anthropic import Anthropic, APIStatusError as AnthropicStatusError
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--backend", choices=["transformers", "mlx"], required=True)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--execution", choices=["reference", "experimental-fast"], default="reference")
+    parser.add_argument("--protocol", choices=["openai", "anthropic"], default="openai")
     args = parser.parse_args()
     if args.backend != "mlx" and args.execution != "reference":
         parser.error("experimental-fast requires the MLX backend")
@@ -93,7 +95,7 @@ def main():
     base = f"http://127.0.0.1:{sock.getsockname()[1]}/v1"
     thread = threading.Thread(target=server.run, kwargs={"sockets": [sock]}, daemon=True)
     thread.start()
-    report = {"status": "running", "backend": args.backend, "execution": args.execution, "checks": {},
+    report = {"status": "running", "backend": args.backend, "execution": args.execution, "protocol": args.protocol, "checks": {},
               "scope": "Actual local inference with a deliberate post-forward barrier; no quality, preemption or latency claim",
               "hosted_provider_calls": False}
     failed = False
@@ -103,15 +105,19 @@ def main():
             if not thread.is_alive() or time.monotonic() > deadline:
                 raise RuntimeError("server did not start")
             time.sleep(.05)
-        with OpenAI(base_url=base, api_key=token, max_retries=0, timeout=180) as client:
+        client_class = OpenAI if args.protocol == 'openai' else Anthropic
+        client_base = base if args.protocol == 'openai' else base.removesuffix('/v1')
+        cap_field = 'max_completion_tokens' if args.protocol == 'openai' else 'max_tokens'
+        with client_class(base_url=client_base, api_key=token, max_retries=0, timeout=180) as client:
+            create = client.chat.completions.create if args.protocol == 'openai' else client.messages.create
             params = {"model": "keyprint", "messages": [{"role": "user", "content":
                       "Explain how rain forms in a detailed paragraph of about 150 words."}],
-                      "max_completion_tokens": 128, "extra_headers": {"Idempotency-Key": "cancel-real"}}
+                      cap_field: 128, "extra_headers": {"Idempotency-Key": "cancel-real"}}
 
             def expect_error(code, values):
                 try:
-                    client.chat.completions.create(**values)
-                except APIStatusError as exc:
+                    create(**values)
+                except (APIStatusError, AnthropicStatusError) as exc:
                     assert exc.status_code == code, (exc.status_code, code)
                     return exc.response.json()
                 raise AssertionError(f"expected HTTP {code}")
@@ -151,18 +157,20 @@ def main():
             report["cancelled_forward_calls"] = state["first_forward_count"]
             terminal = httpx.post(base + "/keyprint/cancel", headers=headers)
             assert terminal.status_code == 200 and terminal.json()["http_status"] == 410
-            next_params = {**params, "max_completion_tokens": 32,
+            next_params = {**params, cap_field: 32,
                            "extra_headers": {"Idempotency-Key": "while-cancelling"}}
-            completed = client.chat.completions.create(**next_params)
-            assert len(attempts) == 2 and completed.choices[0].message.content.strip()
-            assert client.chat.completions.create(**next_params).model_dump() == completed.model_dump()
+            completed = create(**next_params)
+            text = completed.choices[0].message.content if args.protocol == 'openai' else completed.content[0].text
+            finish_reason = completed.choices[0].finish_reason if args.protocol == 'openai' else completed.stop_reason
+            assert len(attempts) == 2 and text.strip()
+            assert create(**next_params).model_dump() == completed.model_dump()
             assert len(attempts) == 2
             late = httpx.post(base + "/keyprint/cancel", headers={**headers, "Idempotency-Key": "while-cancelling"})
             assert late.status_code == 200 and late.json()["http_status"] == 200
             report["checks"]["new_attempt_and_terminal_replay_succeed"] = True
             report["checks"]["late_cancel_preserves_success"] = True
-            report["next_text"] = completed.choices[0].message.content
-            report["next_finish_reason"] = completed.choices[0].finish_reason
+            report["next_text"] = text
+            report["next_finish_reason"] = finish_reason
             report["next_usage"] = completed.usage.model_dump()
             report["status"] = "pass"
     except Exception as exc:

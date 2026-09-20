@@ -106,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     playground.add_argument("--key", type=Path, help="Optional private key; otherwise create a fresh session key")
     playground.add_argument("--port", type=int, default=8766)
     playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
-    serve = commands.add_parser("serve", help="Serve a local, text-only OpenAI client endpoint")
+    serve = commands.add_parser("serve", help="Serve local text endpoints for OpenAI and Anthropic clients")
     serve.add_argument("--backend", choices=("mlx", "transformers"), default="mlx")
     serve.add_argument("--model", type=Path, required=True)
     serve.add_argument("--key", type=Path, required=True)

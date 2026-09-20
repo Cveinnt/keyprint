@@ -210,6 +210,19 @@ Qualify SGLang/vLLM, establish an Ollama/llama.cpp path, and exercise actual Ope
 and Anthropic clients and applications. Protocol interoperability must remain
 distinct from native sampling access to hosted GPT/Claude.
 
+The local server now accepts the Anthropic Messages text subset alongside OpenAI
+Chat Completions. Both endpoints share the worker, request budget, cancellation
+and process-lifetime idempotency; cross-protocol reuse of a key is rejected.
+A fresh installed wheel passes 461 tests. Actual OpenAI 3.14.1 and Anthropic 1.6.0
+requests on pinned Qwen/MLX experimental execution and SmolLM2/Transformers CPU
+match private generated-text and usage receipts and replay without generation.
+Actual Anthropic-client cancellation on both backends preserves consumed work,
+replays the terminal error and succeeds on a subsequent 32-token request.
+The initial SmolLM2 validator assumed the MLX report envelope; that harness
+failure and its outputs were retained before normalization and a fresh check.
+This advances client compatibility; tools, streaming, multiple turns, other
+model bindings, native hosted sampling and production acceptance remain open.
+
 ## Scientific and operational acceptance
 
 Keep all 25 public-disclosure requirements visible with their evidence and
