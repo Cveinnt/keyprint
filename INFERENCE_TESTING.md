@@ -169,6 +169,10 @@ python tools/develop_predictability_null.py --development private-predictability
   --source private-corpus/databricks-dolly-15k.jsonl \
   --null-study private-weighted-null --model models/qwen3-8b-4bit \
   --output private-predictability-null
+python tools/audit_predictability_null.py --run private-predictability-null \
+  --development private-predictability-development \
+  --null-study private-weighted-null \
+  --source private-corpus/databricks-dolly-15k.jsonl
 ```
 
 This separate research tool uses the fixed prefix `Continue the text.` and
@@ -196,6 +200,14 @@ it does not choose a threshold from them. This method still requires an 8B model
 additional inference. It neither establishes low-cost detection nor extends
 support to other models, frameworks or hosted providers. Source responses are
 already opened development data; fresh confirmation remains necessary.
+After completion, the separate null auditor reconciles the exact set of 500
+source documents and hashes, private position selections, both keys' bit replay,
+each reference tail and a doubled FFT grid. It recomputes flags at the unchanged
+threshold and checks the one-sided 97.5% IID-only bound against SciPy's beta
+quantile, independently of the run's binomial-CDF implementation. Missing,
+duplicate, substituted, failed or unavailable controls cannot receive a passing
+audit. An integrity pass does not establish independent documents, fresh
+validation or an acceptable deployment false-positive rate.
 
 The September 19 opened-data screen improved marked hits from 8/12 to 10/12
 and short-answer hits from 1/5 to 3/5, without ordinary or wrong-key hits in the

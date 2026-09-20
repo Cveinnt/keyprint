@@ -84,6 +84,14 @@ model-head identity. This adds an 8B-model inference dependency and has
 not established a deployment false-positive rate or low-cost detection. The
 candidate stays outside the SDK until independent validation supports it.
 
+GitHub CI for `67799b3` did not start. Both workflows failed before executing
+steps, with GitHub reporting failed account payments or an Actions spending
+limit. This is a runner-account blocker, not a passing check or a diagnosed code
+failure. The last successful hosted revision is `7510b96`. Local validation and
+the running 500-document predictability-null study continue; hosted validation
+must be rerun after account access is restored. Do not change billing settings
+or public-launch status as a workaround.
+
 ## First-use acceptance
 
 - A developer can install the published package and follow one tested path to
