@@ -34,17 +34,24 @@
       <section class="experiment" aria-labelledby="generate-title">
         <div class="section-heading">
           <span class="number">01</span>
-          <h2 id="generate-title">Compare two real responses.</h2>
+          <h2 id="generate-title">See what changes.</h2>
           <span id="model-label" class="eyebrow">Connecting to your model</span>
         </div>
+        <div class="task-picker">
+          <label for="task-mode">Try Keyprint</label>
+          <select id="task-mode">
+            <option value="generate">Generate from a prompt</option>
+            <option value="rewrite">Rewrite your own text</option>
+          </select>
+        </div>
         <details id="prompt-controls" class="prompt-controls">
-          <summary><span>Change prompt or response limit</span><span id="prompt-preview">In 60 words, explain how a seed becomes a tree to a curious adult.</span></summary>
+          <summary><span id="input-summary">Change prompt or response limit</span><span id="prompt-preview">In 60 words, explain how a seed becomes a tree to a curious adult.</span></summary>
           <div class="prompt-layout">
           <div>
-            <label for="prompt">Your prompt</label
+            <label id="input-label" for="prompt">Your prompt</label
             ><textarea id="prompt" rows="3" maxlength="6000">
 In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
-            <div class="presets" aria-label="Example prompts">
+            <div id="generate-presets" class="presets" aria-label="Example prompts">
               <button
                 type="button"
                 data-prompt="In 60 words, explain how a seed becomes a tree to a curious adult."
@@ -62,6 +69,12 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
                 En français
               </button>
             </div>
+            <div id="rewrite-controls" hidden>
+              <button id="rewrite-example" type="button">Use example email</button>
+              <label for="preserve">Keep these phrases exactly · optional, one per line</label>
+              <textarea id="preserve" rows="2" maxlength="8223" placeholder="A name, URL, or sentence to keep"></textarea>
+              <p class="input-note">Plain prose only. Phrases must appear in your source. Literal checks can catch changed details; they cannot check meaning.</p>
+            </div>
           </div>
           <div class="run-panel">
             <label for="cap">Response limit</label
@@ -74,7 +87,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             ><button id="generate" class="primary" disabled>
               Generate both versions <span aria-hidden="true">↗</span>
             </button>
-            <p>
+            <p id="run-description">
               Two independent samples from the same model and prompt. One
               ordinary, one marked.
             </p>
@@ -93,7 +106,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
         <div id="outputs" class="outputs" data-focus="marked" aria-busy="true">
           <article id="ordinary-response">
             <div class="output-heading">
-              <h3>Ordinary</h3>
+              <h3 id="ordinary-heading">Ordinary</h3>
               <span id="ordinary-meta" class="eyebrow">Baseline sampling</span>
             </div>
             <div id="ordinary-text" class="generated placeholder" tabindex="0" role="region" aria-label="Ordinary response">
@@ -102,7 +115,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
           </article>
           <article id="marked-response">
             <div class="output-heading">
-              <h3>With Keyprint</h3>
+              <h3 id="marked-heading">With Keyprint</h3>
               <span id="marked-meta" class="eyebrow">Keyed sampling</span>
             </div>
             <div id="marked-text" class="generated placeholder" tabindex="0" role="region" aria-label="Watermarked response">
@@ -111,6 +124,12 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             </div>
           </article>
         </div>
+        <aside id="rewrite-review" class="rewrite-review" aria-labelledby="rewrite-review-title" hidden>
+          <h3 id="rewrite-review-title">Compare before reuse</h3>
+          <p id="rewrite-review-summary"></p>
+          <ul id="rewrite-issues"></ul>
+          <p>These checks do not verify meaning or watermark presence. Your original stays alongside the candidate; neither text is silently repaired or substituted.</p>
+        </aside>
         <div class="reading-controls">
           <label for="reading-mode">Response display</label>
           <select id="reading-mode">
@@ -218,8 +237,9 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             strengthen, weaken, or leave the diagnostic unchanged.
           </p>
           <p>
-            These are independent model samples. Their wording difference alone
-            does not establish a quality effect. Prefixes can tokenize
+            Prompt mode compares independent samples. Rewrite mode compares your
+            unchanged source with one local candidate. Neither comparison alone
+            establishes a quality effect. Prefixes can tokenize
             differently; no individual word is labeled “watermarked.” A weak or
             unavailable signal does not prove human authorship.
           </p>

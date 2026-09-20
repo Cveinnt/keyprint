@@ -29,7 +29,9 @@ SmolLM2 integration example; its answer quality is limited.
 
 Open the complete local session URL printed in the terminal. The prefilled
 example runs once when the model is ready. Then enter your own prompt, compare
-the responses, and edit the marked text. Results are real local model output;
+the responses, or choose **Rewrite your own text** to compare your source with
+one actual local rewrite. You can also edit and inspect the marked text.
+Results are real local model output;
 the signal chart is an uncalibrated diagnostic, not a detection verdict.
 
 The explicit `--download` flag fetches only the pinned model files into your
@@ -99,8 +101,8 @@ stays failed until you explicitly start another experiment. Enter your
 own prompt, compare ordinary and marked responses, edit the marked text, and
 inspect the changing signal alongside an independent-key control. The chart
 recomputes literal diagnostics at text prefixes. Its fractions are observed bit
-counts, **not confidence percentages or calibrated detection**. Both responses
-use independent randomness; wording differences are not a quality experiment.
+counts, **not confidence percentages or calibrated detection**. Prompt-mode
+responses use independent randomness; wording differences are not a quality experiment.
 Reading view formats basic headings, lists, bold text and code blocks. Switch to
 Exact text to see every original character. Formatting never changes the text
 used for editing, inspection or export; generated HTML, links and images remain
@@ -111,10 +113,20 @@ labeled as stale. A new completed generation clears the previous pair's edit.
 While work runs, the page shows the actual generation or inspection stage and
 elapsed time. Each result separates generation from inspection time. These are
 individual local observations, not a serving-throughput benchmark.
-Use **Stop** to end an active generation or inspection at the next safe boundary.
+Use **Stop** to end an active generation, rewrite or inspection at the next safe boundary.
 Controls stay locked until the worker stops; completed responses and measurements
 remain visible. Refresh reconnects to the same attempt, including a pending stop,
 without starting new work. An active model step or inspection must finish first.
+
+**Rewrite your own text** starts with an editable example email. Paste up to
+8,000 characters of prose within the model's context capacity, and optionally enter exact phrases to keep, one per
+line. The page calls the real `rewrite()` method once, keeps the source unchanged
+and labels it **Your original**, then shows the **Local rewrite** alongside it.
+The comparison exposes failed literal checks; passing them still does not
+establish meaning preservation or a detectable watermark. Both input drafts
+survive mode switches, and refresh restores the source, phrases and candidate
+from the same server process without generating again. This mode is experimental;
+the [quality review](QUALITY_REVIEW.md) retains known semantic failures.
 See [sampling performance](PERFORMANCE.md) for reproducible arithmetic and
 real-model parity checks, with the remaining performance limits.
 See [actual inference testing](INFERENCE_TESTING.md) for paired text comparisons,

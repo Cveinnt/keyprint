@@ -45,6 +45,10 @@ class Model:
         return Inspection(1, 16 if key is None else 14, 30,
             {"kind": "literal_diagnostic", "verdict": None})
 
+    def rewrite(self, text, **kwargs):
+        from keyprint.rewrite import rewrite
+        return rewrite(self, text, **kwargs)
+
 
 def client_for(tmp_path, factory=Model, **kwargs):
     class ReadyClient(TestClient):
@@ -174,6 +178,72 @@ def test_edit_is_measured_without_generation(tmp_path):
         assert not list((tmp_path / "runs").glob("*/marked"))
         session = client.get("/api/session", headers=HEADERS).json()
         assert session["edited"] == {"text": "Edited.", "result": response.json()}
+
+
+def test_rewrite_retains_source_flags_and_exact_replay_without_ordinary_generation(tmp_path):
+    models = []
+    def load():
+        models.append(Model())
+        return models[0]
+    body = {'action':'rewrite', 'text':'Hi Maya, review this Friday at 09:30.',
+            'max_tokens':128, 'preserve':['Maya']}
+    with client_for(tmp_path, load) as client:
+        response = client.post('/api/experiment', json=body, headers=HEADERS)
+        assert response.status_code == 200
+        result = response.json()
+        assert result['action'] == 'rewrite' and result['independent_randomness'] is False
+        assert result['outputs']['ordinary']['text'] == body['text']
+        assert result['outputs']['ordinary']['completion'] == 'source'
+        assert result['outputs']['ordinary']['usage'] is None
+        assert result['rewrite']['status'] == 'failed_checks'
+        assert result['rewrite']['checks']['protected_literals_preserved'] is False
+        assert result['rewrite']['checks']['meaning_preservation'] == 'not_measured'
+        assert client.post('/api/experiment', json=body, headers=HEADERS).json() == result
+        session = client.get('/api/session', headers=HEADERS).json()
+        assert session['latest'] == result and session['prompt'] == body['text']
+        assert session['last_attempt']['request'] == body and models[0].calls == ['marked']
+        private = json.loads((tmp_path/'runs'/result['run_id']/'marked/rewrite.json').read_text())
+        assert private['original'] == body['text'] and private['candidate'] == result['outputs']['marked']['text']
+
+
+@pytest.mark.parametrize('changes', [dict(text='x'*8001), dict(text='{}'),
+    dict(preserve=['missing']), dict(preserve=['Maya','Maya']), dict(preserve=['Maya'*100]),
+    dict(action='generate', preserve=['Maya']), dict(action='inspect', preserve=['Maya'])])
+def test_invalid_rewrite_does_not_consume_request_or_start_inference(tmp_path, changes):
+    models = []
+    def load(): models.append(Model()); return models[0]
+    with client_for(tmp_path, load) as client:
+        body = {'action':'rewrite', 'text':'Hi Maya.', **changes}
+        assert client.post('/api/experiment', json=body, headers=HEADERS).status_code == 400
+        assert not models[0].calls
+        assert client.get('/api/session', headers=HEADERS).json()['last_attempt'] is None
+
+
+def test_stop_rewrite_preserves_last_result_then_allows_reuse(tmp_path):
+    models = []
+    def load(): models.append(Model()); return models[0]
+    with client_for(tmp_path, load) as client, ThreadPoolExecutor(max_workers=1) as threads:
+        previous = client.post('/api/experiment', json=BODY, headers=HEADERS).json()
+        models[0].block = True; models[0].started.clear()
+        body = {'action':'rewrite', 'text':'Hi Maya.', 'preserve':['Maya']}
+        headers = {**HEADERS, 'Idempotency-Key':'rewrite-stop'}
+        running = threads.submit(client.post, '/api/experiment', json=body, headers=headers)
+        try:
+            assert models[0].started.wait(5)
+            assert client.get('/api/progress', headers=HEADERS).json()['stage'] == 'rewriting'
+            assert client.post('/api/cancel', headers=headers).status_code == 202
+        finally:
+            models[0].release.set()
+        stopped = running.result()
+        assert stopped.status_code == 410
+        assert client.post('/api/experiment', json=body, headers=headers).json() == stopped.json()
+        session = client.get('/api/session', headers=HEADERS).json()
+        assert session['latest'] == previous
+        assert session['last_attempt']['request']['preserve'] == ['Maya']
+        assert not (tmp_path/'runs'/session['last_attempt']['run_id']/'marked/rewrite.json').exists()
+        assert models[0].calls == ['ordinary','marked','marked']
+        assert client.post('/api/experiment', json=body,
+                           headers={**HEADERS,'Idempotency-Key':'rewrite-after-stop'}).status_code == 200
 
 
 def test_new_pair_clears_previous_edit_but_failed_inspection_retains_it(tmp_path):

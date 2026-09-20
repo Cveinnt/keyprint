@@ -33,6 +33,29 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The local playground now exposes the real SDK rewrite path. Users can switch
+between separate prompt/source drafts, enter exact phrases, compare the unchanged
+source with one generated candidate, inspect explicit failed checks, stop an
+attempt and restore the same result after refresh. The unchanged source is never
+labeled an ordinary model sample. Python rewrite helpers accept the same
+cooperative cancellation Event as generation, and private receipts fingerprint
+the exact rewrite prompt. An installed wheel passes 1,431 Python checks without
+skips; fourteen UI checks pass. Actual Llama browser tests exercise desktop/mobile
+reading, protected phrases, edit inspection, refresh without regeneration,
+cancellation and worker reuse. A too-small mode selector was enlarged after
+visual inspection. Numerical sampling profiles and research thresholds are unchanged.
+
+This does not fix model quality: original-prompt Qwen rewrites copied both tested
+English and French sources unchanged. A four-output prompt-development screen
+produced some changed, faithful text but also changed a French weekday. A modified
+example-based candidate then completed twenty confirmation outputs on Qwen and
+Llama: seven Qwen and eight Llama outputs failed lexical screens, with copying,
+unwanted translation and approval-actor drift retained. That candidate was
+rejected and the original rewrite prompt restored. These are prompt-development
+results, not an exhaustive comparison or proof against other prompt strategies.
+The new UI makes failures actionable; automatic faithful rewriting and the
+broader production/launch goal remain open.
+
 The subsequent Llama 3.2 3B Q8_0 extension exposed and fixed a byte-rendering
 bug: native full-sequence decoding removes French punctuation spaces. Raw
 native-piece verification now preserves sampled bytes. Exact replay retains

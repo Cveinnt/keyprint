@@ -32,9 +32,31 @@ const percent = (value) =>
 // Inspection prefixes count Unicode code points, as Python strings do.
 // UTF-16 offsets would shorten displayed prefixes after supplementary characters.
 const characters = (text) => Array.from(text || "");
+const rewriteExample = "Hi Maya, please review the draft by Friday at 09:30. Do not publish it before I approve the final version. If approval has not arrived by the deadline, postpone publication and send me an update. Keep the backup until you have verified that the restore succeeded.";
+let taskMode = "generate";
+const drafts = { generate: $("prompt").value, rewrite: rewriteExample };
+
+function selectTaskMode(mode) {
+  if (!["generate", "rewrite"].includes(mode)) return;
+  drafts[taskMode] = $("prompt").value;
+  taskMode = mode;
+  $("task-mode").value = mode;
+  $("prompt").value = drafts[mode];
+  $("prompt").maxLength = mode === "rewrite" ? 8000 : 6000;
+  $("input-label").textContent = mode === "rewrite" ? "Your original text" : "Your prompt";
+  $("input-summary").textContent = mode === "rewrite" ? "Edit your text or response limit" : "Change prompt or response limit";
+  $("generate-presets").hidden = mode === "rewrite";
+  $("rewrite-controls").hidden = mode !== "rewrite";
+  $("run-description").textContent = mode === "rewrite"
+    ? "One real local rewrite beside your unchanged original. Compare meaning and check the flagged details."
+    : "Two independent samples from the same model and prompt. One ordinary, one marked.";
+  if (!busy) $("generate").textContent = mode === "rewrite" ? "Rewrite this text ↗" : "Generate both versions ↗";
+  syncPromptPreview();
+}
 
 function syncPromptPreview() {
-  $("prompt-preview").textContent = $("prompt").value.trim() || "Enter a prompt to generate your own pair.";
+  $("prompt-preview").textContent = $("prompt").value.trim() ||
+    (taskMode === "rewrite" ? "Paste your text to try a local rewrite." : "Enter a prompt to generate your own pair.");
 }
 
 function readResponse(condition) {
@@ -48,12 +70,12 @@ function setBusy(value) {
   busy = value;
   for (const id of ["generate", "inspect", "half", "restore"])
     $(id).disabled = value || !modelReady || (id !== "generate" && !experiment);
-  for (const control of [$("prompt"), $("cap"), ...document.querySelectorAll("[data-prompt]")])
+  for (const control of [$("prompt"), $("cap"), $("task-mode"), $("preserve"), $("rewrite-example"), ...document.querySelectorAll("[data-prompt]")])
     control.disabled = value;
   $("outputs").setAttribute("aria-busy", String(value));
   $("generate").textContent = value
     ? "Running local experiment…"
-    : "Generate both versions ↗";
+    : taskMode === "rewrite" ? "Rewrite this text ↗" : "Generate both versions ↗";
   if (!value) {
     if (stopRequested && ["stop", "stop-edit", ""].includes(document.activeElement?.id || "")) {
       const target = activeAction === "inspect" ? $("inspect")
@@ -107,6 +129,8 @@ function watchProgress(status) {
     generating_marked: "Generating the watermarked response",
     inspecting_marked: "Measuring the watermarked response",
     inspecting_edit: "Measuring your edited text",
+    rewriting: "Rewriting your text locally",
+    inspecting_source: "Measuring your unchanged original",
   };
   async function poll() {
     try {
@@ -314,8 +338,10 @@ function restoreLimit(limit) {
 
 function restoreRequest(session) {
   const request = session.last_attempt?.request;
-  if (request?.action === "generate") {
+  if (["generate", "rewrite"].includes(request?.action)) {
+    selectTaskMode(request.action);
     $("prompt").value = request.text;
+    if (request.action === "rewrite") $("preserve").value = (request.preserve || []).join("\n");
     syncPromptPreview();
     restoreLimit(request.max_tokens);
   }
@@ -353,15 +379,29 @@ function restoreInspection(session) {
 }
 
 function showGeneration(data, retained = false) {
+  const rewriting = data.action === "rewrite";
+  if (retained) {
+    const prompt = rewriting ? data.outputs.ordinary.text : $("prompt").value;
+    selectTaskMode(rewriting ? "rewrite" : "generate");
+    $("prompt").value = prompt;
+    if (rewriting) $("preserve").value = (data.preserve || []).join("\n");
+  }
   syncPromptPreview();
   experiment = data;
   if (retained) restoreLimit(data.max_tokens);
   editMeasurement = null;
   measuredText = null;
+  $("ordinary-heading").textContent = rewriting ? "Your original" : "Ordinary";
+  $("marked-heading").textContent = rewriting ? "Local rewrite" : "With Keyprint";
+  $("read-ordinary").textContent = rewriting ? "Your original" : "Ordinary";
+  $("read-marked").textContent = rewriting ? "Local rewrite" : "With Keyprint";
+  $("ordinary-text").setAttribute("aria-label", rewriting ? "Your original text" : "Ordinary response");
+  $("marked-text").setAttribute("aria-label", rewriting ? "Local rewrite candidate" : "Watermarked response");
+  showRewriteChecks(data.rewrite);
   for (const condition of ["ordinary", "marked"]) {
     const result = data.outputs[condition];
     $(condition + "-text").classList.remove("placeholder");
-    $(condition + "-meta").textContent =
+    $(condition + "-meta").textContent = result.completion === "source" ? "Your text · unchanged" :
       `${result.usage?.completion_tokens ?? "?"} tokens · ${result.completion === "eos" ? "complete" : result.completion === "length" ? "limit reached" : "completion unavailable"}` +
       (result.timing
         ? ` · ${result.timing.generation_seconds.toFixed(1)}s generation · ${result.timing.inspection_seconds.toFixed(1)}s inspection`
@@ -379,13 +419,20 @@ function showGeneration(data, retained = false) {
   const capped = Object.values(data.outputs).filter(
     (result) => result.completion === "length",
   ).length;
-  const outcome = capped
+  const outcome = capped && rewriting
+    ? `The rewrite reached the token limit. ${data.max_tokens >= 1024 ? "Shorten the source" : "Choose a larger limit or shorten the source"}, then start a new rewrite.`
+    : capped
     ? `${capped === 2 ? "Both responses" : "One response"} reached the token limit. ${data.max_tokens >= 1024 ? "Ask for a shorter answer, then generate a new pair." : "Choose a larger limit or ask for a shorter answer, then generate a new pair."}`
+    : rewriting ? "Local rewrite finished. Compare its meaning with your original."
     : Object.values(data.outputs).every((result) => result.completion === "eos")
       ? "Both responses finished."
       : "Completion state unavailable; inspect the exported report.";
   $("status").textContent =
-    `${retained ? "Previous live run restored" : "Live run finished"} · ${data.seconds.toFixed(1)}s generation and inspection. ${outcome} Independent samples; differences alone are not a quality test.`;
+    `${retained ? "Previous live run restored" : "Live run finished"} · ${data.seconds.toFixed(1)}s generation and inspection. ${outcome}` +
+    (rewriting ? data.rewrite.status === "failed_checks"
+      ? " Some rewrite checks failed. See “Compare before reuse”."
+      : " Literal checks passed; meaning is not verified."
+      : " Independent samples; differences alone are not a quality test.");
   $("edit-status").textContent =
     "Change words, remove a sentence, or paste text. Then update the signal.";
   showMetrics(data.outputs.marked.inspection, "Original marked response");
@@ -393,15 +440,43 @@ function showGeneration(data, retained = false) {
   report();
 }
 
+function showRewriteChecks(rewrite) {
+  $("rewrite-review").hidden = !rewrite;
+  $("rewrite-issues").replaceChildren();
+  if (!rewrite) return;
+  const labels = {
+    complete: "The rewrite reached its token limit or did not finish.",
+    nonempty: "The rewrite is empty.",
+    canonical_changed: "Only whitespace changed; this is not a paraphrase.",
+    word_sequence_changed: "The word sequence did not change.",
+    numbers_preserved: "Numbers, times or their occurrence counts changed.",
+    weekday_names_preserved: "Weekday names or their occurrence counts changed.",
+    urls_preserved: "Links or their occurrence counts changed.",
+    emails_preserved: "Email addresses or their occurrence counts changed.",
+    no_new_escaped_line_breaks: "Literal line-break escape sequences were introduced.",
+    protected_literals_preserved: "A protected phrase or its occurrence count changed.",
+  };
+  $("rewrite-review-summary").textContent = rewrite.status === "failed_checks"
+    ? "Details changed or the rewrite did not satisfy its basic checks. Review the candidate above before reusing it."
+    : "Literal checks passed. They cannot tell whether the meaning stayed the same.";
+  for (const [check, label] of Object.entries(labels)) {
+    if (rewrite.checks[check] === true) continue;
+    const item = document.createElement("li");
+    item.textContent = label;
+    $("rewrite-issues").append(item);
+  }
+}
+
 async function run(action) {
   if (busy || !modelReady) return;
-  const text = action === "generate" ? $("prompt").value : $("edited").value;
+  const text = action !== "inspect" ? $("prompt").value : $("edited").value;
   if (!text.trim()) {
-    $(action === "generate" ? "status" : "edit-status").textContent =
+    $(action !== "inspect" ? "status" : "edit-status").textContent =
       "Enter some text first.";
     return;
   }
   const body = { action, text, max_tokens: Number($("cap").value) };
+  if (action === "rewrite") body.preserve = $("preserve").value.split("\n").filter((line) => line.trim());
   // A transport retry for identical input reuses the same ID, so it cannot
   // silently generate a second pair if the first request completed unseen.
   const serialized = JSON.stringify(body);
@@ -412,18 +487,19 @@ async function run(action) {
   stopAvailable = false;
   stopRequested = false;
   setBusy(true);
-  const status = action === "generate" ? $("status") : $("edit-status");
+  const status = action !== "inspect" ? $("status") : $("edit-status");
   status.classList.remove("error");
   status.textContent =
     action === "generate"
       ? "Generating two real responses, then measuring both. The previous result stays visible until completion."
+      : action === "rewrite" ? "Rewriting your source locally, then measuring both texts. Your previous result stays visible."
       : "Replaying edited text with the SDK…";
   const stopProgress = watchProgress(status);
   try {
     const data = await api("/api/experiment", body, pending.id);
     stopProgress();
     pending = null;
-    if (action === "generate") {
+    if (action !== "inspect") {
       showGeneration(data);
     } else {
       editMeasurement = data;
@@ -450,7 +526,17 @@ async function run(action) {
   }
 }
 
-$("generate").addEventListener("click", () => run("generate"));
+$("generate").addEventListener("click", () => run(taskMode));
+$("task-mode").addEventListener("change", () => {
+  selectTaskMode($("task-mode").value);
+  $("prompt-controls").open = true;
+});
+$("rewrite-example").addEventListener("click", () => {
+  $("prompt").value = rewriteExample;
+  $("preserve").value = "Maya";
+  syncPromptPreview();
+  $("prompt").focus();
+});
 $("stop").addEventListener("click", stopExperiment);
 $("stop-edit").addEventListener("click", stopExperiment);
 $("reading-mode").addEventListener("change", renderOutputs);
@@ -606,7 +692,7 @@ async function connect() {
       );
     }
     setBusy(false);
-    await run("generate");
+    await run(taskMode);
   } catch (error) {
     setBusy(false);
     $("status").textContent = error.message;

@@ -175,6 +175,15 @@ summary:focus-visible {
 .prompt-controls[open] #prompt-preview { display: none; }
 .prompt-controls .prompt-layout { padding: 8px 18px 18px; }
 .response-switch { display: none; }
+.task-picker { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 18px; }
+.task-picker label { margin: 0; }
+.task-picker select { max-width: 100%; min-height: 44px; padding: 10px 14px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 2px; font-size: 12px; }
+.input-note { color: var(--muted); font-size: 14px; line-height: 1.5; }
+#rewrite-controls > button { margin: 12px 0 18px; }
+.rewrite-review { border-left: 2px solid var(--rust); padding: 4px 20px; margin: 24px 0; }
+.rewrite-review h3 { margin: 0 0 10px; font-size: 22px; font-weight: 400; }
+.rewrite-review p, .rewrite-review li { font-size: 15px; line-height: 1.6; }
+[hidden] { display: none !important; }
 .run-panel p {
   font-size: 13px;
   color: var(--muted);

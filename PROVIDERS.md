@@ -281,6 +281,14 @@ detectable watermark was verified. There is no automatic approved status.
 Both texts and checks are saved in the private generation directory. Failed or
 unchanged outputs are retained without retry or substitution.
 
+For a visual comparison, run `keyprint playground` with the chosen local backend,
+then select **Rewrite your own text**. The original and actual candidate appear
+side by side with their literal checks. **Stop** cooperatively cancels the local
+rewrite and retains the preceding result. The Python `rewrite`, `rewrite_openai`
+and `rewrite_anthropic` methods also accept `cancel_event=threading.Event()`;
+set it from another thread and catch `KeyprintCancelled`. This does not cancel
+a hosted provider request; these helpers perform local rewriting only.
+
 For names, timestamps or entire clauses that must stay verbatim, supply
 `preserve` to any of the three rewrite methods:
 
@@ -300,7 +308,7 @@ the model to keep these phrases; the SDK then checks exact, case-sensitive,
 non-overlapping occurrence counts, including accents, spacing and punctuation.
 Missing, modified or duplicated phrases produce `failed_checks`. Empty output
 also fails. The private `rewrite.json` retains the requested phrases, observed
-counts and both texts, including failures. The SDK does not force token choices,
+counts, both texts and the exact rewrite prompt's SHA-256, including failures. The SDK does not force token choices,
 repair the response or automatically retry.
 
 This is literal preservation, not entity recognition or a semantic guarantee.

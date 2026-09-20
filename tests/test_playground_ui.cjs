@@ -23,7 +23,7 @@ function ui() {
     return nodes.get(id);
   };
   const context = vm.createContext({
-    document: { getElementById: get, createElementNS: () => node(), querySelectorAll: () => [] },
+    document: { getElementById: get, createElementNS: () => node(), createElement: () => node(), querySelectorAll: () => [] },
     location: { hash: '' }, sessionStorage: { getItem: () => null }, URLSearchParams,
   });
   // No token: startup reports the normal session instruction without network IO.
@@ -128,4 +128,46 @@ test('Backend labels distinguish GGUF and never invent a model for unknown ident
   assert.equal(app.run('modelLabel({profile: "portable-bytelevel-v1-experimental"})'), 'Transformers · experimental CPU');
   assert.equal(app.run('modelLabel({profile: "unknown"})'), 'Local model');
   assert.equal(app.run('modelLabel({})'), 'Local model');
+});
+
+test('Switching input modes keeps separate drafts and never relabels old results', () => {
+  const app = ui();
+  app.get('prompt').value = 'Generate a story.';
+  app.get('ordinary-heading').textContent = 'Ordinary';
+  app.run('selectTaskMode("rewrite")');
+  assert.match(app.get('prompt').value, /Hi Maya/);
+  app.get('prompt').value = 'My own source text.';
+  app.run('selectTaskMode("generate")');
+  assert.equal(app.get('prompt').value, 'Generate a story.');
+  app.run('selectTaskMode("rewrite")');
+  assert.equal(app.get('prompt').value, 'My own source text.');
+  assert.equal(app.get('ordinary-heading').textContent, 'Ordinary');
+  assert.equal(app.get('rewrite-controls').hidden, false);
+  assert.equal(app.get('generate-presets').hidden, true);
+});
+
+test('Rewrite details expose literal failures without claiming semantic approval', () => {
+  const app = ui();
+  const checks = Object.fromEntries(['complete','nonempty','canonical_changed','word_sequence_changed',
+    'numbers_preserved','weekday_names_preserved','urls_preserved','emails_preserved',
+    'no_new_escaped_line_breaks','protected_literals_preserved'].map(k => [k,true]));
+  app.run(`showRewriteChecks(${JSON.stringify({status:'needs_review',checks})})`);
+  assert.match(app.get('rewrite-review-summary').textContent, /cannot tell whether the meaning/);
+  assert.equal(app.get('rewrite-issues').children.length, 0);
+  checks.numbers_preserved = false; checks.protected_literals_preserved = false;
+  app.run(`showRewriteChecks(${JSON.stringify({status:'failed_checks',checks})})`);
+  assert.equal(app.get('rewrite-issues').children.length, 2);
+  assert.match(app.get('rewrite-issues').children[0].textContent, /Numbers, times/);
+  app.run('showRewriteChecks(undefined)');
+  assert.equal(app.get('rewrite-review').hidden, true);
+  assert.equal(app.get('rewrite-issues').children.length, 0);
+});
+
+test('Restored rewrite recovers source and protected phrases', () => {
+  const app = ui();
+  app.run('restoreRequest({last_attempt:{request:{action:"rewrite",text:"Hi Maya.",preserve:["Maya"]}}})');
+  assert.equal(app.get('task-mode').value, 'rewrite');
+  assert.equal(app.get('prompt').value, 'Hi Maya.');
+  assert.equal(app.get('preserve').value, 'Maya');
+  assert.equal(app.get('prompt-preview').textContent, 'Hi Maya.');
 });

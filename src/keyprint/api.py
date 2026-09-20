@@ -198,10 +198,16 @@ class Keyprint:
 
     def rewrite(self, text: str, *, max_tokens: int = 256,
                 output: str | Path | None = None, condition: str = "marked",
-                preserve: list[str] | tuple[str, ...] = ()) -> Rewrite:
-        """Experimental local rewriting; returns original, candidate and checks."""
+                preserve: list[str] | tuple[str, ...] = (),
+                cancel_event: Event | None = None) -> Rewrite:
+        """Experimental local rewriting; returns original, candidate and checks.
+
+        cancel_event follows generate()'s cooperative cancellation contract.
+        Lexical checks do not certify meaning preservation or watermark presence.
+        """
         from .rewrite import rewrite
-        return rewrite(self, text, max_tokens=max_tokens, output=output, condition=condition, preserve=preserve)
+        return rewrite(self, text, max_tokens=max_tokens, output=output, condition=condition,
+                       preserve=preserve, cancel_event=cancel_event)
 
     def rewrite_openai(self, response: Any, **settings: Any) -> Rewrite:
         """Rewrite completed text locally; makes no OpenAI API call."""

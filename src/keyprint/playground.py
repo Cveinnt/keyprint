@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from .api import Keyprint, KeyprintError, KeyprintCancelled
 from .cancellation import check_cancellation, _CancellationRequested
 from .inspection import Inspection
+from .rewrite import plain_text, protected_literals
 from .server import error
 
 EXAMPLE = "In 60 words, explain how a seed becomes a tree to a curious adult."
@@ -30,9 +31,10 @@ EXAMPLE = "In 60 words, explain how a seed becomes a tree to a curious adult."
 
 class Experiment(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
-    action: Literal["generate", "inspect"]
+    action: Literal["generate", "inspect", "rewrite"]
     text: str = Field(min_length=1, max_length=16000)
     max_tokens: int = Field(default=192, ge=32, le=1024)
+    preserve: list[str] = Field(default_factory=list, max_length=32)
 
 
 def inspect_text(model: Keyprint, text: str, control_key: bytes, cancel_event: Event | None = None) -> dict:
@@ -225,6 +227,31 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 stage("inspecting_edit")
                 return {"inspection": inspect_text(model[0], params.text, control_key, cancellation),
                         "seconds": time.perf_counter() - started}
+            if params.action == "rewrite":
+                stage("rewriting")
+                check_cancellation(cancellation)
+                generation_start = time.perf_counter()
+                rewritten = model[0].rewrite(params.text, preserve=params.preserve,
+                    max_tokens=params.max_tokens, output=run / "marked", cancel_event=cancellation)
+                generation_seconds = time.perf_counter() - generation_start
+                stage("inspecting_source")
+                source_inspection = inspect_text(model[0], params.text, control_key, cancellation)
+                outputs["ordinary"] = {"text": rewritten.original, "completion": "source", "usage": None,
+                                       "inspection": source_inspection}
+                stage("inspecting_marked")
+                inspection_start = time.perf_counter()
+                inspection = inspect_text(model[0], rewritten.text, control_key, cancellation)
+                result = rewritten.generation
+                payload = result.report.get("payload", result.report)
+                outputs["marked"] = {"text": rewritten.text, "usage": result.report.get("usage"),
+                    "completion": payload.get("completion"), "inspection": inspection,
+                    "timing": {"generation_seconds": generation_seconds,
+                               "inspection_seconds": time.perf_counter() - inspection_start}}
+                return {"action": "rewrite", "outputs": outputs, "max_tokens": params.max_tokens,
+                        "seconds": time.perf_counter() - started, "independent_randomness": False,
+                        "calibrated": False, "preserve": params.preserve,
+                        "rewrite": {"status": rewritten.status, "checks": rewritten.checks,
+                                    "mode": rewritten.mode, "hosted_provider_watermark": False}}
             for condition in ("ordinary", "marked"):
                 stage("generating_" + condition)
                 check_cancellation(cancellation)
@@ -266,12 +293,18 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
             params = Experiment.model_validate_json(bytes(raw))
             if not params.text.strip() or (params.action == "generate" and len(params.text) > 6000):
                 raise ValueError("empty text")
+            if params.action == "rewrite":
+                plain_text(params.text)
+                protected_literals(params.text, params.preserve)
+            elif params.preserve:
+                raise ValueError("preserve applies only to rewriting")
         except (ValidationError, ValueError):
-            return error("Use 1–6000 characters for prompts, 1–16000 for inspection, and a token cap from 32 to 1024", 400)
+            return error("Use 1–6000 characters for prompts, 1–8000 of prose for rewriting, or 1–16000 for inspection; token cap 32–1024. Preserved phrases must be distinct, present in the source, and used only with rewriting.", 400)
         identity = request.headers.get("idempotency-key", "")
         if not identity or len(identity) > 128 or not identity.isascii():
             return error("An idempotency key is required", 400)
-        digest = hashlib.sha256(json.dumps(params.model_dump(), sort_keys=True).encode()).hexdigest()
+        request_body = params.model_dump(exclude={"preserve"} if not params.preserve else set())
+        digest = hashlib.sha256(json.dumps(request_body, sort_keys=True).encode()).hexdigest()
         if identity in records:
             prior_digest, response = records[identity]
             return response if prior_digest == digest else error("Request ID already used for different input", 409)
@@ -286,13 +319,13 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         cancellations[identity] = cancellation
         records[identity] = (digest, error("Attempt running; repeat the same request ID to recover its result", 409, run_id))
         last_attempt.update(run_id=run_id, request_id=identity, action=params.action, http_status=None,
-                            request=params.model_dump(), cancellation_requested=False)
+                            request=request_body, cancellation_requested=False)
 
         async def finish_attempt() -> JSONResponse:
             response = error("Experiment failed. Inspect the private run folder; no automatic retry was made.", 500, run_id)
             try:
                 run.mkdir(mode=0o700)
-                (run / "request.json").write_text(json.dumps(params.model_dump(), ensure_ascii=False))
+                (run / "request.json").write_text(json.dumps(request_body, ensure_ascii=False))
                 try:
                     result = await asyncio.get_running_loop().run_in_executor(worker, execute, params, run, cancellation)
                 except (KeyprintCancelled, _CancellationRequested):
@@ -304,7 +337,7 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                     (run / "result.json").write_text(json.dumps(result, ensure_ascii=False, allow_nan=False))
                     response = JSONResponse(result)
                 (run / "status.json").write_text(json.dumps({"http_status": response.status_code}))
-                if response.status_code == 200 and params.action == "generate":
+                if response.status_code == 200 and params.action in ("generate", "rewrite"):
                     latest.update(prompt=params.text, result=result, edited=None)
                 elif response.status_code == 200 and params.action == "inspect":
                     latest["edited"] = {"text": params.text, "result": result}
