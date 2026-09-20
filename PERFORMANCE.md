@@ -8,6 +8,10 @@ measured 1.0723; independent outputs and background activity prevent
 attributing those differences solely to code. The unchanged 1.05 screen fails.
 See [support-mask reuse](#support-mask-reuse) before using
 any of the helper or within-SDK results below as a performance claim.
+The newer [raw-head snapshot revision](#immutable-raw-head-snapshots) has a
+matched-revision comparison only. Its small point-estimate improvement is not
+statistically established and does not supersede that failed engine-relative
+screen or qualify current total overhead.
 
 The [lossless vector encoding](tools/VECTOR_COMMITMENTS.md) is integrated only
 into explicitly selected experimental native v2 execution. Default and frozen
@@ -953,6 +957,55 @@ continued; no other task-owned inference or test workload ran during timing.
 These separate samples do not isolate the code's causal timing effect. Fewer
 allocations and exact parity do not close the serving-cost gate. A controlled
 whole-path comparison is needed before attributing an improvement or regression.
+
+### Immutable raw-head snapshots
+
+The experimental native caller and shared filter previously hashed the same
+complete float32 model head independently. They now share one immutable byte
+snapshot and its computed SHA-256 digest. No caller-supplied digest is accepted.
+Standalone supplied-array steps retain their original hash path. Grammar
+masking creates a new snapshot: pre-mask and post-mask journal commitments stay
+distinct. Numeric validation, immutable probability outputs, journal durability,
+random-draw ordering, sampling and report formats remain unchanged. Source hashes
+bind the new execution; the frozen implementation and native binary are unchanged.
+
+Sixteen new checks cover mutation, signed zero/subnormal/NaN bit preservation,
+strided inputs, invalid shapes, filter rejection before randomness, raw-hash
+reuse and grammar commitments. The installed wheel passes **1,351 tests with
+zero skips**. All 83 package files match source, wheel and installation. Each
+of the three MLX modes also passes twelve actual Qwen caller comparisons against
+the frozen implementation, totaling 72 outputs and 2,964 tokens across the same
+six prompts. Both local client lifecycle checks pass. Eleven native structured
+requests reconcile 218 tokens and 175 grammar masks.
+
+The new [matched-revision procedure](INFERENCE_TESTING.md#matched-path-revision-timing)
+keeps two independent models resident and runs sequential, alternating-order
+requests. The preceding support-mask revision and the new candidate receive the
+same public fixture key, prompts and explicit random draws. All 96 measured
+requests and four warmups remain retained. An independent audit reconciles
+4,144 tokens, exact text, sampling records, consumed work, fixture random draws
+and journal events apart from the expected runtime/source identities.
+
+| Candidate / preceding revision | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary caller time per token | 0.995297 | 1.003657 |
+| Marked caller time per token | 0.994067 | 1.000761 |
+
+Token paths and lengths match, so request-latency ratios equal the per-token
+ratios. The roughly 0.5–0.6% point-estimate reductions are **not established
+speedups**: both upper bounds include no improvement. No observations were
+excluded or retried. Other task-owned tests/inference finished before timing;
+unrelated VM/desktop workloads remained. Fixture randomness, two resident
+models, omitted public `generate()` preflight and absent OS isolation limit
+extrapolation. This is not a fresh engine-relative cost measurement and cannot
+close the 5% serving gate. Twenty separate benchmark/auditor checks pass.
+
+Initial snapshot tests looked for private filter details in a public report;
+the corrected tests capture the private receipt before projection. The first
+independent audit compared a full worker identity to the report's compact target
+and rejected it. The corrected auditor verifies the full specification digest
+before checking its documented compact projection. Both initial failures remain
+saved; no inference or timing results were replaced.
 
 ## Remaining qualification
 

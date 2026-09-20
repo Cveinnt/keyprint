@@ -60,10 +60,13 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
             raise ValueError("JSON constraints require the visible general route")
     from .fast_mlx import FastCandidate
     expected_version = "keyprint-mlx-sparse-experimental-v1"
+    raw_head_factory = None
     if type(candidate) is not FastCandidate:
         from ..backends.mlx_bounded import BoundedReferenceCandidate, VERSION
         from .native_mlx import NativeCandidate, VERSION as NATIVE_VERSION
         if type(candidate) is NativeCandidate:
+            from .native_mlx import _RawHead
+            raw_head_factory = _RawHead
             expected_version = NATIVE_VERSION
         elif type(candidate) is BoundedReferenceCandidate:
             expected_version = VERSION
@@ -202,8 +205,10 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                 state["phase"] = "sample_reservation"
                 reserve("sample", {"index": index})
                 finite = np.isfinite(filtered[0])
+                raw_snapshot = raw_head_factory(filtered) if raw_head_factory else None
                 prepared = {"kind": "prepared_step", "index": index,
-                            "raw_finite_count": int(np.count_nonzero(finite)), "input_stage": "raw_model_head_before_shared_filter", "raw_logits_sha256": hashlib.sha256(filtered.tobytes()).hexdigest()}
+                            "raw_finite_count": int(np.count_nonzero(finite)), "input_stage": "raw_model_head_before_shared_filter",
+                            "raw_logits_sha256": raw_snapshot.sha256 if raw_snapshot is not None else hashlib.sha256(filtered.tobytes()).hexdigest()}
                 if capture_public_fixture:
                     support = np.flatnonzero(finite)
                     prepared.update({"public_fixture_raw_support": support.tolist(),
@@ -217,14 +222,15 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                     mask = np.zeros(pipeline.model_vocabulary_size, dtype=bool)
                     mask[:constraint.size] = allowed
                     filtered[0, ~mask] = -np.inf
+                    raw_snapshot = raw_head_factory(filtered) if raw_head_factory else None
                     record({"kind": "grammar_mask", "index": index,
                             "allowed_sha256": hashlib.sha256(allowed.tobytes()).hexdigest(),
                             "allowed_count": int(allowed.sum()),
-                            "masked_logits_sha256": hashlib.sha256(filtered.tobytes()).hexdigest()})
+                            "masked_logits_sha256": raw_snapshot.sha256 if raw_snapshot is not None else hashlib.sha256(filtered.tobytes()).hexdigest()})
                     reserve("after_grammar_mask", {"index": index})
                 state["sample_attempts"] += 1
                 state["phase"] = "sampling"
-                step = pipeline.step(filtered, bits)
+                step = pipeline.step(raw_snapshot if raw_snapshot is not None else filtered, bits)
                 state["sampled_tokens"] = len(pipeline.committed_token_ids)
                 state["phase"] = "committed_step_journal"
                 committed = {"kind": "committed_step", "index": index, "stopped": step.stopped is not None}

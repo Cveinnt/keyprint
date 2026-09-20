@@ -1,5 +1,6 @@
 """Explicit optional native PRF execution, with independently bound identity."""
 import hashlib
+from dataclasses import dataclass
 from pathlib import Path
 import numpy as np
 
@@ -17,6 +18,33 @@ from .._engine.legacy._impl.research.token_channel_host import ChannelRequest
 from .._engine.research.keyprint_candidate_v3.adapter import digest
 
 VERSION = 'keyprint-mlx-native-experimental-v2'
+
+
+@dataclass(frozen=True, slots=True, init=False)
+class _RawHead:
+    """One immutable float32 snapshot; callers cannot supply its commitment.
+
+    The caller and filter journal the same bytes, so they can share this digest.
+    Grammar masking requires a new snapshot after the mask has been applied.
+    Numeric validity remains the filter's responsibility, including padding.
+    """
+    _data: bytes
+    _shape: tuple
+    sha256: str
+
+    def __init__(self, values):
+        if (not isinstance(values, np.ndarray) or values.dtype != np.float32
+                or values.ndim != 2 or values.shape[0] != 1
+                or not 0 < values.shape[1] <= partition_filter.MAX_MODEL_VOCABULARY):
+            raise ValueError('bounded single-row float32 raw head required')
+        data = values.tobytes()
+        object.__setattr__(self, '_data', data)
+        object.__setattr__(self, '_shape', values.shape)
+        object.__setattr__(self, 'sha256', hashlib.sha256(data).hexdigest())
+
+    @property
+    def values(self):
+        return np.frombuffer(self._data, dtype=np.float32).reshape(self._shape)
 
 
 def _decode_bits(raw, labels, layers):
@@ -142,9 +170,13 @@ class _NativeHost(_SparseV3Host):
                        phase='shared_filter', status='started')
         self.filter_attempts.append(attempt)
         try:
+            snapshot = raw_logits if type(raw_logits) is _RawHead else None
+            if snapshot is not None:
+                raw_logits = snapshot.values
             if not isinstance(raw_logits, np.ndarray) or raw_logits.shape != (1, self.model_size):
                 raise ValueError('v3 requires the complete raw model head')
-            attempt['raw_logits_sha256'] = hashlib.sha256(raw_logits.tobytes()).hexdigest()
+            attempt['raw_logits_sha256'] = (snapshot.sha256 if snapshot is not None
+                                            else hashlib.sha256(raw_logits.tobytes()).hexdigest())
             filtered = partition_filter.partition_support_filter(raw_logits,
                 **self._filter_settings, mapped_vocabulary_size=self.mapped_size, native=self._native)
             attempt.update(filter_profile_sha256=filtered.identity['filter_profile_sha256'],

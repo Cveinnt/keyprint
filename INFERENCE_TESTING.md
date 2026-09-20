@@ -220,6 +220,39 @@ versions. All numerical/model pins remain fixed. See the
 not cover every accepted client version or hosted GPT/Claude sampling. Hosted
 CI remains disabled.
 
+### Matched-path revision timing
+
+Install each reviewed wheel into a separate package directory with `pip install
+--no-deps --target PATH WHEEL`; use a shared compatible dependency environment
+containing the reviewed native wheel and pinned MLX stack. Then run:
+
+```sh
+python tools/benchmark_revision.py --baseline BASELINE_INSTALL \
+  --candidate CANDIDATE_INSTALL --model PINNED_QWEN_MODEL \
+  --output private-revision-comparison --idle-host-confirmed
+python tools/audit_revision.py --run private-revision-comparison
+```
+
+This uses two independent resident workers, executing sequentially with fresh
+request caches. Both receive identical explicit fixture draws and the public
+fixture key; no production randomness is patched. Four warmups and all 96
+measured requests remain recorded. Order alternates within each matched pair.
+Different token paths, sampling records, text, consumed work, missing outputs
+or errors prevent a completed comparison. The separate audit checks retained
+file hashes, journal chains and fixture draws, reconciles both revisions'
+journal events except their source/runtime identities, and independently
+recomputes the point estimates. Twenty harness checks exercise incomplete or
+mismatched pairs, invalid timings, fixture draws, journal chains, compact
+identity projection and revision ratios.
+
+Timing covers prompt encoding, real model calls, filtering/sampling, durable
+journals, report projection and report-file serialization. Imports, model
+loading, IPC, the public `generate()` preflight and cryptographic draw source
+are excluded. Both models remain resident, so memory pressure differs from the
+single-model engine benchmark. OS isolation is not established. This identifies
+local revision effects on matched paths, not the total production cost or the
+5% engine-relative release screen. Keep the engine benchmark separate.
+
 ### Structured output and typed clients
 
 Install the `structured` extra with Transformers, server and clients, then run:

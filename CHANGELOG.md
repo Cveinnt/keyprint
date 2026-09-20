@@ -2,6 +2,10 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Share one immutable raw-head snapshot and SHA-256 commitment between the
+  experimental native caller and filter. Keep separate pre/post-grammar hashes,
+  all numeric checks and durable journal ordering. Add a local matched-path
+  revision benchmark with independent receipt and random-draw reconciliation.
 - Allow existing OpenAI and Anthropic client versions through bounded optional
   dependency ranges instead of exact client pins. Test older and newer client
   pairs locally; retain numerical and model-backend pins. Hosted CI stays disabled.

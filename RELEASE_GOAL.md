@@ -33,6 +33,20 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The native caller now shares an immutable raw-head snapshot with its filter,
+removing duplicate SHA-256 work while retaining all journal commitments and
+validation. Its installed wheel passes 1,351 tests without skips; twenty new
+benchmark/auditor checks pass separately. Three real MLX execution modes retain
+exact frozen-reference parity across 72 outputs and 2,964 tokens. Both local
+client lifecycle checks and eleven structured requests pass. A matched-revision
+comparison retains 96 measured requests, four warmups and 4,144 audited tokens.
+Ordinary and marked candidate/preceding-caller ratios are 0.995297 and 0.994067,
+with one-sided 95% upper ratios 1.003657 and 1.000761. Both include no improvement:
+this does not establish a speedup or close the failed engine-relative cost gate.
+The [performance record](PERFORMANCE.md#immutable-raw-head-snapshots) preserves
+scope, limitations and initial test/auditor failures. Hosted CI stays disabled,
+core/native publication and publicity stay held, and the full release goal remains active.
+
 Client installation now accepts bounded OpenAI and Anthropic version ranges
 instead of forcing exact versions. Fresh environments with OpenAI 1.109.1 /
 Anthropic 0.83.0 and OpenAI 3.14.1 / Anthropic 1.6.0 both resolve and pass
