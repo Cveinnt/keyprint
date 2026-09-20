@@ -209,6 +209,13 @@ duplicate, substituted, failed or unavailable controls cannot receive a passing
 audit. An integrity pass does not establish independent documents, fresh
 validation or an acceptable deployment false-positive rate.
 
+The September 19 null run ended incomplete: 500 attempts, 499 usable controls,
+eight flags, and one disk-write failure at source index 5030. The independent
+audit rejected it with "Failed or unavailable controls cannot count as negatives".
+The reported IID-only bound remains null. Preserve this run and its failed audit;
+any recovery must be separately declared and must not overwrite the original
+failure or silently count it as a negative.
+
 The September 19 opened-data screen improved marked hits from 8/12 to 10/12
 and short-answer hits from 1/5 to 3/5, without ordinary or wrong-key hits in the
 24 outputs. Cases 04 and 11 were recovered; 08 and 09 still missed. Case 08's

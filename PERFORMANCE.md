@@ -49,6 +49,43 @@ does not establish semantic quality, calibrated detection or production readines
 
 ## Remaining work
 
+### Paired local serving experiment
+
+```sh
+python tools/benchmark_serving.py --model models/qwen3-8b-4bit \
+  --output private-serving-benchmark --idle-host-confirmed
+```
+
+Run only after other inference studies have finished. The explicit flag records
+the operator's check, not proof that the operating system was completely idle.
+The output filesystem must have at least 2 GiB free before receipt creation or
+model loading. This preflight prevents known low-space starts; it cannot reserve
+space against other processes. No real-model timing result has been collected
+with this harness yet.
+The command freezes its declaration before loading the model, measures model
+loading separately, retains two declared warmups, then runs four ordinary/marked
+pairs for each of six fixed prompts. Execution order alternates. Every response,
+EOS, cap and failure stays in the receipts; failed or missing pairs prevent a
+completed timing summary.
+
+The primary measure is the geometric mean marked/ordinary seconds per committed
+token. A fixed-seed paired bootstrap resamples within each prompt. Its one-sided
+95% upper ratio must be at most 1.05 to pass this **incremental timing screen**.
+Request latency is also reported because output lengths can differ. The four
+pairs per prompt provide only approximate fixed-workload timing uncertainty;
+they do not represent arbitrary tasks or production load.
+
+Timing includes the SDK's model calls, filtering, marking, sampling, durable
+journals and report serialization. It excludes inspection, HTTP transport and
+streaming. Model-load timing excludes Python/package imports, and the filesystem
+cache may already be warm. Each request records MLX active, peak and cached
+memory; OS peak RSS is cumulative, not a per-request memory comparison.
+
+The ordinary arm uses this same SDK. A timing pass would therefore not establish
+total overhead against a native inference server, production batch throughput,
+or acceptance of A18. No timing result is claimed merely because the harness or
+its statistical checks pass tests.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

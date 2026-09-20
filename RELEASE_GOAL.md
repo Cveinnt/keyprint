@@ -84,11 +84,17 @@ model-head identity. This adds an 8B-model inference dependency and has
 not established a deployment false-positive rate or low-cost detection. The
 candidate stays outside the SDK until independent validation supports it.
 
-GitHub CI for `67799b3` did not start. Both workflows failed before executing
+The predictability-null development run finished all 500 attempts, but only 499
+produced usable controls: eight were flagged and one failed during selection
+receipt writing because the disk was full. The run remains incomplete, its
+IID-only bound is null, and the independent audit correctly rejects it. The
+failed control is not a negative and no detector requirement closes from this run.
+
+GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code
-failure. The last successful hosted revision is `7510b96`. Local validation and
-the running 500-document predictability-null study continue; hosted validation
+failure. The last successful hosted revision is `7510b96`. Local validation
+continues; hosted validation
 must be rerun after account access is restored. Do not change billing settings
 or public-launch status as a workaround.
 
