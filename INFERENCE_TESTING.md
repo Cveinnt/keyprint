@@ -777,9 +777,9 @@ score error below 3e-14. All 151 shared-prefix heads match. Thirty-six focused
 contract, numerical and audit tests pass. These are score-replay checks, not a
 second model-kernel execution or calibration study.
 
-The next evidence requirement is fresh prompt-aware power and ordinary/wrong-key
-controls with a frozen rule, independent task groups and new keys. Prompt-free
-recovery, numerical error guarantees, editing robustness and broader models
+The fresh confirmation below tests the frozen rule on new task groups and keys.
+Larger false-positive controls, prompt-free recovery, numerical error guarantees,
+editing robustness and broader models
 remain separate requirements. This research path is not an SDK detection verdict
 or release approval. Reproduce with:
 
@@ -788,6 +788,57 @@ python tools/develop_prompt_conditioned_likelihood.py --study private-weighted-p
   --model /path/to/pinned-qwen --output private-prompt-conditioned
 python tools/audit_prompt_conditioned_likelihood.py --study private-weighted-power \
   --development private-prompt-conditioned --model /path/to/pinned-qwen
+```
+
+### Fresh prompt-aware confirmation
+
+A separate prospective run now uses twelve new Dolly tasks across six categories
+and two new random keys. Seven prior corpus manifests exclude 1,508 used records;
+full-corpus transitive grouping by normalized instruction, context or response
+excludes 1,605 connected records. Two tasks per category are selected by a frozen
+hash order from 668 eligible new groups. Prompts and reference context are unedited.
+The exact-field groups can still share topics, authors or near-duplicate content;
+“fresh” means new to those retained project manifests, not necessarily model training.
+
+The scoring rule, temperature, top-k and cutoff stay frozen. Both conditions use
+a 512-token cap, alternating which condition runs first. All 24 attempts finish
+without scoring errors. The fixed confirmation screen passes: **12/12 marked
+responses detected**, including **11/11 in the 100–400-word range**. The remaining
+marked answer has 85 words and is also detected. There are zero flags across 12
+ordinary texts under two keys and 12 marked texts under the other key. These 36
+checks are correlated within twelve task groups; they do not establish a small
+population false-positive rate. Twelve capped outputs remain included, and no
+failed text, score, threshold or sample was replaced.
+
+An independent audit checks graph reachability, exact selection, source and
+artifact hashes, prompt IDs, journal lifecycles, report token counts and every
+likelihood term. It reconciles **9,957 generated-token records, 48 scores and
+19,886 terms**, including 18,632 direct tournament transforms, within 2e-14 score
+units. Twenty-two outputs' literal tokens match their generation prefix. In both
+marathon answers, generation splits `Boston` into `B` and `oston`; visible-text
+retokenization merges them. Both remain scored as pasted visible text, with the
+marked answer detected and the ordinary answer unflagged. This audit does not
+rerun generation kernels or prove numerical calibration. Fifty-three focused
+selection, contract, numerical and audit tests pass locally.
+
+The retained comparison report provides all twelve pairs, original requests and
+references, reading/exact-text views and a mobile response switch. Browser QA
+preserves all 24 texts exactly in source view, verifies keyboard controls and
+checks desktop/mobile layouts without page errors or horizontal overflow. A
+source-grounded spot check also records an ordinary answer's incorrect MVP-year
+list relative to its supplied reference and unsupported award superlatives. No
+causal watermark-quality effect or semantic acceptance is inferred.
+
+The next qualification step is a larger frozen false-positive study. Prompt-free
+detection, editing robustness, broader models, output quality and serving-cost
+acceptance remain open. SDK behavior and release status are unchanged. Run:
+
+```sh
+python tools/validate_prompt_confirmation.py --source pinned-dolly.jsonl \
+  --history-root retained-studies --development audited-prompt-development \
+  --model /path/to/pinned-qwen --output new-prompt-confirmation
+python tools/audit_prompt_confirmation.py --study new-prompt-confirmation \
+  --source pinned-dolly.jsonl --model /path/to/pinned-qwen
 ```
 
 The ideal random-key argument does not establish fixed-HMAC-key deployment

@@ -241,6 +241,17 @@ tasks, new keys, empirical false-positive validation and prompt-free detection
 remain open. SDK behavior and launch gates are unchanged; this research result
 does not turn the interactive bit fraction into a detection verdict.
 
+Fresh prompt-aware confirmation now passes on twelve previously unused
+exact-field-disjoint task groups and two new keys: 12/12 marked hits, including
+11/11 answers in the 100–400-word range, with zero flags across 36 paired negative
+checks. All 24 outputs and twelve token caps remain retained. An independent
+audit reconciles 9,957 generated-token records, 48 scores and 19,886 terms within
+2e-14 score units. Fifty-three focused tests pass; the full comparison report
+also passes desktop/mobile and exact-text browser checks. This establishes a
+scoped fresh sensitivity result, not a population false-positive bound or a
+prompt-free detector. A larger frozen null study is next. Source-grounded quality
+issues, broader model/framework qualification and serving-cost gates remain open.
+
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
 - [ ] Supported configurations: real inference, returned-token verification and
