@@ -167,6 +167,7 @@ def test_size_limit(tmp_path):
 
 
 def test_model_loaded_and_used_on_same_worker(tmp_path):
+    closed = []
     class OwnedModel(Model):
         def __init__(self):
             super().__init__()
@@ -176,8 +177,15 @@ def test_model_loaded_and_used_on_same_worker(tmp_path):
             assert threading.get_ident() == self.owner
             return super().generate(*args, **kwargs)
 
+        def close(self):
+            assert threading.get_ident() == self.owner
+            assert self.calls == ['hello']
+            closed.append(True)
+
     with TestClient(create_app(OwnedModel, api_key=TOKEN, output=tmp_path / "runs")) as client:
         assert client.post("/v1/chat/completions", json=BODY, headers=HEADERS).status_code == 200
+        assert not closed
+    assert closed == [True]
 
 
 @pytest.mark.parametrize("fail", [False, True])

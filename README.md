@@ -171,6 +171,36 @@ production model. The portable profile supports explicit ByteLevel BPE token
 bindings and rejects unsupported tokenizers. Its evidence is separate from
 the pinned Qwen research profile. See [integration coverage](INTEGRATIONS.md).
 
+### Local GGUF with llama.cpp
+
+The optional CPU backend runs without Torch or MLX. From this reviewed checkout:
+
+```sh
+pip install '.[llama-cpp,server]'
+keyprint playground --backend llama-cpp --download
+```
+
+The explicit download fetches a pinned 145 MB SmolLM2 Q8_0 integration fixture.
+If a compatible upstream wheel is unavailable, installing `llama-cpp-python`
+requires a C/C++ build toolchain. This is an experimental adapter, not a claim
+of production answer quality. For an existing local GGUF:
+
+```python
+from keyprint import Keyprint
+
+with Keyprint.from_llama_cpp("model.gguf", key=Keyprint.new_key()) as model:
+    result = model.generate("Explain why the sky is blue.")
+    print(result.text)
+```
+
+Use `--backend llama-cpp --model model.gguf` with `generate`, `serve` or
+`playground`. Only decoder-only, non-recurrent GPT-2 byte-BPE bindings are
+admitted. The measured fixture and platform are listed in
+[integration coverage](INTEGRATIONS.md#local-gguf-with-llamacpp).
+GPU execution, Ollama, streaming, tools, JSON constraints and other model
+families are not qualified by this backend. The native context handles one
+request at a time and rejects concurrent use; the context manager releases it.
+
 To try a larger multilingual model, the same CPU adapter accepts the pinned
 SmolLM3-3B tokenizer and requests its non-thinking chat template:
 

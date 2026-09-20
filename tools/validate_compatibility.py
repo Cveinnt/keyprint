@@ -167,7 +167,7 @@ def client_check(loader, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--backend", choices=("mlx", "transformers"), required=True)
+    parser.add_argument("--backend", choices=("mlx", "transformers", "llama-cpp"), required=True)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--http-client", action="store_true")
@@ -180,7 +180,8 @@ def main():
     for name, value in (("owner.key", key), ("control.key", control)):
         with os.fdopen(os.open(args.output/name, os.O_WRONLY|os.O_CREAT|os.O_EXCL, 0o600), "wb") as stream:
             stream.write(value)
-    loader = lambda: (Keyprint.from_mlx if args.backend == "mlx" else Keyprint.from_transformers)(args.model, key=key)
+    factory = {"mlx": Keyprint.from_mlx, "transformers": Keyprint.from_transformers, "llama-cpp": Keyprint.from_llama_cpp}[args.backend]
+    loader = lambda: factory(args.model, key=key)
     candidate = loader()
     cases = json.loads(Path(__file__).with_name("inference_cases.json").read_text())
     report = {"backend":args.backend, "keyprint_version":importlib.metadata.version("keyprint"),

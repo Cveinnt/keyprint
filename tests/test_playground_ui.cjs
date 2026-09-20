@@ -120,3 +120,12 @@ test('Global stop stays available during generation with collapsed prompt contro
   assert.equal(app.get('stop').hidden, true);
   assert.equal(app.get('stop-edit').hidden, true);
 });
+
+
+test('Backend labels distinguish GGUF and never invent a model for unknown identities', () => {
+  const app = ui();
+  assert.equal(app.run('modelLabel({profile: "gguf-byte-bpe-v1-experimental"})'), 'llama.cpp · experimental CPU');
+  assert.equal(app.run('modelLabel({profile: "portable-bytelevel-v1-experimental"})'), 'Transformers · experimental CPU');
+  assert.equal(app.run('modelLabel({profile: "unknown"})'), 'Local model');
+  assert.equal(app.run('modelLabel({})'), 'Local model');
+});

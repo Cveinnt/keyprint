@@ -50,6 +50,7 @@ class Keyprint:
         self._candidate = PublicCandidate(temperature=temperature, top_k=top_k)
         self._key = key
         self._backend: Any = None
+        self._closed = False
 
     @staticmethod
     def new_key() -> bytes:
@@ -89,6 +90,39 @@ class Keyprint:
             return self._backend.identity
         return self._candidate.core_identity
 
+    @classmethod
+    def from_llama_cpp(cls, model: str | Path, *, key: bytes, temperature: float = .7,
+                      top_k: int = 100, context_size: int = 2048, threads: int = 2) -> Keyprint:
+        """Load a local CPU GGUF with an experimental byte-BPE binding.
+
+        Single request at a time. Use as a context manager to release native
+        resources. Qualification is model-specific; this is not an Ollama API.
+        """
+        instance = cls(key=key, temperature=temperature, top_k=top_k)
+        from .backends.llama_cpp import LlamaCppModel
+        instance._backend = LlamaCppModel.load(Path(model), temperature=temperature,
+            top_k=top_k, context_size=context_size, threads=threads)
+        return instance
+
+    def _ensure_open(self):
+        if self._closed:
+            raise RuntimeError("this Keyprint instance is closed")
+
+    def close(self) -> None:
+        """Close backend-owned resources where supported; disable further use."""
+        if not self._closed:
+            closer = getattr(self._backend, "close", None)
+            if closer is not None:
+                closer()
+            self._closed = True
+
+    def __enter__(self) -> Keyprint:
+        self._ensure_open()
+        return self
+
+    def __exit__(self, *_exc) -> None:
+        self.close()
+
     def score(self, text: str) -> dict[str, Any]:
         """Return an uncalibrated matching-key diagnostic, never authorship."""
         return self._score(text, self._key)
@@ -105,6 +139,7 @@ class Keyprint:
         return Inspection.from_report(self._score(text, chosen))
 
     def _score(self, text: str, key: bytes) -> dict[str, Any]:
+        self._ensure_open()
         if not isinstance(text, str) or len(text) > 16000:
             raise ValueError("text must be a string of at most 16000 characters")
         if hasattr(self._backend, "score"):
@@ -116,8 +151,9 @@ class Keyprint:
 
     def pipeline(self, *, condition: str = "marked", **settings: Any) -> Any:
         """Advanced supplied-logit API; see model binding and commit contract."""
+        self._ensure_open()
         if hasattr(self._backend, "identity"):
-            raise ValueError("pipeline() is only available for the reference binding; use generate() for Transformers")
+            raise ValueError("pipeline() is only available for the reference binding; use generate() for other backends")
         return self._candidate.pipeline(self._key, condition=condition, **settings)
 
     def generate(self, prompt: str, *, max_tokens: int = 64,
@@ -133,6 +169,7 @@ class Keyprint:
         json_schema enables constrained JSON on MLX and Transformers with
         the [structured] extra. Token-capped results remain incomplete.
         """
+        self._ensure_open()
         if self._backend is None:
             raise ValueError("load a supported backend first, for example Keyprint.from_mlx(...)")
         if condition not in ("ordinary", "marked"):

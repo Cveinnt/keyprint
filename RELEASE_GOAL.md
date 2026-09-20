@@ -33,10 +33,32 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The SDK now includes an experimental CPU llama.cpp/GGUF backend through
+`Keyprint.from_llama_cpp()` and the existing CLI, local client server and
+interactive playground. The final installed wheel passes 1,403 Python tests
+without skips; 11 UI checks also pass. All 85 package files match source,
+wheel and both tested installations. Its pinned SmolLM2 Q8_0 run produced 12 ordinary/marked
+outputs. Independent native replay reconciles all 1,002 raw heads, probability
+hashes, recorded draws, committed tokens and rendered texts. Both local client
+protocols pass replay, cancellation, reuse and graceful shutdown. Exact UTF-8
+cutoff replay passes in ordinary and marked conditions; Transformers replay
+also passes after the shared portable-loop extraction.
+
+The explicit 145 MB pinned download, offline cached startup, prefilled example,
+custom prompt and pasted-text inspection were exercised in a real browser.
+Desktop/mobile checks caught and fixed an incorrect backend label. Native
+resources now close on their owning worker after requests drain. Four of the
+12 GGUF outputs fail mechanical quality screens and both rewrite samples fail
+checks. This adds one measured framework/model binding; it does not establish
+Ollama/GPU compatibility, broader model support, quality or production cost.
+See [integration scope](INTEGRATIONS.md#local-gguf-with-llamacpp) and
+[local reproduction](CONTRIBUTING.md#llamacpp-local-checks). CI and launch remain
+held; no clue or research acceptance is promoted by this integration.
+
 The native caller now shares an immutable raw-head snapshot with its filter,
 removing duplicate SHA-256 work while retaining all journal commitments and
-validation. Its installed wheel passes 1,351 tests without skips; twenty new
-benchmark/auditor checks pass separately. Three real MLX execution modes retain
+validation. The preceding installed wheel passed 1,351 tests without skips;
+twenty new benchmark/auditor checks passed separately. Three real MLX execution modes retain
 exact frozen-reference parity across 72 outputs and 2,964 tokens. Both local
 client lifecycle checks and eleven structured requests pass. A matched-revision
 comparison retains 96 measured requests, four warmups and 4,144 audited tokens.

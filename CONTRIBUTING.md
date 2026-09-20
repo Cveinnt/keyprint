@@ -73,3 +73,31 @@ output directories. Cancellation needs separate `--protocol openai` and
 [inference testing](INFERENCE_TESTING.md) for assets and receipt handling.
 Do not treat fixture tests, a resolver pass, or accepted version ranges as
 proof of real inference across every client release.
+
+## llama.cpp local checks
+
+CI remains disabled. Run these against an installed, reviewed wheel; use a
+fresh output directory for every attempt. The measured macOS CPU build used
+`CMAKE_ARGS='-DGGML_METAL=OFF -DGGML_BLAS=OFF -DGGML_OPENMP=OFF'` and
+`CMAKE_BUILD_PARALLEL_LEVEL=2` while installing the `llama-cpp` extra.
+
+```sh
+python -m pytest tests/test_llama_cpp.py tests/test_server.py tests/test_playground.py
+keyprint doctor --playground --backend llama-cpp --model /path/to/model.gguf
+python tools/validate_compatibility.py --backend llama-cpp \
+  --model /path/to/model.gguf --output gguf-results --http-client
+python tools/validate_cancellation.py --backend llama-cpp --protocol openai \
+  --model /path/to/model.gguf --output gguf-cancel-openai
+python tools/validate_cancellation.py --backend llama-cpp --protocol anthropic \
+  --model /path/to/model.gguf --output gguf-cancel-anthropic
+python tools/validate_portable_utf8.py --backend llama-cpp --condition ordinary \
+  --model /path/to/model.gguf --output gguf-utf8-ordinary
+python tools/validate_portable_utf8.py --backend llama-cpp --condition marked \
+  --model /path/to/model.gguf --output gguf-utf8-marked
+```
+
+Read both generated texts in `gguf-results/public/comparison.html`. Engineering
+success does not approve quality. Native libraries and the GGUF are hashed in
+the reports; each tokenizer binding is separate from the reference profile.
+The fixture download is explicit through `keyprint playground --backend
+llama-cpp --download`. No hosted provider calls or model code downloads occur.

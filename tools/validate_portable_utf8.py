@@ -13,7 +13,7 @@ import random
 from unittest.mock import patch
 
 from keyprint import Keyprint
-from keyprint.backends import bytelevel, transformers
+from keyprint.backends import bytelevel, transformers, llama_cpp, portable
 
 PROMPTS = [
     'Continue in Japanese: 庭には小さな木があります。',
@@ -31,31 +31,35 @@ def events(directory):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--backend', choices=['transformers', 'llama-cpp'], default='transformers')
     parser.add_argument('--model', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--condition', choices=['ordinary', 'marked'], default='ordinary')
     args = parser.parse_args()
-    import torch
-    torch.set_num_threads(1)
+    if args.backend == 'transformers':
+        import torch
+        torch.set_num_threads(1)
     args.output.mkdir(mode=0o700)
     public = args.output / 'public'
     public.mkdir()
     key = Keyprint.new_key()
     with os.fdopen(os.open(args.output / 'owner.key', os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), 'wb') as f:
         f.write(key)
-    candidate = Keyprint.from_transformers(args.model, key=key)
+    loader = Keyprint.from_transformers if args.backend == 'transformers' else Keyprint.from_llama_cpp
+    candidate = loader(args.model, key=key)
     plan = {'scope': __doc__, 'identity': candidate.identity, 'prompts': PROMPTS,
             'seeds': list(range(3100, 3100 + len(PROMPTS))), 'condition': args.condition,
             'max_tokens': 96, 'selection': 'first pending-byte token prefix across fixed prompt order',
             'sources': {Path(p).name: hashlib.sha256(Path(p).read_bytes()).hexdigest()
-                        for p in (__file__, bytelevel.__file__, transformers.__file__)}}
+                        for p in (__file__, bytelevel.__file__, portable.__file__,
+                                  transformers.__file__ if args.backend == 'transformers' else llama_cpp.__file__)}}
     (public / 'plan.json').write_text(json.dumps(plan, indent=2, ensure_ascii=False))
     report = {'status': 'started', 'outputs': [], 'replay': None, 'quality_acceptance': False}
     try:
         for i, prompt in enumerate(PROMPTS):
             directory = args.output / f'search-{i}'
             rng = random.Random(3100 + i)
-            with patch('keyprint.backends.transformers.secrets.randbits', rng.getrandbits):
+            with patch('keyprint.backends.portable.secrets.randbits', rng.getrandbits):
                 result = candidate.generate(prompt, condition=args.condition, max_tokens=96, output=directory)
             record = {'index': i, 'text': result.text, 'completion': result.report['completion'],
                       'report_sha256': hashlib.sha256((directory / 'report.json').read_bytes()).hexdigest(),
@@ -77,7 +81,7 @@ def main():
             replay_dir = args.output / 'replay'
             cap = record['partial_cap']
             rng = random.Random(3100 + i)
-            with patch('keyprint.backends.transformers.secrets.randbits', rng.getrandbits):
+            with patch('keyprint.backends.portable.secrets.randbits', rng.getrandbits):
                 replay = candidate.generate(prompt, condition=args.condition, max_tokens=cap, output=replay_dir)
             assert replay.report['completion'] == 'length'
             assert replay.text == visible
@@ -107,6 +111,7 @@ def main():
         report.update(status='failed', error_type=type(exc).__name__)
         raise
     finally:
+        candidate.close()
         (public / 'validation.json').write_text(json.dumps(report, indent=2, ensure_ascii=False))
         print(json.dumps({'status': report['status'], 'search_outputs': len(report['outputs']), 'replay': report['replay']}, ensure_ascii=False))
     if report['status'] != 'pass':

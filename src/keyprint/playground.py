@@ -129,8 +129,14 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         try:
             yield
         finally:
-            await asyncio.gather(loading, *attempts, return_exceptions=True)
-            worker.shutdown(wait=True, cancel_futures=False)
+            try:
+                await asyncio.gather(loading, *attempts, return_exceptions=True)
+                for candidate in model:
+                    close = getattr(candidate, "close", None)
+                    if close is not None:
+                        await asyncio.get_running_loop().run_in_executor(worker, close)
+            finally:
+                worker.shutdown(wait=True, cancel_futures=False)
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
 

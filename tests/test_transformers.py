@@ -161,7 +161,7 @@ def test_cancellation_during_random_draw_finishes_that_token_commit(tmp_path, mo
     def draw(bits):
         stop.set()
         return (1 << bits) - 1
-    monkeypatch.setattr("keyprint.backends.transformers.secrets.randbits", draw)
+    monkeypatch.setattr("keyprint.backends.portable.secrets.randbits", draw)
     model = TwoTokens()
     with pytest.raises(KeyprintCancelled) as caught:
         candidate(model).generate("hello", condition="ordinary", cancel_event=stop, output=tmp_path / "stopped")

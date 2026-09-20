@@ -153,9 +153,15 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
         finally:
             # Accepted work belongs to the service, not to a socket. Graceful
             # shutdown drains it before disposing the model's owning worker.
-            if attempts:
-                await asyncio.gather(*attempts, return_exceptions=True)
-            worker.shutdown(wait=True, cancel_futures=False)
+            try:
+                if attempts:
+                    await asyncio.gather(*attempts, return_exceptions=True)
+                for candidate in model:
+                    close = getattr(candidate, "close", None)
+                    if close is not None:
+                        await asyncio.get_running_loop().run_in_executor(worker, close)
+            finally:
+                worker.shutdown(wait=True, cancel_futures=False)
 
     app = FastAPI(title="Keyprint local preview", lifespan=lifespan,
                   docs_url=None, redoc_url=None, openapi_url=None)

@@ -65,7 +65,7 @@ def doctor(*, playground=False, backend=None, model=None, execution="reference")
         validate_execution(backend, execution)
         if backend == "mlx" and (platform.system() != "Darwin" or platform.machine() != "arm64"):
             raise RuntimeError("MLX requires Apple Silicon macOS; choose --backend transformers")
-        modules = ["fastapi", "uvicorn", *(('mlx.core', 'mlx_lm') if backend == 'mlx' else ('torch', 'transformers'))]
+        modules = ["fastapi", "uvicorn", *backend_modules(backend)]
         for module in modules:
             try:
                 importlib.import_module(module)
@@ -80,6 +80,11 @@ def doctor(*, playground=False, backend=None, model=None, execution="reference")
             from .backends.mlx import verify_assets
             verify_assets(path)
             result['model_check'] = 'Pinned asset hashes verified; model not loaded'
+        elif backend == 'llama-cpp':
+            with path.open('rb') as stream:
+                if stream.read(4) != b'GGUF':
+                    raise ValueError('--model must be a GGUF file')
+            result['model_check'] = 'GGUF header present; binding, weights and inference not verified'
         else:
             if not path.is_dir():
                 raise ValueError('--model must be an existing local directory')
@@ -113,7 +118,7 @@ def default_backend() -> str:
 
 def validate_execution(backend: str, execution: str) -> None:
     if execution != 'reference' and backend != 'mlx':
-        raise ValueError('--execution is an MLX option; Transformers uses its own supported execution')
+        raise ValueError('--execution is an MLX option; other backends use their own supported execution')
 
 
 def execution_argument(parser) -> None:
@@ -125,6 +130,8 @@ def model_loader(backend: str, execution: str, keyprint):
     validate_execution(backend, execution)
     if backend == 'mlx':
         return lambda path, **settings: keyprint.from_mlx(path, execution=execution, **settings)
+    if backend == 'llama-cpp':
+        return keyprint.from_llama_cpp
     return keyprint.from_transformers
 
 
@@ -152,7 +159,30 @@ def pinned_model(backend: str):
         return ("HuggingFaceTB/SmolLM2-135M-Instruct", "12fd25f77366fa6b3b4b768ec3050bf629380bac",
                 ["config.json", "generation_config.json", "model.safetensors", "tokenizer.json",
                  "tokenizer_config.json", "special_tokens_map.json"], "about 270 MB")
-    raise ValueError("backend must be mlx or transformers")
+    if backend == "llama-cpp":
+        from .backends.llama_cpp import MODEL_ID, REVISION, MODEL_FILE
+        return MODEL_ID, REVISION, [MODEL_FILE], "about 145 MB"
+    raise ValueError("backend must be mlx, transformers or llama-cpp")
+
+
+def backend_modules(backend):
+    return {"mlx": ("mlx.core", "mlx_lm"), "transformers": ("torch", "transformers"),
+            "llama-cpp": ("llama_cpp",)}[backend]
+
+
+def model_asset_path(path: Path, backend: str) -> Path:
+    if backend == "llama-cpp":
+        from .backends.llama_cpp import MODEL_FILE
+        return path / MODEL_FILE
+    return path
+
+
+def validate_model_path(path: Path, backend: str) -> None:
+    if backend == 'llama-cpp':
+        if not path.is_file():
+            raise ValueError('--model must be an existing local GGUF file')
+    elif not path.is_dir():
+        raise ValueError('--model must be an existing local directory')
 
 
 def model_cache_root() -> Path:
@@ -164,7 +194,7 @@ def download_model(backend: str) -> Path:
     if backend == "mlx" and (platform.system() != "Darwin" or platform.machine() != "arm64"):
         raise ValueError("MLX requires Apple Silicon macOS; choose --backend transformers")
     model_id, revision, files, size = pinned_model(backend)
-    modules = ("mlx_lm",) if backend == "mlx" else ("torch", "transformers")
+    modules = ("mlx_lm",) if backend == "mlx" else backend_modules(backend)
     try:
         for name in modules:
             importlib.import_module(name)
@@ -180,14 +210,15 @@ def download_model(backend: str) -> Path:
     except Exception as exc:
         raise RuntimeError(f"Pinned model download failed: {exc}\n"
                            "Cached files are retained. Retry --download explicitly when ready, or use --model PATH.") from exc
-    return Path(path)
+    return model_asset_path(Path(path), backend)
 
 
 def cached_model(backend: str) -> Path:
     """Resolve only documented, pinned assets; never download implicitly."""
     model_id, revision, files, _ = pinned_model(backend)
     path = model_cache_root() / ("models--" + model_id.replace("/", "--")) / "snapshots" / revision
-    if not (path / "config.json").is_file():
+    asset = model_asset_path(path, backend)
+    if not (asset.is_file() if backend == "llama-cpp" else (path / "config.json").is_file()):
         command = shlex.join(["hf", "download", model_id, "--revision", revision,
                               "--include", *files])
         raise ValueError(f"No pinned {backend} model cached at {path}.\n"
@@ -196,7 +227,7 @@ def cached_model(backend: str) -> Path:
                          "For the interactive demo, keyprint playground --download fetches these same pinned files.\n"
                          "Rerun your command afterward, or pass --model PATH for existing local assets.\n"
                          "No download was started. Cached files are verified by the selected backend when loaded.")
-    return path
+    return asset
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -211,15 +242,15 @@ def main(argv: list[str] | None = None) -> int:
         command.add_argument("--json", action="store_true")
         if name == 'doctor':
             command.add_argument('--playground', action='store_true', help='Check real-demo dependencies and local model files without loading weights')
-            command.add_argument('--backend', choices=('mlx', 'transformers'))
+            command.add_argument('--backend', choices=('mlx', 'transformers', 'llama-cpp'))
             command.add_argument('--model', type=Path)
             execution_argument(command)
     keygen = commands.add_parser("keygen", help="Create a private key without printing it")
     keygen.add_argument("path", type=Path, nargs="?", default=Path("keyprint.key"))
     generate = commands.add_parser("generate", help="Generate text with a supported local model")
-    generate.add_argument("--backend", choices=("mlx", "transformers"), default=default_backend(),
+    generate.add_argument("--backend", choices=("mlx", "transformers", "llama-cpp"), default=default_backend(),
                           help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
-    generate.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
+    generate.add_argument("--model", type=Path, help="Local model directory or GGUF file; otherwise use a documented pinned cache")
     generate.add_argument("--key", type=Path, required=True, help="Private key from keyprint keygen")
     generate.add_argument("--prompt", type=prompt_text, required=True)
     generate.add_argument("--max-tokens", type=token_limit, default=64)
@@ -228,18 +259,18 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--json-schema", type=Path, help="JSON Schema file; MLX or Transformers with [structured]")
     execution_argument(generate)
     playground = commands.add_parser("playground", help="Open a real-model generation and editing playground")
-    playground.add_argument("--backend", choices=("mlx", "transformers"),
+    playground.add_argument("--backend", choices=("mlx", "transformers", "llama-cpp"),
                             default=default_backend(), help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
-    playground.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
+    playground.add_argument("--model", type=Path, help="Local model directory or GGUF file; otherwise use a documented pinned cache")
     playground.add_argument("--download", action="store_true", help="Explicitly fetch pinned public model files into the Hugging Face cache before starting")
     playground.add_argument("--key", type=Path, help="Optional private key; otherwise create a fresh session key")
     playground.add_argument("--port", type=int, default=8766)
     playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
     execution_argument(playground)
     serve = commands.add_parser("serve", help="Serve local text endpoints for OpenAI and Anthropic clients")
-    serve.add_argument("--backend", choices=("mlx", "transformers"), default=default_backend(),
+    serve.add_argument("--backend", choices=("mlx", "transformers", "llama-cpp"), default=default_backend(),
                        help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
-    serve.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
+    serve.add_argument("--model", type=Path, help="Local model directory or GGUF file; otherwise use a documented pinned cache")
     serve.add_argument("--key", type=Path, required=True)
     serve.add_argument("--api-key", type=Path, required=True, help="A separate private key file; clients use its hex encoding")
     serve.add_argument("--port", type=int, default=8765)
@@ -266,8 +297,7 @@ def main(argv: list[str] | None = None) -> int:
                 native_backend()
             path = (download_model(args.backend) if args.download else
                     args.model if args.model is not None else cached_model(args.backend))
-            if not path.is_dir():
-                raise ValueError("--model must be an existing local directory")
+            validate_model_path(path, args.backend)
             directory = args.output or Path(tempfile.mkdtemp(prefix="keyprint-playground-"))
             key = Keyprint.new_key() if key is None else key
             token = secrets.token_urlsafe(32)
@@ -293,8 +323,7 @@ def main(argv: list[str] | None = None) -> int:
             loader = model_loader(args.backend, args.execution, Keyprint)
             key = load_key(args.key)
             path = args.model if args.model is not None else cached_model(args.backend)
-            if not path.is_dir():
-                raise ValueError("--model must be an existing local directory")
+            validate_model_path(path, args.backend)
             if args.command == "serve":
                 import uvicorn
                 from .server import create_app

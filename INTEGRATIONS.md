@@ -32,6 +32,36 @@ hosted provider generation, other models or production workloads. See
 [provider scope and known warnings](PROVIDERS.md) and
 [reproduction instructions](CONTRIBUTING.md#client-version-checks).
 
+### Local GGUF with llama.cpp
+
+The optional `llama-cpp` extra adds `Keyprint.from_llama_cpp()` and the same
+`generate`, `serve`, `doctor --playground` and `playground` commands. The
+installed wheel was exercised on macOS ARM64 with `llama-cpp-python==0.3.35`,
+CPU execution, two threads and a 2,048-token context. The fixture is
+`unsloth/SmolLM2-135M-Instruct-GGUF` at revision
+`9e6855bc4be717fca1ef21360a1db4b29d5c559a`, file
+`SmolLM2-135M-Instruct-Q8_0.gguf`, SHA-256
+`c4a3dd037301b6ecea31d6da37f5cd793ead920dd5ddfe6d589294628d6ce66a`.
+
+Six ordinary/marked pairs produced 1,002 tokens with zero engineering failures.
+Four of the 12 outputs failed mechanical screens; both local rewrite samples
+failed their checks. Real OpenAI and Anthropic client requests, exact replay,
+cancellation after partial generation, worker reuse and graceful shutdown
+passed. These are local endpoints, not hosted GPT/Claude sampling hooks.
+
+The adapter reads the final native logit head directly because this wrapper
+does not populate its score cache with `logits_all=False`. It also handles
+negative native buffer-size returns; the fixture has 47 token pieces longer
+than the wrapper's 32-byte convenience buffer. Keyprint owns selection and
+the next native eval receives that exact selected token. Unknown tokenizer
+attributes, recurrent/hybrid models and unsupported schemas fail closed.
+Library hashes, model bytes, template policy and adapter sources are recorded
+in a separate experimental identity. No reference research acceptance transfers.
+
+This is a single-response CPU integration. Ollama, GPU/multi-request serving,
+other GGUF tokenizer families, output quality and production performance remain
+unqualified. See [local reproduction](CONTRIBUTING.md#llamacpp-local-checks).
+
 ### September 20 optional native MLX execution
 
 An unpublished `keyprint-native` wheel provides explicit
@@ -108,6 +138,7 @@ Qwen3-8B-4bit checkpoint. Installed-wheel tests passed on Linux/macOS and Python
 | SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Pinned ARM CPU source build: six ordinary/marked SmolLM2 pairs, 620 matching returned tokens; NUMA workaround required, output quality and production lifecycle unvalidated |
 | vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Experimental CPU 0.29.0+cpu: latest two batched SmolLM2 requests returned 125 tokens matching private selection journals; production server lifecycle and broader models unvalidated |
 | Hugging Face Transformers | Keyprint owns a single-response CPU sampling loop and KV cache | SmolLM2 real generation tested on the private branch; broader model and quality coverage missing |
+| llama.cpp / GGUF | Direct native raw logits and exact byte token binding; Keyprint selects each next token | Pinned SmolLM2 Q8_0, macOS ARM64 CPU: six ordinary/marked pairs, local client replay and cancellation passed; no Ollama/GPU/production-quality claim |
 | MLX | Public `run_response` caller and pinned local example | One exact model/tokenizer tested |
 
 An OpenAI-compatible endpoint is not an OpenAI-hosted model. Reading a Claude

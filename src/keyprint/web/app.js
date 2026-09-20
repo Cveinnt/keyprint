@@ -1,3 +1,11 @@
+function modelLabel(identity = {}) {
+  if (identity.profile === "gguf-byte-bpe-v1-experimental")
+    return "llama.cpp · experimental CPU";
+  if (identity.profile === "portable-bytelevel-v1-experimental")
+    return "Transformers · experimental CPU";
+  return "Local model";
+}
+
 "use strict";
 const $ = (id) => document.getElementById(id);
 const fragment = new URLSearchParams(location.hash.slice(1));
@@ -544,11 +552,7 @@ async function connect() {
       throw new Error(session.model.message);
     }
     modelReady = true;
-    $("model-label").textContent = session.identity.profile?.startsWith(
-      "portable",
-    )
-      ? "Transformers · experimental CPU"
-      : "Qwen3-8B · local MLX";
+    $("model-label").textContent = modelLabel(session.identity);
     if (session.running) {
       if (session.latest) {
         $("prompt").value = session.prompt;

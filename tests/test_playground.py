@@ -60,6 +60,19 @@ def client_for(tmp_path, factory=Model, **kwargs):
                       base_url="http://127.0.0.1:8766")
 
 
+def test_native_resources_close_on_owning_worker_after_generation(tmp_path):
+    closed = []
+    class ClosingModel(Model):
+        def close(self):
+            assert threading.get_ident() == self.owner
+            assert self.calls
+            closed.append(True)
+    with client_for(tmp_path, ClosingModel) as client:
+        assert client.post('/api/experiment', json=BODY, headers=HEADERS).status_code == 200
+        assert not closed
+    assert closed == [True]
+
+
 def test_loading_serves_page_but_never_queues_or_consumes_a_request(tmp_path):
     entered, release = threading.Event(), threading.Event()
     models, calls = [], []

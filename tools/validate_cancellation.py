@@ -37,7 +37,7 @@ def main():
     from openai import OpenAI, APIStatusError
     from anthropic import Anthropic, APIStatusError as AnthropicStatusError
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--backend", choices=["transformers", "mlx"], required=True)
+    parser.add_argument("--backend", choices=["transformers", "mlx", "llama-cpp"], required=True)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--execution", choices=["reference", "experimental-fast", "experimental-native"], default="reference")
@@ -65,6 +65,15 @@ def main():
 
         def __call__(self, *args, **kwargs):
             result = self.original(*args, **kwargs)
+            self.after_forward()
+            return result
+
+        def eval(self, *args, **kwargs):
+            result = self.original.eval(*args, **kwargs)
+            self.after_forward()
+            return result
+
+        def after_forward(self):
             forwards.append(1)
             path = state["output"] / "journal.jsonl"
             if len(attempts) == 1 and not state["held"] and journal_counts(path) >= 1:
@@ -73,11 +82,11 @@ def main():
                 blocked.set()
                 if not release.wait(30):
                     raise RuntimeError("cancellation test barrier was not released")
-            return result
 
     class ControlledModel:
         def __init__(self):
-            loader = Keyprint.from_transformers if args.backend == "transformers" else Keyprint.from_mlx
+            loader = {"transformers": Keyprint.from_transformers, "mlx": Keyprint.from_mlx,
+                      "llama-cpp": Keyprint.from_llama_cpp}[args.backend]
             self.model = loader(args.model, key=key, **({"execution": args.execution} if args.backend == "mlx" else {}))
             state["identity"] = self.model.identity
             self.model._backend.model = ObservedModel(self.model._backend.model)
@@ -86,6 +95,9 @@ def main():
             attempts.append(prompt)
             state["output"] = Path(kwargs["output"])
             return self.model.generate(prompt, **kwargs)
+
+        def close(self):
+            self.model.close()
 
     token = secrets.token_hex(32)
     server = uvicorn.Server(uvicorn.Config(create_app(ControlledModel, api_key=token,
