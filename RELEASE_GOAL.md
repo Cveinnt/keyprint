@@ -103,6 +103,11 @@ All measured outputs reached EOS, but eight French outputs missed the exact
 time-format screen. All 24 text pairs remain available for review. A18 and
 quality gates stay open; profile the marking path before another declared
 timing run, preserving this result and avoiding an after-the-fact threshold change.
+Actual profiling subsequently retained twelve additional outputs (512 tokens)
+and identified dense softmax iteration in both arms plus HMAC/tournament work
+in the marked arm. A development-only HMAC-context prototype preserved 540
+synthetic comparisons and 14,280 bits from actual committed-token contexts.
+Its narrow timing improvement does not close A18 or change SDK execution.
 
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending

@@ -122,6 +122,34 @@ Science outputs also varied in their additional distance/altitude claims.
 These observations do not establish semantic equivalence, reader
 indistinguishability or watermark-caused quality differences.
 
+### Profiling and a bounded PRF prototype
+
+`tools/profile_serving.py --model PINNED_MODEL --output PRIVATE_PROFILE` retains
+one real ordinary/marked pair for every fixed case, with per-request cProfile
+data and texts. The September 20 run completed twelve outputs without errors:
+257 ordinary and 255 marked tokens. The dense softmax path repeatedly visits
+the entire 151,669-entry mapped vocabulary in Python despite top-k filtering.
+Both conditions incur this cost. Marked generation additionally spends time in
+per-label HMAC computation and the 30 tournament updates. Instrumentation changes
+these costs substantially; its timings are diagnostic, not serving measurements.
+
+`tools/benchmark_prf_context.py --output PRIVATE_PRF_SCREEN` tests a local HMAC
+context-copy prototype without changing the SDK. It keeps the exact address
+encoding and uses no global or cross-request key cache. All 540 synthetic
+comparisons matched the frozen bit table. Across the measured contexts, median
+candidate/reference time was 0.852–0.879 with ten labels and 0.826–0.844 with
+100 labels; one label regressed to 1.152–1.302. Do not omit that regression or
+turn these helper timings into end-to-end speedup claims.
+
+The prototype also matched the frozen PRF at all 476 nonempty-label contexts
+in the twelve actual inference paths, covering 14,280 bits with the run's
+original key. This does not verify full generation under a substituted runtime,
+other cryptographic implementations or the 5% serving limit. Tests cover binary
+and Unicode labels, long prefixes, alternate keys and custom profile methods.
+The prototype remains in `tools/`; no global monkeypatch or SDK promotion was
+introduced. A separately identified execution path and full parity checks are
+required before using either optimization in generation.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.
