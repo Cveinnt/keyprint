@@ -53,6 +53,13 @@ fixed-batch inference receipts. This identity check is not a score or calibratio
 audit. No threshold adjustment, larger null run or SDK promotion follows this
 failed screen. Short-text detection and public launch remain open.
 
+A subsequent model-centered bit betting mixture also fails its frozen gate:
+8/12 marked detections, only 1/5 short detections, and zero paired negative-check
+flags. All 24 opened responses are retained. Ten mathematical/contract tests and
+a bounded diagnostic audit pass, but neither is detection acceptance. This
+candidate remains outside the SDK; no larger null run or cutoff change follows.
+`INFERENCE_TESTING.md` compares the tested formulas and their limitations.
+
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
 - [ ] Supported configurations: real inference, returned-token verification and

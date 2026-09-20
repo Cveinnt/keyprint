@@ -513,6 +513,56 @@ answer transferred the city's nickname to the university, while the ordinary
 answer added an incorrect English regnal number. These are retained quality
 failures, not a causal estimate of watermark-induced degradation.
 
+## Subsequent short-text detector development
+
+The same 24 opened responses have now been used for the following development
+comparisons. They are no longer held-out confirmation data for candidate choice.
+The five short marked responses contain 100–400 words. All four methods had zero
+flags in the paired negative checks (12 ordinary texts under two keys, plus 12
+marked texts under the wrong key); those 36 checks do not establish a deployment
+false-positive rate.
+
+| Development method | Marked hits | Short marked hits | Decision |
+| --- | ---: | ---: | --- |
+| Weighted-bit reference | 8/12 | 1/5 | Insufficient short-text power |
+| Hard predictability filter | 10/12 | 3/5 | Separate null run adds false flags |
+| Full surrogate tournament likelihood | 7/12 | 0/5 | Reject development candidate |
+| Model-centered bit betting mixture | 8/12 | 1/5 | Reject development candidate |
+
+The predictability filter's separate 500-control run had eight flags among 499
+usable controls and one recording failure. Preserve that incomplete result;
+the failed case is neither a negative nor a candidate for silent replacement.
+
+The final row uses `tools/residual_bet.py` and `tools/develop_residual_bet.py`.
+For each new canonical context and layer it subtracts the model's predictive
+bit average from the observed bit. Five fixed betting stakes are averaged over
+the whole document; it never selects the best stake after seeing the text.
+The per-key cutoff remains `log(200)`. Excluded, repeated-context and
+out-of-support observations contribute no evidence while literal context advances.
+This candidate reuses the retained key-blind model heads and makes no new
+generation or model-inference calls. It fails the predeclared requirement of
+at least 10/12 overall and 4/5 short detections with no negative-check flags.
+
+`tools/audit_residual_bet.py` verifies all source/score hashes, 16,135 retained
+head identities, all 48 score aggregations and all 32,270 eligibility decisions.
+An independent direct-PRF calculation matches 240 fixed sampled residual events.
+This is explicitly a bounded diagnostic audit, not full residual replay or
+authorization for null expansion. Ten tests include exhaustive ideal-PRF
+normalization over two contexts, repeated-context exclusion, canonical-label
+grouping and mixture aggregation.
+
+The ideal random-key argument does not establish fixed-HMAC-key deployment
+calibration, finite-precision error guarantees or robustness to key-dependent
+text. Probability-aware detection and betting processes have prior research
+([AISTATS 2025](https://proceedings.mlr.press/v258/li25d.html),
+[e-process framework](https://arxiv.org/abs/2602.14286)); this is an independently
+implemented development candidate, not a claimed reproduction or novel method.
+No SDK verdict, generation law, detector threshold or release acceptance changes.
+
+These results rule out promoting the tested formulas. They do not rule out all
+model-assisted detection. Another candidate needs a distinct mechanistic reason
+and a frozen design; any selected method still needs fresh power and null data.
+
 ## Article-length null controls
 
 `tools/prepare_wikitext_controls.py` prepares a second source without inspecting
