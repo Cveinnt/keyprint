@@ -10,6 +10,32 @@ estimate of watermark quality loss.
 
 ### Installed CLI first use
 
+For the documented demo path, install the selected backend and `server` extras,
+then run `keyprint playground --download`. The flag fetches only explicit model
+filenames at the pinned revision into the selected Hugging Face cache. It never
+downloads Python code or sends an authentication token. Omit the flag to load
+local cached assets; `--model` and `--download` are mutually exclusive.
+
+The September 20 download-path check used separate clean MLX/server and
+Transformers/server environments. Each ran the real prefilled seed explanation
+and a custom Friday-reminder email through the installed CLI. All eight outputs
+reached EOS at the default 192-token cap; 667 tokens reconcile with saved text
+and journal chains. Authentication rejection, terminal replay and session
+restoration pass. SmolLM2's fresh cache contains only the six requested files
+(271,170,520 bytes), with hashes identical to the prior pinned local assets.
+Qwen reuses existing cached weights; no fresh 4.62 GB transfer is claimed.
+Both backends subsequently start without `--download` under `HF_HUB_OFFLINE=1`
+and `TRANSFORMERS_OFFLINE=1`. Those are library offline settings, not a measured
+firewall or network-byte test. The MLX environment has no PyTorch or native
+accelerator. The full installed-wheel regression environment separately passes
+1,225 Python checks without skips and seven UI checks.
+
+The Qwen email pair keeps Friday without inventing a meeting time. SmolLM2
+still invents proposal/review obligations and a calendar invite; one marked
+response changes the reminder into a submission deadline. These remain quality
+failures, even though the CLI flow and journal reconciliation pass. The code
+change does not alter sampler arithmetic or runtime identities.
+
 After explicitly downloading the pinned backend assets and creating a key, run
 both conditions through the installed command, keeping separate output paths:
 

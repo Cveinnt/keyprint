@@ -9,36 +9,50 @@ separate research reference, not the install command for this branch.
 
 ## Start here
 
-Python 3.12 or 3.13. The [interactive playground](#the-interactive-playground)
-is the main demo: generate, edit, and inspect real text with a local model.
-For a model-free installation check first, run from this checkout:
+The interactive playground generates two real responses, lets you change the
+prompt, and shows how edits affect the watermark signal. No hosted API key or
+account is needed. Start from this private checkout with Python 3.12 or 3.13.
+
+**Apple Silicon Mac:**
 
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-pip install .
-keyprint demo
+python -m pip install '.[mlx,server]'
+keyprint playground --download
 ```
 
-```text
-Ordinary  BDABCAAD
-Marked    CDAABDCB
-```
+**CPU alternative:** replace the install and launch commands with
+`python -m pip install '.[transformers,server]'` and
+`keyprint playground --backend transformers --download`. This uses the small
+SmolLM2 integration example; its answer quality is limited.
 
-This offline fixture shows how a private-key weighting step changes token
-selection. It needs no account, model download or API key. The example uses
-public demonstration randomness and A/B/C/D choices; it does not generate prose.
+Open the complete local session URL printed in the terminal. The prefilled
+example runs once when the model is ready. Then enter your own prompt, compare
+the responses, and edit the marked text. Results are real local model output;
+the signal chart is an uncalibrated diagnostic, not a detection verdict.
 
-`keyprint doctor` checks installation imports and source integrity.
-`keyprint verify` checks the namespaced engine against its manifest. Neither
-checks model compatibility or detector accuracy. Add `--json` for full reports.
+The explicit `--download` flag fetches only the pinned model files into your
+Hugging Face cache: about [4.62 GB for Qwen/MLX](https://huggingface.co/mlx-community/Qwen3-8B-4bit/tree/545dc4251c05440727734bcd94334791f6ab0192)
+or [270 MB for SmolLM2](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct/tree/12fd25f77366fa6b3b4b768ec3050bf629380bac).
+Runtime dependencies and inference memory are additional. Downloads reuse cached
+files and never install Python packages, request credentials or run remote model
+code. On later runs, `keyprint playground` uses the cache without downloading.
+Use `--model PATH` for existing local files; do not combine it with `--download`.
+If a download fails, the cache is retained and the demo does not start. Retry
+explicitly when ready. Windows/Linux execution remains subject to the
+[tested compatibility scope](INTEGRATIONS.md), not inferred from CLI routing.
+
+For an optional model-free check: `python -m pip install .`, then `keyprint demo`.
+That fixture uses A/B/C/D choices and does not generate prose. `keyprint doctor`
+checks package imports and engine integrity; `keyprint verify` checks the engine
+manifest. Neither certifies a model or detector. Add `--json` for reports.
 
 ## The interactive playground
 
-After installing a backend and downloading its pinned model below:
+With a backend installed and pinned assets cached, check setup and start offline:
 
 ```sh
-pip install '.[server]'
 keyprint doctor --playground
 keyprint playground
 ```
@@ -48,7 +62,7 @@ default backend is MLX; elsewhere it is Transformers. The command finds the
 documented pinned model in the Hugging Face cache. For models downloaded to
 another directory, use `keyprint playground --backend transformers --model
 models/smollm2` or `keyprint playground --backend mlx --model models/qwen3-8b-4bit`.
-Missing assets produce an actionable error, never an implicit download.
+Missing assets produce an actionable error; only `--download` authorizes a fetch.
 
 `doctor --playground` checks backend and server imports before starting a
 session. For MLX it verifies pinned model-file hashes; for Transformers it

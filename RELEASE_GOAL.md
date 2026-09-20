@@ -33,6 +33,20 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The README now leads with one install command and `keyprint playground
+--download` for a real prefilled/custom-text demo. This explicit flag fetches
+only allowlisted files from pinned public revisions; the default remains local
+cache loading. Invalid execution, ports, model/download combinations, key files
+and missing native dependencies fail before a fetch. Clean MLX/server and
+Transformers/server environments each pass actual CLI startup, authenticated
+generation, terminal replay and session restoration: eight EOS outputs, 667
+journal-matching tokens. The MLX install needs neither PyTorch nor the optional
+native wheel. SmolLM2 populates a fresh cache; Qwen reuses its existing cache.
+Both restart with offline library flags and no download flag. The fresh full
+wheel environment passes 1,225 Python tests without skips and seven UI tests.
+These first-use checks do not close semantic, detection, performance or broad
+platform gates; SmolLM2 still invents email details. No launch or hosted CI run.
+
 The CLI now offers `doctor --playground` and explicit MLX `--execution`
 selection across generation, serving and the playground. Default execution
 stays reference. A fresh installed wheel passes 1,186 Python checks without

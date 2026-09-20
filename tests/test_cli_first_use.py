@@ -229,3 +229,110 @@ def test_cli_doctor_json_and_exit_status(preflight, capsys):
     assert json.loads(capsys.readouterr().out)["status"] == "fail"
     assert cli.main(["doctor", "--backend", "mlx"]) == 1
     assert "doctor --playground" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("backend", ["mlx", "transformers"])
+def test_download_fetches_only_pinned_files_in_selected_cache(monkeypatch, tmp_path, backend, capsys):
+    hub = pytest.importorskip("huggingface_hub")
+    monkeypatch.setattr(cli.platform, "system", lambda: "Darwin")
+    monkeypatch.setattr(cli.platform, "machine", lambda: "arm64")
+    imports, calls = [], []
+    monkeypatch.setattr(cli, "importlib", SimpleNamespace(import_module=lambda name: imports.append(name)))
+    monkeypatch.setenv("HF_HUB_CACHE", str(tmp_path / "cache"))
+    def download(**kwargs):
+        calls.append(kwargs)
+        return str(tmp_path / "snapshot")
+    monkeypatch.setattr(hub, "snapshot_download", download)
+    assert cli.download_model(backend) == tmp_path / "snapshot"
+    model, revision, files, _ = cli.pinned_model(backend)
+    assert calls == [{"repo_id": model, "revision": revision, "cache_dir": tmp_path / "cache",
+                      "allow_patterns": files, "token": False}]
+    assert len(revision) == 40 and not any("*" in name for name in files)
+    assert "model.safetensors" in files and not any(name.endswith((".py", ".bin")) for name in files)
+    assert imports == (["mlx_lm"] if backend == "mlx" else ["torch", "transformers"])
+    assert "Existing cached files are reused" in capsys.readouterr().out
+
+
+def test_download_failure_preserves_partial_cache_without_retry(monkeypatch, tmp_path):
+    hub = pytest.importorskip("huggingface_hub")
+    monkeypatch.setattr(cli, "importlib", SimpleNamespace(import_module=lambda _: None))
+    calls = []
+    partial = tmp_path / "partial"
+    def interrupted(**kwargs):
+        calls.append(kwargs)
+        partial.write_text("retained")
+        raise OSError("connection interrupted")
+    monkeypatch.setattr(hub, "snapshot_download", interrupted)
+    with pytest.raises(RuntimeError, match="Retry --download explicitly"):
+        cli.download_model("transformers")
+    assert len(calls) == 1 and partial.read_text() == "retained"
+
+
+def test_missing_backend_rejected_before_download(monkeypatch):
+    hub = pytest.importorskip("huggingface_hub")
+    def missing(_):
+        raise ImportError("missing torch")
+    monkeypatch.setattr(cli, "importlib", SimpleNamespace(import_module=missing))
+    monkeypatch.setattr(hub, "snapshot_download", lambda **kw: pytest.fail("download started"))
+    with pytest.raises(ImportError, match="Install backend dependencies first"):
+        cli.download_model("transformers")
+
+
+def test_mlx_download_rejected_on_unsupported_host_before_imports(monkeypatch):
+    monkeypatch.setattr(cli.platform, "system", lambda: "Linux")
+    monkeypatch.setattr(cli, "importlib", SimpleNamespace(import_module=lambda _: pytest.fail("imported")))
+    with pytest.raises(ValueError, match="Apple Silicon"):
+        cli.download_model("mlx")
+
+
+@pytest.mark.parametrize("extra", [["--model", "existing"], ["--port", "80"],
+    ["--backend", "transformers", "--execution", "experimental-native"]])
+def test_invalid_download_request_fails_before_network_or_output(monkeypatch, tmp_path, extra):
+    monkeypatch.setattr(cli, "download_model", lambda _: pytest.fail("download started"))
+    output = tmp_path / "private"
+    assert cli.main(["playground", "--download", "--output", str(output), *extra]) == 1
+    assert not output.exists()
+
+
+@pytest.mark.parametrize("download", [False, True])
+def test_playground_download_is_explicit_and_uses_returned_path(monkeypatch, tmp_path, download):
+    pytest.importorskip("fastapi")
+    uvicorn = pytest.importorskip("uvicorn")
+    import keyprint.playground
+    calls = []
+    def cached(_):
+        assert not download
+        return tmp_path
+    def fetch(_):
+        assert download
+        calls.append("download")
+        return tmp_path
+    monkeypatch.setattr(cli, "cached_model", cached)
+    monkeypatch.setattr(cli, "download_model", fetch)
+    monkeypatch.setattr(Keyprint, "from_transformers", staticmethod(lambda path, **kw: calls.append(path)))
+    monkeypatch.setattr(keyprint.playground, "create_playground", lambda loader, **kw: loader())
+    monkeypatch.setattr(uvicorn, "run", lambda *a, **kw: None)
+    # Supply a key so the mocked server need not create its private directory.
+    key = tmp_path / "key"
+    key.write_bytes(bytes(32)); key.chmod(0o600)
+    args = ["playground", "--backend", "transformers", "--key", str(key), "--output", str(tmp_path / "output")]
+    assert cli.main(args + (["--download"] if download else [])) == 0
+    assert calls == (["download", tmp_path] if download else [tmp_path])
+
+
+def test_invalid_key_rejected_before_download(monkeypatch, tmp_path):
+    pytest.importorskip("fastapi")
+    pytest.importorskip("uvicorn")
+    monkeypatch.setattr(cli, "download_model", lambda _: pytest.fail("download started"))
+    assert cli.main(["playground", "--download", "--key", str(tmp_path / "missing")]) == 1
+
+
+def test_missing_native_wheel_rejected_before_download(monkeypatch):
+    pytest.importorskip("fastapi")
+    pytest.importorskip("uvicorn")
+    from keyprint.experimental import native_mlx
+    def missing():
+        raise ImportError("matching native wheel required")
+    monkeypatch.setattr(native_mlx, "native_backend", missing)
+    monkeypatch.setattr(cli, "download_model", lambda _: pytest.fail("download started"))
+    assert cli.main(["playground", "--backend", "mlx", "--execution", "experimental-native", "--download"]) == 1

@@ -144,22 +144,56 @@ def prompt_text(value: str) -> str:
     return value
 
 
+def pinned_model(backend: str):
+    if backend == "mlx":
+        from .backends.mlx import MODEL_ID, REVISION, ASSETS
+        return MODEL_ID, REVISION, list(ASSETS), "about 4.62 GB"
+    if backend == "transformers":
+        return ("HuggingFaceTB/SmolLM2-135M-Instruct", "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+                ["config.json", "generation_config.json", "model.safetensors", "tokenizer.json",
+                 "tokenizer_config.json", "special_tokens_map.json"], "about 270 MB")
+    raise ValueError("backend must be mlx or transformers")
+
+
+def model_cache_root() -> Path:
+    return Path(os.environ.get("HF_HUB_CACHE", Path(os.environ.get("HF_HOME", Path.home() / ".cache/huggingface")) / "hub"))
+
+
+def download_model(backend: str) -> Path:
+    """Explicit public pinned-asset download; never install or execute model code."""
+    if backend == "mlx" and (platform.system() != "Darwin" or platform.machine() != "arm64"):
+        raise ValueError("MLX requires Apple Silicon macOS; choose --backend transformers")
+    model_id, revision, files, size = pinned_model(backend)
+    modules = ("mlx_lm",) if backend == "mlx" else ("torch", "transformers")
+    try:
+        for name in modules:
+            importlib.import_module(name)
+        from huggingface_hub import snapshot_download
+    except ImportError as exc:
+        raise ImportError(f"Install backend dependencies first: python -m pip install '.[{backend},server]'") from exc
+    print(f"Downloading {model_id} ({size} of model files on first use)\n"
+          f"Pinned revision: {revision}\nCache: {model_cache_root()}\n"
+          "Existing cached files are reused. Model files are checked when loaded.", flush=True)
+    try:
+        path = snapshot_download(repo_id=model_id, revision=revision, cache_dir=model_cache_root(),
+                                 allow_patterns=files, token=False)
+    except Exception as exc:
+        raise RuntimeError(f"Pinned model download failed: {exc}\n"
+                           "Cached files are retained. Retry --download explicitly when ready, or use --model PATH.") from exc
+    return Path(path)
+
+
 def cached_model(backend: str) -> Path:
     """Resolve only documented, pinned assets; never download implicitly."""
-    models = {
-        "mlx": ("mlx-community--Qwen3-8B-4bit", "545dc4251c05440727734bcd94334791f6ab0192"),
-        "transformers": ("HuggingFaceTB--SmolLM2-135M-Instruct", "12fd25f77366fa6b3b4b768ec3050bf629380bac"),
-    }
-    root = Path(os.environ.get("HF_HUB_CACHE", Path(os.environ.get("HF_HOME", Path.home() / ".cache/huggingface")) / "hub"))
-    name, revision = models[backend]
-    path = root / ("models--" + name) / "snapshots" / revision
+    model_id, revision, files, _ = pinned_model(backend)
+    path = model_cache_root() / ("models--" + model_id.replace("/", "--")) / "snapshots" / revision
     if not (path / "config.json").is_file():
-        model_id = name.replace("--", "/", 1)
         command = shlex.join(["hf", "download", model_id, "--revision", revision,
-                              "--include", "*.json", "*.safetensors", "*.jinja"])
+                              "--include", *files])
         raise ValueError(f"No pinned {backend} model cached at {path}.\n"
                          f"From this checkout, install the backend: pip install '.[{backend}]'\n"
                          f"Then download the pinned model explicitly:\n  {command}\n"
+                         "For the interactive demo, keyprint playground --download fetches these same pinned files.\n"
                          "Rerun your command afterward, or pass --model PATH for existing local assets.\n"
                          "No download was started. Cached files are verified by the selected backend when loaded.")
     return path
@@ -197,6 +231,7 @@ def main(argv: list[str] | None = None) -> int:
     playground.add_argument("--backend", choices=("mlx", "transformers"),
                             default=default_backend(), help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
     playground.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
+    playground.add_argument("--download", action="store_true", help="Explicitly fetch pinned public model files into the Hugging Face cache before starting")
     playground.add_argument("--key", type=Path, help="Optional private key; otherwise create a fresh session key")
     playground.add_argument("--port", type=int, default=8766)
     playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
@@ -216,18 +251,25 @@ def main(argv: list[str] | None = None) -> int:
             parser.print_help()
         elif args.command == "playground":
             loader = model_loader(args.backend, args.execution, Keyprint)
+            if args.download and args.model is not None:
+                raise ValueError("Use either --download for the pinned model or --model for existing local files")
+            if not 1024 <= args.port <= 65535:
+                raise ValueError("port must be between 1024 and 65535")
             try:
                 import uvicorn
                 from .playground import create_playground
             except ImportError as exc:
                 raise ImportError("The playground needs the [server] extra. From this checkout: pip install '.[server]'") from exc
-            path = args.model if args.model is not None else cached_model(args.backend)
+            key = load_key(args.key) if args.key else None
+            if args.download and args.execution == "experimental-native":
+                from .experimental.native_mlx import native_backend
+                native_backend()
+            path = (download_model(args.backend) if args.download else
+                    args.model if args.model is not None else cached_model(args.backend))
             if not path.is_dir():
                 raise ValueError("--model must be an existing local directory")
-            if not 1024 <= args.port <= 65535:
-                raise ValueError("port must be between 1024 and 65535")
             directory = args.output or Path(tempfile.mkdtemp(prefix="keyprint-playground-"))
-            key = load_key(args.key) if args.key else Keyprint.new_key()
+            key = Keyprint.new_key() if key is None else key
             token = secrets.token_urlsafe(32)
             app = create_playground(lambda: loader(path, key=key), token=token, output=directory, port=args.port)
             if args.key is None:
