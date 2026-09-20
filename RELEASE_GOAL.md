@@ -89,6 +89,11 @@ produced usable controls: eight were flagged and one failed during selection
 receipt writing because the disk was full. The run remains incomplete, its
 IID-only bound is null, and the independent audit correctly rejects it. The
 failed control is not a negative and no detector requirement closes from this run.
+The separate partial audit verified all 998 surviving text/key scores, preserving
+the original failed audit. Among the same 499 controls, the candidate adds five
+false flags and removes two baseline flags. Its earlier short-answer recovery
+therefore comes with an observed false-flag tradeoff. No SDK promotion or
+threshold adjustment is justified by this opened-data experiment.
 
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending

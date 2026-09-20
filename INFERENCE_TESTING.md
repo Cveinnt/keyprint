@@ -216,6 +216,21 @@ The reported IID-only bound remains null. Preserve this run and its failed audit
 any recovery must be separately declared and must not overwrite the original
 failure or silently count it as a negative.
 
+The separate `tools/audit_partial_predictability_null.py` command can inspect
+surviving receipts while retaining every failed attempt and the original failed
+audit. It validates source and selection hashes, both keys' scores, doubled
+FFT grids and the same-control baseline. It writes `partial-integrity.json`,
+never overwrites `integrity.json`, and cannot issue complete-run acceptance or
+a confidence bound. It does not rerun model heads or recover missing results.
+
+The September 20 partial replay verified all 998 surviving text/key scores.
+Maximum doubled-grid difference was 8.53e-13 or less. On the same 499 controls,
+three flags were shared, five were new and two baseline flags disappeared:
+eight candidate flags versus five baseline flags. Combined with the opened
+power screen, this is a sensitivity/false-flag tradeoff, not an unqualified
+improvement. It is not a statistical comparison on fresh held-out data. Keep
+the candidate outside the SDK; do not tune the cutoff on these observed controls.
+
 The September 19 opened-data screen improved marked hits from 8/12 to 10/12
 and short-answer hits from 1/5 to 3/5, without ordinary or wrong-key hits in the
 24 outputs. Cases 04 and 11 were recovered; 08 and 09 still missed. Case 08's
