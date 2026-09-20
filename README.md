@@ -49,6 +49,13 @@ another directory, use `keyprint playground --backend transformers --model
 models/smollm2` or `keyprint playground --backend mlx --model models/qwen3-8b-4bit`.
 Missing assets produce an actionable error, never an implicit download.
 
+Open the printed URL while the model loads. The page shows the real startup
+state and elapsed time; you can edit the prompt before generation begins.
+Generation stays disabled until the model is ready. Startup failures leave the
+page available and record details in the private `startup.json`; fix the model
+path or dependencies and restart the command. **Check connection** reconnects
+to the server without reloading a model or silently retrying a failed experiment.
+
 The prefilled prompt runs two real generations on first load. Refreshing restores
 the previous live run from this process instead of generating again. If work is
 still running, refresh restores its prompt and response limit immediately and

@@ -139,7 +139,7 @@ def main(argv: list[str] | None = None) -> int:
                 with os.fdopen(descriptor, "wb") as stream:
                     stream.write(key)
             print(f"Keyprint playground\nModel: {path}\nPrivate artifacts: {directory}\n"
-                  f"Open after model loading: http://127.0.0.1:{args.port}/#session={token}\n"
+                  f"Open now: http://127.0.0.1:{args.port}/#session={token}\n"
                   "The prefilled example runs once on page load. No hosted API calls.\n"
                   "Keep the session URL private. Ctrl+C stops the server.", flush=True)
             uvicorn.run(app, host="127.0.0.1", port=args.port, workers=1, access_log=False)

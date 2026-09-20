@@ -33,6 +33,16 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The playground now serves its page while the model loads, exposes real startup
+state, permits prompt editing and blocks premature generation. Failed startup
+keeps the page available, with private diagnostics and explicit reconnection.
+Installed-wheel QA passes 582 Python and seven JavaScript tests. Desktop/mobile
+Chrome checks retain one actual Qwen pair (91 generated tokens) plus an edited
+inspection; refreshing starts no new generation. An explicit QA loading barrier
+and injected loader failure test the waiting/error states without claiming a
+startup-speed measurement. This improves first-use behavior but does not close
+the full first-use, demo or release gates.
+
 The September 20 prompt-free surrogate-likelihood development candidate failed
 its frozen power gate: 7/12 marked answers detected, including 0/5 short answers,
 with zero ordinary or wrong-key flags in this 24-text development sample. Its

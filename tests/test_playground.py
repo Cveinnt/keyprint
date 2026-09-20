@@ -3,6 +3,7 @@ import asyncio
 import json
 from pathlib import Path
 import threading
+import time
 
 import pytest
 
@@ -46,8 +47,71 @@ class Model:
 
 
 def client_for(tmp_path, factory=Model, **kwargs):
-    return TestClient(create_playground(factory, token=TOKEN, output=tmp_path / "runs", **kwargs),
+    class ReadyClient(TestClient):
+        def __enter__(self):
+            super().__enter__()
+            deadline = time.monotonic() + 10
+            while self.get("/api/session", headers=HEADERS).json()["model"]["status"] == "loading":
+                if time.monotonic() > deadline:
+                    raise AssertionError("fixture model did not become ready")
+                time.sleep(.01)
+            return self
+    return ReadyClient(create_playground(factory, token=TOKEN, output=tmp_path / "runs", **kwargs),
                       base_url="http://127.0.0.1:8766")
+
+
+def test_loading_serves_page_but_never_queues_or_consumes_a_request(tmp_path):
+    entered, release = threading.Event(), threading.Event()
+    models, calls = [], []
+    def load():
+        calls.append(1)
+        entered.set()
+        assert release.wait(10)
+        models.append(Model())
+        return models[0]
+    app = create_playground(load, token=TOKEN, output=tmp_path / "runs", max_requests=1)
+    with TestClient(app, base_url="http://127.0.0.1:8766") as client:
+        try:
+            assert entered.wait(5)
+            assert client.get("/").status_code == 200
+            assert client.get("/app.js").status_code == 200
+            for _ in range(3):
+                session = client.get("/api/session", headers=HEADERS).json()
+                assert session["model"]["status"] == "loading" and session["identity"] is None
+                assert session["last_attempt"] is None and not session["running"]
+                assert client.post("/api/experiment", json=BODY, headers=HEADERS).status_code == 503
+            assert not list((tmp_path / "runs").glob("*/request.json"))
+        finally:
+            release.set()
+        deadline = time.monotonic() + 5
+        while client.get("/api/session", headers=HEADERS).json()["model"]["status"] == "loading":
+            assert time.monotonic() < deadline
+            time.sleep(.01)
+        response = client.post("/api/experiment", json=BODY, headers=HEADERS)
+        assert response.status_code == 200
+        assert client.post("/api/experiment", json=BODY, headers=HEADERS).json() == response.json()
+        assert len(calls) == 1 and models[0].calls == ["ordinary", "marked"]
+        assert json.loads((tmp_path / "runs/startup.json").read_text())["status"] == "ready"
+
+
+def test_failed_startup_stays_visible_private_and_does_not_reload(tmp_path):
+    calls = []
+    def load():
+        calls.append(1)
+        raise ValueError("private model location and failure detail")
+    with client_for(tmp_path, load) as client:
+        for _ in range(3):
+            assert client.get("/").status_code == 200
+            response = client.get("/api/session", headers=HEADERS)
+            assert response.json()["model"]["status"] == "failed"
+            assert response.json()["identity"] is None and response.json()["last_attempt"] is None
+            assert "private model location" not in response.text
+            result = client.post("/api/experiment", json=BODY, headers=HEADERS)
+            assert result.status_code == 503 and "private model location" not in result.text
+        assert calls == [1]
+        assert not list((tmp_path / "runs").glob("*/request.json"))
+        private = json.loads((tmp_path / "runs/startup.json").read_text())
+        assert private["error_type"] == "ValueError" and private["detail"] == "private model location and failure detail"
 
 
 def test_packaged_page_auth_host_and_origin_boundaries(tmp_path):
@@ -237,6 +301,9 @@ def test_cancelled_page_keeps_complete_pair_and_refresh_result(tmp_path):
 
     async def exercise():
         async with app.router.lifespan_context(app):
+            async with asyncio.timeout(5):
+                while (await endpoints["/api/session"]())["model"]["status"] == "loading":
+                    await asyncio.sleep(.01)
             first = asyncio.create_task(endpoints["/api/experiment"](request("gone")))
             try:
                 assert await asyncio.to_thread(models[0].started.wait, 5)

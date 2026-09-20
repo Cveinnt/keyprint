@@ -7,6 +7,7 @@ from contextlib import asynccontextmanager
 import hashlib
 from importlib.resources import files
 import json
+import logging
 import os
 from pathlib import Path
 import secrets
@@ -95,15 +96,40 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
     last_attempt: dict = {}
     progress: dict | None = None
     hosts = {f"127.0.0.1:{port}", f"localhost:{port}"}
+    startup = {"status": "loading", "seconds": 0.0}
+    model_identity = None
+    loading_started = None
+
+    async def initialize():
+        nonlocal model_identity, loading_started
+        loading_started = time.perf_counter()
+        try:
+            def load():
+                candidate = load_model()
+                return candidate, candidate.identity
+            candidate, identity = await asyncio.get_running_loop().run_in_executor(worker, load)
+            elapsed = time.perf_counter() - loading_started
+            (output / "startup.json").write_text(json.dumps({"status": "ready", "seconds": elapsed}))
+            model.append(candidate)
+            model_identity = identity
+            startup.update(status="ready", seconds=elapsed)
+        except Exception as exc:
+            startup.update(status="failed", seconds=time.perf_counter() - loading_started,
+                message="The local model could not load. Check the terminal and private startup.json, fix the model path or dependencies, then restart keyprint playground.")
+            try:
+                (output / "startup.json").write_text(json.dumps({**startup,
+                    "error_type": type(exc).__name__, "detail": str(exc)}))
+            except OSError:
+                pass
+            logging.getLogger(__name__).exception("Local model startup failed; private artifacts: %s", output)
 
     @asynccontextmanager
     async def lifespan(app):
+        loading = asyncio.create_task(initialize())
         try:
-            model.append(await asyncio.get_running_loop().run_in_executor(worker, load_model))
             yield
         finally:
-            if attempts:
-                await asyncio.gather(*attempts, return_exceptions=True)
+            await asyncio.gather(loading, *attempts, return_exceptions=True)
             worker.shutdown(wait=True, cancel_futures=False)
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
@@ -145,7 +171,11 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
 
     @app.get("/api/session")
     async def session():
-        return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model[0].identity,
+        status = startup.copy()
+        if status["status"] == "loading" and loading_started is not None:
+            status["seconds"] = time.perf_counter() - loading_started
+        return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model_identity,
+                "model": status,
                 "edited": latest.get("edited"),
                 "running": lock.locked(), "last_attempt": last_attempt.copy() or None,
                 "scope": "Live local generation and uncalibrated literal diagnostics"}
@@ -217,6 +247,8 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
 
     @app.post("/api/experiment")
     async def experiment(request: Request):
+        if startup["status"] != "ready":
+            return error(startup.get("message", "The local model is still loading; no experiment started"), 503)
         if request.headers.get("content-type", "").split(";", 1)[0] != "application/json":
             return error("Use application/json", 415)
         raw = bytearray()

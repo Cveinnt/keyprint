@@ -8,6 +8,8 @@ if (fragment.has("session")) {
   history.replaceState(null, "", location.pathname);
 }
 let busy = false,
+  modelReady = false,
+  connecting = false,
   experiment = null,
   editMeasurement = null,
   measuredText = null,
@@ -26,7 +28,7 @@ const characters = (text) => Array.from(text || "");
 function setBusy(value) {
   busy = value;
   for (const id of ["generate", "inspect", "half", "restore"])
-    $(id).disabled = value || (id !== "generate" && !experiment);
+    $(id).disabled = value || !modelReady || (id !== "generate" && !experiment);
   for (const control of [$("prompt"), $("cap"), ...document.querySelectorAll("[data-prompt]")])
     control.disabled = value;
   $("outputs").setAttribute("aria-busy", String(value));
@@ -366,7 +368,7 @@ function showGeneration(data, retained = false) {
 }
 
 async function run(action) {
-  if (busy) return;
+  if (busy || !modelReady) return;
   const text = action === "generate" ? $("prompt").value : $("edited").value;
   if (!text.trim()) {
     $(action === "generate" ? "status" : "edit-status").textContent =
@@ -492,14 +494,34 @@ $("download").addEventListener("click", () => {
 });
 
 chart();
-setBusy(true);
-(async () => {
+setBusy(false);
+async function connect() {
+  if (connecting || busy) return;
+  connecting = true;
+  modelReady = false;
+  setBusy(false);
+  $("reconnect").hidden = true;
+  $("status").classList.remove("error");
   try {
     if (!token)
       throw new Error(
         "Open the complete session URL printed by “keyprint playground”",
       );
     let session = await api("/api/session");
+    while (session.model?.status === "loading") {
+      modelReady = false;
+      setBusy(false);
+      $("model-label").textContent = "Loading the local model";
+      $("status").textContent = `Loading model locally · ${session.model.seconds.toFixed(0)}s elapsed. You can edit the prompt while it loads. No generation has started.`;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      session = await api("/api/session");
+    }
+    if (session.model?.status === "failed") {
+      modelReady = false;
+      $("model-label").textContent = "Model unavailable";
+      throw new Error(session.model.message);
+    }
+    modelReady = true;
     $("model-label").textContent = session.identity.profile?.startsWith(
       "portable",
     )
@@ -564,5 +586,10 @@ setBusy(true);
     $("status").textContent = error.message;
     $("status").classList.add("error");
     $("outputs").setAttribute("aria-busy", "false");
+    $("reconnect").hidden = false;
+  } finally {
+    connecting = false;
   }
-})();
+}
+$("reconnect").addEventListener("click", connect);
+connect();
