@@ -95,6 +95,15 @@ false flags and removes two baseline flags. Its earlier short-answer recovery
 therefore comes with an observed false-flag tradeoff. No SDK promotion or
 threshold adjustment is justified by this opened-data experiment.
 
+Storage cleanup enabled the September 20 paired Qwen serving experiment:
+48 measured requests completed, with 2,009 journal-verified tokens including
+warmups. Incremental marked/ordinary time per token was 1.0763, with a one-sided
+95% bootstrap upper ratio of 1.0802. This fails the predeclared 5% timing screen.
+All measured outputs reached EOS, but eight French outputs missed the exact
+time-format screen. All 24 text pairs remain available for review. A18 and
+quality gates stay open; profile the marking path before another declared
+timing run, preserving this result and avoiding an after-the-fact threshold change.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code

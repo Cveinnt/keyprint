@@ -60,8 +60,7 @@ Run only after other inference studies have finished. The explicit flag records
 the operator's check, not proof that the operating system was completely idle.
 The output filesystem must have at least 2 GiB free before receipt creation or
 model loading. This preflight prevents known low-space starts; it cannot reserve
-space against other processes. No real-model timing result has been collected
-with this harness yet.
+space against other processes.
 The command freezes its declaration before loading the model, measures model
 loading separately, retains two declared warmups, then runs four ordinary/marked
 pairs for each of six fixed prompts. Execution order alternates. Every response,
@@ -85,6 +84,43 @@ The ordinary arm uses this same SDK. A timing pass would therefore not establish
 total overhead against a native inference server, production batch throughput,
 or acceptance of A18. No timing result is claimed merely because the harness or
 its statistical checks pass tests.
+
+### September 20 real-inference result
+
+The pinned Qwen3-8B / MLX experiment completed all 48 measured requests and
+two retained warmups without generation errors. Every measured output reached
+EOS. The four pairs for each of the six fixed prompts produced 965 ordinary
+tokens and 980 marked tokens. The exact texts, caps and measurements remain
+in the receipts; nothing was replaced or excluded after measurement.
+
+| Measure | Result |
+| --- | ---: |
+| Marked/ordinary seconds per committed token, geometric mean | 1.0763 |
+| One-sided 95% bootstrap upper ratio | 1.0802 |
+| Whole-request latency ratio, geometric mean | 1.0692 |
+| One-sided 95% whole-request upper ratio | 1.0921 |
+| Separate model load, including asset verification | 5.18 s |
+| Maximum measured-request MLX peak allocation | 4.52 GiB |
+
+The **5% incremental timing screen failed**. This is about 7.6% incremental
+cost per token within the same SDK, not negligible total overhead against a
+native server. The bootstrap covers this small fixed workload only. No A18 or
+production-serving acceptance follows, and the prespecified limit is unchanged.
+
+`tools/audit_serving.py --run PRIVATE_RUN --model PINNED_MODEL` independently
+reconciled 2,009 committed tokens including warmups, original prompt hashes,
+conditions, artifact hashes, journal chains, displayed texts and the primary
+point estimate. It also reproduced the declared bootstrap summary. This checks
+stored receipts and arithmetic, not fresh model-head replay or OS isolation.
+
+The audit produces `public/comparison.html` and `public/comparison.json` with
+all 24 side-by-side pairs. All eight JSON outputs parsed to the exact requested
+values, and the backup instruction retained its restore-confirmation condition
+in all eight outputs. All eight French outputs changed `09:30` to `09h30`,
+failing the declared exact-literal screen while retaining the same time.
+Science outputs also varied in their additional distance/altitude claims.
+These observations do not establish semantic equivalence, reader
+indistinguishability or watermark-caused quality differences.
 
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
