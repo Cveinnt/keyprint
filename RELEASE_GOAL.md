@@ -138,6 +138,17 @@ detection and serving acceptance gaps remain. The NumPy tournament candidate is
 not integrated because small-support timings regressed. Profile-guided progress
 does not close the remaining production gates.
 
+The batched-tournament implementation keeps scalar arithmetic below 64 eligible
+candidates and preserves exact layer values/counters above that boundary. It
+passes 388 installed-wheel tests, 24 real output comparisons, independent replay
+of 988 committed tokens and actual HTTP cancellation/replay/reuse. Its separate
+96-request timing run verifies 4,100 tokens including warmups and is the first
+local 5% development-screen pass: marked/ordinary ratio 1.04354, one-sided 95%
+upper 1.0498404. The narrow pass does not close A18 or justify launch. Freeze the
+candidate before independent confirmation, wider workloads and separate startup
+qualification. Sixteen French exact-time flags remain; quality, reader
+indistinguishability, short-text detection and hosted release checks remain open.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code

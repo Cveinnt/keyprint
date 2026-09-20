@@ -312,6 +312,50 @@ format screen. Earlier timing failures remain retained; no A18, semantic-quality
 reader-indistinguishability or native-server acceptance changes. Further changes
 must preserve parity and undergo a new prospectively declared serving run.
 
+### Batched tournament candidate
+
+The original per-round NumPy prototype remains retained. A follow-up batches
+all 30 rounds, validates the immutable bit table once and keeps `math.fsum`,
+operation order, per-round normalization checks and explicit subnormal flooring.
+A separate fixed-seed screen matched all 8,400 layer probabilities and diagnostic
+counter comparisons. At 64–1,000 candidates it used 0.480–0.505 of scalar helper
+time. One candidate regressed to 2.58 and ten to 1.13; matrix preparation is
+included in these timings. The experimental SDK therefore dispatches to batching
+only at 64 or more eligible candidates, retaining scalar updates below that.
+The threshold is an execution choice, not a detector or acceptance threshold.
+
+The new `batched_tournament.py` source is bound into the experimental identity.
+The prepare lifecycle body remains identical to the frozen reference; only its
+separate module's transform selects the batched arithmetic. Protected token
+probabilities, excluded support, exact sampling and context cleanup remain under
+parity checks. The default reference implementation is untouched.
+
+The installed batched wheel passes 388 tests. Complete-caller parity again
+matches 24 real outputs, 494 tokens per execution path and all sampling records,
+text and literal diagnostics. The independent auditor reconciles 988 commits;
+actual Qwen HTTP cancellation, terminal replay and worker reuse also pass.
+These checks include the 63/64 dispatch boundary, protected candidates, zero
+support, subnormal roundups and caller failure accounting.
+
+The follow-up serving run completed 96 measured requests at EOS with no errors.
+The auditor reconciled 4,100 tokens including four warmups. Optimized
+marked/ordinary seconds per token was **1.04354**, with one-sided 95% upper ratio
+**1.0498404**. It narrowly passes the unchanged 1.05 development screen. The
+whole-request ratio was 1.05177 (upper 1.07568), including differing output
+lengths. Optimized/reference seconds-per-token ratios were 0.57116 for ordinary
+output and 0.55399 for marked output, measured within the same interleaved run.
+All 48 text pairs remain retained, including sixteen French exact-time flags.
+
+This first development-workload pass does not close A18. The small margin, prior
+sequential experiments, separate startup distributions, broader workloads,
+native-server overhead and exact-revision hosted checks require follow-up.
+Freeze this implementation before an independently declared confirmation run;
+do not extend this consumed run or replace its preceding failures.
+
+These are sequential development experiments on a fixed workload. Even a timing
+screen pass would require independent confirmation and wider workloads before
+production or negligible-overhead claims.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

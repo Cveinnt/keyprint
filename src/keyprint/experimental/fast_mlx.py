@@ -11,6 +11,7 @@ from pathlib import Path
 import numpy as np
 
 from .hmac_context import SHAContext
+from .batched_tournament import BatchedTokenSourceSession
 from ..integrity import verify
 from ..sampling import sparse_softmax, identity as sampling_identity
 from .._engine.research.keyprint_candidate_v2.adapter import (
@@ -54,7 +55,7 @@ class _ContextProfile(RuntimeBoundProfile):
         return tuple(engine.digest(layer, suffix)[0] & 1 for layer in range(self.config.layers))
 
 
-class _ContextSession(SparseTokenSourceSession):
+class _ContextSession(BatchedTokenSourceSession):
     def __init__(self, profile, key, **settings):
         super().__init__(_ContextProfile(profile), key, **settings)
 
@@ -171,7 +172,7 @@ def execution_specification():
     """Bind every experimental implementation and reporting source."""
     return {
             "sources": {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py", "hmac_context.py")},
+                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py", "hmac_context.py", "batched_tournament.py")},
             "sampling": sampling_identity(), "request_local_hmac_context": True,
             "reference_results_transfer": False}
 
