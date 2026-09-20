@@ -33,6 +33,19 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The installed playground now puts the real responses ahead of secondary display
+controls, keeps custom prompts in a keyboard-accessible disclosure, and provides
+an ordinary/marked response switch on narrow screens. Actual Qwen browser QA
+passes eight interaction checks: startup, prefilled and custom generation,
+exact-text switching, edit inspection, keyboard scrubbing, refresh restoration
+and cancellation with visible focus recovery. Four completed EOS outputs contain
+212 tokens; this is a flow check, not quality or detection acceptance. Response
+panels begin at 553 px on a 1440-by-1000 desktop and 652 px on a 390-by-844 mobile
+viewport, versus 886 and 1,128 px previously. Both have no horizontal overflow or
+page errors. The new installed wheel passes 22 focused Python playground checks
+and ten JavaScript checks; the preceding full 1,225-test result remains separately
+recorded. No inference code or sampling identity changed. Hosted CI stays disabled.
+
 The README now leads with one install command and `keyprint playground
 --download` for a real prefilled/custom-text demo. This explicit flag fetches
 only allowlisted files from pinned public revisions; the default remains local

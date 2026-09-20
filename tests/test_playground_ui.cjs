@@ -79,3 +79,44 @@ test('Undoing pending edits restores the matching metric label for original and 
     assert.equal(app.get('fraction').textContent, edited ? '40.0%' : '60.0%');
   }
 });
+
+test('Response switch changes only display selection and accessible pressed state', () => {
+  const app = ui(); app.set('experiment', experiment('Keep the actual output.'));
+  app.get('read-ordinary').listeners.click();
+  assert.equal(app.get('outputs').attributes['data-focus'], 'ordinary');
+  assert.equal(app.get('read-ordinary').attributes['aria-pressed'], 'true');
+  assert.equal(app.get('read-marked').attributes['aria-pressed'], 'false');
+  app.get('read-marked').listeners.click();
+  assert.equal(app.get('outputs').attributes['data-focus'], 'marked');
+  assert.equal(app.get('read-marked').attributes['aria-pressed'], 'true');
+  app.run('readResponse("invalid")');
+  assert.equal(app.get('outputs').attributes['data-focus'], 'marked');
+  assert.equal(app.run('experiment.outputs.marked.text'), 'Keep the actual output.');
+});
+
+test('Prompt disclosure preview follows literal input without generating', () => {
+  const app = ui();
+  app.get('prompt').value = '  <script>text</script> 🌱  ';
+  app.get('prompt').listeners.input();
+  assert.equal(app.get('prompt-preview').textContent, '<script>text</script> 🌱');
+  app.get('prompt').value = '   ';
+  app.get('prompt').listeners.input();
+  assert.match(app.get('prompt-preview').textContent, /Enter a prompt/);
+  app.run('restoreRequest({last_attempt:{request:{action:"generate",text:"Restored input."}}})');
+  assert.equal(app.get('prompt-preview').textContent, 'Restored input.');
+  assert.equal(app.run('experiment'), null);
+});
+
+test('Global stop stays available during generation with collapsed prompt controls', () => {
+  const app = ui();
+  app.set('busy', true); app.set('stopAvailable', true); app.set('activeAction', 'generate');
+  app.run('updateStopControls()');
+  assert.equal(app.get('stop').hidden, false);
+  assert.equal(app.get('stop').disabled, false);
+  assert.equal(app.get('stop-edit').hidden, true);
+  app.set('activeAction', 'inspect'); app.run('updateStopControls()');
+  assert.equal(app.get('stop-edit').hidden, false);
+  app.set('busy', false); app.run('updateStopControls()');
+  assert.equal(app.get('stop').hidden, true);
+  assert.equal(app.get('stop-edit').hidden, true);
+});

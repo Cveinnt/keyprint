@@ -25,6 +25,17 @@ const percent = (value) =>
 // UTF-16 offsets would shorten displayed prefixes after supplementary characters.
 const characters = (text) => Array.from(text || "");
 
+function syncPromptPreview() {
+  $("prompt-preview").textContent = $("prompt").value.trim() || "Enter a prompt to generate your own pair.";
+}
+
+function readResponse(condition) {
+  if (!["ordinary", "marked"].includes(condition)) return;
+  $("outputs").setAttribute("data-focus", condition);
+  for (const name of ["ordinary", "marked"])
+    $("read-" + name).setAttribute("aria-pressed", String(condition === name));
+}
+
 function setBusy(value) {
   busy = value;
   for (const id of ["generate", "inspect", "half", "restore"])
@@ -36,8 +47,12 @@ function setBusy(value) {
     ? "Running local experiment…"
     : "Generate both versions ↗";
   if (!value) {
-    if (stopRequested && ["stop", "stop-edit", ""].includes(document.activeElement?.id || ""))
-      $(activeAction === "inspect" ? "inspect" : "generate").focus();
+    if (stopRequested && ["stop", "stop-edit", ""].includes(document.activeElement?.id || "")) {
+      const target = activeAction === "inspect" ? $("inspect")
+        : $("prompt-controls").open ? $("generate")
+        : $("prompt-controls").querySelector("summary");
+      target.focus();
+    }
     activeRequestId = null;
     stopAvailable = false;
     stopRequested = false;
@@ -47,6 +62,7 @@ function setBusy(value) {
 
 function updateStopControls() {
   for (const id of ["stop", "stop-edit"]) {
+    $(id).hidden = !busy || (id === "stop-edit" && activeAction !== "inspect");
     $(id).disabled = !busy || !stopAvailable || stopRequested ||
       (id === "stop-edit" && activeAction !== "inspect");
     $(id).textContent = stopRequested ? "Stopping…" : "Stop";
@@ -292,6 +308,7 @@ function restoreRequest(session) {
   const request = session.last_attempt?.request;
   if (request?.action === "generate") {
     $("prompt").value = request.text;
+    syncPromptPreview();
     restoreLimit(request.max_tokens);
   }
 }
@@ -328,6 +345,7 @@ function restoreInspection(session) {
 }
 
 function showGeneration(data, retained = false) {
+  syncPromptPreview();
   experiment = data;
   if (retained) restoreLimit(data.max_tokens);
   editMeasurement = null;
@@ -479,9 +497,13 @@ $("restore").addEventListener("click", () => {
 document.querySelectorAll("[data-prompt]").forEach((button) =>
   button.addEventListener("click", () => {
     $("prompt").value = button.dataset.prompt;
+    syncPromptPreview();
     $("prompt").focus();
   }),
 );
+$("prompt").addEventListener("input", syncPromptPreview);
+$("read-ordinary").addEventListener("click", () => readResponse("ordinary"));
+$("read-marked").addEventListener("click", () => readResponse("marked"));
 $("download").addEventListener("click", () => {
   const url = URL.createObjectURL(
     new Blob([JSON.stringify(report(), null, 2)], { type: "application/json" }),

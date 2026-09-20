@@ -71,14 +71,14 @@ footer,
   color: var(--muted);
 }
 .intro {
-  padding: 38px 0 32px;
+  padding: 25px 0 28px;
 }
 h1 {
   font-weight: 400;
-  font-size: clamp(46px, 5.8vw, 78px);
-  line-height: 1.02;
-  letter-spacing: -4px;
-  margin: 20px 0 24px;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+  margin: 16px 0 20px;
 }
 .intro-bottom {
   display: flex;
@@ -86,7 +86,7 @@ h1 {
   align-items: flex-end;
 }
 .intro-bottom > p:first-child {
-  font-size: 21px;
+  font-size: 18px;
   line-height: 1.5;
   margin: 0;
 }
@@ -152,6 +152,29 @@ summary:focus-visible {
   grid-template-columns: 1fr 270px;
   gap: 32px;
 }
+.prompt-controls {
+  border: 1px solid var(--line);
+  padding: 0;
+}
+.prompt-controls summary {
+  padding: 14px 18px;
+  line-height: 1.5;
+}
+.prompt-controls summary > span:first-child {
+  color: var(--rust);
+}
+#prompt-preview {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  max-height: 3em;
+  overflow: hidden;
+}
+.prompt-controls[open] #prompt-preview { display: none; }
+.prompt-controls .prompt-layout { padding: 8px 18px 18px; }
+.response-switch { display: none; }
 .run-panel p {
   font-size: 13px;
   color: var(--muted);
@@ -194,11 +217,7 @@ button:disabled {
   justify-content: space-between;
   gap: 10px;
 }
-.run-panel #stop {
-  width: 100%;
-  margin-top: 8px;
-  grid-column: 1/-1;
-}
+#stop { min-height: 40px; margin-bottom: 10px; }
 .presets {
   display: flex;
   gap: 8px;
@@ -501,16 +520,17 @@ footer {
     padding: 0 20px;
   }
   .intro {
-    padding: 42px 0 35px;
+    padding: 20px 0 24px;
   }
   h1 {
-    letter-spacing: -2px;
+    font-size: 36px;
+    letter-spacing: -1.3px;
   }
   .intro-bottom .technical {
     display: none;
   }
   .intro-bottom > p:first-child {
-    font-size: 18px;
+    font-size: 16px;
   }
   .prompt-layout,
   .outputs,
@@ -523,12 +543,35 @@ footer {
   }
   .outputs article + article {
     border-left: 0;
-    border-top: 1px solid var(--line);
+    border-top: 0;
     padding-left: 0;
   }
   .outputs article {
     padding-right: 0;
   }
+  .response-switch {
+    display: flex;
+    gap: 0;
+  }
+  .response-switch button {
+    flex: 1;
+    min-height: 44px;
+    border-bottom: 0;
+    border-radius: 0;
+  }
+  .response-switch button + button { border-left: 0; }
+  .response-switch button[aria-pressed="true"] {
+    color: var(--rust);
+    background: #eee6db;
+    box-shadow: inset 0 2px var(--rust);
+  }
+  .outputs[data-focus="marked"] #ordinary-response,
+  .outputs[data-focus="ordinary"] #marked-response { display: none; }
+  .output-heading { flex-wrap: wrap; gap: 4px; }
+  .outputs article { padding-top: 18px; }
+  .prompt-controls .prompt-layout { padding: 8px 12px 14px; }
+  .prompt-controls summary { padding: 12px; }
+  .reading-controls > span { flex-basis: 100%; }
   h2 {
     font-size: 24px;
   }
