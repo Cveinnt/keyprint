@@ -24,6 +24,13 @@ keyprint doctor
 These commands do not replace the actual inference checks below or establish
 coverage for another operating system, model or backend.
 
+The local September 20 ARM Docker SGLang repetition completed twelve outputs and
+661 journal-matching tokens, with four mechanical screening failures retained.
+Its verifier also checks the recorded Keyprint native-adapter and sampling-source
+identities against the installed package. A token-path match alone cannot qualify
+a different source version. Passing this check does not approve generated prose
+or authenticate a receipt supplied by an untrusted party.
+
 Install the wheel with the backend, server and clients extras, and download the
 pinned model listed in README.md. Then run:
 

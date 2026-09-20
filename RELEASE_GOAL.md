@@ -196,6 +196,19 @@ disabled to stop pre-execution failure notifications. Continue with local
 installed-wheel and actual-inference checks; do not re-enable or repeatedly
 dispatch hosted CI without a new user instruction.
 
+The subsequent local ARM Docker SGLang run completed all six ordinary/marked
+pairs and three callback contract checks. Independent verification matches all
+661 returned tokens, condition labels and pinned runtime sources. The verifier
+now also rejects stale or missing Keyprint native-adapter and sampling-source
+identities, with sixteen focused tests; a synthetic before/after case confirms
+the previous verifier accepted a wrong adapter hash. This does not authenticate
+untrusted callers or substitute source hashes for execution evidence. Four
+mechanical screening failures remain: ordinary email, both French responses and
+marked JSON. A post-hoc assistant review also finds semantic problems missed by
+literal screens, including an incorrect ordinary scattering explanation and
+poor Spanish in both conditions. These twelve outputs are compatibility evidence
+for the tiny SmolLM2 fixture, not production-language quality acceptance.
+
 The portable Transformers path now handles a token cap inside a UTF-8 character
 by retaining every committed token and pending byte, returning the valid prefix
 and explicitly marking full-carrier replay unavailable. Complete output still

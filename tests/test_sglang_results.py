@@ -1,5 +1,6 @@
 import copy
 import hashlib
+from importlib.resources import files
 import json
 from pathlib import Path
 import sys
@@ -10,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from check_native_receipts import check as check_tokens
 from check_sglang_results import check
 from keyprint.experimental.sglang_runtime import REVISION, SOURCE_FILES, VERSIONS
+from keyprint.sampling import identity as sampling_identity
 
 
 @pytest.fixture
@@ -28,7 +30,9 @@ def receipts(tmp_path):
             outputs.append(output)
             rows.append({"case": case["id"], "condition": condition, **output,
                          "usage": {"completion_tokens": 1}})
-            events = [{"phase": "start", "condition": condition},
+            events = [{"phase": "start", "condition": condition,
+                       "adapter_sha256": hashlib.sha256(files("keyprint").joinpath("experimental/native.py").read_bytes()).hexdigest(),
+                       "sampling_execution": sampling_identity()},
                       {"phase": "selected_tentative", "token_id": token}]
             previous, lines = "0" * 64, []
             for sequence, event in enumerate(events):
@@ -94,4 +98,33 @@ def test_swapping_ordinary_and_marked_labels_rejected(receipts):
     report["runs"][0]["condition"], report["runs"][1]["condition"] = "marked", "ordinary"
     path.write_text(json.dumps(report))
     with pytest.raises(ValueError, match="displayed condition"):
+        check(receipts, "test-run")
+
+
+@pytest.mark.parametrize("field,value,message", [
+    ("adapter_sha256", None, "adapter source"),
+    ("adapter_sha256", "0" * 64, "adapter source"),
+    ("sampling_execution", None, "sampling execution"),
+    ("sampling_execution", {**sampling_identity(), "source_sha256": "0" * 64}, "sampling execution"),
+])
+def test_old_or_missing_adapter_identity_rejected_even_with_consistent_receipts(receipts, field, value, message):
+    path = receipts / "traces/1.jsonl"
+    events = [json.loads(line)["event"] for line in path.read_text().splitlines()]
+    if value is None:
+        events[0].pop(field)
+    else:
+        events[0][field] = value
+    previous, lines = "0" * 64, []
+    for sequence, event in enumerate(events):
+        line = (json.dumps({"sequence": sequence, "previous_sha256": previous, "event": event}) + "\n").encode()
+        lines.append(line)
+        previous = hashlib.sha256(line).hexdigest()
+    path.write_bytes(b"".join(lines))
+    report_path = receipts / "public/comparison.json"
+    report = json.loads(report_path.read_text())
+    report["token_path_verification"] = check_tokens(receipts)
+    report_path.write_text(json.dumps(report))
+    # Tokens, conditions, hash chains and the report all agree. Only the source
+    # identity is stale/missing; a matching token path cannot qualify that code.
+    with pytest.raises(ValueError, match=message):
         check(receipts, "test-run")

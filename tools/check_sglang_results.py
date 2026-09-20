@@ -1,10 +1,13 @@
 """Fail closed on partial, cached or inconsistent SGLang inference receipts."""
 import argparse
+import hashlib
+from importlib.resources import files
 import json
 from pathlib import Path
 
 from check_native_receipts import check as check_tokens
 from keyprint.experimental.sglang_runtime import REVISION, SOURCE_FILES, VERSIONS
+from keyprint.sampling import identity as sampling_identity
 
 
 def check(root: Path, run_id: str) -> dict:
@@ -58,6 +61,11 @@ def check(root: Path, run_id: str) -> dict:
         starts = [event for event in events if event["phase"] == "start"]
         if len(starts) != 1 or starts[0].get("condition") not in {"ordinary", "marked"}:
             raise ValueError("one journal start with a known condition required")
+        expected_adapter = hashlib.sha256(files("keyprint").joinpath("experimental/native.py").read_bytes()).hexdigest()
+        if starts[0].get("adapter_sha256") != expected_adapter:
+            raise ValueError("Keyprint adapter source differs from the checked package")
+        if starts[0].get("sampling_execution") != sampling_identity():
+            raise ValueError("Keyprint sampling execution differs from the checked package")
         ids = tuple(event["token_id"] for event in events if event["phase"] == "selected_tentative")
         conditions[ids] = starts[0]["condition"]
     for row in rows:
