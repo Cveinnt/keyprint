@@ -19,6 +19,9 @@ let busy = false,
 const ns = "http://www.w3.org/2000/svg";
 const percent = (value) =>
   value == null ? "Unavailable" : (value * 100).toFixed(1) + "%";
+// Inspection prefixes count Unicode code points, as Python strings do.
+// UTF-16 offsets would shorten displayed prefixes after supplementary characters.
+const characters = (text) => Array.from(text || "");
 
 function setBusy(value) {
   busy = value;
@@ -160,7 +163,7 @@ function chart() {
       : "No measurements yet.",
   );
   const series = original?.inspection.series || [];
-  const max = Math.max(original?.text.length || 1, measuredText?.length || 1);
+  const max = Math.max(characters(original?.text).length, characters(measuredText).length, 1);
   const values = [
     ...series.flatMap((p) => [p.matching, p.control]),
     ...(edited?.series || []).map((p) => p.matching),
@@ -243,7 +246,7 @@ function chart() {
         r: 4,
         fill: "#576b83",
       });
-    $("prefix").textContent = original.text.slice(0, point.characters);
+    $("prefix").textContent = characters(original.text).slice(0, point.characters).join("");
     $("prefix-readout").textContent =
       `${point.characters} characters · matching ${percent(point.matching)} · other ${percent(point.control)}`;
   }
@@ -267,6 +270,9 @@ function markDirty() {
   if (dirty)
     $("measurement-status").textContent =
       "Showing the last measured text, not your pending edits.";
+  else if (experiment)
+    showMetrics(editMeasurement?.inspection ?? experiment.outputs.marked.inspection,
+      editMeasurement ? "Last measured edit" : "Original marked response");
 }
 
 function restoreLimit(limit) {
@@ -429,8 +435,9 @@ function scrubChart(event) {
   const position =
     (((event.clientX - bounds.left) / bounds.width) * 560 - 48) / 496;
   const length = Math.max(
-    experiment.outputs.marked.text.length,
-    measuredText?.length || 1,
+    characters(experiment.outputs.marked.text).length,
+    characters(measuredText).length,
+    1,
   );
   const points = experiment.outputs.marked.inspection.series;
   if (!points.length) return;
@@ -453,9 +460,9 @@ $("chart").addEventListener("pointermove", (event) => {
   if ($("chart").hasPointerCapture(event.pointerId)) scrubChart(event);
 });
 $("half").addEventListener("click", () => {
-  const text = $("edited").value;
+  const text = characters($("edited").value);
   const cut = text.lastIndexOf(" ", Math.floor(text.length / 2));
-  $("edited").value = text.slice(0, cut > 0 ? cut : Math.ceil(text.length / 2));
+  $("edited").value = text.slice(0, cut > 0 ? cut : Math.ceil(text.length / 2)).join("");
   run("inspect");
 });
 $("restore").addEventListener("click", () => {

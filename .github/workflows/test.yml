@@ -119,5 +119,5 @@ jobs:
       - run: python -m pip install '.[test,server,clients]'
       - run: python -m pip check
       - run: python -m pytest tests/test_server.py tests/test_messages_server.py tests/test_rewrite.py tests/test_playground.py tests/test_inspection.py tests/test_capped_utf8.py
-      - name: Check safe response rendering
-        run: node --test tests/test_reader.cjs
+      - name: Check safe response rendering and playground measurement state
+        run: node --test tests/test_reader.cjs tests/test_playground_ui.cjs

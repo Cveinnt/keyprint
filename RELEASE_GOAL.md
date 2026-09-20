@@ -191,6 +191,22 @@ or public-launch status as a workaround.
 
 ## First-use acceptance
 
+The September 20 fresh-wheel browser pass completed the default Qwen/MLX
+prefilled pair, a custom prompt and edited-text inspection. It verified refresh
+recovery, keyboard scrubbing and a 390-pixel mobile layout. Actual Unicode output
+exposed a browser UTF-16/Python code-point mismatch: the final chart prefix was
+shorter than the generated text. Chart coordinates, prefix slicing and the
+half-text control now use the SDK's code-point units. Undoing an edit also clears
+the stale pending-measurement label. Three regression tests fail on the previous
+source and pass on the repair, and are included in provider CI. The repaired
+browser pass verifies every prefix of a real emoji-containing response and a
+longer edited-text axis. Deliberately dropping a completed HTTP response then
+retrying replays the same request ID and exact result without a second attempt.
+The initial SVG assertion used an unsupported Playwright innerText operation;
+that harness failure is retained separately from the corrected textContent pass.
+These scoped checks do not establish detection, output quality, broad browser
+support or the complete first-use/release gate.
+
 - A developer can install the published package and follow one tested path to
   a useful result. Core, model assets and optional inference dependencies have
   separate, measured installation costs.

@@ -139,6 +139,10 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
     async def reader():
         return Response(files("keyprint").joinpath("web/reader.js").read_text(), media_type="text/javascript")
 
+    @app.get("/favicon.svg")
+    async def favicon():
+        return Response(files("keyprint").joinpath("web/favicon.svg").read_text(), media_type="image/svg+xml")
+
     @app.get("/api/session")
     async def session():
         return {"prompt": latest.get("prompt", EXAMPLE), "latest": latest.get("result"), "identity": model[0].identity,

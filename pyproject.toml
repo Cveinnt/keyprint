@@ -33,7 +33,7 @@ keyprint = "keyprint.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-keyprint = ["py.typed", "_engine/**/*.json", "_engine/**/*.md", "web/*.html", "web/*.css", "web/*.js"]
+keyprint = ["py.typed", "_engine/**/*.json", "_engine/**/*.md", "web/*.html", "web/*.css", "web/*.js", "web/*.svg"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

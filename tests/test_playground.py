@@ -59,6 +59,8 @@ def test_packaged_page_auth_host_and_origin_boundaries(tmp_path):
         assert client.get("/app.js").status_code == 200
         assert client.get("/reader.js").status_code == 200
         assert client.get("/app.css").status_code == 200
+        icon = client.get("/favicon.svg")
+        assert icon.status_code == 200 and "image/svg+xml" in icon.headers["content-type"]
         assert client.get("/api/session").status_code == 401
         assert client.get("/api/progress").status_code == 401
         assert client.get("/api/progress", headers=HEADERS).json() == {"active": False}
