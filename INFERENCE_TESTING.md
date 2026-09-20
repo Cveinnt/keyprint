@@ -841,6 +841,54 @@ python tools/audit_prompt_confirmation.py --study new-prompt-confirmation \
   --source pinned-dolly.jsonl --model /path/to/pinned-qwen
 ```
 
+### Frozen prompt-aware null screen
+
+A local run is in progress on 500 unchanged Dolly human responses with their
+original instructions and reference context. The two keys, model, top-k,
+temperature, half-mixture score and `log(200)` cutoff are exactly those of the
+fresh confirmation above. No new key or threshold is selected for this screen.
+
+Eight retained source manifests exclude 1,520 previously used indices. Full-corpus
+graph reachability excludes 1,617 connected records, including ineligible bridge
+records. A separately frozen hash order selects 500 of 656 remaining eligible
+groups across six categories. Each response has 100–400 words; neither response
+nor prompt is shortened. Source text is not copied into public result rows.
+
+One document is flagged if either key crosses the cutoff. The primary screen
+requires all 500 documents to be available and the one-sided 97.5% exact binomial
+upper bound to be at most 1%. With this sample size, zero flags gives a 0.7351%
+upper bound; even one flag fails. Those bounds assume IID documents. Exact-field
+grouping does not establish independence by topic or author, and model-training
+overlap is unknown. A passing screen would remain scoped corpus evidence.
+
+All attempts, model-head receipts and per-token scores are retained, including
+errors. Missing or failed samples never count as negatives. An independent audit
+can follow completed rows while inference runs; it recomputes every score term,
+checks original prompt/literal-token alignment, verifies history exclusion and
+uses a separate beta-quantile calculation for the final bound. A partial integrity
+pass is not completion. It does not rerun the underlying model kernels.
+
+```sh
+python tools/validate_prompt_null.py --source pinned-dolly.jsonl \
+  --history-root retained-studies --confirmation audited-prompt-confirmation \
+  --model /path/to/pinned-qwen --output new-prompt-null
+python tools/audit_prompt_null.py --follow --study new-prompt-null \
+  --source pinned-dolly.jsonl --model /path/to/pinned-qwen
+```
+
+No final null result is claimed yet. Prompt-free detection, semantic quality,
+serving cost and broader platform/model qualification remain separate gates.
+Hosted SDK and SGLang workflows remain disabled; this work runs locally.
+
+The accompanying local regression run passes **1,278 Python tests with no skips**
+and **10 JavaScript checks**. The first run passed 1,264 and skipped twelve native
+development-library tests; selecting the retained, hash-verified library and
+including two new audit-following tests produced the complete rerun. One upstream
+Starlette/AnyIO deprecation warning remains. Dependency checks, `keyprint doctor`
+and the deterministic CLI demo pass. All 83 SDK files match the retained wheel
+and installed environment. This is macOS ARM64/Python 3.13 evidence, not a fresh
+Linux/Python 3.12 or broad-framework CI matrix. It does not finish the null study.
+
 The ideal random-key argument does not establish fixed-HMAC-key deployment
 calibration, finite-precision error guarantees or robustness to key-dependent
 text. Probability-aware detection and betting processes have prior research

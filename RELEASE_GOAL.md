@@ -252,6 +252,13 @@ scoped fresh sensitivity result, not a population false-positive bound or a
 prompt-free detector. A larger frozen null study is next. Source-grounded quality
 issues, broader model/framework qualification and serving-cost gates remain open.
 
+A frozen local false-positive study is now running on 500 previously unused
+exact-field-connected Dolly groups, using the same two confirmation keys and
+unchanged prompt-aware score. All 500 must be available, with a one-sided 97.5%
+IID-only upper bound at most 1%; missing samples cannot count as negatives.
+An independent score audit follows completed records. This is an in-progress
+study, not a closed detection or release gate. Hosted CI remains disabled.
+
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
 - [ ] Supported configurations: real inference, returned-token verification and
