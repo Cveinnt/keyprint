@@ -21,7 +21,8 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                  allow_thinking=True, allow_tools=False, temperature=None, top_k=None,
                  prefill_step_size=2048, max_random_draws=16384,
                  max_random_bits=4 * 1024 * 1024, max_model_calls=9216,
-                 capture_public_fixture=False, backend=None, cache_factory=None):
+                 capture_public_fixture=False, backend=None, cache_factory=None,
+                 constraint=None):
     """One response; bit source and durable journal precede every sampled commit.
 
     Inject ``backend``/``cache_factory`` for supplied fake-model tests. Production
@@ -51,6 +52,12 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
         raise TypeError("model, random_bits and reserve must be callable")
     if not isinstance(journal, DurableJournal) or journal.broken or journal.sequence != 0:
         raise ValueError("a fresh durable journal is required; attempts cannot resume")
+    if constraint is not None:
+        from ..structured import JsonConstraint
+        if type(constraint) is not JsonConstraint or constraint.size != 151669:
+            raise ValueError("an exact pinned JSON constraint is required")
+        if allow_thinking or allow_tools or purpose != "general" or source_text is not None:
+            raise ValueError("JSON constraints require the visible general route")
     from .fast_mlx import FastCandidate
     expected_version = "keyprint-mlx-sparse-experimental-v1"
     if type(candidate) is not FastCandidate:
@@ -85,6 +92,8 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                             "bit_requests": 0, "bit_values_obtained": 0,
                             "bit_values_journaled": 0, "bits_requested": 0,
                             "sample_attempts": 0, "sampled_tokens": 0}
+    structured = ({"identity": constraint.identity, "status": "incomplete", "schema_validated": False}
+                  if constraint is not None else None)
 
     def record(event):
         journal.append(event)
@@ -99,7 +108,14 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                   "empirical_v1_results_transfer": False, "empirical_v2_results_transfer": False}
         if capture_public_fixture:
             result["public_fixture_sdk"] = pipeline.receipt()
+        if structured is not None:
+            result["structured_output"] = structured.copy()
         return result
+
+    def finish_constraint(response, completion):
+        if constraint is not None:
+            state["phase"] = "structured_validation"
+            structured.update(constraint.finish(response["visible"]["text"], completion))
 
     def forward(ids, *, prefill):
         state["phase"] = "model_forward_reservation"
@@ -153,6 +169,8 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                    "caller_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
         if capture_public_fixture:
             started["public_fixture_prompt_ids"] = list(prompt)
+        if constraint is not None:
+            started["constraint"] = constraint.identity
         record(started)
         if max_tokens:
             state["phase"] = "cache_creation"
@@ -186,6 +204,19 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                     prepared.update({"public_fixture_raw_support": support.tolist(),
                                      "public_fixture_raw_logits": filtered[0, support].tolist()})
                 record(prepared)
+                if constraint is not None:
+                    state["phase"] = "grammar_mask"
+                    if np.isnan(filtered).any() or np.isposinf(filtered).any():
+                        raise ValueError("model returned invalid logits")
+                    allowed = constraint.allowed()
+                    mask = np.zeros(pipeline.model_vocabulary_size, dtype=bool)
+                    mask[:constraint.size] = allowed
+                    filtered[0, ~mask] = -np.inf
+                    record({"kind": "grammar_mask", "index": index,
+                            "allowed_sha256": hashlib.sha256(allowed.tobytes()).hexdigest(),
+                            "allowed_count": int(allowed.sum()),
+                            "masked_logits_sha256": hashlib.sha256(filtered.tobytes()).hexdigest()})
+                    reserve("after_grammar_mask", {"index": index})
                 state["sample_attempts"] += 1
                 state["phase"] = "sampling"
                 step = pipeline.step(filtered, bits)
@@ -194,9 +225,15 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                 committed = {"kind": "committed_step", "index": index, "stopped": step.stopped is not None}
                 if capture_public_fixture:
                     committed["public_fixture_token_id"] = step.token_id
+                if constraint is not None:
+                    committed["constraint_token_id"] = step.token_id
                 record(committed)
+                if constraint is not None:
+                    state["phase"] = "grammar_commit"
+                    constraint.commit(step.token_id)
                 if step.stopped is not None:
                     response = asdict(step.stopped)
+                    finish_constraint(response, "eos")
                     state["phase"] = "terminal_journal"
                     result = snapshot("eos")
                     record(result)
@@ -204,6 +241,7 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                 next_input = backend.array([step.token_id], dtype=backend.int32)
         state["phase"] = "finish"
         response = asdict(pipeline.finish_at_limit(max_tokens))
+        finish_constraint(response, "length")
         state["phase"] = "terminal_journal"
         result = snapshot("length")
         record(result)

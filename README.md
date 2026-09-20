@@ -133,7 +133,7 @@ tool channel is parsed, and generated text is never silently stripped.
 
 ### JSON that clients can parse
 
-For the Transformers backend, install the optional `structured` extra and pass
+For MLX or Transformers, install the optional `structured` extra and pass
 `json_schema` to `generate`. Keyprint masks invalid tokens before sampling; it
 does not remove Markdown fences, repair the answer or retry behind the scenes.
 
@@ -158,7 +158,9 @@ private receipts and raise `KeyprintError`.
 
 The local server also supports typed OpenAI and Anthropic parsing helpers;
 see [provider examples and schema limits](PROVIDERS.md#typed-json-output).
-This optional mode currently supports Transformers only. Its constrained
+The same `json_schema` argument works with `Keyprint.from_mlx(...)`; install
+`.[mlx,structured]` for the pinned Qwen backend. Native SGLang/vLLM structured
+generation is not integrated. This mode's constrained
 distribution has no calibrated detector claim; a fixed schema can leave little
 or no room for a watermark. Valid JSON does not establish factual correctness.
 

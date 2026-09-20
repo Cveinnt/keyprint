@@ -53,7 +53,10 @@ class FastPublicCandidate(PublicCandidate):
             'bit_requests': f.get('bit_requests', r.get('attempted_bit_requests', 0)),
             'bit_values_obtained': f.get('bit_values_obtained', r.get('completed_bit_returns', 0)),
             'bit_values_journaled': f.get('bit_values_journaled', 0)}
-        return self._decorate(build_report('error', target_identity=self._target, payload=payload))
+        report = self._decorate(build_report('error', target_identity=self._target, payload=payload))
+        if "structured_output" in f:
+            report["structured_output"] = {**f["structured_output"], "status": "incomplete", "schema_validated": False}
+        return report
 
     def score_literal(self, text, key):
         self._ready()
@@ -132,7 +135,10 @@ class FastPublicCandidate(PublicCandidate):
             receipt = captured[0].receipt()
             if receipt['final'] != result['response']:
                 raise ValueError('caller response and retained pipeline differ')
-            return self._generation(receipt)
+            report = self._generation(receipt)
+            if "structured_output" in result:
+                report["structured_output"] = result["structured_output"]
+            return report
         except ResponseFailure as exc:
             return self._error('caller', failure=exc.failure)
         except BaseException as exc:

@@ -83,6 +83,24 @@ class _Tokenizer:
 
 
 class JsonConstraint:
+    @classmethod
+    def for_mlx(cls, schema, tokenizer):
+        """Use exactly the pinned visible-token route, including its sole EOS.
+
+        The MLX head has extra padding entries. They are not grammar tokens;
+        the caller masks them rather than inventing a decoder binding.
+        """
+        from .backends.bytelevel import ByteLevelBinding
+        from ._engine.legacy._impl.research.grouped_tokenizer_binding import Binding, TOKENIZER_SHA
+        from ._engine.legacy._impl.research.token_channel_host import EOS
+        frozen = Binding()
+        identity = {"tokenizer_sha256": TOKENIZER_SHA, "eos_ids": [EOS],
+                    "pieces": "frozen_visible_route_all_added_tokens_excluded",
+                    "vocabulary_size": len(frozen.token_bytes)}
+        binding = ByteLevelBinding(frozen.token_bytes, frozenset({EOS}),
+            hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest())
+        return cls(schema, tokenizer, binding)
+
     def __init__(self, schema, tokenizer, binding):
         schema = _schema_copy(schema)
         try:

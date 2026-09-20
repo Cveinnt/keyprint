@@ -27,7 +27,7 @@ class Record(BaseModel):
     enabled: bool
 
 
-def clients(candidate, output, prompt):
+def clients(candidate, output, prompt, *, loader=None):
     import uvicorn
     from openai import OpenAI
     from anthropic import Anthropic
@@ -36,7 +36,7 @@ def clients(candidate, output, prompt):
     sock = socket.socket()
     sock.bind(("127.0.0.1", 0))
     port = sock.getsockname()[1]
-    server = uvicorn.Server(uvicorn.Config(create_app(lambda: candidate, api_key=token,
+    server = uvicorn.Server(uvicorn.Config(create_app(loader or (lambda: candidate), api_key=token,
                           output=output / "http"), log_level="warning"))
     thread = threading.Thread(target=server.run, kwargs={"sockets": [sock]}, daemon=True)
     thread.start()
@@ -71,7 +71,9 @@ def clients(candidate, output, prompt):
         assert len(list((output / "http").glob("*/report.json"))) == 2
         for value in requests.values():
             private = json.loads((output / "http" / value["request_id"] / "report.json").read_text())
-            assert private["text"] == value["text"] and private["structured_output"]["schema_validated"]
+            private = private.get("report", private)
+            text = private.get("text", private.get("rendered_carriers", {}).get("visible_text"))
+            assert text == value["text"] and private["structured_output"]["schema_validated"]
         return requests
     finally:
         server.should_exit = True

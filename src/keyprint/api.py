@@ -127,7 +127,7 @@ class Keyprint:
         finish; cancellation is checked before the next call or sample. A
         stopped attempt raises KeyprintCancelled with retained receipts. Use a
         fresh Event for each attempt; do not clear or reuse a requested event.
-        json_schema enables constrained JSON on the Transformers backend with
+        json_schema enables constrained JSON on MLX and Transformers with
         the [structured] extra. Token-capped results remain incomplete.
         """
         if self._backend is None:
@@ -138,17 +138,23 @@ class Keyprint:
             raise ValueError("max_tokens must be between 1 and 1024")
         if cancel_event is not None and not isinstance(cancel_event, Event):
             raise TypeError("cancel_event must be a threading.Event or None")
+        constraint = None
         if json_schema is not None:
             from .backends.transformers import TransformersModel
-            if not isinstance(self._backend, TransformersModel):
-                raise ValueError("json_schema is currently supported only by the Transformers backend")
+            from .backends.mlx import MLXModel
+            if isinstance(self._backend, MLXModel):
+                from .structured import JsonConstraint
+                constraint = JsonConstraint.for_mlx(json_schema, self._backend.tokenizer)
+            elif not isinstance(self._backend, TransformersModel):
+                raise ValueError("json_schema requires the MLX or Transformers backend")
         if hasattr(self._backend, "generate"):
             return self._backend.generate(prompt, key=self._key, max_tokens=max_tokens,
                                           condition=condition, output=output, cancel_event=cancel_event,
                                           **({"json_schema": json_schema} if json_schema is not None else {}))
         ids = self._backend.encode_prompt(prompt)
         return self._run(self._backend.model, ids, max_tokens=max_tokens,
-                         condition=condition, output=output, cancel_event=cancel_event)
+                         condition=condition, output=output, cancel_event=cancel_event,
+                         constraint=constraint)
 
     def rewrite(self, text: str, *, max_tokens: int = 256,
                 output: str | Path | None = None, condition: str = "marked") -> Rewrite:
@@ -169,7 +175,7 @@ class Keyprint:
     def _run(self, model: Callable[..., Any], ids: list[int], *, max_tokens: int,
              condition: str, output: str | Path | None,
              backend: Any = None, cache_factory: Any = None,
-             cancel_event: Event | None = None) -> Generation:
+             cancel_event: Event | None = None, constraint: Any = None) -> Generation:
         from ._engine.research.keyprint_candidate_v3_caller import DurableJournal
         directory = Path(tempfile.mkdtemp(prefix="keyprint-")) if output is None else Path(output)
         if output is not None:
@@ -179,7 +185,7 @@ class Keyprint:
 
         def reserve(action: str, metadata: dict[str, Any]) -> None:
             nonlocal cancelled
-            if action in ("cache_creation", "model_forward", "sample"):
+            if action in ("cache_creation", "model_forward", "sample", "after_grammar_mask"):
                 # Never interrupt a random draw or the token commit it belongs
                 # to. The frozen caller records the failure and closes cache.
                 try:
@@ -196,6 +202,7 @@ class Keyprint:
                 max_tokens=max_tokens, max_model_calls=max_tokens + 8,
                 allow_thinking=False, allow_tools=False,
                 backend=backend, cache_factory=cache_factory,
+                **({"constraint": constraint} if constraint is not None else {}),
             )
         report.setdefault("package_scope", "Namespaced reference port; no new model-family or scientific acceptance.")
         payload = report.get("payload", {})

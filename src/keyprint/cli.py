@@ -99,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--max-tokens", type=int, default=64)
     generate.add_argument("--condition", choices=("ordinary", "marked"), default="marked")
     generate.add_argument("--output", type=Path)
-    generate.add_argument("--json-schema", type=Path, help="JSON Schema file; Transformers with [structured] only")
+    generate.add_argument("--json-schema", type=Path, help="JSON Schema file; MLX or Transformers with [structured]")
     playground = commands.add_parser("playground", help="Open a real-model generation and editing playground")
     playground.add_argument("--backend", choices=("mlx", "transformers"),
                             default="mlx" if platform.system() == "Darwin" and platform.machine() == "arm64" else "transformers")

@@ -23,7 +23,13 @@ helpers use the same path. Real SmolLM3 tests retain two fenced-JSON controls,
 six successful constrained outputs, two typed-client responses and one explicitly
 incomplete token cap. This addresses a format failure through a requested schema,
 without repairing the older unconstrained samples or claiming semantic/detection
-acceptance. Structured output under MLX/native frameworks remains open.
+acceptance. The MLX path now shares this grammar contract: default reference
+and experimental-fast execution each pass eleven real Qwen requests, including
+both typed clients and an explicit token cap. Across those runs, 426 generated
+tokens and 350 grammar masks reconcile with retained journals. The tested
+Unicode values and backup prerequisite are preserved. Native framework
+structured output, broader semantics and constrained-output detection remain
+open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 

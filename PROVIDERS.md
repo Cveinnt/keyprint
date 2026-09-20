@@ -99,6 +99,11 @@ Install `.[server,clients,transformers,structured]` and start the Transformers
 server above with `--model models/smollm3`. The pinned OpenAI and Anthropic
 clients can parse a shared Pydantic type directly:
 
+The same client code also works with the pinned MLX server. Install
+`.[server,clients,mlx,structured]` and use `--backend mlx` with the pinned Qwen
+model directory. The grammar and validation contract are shared; model output
+quality and watermark capacity must be evaluated separately.
+
 ```python
 from pathlib import Path
 from pydantic import BaseModel, ConfigDict
@@ -163,7 +168,14 @@ The constrained JSON and Unicode cases matched their requested values, and
 both negation extractions preserved the prerequisite in this small sample.
 These checks establish the tested format/client path, not semantic reliability
 or detection power. Constraints can leave little or no marking capacity.
-MLX, native SGLang/vLLM, tools and streaming do not yet support this mode.
+Pinned Qwen/MLX subsequently passed the same eleven-request suite on each of
+the default reference and experimental-fast paths. Across both runs, 426
+generated tokens and 350 grammar masks reconcile with private journals;
+both typed clients parse and replay exactly. All six constrained examples
+per path reach EOS, while the deliberate one-token cap remains incomplete.
+The sampled multilingual values and backup prerequisite match the prompts.
+These are local client calls to Qwen, not hosted GPT or Claude generation.
+Native SGLang/vLLM, tools and streaming do not yet support this mode.
 
 ### Explicit cancellation
 
