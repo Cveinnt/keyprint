@@ -33,6 +33,25 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+Input-limit handling now reports tokenized input, the existing backend limit,
+and the response budget through a public `InputLimitError`. Local Chat
+Completions, Messages and playground requests return actionable HTTP 400 errors;
+arbitrary backend error details remain private. Rejections preserve prior demo
+results and replay without sampling. Actual SmolLM2 GGUF CPU checks exercise both
+client libraries, generation/rewrite overflow, and recovery with six generated
+outputs. The prior full suite passed 1,431 tests; the updated installed wheel
+passes 213 affected tests, including 18 new limit/replay/recovery cases. This
+closes an input-error usability gap, without changing sampling or token limits.
+
+The exact earlier example-based rewrite instruction also completed a separate
+28-output screen across Qwen3-8B and Llama 3.2 3B: seven sources, ordinary and
+marked outputs, five previously exposed sources and two new sources per model.
+There were no runtime failures. Qwen had two lexical failures from an unchanged
+approval-owner pair; Llama had eleven, with translations, omissions and a Chinese
+approval-condition reversal in the retained outputs. Lexical passes are not
+semantic acceptance. Under the frozen selection rule, the instruction was not
+promoted and the default remains unchanged. Quality and launch gates stay open.
+
 The local playground now exposes the real SDK rewrite path. Users can switch
 between separate prompt/source drafts, enter exact phrases, compare the unchanged
 source with one generated candidate, inspect explicit failed checks, stop an

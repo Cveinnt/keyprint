@@ -21,6 +21,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from .api import Keyprint, KeyprintError, KeyprintCancelled
+from .errors import InputLimitError
 from .cancellation import check_cancellation, _CancellationRequested
 from .inspection import Inspection
 from .rewrite import plain_text, protected_literals
@@ -330,6 +331,8 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                     result = await asyncio.get_running_loop().run_in_executor(worker, execute, params, run, cancellation)
                 except (KeyprintCancelled, _CancellationRequested):
                     response = error("Experiment stopped. Previous completed results are unchanged.", 410, run_id)
+                except InputLimitError as exc:
+                    response = error(str(exc), 400, run_id)
                 except Exception:
                     pass
                 else:

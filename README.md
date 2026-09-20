@@ -313,6 +313,15 @@ owning thread; an active model call cannot be preempted. The local server also
 provides [explicit cancellation](PROVIDERS.md#explicit-cancellation), separate
 from HTTP timeouts and result recovery.
 
+If tokenized input exceeds the backend's limit, catch `InputLimitError` (a
+`ValueError`) and inspect `input_tokens`, `limit`, and `max_tokens`. Counts include
+the chat template and any rewrite instructions. `max_tokens=None` means an
+input-only limit; otherwise the response budget also consumes context. Shorten
+the input or, for a context limit, lower the response budget. Rejected inputs
+do not start sampling. Both local client endpoints and the playground return
+HTTP 400 with these counts; retrying the same request ID replays that rejection.
+Use a new request ID after changing the input or budget.
+
 Keys are exactly 32 bytes. `keyprint keygen` creates an owner-only file without
 printing the key or overwriting an existing file. `Keyprint.new_key()` returns
 fresh bytes for applications; store them securely yourself. Keep keys and

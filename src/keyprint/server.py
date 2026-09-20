@@ -20,6 +20,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from .api import Keyprint, KeyprintCancelled
+from .errors import InputLimitError
 
 
 class Message(BaseModel):
@@ -266,6 +267,8 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                         cancel_event=cancellation, **({"json_schema": schema} if schema is not None else {})))
                 except KeyprintCancelled:
                     response = fail("Generation cancelled; private receipts retained. This attempt will not restart.", 410, request_id)
+                except InputLimitError as exc:
+                    response = fail(str(exc), 400, request_id)
                 except ValueError:
                     response = fail("Prompt or JSON schema is outside this model's supported input contract", 400, request_id)
                 except ImportError:

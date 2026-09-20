@@ -11,6 +11,7 @@ import secrets
 import tempfile
 
 from ..sampling import sparse_sample, sparse_softmax
+from ..errors import InputLimitError
 
 
 class PortableGeneration:
@@ -45,8 +46,11 @@ class PortableGeneration:
         encoded = self.encode_prompt(prompt)
         if any(type(i) is not int or not 0 <= i < len(self.binding.pieces) for i in encoded):
             raise ValueError("prompt tokens are outside the declared model binding")
-        if not encoded or len(encoded) + max_tokens > min(self.context_limit, 8192):
-            raise ValueError("prompt and requested response exceed the model context limit")
+        if not encoded:
+            raise ValueError("prompt tokens are empty")
+        limit = min(self.context_limit, 8192)
+        if len(encoded) + max_tokens > limit:
+            raise InputLimitError(input_tokens=len(encoded), max_tokens=max_tokens, limit=limit)
         directory = Path(tempfile.mkdtemp(prefix="keyprint-")) if output is None else Path(output)
         if output is not None:
             directory.mkdir(mode=0o700)

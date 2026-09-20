@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import platform
 from typing import Any
+from ..errors import InputLimitError
 
 MODEL_ID = "mlx-community/Qwen3-8B-4bit"
 REVISION = "545dc4251c05440727734bcd94334791f6ab0192"
@@ -50,6 +51,8 @@ class MLXModel:
         if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 16000:
             raise ValueError("prompt must contain 1 to 16000 characters")
         ids = self.tokenizer.apply_chat_template([{ "role": "user", "content": prompt}], tokenize=True, add_generation_prompt=True, enable_thinking=False)
-        if not ids or len(ids) > 8192 or any(type(i) is not int or not 0 <= i < 151669 for i in ids):
+        if not ids or any(type(i) is not int or not 0 <= i < 151669 for i in ids):
             raise ValueError("prompt is outside the supported model binding")
+        if len(ids) > 8192:
+            raise InputLimitError(input_tokens=len(ids), limit=8192)
         return ids
