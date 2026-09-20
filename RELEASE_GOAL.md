@@ -33,13 +33,24 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+Candidate-local unkeyed setup now avoids rebuilding token profiles and parsing
+tokenizer metadata per request, while preserving file hashes, binding checks,
+fresh ownership and failure accounting. The current installed wheel passes 822
+tests; all 81 SDK files match source. Actual reference/native caller parity,
+both client cancellation/reuse flows and eleven structured requests pass.
+The unchanged 72-output engine study measures marked SDK/engine time per token
+at 1.150419 (upper 1.158634), with 3,065 audited tokens including warmups.
+This reduces the preceding 1.281173 result, but still fails the complete-path
+5% screen. Setup is amortized outside request timing; cold-start improvement is
+not claimed. Quality, detection and public release remain unapproved.
+
 The optional native HMAC accelerator has a self-contained macOS ARM64 wheel
 and explicitly selected SDK execution with a binary-bound identity. Clean
 installation requires no compiler or separate OpenSSL. Full-caller comparison
 matches all 988 reference/native tokens across twelve pairs; both local provider
 clients pass cancellation, terminal replay and worker reuse. The installed SDK
-now passes 798 regression tests plus four additional failure-contract checks;
-all 80 packaged SDK files match the tested source and installation.
+at the preceding partition stage passed 798 regression tests plus four additional
+failure-contract checks; all 80 packaged SDK files matched source and installation.
 
 Before partition integration, the frozen native runtime passed the local 5% incremental timing
 screen on eight declared Dolly tasks: ratio 1.028758, one-sided 95% upper

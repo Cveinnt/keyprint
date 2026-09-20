@@ -693,6 +693,41 @@ visible costs; these diagnostics do not justify dropping integrity checks or
 weakening durable journals. The uninstrumented complete-path result above is
 the serving evidence.
 
+### Reusing validated setup
+
+The native candidate now prepares unkeyed tokenizer/profile metadata once.
+Every request still hashes the pinned model/tokenizer files, checks immutable
+binding fields and verifies channel markers. Replacement or corruption fails
+closed. Mutable carriers, key state, random draws and journals remain local to
+each request. The frozen constructor stays unchanged; the new implementation
+has a separately bound source identity and no process-wide cache or patch.
+
+Twenty new tests cover constructor-state equivalence, routing, concurrent
+requests and changed profiles, configurations, mappings, files and markers.
+The fresh installed wheel passes 822 tests, with twelve unchanged optional
+development-library checks skipped. All 81 SDK payload files match source.
+Actual caller parity again reconciles twelve pairs and 988 tokens; both provider
+cancellation/reuse flows pass. Eleven structured requests reconcile 213 tokens
+and 175 grammar masks, including typed clients and an explicit incomplete cap.
+
+After qualification, the unchanged three-path study completes 72 measured
+outputs and three warmups, with 3,065 audited tokens including 995 engine tokens.
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.116311 | 1.126252 |
+| Marked Keyprint / MLX-LM | 1.150419 | 1.158634 |
+| Marked / ordinary Keyprint | 1.030555 | 1.034643 |
+
+The total SDK screen still fails. Candidate creation and model loading remain
+outside the per-request measurement, as before: this change amortizes validated
+setup and does not establish lower cold-start cost. Marked/engine request
+latency is 1.203121, versus 1.150419 per token, because generated lengths differ.
+Separate SDK draws, native sampling policies, retained bookkeeping and active
+OS background work prevent an identical-path causal interpretation. No timing
+result closes quality, detection, A18 or production-serving gates. Every attempt
+and earlier cost result remains retained.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

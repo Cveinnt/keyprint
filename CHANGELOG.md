@@ -2,6 +2,11 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Prepare immutable, unkeyed tokenizer/profile metadata once per explicitly
+  selected native candidate. Preserve per-request asset integrity checks,
+  reject changed binding fields, and create fresh request state and carriers.
+  Bind the implementation in the experimental runtime identity; default and
+  frozen execution remain unchanged.
 - Align `generate`, `serve` and `playground` backend defaults with the host:
   MLX on Apple Silicon macOS, Transformers elsewhere. All three can resolve the
   documented pinned cache when `--model` is omitted. Missing assets report the

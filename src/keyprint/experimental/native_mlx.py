@@ -6,6 +6,7 @@ import numpy as np
 from .fast_mlx import (FastCandidate, _ContextProfile, _SparseV3Host, _SparseV2Host, _upgrade,
                        execution_specification as python_execution)
 from . import partition_filter
+from . import prepared_binding
 from .fast_public import FastPublicCandidate
 from .batched_tournament import BatchedTokenSourceSession
 from .capped_utf8 import CappedPipeline
@@ -34,6 +35,11 @@ def execution_specification(native=None):
         'policy':'unchanged reference support law; exact cutoff ties by ascending token ID',
     }
     result['native_prf']=(native or native_backend()).identity
+    result['binding_preparation']={
+        'implementation':'candidate-local-unkeyed-snapshot-v1',
+        'source_sha256':hashlib.sha256(Path(prepared_binding.__file__).read_bytes()).hexdigest(),
+        'revalidation':'pinned files, immutable binding fields and channel markers on every request',
+    }
     result['request_local_hmac_context']=False
     result['native_batch_key_state']='per-call only; no persistent keyed state'
     return result
@@ -82,9 +88,14 @@ class _NativeSession(BatchedTokenSourceSession):
 
 
 class _NativeHost(_SparseV3Host):
-    def __init__(self,*args,native,**settings):
+    def __init__(self,*args,native,prepared=None,**settings):
         self._native=native
-        super().__init__(*args,**settings)
+        if prepared is None:
+            super().__init__(*args,**settings)
+        else:
+            if type(prepared) is not prepared_binding.PreparedBinding:
+                raise TypeError('exact PreparedBinding required')
+            prepared.initialize(self,*args,**settings)
 
     def _upgrade(self,carrier):
         _upgrade(carrier,_NativeSession,native=self._native)
@@ -122,6 +133,7 @@ class NativeCandidate(FastCandidate):
     def __init__(self,reference):
         super().__init__(reference)
         self._native=native_backend()
+        self._prepared=prepared_binding.PreparedBinding(reference._base._binding)
         spec=self._identity['specification']
         spec['version']=VERSION
         spec['execution']=execution_specification(self._native)
@@ -133,7 +145,8 @@ class NativeCandidate(FastCandidate):
         raw=_NativeHost(key,condition=condition,binding=self.reference._base._binding,
                         request=SourceRequest(purpose,source_text),
                         channels=ChannelRequest(allow_thinking,allow_tools),
-                        v2_identity=self.identity,filter_settings=self.filter_settings,native=self._native)
+                        v2_identity=self.identity,filter_settings=self.filter_settings,native=self._native,
+                        prepared=self._prepared)
         return CappedPipeline(raw,hashlib.sha256(key).hexdigest())
 
 
