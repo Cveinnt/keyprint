@@ -164,6 +164,13 @@ keyprint generate --backend mlx --model models/qwen3-8b-4bit \
 Python uses `Keyprint.from_mlx("models/qwen3-8b-4bit", key=...)`. This backend
 checks the exact model/tokenizer asset hashes. Other MLX models are rejected.
 
+An opt-in execution candidate is available with
+`Keyprint.from_mlx("models/qwen3-8b-4bit", key=..., execution="experimental-fast")`.
+It reuses a bound candidate and preserves durable generation/cancellation
+receipts with a distinct experimental runtime and reporting schema. The default
+remains the reference path. See [performance evidence](PERFORMANCE.md#separately-identified-experimental-execution)
+for the validation scope; this option does not establish a serving-speed claim.
+
 ## What works, and what does not
 
 | Stack | Scope |

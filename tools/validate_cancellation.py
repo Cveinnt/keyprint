@@ -39,7 +39,10 @@ def main():
     parser.add_argument("--backend", choices=["transformers", "mlx"], required=True)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--execution", choices=["reference", "experimental-fast"], default="reference")
     args = parser.parse_args()
+    if args.backend != "mlx" and args.execution != "reference":
+        parser.error("experimental-fast requires the MLX backend")
     if args.backend == "transformers":
         import torch
         torch.set_num_threads(1)
@@ -73,7 +76,8 @@ def main():
     class ControlledModel:
         def __init__(self):
             loader = Keyprint.from_transformers if args.backend == "transformers" else Keyprint.from_mlx
-            self.model = loader(args.model, key=key)
+            self.model = loader(args.model, key=key, **({"execution": args.execution} if args.backend == "mlx" else {}))
+            state["identity"] = self.model.identity
             self.model._backend.model = ObservedModel(self.model._backend.model)
 
         def generate(self, prompt, **kwargs):
@@ -89,7 +93,7 @@ def main():
     base = f"http://127.0.0.1:{sock.getsockname()[1]}/v1"
     thread = threading.Thread(target=server.run, kwargs={"sockets": [sock]}, daemon=True)
     thread.start()
-    report = {"status": "running", "backend": args.backend, "checks": {},
+    report = {"status": "running", "backend": args.backend, "execution": args.execution, "checks": {},
               "scope": "Actual local inference with a deliberate post-forward barrier; no quality, preemption or latency claim",
               "hosted_provider_calls": False}
     failed = False
@@ -170,6 +174,7 @@ def main():
         thread.join(timeout=180)
         sock.close()
         report["model_attempts"] = len(attempts)
+        report["identity"] = state.get("identity")
         report["checks"]["graceful_shutdown"] = not thread.is_alive()
         if thread.is_alive():
             report["status"] = "failed"

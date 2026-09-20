@@ -157,9 +157,22 @@ pipeline combining sparse softmax execution with response-local HMAC context
 copies. Frozen reference files remain unchanged. The new runtime digest binds
 the experimental source and sparse arithmetic implementation; its score namespace
 remains the reference namespace. No reference acceptance transfers automatically.
-This low-level factory is not wired into default `Keyprint.generate`, the CLI or
-the HTTP service. Pipeline construction still creates a fresh bound candidate;
-startup and request reuse need measurement before production integration.
+The low-level factory still constructs a bound candidate. For repeated generation,
+`Keyprint.from_mlx(..., execution="experimental-fast")` now retains one bound
+candidate and creates fresh response state. Its separate caller preserves the
+reference durable journal, random-draw and commit ordering. A separate reporting
+contract validates experimental source identity without weakening the frozen
+reference contract. Default generation and CLI behavior remain unchanged.
+
+```python
+from keyprint import Keyprint
+
+watermark = Keyprint.from_mlx(
+    "models/qwen3-8b-4bit", key=Keyprint.new_key(), execution="experimental-fast"
+)
+result = watermark.generate("Explain why the sky is blue.", max_tokens=128)
+print(result.text)
+```
 
 ```sh
 python tools/validate_fast_mlx.py --model PINNED_MODEL --output PRIVATE_PARITY_RUN
@@ -177,9 +190,25 @@ reconciled. HMAC state cleared on closure of every response.
 Tests also exercise repeated contexts, explicit random-draw rejection, reasoning
 and tool routing, proofread source protection, invalid heads/randomness,
 commit-before-control-error behavior, key changes and context isolation. The
-installed wheel's complete local suite passed 276 tests. Full caller lifecycle,
-end-to-end serving measurements and exact-revision hosted checks are still
-required. The earlier 7.6% incremental cost and failed 5% screen describe the
+earlier pipeline-only wheel's local suite passed 276 tests. The complete-caller
+validator now runs independently executed reference and experimental model
+paths with identical explicitly supplied fixture randomness:
+
+```sh
+python tools/validate_fast_caller.py --model PINNED_MODEL --output PRIVATE_CALLER_RUN
+python tools/validate_cancellation.py --backend mlx --execution experimental-fast \
+  --model PINNED_MODEL --output PRIVATE_CANCELLATION_RUN
+```
+
+The installed caller wheel passes 290 local tests. All twelve real Qwen pairs
+(24 outputs) match across 494 committed tokens per execution path, including
+sampling records, final text, literal diagnostics and consumed-work reservations.
+Every output reaches EOS. The actual OpenAI-client-over-TCP check cancels after
+one committed token, retains its receipt, replays without regeneration and
+successfully generates 32 tokens on the same worker. A disclosed post-forward
+barrier controls cancellation timing; this does not establish kernel preemption
+or natural cancellation latency. Full production lifecycle, fresh end-to-end
+serving measurements and exact-revision hosted checks remain required. The earlier 7.6% incremental cost and failed 5% screen describe the
 unchanged default path; this parity result does not replace those measurements.
 
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.

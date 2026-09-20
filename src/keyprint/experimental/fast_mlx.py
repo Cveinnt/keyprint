@@ -176,26 +176,58 @@ class _SparseV3Host(V3Host, _SparseV2Host):
         return result
 
 
+def execution_specification():
+    """Bind every experimental implementation and reporting source."""
+    return {
+            "sources": {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py")},
+            "sampling": sampling_identity(), "request_local_hmac_context": True,
+            "reference_results_transfer": False}
+
+
+class FastCandidate:
+    """Reusable bound candidate; response state remains in fresh pipelines."""
+    def __init__(self, reference):
+        verify()
+        if type(reference) is not Candidate:
+            raise TypeError("An exact frozen candidate is required")
+        self.reference = reference
+        identity = copy.deepcopy(reference.identity)
+        spec = identity["specification"]
+        spec["version"] = "keyprint-mlx-sparse-experimental-v1"
+        spec["reference_runtime_sha256"] = identity["runtime_profile_sha256"]
+        spec["execution"] = execution_specification()
+        identity.update(version=spec["version"], runtime_profile_sha256=digest(spec))
+        self._identity = identity
+
+    @property
+    def identity(self):
+        return copy.deepcopy(self._identity)
+
+    @property
+    def filter_settings(self):
+        return self.reference.filter_settings
+
+    def score_literal(self, text, key):
+        result = self.reference.score_literal(text, key)
+        result["candidate_identity"] = self.identity
+        result["score_identity_scope"] = "Unchanged reference score namespace; experimental execution does not transfer acceptance"
+        return result
+
+    def pipeline(self, key, *, condition, purpose="general", source_text=None,
+                 allow_thinking=False, allow_tools=False):
+        self.reference._base._scorer.check_key(key)
+        raw = _SparseV3Host(key, condition=condition, binding=self.reference._base._binding,
+                           request=SourceRequest(purpose, source_text),
+                           channels=ChannelRequest(allow_thinking, allow_tools),
+                           v2_identity=self.identity, filter_settings=self.filter_settings)
+        return Pipeline(raw, hashlib.sha256(key).hexdigest())
+
+
 def pipeline(key, *, condition="marked", temperature=.7, top_k=100, max_steps=2048,
              purpose="general", source_text=None, allow_thinking=False, allow_tools=False):
-    """Explicit advanced pipeline; caller owns raw model heads and random bits.
-
-    This is not wired into the default MLX caller or HTTP service. Use a new
-    pipeline per response and always close it, including after errors.
-    """
-    verify()
+    """One explicit advanced supplied-head pipeline; close after every response."""
     reference = Candidate(temperature=temperature, top_k=top_k, max_steps=max_steps)
-    reference._base._scorer.check_key(key)
-    identity = copy.deepcopy(reference.identity)
-    spec = identity["specification"]
-    spec["version"] = "keyprint-mlx-sparse-experimental-v1"
-    spec["reference_runtime_sha256"] = identity["runtime_profile_sha256"]
-    spec["execution"] = {"source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-                         "sampling": sampling_identity(), "request_local_hmac_context": True,
-                         "reference_results_transfer": False}
-    identity.update(version=spec["version"], runtime_profile_sha256=digest(spec))
-    raw = _SparseV3Host(key, condition=condition, binding=reference._base._binding,
-                       request=SourceRequest(purpose, source_text),
-                       channels=ChannelRequest(allow_thinking, allow_tools),
-                       v2_identity=identity, filter_settings=reference.filter_settings)
-    return Pipeline(raw, hashlib.sha256(key).hexdigest())
+    return FastCandidate(reference).pipeline(key, condition=condition, purpose=purpose,
+                                            source_text=source_text, allow_thinking=allow_thinking,
+                                            allow_tools=allow_tools)

@@ -112,8 +112,13 @@ The subsequent explicit experimental supplied-head pipeline has a separate
 runtime identity. Its freshly installed wheel matched twelve actual Qwen outputs
 and all 494 model steps against the reference, including probability hashes,
 randomness transcripts, text and counts. It is not integrated into default
-generation or serving; full lifecycle and paired timings remain open. All frozen
-reference files and the prior failed timing result remain unchanged.
+generation or serving by default. The subsequent reusable caller is available
+only with `execution="experimental-fast"`; its own reporting contract binds the
+experimental sources. The fresh caller wheel passes 290 tests, complete-caller
+parity across 24 actual outputs/494 tokens per path, and real HTTP cancellation,
+terminal replay and worker reuse. Production lifecycle and new paired timings
+remain open. All frozen reference files and the prior failed timing result
+remain unchanged.
 
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending

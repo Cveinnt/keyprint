@@ -56,8 +56,14 @@ class Keyprint:
         return secrets.token_bytes(32)
 
     @classmethod
-    def from_mlx(cls, model: str | Path, *, key: bytes, **settings: Any) -> Keyprint:
+    def from_mlx(cls, model: str | Path, *, key: bytes, execution: str = "reference", **settings: Any) -> Keyprint:
+        """Load pinned MLX; experimental-fast is an explicit execution opt-in."""
+        if execution not in ("reference", "experimental-fast"):
+            raise ValueError("execution must be reference or experimental-fast")
         instance = cls(key=key, **settings)
+        if execution == "experimental-fast":
+            from .experimental.fast_public import FastPublicCandidate
+            instance._candidate = FastPublicCandidate(instance._candidate)
         from .backends.mlx import MLXModel
         instance._backend = MLXModel.load(Path(model))
         return instance
@@ -180,7 +186,7 @@ class Keyprint:
                 allow_thinking=False, allow_tools=False,
                 backend=backend, cache_factory=cache_factory,
             )
-        report["package_scope"] = "Namespaced reference port; no new model-family or scientific acceptance."
+        report.setdefault("package_scope", "Namespaced reference port; no new model-family or scientific acceptance.")
         payload = report.get("payload", {})
         count = payload.get("committed_tokens", 0) if report["kind"] == "error" else len(payload.get("committed_token_ids", []))
         if cancelled:
