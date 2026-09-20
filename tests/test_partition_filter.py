@@ -2,6 +2,7 @@
 import numpy as np
 import pytest
 import sys
+import warnings
 
 from keyprint.experimental.partition_filter import partition_support_filter
 from keyprint._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
@@ -73,3 +74,53 @@ def test_gap_neighbors_and_unmapped_padding(temperature):
 ])
 def test_invalid_input_and_settings_fail_identically(head, settings):
     compare(head, **settings)
+
+
+@pytest.mark.parametrize('seed', range(30))
+def test_range_certificate_and_fallback_match_random_bits(seed):
+    rng = np.random.default_rng(seed)
+    width = (3, 17, 256, 4096, 151936)[seed % 5]
+    bits = rng.integers(0, 2**32, size=(1, width), dtype=np.uint32)
+    # Arbitrary finite binary32 patterns, including subnormals and signed zeros.
+    bits[(bits & 0x7f800000) == 0x7f800000] = 0
+    head = bits.view(np.float32)
+    head[0, ::7] = -np.inf
+    head[0, 1] = 0.
+    compare(head, temperature=(.7, 1e-200, 1e200)[seed % 3],
+            top_k=(1, 100, 512, 151669)[seed % 4],
+            max_logit_gap=(600., .5, 1e-100)[seed % 3])
+
+
+@pytest.mark.parametrize('temperature', [1e308, 1e-308, .7])
+def test_caller_underflow_policy_preserved(temperature):
+    tiny = np.nextafter(np.float32(0), np.float32(1))
+    head = np.array([[0., -tiny, -1., -np.inf]], dtype=np.float32)
+    with np.errstate(all='raise'):
+        compare(head, temperature=temperature, top_k=1)
+
+
+@pytest.mark.parametrize('direction', [-np.inf, np.inf])
+def test_span_certificate_neighbors_keep_exact_gap_boundary(direction):
+    temperature = .7
+    boundary = np.float32(-600. * temperature)
+    head = np.array([[0., boundary, np.nextafter(boundary, np.float32(direction))]], dtype=np.float32)
+    for gap in (np.nextafter(600., 0.), 600.):
+        compare(head, temperature=temperature, top_k=2, max_logit_gap=float(gap))
+
+
+def test_strided_signed_zero_inputs_remain_byte_exact():
+    head = np.array([[-0., 0., -1., -2., -0., 0., -np.inf]], dtype=np.float32)
+    for value in (head, head[:, ::-1], head[:, ::2]):
+        compare(value, top_k=3)
+
+
+def test_underflow_warning_not_hidden_by_top_k_selection():
+    tiny = np.nextafter(np.float32(0), np.float32(1))
+    head = np.array([[0., -tiny]], dtype=np.float32)
+    messages = []
+    for function in (stable_support_filter, partition_support_filter):
+        with warnings.catch_warnings(record=True) as caught, np.errstate(under='warn'):
+            warnings.simplefilter('always')
+            function(head, temperature=1e308, top_k=1)
+        messages.append([(w.category, str(w.message)) for w in caught])
+    assert messages[0] and messages[0] == messages[1]

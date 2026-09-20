@@ -34,23 +34,17 @@ The [encoding contract](tools/VECTOR_COMMITMENTS.md) explains how local parity
 tests resolve original bytes before comparing reference hashes. Default and
 reference report formats retain their existing hashes.
 
-Partition-based support selection now preserves the complete reference filter
-law with its implementation source separately bound. Installed-wheel regression
-checks pass 798 tests plus four additional failure-contract checks. Twelve
-unchanged native-helper checks are skipped in the full suite; the bundled binary
-previously passed its separate 25/25 boundary suite. Seven unchanged
-JavaScript tests pass. Full-caller comparison passes twelve reference/native
-pairs and reconciles all 988 committed tokens. Actual OpenAI and Anthropic
-clients each cancel after one committed token, replay the terminal response
-without another generation, then reuse the worker for a successful 32-token
-request. These are local text-protocol tests, not hosted provider access.
+The filter uses bounded native selection and a conservative score-range check
+that skips full-vocabulary gap work only when all finite mapped scores must
+pass. Boundary cases retain the original calculation, including caller-selected
+underflow warnings and errors. The probability law, tie order, diagnostics and
+immutable output stay identical to the reference.
 
-The updated complete-path benchmark measures marked SDK/MLX-LM time per token
-at 1.281173, down from the preceding 1.526571 result. This remains above the
-unchanged 1.05 screen. All 72 outputs and three warmups are retained and 3,058
-tokens reconcile. Within-SDK marking cost passes its narrower screen; it does
-not establish negligible total SDK overhead. Eleven actual structured requests
-also pass, with 213 tokens and 175 replayed grammar masks. Quality and detection
+Current installed-wheel, real caller, client cancellation and structured-output
+evidence is recorded in [release readiness](RELEASE_GOAL.md#current-release-gates).
+Use the [latest complete-path measurement](PERFORMANCE.md) for serving cost.
+Helper speedups and within-SDK marking ratios use different denominators and
+must not be presented as total SDK overhead. Quality and calibrated detection
 remain unqualified.
 
 The native wheel's macOS 11 target is a verified build property. Execution is

@@ -33,15 +33,28 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The native filter's full-gap range check preserves reference output bytes,
+diagnostics and caller underflow policy. The current installed wheel passes
+1,153 tests without skips; 83 package files match source. Caller parity matches
+988 tokens across 24 outputs, both client lifecycle checks pass, and eleven
+structured requests reconcile 233 tokens and 190 grammar masks. The unchanged
+72-output engine study audits 3,041 tokens and measures marked SDK/engine time
+per token at 1.108214 (upper 1.118923), worse than the preceding 1.093868 result.
+Even the engine arm slowed in this separate study; background applications were
+recorded, but a cause is not established. Both total-cost and within-SDK 1.05
+screens fail. A separate probe confirms use of the shortcut on all 497 observed
+steps. Helper speedups do not justify an end-to-end claim. The change remains
+experimental, with launch held; see [current evidence](PERFORMANCE.md#full-gap-range-check).
+
 Experimental native v2 now uses explicitly versioned lossless vector
 commitments. Default/reference hashes and probability arithmetic are unchanged.
-A fresh wheel passes 1,079 tests without skips; 83 installed files match source
+At that preceding integration stage, a fresh wheel passed 1,079 tests without skips; 83 installed files matched source
 and wheel. Actual caller parity resolves vectors before comparing reference
 hashes and reconciles 988 tokens across 24 outputs. Both client lifecycle checks
 pass, and eleven structured requests reconcile 213 tokens and 175 grammar masks.
 The unchanged 72-output engine study audits 2,972 tokens and measures marked
-SDK/engine time per token at 1.093868 (upper 1.100527). The complete-path 1.05
-screen still fails. See the [encoding contract](tools/VECTOR_COMMITMENTS.md) and
+SDK/engine time per token at 1.093868 (upper 1.100527). That complete-path 1.05
+screen failed. See the [encoding contract](tools/VECTOR_COMMITMENTS.md) and
 [latest performance evidence](PERFORMANCE.md#native-v2-lossless-vector-commitments).
 The preceding prototype's failed probe and later offline audit remain retained;
 no cost, quality, detection, platform or public release gate is marked closed.

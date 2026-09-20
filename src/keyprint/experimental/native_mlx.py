@@ -39,9 +39,10 @@ def execution_specification(native=None):
     result=python_execution()
     result['native_sdk_source_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     result['support_filter_execution']={
-        'implementation':'bounded-native-top-k-with-exact-partition-fallback-v1',
+        'implementation':'full-gap-range-check-with-exact-selection-v2',
         'source_sha256':hashlib.sha256(Path(partition_filter.__file__).read_bytes()).hexdigest(),
         'policy':'unchanged reference support law; exact cutoff ties by ascending token ID',
+        'gap_execution':'outward binary64 span/quotient bound, original per-token fallback, caller underflow policy preserved',
     }
     result['native_prf']=(native or native_backend()).identity
     result['binding_preparation']={

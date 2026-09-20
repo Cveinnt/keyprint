@@ -94,16 +94,18 @@ python tools/validate_fast_caller.py --model PINNED_QWEN \
 python tools/audit_fast_caller.py --run NEW_PRIVATE_PARITY
 ```
 
-The fresh installed wheel passes 1,079 checks without skips, including 64 codec
+At the vector-commitment integration stage, the installed wheel passed 1,079 checks without skips, including 64 codec
 cases against both independent and SDK implementations, sampler/failure parity,
 channel isolation and malformed v2 reports. All 83 package files match source
 and wheel. Twelve actual caller pairs match across 988 tokens after vector
 resolution; both client lifecycle checks and eleven structured requests pass.
 
-The unchanged uninstrumented v2 study measures marked/engine seconds per token
+That stage's unchanged uninstrumented v2 study measured marked/engine seconds per token
 at 1.093868 (upper 1.100527), auditing 2,972 tokens across 72 measured outputs and
 three warmups. The preceding native v1 result was 1.137564 (upper 1.146169).
 Independent draws, output lengths and background applications prevent treating
 the difference as an isolated causal estimate. The complete-path 1.05 target
 still fails. No cost, quality, detection, production or launch gate closes.
+Later filter changes and their failed full-path cost study are recorded in
+[current performance evidence](../PERFORMANCE.md#full-gap-range-check).
 Hosted CI stays disabled; this work runs locally.

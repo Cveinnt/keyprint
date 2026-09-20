@@ -83,4 +83,3 @@ def generation(raw, target, scorer):
         'vector_commitment_encoding': ENCODING,
         'vector_commitments_resolved': False,
         'literal_diagnostics': [_literal(d, scorer) for d in diagnostics]}
-

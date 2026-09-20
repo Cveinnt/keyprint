@@ -1,11 +1,11 @@
 # Sampling performance
 
 The latest complete-path comparison fails the lightweight-runtime target:
-marked Keyprint takes 1.0939 times MLX-LM's time per token on the fixed local
+marked Keyprint takes 1.1082 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
-Partition filtering, reused setup, bounded native selection and lossless vector
-commitments reduced the preceding 1.5266 ratio, but have not met the 1.05 screen.
-See [native v2 commitments](#native-v2-lossless-vector-commitments) before using
+The new filter's helper improvement did not establish a full SDK improvement:
+the preceding runtime measured 1.0939. The unchanged 1.05 screen still fails.
+See [the range-check experiment](#full-gap-range-check) before using
 any of the helper or within-SDK results below as a performance claim.
 
 The [lossless vector encoding](tools/VECTOR_COMMITMENTS.md) is integrated only
@@ -822,6 +822,49 @@ estimate. Background macOS indexing and unrelated applications were recorded
 and left running. No retries, replacements or outlier exclusions were used.
 Imports, loading, HTTP and batching remain outside this measurement. The helper
 speedup is not substituted for the full-path result, and A18 remains unaccepted.
+
+### Full-gap range check
+
+The experimental native filter now computes a conservative outward-rounded
+bound on the complete finite score range and its scaled gap. If both bounds
+pass, every finite mapped score must be admitted; only selected top-k scores
+need per-token subtraction/division. Otherwise it uses the original calculation.
+Caller-selected underflow warnings/errors also force the original path. Input
+validation, exact output bytes, tie order, diagnostics and immutable backing
+remain unchanged. See [the argument and reproduction steps](tools/FILTER_EXECUTION.md).
+
+The installed wheel passes **1,153 tests without skips**, including 162 filter
+checks. All 83 package files match source and the measured installation. A helper
+screen retains 180 full-filter comparisons with the frozen reference; median
+new/preceding time ratios range from 0.4438 for equal heads to 0.9609 for tight
+gaps, including 0.5233 for normal full-width heads. These ratios exclude inference.
+
+Actual caller parity again reconciles 988 tokens across twelve pairs, with
+resolved probability bytes, random draws, text and consumed work matching.
+Both provider lifecycle checks pass. Eleven structured requests reconcile
+233 tokens and 190 grammar masks. After these checks, the unchanged full study
+retains 72 outputs and three warmups and audits 3,041 tokens, including 995
+engine tokens:
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.061634 | 1.076050 |
+| Marked Keyprint / MLX-LM | 1.108214 | 1.118923 |
+| Marked / ordinary Keyprint | 1.043876 | 1.051788 |
+
+Both the total-cost and within-SDK 5% screens **fail**. Marked/engine request
+latency is 1.116217 (upper 1.143634). This did not improve the preceding 1.093868
+marked/engine token ratio. The engine arm itself also slowed, from 26.317 to
+28.454 ms/token geometrically averaged over the fixed cases. Background
+applications were active and recorded. Their causal contribution is not
+established, and the failed outcome is not discarded or replaced.
+
+A separate diagnostic probe read actual filter frame locals without changing
+filter/model functions. All 497 observed steps across twelve outputs used the
+range shortcut; saved hashes, reports and journals reconcile. This rules out an
+unused shortcut in that probe, but supplies no serving-speed or acceptance
+claim. A better-controlled comparison is needed before calling this an SDK
+performance improvement. No quality, detection, cost or release gate closes.
 
 ## Remaining qualification
 

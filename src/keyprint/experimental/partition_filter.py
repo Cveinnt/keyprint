@@ -2,8 +2,10 @@
 
 The returned policy identity names the unchanged reference law. This module's
 implementation hash is separately bound into the native execution identity.
-Validation, arithmetic, diagnostics and immutable output match the reference;
-only the selection algorithm differs. The frozen engine is never patched.
+Validation, arithmetic, diagnostics and immutable output match the reference.
+A conservative range bound skips per-token gap work only when every finite
+mapped score must pass; boundary cases retain the original path. The frozen
+engine is never patched.
 """
 import math
 import numpy as np
@@ -86,13 +88,12 @@ def partition_support_filter(logits, *, temperature=.7, top_k=100,
     # Invalid model output is rejected even outside the mapped prefix.
     if np.isnan(logits).any() or np.isposinf(logits).any():
         raise ValueError("NaN and positive infinity model logits are rejected")
-    row = logits[0].astype(np.float64)
-    finite_ids = np.flatnonzero(np.isfinite(row[:mapped]))
+    finite = np.isfinite(logits[0])
+    finite_ids = np.flatnonzero(finite[:mapped])
     if not len(finite_ids):
         raise ValueError("all mapped model logits are excluded")
-    maximum = float(np.max(row[finite_ids]))
-    losses = maximum - row[finite_ids]
-    assert np.isfinite(losses).all() and (losses >= 0).all()
+    scores = logits[0, finite_ids].astype(np.float64)
+    maximum = float(np.max(scores))
     # float32 loss is at most ~6.8e38. Multiplication may intentionally become
     # +inf for enormous temperature; every finite loss then passes this *coarse*
     # gate. For tiny temperature, rejecting before division prevents overflow.
@@ -100,17 +101,35 @@ def partition_support_filter(logits, *, temperature=.7, top_k=100,
     # slightly larger. Expand G upward, then round the product bound upward too;
     # a rounded-down G*T must not remove a token whose final quotient equals G.
     raw_gap = math.nextafter(math.nextafter(max_logit_gap, math.inf) * temperature, math.inf)
-    possible = losses <= raw_gap
-    candidate_ids, candidate_losses = finite_ids[possible], losses[possible]
-    scaled_losses = candidate_losses / temperature
-    # The final inclusive comparison defines the exact implemented gap boundary;
-    # multiplying by temperature above can round at subnormal boundaries.
-    inside = np.isfinite(scaled_losses) & (scaled_losses <= max_logit_gap)
-    candidate_ids, scaled_losses = candidate_ids[inside], scaled_losses[inside]
-    if not len(candidate_ids):
-        raise ArithmeticError("the maximum token must survive stable support filtering")
-    order = select_top_k(candidate_ids, row[candidate_ids], top_k, native=native)
-    selected, scaled = candidate_ids[order], scaled_losses[order]
+    # Binary64 subtraction/division are monotone on these finite ordered inputs.
+    # Round the largest loss and its quotient outward. A successful bound admits
+    # every mapped finite score; otherwise use the original per-token boundary.
+    # Python scalar division may return infinity for a tiny positive temperature;
+    # that simply fails the certificate and avoids a NumPy overflow side effect.
+    span_upper = math.nextafter(maximum - float(np.min(scores)), math.inf)
+    scaled_upper = math.nextafter(span_upper / temperature, math.inf)
+    if (span_upper <= raw_gap and math.isfinite(scaled_upper) and scaled_upper <= max_logit_gap
+            and np.geterr()['under'] == 'ignore'):
+        # Preserve caller-selected underflow warnings/errors by using the full
+        # original division path whenever underflow observation is enabled.
+        eligible_count = len(finite_ids)
+        order = select_top_k(finite_ids, scores, top_k, native=native)
+        selected = finite_ids[order]
+        scaled = (maximum - scores[order]) / temperature
+    else:
+        losses = maximum - scores
+        assert np.isfinite(losses).all() and (losses >= 0).all()
+        possible = losses <= raw_gap
+        candidate_ids, candidate_losses = finite_ids[possible], losses[possible]
+        scaled_losses = candidate_losses / temperature
+        # Inclusive comparison preserves the original rounded gap boundary.
+        inside = np.isfinite(scaled_losses) & (scaled_losses <= max_logit_gap)
+        candidate_ids, scaled_losses = candidate_ids[inside], scaled_losses[inside]
+        eligible_count = len(candidate_ids)
+        if not eligible_count:
+            raise ArithmeticError("the maximum token must survive stable support filtering")
+        order = select_top_k(candidate_ids, logits[0, candidate_ids].astype(np.float64), top_k, native=native)
+        selected, scaled = candidate_ids[order], scaled_losses[order]
     out = np.full((1, width), -np.inf, dtype=np.float64)
     out[0, selected] = -scaled
     assert np.isfinite(out[0, selected]).all()
@@ -125,11 +144,11 @@ def partition_support_filter(logits, *, temperature=.7, top_k=100,
         identity=filter_identity(temperature=temperature, top_k=top_k, max_logit_gap=max_logit_gap,
                                  vocabulary_size=width, mapped_vocabulary_size=mapped),
         diagnostics={
-            "input_finite_count": int(np.isfinite(row).sum()),
+            "input_finite_count": int(finite.sum()),
             "mapped_finite_count": len(finite_ids),
-            "excluded_unmapped_finite_count": int(np.isfinite(row[mapped:]).sum()),
-            "excluded_by_scaled_gap_count": len(finite_ids) - len(candidate_ids),
-            "excluded_by_top_k_count": max(0, len(candidate_ids) - top_k),
+            "excluded_unmapped_finite_count": int(finite[mapped:].sum()),
+            "excluded_by_scaled_gap_count": len(finite_ids) - eligible_count,
+            "excluded_by_top_k_count": max(0, eligible_count - top_k),
             "admitted_count": len(admitted),
             # exp(-600) > 2**-866; K <= next power of two. This conservative
             # real-arithmetic bound is exactly representable, unlike an exp()
