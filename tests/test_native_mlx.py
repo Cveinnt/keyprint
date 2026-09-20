@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import random
 import shutil
+import sys
 
 import numpy as np
 import pytest
@@ -16,6 +17,18 @@ from keyprint.experimental.fast_reporting import build_report
 from keyprint._engine.research.keyprint_candidate_v3.adapter import Candidate
 from keyprint import Keyprint
 from test_fast_mlx import head, assert_parity
+
+sys.path.insert(0, str(Path(__file__).parents[1] / 'tools'))
+try:
+    from commitment_parity import observe_native_vectors, legacy_receipt_projection
+finally:
+    sys.path.pop(0)
+
+
+@pytest.fixture(autouse=True)
+def native_vectors():
+    with observe_native_vectors():
+        yield
 
 
 def test_packaged_binary_full_digests_and_identity():
@@ -94,7 +107,7 @@ def test_filter_and_post_commit_failures_match_reference_receipts(failure):
             with pytest.raises((ValueError, TypeError, UnicodeDecodeError)) as caught:
                 pipeline.step(raw, bits)
             observations.append((type(caught.value), pipeline.committed_token_ids,
-                                 pipeline._raw.filter_attempts, draws))
+                                 legacy_receipt_projection(pipeline.receipt(), getattr(pipeline._raw, '_observed_vector_packets', []))['shared_filter_attempts'] if candidate is native else pipeline._raw.filter_attempts, draws))
             assert pipeline._raw._terminal
         finally:
             pipeline.close()
@@ -116,7 +129,7 @@ def test_modified_binary_identity_is_not_accepted():
 def test_report_is_separately_named_and_no_acceptance_transfers():
     candidate=NativePublicCandidate(Keyprint(key=bytes(range(32)))._candidate)
     report=candidate.score_literal('A short example text for inspection.',bytes(range(32)))
-    assert report['schema']=='keyprint.experimental-native-report.v1'
+    assert report['schema']=='keyprint.experimental-native-report.v2'
     assert report['target_identity']['version']==VERSION
     assert report['verdict'] is None
     assert report['all_reporting_surfaces_accepted'] is False

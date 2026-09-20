@@ -48,8 +48,12 @@ Top-k selection uses a bounded heap for up to 512 choices from 151,669 finite
 binary32 scores. Integer ranking preserves subnormals and treats signed zeros
 as ties, ordered by original token ID. Equal-score, small-input and large-k paths
 keep their existing exact NumPy selection. The new C helper uses bounded stack
-workspace, no global state and no output writes before complete input validation. Journals,
-probability arithmetic and full SHA-256 receipts remain unchanged.
+workspace, no global state and no output writes before complete input validation.
+Probability arithmetic and journal accounting remain unchanged. The current
+core SDK's experimental native v2 path uses explicitly versioned, lossless
+vector commitments in place of dense probability/filter hash fields. Default
+and reference receipt formats keep their existing dense hashes. See the
+[encoding contract and parity method](../tools/VECTOR_COMMITMENTS.md).
 
 The September 20 wheel bundles OpenSSL 3.6.4 and has no external crypto-library
 dependency. A clean environment containing only this package passes full-digest
@@ -58,7 +62,8 @@ from the binary and static archive; actual execution was tested on macOS 26.2,
 not every older macOS release. The wheel is approximately 2.1 MiB.
 
 Complete Qwen/MLX caller comparison retains 12 pairs, 24 outputs and 988 committed
-tokens with exact reference/native text, sampling-record and token parity. Both
+tokens with exact reference/native text, resolved probability bytes, random
+draws and token parity. Both
 OpenAI and Anthropic local clients pass cancellation after a committed token,
 terminal replay, new-request reuse and graceful shutdown. These checks do not
 qualify hosted GPT/Claude sampling, other model bindings, detection, quality or

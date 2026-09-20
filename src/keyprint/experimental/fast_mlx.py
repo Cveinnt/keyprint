@@ -78,6 +78,10 @@ def _upgrade(carrier, session_type=_ContextSession, **settings):
 
 
 class _SparseV2Host(V2Host):
+    def _probability_commitments(self, base, prepared):
+        return {"base_probability_sha256": hashlib.sha256(base.tobytes()).hexdigest(),
+                "prepared_probability_sha256": hashlib.sha256(prepared.tobytes()).hexdigest()}
+
     # Preserve the frozen step's ordering, failures, support checks and receipt
     # format. Only dense softmax execution is replaced with its bitwise oracle-
     # checked sparse implementation. No reference file is modified.
@@ -134,8 +138,7 @@ class _SparseV2Host(V2Host):
                 attempt.update(status="committed", committed_after=len(self._all_ids), phase="render_or_route")
                 self.last_sampled_channel = current.name
                 self.sampling_records.append({"step": len(self._all_ids)-1, "channel": current.name,
-                    "token_id": token, "base_probability_sha256": hashlib.sha256(base.tobytes()).hexdigest(),
-                    "prepared_probability_sha256": hashlib.sha256(prepared.probabilities.tobytes()).hexdigest(),
+                    "token_id": token, **self._probability_commitments(base, prepared.probabilities),
                     "randomness": {"encoding": "exact-integers-as-decimal-strings-v2",
                         "token_index": sample.token_index, "integer_point_decimal": str(sample.integer_point),
                         "total_weight_decimal": str(sample.total_weight),

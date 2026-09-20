@@ -21,6 +21,9 @@ def pair(condition="marked", **settings):
 
 def assert_parity(reference, fast):
     a, b = reference.receipt(), fast.receipt()
+    if b['runtime']['version'] == 'keyprint-mlx-native-experimental-v2':
+        from test_native_mlx import legacy_receipt_projection
+        b = legacy_receipt_projection(b, getattr(fast._raw, '_observed_vector_packets', []))
     for field in ("committed_token_ids", "sampling_records", "sampling_attempts", "shared_filter_attempts",
                   "attempted_bit_requests", "completed_bit_returns", "closed", "finalized", "calibrated"):
         assert a[field] == b[field], field

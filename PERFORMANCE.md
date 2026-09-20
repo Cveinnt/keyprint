@@ -1,16 +1,16 @@
 # Sampling performance
 
 The latest complete-path comparison fails the lightweight-runtime target:
-marked Keyprint takes 1.1376 times MLX-LM's time per token on the fixed local
+marked Keyprint takes 1.0939 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
-Partition filtering, reused setup and bounded native selection reduced the
-preceding 1.5266 ratio, but have not met the 1.05 screen. See the bounded native
-selection results below before using
+Partition filtering, reused setup, bounded native selection and lossless vector
+commitments reduced the preceding 1.5266 ratio, but have not met the 1.05 screen.
+See [native v2 commitments](#native-v2-lossless-vector-commitments) before using
 any of the helper or within-SDK results below as a performance claim.
 
-The next [lossless vector-commitment experiment](tools/VECTOR_COMMITMENTS.md)
-remains outside the SDK. Its sparse helper improvement and exact reconstruction
-checks do not change the current end-to-end result or legacy receipt hashes.
+The [lossless vector encoding](tools/VECTOR_COMMITMENTS.md) is integrated only
+into explicitly selected experimental native v2 execution. Default and frozen
+reference receipt formats keep their existing dense hashes.
 
 The portable Transformers backend and experimental SGLang/vLLM adapters use
 sparse execution of the existing binary64 sampling law. Post-filter excluded
@@ -776,6 +776,54 @@ was 1.150419; the new point estimate is modestly lower. Separate draws, output
 lengths, native sampling policies and OS background work prevent a clean causal
 comparison between experiments. No retries, outlier exclusions, quality,
 detection or production acceptance follow from these results.
+
+### Native v2 lossless vector commitments
+
+Native execution now commits to a canonical, lossless encoding of complete
+probability and filtered-logit vectors. Every binary64 bit is preserved,
+including signed zero and NaN payloads. Sparse mode omits only a declared exact
+default; dense mode remains available when smaller. This changes the digest
+contract, so native runtime, facade and report versions are explicitly v2 with
+new commitment field names. Old dense hashes are never relabeled. Codec and
+validator source hashes are part of the execution identity; default and frozen
+reference receipts retain their legacy format.
+
+A fresh installed core wheel passes **1,079 tests without skips**; all 83 package
+files match source and the wheel. The suite exercises both independent and SDK
+codecs, malformed/noncanonical packets, source binding, random-draw invariants,
+channel routing and pre/post-commit failure accounting. The existing native
+accelerator binary is unchanged.
+
+Twelve actual Qwen caller pairs retain 24 outputs and 988 tokens. Test-only
+observation independently encodes each actual vector and checks reconstruction;
+the offline audit resolves packets into their original dense bytes before
+comparing legacy probability hashes. Text, random draws, diagnostics, journals
+and consumed work match. Both local client cancellation/replay/reuse checks pass.
+Eleven structured requests reconcile 213 tokens and 175 grammar masks, including
+typed clients and an explicit incomplete cap. None of these checks accepts
+prose quality or detection.
+
+After those checks, the unchanged uninstrumented three-path study completed
+72 measured outputs and three retained warmups. Independent audit reconciles
+2,972 tokens, including 995 engine tokens, all displayed texts, journal chains,
+runtime identity and declared statistical calculations:
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.051768 | 1.058711 |
+| Marked Keyprint / MLX-LM | 1.093868 | 1.100527 |
+| Marked / ordinary Keyprint | 1.040028 | 1.046392 |
+
+The complete-path 5% screen **still fails**. Marked/engine request latency is
+1.052930 (upper 1.070735). The preceding native v1 runtime measured 1.137564
+marked/engine time per token. These separate studies use independent SDK draws
+and have different output lengths; the difference is not an isolated causal
+estimate. Background macOS indexing and unrelated applications were recorded
+and left running. No retries, replacements or outlier exclusions were used.
+Imports, loading, HTTP and batching remain outside this measurement. The helper
+speedup is not substituted for the full-path result, and A18 remains unaccepted.
+
+## Remaining qualification
 
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.

@@ -13,6 +13,14 @@ finally:
     sys.path.pop(0)
 
 
+@pytest.fixture(autouse=True, params=['prototype', 'sdk'])
+def codec_implementation(request, monkeypatch):
+    if request.param == 'sdk':
+        from keyprint.experimental import vector_commitment as codec
+        for name in ('encode_vector', 'decode_vector', 'vector_digest', 'MAX_WIDTH'):
+            monkeypatch.setitem(globals(), name, getattr(codec, name))
+
+
 def independent_bytes(packet):
     # Separate byte-level reconstruction, without the codec's NumPy record dtype.
     assert packet[:4] == b'KPV1'

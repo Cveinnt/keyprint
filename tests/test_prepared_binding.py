@@ -14,6 +14,7 @@ from keyprint._engine.legacy._impl.research.token_channel_host import (
     ChannelRequest, THINK_OPEN, THINK_CLOSE, TOOL_OPEN, TOOL_CLOSE, EOS,
 )
 from test_fast_mlx import head, assert_parity
+from test_native_mlx import native_vectors
 
 
 @pytest.fixture(scope='module')

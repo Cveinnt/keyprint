@@ -33,6 +33,12 @@ def main():
         raise ValueError("Original cases changed")
     if plan[label + "_identity"]["specification"]["execution"] != execution_specification():
         raise ValueError("Installed experimental execution differs from measured source")
+    compact = plan[label + '_identity']['version'] == 'keyprint-mlx-native-experimental-v2'
+    if compact:
+        from commitment_parity import legacy_sampling_projection, validate_observed_sequence
+        for name in ('commitment_parity.py', 'vector_commitment.py'):
+            if sha(Path(__file__).with_name(name)) != plan['vector_observation']['sources'][name]:
+                raise ValueError('Frozen vector observer or oracle differs')
     model = Path(plan["model_path"])
     for name in ("tokenizer.json", "tokenizer_config.json"):
         if sha(model / name) != ASSETS[name]: raise ValueError("Pinned tokenizer differs")
@@ -80,7 +86,15 @@ def main():
                 outputs += 1
                 reports.append(report)
             for field in ("sampling_records", "committed_token_ids", "literal_diagnostics", "completion"):
-                if reports[0]["payload"][field] != reports[1]["payload"][field]:
+                value = reports[1]['payload'][field]
+                if compact and field == 'sampling_records':
+                    path = root / (name + '-' + label) / 'vectors.json'
+                    if sha(path) != row['executions'][label]['vectors_sha256']:
+                        raise ValueError('Captured vectors changed')
+                    observed = json.loads(path.read_text())
+                    validate_observed_sequence(observed, len(value))
+                    value = legacy_sampling_projection(value, observed)
+                if reports[0]["payload"][field] != value:
                     raise ValueError(f"Pair differs: {field}")
             if reports[0]["rendered_carriers"] != reports[1]["rendered_carriers"]:
                 raise ValueError("Rendered pair differs")

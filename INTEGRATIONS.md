@@ -28,6 +28,12 @@ compiler or separate crypto installation when using the wheel. Binary and
 wrapper hashes are part of its distinct runtime identity; reference scientific
 acceptances do not transfer. Default execution remains unchanged.
 
+The current core uses experimental native v2 reports with explicit lossless
+probability/filter commitments. Legacy dense hash fields are not relabeled.
+The [encoding contract](tools/VECTOR_COMMITMENTS.md) explains how local parity
+tests resolve original bytes before comparing reference hashes. Default and
+reference report formats retain their existing hashes.
+
 Partition-based support selection now preserves the complete reference filter
 law with its implementation source separately bound. Installed-wheel regression
 checks pass 798 tests plus four additional failure-contract checks. Twelve

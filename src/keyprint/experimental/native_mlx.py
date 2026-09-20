@@ -7,6 +7,7 @@ from .fast_mlx import (FastCandidate, _ContextProfile, _SparseV3Host, _SparseV2H
                        execution_specification as python_execution)
 from . import partition_filter
 from . import prepared_binding
+from . import vector_commitment, native_reporting
 from .fast_public import FastPublicCandidate
 from .batched_tournament import BatchedTokenSourceSession
 from .capped_utf8 import CappedPipeline
@@ -15,7 +16,7 @@ from .._engine.legacy._impl.research.byte_trie_source_policy import SourceReques
 from .._engine.legacy._impl.research.token_channel_host import ChannelRequest
 from .._engine.research.keyprint_candidate_v3.adapter import digest
 
-VERSION = 'keyprint-mlx-native-experimental-v1'
+VERSION = 'keyprint-mlx-native-experimental-v2'
 
 
 def native_backend():
@@ -50,6 +51,13 @@ def execution_specification(native=None):
     }
     result['request_local_hmac_context']=False
     result['native_batch_key_state']='per-call only; no persistent keyed state'
+    result['vector_commitments'] = {
+        'encoding': vector_commitment.ENCODING,
+        'report_schema': 'keyprint.experimental-native-report.v2',
+        'sources': {Path(module.__file__).name: hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest()
+                    for module in (vector_commitment, native_reporting)},
+        'legacy_dense_hash_fields': False,
+    }
     return result
 
 
@@ -96,6 +104,13 @@ class _NativeSession(BatchedTokenSourceSession):
 
 
 class _NativeHost(_SparseV3Host):
+    def _probability_commitments(self, base, prepared):
+        return {'base_probability_commitment': vector_commitment.commitment(base, 'probability'),
+                'prepared_probability_commitment': vector_commitment.commitment(prepared, 'probability')}
+
+    def _filtered_commitment(self, values):
+        return vector_commitment.commitment(values, 'filtered_logits')
+
     def __init__(self,*args,native,prepared=None,**settings):
         self._native=native
         if prepared is None:
@@ -122,7 +137,7 @@ class _NativeHost(_SparseV3Host):
                 **self._filter_settings, mapped_vocabulary_size=self.mapped_size, native=self._native)
             attempt.update(filter_profile_sha256=filtered.identity['filter_profile_sha256'],
                            admitted_token_ids=list(filtered.admitted_token_ids),
-                           filtered_logits_sha256=hashlib.sha256(filtered.filtered_logits.tobytes()).hexdigest(),
+                           filtered_logits_commitment=self._filtered_commitment(filtered.filtered_logits),
                            diagnostics=filtered.diagnostics, phase='keyed_sampling')
             result = _SparseV2Host.step(self, filtered.filtered_logits, random_bits)
             attempt.update(status='committed', phase='complete')
@@ -160,6 +175,6 @@ class NativeCandidate(FastCandidate):
 
 class NativePublicCandidate(FastPublicCandidate):
     core_type=NativeCandidate
-    facade_version='keyprint-experimental-native-facade-v1'
+    facade_version='keyprint-experimental-native-facade-v2'
     integration_status='experimental_native_execution_lifecycle_qualification_pending'
     package_scope='Optional native PRF execution; no scientific or serving acceptance transfer'

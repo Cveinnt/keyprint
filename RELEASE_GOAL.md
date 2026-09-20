@@ -33,16 +33,22 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
-A lossless vector-commitment prototype now passes 75 local codec/audit checks.
-An offline audit of twelve retained Qwen outputs reconciles 490 tokens and
-1,470 vectors after correcting a probe-only report-field assumption. The failed
-probe remains recorded; SDK runtime and receipt contracts are unchanged. See
-[prototype and migration requirements](tools/VECTOR_COMMITMENTS.md). Helper
-speedups are not SDK cost acceptance; the measured runtime below is still current.
+Experimental native v2 now uses explicitly versioned lossless vector
+commitments. Default/reference hashes and probability arithmetic are unchanged.
+A fresh wheel passes 1,079 tests without skips; 83 installed files match source
+and wheel. Actual caller parity resolves vectors before comparing reference
+hashes and reconciles 988 tokens across 24 outputs. Both client lifecycle checks
+pass, and eleven structured requests reconcile 213 tokens and 175 grammar masks.
+The unchanged 72-output engine study audits 2,972 tokens and measures marked
+SDK/engine time per token at 1.093868 (upper 1.100527). The complete-path 1.05
+screen still fails. See the [encoding contract](tools/VECTOR_COMMITMENTS.md) and
+[latest performance evidence](PERFORMANCE.md#native-v2-lossless-vector-commitments).
+The preceding prototype's failed probe and later offline audit remain retained;
+no cost, quality, detection, platform or public release gate is marked closed.
 
-Bounded native selection now preserves the complete reference filter law and
+The preceding bounded native-selection stage preserved the complete reference filter law and
 receipt format. The matching `keyprint-native 0.1.0a2` wheel is required before
-model loading; an actual older wheel fails early. The current installation
+model loading; an actual older wheel fails early. That installation
 passes 918 tests without skips, selector sanitizer stress, full Qwen caller
 parity, both client lifecycle checks and eleven structured requests. The
 unchanged 72-output study reconciles 3,018 tokens and measures marked SDK/engine

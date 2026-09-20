@@ -5,6 +5,7 @@ reference module is patched. Results qualify parity only, not serving speed,
 semantic quality or detection. Every failure and truncated output is retained.
 """
 import argparse
+from contextlib import nullcontext
 import importlib.metadata
 import json
 from pathlib import Path
@@ -48,6 +49,14 @@ def main():
         "order": "Alternate frozen reference/tested execution first by case index; fresh caller cache for each execution",
         "failure_rule": "Retain all attempts without retries or replacements",
     }
+    compact = args.execution == 'experimental-native' and tested.core_identity['version'].endswith('-v2')
+    if compact:
+        from commitment_parity import observe_native_vectors, legacy_sampling_projection, validate_observed_sequence
+        plan['vector_observation'] = {
+            'scope': 'Test-only native vector capture; reference unchanged; no serving timing',
+            'sources': {name: sha(Path(__file__).with_name(name))
+                        for name in ('commitment_parity.py', 'vector_commitment.py')},
+        }
     (public / "plan.json").write_text(json.dumps(plan, indent=2))
     backend = MLXModel.load(args.model)
     rows = []
@@ -57,6 +66,7 @@ def main():
             row = {"case": case["id"], "condition": condition, "max_tokens": case["max_tokens"],
                    "executions": {}, "checks": {}, "errors": []}
             reports = {}
+            observations = []
             order = (("reference", reference), (label, tested))
             if index % 2: order = tuple(reversed(order))
             for name, candidate in order:
@@ -66,7 +76,7 @@ def main():
                 def reserve(action, metadata):
                     reservations[action] = reservations.get(action, 0) + 1
                 try:
-                    with DurableJournal(directory / "journal.jsonl") as journal:
+                    with (observe_native_vectors() if compact and name == label else nullcontext([])) as captured, DurableJournal(directory / "journal.jsonl") as journal:
                         report = candidate.run_response(
                             backend.model, prompt, key=bytes(range(32)), condition=condition,
                             random_bits=random.Random(20260920 + index).getrandbits,
@@ -75,18 +85,27 @@ def main():
                             allow_thinking=False, allow_tools=False)
                     (directory / "report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False))
                     reports[name] = report
+                    if compact and name == label:
+                        observations = captured
+                        (directory / 'vectors.json').write_text(json.dumps(observations))
                     row["executions"][name] = {
                         "kind": report["kind"], "reservations": reservations,
                         "report_sha256": sha(directory / "report.json"),
                         "journal_sha256": sha(directory / "journal.jsonl"),
                         "text": (report.get("rendered_carriers") or {}).get("visible_text"),
                     }
+                    if compact and name == label:
+                        row['executions'][name]['vectors_sha256'] = sha(directory / 'vectors.json')
                 except Exception as exc:
                     row["errors"].append({"execution": name, "type": type(exc).__name__, "message": str(exc)})
             if len(reports) == 2 and all(r["kind"] == "generation_trace" for r in reports.values()):
                 a, b = reports["reference"], reports[label]
                 for field in ("committed_token_ids", "sampling_records", "completion", "literal_diagnostics"):
-                    row["checks"][field] = a["payload"][field] == b["payload"][field]
+                    value = b['payload'][field]
+                    if compact and field == 'sampling_records':
+                        validate_observed_sequence(observations, len(value))
+                        value = legacy_sampling_projection(value, observations)
+                    row["checks"][field] = a["payload"][field] == value
                 row["checks"]["rendered_text"] = a["rendered_carriers"] == b["rendered_carriers"]
                 row["checks"]["distinct_execution_identity"] = a["target_identity"] != b["target_identity"]
                 row["checks"]["same_consumed_work"] = row["executions"]["reference"]["reservations"] == row["executions"][label]["reservations"]

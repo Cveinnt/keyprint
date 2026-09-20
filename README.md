@@ -257,6 +257,8 @@ downloads it automatically. Full-caller output parity and both local provider
 cancellation paths have been tested, with a distinct binary-bound identity.
 Validated unkeyed metadata is prepared once per candidate; each request still
 checks pinned asset bytes and binding fields and owns fresh sampler state.
+Native v2 reports use [versioned lossless vector commitments](tools/VECTOR_COMMITMENTS.md);
+default and reference reports keep their legacy dense hash fields.
 See [native installation and scope](native/README.md). It is optional, not the
 default execution or a production-performance guarantee.
 

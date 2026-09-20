@@ -1,8 +1,26 @@
-# Lossless vector commitments: development prototype
+# Lossless vector commitments: experimental native v2
 
-`vector_commitment.py` is outside the SDK. No production receipt format, hash
-field, wheel or release gate changes. Existing dense SHA-256 commitments remain
-authoritative for the current runtime.
+The core SDK now includes `keyprint.experimental.vector_commitment` for explicit
+experimental native v2 execution. Default and frozen reference receipt formats
+keep their dense SHA-256 hashes. The independent `tools/vector_commitment.py`
+prototype remains a test oracle and reproduces the historical experiments below.
+Neither package has been released, and this format does not close a release gate.
+
+Native report schema is `keyprint.experimental-native-report.v2`, and its runtime
+version is `keyprint-mlx-native-experimental-v2`. Sampling records contain
+`base_probability_commitment` and `prepared_probability_commitment`; private
+filter attempts contain `filtered_logits_commitment`. Each object declares
+`encoding`, `kind`, `width` and `sha256`. Encoding is `keyprint.binary64-vector.v1`.
+Probability width is the complete 151,669-token mapped vocabulary; filtered
+logits retain the complete 151,936-entry head. Old dense hash field names are
+rejected by the new report contract, and legacy reporting rejects these objects.
+No reader should infer an encoding from a 64-character digest alone.
+
+Reports explicitly say `vector_commitments_resolved: false`. Their validator
+checks structure and the existing random-draw, token and completion invariants;
+it does not claim to resolve a vector from a hash. The codec and report validator
+sources are part of the runtime identity. Saved legacy reports remain legacy
+artifacts; they are not rewritten or passed off as new-format evidence.
 
 ## KPV1 encoding
 
@@ -45,32 +63,47 @@ Neither digest authenticates authorship or provides keyed watermark detection.
 - Eleven audit checks reject missing, extra, reordered, altered or mismatched
   observations. No timing of instrumented inference is used as serving evidence.
 
-Reproduce locally with an installed core/native environment:
+Reproduce the helper screen with an installed core/native environment:
 
 ```sh
 python -m pytest -q tests/test_vector_commitment.py tests/test_vector_commitment_audit.py
 python tools/benchmark_vector_commitment.py --output NEW_HELPER_SCREEN
-python tools/probe_vector_commitments.py --model PINNED_QWEN --output NEW_PRIVATE_PROBE
-python tools/audit_vector_commitments.py --run NEW_PRIVATE_PROBE \
-  --model PINNED_QWEN --probe-source tools/probe_vector_commitments.py
 ```
 
-The probe hashes original bytes unchanged and additionally observes packets.
+The historical probe needs the preceding native v1 environment. It hashes
+original bytes unchanged and additionally observes packets.
 Its module-local instrumentation is explicit. Each output directory must be
 new; all attempts stay recorded. Packets and owner keys are private, outside
 version control. The repaired probe has not received another inference run;
 the recorded actual-vector evidence comes from the initial captured outputs.
 
-## Requirements before SDK integration
+## Integrated parity and qualification
 
-Introduce an explicitly versioned receipt schema and encoding metadata; never
-reuse old dense-hash field names with new meanings. Keep legacy reading and
-failure behavior explicit. Bind codec source into runtime identity. Qualify
-probability-level and full-caller parity, journal integrity, provider lifecycle,
-structured output and installed wheel behavior. Only then freeze the runtime
-for a new uninstrumented end-to-end engine comparison.
+`tools/commitment_parity.py` explicitly instruments native v2 in a test process.
+It independently encodes each actual vector using the retained prototype,
+checks exact reconstruction and compares the packet hash to the SDK commitment.
+The offline auditor resolves those retained packets back to their original dense
+bytes before comparing hashes with the reference reports. It also checks packet
+order, count, source identity, journals, text, random draws and consumed work.
+No digest is relabeled without resolving its bytes. Instrumentation is restored
+on exit and is absent from serving measurements.
 
-The current SDK measurement remains 1.137564 marked/engine seconds per token
-(one-sided 95% upper 1.146169), above the 1.05 target. These helper results do
-not close cost, quality, detection, production or launch gates. Hosted CI stays
-disabled; this work runs locally.
+```sh
+python tools/validate_fast_caller.py --model PINNED_QWEN \
+  --execution experimental-native --output NEW_PRIVATE_PARITY
+python tools/audit_fast_caller.py --run NEW_PRIVATE_PARITY
+```
+
+The fresh installed wheel passes 1,079 checks without skips, including 64 codec
+cases against both independent and SDK implementations, sampler/failure parity,
+channel isolation and malformed v2 reports. All 83 package files match source
+and wheel. Twelve actual caller pairs match across 988 tokens after vector
+resolution; both client lifecycle checks and eleven structured requests pass.
+
+The unchanged uninstrumented v2 study measures marked/engine seconds per token
+at 1.093868 (upper 1.100527), auditing 2,972 tokens across 72 measured outputs and
+three warmups. The preceding native v1 result was 1.137564 (upper 1.146169).
+Independent draws, output lengths and background applications prevent treating
+the difference as an isolated causal estimate. The complete-path 1.05 target
+still fails. No cost, quality, detection, production or launch gate closes.
+Hosted CI stays disabled; this work runs locally.
