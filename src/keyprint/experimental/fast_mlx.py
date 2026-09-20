@@ -6,11 +6,11 @@ wide patches, persistent key cache, calibration or serving acceptance.
 """
 import copy
 import hashlib
-import hmac
 from pathlib import Path
 
 import numpy as np
 
+from .hmac_context import SHAContext
 from ..integrity import verify
 from ..sampling import sparse_softmax, identity as sampling_identity
 from .._engine.research.keyprint_candidate_v2.adapter import (
@@ -46,21 +46,12 @@ class _ContextProfile(RuntimeBoundProfile):
             context_bytes = pack(context)
             prefix = ((4).to_bytes(4, "big") + len(self._domain).to_bytes(8, "big") + self._domain
                       + len(context_bytes).to_bytes(8, "big") + context_bytes + (4).to_bytes(8, "big"))
-            base = hmac.new(key, prefix, "sha256")
-            templates = []
-            for layer in range(self.config.layers):
-                item = base.copy()
-                item.update(layer.to_bytes(4, "big"))
-                templates.append(item)
+            engine = SHAContext(key, prefix, self.config.layers)
             self._state.clear()
-            self._state.update(address=address, templates=templates)
+            self._state.update(address=address, engine=engine)
         suffix = len(label).to_bytes(8, "big") + label
-        result = []
-        for template in self._state["templates"]:
-            item = template.copy()
-            item.update(suffix)
-            result.append(item.digest()[0] & 1)
-        return tuple(result)
+        engine = self._state["engine"]
+        return tuple(engine.digest(layer, suffix)[0] & 1 for layer in range(self.config.layers))
 
 
 class _ContextSession(SparseTokenSourceSession):
@@ -180,7 +171,7 @@ def execution_specification():
     """Bind every experimental implementation and reporting source."""
     return {
             "sources": {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py")},
+                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py", "hmac_context.py")},
             "sampling": sampling_identity(), "request_local_hmac_context": True,
             "reference_results_transfer": False}
 

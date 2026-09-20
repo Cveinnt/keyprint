@@ -263,6 +263,55 @@ cases do not approve semantic quality or reader indistinguishability. Next,
 profile the optimized marked path and preserve this result before proposing
 another separately identified implementation or declared timing experiment.
 
+### Follow-up marking-path optimization
+
+`tools/profile_fast_serving.py` retained twelve actual optimized Qwen outputs
+(247 ordinary and 249 marked tokens). Instrumented marked costs included HMAC
+context copies and the 30 tournament updates. These profiler costs are not
+uninstrumented serving timings.
+
+Two separately retained development screens tested those paths. NumPy tournament
+updates preserved all 4,800 layer comparisons and subnormal counters. They took
+about 0.79 of reference helper time at 100 candidates and 0.48 at 1,000, but
+regressed to 4.17 at ten and 11.27 at one. This candidate stays in `tools/` and is
+not used by the SDK.
+
+The SHA-context helper uses the standard SHA-256 HMAC inner/outer pad construction
+for the fixed 32-byte SDK key, implemented with `hashlib`. It preserves the exact
+address serialization, full digest and final one-bit extraction. It matched all
+540 synthetic comparisons and used 0.618–0.691 of the existing reusable-HMAC
+helper time across one, ten and 100 labels. These are helper timings, not an
+end-to-end speedup claim.
+
+The explicit experimental MLX path now uses that SHA context with fresh state
+per response; closing a carrier clears its context references. Its runtime digest
+binds the added `hmac_context.py` source. The frozen reference remains unchanged.
+A fresh installed wheel passes 353 tests, including full-digest stdlib comparisons,
+invalid keys, binary/Unicode addresses, subnormal arithmetic, routing, journal
+failures and cancellation. Complete-caller parity matches 24 real outputs and
+494 tokens per execution path. The separate auditor reconciles 988 token commits,
+prompts, identities, journals and report hashes. Actual Qwen HTTP cancellation,
+terminal replay and worker reuse also pass for this new source identity.
+
+```sh
+python tools/audit_fast_caller.py --run PRIVATE_CALLER_RUN
+```
+
+The separate repeated serving study completed all 96 measured requests at EOS
+with no errors. Its audit reconciled 4,102 tokens including four warmups. The
+optimized marked/ordinary seconds-per-token ratio was **1.0607**, with a one-sided
+95% upper ratio of **1.0684**: the unchanged 5% screen still failed. Reference
+marked/ordinary was 1.0783 (upper 1.0829). Optimized/reference ratios were 0.5672
+for ordinary output and 0.5580 for marked output. These within-run comparisons
+show about 43–44% lower time per token than the reference on this fixed workload.
+They do not isolate the new helper's incremental effect against the previous
+optimized version across separate runs.
+
+All 48 pairs are retained. Sixteen French outputs still triggered the exact-time
+format screen. Earlier timing failures remain retained; no A18, semantic-quality,
+reader-indistinguishability or native-server acceptance changes. Further changes
+must preserve parity and undergo a new prospectively declared serving run.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

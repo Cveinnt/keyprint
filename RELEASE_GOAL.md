@@ -128,6 +128,16 @@ with a one-sided 95% upper ratio of 1.0744. The unchanged 5% incremental screen
 still fails. All 48 text pairs remain available; sixteen French exact-time
 format flags remain. This closes a measurement task, not A18 or quality.
 
+The SHA-context follow-up preserves 24 real outputs/494 tokens per execution
+path, passes actual HTTP cancellation/replay/reuse and 353 installed-wheel tests.
+The separate 96-request serving repeat verifies 4,102 tokens including warmups.
+Optimized marked/ordinary cost is 1.0607 (one-sided 95% upper 1.0684), still above
+the unchanged 5% screen. Marked execution uses 0.5580 of the concurrently measured
+reference time per token, but sixteen French format flags and broader quality,
+detection and serving acceptance gaps remain. The NumPy tournament candidate is
+not integrated because small-support timings regressed. Profile-guided progress
+does not close the remaining production gates.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code
