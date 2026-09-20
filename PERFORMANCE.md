@@ -1,5 +1,11 @@
 # Sampling performance
 
+The latest complete-path comparison fails the lightweight-runtime target:
+marked Keyprint takes 1.5266 times MLX-LM's time per token on the fixed local
+workload. The much smaller marking-only cost measures a different denominator.
+See [the unmodified engine comparison](#unmodified-mlx-lm-baseline) before using
+any of the helper or within-SDK results below as a performance claim.
+
 The portable Transformers backend and experimental SGLang/vLLM adapters use
 sparse execution of the existing binary64 sampling law. Post-filter excluded
 logits and zero-probability intervals no longer cross Python arithmetic loops.
@@ -579,6 +585,68 @@ python tools/serving_confirmation.py --model PINNED_MODEL \
 python tools/audit_serving_confirmation.py --run NEW_PRIVATE_CONFIRMATION \
   --model PINNED_MODEL --corpus PINNED_DOLLY_JSONL
 ```
+
+### Unmodified MLX-LM baseline
+
+The next declared study compares unmodified `mlx_lm.stream_generate` with
+ordinary and marked `experimental-native` Keyprint, sharing one verified
+Qwen3-8B model and tokenizer. All paths use the same six fixed prompts, caps,
+temperature 0.7 and top-k 100. Execution order rotates across the three paths;
+four repeats per prompt retain 72 outputs plus three declared warmups.
+
+These are complete developer-facing paths, not identical sampling laws.
+MLX-LM uses its own device sampler, special-token policy and renderer. Keyprint
+uses its bound binary64 policy, cryptographic draws and durable reports/journals.
+Both token denominators include EOS. Prompt encoding and rendering are timed;
+model loading, imports, benchmark-artifact writing, HTTP and batching are not.
+Keyprint's own durable artifact writing stays inside its measured generate call.
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.485376 | 1.500379 |
+| Marked Keyprint / MLX-LM | 1.526571 | 1.537920 |
+| Marked / ordinary Keyprint | 1.027734 | 1.034310 |
+
+Thus most of the observed excess is present even without marking. The prior
+within-SDK pass does not establish negligible SDK overhead. All requests
+completed without engineering errors. Audit reconciles 3,053 tokens including
+warmups, replays the upstream renderer for its 995 tokens, and checks SDK
+journal chains, prompts, byte rendering, bound source and statistical arithmetic.
+A deliberately corrupted upstream token count is rejected by the auditor.
+Every measured text appears in the resulting three-column comparison page.
+
+The machine had active Spotlight indexing and other background processes;
+no other active inference or benchmark was observed. This is approximate
+fixed-workload evidence on one host, not operating-system isolation, production
+server throughput, a same-distribution causal estimate, semantic approval or A18
+acceptance. No output was retried, replaced or removed after measurement.
+
+```sh
+python tools/benchmark_engine_baseline.py --model PINNED_MODEL \
+  --output NEW_PRIVATE_BASELINE --idle-host-confirmed
+python tools/audit_engine_baseline.py --run NEW_PRIVATE_BASELINE
+```
+
+A separate cProfile run retains twelve more outputs and 502 tokens. Stable
+support filtering consumes 3.94 instrumented seconds, about 7.9 ms per token;
+instrumentation is not a serving measurement. This directs the next optimization
+at full-vocabulary selection, not at weakening journals or masking output errors.
+
+`tools/partition_topk.py` is a development-only selector, not SDK code. It finds
+the cutoff, keeps every strictly higher score, chooses the lowest token IDs at
+the cutoff tie, then sorts only the selected set. Validated candidate IDs remain
+ascending and score arithmetic is unchanged. Forty boundary/property cases
+match the reference order, including ties, signed zero, extreme float32 values,
+full vocabulary and support smaller than k. Thirteen engine-harness tests also
+pass. Ninety full-width helper comparisons preserve every selected position;
+median candidate/reference selection-time ratios are 0.1064 for random logits,
+0.2729 for rounded ties and 0.1986 for equal logits. The first equal-logit
+slowdown is retained; the final candidate adds an exact all-equal shortcut.
+
+Those are selector timings only. SDK integration still requires independently
+bound source, full-filter and full-caller parity, lifecycle regression, and a new
+declared complete-path serving measurement. The 1.526571 SDK/engine result
+remains the latest measured runtime result; the selector has not closed it.
 
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.

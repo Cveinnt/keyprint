@@ -51,6 +51,16 @@ the preceding failed SDK timing screen, not total native-server overhead or A18
 acceptance. Production serving, quality, indistinguishability, calibrated
 detection, platform coverage and release gates remain open. CI stays disabled.
 
+A subsequent unmodified MLX-LM comparison exposes the remaining SDK cost:
+ordinary execution takes 1.485376 times the engine's time per token, and marked
+execution 1.526571 (upper bound 1.537920). All 72 measured outputs and three
+warmups reconcile, including 3,053 generated tokens. Sampling and bookkeeping
+differ, so this is complete-path evidence rather than a pure marking estimate.
+Profiling directs optimization at full-vocabulary filtering. A development-only
+partition selector preserves exact order in 53 combined harness/selector tests
+and ninety full-width comparisons, but is not integrated. The runtime cost gap
+stays open until full-caller parity and a new complete-path study qualify a fix.
+
 The CLI now uses the same host-aware backend default and pinned-cache fallback
 for generation, serving and the playground. Explicit overrides remain available;
 missing-cache errors name the pinned download command and perform no download.

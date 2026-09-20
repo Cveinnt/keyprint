@@ -15,6 +15,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--execution", choices=("experimental-fast", "experimental-native"),
+                        default="experimental-fast")
     parser.add_argument("--confirmation", type=Path,
                         help="Profile every task in an existing confirmation plan at its frozen runtime")
     args = parser.parse_args()
@@ -27,18 +29,21 @@ def main():
     source = json.loads(cases_path.read_text())
     cases = source['cases'] if args.confirmation else source
     expected_runtime = source['expected_runtime_sha256'] if args.confirmation else None
+    if args.confirmation and source.get('execution', 'experimental-fast') != args.execution:
+        raise ValueError('Requested execution differs from the supplied confirmation plan')
     plan = {"script_sha256": sha(Path(__file__)), "cases_sha256": sha(cases_path),
             "cases": cases, "order": "Case order; ordinary first for even case index, marked first for odd",
             "scope": "One retained pair per fixed case under cProfile; diagnostic instrumentation, no serving acceptance",
             "failure_rule": "Retain all outcomes, no replacements or retries"}
     plan['expected_runtime_sha256'] = expected_runtime
+    plan['execution'] = args.execution
     plan['source'] = 'existing_confirmation_plan' if args.confirmation else 'fixed_development_cases'
     (public / "plan.json").write_text(json.dumps(plan, indent=2))
     from keyprint import Keyprint
     key = Keyprint.new_key()
     with os.fdopen(os.open(args.output / "owner.key", os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "wb") as stream:
         stream.write(key)
-    model = Keyprint.from_mlx(args.model, key=key, execution="experimental-fast")
+    model = Keyprint.from_mlx(args.model, key=key, execution=args.execution)
     if expected_runtime is not None and model.identity['runtime_profile_sha256'] != expected_runtime:
         raise ValueError('Profiling runtime differs from the supplied confirmation plan')
     rows = []
