@@ -24,7 +24,35 @@ keyprint doctor
 These commands do not replace the actual inference checks below or establish
 coverage for another operating system, model or backend.
 
-The local September 20 ARM Docker SGLang repetition completed twelve outputs and
+The subsequent native token-limit stress run retains its initial failure after
+32 outputs: completed request cycles still occupied live sampler slots. The
+fixed SGLang adapter retires completed requests on the next callback, closes
+their journals and detaches finalizers. It rejects retired request reuse and
+keeps the 32-unfinished-request bound. The upstream request implementation is
+now included in the runtime source fingerprints.
+
+The declared full rerun passes 72 requests and 747 tokens: six fixed
+multilingual/emoji prompts, six caps (1, 2, 4, 8, 16, 32), both conditions. All
+27 incomplete UTF-8 suffixes retain exact bytes; an explicit finalizer removes
+only the corresponding host replacement tail, retaining the original string.
+Independent reconciliation checks every raw host response, text/byte result,
+source identity, journal chain/prefix and the complete token-path multiset.
+Short identical paths do not establish unique request-to-journal association.
+Five native contract tests and 626 installed-wheel Python tests pass. All 78
+packaged files match the tested source and installed wheel. See the
+`utf8-receipts` target and [native completion usage](INTEGRATIONS.md#native-completion-text-and-token-limits).
+This is bounded ARM CPU evidence, not vLLM cap, streaming, quality, detection,
+long-running service or production qualification. No hosted CI was dispatched.
+
+A separate standard comparison on the same fixed source completes all twelve
+outputs and reconciles 949 token IDs with unique journals. Eleven outputs finish
+at EOS and one at its token cap. Raw framework responses independently reproduce
+the displayed text and byte metadata. Five mechanical quality flags remain:
+a missing email time, a capped Spanish answer, missing names in both French
+answers and invalid marked JSON. Integration success does not approve those
+answers or establish semantic fidelity.
+
+The earlier local September 20 ARM Docker SGLang repetition completed twelve outputs and
 661 journal-matching tokens, with four mechanical screening failures retained.
 Its verifier also checks the recorded Keyprint native-adapter and sampling-source
 identities against the installed package. A token-path match alone cannot qualify

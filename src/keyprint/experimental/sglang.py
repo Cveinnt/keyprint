@@ -15,6 +15,19 @@ from .native import RequestSampler
 from .sglang_runtime import verify_runtime
 
 _LIVE_REQUESTS = weakref.WeakKeyDictionary()
+_RETIRED_REQUESTS = weakref.WeakSet()
+
+
+def _reap_finished():
+    # Req -> sampling_params -> custom_params["__req__"] -> Req is a cycle in
+    # the pinned host. Weak references alone wait for cyclic GC, so completed
+    # requests otherwise exhaust the live-session bound. Run on the scheduler
+    # thread that owns the journals; invoking the finalizer also detaches it.
+    for req, state in list(_LIVE_REQUESTS.items()):
+        if req.finished():
+            state[-2]()
+            del _LIVE_REQUESTS[req]
+            _RETIRED_REQUESTS.add(req)
 
 
 def validate(params):
@@ -72,10 +85,13 @@ class KeyprintLogitsProcessor(CustomLogitProcessor):
         # State follows the request, because SGLang recreates processors when
         # rebuilding batches. At most 32 live requests are retained. There is no
         # claim of production lifecycle/cancellation support or unbounded service.
+        _reap_finished()
         for index, extra in enumerate(custom_param_list):
             req = extra.get("__req__")
             if req is None or req.return_logprob:
                 raise ValueError("explicit request without logprobs required")
+            if req.finished() or req in _RETIRED_REQUESTS:
+                raise ValueError("finished requests cannot resume sampling")
             validate(req.sampling_params)
             condition = extra.get("keyprint_condition", "marked")
             if req not in _LIVE_REQUESTS:
@@ -83,9 +99,9 @@ class KeyprintLogitsProcessor(CustomLogitProcessor):
                     raise ValueError("experimental session request limit reached")
                 sampler = RequestSampler(self.binding, self.key, condition,
                                          self.directory, runtime="sglang-cpu")
-                _LIVE_REQUESTS[req] = (self.binding.digest, self.key, condition, sampler)
-                weakref.finalize(req, sampler.close)
-            digest, key, original_condition, sampler = _LIVE_REQUESTS[req]
+                finalizer = weakref.finalize(req, sampler.close)
+                _LIVE_REQUESTS[req] = (self.binding.digest, self.key, condition, finalizer, sampler)
+            digest, key, original_condition, _, sampler = _LIVE_REQUESTS[req]
             if (digest, key, original_condition) != (self.binding.digest, self.key, condition):
                 raise ValueError("request binding, key or condition changed")
             logits[index] = sampler(req.output_ids, logits[index])

@@ -8,6 +8,7 @@ import time
 
 from transformers import AutoTokenizer
 from keyprint.backends.bytelevel import ByteLevelBinding
+from keyprint.experimental.completion import finalize_completion
 from keyprint._engine.legacy._impl.research.grouped_canonical_prototype import Config, Profile, replay_events
 from validate_compatibility import screens, write_report
 from check_native_receipts import check
@@ -60,7 +61,7 @@ def main():
                           extra_args={'keyprint_condition':condition}) for condition in conditions]
                 responses = engine.chat([[{'role':'user','content':case['prompt']}]]*2, params, use_tqdm=False)
                 pair = [{'text':r.outputs[0].text, 'token_ids':list(r.outputs[0].token_ids),
-                         'completion':'eos' if r.outputs[0].finish_reason == 'stop' else 'length'} for r in responses]
+                         'finish_reason':r.outputs[0].finish_reason} for r in responses]
             else:
                 prompt = tokenizer.apply_chat_template([{'role':'user','content':case['prompt']}],
                                                         tokenize=False, add_generation_prompt=True)
@@ -68,10 +69,15 @@ def main():
                            'custom_params':{'keyprint_condition':condition}} for condition in conditions]
                 responses = engine.generate([prompt]*2, params, custom_logit_processor=KeyprintLogitsProcessor.to_str())
                 pair = [{'text':r['text'], 'token_ids':r['output_ids'],
-                         'completion':'eos' if r['meta_info']['finish_reason']['type'] == 'stop' else 'length'} for r in responses]
+                         'finish_reason':r['meta_info']['finish_reason']['type']} for r in responses]
             elapsed = time.perf_counter()-started
             assert len(pair) == len(conditions), 'framework omitted a requested response'
+            # Preserve raw host output even if byte/completion validation fails.
+            (root/f'host-{index}.json').write_text(json.dumps(pair,indent=2))
             for condition, response in zip(conditions, pair):
+                finalized = finalize_completion(binding, **response, max_tokens=case['max_tokens'])
+                response = {'text':finalized.text, 'token_ids':list(finalized.token_ids),
+                            'completion':finalized.completion}
                 outputs.append(response)
                 diagnostic = {}
                 try:
@@ -84,6 +90,7 @@ def main():
                 except Exception as exc:
                     diagnostic = {'unavailable':type(exc).__name__}
                 report['runs'].append({'case':case['id'],'condition':condition,**response,
+                    'host_text':finalized.host_text,'carrier_rendering':finalized.carrier_rendering,
                     'usage':{'completion_tokens':len(response['token_ids'])},'pair_seconds':elapsed,
                     'screens':screens(case,response['text'],response['completion']),'diagnostic':diagnostic})
                 assert response['text'].strip() and 0 < len(response['token_ids']) <= case['max_tokens']

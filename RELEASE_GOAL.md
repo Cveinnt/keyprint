@@ -33,6 +33,23 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+Native completion handling now verifies host text against returned token bytes,
+rejects unknown finish reasons, and retains incomplete UTF-8 tails at exact
+token limits. An actual SGLang stress run exposed a separate lifecycle bug:
+completed request cycles exhausted the 32-live-session bound. That failed run
+retains 32 outputs and exit code 137. Completion-state cleanup fixes the leak
+without raising the active-request limit or permitting finished requests to
+restart. The full rerun passes 72 requests, 747 journal-matching tokens and 27
+partial-character outputs across six multilingual/emoji prompts and six caps.
+Five native contract checks pass; the fresh wheel passes 626 Python tests and
+all 78 packaged files match the installed copy and tested source. Reconciliation
+checks short token paths as a complete multiset, not unique request identities.
+This qualifies this bounded SGLang CPU test, not vLLM cap behavior, streaming,
+long-running service, answer quality or detection. Public launch stays held.
+A separate standard comparison on this source reconciles twelve outputs and
+949 tokens, including eleven EOS completions and one cap. Five mechanical
+quality failures remain visible; this does not close the quality gate.
+
 The playground now serves its page while the model loads, exposes real startup
 state, permits prompt editing and blocks premature generation. Failed startup
 keeps the page available, with private diagnostics and explicit reconnection.
@@ -77,7 +94,9 @@ candidate remains outside the SDK; no larger null run or cutoff change follows.
   and mobile flows pass browser checks. The main demo demonstrates the capability
   without presenting canned output or an uncalibrated fraction as a verdict.
 - [ ] Release: exact wheel, docs, demo and compatibility matrix agree; final CI
-  and clean-install checks pass; publication and announcement claims match evidence.
+  or an equivalent local release matrix and clean-install checks pass;
+  publication and announcement claims match evidence. Hosted CI stays disabled
+  under the user's current instruction.
 
 September 19 verification: revision `82ce577` passed all ten SDK CI jobs plus
 the dedicated ARM SGLang actual-inference job. Cooperative cancellation

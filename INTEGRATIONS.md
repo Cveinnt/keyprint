@@ -116,7 +116,7 @@ keys, unsupported settings and journal cleanup when a request is collected.
 The September 19 rebuild of that same checkout produced version label
 `0.5.21.dev69+g13d593b6c`. The earlier string-only guard killed the worker before
 any output was returned. The adapter now accepts those two observed labels only
-when four installed source files match SHA-256 fingerprints from the pinned
+when five installed source files match SHA-256 fingerprints from the pinned
 commit: custom processor, sampling parameters, sampler and server arguments.
 Unknown labels, missing files and changed source fail closed. The comparison
 runner performs this check before allocating workers and retains its identity.
@@ -149,6 +149,13 @@ The runtime compilation remains cacheable. The `comparison-receipts` target
 runs all six ordinary/marked cases and exports results without loading a second
 copy of the complete runtime image.
 
+Completed requests are retired on the next sampler callback using the pinned
+host's completion state. This closes their journals and detaches finalizers
+without waiting for Python's cyclic garbage collector. The 32-request bound
+applies to unfinished requests; a retired request cannot resume sampling.
+The last idle batch can remain until garbage collection or worker exit. This
+does not establish cancellation, crash recovery or long-running service safety.
+
 Two 64-token marked responses completed; all 128 returned IDs matched the
 durable selection journals. Both reached the token cap. The environment used
 NumPy 2.3.5, tokenizers 0.22.2 and torch 2.12.0+cpu, separately from distribution
@@ -162,6 +169,44 @@ must never be accepted on a public endpoint. Cancellation, long-running service,
 detector controls, quality and comparative overhead remain open. Verify retained
 outputs with `tools/check_native_receipts.py`; it checks journal chains and exact
 token paths, not detection accuracy or the full mathematical sampling law.
+
+### Native completion text and token limits
+
+For these non-streaming pilots, run returned text and IDs through
+`keyprint.experimental.completion.finalize_completion` using the same
+`ByteLevelBinding` as the processor:
+
+```python
+from keyprint.experimental.completion import finalize_completion
+
+result = finalize_completion(
+    binding,
+    token_ids=output_ids,
+    text=host_text,
+    finish_reason=finish_reason,  # The actual host value: "stop" or "length".
+    max_tokens=requested_cap,
+)
+print(result.text)
+```
+
+The helper checks that EOS is terminal, a length completion reaches the exact
+requested cap, and text agrees with the returned token bytes. Unknown finish
+reasons and unrelated text changes raise errors. A capped first token may be
+only part of a character, so valid visible text can be empty. The helper keeps
+an incomplete UTF-8 tail in `result.pending_utf8` and retains the unmodified
+framework string in `result.host_text`. It accepts either an omitted partial
+tail or one replacement character for that tail; only the latter is removed.
+It never draws another token or repairs malformed interior bytes or an
+incomplete EOS completion. A genuine sampled replacement character is retained.
+
+This explicit helper does not change text emitted directly by framework servers
+or qualify streaming. Match returned IDs against the private sampling journal
+separately. `tools/validate_native_cases.py` now uses this helper and retains raw
+host responses before validation. The `utf8-receipts` Docker target exercises
+six fixed multilingual/emoji prompts at six short caps in both conditions; use
+a fresh run ID and `--no-cache-filter utf8`, then check the exported exit status
+and every attempt. Its short identical paths are checked as a complete multiset
+against journals, not presented as uniquely matched request identities.
 
 ## Hosted-provider options worth evaluating
 

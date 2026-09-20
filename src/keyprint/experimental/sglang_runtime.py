@@ -6,6 +6,7 @@ REVISION = "13d593b6cf885c5c4d50eea88c82b9e28cf5941e"
 # Both were produced by the same pinned checkout as upstream tags evolved.
 VERSIONS = frozenset({"0.5.20.dev791+g13d593b6c", "0.5.21.dev69+g13d593b6c"})
 SOURCE_FILES = {
+    "srt/managers/schedule_batch.py": "179666548b89f151398d45ae34a9b676f5a1b42939d180d2c8051cd990807392",
     "srt/sampling/custom_logit_processor.py": "ec50329f4488d3fa0f7f521850b706170ac3609836d08c54a7e13bc2731f5bbd",
     "srt/sampling/sampling_params.py": "7295f275a1a286ae5a4414bcedd1d48a3a9824a0c2a5c915e091ed06b6f74730",
     "srt/layers/sampler.py": "78fa19f0e23a3d49f3aed07cd932e7a252c04d009750305cc456ba0f1e961390",

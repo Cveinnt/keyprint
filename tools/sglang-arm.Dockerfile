@@ -102,3 +102,20 @@ RUN /root/.local/bin/uv pip freeze --python /opt/.venv/bin/python > /results/run
     sha256sum /sgl-workspace/sglang/python/sglang/kernels/aot/csrc/cpu/numa_utils.cpp > /results/numa-source-sha256.txt
 FROM scratch AS comparison-receipts
 COPY --from=comparisons /results /
+
+# Independent, declared short-cap stress run. Never reused as a cached result.
+FROM runtime AS utf8
+ARG KEYPRINT_RUN_ID
+COPY --from=keyprint_source /src /keyprint/src
+COPY --from=keyprint_source /tools /keyprint/tools
+COPY --from=model_assets / /model
+RUN --network=none --mount=type=secret,id=keyprint_key,required=true \
+    test -n "${KEYPRINT_RUN_ID}" && mkdir -m 700 /results && \
+    printf '%s\n' "${KEYPRINT_RUN_ID}" > /results/run-id.txt && \
+    PYTHONPATH=/keyprint/src KEYPRINT_MODEL_PATH=/model KEYPRINT_KEY_FILE=/run/secrets/keyprint_key KEYPRINT_TRACE_DIR=/results/traces OMP_NUM_THREADS=2 \
+    timeout --kill-after=15 900 /opt/.venv/bin/python /keyprint/tools/validate_native_utf8.py > /results/utf8.log 2>&1; result=$?; echo $result > /results/exit-code.txt; cat /results/utf8.log
+RUN PYTHONPATH=/keyprint/src /opt/.venv/bin/python /keyprint/tools/test_sglang_contract.py > /results/contract.log 2>&1; result=$?; echo $result > /results/contract-exit-code.txt; cat /results/contract.log
+RUN /root/.local/bin/uv pip freeze --python /opt/.venv/bin/python > /results/runtime-lock.txt && \
+    sha256sum /sgl-workspace/sglang/python/sglang/kernels/aot/csrc/cpu/numa_utils.cpp > /results/numa-source-sha256.txt
+FROM scratch AS utf8-receipts
+COPY --from=utf8 /results /
