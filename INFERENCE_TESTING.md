@@ -8,6 +8,22 @@ estimate of watermark quality loss.
 
 ## Reproduce locally
 
+Hosted `SDK checks` and `SGLang actual inference` workflows were manually disabled
+at the user's request on September 20 after repeated pre-execution billing-limit
+failures. Keep them disabled until the user requests otherwise. Run checks
+locally; do not repeatedly dispatch GitHub jobs as an availability probe.
+
+Against a freshly installed wheel with the applicable extras:
+
+```sh
+python -m pytest
+node --test tests/test_reader.cjs tests/test_playground_ui.cjs
+keyprint doctor
+```
+
+These commands do not replace the actual inference checks below or establish
+coverage for another operating system, model or backend.
+
 Install the wheel with the backend, server and clients extras, and download the
 pinned model listed in README.md. Then run:
 
@@ -43,6 +59,23 @@ For the pinned Qwen model use `--backend mlx`, its model path, and optionally
 run `tools/validate_cancellation.py` with `--protocol anthropic` and the same
 backend/model/output flags. The deliberately controlled cancellation boundary
 tests retained work and worker reuse, not natural cancellation latency.
+
+Test a token limit reached inside a UTF-8 character on real Transformers
+inference, independently for ordinary and marked sampling:
+
+```sh
+python tools/validate_portable_utf8.py --model models/smollm2 \
+  --condition ordinary --output private-utf8-ordinary
+python tools/validate_portable_utf8.py --model models/smollm2 \
+  --condition marked --output private-utf8-marked
+```
+
+The declared multilingual prompt/seed order selects the first partial-character
+prefix. It then reruns the actual model at that exact cap and compares every
+model-head hash, weight hash, random draw and commit with the original prefix.
+No extra token is generated to complete the character. Every search output stays
+in the report; failure to find or reproduce a partial prefix exits unsuccessfully.
+This is a boundary regression, not an output-quality or failure-rate estimate.
 
 To exercise client timeout recovery separately:
 

@@ -143,6 +143,16 @@ then verifies actual local inference, replay without duplicate generation,
 busy/conflict rejection and worker reuse. Its deliberate barrier is a lifecycle
 test, not a latency measurement. See [reproduction steps](INFERENCE_TESTING.md).
 
+Transformers length completion now retains an unfinished UTF-8 suffix in
+`report["carrier_rendering"]` while returning only the valid text prefix. This
+can be empty at a very short cap. All committed tokens count toward usage; no
+replacement character or extra model call is introduced. The report marks
+full-carrier literal replay and the tokenizer rendering check unavailable for
+that partial character. Complete carriers still require exact tokenizer
+agreement; malformed bytes and partial characters at EOS remain errors. This
+repair does not change the frozen default MLX caller or the native SGLang/vLLM
+rendering paths.
+
 ## Inspect a local rewrite of GPT or Claude prose
 
 For an **already completed** provider result, load a local model and explicitly

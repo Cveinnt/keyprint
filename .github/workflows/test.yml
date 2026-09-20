@@ -67,7 +67,7 @@ jobs:
           python -m pip install build
           python -m build --wheel
           python -m pip install "$(find dist -name '*.whl')[test,transformers,server,clients]"
-      - run: python -m pytest tests/test_transformers.py tests/test_native_sampler.py
+      - run: python -m pytest tests/test_transformers.py tests/test_transformers_utf8.py tests/test_native_sampler.py
       - name: Download the pinned public inference fixture
         run: |
           python - <<'PY'
@@ -81,6 +81,13 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
         run: python tools/validate_compatibility.py --backend transformers --model model-fixture --output inference-results --http-client
+      - name: Replay real ordinary and marked token caps inside UTF-8 characters
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+        run: |
+          python tools/validate_portable_utf8.py --model model-fixture --condition ordinary --output utf8-ordinary-results
+          python tools/validate_portable_utf8.py --model model-fixture --condition marked --output utf8-marked-results
       - name: Real inference after client timeout, conflict and busy requests
         env:
           HF_HUB_OFFLINE: '1'
@@ -106,6 +113,8 @@ jobs:
             lifecycle-results/public/
             cancellation-results/public/
             messages-cancellation-results/public/
+            utf8-ordinary-results/public/
+            utf8-marked-results/public/
           if-no-files-found: warn
           retention-days: 14
   provider-contract:

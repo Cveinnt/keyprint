@@ -170,10 +170,23 @@ class TransformersModel:
                         break
                     ids = torch.tensor([[selected]], dtype=torch.long, device="cpu")
                 phase = "render"
-                text = self.binding.render(committed)
-                decoded = self.tokenizer.decode(committed, skip_special_tokens=True, clean_up_tokenization_spaces=False)
-                if text != decoded:
-                    raise ValueError("tokenizer rendering differs from the declared byte binding")
+                if report["completion"] == "length":
+                    text, pending = self.binding.render_at_limit(committed, max_tokens)
+                else:
+                    text, pending = self.binding.render(committed), b""
+                if not pending:
+                    decoded = self.tokenizer.decode(committed, skip_special_tokens=True, clean_up_tokenization_spaces=False)
+                    if text != decoded:
+                        raise ValueError("tokenizer rendering differs from the declared byte binding")
+                report["carrier_rendering"] = [{"channel": "visible",
+                    "status": "incomplete_utf8_at_token_limit" if pending else "complete_utf8",
+                    "pending_utf8_hex": pending.hex(), "committed_token_ids": committed.copy()}]
+                report["tokenizer_rendering_check"] = (
+                    "unavailable_for_incomplete_utf8_carrier" if pending else "exact_match")
+                report["literal_replay_status"] = [{"channel": "visible",
+                    "availability": "unavailable" if pending else "not_measured",
+                    "reason": "Token limit split a UTF-8 character; rendered prefix is not the complete sampled carrier"
+                    if pending else "Literal inspection is a separate operation"}]
                 report["text"] = text
                 report["usage"] = {"prompt_tokens": len(encoded), "completion_tokens": len(committed),
                                    "total_tokens": len(encoded) + len(committed)}

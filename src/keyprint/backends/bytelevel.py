@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import codecs
 import hashlib
 import json
 
@@ -61,3 +62,21 @@ class ByteLevelBinding:
 
     def render(self, ids: list[int]) -> str:
         return b"".join(self.pieces[i] or b"" for i in ids).decode("utf-8", errors="strict")
+
+    def render_at_limit(self, ids: list[int], max_tokens: int) -> tuple[str, bytes]:
+        """Return a valid prefix and retained suffix only at an exact token cap.
+
+        This never decodes with replacement or consumes an additional token.
+        EOS and malformed UTF-8 remain strict errors through ordinary render().
+        """
+        if (type(max_tokens) is not int or max_tokens < 1 or len(ids) != max_tokens
+                or any(type(i) is not int or not 0 <= i < len(self.pieces)
+                       or self.pieces[i] is None or i in self.eos_ids for i in ids)):
+            raise ValueError("Length rendering requires the exact token cap and ordinary token IDs")
+        sampled = b"".join(self.pieces[i] for i in ids)
+        decoder = codecs.getincrementaldecoder("utf-8")("strict")
+        text = decoder.decode(sampled, final=False)
+        pending = decoder.getstate()[0]
+        if text.encode("utf-8") + pending != sampled:
+            raise ValueError("Rendered text and pending suffix differ from sampled bytes")
+        return text, pending

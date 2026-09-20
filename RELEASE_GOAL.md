@@ -191,6 +191,23 @@ or public-launch status as a workaround.
 
 ## First-use acceptance
 
+At the user's September 20 request, both hosted CI workflows are manually
+disabled to stop pre-execution failure notifications. Continue with local
+installed-wheel and actual-inference checks; do not re-enable or repeatedly
+dispatch hosted CI without a new user instruction.
+
+The portable Transformers path now handles a token cap inside a UTF-8 character
+by retaining every committed token and pending byte, returning the valid prefix
+and explicitly marking full-carrier replay unavailable. Complete output still
+requires exact tokenizer rendering; invalid bytes and partial EOS remain strict.
+The fresh wheel passes 487 Python tests and seven JavaScript tests. Real pinned
+SmolLM2 ordinary and marked Japanese generations both exposed incomplete first
+characters, then passed exact one-token prefix replay with matching model-head
+hashes, random draws and commits and no extra model call. Real OpenAI/Anthropic
+client generation and replay also pass. These are bounded reliability checks;
+the generated Japanese samples are not quality acceptance. Default frozen MLX
+and native SGLang/vLLM cap handling remain separate open work.
+
 The September 20 fresh-wheel browser pass completed the default Qwen/MLX
 prefilled pair, a custom prompt and edited-text inspection. It verified refresh
 recovery, keyboard scrubbing and a 390-pixel mobile layout. Actual Unicode output
