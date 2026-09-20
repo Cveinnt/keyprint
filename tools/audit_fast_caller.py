@@ -22,6 +22,8 @@ def main():
     label = plan.get("candidate_label", "fast")
     if label == "bounded_reference":
         from keyprint.backends.mlx_bounded import execution_specification
+    elif label == "native":
+        from keyprint.experimental.native_mlx import execution_specification
     elif label != "fast":
         raise ValueError("Unknown measured execution")
     from transformers import AutoTokenizer

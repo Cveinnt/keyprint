@@ -64,7 +64,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--execution", choices=("reference", "experimental-fast"), default="reference")
+    parser.add_argument("--execution", choices=("reference", "experimental-fast", "experimental-native"), default="reference")
     args = parser.parse_args()
     args.output.mkdir(mode=0o700)
     key = Keyprint.new_key()

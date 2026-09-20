@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==81.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keyprint-native"
+version = "0.1.0a1"
+description = "Optional experimental native HMAC accelerator for Keyprint"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT AND Apache-2.0"
+license-files = ["LICENSE", "src/keyprint_native/licenses/OpenSSL.txt"]
+authors = [{name = "Vincent Wu (Cveinnt)"}]
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+keyprint_native = ["_native.c", "licenses/*.txt"]

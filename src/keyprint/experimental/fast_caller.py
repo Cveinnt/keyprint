@@ -62,9 +62,13 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
     expected_version = "keyprint-mlx-sparse-experimental-v1"
     if type(candidate) is not FastCandidate:
         from ..backends.mlx_bounded import BoundedReferenceCandidate, VERSION
-        if type(candidate) is not BoundedReferenceCandidate:
+        from .native_mlx import NativeCandidate, VERSION as NATIVE_VERSION
+        if type(candidate) is NativeCandidate:
+            expected_version = NATIVE_VERSION
+        elif type(candidate) is BoundedReferenceCandidate:
+            expected_version = VERSION
+        else:
             raise ValueError("caller requires an exact bound Keyprint candidate class")
-        expected_version = VERSION
     settings = candidate.filter_settings
     if temperature is not None and temperature != settings['temperature']:
         raise ValueError("caller temperature must match the candidate-bound shared filter")

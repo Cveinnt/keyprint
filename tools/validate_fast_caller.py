@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--execution", choices=["reference", "experimental-fast"], default="experimental-fast")
+    parser.add_argument("--execution", choices=["reference", "experimental-fast", "experimental-native"], default="experimental-fast")
     args = parser.parse_args()
     require_storage(args.output)
     args.output.mkdir(mode=0o700)
@@ -31,8 +31,12 @@ def main():
     cases_path = Path(__file__).with_name("inference_cases.json")
     cases = json.loads(cases_path.read_text())
     reference = Keyprint(key=bytes(range(32)))._candidate
-    label = "bounded_reference" if args.execution == "reference" else "fast"
-    tested = BoundedReferencePublicCandidate(reference) if args.execution == "reference" else FastPublicCandidate(reference)
+    label = "bounded_reference" if args.execution == "reference" else "native" if args.execution == "experimental-native" else "fast"
+    if args.execution == "experimental-native":
+        from keyprint.experimental.native_mlx import NativePublicCandidate
+        tested = NativePublicCandidate(reference)
+    else:
+        tested = BoundedReferencePublicCandidate(reference) if args.execution == "reference" else FastPublicCandidate(reference)
     plan = {
         "scope": __doc__, "cases": cases, "script_sha256": sha(Path(__file__)),
         "cases_sha256": sha(cases_path), "reference_identity": reference.core_identity,

@@ -47,7 +47,7 @@ def update_layers(q, bits, diagnostics=None, *, observe=None):
     return r
 
 
-def transform(q, profile, key, context, protected, counters):
+def transform(q, profile, key, context, protected, counters, *, table=bit_table):
     protected = frozenset(protected)
     if any(type(i) is not int or not 0 <= i < len(q) for i in protected):
         raise ValueError("invalid protected token ID")
@@ -59,7 +59,7 @@ def transform(q, profile, key, context, protected, counters):
         return out
     mass = math.fsum(float(q[i]) for i in ids)
     r = tuple(float(q[i]) / mass for i in ids)
-    labels = bit_table(profile, key, context, distinct)
+    labels = table(profile, key, context, distinct)
     if len(ids) >= BATCH_MIN_CANDIDATES:
         bits = np.array([labels[profile.classes[i]] for i in ids], dtype=np.int8).T
         r = update_layers(np.asarray(r, dtype=np.float64), bits, counters)
@@ -76,6 +76,8 @@ def transform(q, profile, key, context, protected, counters):
 
 
 class BatchedTokenSourceSession(SparseTokenSourceSession):
+    _bit_table = staticmethod(bit_table)
+
     def prepare(self, probabilities):
         self._ready()
         if self._pending is not None:
@@ -90,7 +92,8 @@ class BatchedTokenSourceSession(SparseTokenSourceSession):
             raise ValueError("invalid base probability vector")
         mode, protected, occurrences = self._decision(q)
         if self._condition == "marked" and mode != "startup_ordinary" and self._context not in self._used:
-            out = transform(q, self.profile, self._key, self._context, protected, self._numeric_counters)
+            out = transform(q, self.profile, self._key, self._context, protected, self._numeric_counters,
+                            table=self._bit_table)
         else:
             out = q.copy()
         if (not np.isfinite(out).all() or (out < 0).any()

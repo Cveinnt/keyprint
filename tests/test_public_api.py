@@ -48,6 +48,23 @@ def test_invalid_key_rejected(key):
         Keyprint(key=key)
 
 
+def test_missing_native_accelerator_fails_before_model_loading(monkeypatch):
+    import builtins
+    from keyprint.backends.mlx import MLXModel
+
+    original_import = builtins.__import__
+
+    def without_native(name, *args, **kwargs):
+        if name == "keyprint_native":
+            raise ModuleNotFoundError("optional accelerator is not installed")
+        return original_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", without_native)
+    monkeypatch.setattr(MLXModel, "load", lambda *a, **k: pytest.fail("model loading reached"))
+    with pytest.raises(ImportError, match="requires the separate keyprint-native wheel"):
+        Keyprint.from_mlx("unused-model-path", key=KEY, execution="experimental-native")
+
+
 @pytest.mark.skipif(not (ROOT / "sdk/keyprint_v3/__init__.py").exists(),
                     reason="reference parity needs the repository's preserved SDK tree")
 def test_reference_parity(tmp_path):

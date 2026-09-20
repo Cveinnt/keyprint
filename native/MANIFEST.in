@@ -1,0 +1,2 @@
+include LICENSE README.md setup.py
+recursive-include src/keyprint_native *.py *.c *.txt

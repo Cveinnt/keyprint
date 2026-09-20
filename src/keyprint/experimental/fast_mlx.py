@@ -65,14 +65,14 @@ class _ContextSession(BatchedTokenSourceSession):
         self.profile._state.clear()
 
 
-def _upgrade(carrier):
+def _upgrade(carrier, session_type=_ContextSession, **settings):
     old = carrier.session
-    if type(old) is _ContextSession:
+    if type(old) is session_type:
         return
     if (type(old) not in (SparseTokenSourceSession, TokenSourceSession) or old._steps or old._pending is not None
             or old._context or old._used or old._source_output or old._closed):
         raise RuntimeError("Only a fresh sparse carrier may choose optimized execution")
-    replacement = _ContextSession(old.profile, old._key, condition=old._condition, request=old._request)
+    replacement = session_type(old.profile, old._key, condition=old._condition, request=old._request, **settings)
     old.close()
     carrier.session = replacement
 
@@ -157,15 +157,18 @@ class _SparseV2Host(V2Host):
 
 
 class _SparseV3Host(V3Host, _SparseV2Host):
+    def _upgrade(self, carrier):
+        _upgrade(carrier)
+
     def __init__(self, *args, **settings):
         super().__init__(*args, **settings)
-        _upgrade(self._visible)
+        self._upgrade(self._visible)
 
     def _route(self, token):
         # Reuse frozen channel policy, then upgrade only newly created carriers.
         result = RuntimeChannelPipeline._route(self, token)
         if not self._terminal:
-            _upgrade(self._current)
+            self._upgrade(self._current)
         return result
 
 

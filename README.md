@@ -248,7 +248,15 @@ uses reference sampling with separately identified token-limit finalization.
 See [performance evidence](PERFORMANCE.md#separately-identified-experimental-execution)
 for the validation scope; this option does not establish a serving-speed claim.
 
-On both MLX execution paths, a token limit inside a UTF-8 character returns the
+A separate, unpublished `keyprint-native` wheel enables
+`execution="experimental-native"` on Apple Silicon macOS. It batches the same
+HMAC computation in a bundled library; the core package never compiles or
+downloads it automatically. Full-caller output parity and both local provider
+cancellation paths have been tested, with a distinct binary-bound identity.
+See [native installation and scope](native/README.md). It is optional, not the
+default execution or a production-performance guarantee.
+
+On MLX generation paths, a token limit inside a UTF-8 character returns the
 valid text prefix with `completion="length"`. The report's `carrier_rendering`
 retains every committed token ID and the unfinished bytes as `pending_utf8_hex`.
 That carrier's literal-score diagnostic is unavailable; the rendered prefix is

@@ -33,14 +33,23 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
-A development-only native HMAC batch helper now offers a concrete path beyond
-the failed Python-only optimization. All 2,125,890 synthetic full-digest checks
-pass; helper-time ratios range from 0.1820 to 0.2340 of the Python comparator.
-Another 77,490 digests match addresses from sixteen retained real generations.
-Sixty focused tests and a 10,000-call native sanitizer harness pass. SDK runtime
-files are unchanged: portable distribution, complete-caller parity/lifecycle
-checks and a newly declared serving study remain required before integration.
-The unchanged 5% cost target is still unmet by the latest measured SDK runtime.
+The optional native HMAC accelerator now has a self-contained macOS ARM64 wheel
+and explicitly selected SDK execution with a binary-bound identity. Clean
+installation requires no compiler or separate OpenSSL. Full-caller comparison
+matches all 988 reference/native tokens across twelve pairs; both local provider
+clients pass cancellation, terminal replay and worker reuse. The installed SDK
+passes 700 regression tests plus a separate optional-native boundary suite;
+all 79 packaged SDK files match the tested source and installation.
+
+The frozen native runtime passes the unchanged local 5% incremental timing
+screen on eight declared Dolly tasks: ratio 1.028758, one-sided 95% upper
+1.032226. All 64 measured outputs and sixteen warmups are retained; an audit
+reconciles 10,634 tokens, original prompts, journals, text and byte rendering.
+Thirty-eight measured outputs reached their token cap. Background macOS
+indexing was active and recorded before measurement. This is a scoped gain over
+the preceding failed SDK timing screen, not total native-server overhead or A18
+acceptance. Production serving, quality, indistinguishability, calibrated
+detection, platform coverage and release gates remain open. CI stays disabled.
 
 The CLI now uses the same host-aware backend default and pinned-cache fallback
 for generation, serving and the playground. Explicit overrides remain available;

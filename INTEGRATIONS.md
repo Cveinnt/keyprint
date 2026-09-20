@@ -19,6 +19,28 @@ remain open; details below.
 The repository is temporarily private while this work is reviewed. The old
 PyPI research package and website remain public. No new launch date is set.
 
+### September 20 optional native MLX execution
+
+An unpublished `keyprint-native` wheel provides explicit
+`execution="experimental-native"` for the pinned Qwen/MLX binding on Apple
+Silicon macOS. It contains its own static OpenSSL 3.6.4 dependency and needs no
+compiler or separate crypto installation when using the wheel. Binary and
+wrapper hashes are part of its distinct runtime identity; reference scientific
+acceptances do not transfer. Default execution remains unchanged.
+
+Installed-wheel regression checks pass 700 tests, with twelve native tests
+initially skipped and then covered by a separate 25/25 boundary suite. Seven
+JavaScript tests pass. Full-caller comparison passes twelve reference/native
+pairs and reconciles all 988 committed tokens. Actual OpenAI and Anthropic
+clients each cancel after one committed token, replay the terminal response
+without another generation, then reuse the worker for a successful 32-token
+request. These are local text-protocol tests, not hosted provider access.
+
+The native wheel's macOS 11 target is a verified build property. Execution is
+tested on macOS 26.2 ARM64 only; Linux, Intel Macs and older macOS execution are
+not qualified. See [native install instructions](native/README.md) and
+[performance scope](PERFORMANCE.md). CI stays disabled and publication stays held.
+
 ### September 20 local SmolLM3 extension
 
 The Transformers adapter now also runs HuggingFaceTB/SmolLM3-3B at revision

@@ -49,6 +49,8 @@ def main():
                         help="Operator has stopped other inference/benchmark workloads; does not prove OS isolation")
     parser.add_argument("--corpus",type=Path,required=True)
     parser.add_argument("--expected-runtime",required=True)
+    parser.add_argument("--execution", choices=["experimental-fast", "experimental-native"],
+                        default="experimental-fast")
     args = parser.parse_args()
     if not args.idle_host_confirmed:
         raise ValueError("Do not benchmark concurrently with other inference workloads")
@@ -67,6 +69,7 @@ def main():
             "attribution":"Databricks, databricks-dolly-15k. Prompts format the original instruction and context; responses are newly generated.",
             "source_url":"https://huggingface.co/datasets/databricks/databricks-dolly-15k",
             "selection":SELECTION,"cases":cases,"expected_runtime_sha256":args.expected_runtime,
+            "execution":args.execution,
             "repeats":REPEATS,"pairs":32,"warmup":"One 32-token ordinary and marked request for each of eight cases; all sixteen excluded prospectively but retained",
             "order":"Repeat outer loop, eight categories in lexical order; ordinary first on even repeat+case index, marked first on odd",
             "randomness":"Independent SDK cryptographic sampling; not paired identical text or random draws",
@@ -93,7 +96,7 @@ def main():
         mx.synchronize()
         mx.reset_peak_memory()
         started = time.perf_counter()
-        candidate = Keyprint.from_mlx(args.model,key=key,execution="experimental-fast")
+        candidate = Keyprint.from_mlx(args.model,key=key,execution=args.execution)
         if candidate.identity["runtime_profile_sha256"]!=args.expected_runtime:
             raise ValueError("Loaded runtime differs from the frozen confirmation candidate")
         mx.synchronize()

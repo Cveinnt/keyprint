@@ -40,11 +40,11 @@ def main():
     parser.add_argument("--backend", choices=["transformers", "mlx"], required=True)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--execution", choices=["reference", "experimental-fast"], default="reference")
+    parser.add_argument("--execution", choices=["reference", "experimental-fast", "experimental-native"], default="reference")
     parser.add_argument("--protocol", choices=["openai", "anthropic"], default="openai")
     args = parser.parse_args()
     if args.backend != "mlx" and args.execution != "reference":
-        parser.error("experimental-fast requires the MLX backend")
+        parser.error("experimental execution requires the MLX backend")
     if args.backend == "transformers":
         import torch
         torch.set_num_threads(1)

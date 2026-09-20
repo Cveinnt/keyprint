@@ -58,10 +58,13 @@ class Keyprint:
     @classmethod
     def from_mlx(cls, model: str | Path, *, key: bytes, execution: str = "reference", **settings: Any) -> Keyprint:
         """Load pinned MLX; experimental-fast is an explicit execution opt-in."""
-        if execution not in ("reference", "experimental-fast"):
-            raise ValueError("execution must be reference or experimental-fast")
+        if execution not in ("reference", "experimental-fast", "experimental-native"):
+            raise ValueError("execution must be reference, experimental-fast or experimental-native")
         instance = cls(key=key, **settings)
-        if execution == "experimental-fast":
+        if execution == "experimental-native":
+            from .experimental.native_mlx import NativePublicCandidate
+            instance._candidate = NativePublicCandidate(instance._candidate)
+        elif execution == "experimental-fast":
             from .experimental.fast_public import FastPublicCandidate
             instance._candidate = FastPublicCandidate(instance._candidate)
         else:

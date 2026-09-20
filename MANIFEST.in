@@ -7,3 +7,5 @@ recursive-include tools *.py *.json
 include tools/sglang-arm.Dockerfile
 include tools/SGLANG_LICENSE
 recursive-include tools/native_prf *.c *.md
+include native/LICENSE native/README.md native/MANIFEST.in native/pyproject.toml native/setup.py
+recursive-include native/src/keyprint_native *.py *.c *.txt

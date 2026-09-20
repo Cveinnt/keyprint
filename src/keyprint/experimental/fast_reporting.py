@@ -24,6 +24,9 @@ def _experimental_target(raw):
     elif raw["version"] == "keyprint-mlx-bounded-reference-v1":
         from ..backends.mlx_bounded import execution_specification
         expected_execution = execution_specification()
+    elif raw["version"] == "keyprint-mlx-native-experimental-v1":
+        from .native_mlx import execution_specification
+        expected_execution = execution_specification()
     else:
         raise ValueError("known bound execution target required")
     if raw["deployment_calibrated"] is not False:
@@ -61,6 +64,8 @@ def build_report(kind, *, target_identity, payload, scorer_identity=None):
         if scorer is not None: raise ValueError('non-scoring reports cannot claim a scorer identity')
         data = _verification(payload, target) if kind == 'verification' else _error(payload, target)
     schema = "keyprint.bounded-reference-report.v1" if target_identity["version"] == "keyprint-mlx-bounded-reference-v1" else SCHEMA
+    if target_identity["version"] == "keyprint-mlx-native-experimental-v1":
+        schema = "keyprint.experimental-native-report.v1"
     result = {'schema': schema, 'kind': kind, 'integration_status': 'standalone_unintegrated_component',
         'target_identity': target, 'scorer_identity': scorer, 'payload': data,
         'verdict': None, 'attribution': {'status': 'not_established', 'author': None, 'provider': None},

@@ -521,6 +521,65 @@ implementation identity, verify full-caller sampling/lifecycle parity, and freez
 that runtime for a new declared serving study. No benchmark threshold or release
 gate changed. No larger serving run was triggered from a helper result alone.
 
+### Packaged native execution and confirmation
+
+After the development screen, a separate unpublished `keyprint-native` wheel
+integrates the helper through `execution="experimental-native"`. It statically
+links OpenSSL 3.6.4, verifies installed-file hashes before loading, and binds the
+binary, wrapper and build manifest into its own execution identity. The core
+installation and default execution are unchanged. The macOS 11 ARM64 target is
+verified from the library and static archive; actual execution was tested on
+macOS 26.2 ARM64 only. A clean native-only environment needs no compiler,
+Homebrew or separate crypto installation. See [installation](native/README.md).
+
+Twelve complete reference/native Qwen caller pairs match exactly: 24 outputs,
+988 committed tokens, full sampling records, diagnostics, text and consumed
+work. Both actual local provider clients pass cancellation after a committed
+token, terminal replay without regeneration, worker reuse and graceful shutdown.
+A fresh native-only installation passes wheel RECORD and full-digest checks.
+The 25 native boundary checks pass against the bundled library; the same C
+source also passes the 10,000-call address/undefined-behavior sanitizer harness
+linked to the new static OpenSSL. OpenSSL itself was not sanitizer-instrumented.
+
+Only after those checks, the frozen runtime completed a new confirmation using
+the same eight deterministically selected Dolly prompts, four repeats per
+prompt, retained warmups, bootstrap and unchanged 1.05 threshold:
+
+| Measure | Native execution |
+| --- | ---: |
+| Marked/ordinary seconds per committed token, geometric mean | 1.028758 |
+| One-sided 95% bootstrap upper ratio | 1.032226 |
+| Whole-request latency ratio, geometric mean | 0.997144 |
+| One-sided 95% whole-request upper ratio | 1.024519 |
+| Measured outputs / retained warmups | 64 / 16 |
+| Audited committed tokens including warmups | 10,634 |
+| Measured outputs ending at the token cap | 38 |
+
+The local incremental timing screen passes. All attempts remain retained;
+there were no retries, trimming or post-result exclusions. Independent audit
+reconciles the declared prompts, bound runtime, artifact hashes, journal chains,
+every displayed byte and token, and the primary ratio and bootstrap summary.
+The comparison page includes all 32 ordinary/marked pairs and all truncations.
+It does not approve their meaning or quality.
+
+No other active inference or benchmark was observed at preflight. Idle preview
+servers remained, and macOS Spotlight indexing was active and recorded. This
+is not an isolated operating-system measurement. The approximate bootstrap
+describes these fixed prompts only; the different generated lengths and paths
+remain part of the study. The ordinary arm is the same SDK, so passing this
+screen does not establish total overhead against an unmodified inference
+server, batching throughput, HTTP/streaming cost, A18 or production acceptance.
+The prior Python-runtime failure remains retained at its original identity.
+
+```sh
+python tools/serving_confirmation.py --model PINNED_MODEL \
+  --corpus PINNED_DOLLY_JSONL --execution experimental-native \
+  --expected-runtime FROZEN_RUNTIME_SHA256 --idle-host-confirmed \
+  --output NEW_PRIVATE_CONFIRMATION
+python tools/audit_serving_confirmation.py --run NEW_PRIVATE_CONFIRMATION \
+  --model PINNED_MODEL --corpus PINNED_DOLLY_JSONL
+```
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.
