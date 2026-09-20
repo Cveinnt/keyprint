@@ -211,6 +211,58 @@ or natural cancellation latency. Full production lifecycle, fresh end-to-end
 serving measurements and exact-revision hosted checks remain required. The earlier 7.6% incremental cost and failed 5% screen describe the
 unchanged default path; this parity result does not replace those measurements.
 
+### Interleaved reference and optimized serving study
+
+```sh
+python tools/benchmark_fast_serving.py --model PINNED_MODEL \
+  --output PRIVATE_INTERLEAVED_RUN --idle-host-confirmed
+python tools/audit_fast_serving.py --model PINNED_MODEL \
+  --run PRIVATE_INTERLEAVED_RUN
+```
+
+This separate study freezes its declaration before model loading. It retains
+four 32-token warmups and 96 measured requests: six fixed cases, four repeats,
+two execution paths and two conditions. Each execution/condition cell visits
+every order position over the four repeats. One verified model/tokenizer is
+shared sequentially, with fresh response caches and a bound candidate per path.
+The study preserves the original benchmark script and its failed result.
+
+The primary measure remains the optimized path's marked/ordinary seconds per
+committed token, with the unchanged one-sided 95% bootstrap upper limit of 1.05.
+Fast/reference comparisons are secondary: a faster implementation can still
+fail the incremental watermark-cost screen. Independent cryptographic draws
+can produce different text and output lengths. The intervals describe this
+small fixed workload, not arbitrary workloads or native-server throughput.
+Loading both candidates with one shared model is recorded separately; it does
+not provide separate cold-start distributions for the two execution paths.
+The auditor reconciles every declared attempt, prompt, condition, artifact hash,
+journal chain, committed count, displayed text and timing summary. All generated
+pairs remain visible, including mechanical review flags and capped outputs.
+
+September 20 result: all 96 measured requests reached EOS, with no errors.
+The audit reconciled 4,028 committed tokens including the four retained warmups.
+
+| Measure | Geometric mean ratio | One-sided 95% upper ratio |
+| --- | ---: | ---: |
+| Optimized marked / optimized ordinary, seconds per token | 1.0700 | 1.0744 |
+| Reference marked / reference ordinary, seconds per token | 1.0666 | 1.0725 |
+| Optimized / reference, ordinary seconds per token | 0.5670 | 0.5693 |
+| Optimized / reference, marked seconds per token | 0.5688 | 0.5712 |
+
+The optimized implementation used about 43% less time per token in both
+conditions on this workload, while its incremental marking cost still failed
+the 5% screen. Faster overall generation does not close A18. Whole-request
+marked/ordinary ratios for the optimized path were 1.0838 (point) and 1.1004
+(upper); different generated lengths contribute to these values.
+
+All 48 ordinary/marked pairs are retained. Sixteen French outputs changed the
+exact required `09:30` spelling and triggered mechanical flags. The sixteen JSON
+outputs matched the requested fields and values, and the sixteen backup
+instructions retained the restore-confirmation condition. These small repeated
+cases do not approve semantic quality or reader indistinguishability. Next,
+profile the optimized marked path and preserve this result before proposing
+another separately identified implementation or declared timing experiment.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

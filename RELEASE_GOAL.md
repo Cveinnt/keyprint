@@ -120,6 +120,14 @@ terminal replay and worker reuse. Production lifecycle and new paired timings
 remain open. All frozen reference files and the prior failed timing result
 remain unchanged.
 
+The follow-up interleaved experiment completed 96 measured requests with no
+errors or capped outputs. Its independent audit reconciled 4,028 tokens including
+four warmups. Optimized execution reduced seconds per token by about 43% versus
+the concurrently measured reference, but its marked/ordinary ratio was 1.0700
+with a one-sided 95% upper ratio of 1.0744. The unchanged 5% incremental screen
+still fails. All 48 text pairs remain available; sixteen French exact-time
+format flags remain. This closes a measurement task, not A18 or quality.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code
