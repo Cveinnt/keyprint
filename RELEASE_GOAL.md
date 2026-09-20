@@ -33,6 +33,19 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The CLI now uses the same host-aware backend default and pinned-cache fallback
+for generation, serving and the playground. Explicit overrides remain available;
+missing-cache errors name the pinned download command and perform no download.
+Invalid prompt lengths, token caps and malformed schema JSON fail before weight
+allocation. A fresh wheel passes 669 Python and seven JavaScript tests, with all
+78 packaged files matching source and installation. A separate core-only install
+passes demo, doctor and verify; its routing suite passes 14 checks and skips eight
+optional server checks. Actual installed-CLI Qwen and SmolLM2 ordinary/marked
+runs complete four outputs and 139 tokens, with exact text/token decoding and
+private receipt reconciliation. Both SmolLM2 explanations are factually wrong
+and remain retained. This qualifies first-use routing on Apple Silicon macOS,
+not cross-platform inference, broad answer quality or a release gate. CI stays off.
+
 Rewrites now accept explicit source phrases to preserve, validate those
 settings before inference, and report missing/modified/duplicated literals.
 Empty completed candidates also fail the checks. Twelve actual Qwen requests

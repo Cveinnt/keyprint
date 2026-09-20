@@ -94,6 +94,23 @@ not a public production server; closing the tab does not cancel an in-flight run
 
 ## Generate real text
 
+`generate`, `serve` and `playground` share the same default: MLX on Apple
+Silicon macOS, Transformers elsewhere. `--backend` overrides that choice.
+After downloading the documented pinned model into the Hugging Face cache,
+you can omit `--model`:
+
+```sh
+keyprint generate --key keyprint.key --prompt 'Explain why the sky is blue.'
+```
+
+For another local directory or the larger SmolLM3 model, keep `--model PATH`.
+An empty cache reports the exact pinned download command and starts no download.
+Backend selection is a convenience, not a claim that every operating system or
+model is qualified. The compatibility matrix remains authoritative.
+Blank prompts, prompts over 16,000 characters and response caps outside 1–1,024
+tokens are rejected before loading model weights. Malformed schema JSON is also
+rejected before model allocation; schema support is checked during generation.
+
 The Transformers backend runs locally on CPU. Download the explicit model
 revision once, then generation requires no network access:
 

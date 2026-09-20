@@ -2,6 +2,11 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Align `generate`, `serve` and `playground` backend defaults with the host:
+  MLX on Apple Silicon macOS, Transformers elsewhere. All three can resolve the
+  documented pinned cache when `--model` is omitted. Missing assets report the
+  explicit download command without starting a download. Reject invalid prompt
+  lengths, token caps and malformed schema JSON before model allocation.
 - Reject cosmetic-only rewrite candidates whose word sequence is unchanged,
   including observed model outputs that only wrapped the source in quotes.
 - Add a predeclared longer-text detection feasibility screen with a threshold

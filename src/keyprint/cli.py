@@ -9,6 +9,7 @@ from pathlib import Path
 import platform
 import random
 import secrets
+import shlex
 import sys
 import tempfile
 
@@ -65,6 +66,26 @@ def load_key(path: Path) -> bytes:
     return key
 
 
+def default_backend() -> str:
+    return "mlx" if platform.system() == "Darwin" and platform.machine() == "arm64" else "transformers"
+
+
+def token_limit(value: str) -> int:
+    try:
+        count = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("max-tokens must be an integer from 1 to 1024") from exc
+    if not 1 <= count <= 1024:
+        raise argparse.ArgumentTypeError("max-tokens must be an integer from 1 to 1024")
+    return count
+
+
+def prompt_text(value: str) -> str:
+    if not value.strip() or len(value) > 16000:
+        raise argparse.ArgumentTypeError("prompt must contain 1 to 16000 characters and not be blank")
+    return value
+
+
 def cached_model(backend: str) -> Path:
     """Resolve only documented, pinned assets; never download implicitly."""
     models = {
@@ -75,7 +96,14 @@ def cached_model(backend: str) -> Path:
     name, revision = models[backend]
     path = root / ("models--" + name) / "snapshots" / revision
     if not (path / "config.json").is_file():
-        raise ValueError("No pinned model cached. Follow README 'Generate real text', then use --model PATH. No download was started.")
+        model_id = name.replace("--", "/", 1)
+        command = shlex.join(["hf", "download", model_id, "--revision", revision,
+                              "--include", "*.json", "*.safetensors", "*.jinja"])
+        raise ValueError(f"No pinned {backend} model cached at {path}.\n"
+                         f"From this checkout, install the backend: pip install '.[{backend}]'\n"
+                         f"Then download the pinned model explicitly:\n  {command}\n"
+                         "Rerun your command afterward, or pass --model PATH for existing local assets.\n"
+                         "No download was started. Cached files are verified by the selected backend when loaded.")
     return path
 
 
@@ -92,24 +120,26 @@ def main(argv: list[str] | None = None) -> int:
     keygen = commands.add_parser("keygen", help="Create a private key without printing it")
     keygen.add_argument("path", type=Path, nargs="?", default=Path("keyprint.key"))
     generate = commands.add_parser("generate", help="Generate text with a supported local model")
-    generate.add_argument("--backend", choices=("mlx", "transformers"), default="mlx")
-    generate.add_argument("--model", type=Path, required=True, help="Local model directory")
+    generate.add_argument("--backend", choices=("mlx", "transformers"), default=default_backend(),
+                          help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
+    generate.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
     generate.add_argument("--key", type=Path, required=True, help="Private key from keyprint keygen")
-    generate.add_argument("--prompt", required=True)
-    generate.add_argument("--max-tokens", type=int, default=64)
+    generate.add_argument("--prompt", type=prompt_text, required=True)
+    generate.add_argument("--max-tokens", type=token_limit, default=64)
     generate.add_argument("--condition", choices=("ordinary", "marked"), default="marked")
     generate.add_argument("--output", type=Path)
     generate.add_argument("--json-schema", type=Path, help="JSON Schema file; MLX or Transformers with [structured]")
     playground = commands.add_parser("playground", help="Open a real-model generation and editing playground")
     playground.add_argument("--backend", choices=("mlx", "transformers"),
-                            default="mlx" if platform.system() == "Darwin" and platform.machine() == "arm64" else "transformers")
+                            default=default_backend(), help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
     playground.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
     playground.add_argument("--key", type=Path, help="Optional private key; otherwise create a fresh session key")
     playground.add_argument("--port", type=int, default=8766)
     playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
     serve = commands.add_parser("serve", help="Serve local text endpoints for OpenAI and Anthropic clients")
-    serve.add_argument("--backend", choices=("mlx", "transformers"), default="mlx")
-    serve.add_argument("--model", type=Path, required=True)
+    serve.add_argument("--backend", choices=("mlx", "transformers"), default=default_backend(),
+                       help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
+    serve.add_argument("--model", type=Path, help="Local model directory; otherwise use a documented pinned cache")
     serve.add_argument("--key", type=Path, required=True)
     serve.add_argument("--api-key", type=Path, required=True, help="A separate private key file; clients use its hex encoding")
     serve.add_argument("--port", type=int, default=8765)
@@ -154,6 +184,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command in ("generate", "serve"):
             loader = Keyprint.from_mlx if args.backend == "mlx" else Keyprint.from_transformers
             key = load_key(args.key)
+            path = args.model if args.model is not None else cached_model(args.backend)
+            if not path.is_dir():
+                raise ValueError("--model must be an existing local directory")
             if args.command == "serve":
                 import uvicorn
                 from .server import create_app
@@ -162,15 +195,15 @@ def main(argv: list[str] | None = None) -> int:
                     raise ValueError("API and watermark keys must be different")
                 if not 1024 <= args.port <= 65535:
                     raise ValueError("port must be between 1024 and 65535")
-                app = create_app(lambda: loader(args.model, key=key), api_key=token.hex(), output=args.output)
+                app = create_app(lambda: loader(path, key=key), api_key=token.hex(), output=args.output)
                 print(f"Local preview: http://127.0.0.1:{args.port}/v1 (one user text message; no streaming)")
                 uvicorn.run(app, host="127.0.0.1", port=args.port, workers=1, access_log=False)
                 return 0
-            candidate = loader(args.model, key=key)
+            schema = json.loads(args.json_schema.read_text()) if args.json_schema is not None else None
+            candidate = loader(path, key=key)
             result = candidate.generate(args.prompt, max_tokens=args.max_tokens,
                                         condition=args.condition, output=args.output,
-                                        **({"json_schema": json.loads(args.json_schema.read_text())}
-                                           if args.json_schema is not None else {}))
+                                        **({"json_schema": schema} if args.json_schema is not None else {}))
             print(result.text)
             print(f"\nPrivate report: {result.artifacts / 'report.json'}", file=sys.stderr)
         elif args.command == "demo":

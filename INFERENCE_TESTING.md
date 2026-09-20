@@ -8,6 +8,44 @@ estimate of watermark quality loss.
 
 ## Reproduce locally
 
+### Installed CLI first use
+
+After explicitly downloading the pinned backend assets and creating a key, run
+both conditions through the installed command, keeping separate output paths:
+
+```sh
+keyprint generate --key keyprint.key \
+  --prompt 'Explain why the sky is blue in one short sentence.' \
+  --max-tokens 64 --condition ordinary --output private-cli-ordinary
+keyprint generate --key keyprint.key \
+  --prompt 'Explain why the sky is blue in one short sentence.' \
+  --max-tokens 64 --condition marked --output private-cli-marked
+```
+
+On Apple Silicon macOS these resolve the pinned Qwen/MLX cache. Elsewhere they
+select the pinned SmolLM2/Transformers cache. Override either with `--backend`
+and `--model` as needed. Cache resolution does not qualify the assets; the
+selected loader still checks them. Missing assets produce explicit download
+instructions without network activity or a hidden model substitution.
+
+The September 20 first-use wheel completed this pair on Qwen with both flags
+omitted, and another pair with explicit Transformers/SmolLM2 flags. All four
+outputs reached EOS (139 tokens total), matched stdout and exact token decoding,
+and retained valid journal chains and commit counts. Transformers token IDs
+also matched committed journal events; MLX IDs matched report sampling records.
+This audit does not replay model distributions or establish detection.
+Both SmolLM2 answers misdescribe scattering, and remain failures rather than
+quality examples. Qwen produced plausible explanations; no formal quality gate
+was applied to these four smoke-test responses.
+
+The fresh wheel passes 669 Python and seven JavaScript tests. A core-only
+installation separately passes demo, doctor and verify, and reports the missing
+server extra clearly. Its focused CLI suite passes 14 tests, with eight server
+tests skipped because that optional extra is absent; all 22 pass with extras.
+Platform simulations cover routing only, not execution on Windows or Linux.
+
+### Preserved-phrase rewrite screen
+
 The preserved-phrase rewrite screen runs twelve actual Qwen/MLX generations,
 covering English, Spanish, French and Chinese. The plain-text API and both
 provider-object helpers accept `preserve=[...]`; the latter use constructed
