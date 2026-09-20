@@ -201,10 +201,11 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                 filtered = np.array(head)
                 state["phase"] = "sample_reservation"
                 reserve("sample", {"index": index})
-                support = np.flatnonzero(np.isfinite(filtered[0]))
+                finite = np.isfinite(filtered[0])
                 prepared = {"kind": "prepared_step", "index": index,
-                            "raw_finite_count": len(support), "input_stage": "raw_model_head_before_shared_filter", "raw_logits_sha256": hashlib.sha256(filtered.tobytes()).hexdigest()}
+                            "raw_finite_count": int(np.count_nonzero(finite)), "input_stage": "raw_model_head_before_shared_filter", "raw_logits_sha256": hashlib.sha256(filtered.tobytes()).hexdigest()}
                 if capture_public_fixture:
+                    support = np.flatnonzero(finite)
                     prepared.update({"public_fixture_raw_support": support.tolist(),
                                      "public_fixture_raw_logits": filtered[0, support].tolist()})
                 record(prepared)

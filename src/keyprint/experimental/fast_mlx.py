@@ -103,11 +103,12 @@ class _SparseV2Host(V2Host):
                 current = self._current
                 attempt["phase"] = "prepare"
                 prepared = current.session.prepare(base)
-                if not np.array_equal(prepared.probabilities > 0, base > 0):
+                prepared_support = prepared.probabilities > 0
+                if not np.array_equal(prepared_support, base > 0):
                     raise ArithmeticError("v2 transformed support differs before commit")
                 if not np.array_equal(prepared.probabilities[self._excluded], base[self._excluded]):
                     raise ArithmeticError("excluded control probability changed")
-                support = np.flatnonzero(prepared.probabilities > 0)
+                support = np.flatnonzero(prepared_support)
                 positive_weights = tuple(float(v) for v in prepared.probabilities[support])
                 integer_weights = sampler.integer_distribution(positive_weights)
                 attempt["phase"] = "random_bits"

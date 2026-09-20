@@ -95,9 +95,16 @@ class BatchedTokenSourceSession(SparseTokenSourceSession):
             out = transform(q, self.profile, self._key, self._context, protected, self._numeric_counters,
                             table=self._bit_table)
         else:
-            out = q.copy()
-        if (not np.isfinite(out).all() or (out < 0).any()
-                or abs(nonzero_mass(out) - 1.) > 1e-12 or not np.array_equal(out > 0, q > 0)):
+            # q already owns a snapshot of the caller's vector. The identity
+            # branch does not write it, and Prepared still gets immutable bytes.
+            out = q
+        if not np.isfinite(out).all() or (out < 0).any():
+            raise ArithmeticError("invalid transformed probability vector or support")
+        support = out > 0
+        # Reuse this exact mask for ordered mass, support validation and commit.
+        # Keep every validation, including the full-vector finite/negative guard.
+        if (abs(math.fsum(out[support]) - 1.) > 1e-12
+                or not np.array_equal(support, q > 0)):
             raise ArithmeticError("invalid transformed probability vector or support")
         if protected and not np.array_equal(out[list(protected)], q[list(protected)]):
             raise ArithmeticError("protected source probability changed")
@@ -107,5 +114,5 @@ class BatchedTokenSourceSession(SparseTokenSourceSession):
         self._protected_candidates += len(protected)
         self._alignment_occurrences += occurrences
         self._pending = Prepared(self._steps, np.frombuffer(out.tobytes(), dtype=np.float64))
-        self._support = out > 0
+        self._support = support
         return self._pending

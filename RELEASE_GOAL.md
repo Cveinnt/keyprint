@@ -33,17 +33,20 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
-The latest optional-native candidate vectorizes digest-bit decoding for batches
-of at least 32 labels. Its isolated wheel installation passes 1,314 tests with
-zero skips; all 83 package files match source and wheel. Actual reference/native
-caller parity covers 24 outputs and 988 tokens. Both local client lifecycle
-checks and eleven structured requests pass. A full-path audit reconciles 72
-measured outputs, three warmups and 3,072 tokens. Marked/engine time per token is
-1.072251 (one-sided 95% upper 1.081295), so the unchanged 1.05 cost screen still
-fails. The default/reference path, native binary and journal contract are
-unchanged. This is macOS ARM64 evidence using existing pinned dependencies;
+The latest candidate removes redundant MLX support-mask/index allocations while
+retaining validation, immutable snapshots and journal events. Its isolated wheel
+installation passes 1,335 tests with zero skips; all 83 package files match source
+and wheel. Bounded reference, experimental-fast and experimental-native each pass
+twelve actual Qwen pairs against the archived implementation: 72 outputs and
+2,964 tokens overall. Both local client lifecycle checks and eleven structured
+requests pass. A full-path audit reconciles 72 measured outputs, three warmups and
+3,000 tokens. Marked/engine time per token is 1.084027 (one-sided 95% upper
+1.091838), worse than the prior separate 1.072251 observation; the 1.05 cost gate
+still fails. This is not a demonstrated full-path speedup. The archived reference
+and native binary remain unchanged, while all current MLX caller identities bind
+the new source. This is macOS ARM64 evidence using existing pinned dependencies;
 no new platform, quality, detection or public-release acceptance follows.
-See [performance scope and retained failures](PERFORMANCE.md#native-digest-decoding).
+See [performance scope and retained failures](PERFORMANCE.md#support-mask-reuse).
 
 The installed playground now puts the real responses ahead of secondary display
 controls, keeps custom prompts in a keyboard-accessible disclosure, and provides

@@ -1,4 +1,6 @@
 import json
+import hashlib
+import math
 import random
 from threading import Event
 from types import SimpleNamespace
@@ -27,6 +29,33 @@ def head(ids, tokens=(32, 33, 34)):
     result = np.full((1, ids.shape[1], 151936), -np.inf, dtype=np.float32)
     result[:, :, list(tokens)] = 0
     return result
+
+
+@pytest.mark.parametrize('capture', [False, True])
+@pytest.mark.parametrize('pattern', ['sparse', 'dense', 'padding'])
+def test_raw_head_count_and_fixture_indices_preserve_journal_contract(tmp_path, capture, pattern):
+    raw = head(np.array([[32]]))
+    if pattern == 'dense': raw[:] = 0.
+    elif pattern == 'padding': raw[0, 0, -1] = 1.
+    raw[0, 0, 32] = 100.
+    path = tmp_path / 'journal.jsonl'
+    with journal_module.DurableJournal(path) as journal:
+        candidate()._candidate.run_response(
+            lambda *_args, **_kwargs: raw.copy(), [32], key=bytes(range(32)),
+            condition='ordinary', random_bits=lambda _count: 0, journal=journal,
+            reserve=lambda *_args: None, max_tokens=1, allow_thinking=False,
+            capture_public_fixture=capture, backend=Backend, cache_factory=lambda _: [])
+    events = [json.loads(line)['event'] for line in path.read_text().splitlines()]
+    prepared, = [e for e in events if e['kind'] == 'prepared_step']
+    expected_ids = [i for i, value in enumerate(raw[0, 0]) if math.isfinite(float(value))]
+    assert prepared['raw_finite_count'] == len(expected_ids)
+    assert type(prepared['raw_finite_count']) is int
+    assert prepared['raw_logits_sha256'] == hashlib.sha256(raw.tobytes()).hexdigest()
+    if capture:
+        assert prepared['public_fixture_raw_support'] == expected_ids
+        assert prepared['public_fixture_raw_logits'] == [float(raw[0, 0, i]) for i in expected_ids]
+    else:
+        assert not any(name.startswith('public_fixture_') for name in prepared)
 
 
 @pytest.mark.parametrize("condition", ["ordinary", "marked"])

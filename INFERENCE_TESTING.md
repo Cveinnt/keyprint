@@ -954,6 +954,19 @@ still fails at 1.081295 upper marked/engine ratio. See
 [native digest decoding](PERFORMANCE.md#native-digest-decoding). Default reference
 execution and the frozen prompt-aware research score are unchanged.
 
+The subsequent support-allocation candidate passes **1,335 local Python tests
+with no skips** from a separately installed wheel. Each current MLX mode (bounded
+reference, experimental-fast and experimental-native) passes twelve actual pairs
+against archived reference inference; all three audits reconcile **72 outputs
+and 2,964 tokens** overall. Both local client lifecycle checks pass, and eleven
+structured requests reconcile 213 tokens and 175 masks. The full-path timing
+audit reconciles 3,000 tokens across 72 measured outputs and three warmups. Its
+marked/engine ratio is 1.084027 (upper 1.091838), so the cost gate remains open;
+the new observation does not improve the preceding separate result. See
+[support-mask reuse](PERFORMANCE.md#support-mask-reuse). The initial interpreter
+setup failure remains retained; it occurred before any model inference. No
+scientific score or acceptance threshold changed.
+
 ### Interactive evidence notebook
 
 `tools/render_detection_evidence.py` combines the twelve audited generated pairs

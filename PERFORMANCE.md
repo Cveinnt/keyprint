@@ -1,12 +1,12 @@
 # Sampling performance
 
 The latest complete-path comparison fails the lightweight-runtime target:
-marked Keyprint takes 1.0723 times MLX-LM's time per token on the fixed local
+marked Keyprint takes 1.0840 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
-The latest one-sided 95% upper ratio is 1.0813. Previous separate studies
-measured 1.1082 and 1.0939; independent outputs and background activity prevent
+The latest one-sided 95% upper ratio is 1.0918. The preceding separate study
+measured 1.0723; independent outputs and background activity prevent
 attributing those differences solely to code. The unchanged 1.05 screen fails.
-See [native digest decoding](#native-digest-decoding) before using
+See [support-mask reuse](#support-mask-reuse) before using
 any of the helper or within-SDK results below as a performance claim.
 
 The [lossless vector encoding](tools/VECTOR_COMMITMENTS.md) is integrated only
@@ -908,6 +908,51 @@ within-SDK screen. Marked/engine whole-request latency is 1.174492 (upper
 workloads stayed running; no other model/test workload was active during timing.
 There were no replacements, retries or outlier exclusions. This observation
 does not isolate a causal speedup or establish production serving acceptance.
+
+### Support-mask reuse
+
+The shared MLX caller now counts finite raw logits without allocating their full
+index array unless public-fixture capture explicitly needs those indices. Fast
+and native hosts reuse the prepared support mask for their support check and
+sampling lookup. Batched sessions reuse one output support mask for ordered
+mass, equality checks and commit, and avoid copying an already-owned probability
+snapshot on identity branches. Full-vector finite/negative/mass/support guards,
+immutable prepared bytes, random draws and journal events remain intact.
+The shared caller change is bound into all three current MLX execution modes;
+the archived reference implementation is unchanged.
+
+Twenty-one new checks cover sparse/dense/padded head receipts, explicit fixture
+indices, input mutation, immutable prepared data, repeated/startup/protected
+contexts and corrupted transform outputs. The installed candidate passes
+**1,335 Python tests with no skips**. All 83 package files match source and wheel;
+dependencies reuse the existing pinned environment.
+
+Each of bounded reference, experimental-fast and experimental-native passes
+twelve actual Qwen comparison pairs against the archived implementation. The
+three independent artifact audits reconcile **72 outputs and 2,964 tokens**
+across the same six fixed prompts, with matching text, probability bytes, random
+draws and consumed work. Both local client lifecycle checks pass. Eleven native
+structured requests reconcile 213 tokens and 175 grammar masks. An initial
+runner resolved the interpreter outside its environment and failed to import
+NumPy before model loading or output creation; that failed setup remains saved.
+
+The unchanged uninstrumented workload and independent audit retain 72 measured
+outputs, three warmups and 3,000 tokens, including 995 upstream-engine tokens:
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.047557 | 1.055344 |
+| Marked Keyprint / MLX-LM | 1.084027 | 1.091838 |
+| Marked / ordinary Keyprint | 1.034814 | 1.039046 |
+
+Both engine-relative 5% screens **fail**. The marked/engine observation is worse
+than the preceding 1.072251 result, so this is not a demonstrated full-path
+speedup. Whole-request marked/engine latency is 1.091026 (upper 1.108037).
+All outputs and lengths remain included. Background VM and desktop activity
+continued; no other task-owned inference or test workload ran during timing.
+These separate samples do not isolate the code's causal timing effect. Fewer
+allocations and exact parity do not close the serving-cost gate. A controlled
+whole-path comparison is needed before attributing an improvement or regression.
 
 ## Remaining qualification
 
