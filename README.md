@@ -39,6 +39,7 @@ After installing a backend and downloading its pinned model below:
 
 ```sh
 pip install '.[server]'
+keyprint doctor --playground
 keyprint playground
 ```
 
@@ -48,6 +49,26 @@ documented pinned model in the Hugging Face cache. For models downloaded to
 another directory, use `keyprint playground --backend transformers --model
 models/smollm2` or `keyprint playground --backend mlx --model models/qwen3-8b-4bit`.
 Missing assets produce an actionable error, never an implicit download.
+
+`doctor --playground` checks backend and server imports before starting a
+session. For MLX it verifies pinned model-file hashes; for Transformers it
+checks metadata syntax and the presence of weights. It does not allocate a
+model or certify compatibility. Use the same `--backend` and `--model` options
+as the playground; a successful check prints the exact next command.
+
+On qualified Apple Silicon installations, the reviewed optional native wheel
+can be selected explicitly:
+
+```sh
+keyprint doctor --playground --execution experimental-native
+keyprint playground --execution experimental-native
+```
+
+Install the matching wheel as described in [native setup](native/README.md)
+first. The same option works with `generate` and `serve`. The default stays
+`reference`; native execution remains experimental and does not pass the
+complete serving-cost target. This option is MLX-only and never installs or
+downloads an accelerator implicitly.
 
 Open the printed URL while the model loads. The page shows the real startup
 state and elapsed time; you can edit the prompt before generation begins.

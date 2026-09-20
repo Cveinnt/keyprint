@@ -44,6 +44,29 @@ server extra clearly. Its focused CLI suite passes 14 tests, with eight server
 tests skipped because that optional extra is absent; all 22 pass with extras.
 Platform simulations cover routing only, not execution on Windows or Linux.
 
+The subsequent installed CLI preflight adds `doctor --playground` and explicit
+MLX execution selection. The fresh wheel passes 1,186 Python checks without
+skips and seven UI checks, with 83 package files byte-identical to source and
+both distributions. Native Qwen and CPU SmolLM2 each complete a prefilled seed
+explanation and a custom Friday-reminder email through the actual installed
+CLI playground. Each prompt produces ordinary and marked text: eight outputs,
+487 tokens. Auth rejection, terminal replay without regeneration and session
+restoration pass. Setup checks verify pinned MLX hashes or limited Transformers
+file presence and JSON syntax; they do not allocate weights or certify inference.
+
+Probe development exposed three harness mistakes: session-fragment parsing,
+the MLX report envelope, and the distinct Transformers journal schema. These
+failed attempts are retained. Four outputs generated before harness failures
+remain included in a separate offline audit: twelve total outputs and 708 tokens
+reconcile with saved report text and journal chains. Only the final eight
+outputs carry the complete HTTP lifecycle check. No generated sample is discarded.
+SmolLM2's email control invents January 15th and a usual meeting time; its marked
+email omits the requested Friday reminder. Some 64-token outputs are incomplete.
+Qwen's email pair preserves Friday without a meeting time, but this is a smoke
+check, not blinded quality acceptance. Native sampling identity is unchanged;
+the preceding failed serving-cost study remains applicable. All work ran locally
+with hosted SDK and SGLang CI disabled.
+
 ### Preserved-phrase rewrite screen
 
 The preserved-phrase rewrite screen runs twelve actual Qwen/MLX generations,

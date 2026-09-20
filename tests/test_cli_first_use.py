@@ -21,8 +21,9 @@ def private_key(tmp_path):
     ("Linux", "aarch64", "transformers"), ("Windows", "AMD64", "transformers"),
 ])
 @pytest.mark.parametrize("command", ["generate", "playground", "serve"])
+@pytest.mark.parametrize("execution", ["reference", "experimental-fast", "experimental-native"])
 def test_every_entry_routes_default_to_same_local_backend(monkeypatch, tmp_path, private_key,
-                                                         system, machine, expected, command):
+                                                         system, machine, expected, command, execution):
     # Platform simulation tests routing only, not inference support on those hosts.
     if command != "generate":
         pytest.importorskip("fastapi")
@@ -33,8 +34,8 @@ def test_every_entry_routes_default_to_same_local_backend(monkeypatch, tmp_path,
     result = SimpleNamespace(text="actual loader replaced by routing fixture", artifacts=tmp_path)
     candidate = SimpleNamespace(generate=lambda *a, **k: result)
     def load(backend):
-        def fn(path, *, key):
-            calls.append((backend, path, key))
+        def fn(path, *, key, **options):
+            calls.append((backend, path, key, options))
             return candidate
         return fn
     monkeypatch.setattr(Keyprint, "from_mlx", staticmethod(load("mlx")))
@@ -59,8 +60,17 @@ def test_every_entry_routes_default_to_same_local_backend(monkeypatch, tmp_path,
         args += ["--api-key", str(api_key)]
     else:
         args += ["--output", str(tmp_path / "playground")]
+    if execution != "reference":
+        args += ["--execution", execution]
+    if expected != "mlx" and execution != "reference":
+        monkeypatch.setattr(cli, "load_key", lambda _: pytest.fail("must reject before key access"))
+        assert cli.main(args) == 1
+        assert calls == []
+        assert not (tmp_path / "playground").exists()
+        return
     assert cli.main(args) == 0
-    assert calls == [(expected, tmp_path, bytes(range(32)))]
+    assert calls == [(expected, tmp_path, bytes(range(32)),
+                      {"execution": execution} if expected == "mlx" else {})]
 
 
 def test_explicit_backend_and_model_override_cache_and_platform(monkeypatch, tmp_path, private_key):
@@ -122,3 +132,100 @@ def test_hf_home_respected_when_hub_override_absent(monkeypatch, tmp_path):
     monkeypatch.setenv("HF_HOME", str(tmp_path))
     with pytest.raises(ValueError, match=str(tmp_path / "hub")):
         cli.cached_model("transformers")
+
+
+@pytest.fixture
+def preflight(monkeypatch, tmp_path):
+    """Only dependency discovery is simulated; filesystem failures stay real."""
+    monkeypatch.setattr(cli, "importlib", SimpleNamespace(metadata=cli.importlib.metadata,
+                                                        import_module=lambda _: SimpleNamespace()))
+    monkeypatch.setattr(Keyprint, "from_mlx", staticmethod(lambda *a, **k: pytest.fail("model loaded")))
+    monkeypatch.setattr(Keyprint, "from_transformers", staticmethod(lambda *a, **k: pytest.fail("model loaded")))
+    model = tmp_path / "model with spaces"
+    model.mkdir()
+    for name in ("config.json", "tokenizer.json", "tokenizer_config.json"):
+        (model / name).write_text("{}")
+    (model / "model.safetensors").write_bytes(b"presence only, not valid weights")
+    return model
+
+
+def test_doctor_reports_limited_transformers_scope_and_quoted_command(preflight):
+    import shlex
+    result = cli.doctor(playground=True, backend="transformers", model=preflight)
+    assert result["status"] == "pass"
+    assert "weights and inference not verified" in result["model_check"]
+    assert shlex.split(result["next_command"]) == ["keyprint", "playground", "--backend",
+        "transformers", "--model", str(preflight), "--execution", "reference"]
+
+
+@pytest.mark.parametrize("failure", ["dependency", "metadata", "weights", "missing directory"])
+def test_doctor_reports_actionable_preflight_failures(preflight, monkeypatch, failure):
+    if failure == "dependency":
+        def missing(name):
+            if name == "fastapi":
+                raise ImportError("missing test dependency")
+        monkeypatch.setattr(cli.importlib, "import_module", missing)
+        expected = "Cannot import fastapi"
+    elif failure == "metadata":
+        (preflight / "config.json").write_text("{")
+        expected = "Expecting property name"
+    elif failure == "weights":
+        (preflight / "model.safetensors").unlink()
+        expected = "weights are missing"
+    else:
+        preflight = preflight / "absent"
+        expected = "existing local directory"
+    result = cli.doctor(playground=True, backend="transformers", model=preflight)
+    assert result["status"] == "fail"
+    assert any(expected in problem for problem in result["problems"])
+
+
+def test_doctor_checks_pinned_mlx_assets_and_native_version_without_loading(preflight, monkeypatch):
+    from keyprint.backends import mlx
+    from keyprint.experimental import native_mlx
+    monkeypatch.setattr(cli.platform, "system", lambda: "Darwin")
+    monkeypatch.setattr(cli.platform, "machine", lambda: "arm64")
+    monkeypatch.setattr(native_mlx, "native_backend", lambda: SimpleNamespace(identity={"package_version": "0.1.0a2"}))
+    paths = []
+    monkeypatch.setattr(mlx, "verify_assets", lambda path: paths.append(path))
+    result = cli.doctor(playground=True, backend="mlx", model=preflight, execution="experimental-native")
+    assert result["status"] == "pass"
+    assert result["native_accelerator"] == "0.1.0a2"
+    assert paths == [preflight]
+    def corrupted(path):
+        raise ValueError("pinned asset mismatch")
+    monkeypatch.setattr(mlx, "verify_assets", corrupted)
+    assert "pinned asset mismatch" in cli.doctor(playground=True, backend="mlx", model=preflight)["problems"]
+    def missing():
+        raise ImportError("matching native wheel required")
+    monkeypatch.setattr(native_mlx, "native_backend", missing)
+    paths.clear()
+    assert "matching native wheel required" in cli.doctor(playground=True, backend="mlx", model=preflight,
+                                                          execution="experimental-native")["problems"]
+    assert not paths
+
+
+def test_doctor_rejects_mlx_on_other_hosts_before_imports(preflight, monkeypatch):
+    monkeypatch.setattr(cli.platform, "system", lambda: "Linux")
+    monkeypatch.setattr(cli.importlib, "import_module", lambda _: pytest.fail("backend imported"))
+    result = cli.doctor(playground=True, backend="mlx", model=preflight)
+    assert result["status"] == "fail"
+    assert "MLX requires Apple Silicon" in result["problems"][0]
+
+
+def test_plain_doctor_does_not_discover_models_or_import_optional_dependencies(monkeypatch):
+    monkeypatch.setattr(cli, "cached_model", lambda _: pytest.fail("cache accessed"))
+    monkeypatch.setattr(cli.importlib, "import_module", lambda _: pytest.fail("optional import"))
+    assert cli.doctor()["status"] == "pass"
+
+
+def test_cli_doctor_json_and_exit_status(preflight, capsys):
+    import json
+    args = ["doctor", "--playground", "--backend", "transformers", "--model", str(preflight), "--json"]
+    assert cli.main(args) == 0
+    assert json.loads(capsys.readouterr().out)["status"] == "pass"
+    (preflight / "model.safetensors").unlink()
+    assert cli.main(args) == 1
+    assert json.loads(capsys.readouterr().out)["status"] == "fail"
+    assert cli.main(["doctor", "--backend", "mlx"]) == 1
+    assert "doctor --playground" in capsys.readouterr().err

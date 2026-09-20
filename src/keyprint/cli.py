@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib
 import importlib.metadata
 import json
 import os
@@ -35,7 +36,7 @@ def comparison() -> dict:
     return reports
 
 
-def doctor() -> dict:
+def doctor(*, playground=False, backend=None, model=None, execution="reference") -> dict:
     from . import verify
     problems, packages = [], {}
     for name in ("keyprint", "numpy", "scipy", "tokenizers"):
@@ -51,10 +52,50 @@ def doctor() -> dict:
     except (ImportError, RuntimeError, OSError, ValueError) as exc:
         integrity = {"status": "fail"}
         problems.append(str(exc))
-    return {"status": "fail" if problems else "pass", "packages": packages,
+    result = {"status": "fail" if problems else "pass", "packages": packages,
             "python": platform.python_version(), "platform": platform.system(),
             "integrity": integrity, "problems": problems,
             "scope": "Package import and source checks only. No model, API connection, or detection accuracy test."}
+    if not playground:
+        return result
+    backend = backend or default_backend()
+    result.update(workflow="playground", backend=backend, execution=execution,
+                  scope="Playground dependency and local-file preflight. No model loading, inference, hosted API calls, or detection acceptance.")
+    try:
+        validate_execution(backend, execution)
+        if backend == "mlx" and (platform.system() != "Darwin" or platform.machine() != "arm64"):
+            raise RuntimeError("MLX requires Apple Silicon macOS; choose --backend transformers")
+        modules = ["fastapi", "uvicorn", *(('mlx.core', 'mlx_lm') if backend == 'mlx' else ('torch', 'transformers'))]
+        for module in modules:
+            try:
+                importlib.import_module(module)
+            except (ImportError, RuntimeError, OSError) as exc:
+                problems.append(f"Cannot import {module}: {exc}")
+        if execution == "experimental-native":
+            from .experimental.native_mlx import native_backend
+            result['native_accelerator'] = native_backend().identity['package_version']
+        path = Path(model) if model is not None else cached_model(backend)
+        result['model'] = str(path.resolve())
+        if backend == 'mlx':
+            from .backends.mlx import verify_assets
+            verify_assets(path)
+            result['model_check'] = 'Pinned asset hashes verified; model not loaded'
+        else:
+            if not path.is_dir():
+                raise ValueError('--model must be an existing local directory')
+            for name in ('config.json', 'tokenizer.json', 'tokenizer_config.json'):
+                json.loads((path / name).read_text())
+            if not any(path.glob('*.safetensors')):
+                raise ValueError('Local safetensors weights are missing')
+            result['model_check'] = 'Required files present and metadata parses; binding, weights and inference not verified'
+        result['next_command'] = shlex.join(['keyprint', 'playground', '--backend', backend,
+            '--model', str(path.resolve()), '--execution', execution])
+    except (ImportError, RuntimeError, OSError, ValueError) as exc:
+        problems.append(str(exc))
+    if problems:
+        result['install_hint'] = f"From the reviewed source checkout: python -m pip install '.[{backend},server]'"
+    result['status'] = 'fail' if problems else 'pass'
+    return result
 
 
 def load_key(path: Path) -> bytes:
@@ -68,6 +109,23 @@ def load_key(path: Path) -> bytes:
 
 def default_backend() -> str:
     return "mlx" if platform.system() == "Darwin" and platform.machine() == "arm64" else "transformers"
+
+
+def validate_execution(backend: str, execution: str) -> None:
+    if execution != 'reference' and backend != 'mlx':
+        raise ValueError('--execution is an MLX option; Transformers uses its own supported execution')
+
+
+def execution_argument(parser) -> None:
+    parser.add_argument('--execution', choices=('reference', 'experimental-fast', 'experimental-native'),
+                        default='reference', help='MLX execution; default: reference. Native requires the reviewed keyprint-native wheel.')
+
+
+def model_loader(backend: str, execution: str, keyprint):
+    validate_execution(backend, execution)
+    if backend == 'mlx':
+        return lambda path, **settings: keyprint.from_mlx(path, execution=execution, **settings)
+    return keyprint.from_transformers
 
 
 def token_limit(value: str) -> int:
@@ -117,6 +175,11 @@ def main(argv: list[str] | None = None) -> int:
                             ("verify", "Verify the bundled engine")):
         command = commands.add_parser(name, help=help_text)
         command.add_argument("--json", action="store_true")
+        if name == 'doctor':
+            command.add_argument('--playground', action='store_true', help='Check real-demo dependencies and local model files without loading weights')
+            command.add_argument('--backend', choices=('mlx', 'transformers'))
+            command.add_argument('--model', type=Path)
+            execution_argument(command)
     keygen = commands.add_parser("keygen", help="Create a private key without printing it")
     keygen.add_argument("path", type=Path, nargs="?", default=Path("keyprint.key"))
     generate = commands.add_parser("generate", help="Generate text with a supported local model")
@@ -129,6 +192,7 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--condition", choices=("ordinary", "marked"), default="marked")
     generate.add_argument("--output", type=Path)
     generate.add_argument("--json-schema", type=Path, help="JSON Schema file; MLX or Transformers with [structured]")
+    execution_argument(generate)
     playground = commands.add_parser("playground", help="Open a real-model generation and editing playground")
     playground.add_argument("--backend", choices=("mlx", "transformers"),
                             default=default_backend(), help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
@@ -136,6 +200,7 @@ def main(argv: list[str] | None = None) -> int:
     playground.add_argument("--key", type=Path, help="Optional private key; otherwise create a fresh session key")
     playground.add_argument("--port", type=int, default=8766)
     playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
+    execution_argument(playground)
     serve = commands.add_parser("serve", help="Serve local text endpoints for OpenAI and Anthropic clients")
     serve.add_argument("--backend", choices=("mlx", "transformers"), default=default_backend(),
                        help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
@@ -144,11 +209,13 @@ def main(argv: list[str] | None = None) -> int:
     serve.add_argument("--api-key", type=Path, required=True, help="A separate private key file; clients use its hex encoding")
     serve.add_argument("--port", type=int, default=8765)
     serve.add_argument("--output", type=Path, default=Path("private-keyprint-server"))
+    execution_argument(serve)
     args = parser.parse_args(argv)
     try:
         if args.command is None:
             parser.print_help()
         elif args.command == "playground":
+            loader = model_loader(args.backend, args.execution, Keyprint)
             try:
                 import uvicorn
                 from .playground import create_playground
@@ -161,7 +228,6 @@ def main(argv: list[str] | None = None) -> int:
                 raise ValueError("port must be between 1024 and 65535")
             directory = args.output or Path(tempfile.mkdtemp(prefix="keyprint-playground-"))
             key = load_key(args.key) if args.key else Keyprint.new_key()
-            loader = Keyprint.from_mlx if args.backend == "mlx" else Keyprint.from_transformers
             token = secrets.token_urlsafe(32)
             app = create_playground(lambda: loader(path, key=key), token=token, output=directory, port=args.port)
             if args.key is None:
@@ -182,7 +248,7 @@ def main(argv: list[str] | None = None) -> int:
                 os.fsync(stream.fileno())
             print(f"Private key created: {args.path}\nKeep it private and backed up.")
         elif args.command in ("generate", "serve"):
-            loader = Keyprint.from_mlx if args.backend == "mlx" else Keyprint.from_transformers
+            loader = model_loader(args.backend, args.execution, Keyprint)
             key = load_key(args.key)
             path = args.model if args.model is not None else cached_model(args.backend)
             if not path.is_dir():
@@ -218,13 +284,24 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"\n{scope}\nReal-model interactive demo: keyprint playground --help")
             return int(any(report["kind"] == "error" for report in reports.values()))
         else:
-            result = doctor() if args.command == "doctor" else verify()
+            if args.command == 'doctor':
+                if not args.playground and (args.backend is not None or args.model is not None or args.execution != 'reference'):
+                    raise ValueError('Use doctor --playground to check backend, model or execution settings')
+                if args.playground and not args.json:
+                    print('Checking playground installation and local model files...', flush=True)
+                result = doctor(playground=args.playground, backend=args.backend, model=args.model, execution=args.execution)
+            else:
+                result = verify()
             if args.json:
                 print(json.dumps(result, allow_nan=False))
             else:
                 print(f"Keyprint {args.command}: {result['status'].upper()}\n{result['scope']}")
                 for problem in result.get("problems", []):
                     print(problem)
+                if result.get('install_hint'):
+                    print(result['install_hint'])
+                if result['status'] == 'pass' and result.get('next_command'):
+                    print(f"Next: {result['next_command']}")
             return int(result["status"] != "pass")
         return 0
     except KeyprintError as exc:

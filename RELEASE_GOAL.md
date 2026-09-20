@@ -33,8 +33,22 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The CLI now offers `doctor --playground` and explicit MLX `--execution`
+selection across generation, serving and the playground. Default execution
+stays reference. A fresh installed wheel passes 1,186 Python checks without
+skips and seven UI checks; all 83 package files match source, wheel, source
+archive and installation. Actual CLI startup and authenticated playground
+requests pass for native Qwen and Transformers SmolLM2: eight outputs and 487
+tokens across prefilled and custom prompts, including terminal replay and
+session recovery. Earlier probe-harness failures remain saved; an offline audit
+reconciles all twelve generated outputs and 708 tokens. The native sampling
+identity is unchanged, so the preceding cost failure below remains applicable.
+SmolLM2 still invents an email date or omits the requested Friday reminder;
+short caps truncate some responses. These are usability and integration checks,
+not semantic, detection or release acceptance. Hosted CI remains disabled.
+
 The native filter's full-gap range check preserves reference output bytes,
-diagnostics and caller underflow policy. The current installed wheel passes
+diagnostics and caller underflow policy. That preceding installed wheel passes
 1,153 tests without skips; 83 package files match source. Caller parity matches
 988 tokens across 24 outputs, both client lifecycle checks pass, and eleven
 structured requests reconcile 233 tokens and 190 grammar masks. The unchanged
