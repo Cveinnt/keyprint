@@ -33,6 +33,14 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The fixed multilingual decision screen passes 128/128 exact answers (64 ordinary,
+64 marked) on pinned Qwen3-8B/MLX reference execution. Sixteen positive/negative
+prompts run four times per condition under a JSON grammar permitting both
+answers. Receipt audits reconcile 1,047 tokens and grammar masks; fourteen
+validator tests pass. [Decision quality evidence](DECISION_QUALITY.md) retains
+the frozen plan, all outputs and scope limits. This is a constrained decision
+result, not prose fidelity, calibrated detection or general quality acceptance.
+
 Input-limit handling now reports tokenized input, the existing backend limit,
 and the response budget through a public `InputLimitError`. Local Chat
 Completions, Messages and playground requests return actionable HTTP 400 errors;

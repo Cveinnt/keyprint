@@ -2,6 +2,8 @@ include CONTRIBUTING.md INTEGRATIONS.md CHANGELOG.md PROVIDERS.md
 include RELEASE_GOAL.md PERFORMANCE.md
 include INFERENCE_TESTING.md
 include QUALITY_REVIEW.md
+include DECISION_QUALITY.md
+recursive-include evidence/decision-quality-2026-09-20 *.json
 recursive-include tests *.py
 recursive-include examples *.py
 recursive-include tools *.py *.json

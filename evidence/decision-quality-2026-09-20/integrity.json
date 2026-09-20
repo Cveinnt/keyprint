@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "requests": 128,
+  "tokens": 1047,
+  "replayed_masks": 1047,
+  "scope": "Journal chain, mask replay, commits, decoder and independent JSON validation; not model-logit replay or semantic acceptance",
+  "public_summary_matches": true,
+  "exact_prompt_hashes": true,
+  "all_conditions_and_expected_answers_verified": true,
+  "plan_sha256": "9c38bf56642b33bb9ef77666ad751e058e1aec791a5c36f800e4ed02bc9c6693",
+  "results_sha256": "1856c577488ba5dab780c51bef120bdd6d60a3be8f332da299b9c19c23df0ea4",
+  "marked_sampling_records": 528,
+  "marked_records_with_changed_weight_hash": 288,
+  "limitation": "Weight-hash changes are bookkeeping evidence, not a replayed effect size or detectable-mark guarantee. No fresh model-logit replay, prose acceptance, independence guarantee or production qualification."
+}

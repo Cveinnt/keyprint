@@ -1,5 +1,9 @@
 # Actual inference compatibility checks
 
+For the separate frozen multilingual approval/negation benchmark, see
+[decision quality](DECISION_QUALITY.md). Its ordinary/marked outputs, exact
+answers and grammar-replay audit are retained; it does not approve prose quality.
+
 Run the same six prompts through ordinary and marked sampling, retaining both
 texts, completion reasons, timings and matching/other-key diagnostics. Cases
 cover science, a constrained email, negation, Spanish, French and strict JSON.

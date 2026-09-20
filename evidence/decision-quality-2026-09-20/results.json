@@ -1,0 +1,2331 @@
+{
+  "plan_sha256": "9c38bf56642b33bb9ef77666ad751e058e1aec791a5c36f800e4ed02bc9c6693",
+  "summary": {
+    "complete": true,
+    "expected_attempts": 128,
+    "conditions": {
+      "ordinary": {
+        "attempts": 64,
+        "correct": 64,
+        "errors": 0
+      },
+      "marked": {
+        "attempts": 64,
+        "correct": 64,
+        "errors": 0
+      }
+    },
+    "paired_outcomes": {
+      "both_correct": 64
+    },
+    "fixed_screen_pass": true,
+    "quality_acceptance": false,
+    "scope": "Fixed synthetic decisions under a boolean JSON grammar; repeated sources, one key, independent samples. Not prose fidelity, deployment coverage or causal watermark harm."
+  },
+  "runs": [
+    {
+      "case": "en-approval-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 2.338626875076443
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5956625000108033
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4457954170648009
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4529147918801755
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5122951669618487
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4718311252072453
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5650564171373844
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4671854588668793
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 6,
+        "total_tokens": 82
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4324400830082595
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5798924169503152
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5856498340144753
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6014881660230458
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6307933749631047
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5692606668453664
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6508710840716958
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5807824588846415
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.622973999939859
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5930502079427242
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6316619999706745
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5876751248724759
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.586910167010501
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5984428329393268
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6151245420332998
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5756877078674734
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3687930419109762
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.377774833003059
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.359382624970749
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4214810419362038
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.322345957858488
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3067954170983285
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 0,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2550652499776334
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 0,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.273556707892567
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.534029542002827
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5024129159282893
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.485320416977629
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5093391248956323
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5064203750807792
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4726522080600262
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4762065829709172
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.476563666947186
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6375232499558479
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6939386669546366
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5950057080481201
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6215986250899732
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6610288340598345
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.562998167006299
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 6,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3327082078903913
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5915088749025017
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.587418792070821
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5654076251666993
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.612115291878581
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6004426670260727
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6391270828898996
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5860093750525266
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6288299579173326
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6082294580992311
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3835558751598
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3755261248443276
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3640250829048455
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3829825830180198
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2608165831770748
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.253100458998233
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 1,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.275704667204991
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 1,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.265415458008647
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4573287079110742
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.501391917001456
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5093262500595301
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4622305841185153
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4834621248301119
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5156703749671578
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.491228458005935
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4908660829532892
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5688232078682631
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5951918750070035
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.547645250102505
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5576944581698626
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 6,
+        "total_tokens": 81
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.34736887505278
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.559552958002314
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5686751247849315
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.555143625009805
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5493159999605268
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5604315830860287
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5695389998145401
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5446797909680754
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5533766248263419
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5612407911103219
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5690510000567883
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5766358338296413
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.356414166977629
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3732117090839893
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3577392078004777
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3669651669915766
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2829289170913398
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2484472079668194
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 2,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2563287091907114
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 2,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3017503339797258
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4314745410811156
+    },
+    {
+      "case": "en-approval-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4531120827887207
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.451444874983281
+    },
+    {
+      "case": "en-approval-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 57,
+        "completion_tokens": 9,
+        "total_tokens": 66
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4460934579838067
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.429465999826789
+    },
+    {
+      "case": "en-backup-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4578944591339678
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4249374580103904
+    },
+    {
+      "case": "en-backup-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 52,
+        "completion_tokens": 9,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.4780531250871718
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5404379169922322
+    },
+    {
+      "case": "es-approval-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 76,
+        "completion_tokens": 9,
+        "total_tokens": 85
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5388809170108289
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5772341249976307
+    },
+    {
+      "case": "es-approval-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 82,
+        "completion_tokens": 9,
+        "total_tokens": 91
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6753983749076724
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.6064006669912487
+    },
+    {
+      "case": "es-owner-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 75,
+        "completion_tokens": 9,
+        "total_tokens": 84
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5902049171272665
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5910197079647332
+    },
+    {
+      "case": "es-owner-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 78,
+        "completion_tokens": 9,
+        "total_tokens": 87
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.7521997499279678
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5515755419619381
+    },
+    {
+      "case": "fr-approval-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 91,
+        "completion_tokens": 9,
+        "total_tokens": 100
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.543234874960035
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5937528749927878
+    },
+    {
+      "case": "fr-approval-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 9,
+        "total_tokens": 104
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5237575839273632
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.566598708042875
+    },
+    {
+      "case": "fr-deadline-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": false\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.569903708063066
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5503100000787526
+    },
+    {
+      "case": "fr-deadline-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\n  \"allowed\": true\n}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 86,
+        "completion_tokens": 9,
+        "total_tokens": 95
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.5331579998601228
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3420111250597984
+    },
+    {
+      "case": "zh-approval-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.3379862089641392
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.324456750182435
+    },
+    {
+      "case": "zh-approval-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 6,
+        "total_tokens": 73
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.358842832967639
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2488482499029487
+    },
+    {
+      "case": "zh-backup-no",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\"allowed\": false}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 56,
+        "completion_tokens": 6,
+        "total_tokens": 62
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2706259589176625
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 3,
+      "condition": "ordinary",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2506063329055905
+    },
+    {
+      "case": "zh-backup-yes",
+      "repetition": 3,
+      "condition": "marked",
+      "text": "{\"allowed\": true}",
+      "completion": "eos",
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 6,
+        "total_tokens": 61
+      },
+      "checks": {
+        "complete": true,
+        "valid": true,
+        "correct": true
+      },
+      "seconds": 1.2669341249857098
+    }
+  ]
+}
