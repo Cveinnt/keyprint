@@ -93,6 +93,78 @@ Use a new idempotency key when switching endpoints; an existing key cannot
 return a response in the other client's format. The cancellation extension below
 also accepts `x-api-key` with the same local token.
 
+## Typed JSON output
+
+Install `.[server,clients,transformers,structured]` and start the Transformers
+server above with `--model models/smollm3`. The pinned OpenAI and Anthropic
+clients can parse a shared Pydantic type directly:
+
+```python
+from pathlib import Path
+from pydantic import BaseModel, ConfigDict
+from openai import OpenAI
+from anthropic import Anthropic
+
+class Record(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    name: str
+    count: int
+    enabled: bool
+
+token = Path("local-api.key").read_bytes().hex()
+messages = [{"role": "user", "content": "Return JSON: name Maya, count 3, enabled false."}]
+
+with OpenAI(base_url="http://127.0.0.1:8765/v1", api_key=token,
+            max_retries=0, timeout=180) as client:
+    response = client.chat.completions.parse(
+        model="keyprint", messages=messages, max_completion_tokens=128,
+        response_format=Record, extra_headers={"Idempotency-Key": "record-openai-1"},
+    )
+    print(response.choices[0].message.parsed)
+
+with Anthropic(base_url="http://127.0.0.1:8765", api_key=token,
+               max_retries=0, timeout=180) as client:
+    response = client.messages.parse(
+        model="keyprint", messages=messages, max_tokens=128,
+        output_format=Record, extra_headers={"Idempotency-Key": "record-anthropic-1"},
+    )
+    print(response.parsed_output)
+```
+
+OpenAI uses `response_format={"type":"json_schema","json_schema":
+{"name":"record","strict":true,"schema":...}}`; Anthropic uses
+`output_config={"format":{"type":"json_schema","schema":...}}`. These are
+local protocol implementations. They do not watermark hosted GPT or Claude.
+The server passes the schema to the model adapter and binds it into the private
+generation receipt. Idempotency covers the schema as part of the request body.
+
+Supported schemas have a top-level object and use types, properties, required
+fields, additionalProperties, items, array/string length bounds, numeric bounds,
+enum/const and supported anyOf/allOf/oneOf combinations. Compilation warnings
+or unsupported combinations fail instead of silently weakening the constraint.
+References (including `$defs`), regex, formats, custom extensions and dialect
+overrides are currently rejected. Schemas are limited to 32 KiB and 24 nested
+schema levels; the parser also has explicit resource limits. This is a bounded
+subset, not complete JSON Schema support.
+
+The grammar mask runs before top-k filtering and watermark sampling. Every
+token still has a model forward, a sample and a durable commit; there is no
+forced-token fast-forward, rollback, postprocessing or hidden retry. Complete
+outputs undergo independent JSON/schema validation, including duplicate-key
+rejection. Truncation returns `length`/`max_tokens` with
+`keyprint.structured_output.schema_validated=false`; typed client helpers may
+raise instead of returning a parsed object. Treat this as incomplete, not as a
+validated record. The SDK's report carries the same status.
+
+Pinned SmolLM3 local testing completed six constrained ordinary/marked outputs,
+two typed-client requests and one deliberate token cap, alongside two
+unconstrained controls. Both controls retained prohibited Markdown fences.
+The constrained JSON and Unicode cases matched their requested values, and
+both negation extractions preserved the prerequisite in this small sample.
+These checks establish the tested format/client path, not semantic reliability
+or detection power. Constraints can leave little or no marking capacity.
+MLX, native SGLang/vLLM, tools and streaming do not yet support this mode.
+
 ### Explicit cancellation
 
 The local extension `POST /v1/keyprint/cancel` uses the same authentication token

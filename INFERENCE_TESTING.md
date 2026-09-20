@@ -56,6 +56,26 @@ Added tokens containing whitespace, non-ASCII characters or matching
 transformations remain rejected; they require a separate verified binding.
 The original SmolLM2 prompt tokens are unchanged by the non-thinking option.
 
+### Structured output and typed clients
+
+Install the `structured` extra with Transformers, server and clients, then run:
+
+```sh
+python tools/validate_structured.py --model models/smollm3 \
+  --output private-structured-run
+```
+
+This retains unconstrained controls, ordinary/marked schema-constrained JSON,
+Unicode and negation examples, a deliberate one-token cap, and real OpenAI and
+Anthropic typed parsing requests. Schema types constrain format; requested field
+values are checked separately. Both clients must replay without another model
+attempt. A separate matcher replays every retained grammar mask and committed
+token, checking its hash, membership, final text, usage and validation receipt.
+The original control failures remain visible in `public/comparison.html`.
+The whole run fails on an inference, lifecycle, typed parsing or audit error;
+mechanical/semantic output review remains separate from that engineering result.
+This test is local; hosted CI stays disabled.
+
 The HTTP check runs actual OpenAI and Anthropic SDK requests through a TCP socket
 to one local model worker. It verifies generated text against private reports,
 exact idempotency replay, one generation per client and rejection of unsupported

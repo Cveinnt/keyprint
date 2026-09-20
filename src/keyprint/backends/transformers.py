@@ -93,7 +93,7 @@ class TransformersModel:
                 "interpretation": "Uncalibrated matching-key event counts on literal tokenization; no p-value or authorship verdict."}
 
     def generate(self, prompt: str, *, key: bytes, max_tokens: int, condition: str,
-                 output: str | Path | None, cancel_event=None):
+                 output: str | Path | None, cancel_event=None, json_schema=None):
         import numpy as np
         import torch
         from ..api import Generation, KeyprintError, KeyprintCancelled
@@ -104,6 +104,10 @@ class TransformersModel:
 
         if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 16000:
             raise ValueError("prompt must contain 1 to 16000 characters")
+        constraint = None
+        if json_schema is not None:
+            from ..structured import JsonConstraint
+            constraint = JsonConstraint(json_schema, self.tokenizer, self.binding)
         encoded = self.tokenizer.apply_chat_template([{"role": "user", "content": prompt}],
                     tokenize=True, add_generation_prompt=True, return_dict=False,
                     enable_thinking=False)
@@ -119,11 +123,14 @@ class TransformersModel:
         report = {"kind": "generation_trace", "verdict": None, "identity": self.identity,
                   "condition": condition, "completion": "length", "committed_token_ids": committed,
                   "model_calls": 0, "interpretation": "Experimental portable profile; no research acceptance or calibrated detection claim."}
+        if constraint is not None:
+            report["structured_output"] = {"identity": constraint.identity, "status": "incomplete", "schema_validated": False}
         phase = "start"
         try:
             with DurableJournal(directory / "journal.jsonl") as journal, torch.inference_mode():
                 journal.append({"phase": "start", "identity": self.identity,
-                                "condition": condition, "prompt_token_ids": encoded})
+                                "condition": condition, "prompt_token_ids": encoded,
+                                **({"constraint": constraint.identity} if constraint is not None else {})})
                 ids = torch.tensor([encoded], dtype=torch.long, device="cpu")
                 cache = None
                 for _ in range(max_tokens):
@@ -147,6 +154,15 @@ class TransformersModel:
                     for index, piece in enumerate(self.binding.pieces):
                         if piece is None and index not in self.binding.eos_ids:
                             raw[0, index] = -np.inf
+                    if constraint is not None:
+                        phase = "grammar_mask"
+                        allowed = constraint.allowed()
+                        raw[0, ~allowed] = -np.inf
+                        journal.append({"phase": phase, "index": len(committed),
+                            "allowed_sha256": hashlib.sha256(allowed.tobytes()).hexdigest(),
+                            "allowed_count": int(allowed.sum())})
+                        check_cancellation(cancel_event)
+                        phase = "sample"
                     filtered = stable_support_filter(raw, temperature=self.temperature, top_k=self.top_k,
                                                      mapped_vocabulary_size=len(self.binding.pieces))
                     base = sparse_softmax(filtered.filtered_logits[0])
@@ -167,6 +183,9 @@ class TransformersModel:
                     session.commit(prepared, selected)
                     committed.append(selected)
                     journal.append({"phase": "committed", "token_id": selected})
+                    if constraint is not None:
+                        phase = "grammar_commit"
+                        constraint.commit(selected)
                     if selected in self.binding.eos_ids:
                         report["completion"] = "eos"
                         break
@@ -190,6 +209,9 @@ class TransformersModel:
                     "reason": "Token limit split a UTF-8 character; rendered prefix is not the complete sampled carrier"
                     if pending else "Literal inspection is a separate operation"}]
                 report["text"] = text
+                if constraint is not None:
+                    phase = "structured_validation"
+                    report["structured_output"].update(constraint.finish(text, report["completion"]))
                 report["usage"] = {"prompt_tokens": len(encoded), "completion_tokens": len(committed),
                                    "total_tokens": len(encoded) + len(committed)}
                 report["source_receipt"] = session.source_receipt()

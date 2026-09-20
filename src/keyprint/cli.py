@@ -99,6 +99,7 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--max-tokens", type=int, default=64)
     generate.add_argument("--condition", choices=("ordinary", "marked"), default="marked")
     generate.add_argument("--output", type=Path)
+    generate.add_argument("--json-schema", type=Path, help="JSON Schema file; Transformers with [structured] only")
     playground = commands.add_parser("playground", help="Open a real-model generation and editing playground")
     playground.add_argument("--backend", choices=("mlx", "transformers"),
                             default="mlx" if platform.system() == "Darwin" and platform.machine() == "arm64" else "transformers")
@@ -167,7 +168,9 @@ def main(argv: list[str] | None = None) -> int:
                 return 0
             candidate = loader(args.model, key=key)
             result = candidate.generate(args.prompt, max_tokens=args.max_tokens,
-                                        condition=args.condition, output=args.output)
+                                        condition=args.condition, output=args.output,
+                                        **({"json_schema": json.loads(args.json_schema.read_text())}
+                                           if args.json_schema is not None else {}))
             print(result.text)
             print(f"\nPrivate report: {result.artifacts / 'report.json'}", file=sys.stderr)
         elif args.command == "demo":

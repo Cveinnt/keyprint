@@ -131,6 +131,37 @@ experimental integration, not a production-quality or detector guarantee.
 that option are not thereby qualified for non-thinking output. No reasoning or
 tool channel is parsed, and generated text is never silently stripped.
 
+### JSON that clients can parse
+
+For the Transformers backend, install the optional `structured` extra and pass
+`json_schema` to `generate`. Keyprint masks invalid tokens before sampling; it
+does not remove Markdown fences, repair the answer or retry behind the scenes.
+
+```sh
+pip install '.[transformers,structured]'
+keyprint generate --backend transformers --model models/smollm3 \
+  --key keyprint.key --prompt 'Return a JSON record for Maya, count 3, enabled false.' \
+  --json-schema record.schema.json --max-tokens 128
+```
+
+`record.schema.json`:
+
+```json
+{"type":"object","properties":{"name":{"type":"string"},"count":{"type":"integer"},"enabled":{"type":"boolean"}},"required":["name","count","enabled"],"additionalProperties":false}
+```
+
+Python: `result = kp.generate(prompt, json_schema=schema, max_tokens=128)`.
+Check `result.report["structured_output"]["schema_validated"]` before consuming
+the JSON. A token cap can leave an incomplete document. Completed responses are
+checked independently against the schema; grammar/validation failures retain
+private receipts and raise `KeyprintError`.
+
+The local server also supports typed OpenAI and Anthropic parsing helpers;
+see [provider examples and schema limits](PROVIDERS.md#typed-json-output).
+This optional mode currently supports Transformers only. Its constrained
+distribution has no calibrated detector claim; a fixed schema can leave little
+or no room for a watermark. Valid JSON does not establish factual correctness.
+
 ## Python API
 
 ```python

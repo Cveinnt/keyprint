@@ -15,6 +15,8 @@ from starlette.requests import Request
 TOKEN = "local-test-token-" * 3
 HEADERS = {"Authorization": "Bearer " + TOKEN}
 BODY = {"model": "keyprint", "messages": [{"role": "user", "content": "hello"}]}
+SCHEMA = {"type": "object", "properties": {"name": {"type": "string"}},
+          "required": ["name"], "additionalProperties": False}
 
 
 class Model:
@@ -35,6 +37,61 @@ class Model:
         Path(output).mkdir(mode=0o700)
         return Generation(prompt, {"completion": "eos", "usage": {
             "prompt_tokens": 4, "completion_tokens": 1, "total_tokens": 5}}, output)
+
+
+@pytest.mark.parametrize("protocol", ["openai", "anthropic"])
+@pytest.mark.parametrize("completion", ["eos", "length"])
+def test_structured_protocol_routes_schema_replays_and_reports_truncation(protocol, completion, tmp_path):
+    class Structured(Model):
+        def generate(self, prompt, *, json_schema, **kwargs):
+            assert json_schema == SCHEMA
+            result = super().generate(prompt, **kwargs)
+            result.report.update(completion=completion, structured_output={
+                "status": "complete" if completion == "eos" else "incomplete",
+                "schema_validated": completion == "eos"})
+            return result
+    model = Structured()
+    if protocol == "openai":
+        path = "/v1/chat/completions"
+        body = {**BODY, "response_format": {"type": "json_schema", "json_schema": {
+            "name": "person", "strict": True, "schema": SCHEMA}}}
+    else:
+        path = "/v1/messages"
+        body = {**BODY, "max_tokens": 64, "output_config": {"format": {"type": "json_schema", "schema": SCHEMA}}}
+    headers = {**HEADERS, "anthropic-version": "2023-06-01", "Idempotency-Key": "structured"}
+    with TestClient(create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")) as client:
+        first = client.post(path, json=body, headers=headers)
+        assert first.status_code == 200
+        assert first.json()["keyprint"]["structured_output"]["schema_validated"] is (completion == "eos")
+        assert client.post(path, json=body, headers=headers).json() == first.json()
+        altered = json.loads(json.dumps(body).replace('"person"', '"different"')) if protocol == "openai" else {**body, "max_tokens": 32}
+        assert client.post(path, json=altered, headers=headers).status_code == 409
+        assert len(model.calls) == 1
+
+
+@pytest.mark.parametrize("format", [
+    {"type": "json_object"},
+    {"type": "json_schema", "json_schema": {"name": "x", "strict": False, "schema": SCHEMA}},
+    {"type": "json_schema", "json_schema": {"name": "x", "strict": 1, "schema": SCHEMA}},
+    {"type": "json_schema", "json_schema": {"name": "x", "strict": True, "schema": SCHEMA, "unknown": True}},
+])
+def test_unsupported_response_formats_rejected_before_model(format, tmp_path):
+    model = Model()
+    with TestClient(create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")) as client:
+        response = client.post("/v1/chat/completions", json={**BODY, "response_format": format}, headers=HEADERS)
+        assert response.status_code == 400 and not model.calls
+
+
+def test_structured_request_without_backend_receipt_fails_closed(tmp_path):
+    class IgnoresSchema(Model):
+        def generate(self, prompt, *, json_schema, **kwargs):
+            return super().generate(prompt, **kwargs)
+    model = IgnoresSchema()
+    body = {**BODY, "response_format": {"type": "json_schema", "json_schema": {
+            "name": "person", "strict": True, "schema": SCHEMA}}}
+    with TestClient(create_app(lambda: model, api_key=TOKEN, output=tmp_path / "runs")) as client:
+        response = client.post("/v1/chat/completions", json=body, headers=HEADERS)
+        assert response.status_code == 500 and len(model.calls) == 1
 
 
 def test_authentication_and_exact_usage(tmp_path):

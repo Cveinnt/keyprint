@@ -28,6 +28,37 @@ class Message(BaseModel):
     content: str = Field(min_length=1, max_length=16000)
 
 
+class JsonSchemaSpec(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    name: str = Field(min_length=1, max_length=64, pattern=r"^[A-Za-z0-9_-]+$")
+    schema_value: dict = Field(alias="schema")
+    strict: Literal[True]
+
+    @field_validator("strict", mode="before")
+    @classmethod
+    def exact_strict(cls, value):
+        if type(value) is not bool:
+            raise ValueError("strict must be true")
+        return value
+
+
+class JsonResponseFormat(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    type: Literal["json_schema"]
+    json_schema: JsonSchemaSpec
+
+
+class JsonOutputFormat(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    type: Literal["json_schema"]
+    schema_value: dict = Field(alias="schema")
+
+
+class OutputConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    format: JsonOutputFormat
+
+
 class CompletionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     model: Literal["keyprint"]
@@ -36,6 +67,7 @@ class CompletionRequest(BaseModel):
     max_completion_tokens: int | None = Field(default=None, ge=1, le=1024)
     stream: Literal[False] = False
     n: Literal[1] = 1
+    response_format: JsonResponseFormat | None = None
 
     @field_validator("stream", "n", mode="before")
     @classmethod
@@ -63,6 +95,7 @@ class MessagesRequest(BaseModel):
     messages: list[MessagesInput] = Field(min_length=1, max_length=1)
     max_tokens: int = Field(ge=1, le=1024)
     stream: Literal[False] = False
+    output_config: OutputConfig | None = None
 
     @field_validator("stream", mode="before")
     @classmethod
@@ -188,6 +221,11 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
         if protocol == "openai" and params.max_tokens is not None and params.max_completion_tokens is not None:
             return fail("Choose one token cap", 400)
         cap = params.max_tokens if protocol == "anthropic" else params.max_completion_tokens or params.max_tokens or 128
+        schema = None
+        if protocol == "openai" and params.response_format is not None:
+            schema = params.response_format.json_schema.schema_value
+        elif protocol == "anthropic" and params.output_config is not None:
+            schema = params.output_config.format.schema_value
         content = params.messages[0].content
         prompt = content if isinstance(content, str) else content[0].text
         request_id = ("msg_" if protocol == "anthropic" else "chatcmpl-") + uuid.uuid4().hex
@@ -219,16 +257,24 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                 try:
                     result = await asyncio.get_running_loop().run_in_executor(worker, lambda: model[0].generate(
                         prompt, max_tokens=cap, output=output / request_id,
-                        cancel_event=cancellation))
+                        cancel_event=cancellation, **({"json_schema": schema} if schema is not None else {})))
                 except KeyprintCancelled:
                     response = fail("Generation cancelled; private receipts retained. This attempt will not restart.", 410, request_id)
                 except ValueError:
-                    response = fail("Prompt is outside this model's supported input contract", 400, request_id)
+                    response = fail("Prompt or JSON schema is outside this model's supported input contract", 400, request_id)
+                except ImportError:
+                    response = fail("The server lacks an optional dependency for this request", 400, request_id)
                 except Exception:
                     pass
                 else:
                     payload = result.report.get("payload", result.report)
                     usage = result.report.get("usage")
+                    structured = result.report.get("structured_output")
+                    if schema is not None and (not isinstance(structured, dict)
+                            or structured.get("schema_validated") is not (payload.get("completion") == "eos")):
+                        raise ValueError("Structured request has no matching validation receipt")
+                    format_receipt = ({"structured_output": {name: structured[name] for name in
+                                      ("status", "schema_validated")}} if structured is not None else {})
                     if protocol == "anthropic":
                         if payload.get("completion") not in ("eos", "length") or not isinstance(usage, dict):
                             raise ValueError("Generation has no completed usage receipt")
@@ -238,7 +284,7 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                             "stop_sequence": None,
                             "usage": {"input_tokens": usage["prompt_tokens"], "output_tokens": usage["completion_tokens"]},
                             "keyprint": {"mode": "local_marked_generation", "hosted_provider": False,
-                                         "detection_calibrated": False}}, headers={"request-id": request_id})
+                                         "detection_calibrated": False, **format_receipt}}, headers={"request-id": request_id})
                     else:
                         response = JSONResponse({"id": request_id, "object": "chat.completion",
                             "created": int(time.time()), "model": "keyprint",
@@ -246,7 +292,7 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                                          "finish_reason": "stop" if payload.get("completion") == "eos" else "length",
                                          "logprobs": None}], "usage": usage,
                             "keyprint": {"mode": "local_marked_generation", "hosted_provider": False,
-                                         "detection_calibrated": False}}, headers={"x-request-id": request_id})
+                                         "detection_calibrated": False, **format_receipt}}, headers={"x-request-id": request_id})
                 with (output / (request_id + "-finished.json")).open("x") as stream:
                     json.dump({"request_id": request_id, "http_status": response.status_code}, stream)
                     stream.flush()

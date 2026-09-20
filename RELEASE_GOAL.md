@@ -16,6 +16,15 @@ but JSON formatting, invented email detail and a changed French deadline remain
 visible failures. This advances model coverage without closing output quality,
 detection or release gates. Hosted CI remains disabled at the user's request.
 
+The optional Transformers JSON path now applies a bounded LLGuidance grammar
+before base filtering and watermark sampling, then independently validates
+completed output. The Python/CLI APIs and local OpenAI/Anthropic typed-client
+helpers use the same path. Real SmolLM3 tests retain two fenced-JSON controls,
+six successful constrained outputs, two typed-client responses and one explicitly
+incomplete token cap. This addresses a format failure through a requested schema,
+without repairing the older unconstrained samples or claiming semantic/detection
+acceptance. Structured output under MLX/native frameworks remains open.
+
 ## Current release gates
 
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
