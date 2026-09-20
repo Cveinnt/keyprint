@@ -904,7 +904,7 @@ allocator cache returns to zero after each document; tracked MLX peak is about
 timing benchmark, a general numerical proof or a causal diagnosis of the earlier
 disk failure. No new source task is inspected during preflight.
 
-A separate recovery run is now measuring every and only the **212** original
+A separate recovery run completed every and only the **212** original
 disk-guard cases that had no model-head or score files. The original **288** valid
 records and receipts are retained byte-for-byte. All 500 source tasks, prompts,
 keys, model assets, literal tokenization and scoring parameters stay fixed. New
@@ -913,10 +913,13 @@ reserved in addition to the original 2 GiB guard. The original attempt remains
 incomplete. This is operational completion of an already selected sample, not a
 fresh independent sample or a retroactive first-attempt pass.
 
-The ordinary numerical auditor rechecks the full combined record stream. A
-second provenance audit must bind the failed parent, exact recovery set,
-unchanged retained records, preflight parity and resource policy before the
-notebook can export a recovered result. No combined final result is claimed yet.
+The combined screen has **500 available controls, zero flags and zero errors**.
+Its one-sided 97.5% upper bound is **0.7351% under an IID assumption** that this
+corpus cannot establish; this is not deployment calibration. The numerical audit
+reconciles 106,338 heads, 1,000 scores and 212,676 terms, including 197,382 direct
+transforms, with maximum aggregate discrepancy 2.85e-14. A second provenance
+audit passes for the failed parent, exact recovery set, unchanged retained
+records, preflight parity and resource policy. Both executions remain explicit.
 Thirty-eight focused export, recovery, selection and audit tests pass. SDK code
 and its allocator policy remain unchanged.
 
@@ -966,8 +969,12 @@ or horizontal overflow. Screenshots and QA receipts remain outside source contro
 This is a research evidence surface, not a replacement for the real-model SDK
 playground or a claim of universal detector validity.
 
-The recovered-result branch remains pending actual completed recovery data and
-both audits; it is not claimed as rendered or statistically accepted yet.
+The recovered-result notebook also passes actual Chrome checks with all 500
+controls available. It displays the 288 retained and 212 recovered origins,
+original incomplete attempt, conditional IID-only bound and unchanged 24
+responses/twelve requests. Both desktop and mobile views pass without console
+errors or horizontal overflow. This completes the scoped recovered corpus
+screen, not quality acceptance or deployment calibration.
 
 The ideal random-key argument does not establish fixed-HMAC-key deployment
 calibration, finite-precision error guarantees or robustness to key-dependent

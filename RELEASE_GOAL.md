@@ -262,22 +262,27 @@ bound is reported. An independent audit reconciles all 500 attempt records,
 screen does not. The original attempt must remain unchanged through any separately
 declared operational recovery. Hosted CI remains disabled.
 
-A separately declared recovery is now measuring all 212 previously unmeasured
+A separately declared recovery completed all 212 previously unmeasured
 disk-guard cases, retaining the 288 valid original cases without regeneration.
 A cache-disabled preflight on three already scored controls reproduces all 588
 raw heads and six scores exactly, with about 5.6 GB tracked peak memory. Source,
 keys, model and scoring rules remain fixed; compact receipts reduce storage.
-The full numerical audit and a separate provenance audit are required before
-reporting a combined outcome. The original no-retry attempt stays incomplete;
-the recovered sample cannot be described as fresh. Thirty-eight focused checks
-pass. SDK behavior and public release gates are unchanged.
+All 500 controls are available with zero flags or errors. The numerical audit
+reconciles 106,338 heads, 1,000 scores and 212,676 terms, with maximum score
+discrepancy 2.85e-14; the separate provenance audit also passes. The one-sided
+97.5% IID-only upper bound is 0.7351%, conditional on independence this corpus
+cannot establish. The original no-retry attempt stays incomplete; the recovered
+sample cannot be described as fresh. Thirty-eight focused checks pass. SDK
+behavior and public release gates are unchanged.
 
 An offline evidence notebook now combines all twelve generated pairs and all
 500 control attempt records. Exact text, category filters, keyboard record
 navigation, mobile response switching and explicit unavailable states pass
 rendered Chrome checks on the original incomplete study. Eight export-integrity
-tests plus thirty null/recovery tests pass. Rendering a final recovered result
-still awaits both audits. SDK behavior and release gates remain unchanged.
+tests plus thirty null/recovery tests pass. The final recovered result also
+passes rendered Chrome desktop/mobile checks, including both execution origins,
+the original failure and conditional IID-only bound. SDK behavior and release
+gates remain unchanged.
 
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
