@@ -191,6 +191,22 @@ or public-launch status as a workaround.
 
 ## First-use acceptance
 
+Default MLX generation now uses the unchanged frozen V3 sampling host with a
+separately identified bounded UTF-8 finalizer. The archived strict research
+caller is preserved. A fresh installed wheel passes 508 Python tests; twelve
+real Qwen ordinary/marked pairs compare the new caller with independent frozen
+executions, matching all 494 tokens per path, probability/draw records, text,
+literal diagnostics and consumed work. Independent reconciliation verifies all
+988 commits. The original 192-token failure also replays successfully through
+the new default with all 192 model heads and 302 draws matched and pending bytes
+e2 9c retained; the original failed study remains unchanged. Real OpenAI and
+Anthropic clients pass text/usage receipt and replay checks. Actual
+Anthropic-client cancellation retains consumed work, replays the terminal error
+and permits a fresh response on the same worker. Complete output, EOS and manual
+pipeline finalization retain their strict behavior. These are scoped correctness
+checks, not quality, calibration or serving-cost acceptance. Native framework
+cap handling remains separate work.
+
 At the user's September 20 request, both hosted CI workflows are manually
 disabled to stop pre-execution failure notifications. Continue with local
 installed-wheel and actual-inference checks; do not re-enable or repeatedly

@@ -13,18 +13,23 @@ from .fast_caller import run_response as _run_response, ResponseFailure
 
 
 class FastPublicCandidate(PublicCandidate):
+    core_type = FastCandidate
+    facade_version = "keyprint-experimental-fast-facade-v1"
+    integration_status = "experimental_sparse_execution_lifecycle_qualification_pending"
+    package_scope = "Experimental sparse execution; no new model-family, scientific or serving acceptance"
+
     def __init__(self, reference):
         if type(reference) is not PublicCandidate:
             raise TypeError("An exact reference facade is required")
         reference._ready()
-        self._core = FastCandidate(reference._core)
+        self._core = self.core_type(reference._core)
         self._owner, self._busy = get_ident(), False
         self._target = self._core.identity
         engine = self._target["specification"]["inherited_engine_identity"]
         self._scorer = {"runtime_profile_sha256": engine["runtime_profile_sha256"],
                         "score_namespace_sha256": engine["score_namespace_sha256"],
                         "runtime_max_steps": engine["max_steps"]}
-        spec = {"version": "keyprint-experimental-fast-facade-v1",
+        spec = {"version": self.facade_version,
                 "core_runtime_profile_sha256": self._target["runtime_profile_sha256"],
                 "sources": {Path(p).name: hashlib.sha256(Path(p).read_bytes()).hexdigest()
                             for p in (__file__, reference_public.__file__, contract.__file__, literal_contract.__file__)},
@@ -33,8 +38,8 @@ class FastPublicCandidate(PublicCandidate):
 
     def _decorate(self, report):
         report = super()._decorate(report)
-        report["integration_status"] = "experimental_sparse_execution_lifecycle_qualification_pending"
-        report["package_scope"] = "Experimental sparse execution; no new model-family, scientific or serving acceptance"
+        report["integration_status"] = self.integration_status
+        report["package_scope"] = self.package_scope
         return report
 
     def _error(self, phase, *, exc=None, failure=None, receipt=None):

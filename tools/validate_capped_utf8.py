@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--expected-runtime', required=True)
     parser.add_argument('--postmortem', type=Path, required=True)
+    parser.add_argument('--execution', choices=['reference', 'experimental-fast'], default='experimental-fast')
     args=parser.parse_args()
     if Path(args.attempt).name!=args.attempt:raise ValueError('Attempt must be a single directory name')
     args.output.mkdir(mode=0o700)
@@ -40,7 +41,7 @@ def main():
         raise ValueError('Postmortem belongs to another original attempt')
     declaration={'original_journal_sha256':sha(source/'journal.jsonl'),
         'original_postmortem_sha256':sha(args.postmortem),
-        'expected_runtime':args.expected_runtime, 'validator_sha256':sha(Path(__file__)),
+        'expected_runtime':args.expected_runtime, 'execution':args.execution, 'validator_sha256':sha(Path(__file__)),
         'scope':__doc__}
     (args.output/'declaration.json').write_text(json.dumps(declaration,indent=2))
     import mlx.core as mx
@@ -48,7 +49,7 @@ def main():
     from keyprint import Keyprint
     from keyprint._engine.research.keyprint_candidate_v3_caller import DurableJournal
     key=(args.run/'owner.key').read_bytes()
-    sdk=Keyprint.from_mlx(args.model,key=key,execution='experimental-fast')
+    sdk=Keyprint.from_mlx(args.model,key=key,execution=args.execution)
     if (sdk.identity['runtime_profile_sha256']!=args.expected_runtime
             or args.expected_runtime==starts[0]['runtime_profile_sha256']):
         raise ValueError('Must use the separately declared new runtime')

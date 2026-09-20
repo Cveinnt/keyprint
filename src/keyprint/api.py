@@ -64,6 +64,9 @@ class Keyprint:
         if execution == "experimental-fast":
             from .experimental.fast_public import FastPublicCandidate
             instance._candidate = FastPublicCandidate(instance._candidate)
+        else:
+            from .backends.mlx_bounded import BoundedReferencePublicCandidate
+            instance._candidate = BoundedReferencePublicCandidate(instance._candidate)
         from .backends.mlx import MLXModel
         instance._backend = MLXModel.load(Path(model))
         return instance

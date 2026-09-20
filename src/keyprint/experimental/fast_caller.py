@@ -1,8 +1,9 @@
-"""Separately identified experimental caller; frozen caller remains untouched.
+"""Shared caller for separately bound capped-reference and sparse execution.
 
 Preserves its durable draw/commit ordering, caps, failure receipts and cache
-lifecycle. Only the accepted candidate class and runtime version differ. Uses
-shared frozen journal/failure types so close failures retain the same evidence.
+lifecycle. The frozen caller remains untouched. Exact candidate classes bind
+their sampling host and finalization; shared frozen journal/failure types keep
+close failures in the same consumed-work accounting.
 """
 from __future__ import annotations
 from dataclasses import asdict
@@ -50,9 +51,13 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
         raise TypeError("model, random_bits and reserve must be callable")
     if not isinstance(journal, DurableJournal) or journal.broken or journal.sequence != 0:
         raise ValueError("a fresh durable journal is required; attempts cannot resume")
-    from .fast_mlx import FastCandidate as V3Candidate
-    if type(candidate) is not V3Candidate:
-        raise ValueError("caller requires the bound experimental sparse candidate class")
+    from .fast_mlx import FastCandidate
+    expected_version = "keyprint-mlx-sparse-experimental-v1"
+    if type(candidate) is not FastCandidate:
+        from ..backends.mlx_bounded import BoundedReferenceCandidate, VERSION
+        if type(candidate) is not BoundedReferenceCandidate:
+            raise ValueError("caller requires an exact bound Keyprint candidate class")
+        expected_version = VERSION
     settings = candidate.filter_settings
     if temperature is not None and temperature != settings['temperature']:
         raise ValueError("caller temperature must match the candidate-bound shared filter")
@@ -63,14 +68,13 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
     runtime = identity.get("runtime_profile_sha256")
     namespace = identity.get("score_namespace_sha256")
     specification = identity.get("specification")
-    if (type(candidate) is not V3Candidate
-            or identity.get("version") != "keyprint-mlx-sparse-experimental-v1"
+    if (identity.get("version") != expected_version
             or not isinstance(runtime, str) or len(runtime) != 64 or runtime == V1_RUNTIME
             or type(specification) is not dict or digest(specification) != runtime
             or specification.get("randomness_api") != "independent_uniform_random_bits(k)_integer_v2"
             or namespace != specification.get("inherited_engine_identity", {}).get("score_namespace_sha256")
             or identity.get("deployment_calibrated") is not False):
-        raise ValueError("caller requires the bound experimental sparse candidate class, runtime and score namespace")
+        raise ValueError("caller requires the bound candidate class, runtime and score namespace")
     bound_filter = specification['shared_filter']['specification']
     if settings != {name: bound_filter[name] for name in ('temperature','top_k','max_logit_gap')}:
         raise ValueError("candidate filter settings differ from its runtime identity")

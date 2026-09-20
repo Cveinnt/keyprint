@@ -17,6 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--execution", choices=["reference", "experimental-fast"], default="experimental-fast")
     args = parser.parse_args()
     require_storage(args.output)
     args.output.mkdir(mode=0o700)
@@ -24,20 +25,23 @@ def main():
     public.mkdir()
     from keyprint import Keyprint
     from keyprint.experimental.fast_public import FastPublicCandidate
+    from keyprint.backends.mlx_bounded import BoundedReferencePublicCandidate
     from keyprint._engine.research.keyprint_candidate_v3_caller import DurableJournal
     from keyprint.backends.mlx import MLXModel
     cases_path = Path(__file__).with_name("inference_cases.json")
     cases = json.loads(cases_path.read_text())
     reference = Keyprint(key=bytes(range(32)))._candidate
-    fast = FastPublicCandidate(reference)
+    label = "bounded_reference" if args.execution == "reference" else "fast"
+    tested = BoundedReferencePublicCandidate(reference) if args.execution == "reference" else FastPublicCandidate(reference)
     plan = {
         "scope": __doc__, "cases": cases, "script_sha256": sha(Path(__file__)),
         "cases_sha256": sha(cases_path), "reference_identity": reference.core_identity,
-        "fast_identity": fast.core_identity, "model_path": str(args.model.resolve()),
+        label + "_identity": tested.core_identity, "candidate_label": label,
+        "execution": args.execution, "model_path": str(args.model.resolve()),
         "versions": {p: importlib.metadata.version(p) for p in ("keyprint", "mlx", "mlx-lm", "numpy")},
         "key": "Public fixture bytes 0..31",
         "randomness": "Independent Random(20260920 + case index) per execution and condition",
-        "order": "Alternate reference/fast first by case index; fresh caller cache for each execution",
+        "order": "Alternate frozen reference/tested execution first by case index; fresh caller cache for each execution",
         "failure_rule": "Retain all attempts without retries or replacements",
     }
     (public / "plan.json").write_text(json.dumps(plan, indent=2))
@@ -49,7 +53,7 @@ def main():
             row = {"case": case["id"], "condition": condition, "max_tokens": case["max_tokens"],
                    "executions": {}, "checks": {}, "errors": []}
             reports = {}
-            order = (("reference", reference), ("fast", fast))
+            order = (("reference", reference), (label, tested))
             if index % 2: order = tuple(reversed(order))
             for name, candidate in order:
                 directory = args.output / f"{case['id']}-{condition}-{name}"
@@ -76,12 +80,12 @@ def main():
                 except Exception as exc:
                     row["errors"].append({"execution": name, "type": type(exc).__name__, "message": str(exc)})
             if len(reports) == 2 and all(r["kind"] == "generation_trace" for r in reports.values()):
-                a, b = reports["reference"], reports["fast"]
+                a, b = reports["reference"], reports[label]
                 for field in ("committed_token_ids", "sampling_records", "completion", "literal_diagnostics"):
                     row["checks"][field] = a["payload"][field] == b["payload"][field]
                 row["checks"]["rendered_text"] = a["rendered_carriers"] == b["rendered_carriers"]
                 row["checks"]["distinct_execution_identity"] = a["target_identity"] != b["target_identity"]
-                row["checks"]["same_consumed_work"] = row["executions"]["reference"]["reservations"] == row["executions"]["fast"]["reservations"]
+                row["checks"]["same_consumed_work"] = row["executions"]["reference"]["reservations"] == row["executions"][label]["reservations"]
                 row["tokens_per_execution"] = len(a["payload"]["committed_token_ids"])
                 row["completion"] = a["payload"]["completion"]
             else:

@@ -150,8 +150,10 @@ replacement character or extra model call is introduced. The report marks
 full-carrier literal replay and the tokenizer rendering check unavailable for
 that partial character. Complete carriers still require exact tokenizer
 agreement; malformed bytes and partial characters at EOS remain errors. This
-repair does not change the frozen default MLX caller or the native SGLang/vLLM
-rendering paths.
+repair does not change the native SGLang/vLLM rendering paths. Default MLX
+generation now separately uses reference sampling with the same retained-byte
+token-limit policy. Its `keyprint.bounded-reference-report.v1` reports carry a
+new runtime identity; the archived research caller remains unchanged.
 
 ## Inspect a local rewrite of GPT or Claude prose
 

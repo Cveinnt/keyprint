@@ -168,16 +168,19 @@ An opt-in execution candidate is available with
 `Keyprint.from_mlx("models/qwen3-8b-4bit", key=..., execution="experimental-fast")`.
 It reuses a bound candidate and preserves durable generation/cancellation
 receipts with a distinct experimental runtime and reporting schema. The default
-remains the reference path. See [performance evidence](PERFORMANCE.md#separately-identified-experimental-execution)
+uses reference sampling with separately identified token-limit finalization.
+See [performance evidence](PERFORMANCE.md#separately-identified-experimental-execution)
 for the validation scope; this option does not establish a serving-speed claim.
 
-On this experimental path, a token limit inside a UTF-8 character returns the
+On both MLX execution paths, a token limit inside a UTF-8 character returns the
 valid text prefix with `completion="length"`. The report's `carrier_rendering`
 retains every committed token ID and the unfinished bytes as `pending_utf8_hex`.
 That carrier's literal-score diagnostic is unavailable; the rendered prefix is
 not presented as the complete sampled text. EOS, channel boundaries and invalid
-byte sequences remain strict. The default reference path has not adopted this
-behavior.
+byte sequences remain strict. Default MLX reports use the
+`keyprint.bounded-reference-report.v1` schema. The archived research engine and
+its strict finalizer remain unchanged; old results retain their original runtime
+identities and do not automatically qualify the repaired caller.
 
 ## What works, and what does not
 

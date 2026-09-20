@@ -84,6 +84,22 @@ No extra token is generated to complete the character. Every search output stays
 in the report; failure to find or reproduce a partial prefix exits unsuccessfully.
 This is a boundary regression, not an output-quality or failure-rate estimate.
 
+Compare the repaired default MLX caller against the frozen research caller using
+independently executed real model forwards, identical fixture draws, and fresh
+response caches:
+
+```sh
+python tools/validate_fast_caller.py --execution reference \
+  --model models/qwen3-8b-4bit --output private-bounded-reference-parity
+python tools/audit_fast_caller.py --run private-bounded-reference-parity
+```
+
+The historical tool name is retained; `--execution reference` selects the new
+bounded reference caller as the candidate. The comparison side always uses the
+archived strict caller. Omitting this flag tests experimental-fast instead.
+The audit binds sources, prompts, conditions, token caps, journal chains, model
+sampling records and generated text. Results establish scoped parity only.
+
 To exercise client timeout recovery separately:
 
 ```sh

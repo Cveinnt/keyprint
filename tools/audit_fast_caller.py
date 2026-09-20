@@ -19,12 +19,17 @@ def main():
     summary = json.loads((public / "summary.json").read_text())
     from keyprint.backends.mlx import ASSETS
     from keyprint.experimental.fast_mlx import execution_specification
+    label = plan.get("candidate_label", "fast")
+    if label == "bounded_reference":
+        from keyprint.backends.mlx_bounded import execution_specification
+    elif label != "fast":
+        raise ValueError("Unknown measured execution")
     from transformers import AutoTokenizer
     if sha(Path(__file__).with_name("validate_fast_caller.py")) != plan["script_sha256"]:
         raise ValueError("Original caller validator changed")
     if sha(Path(__file__).with_name("inference_cases.json")) != plan["cases_sha256"]:
         raise ValueError("Original cases changed")
-    if plan["fast_identity"]["specification"]["execution"] != execution_specification():
+    if plan[label + "_identity"]["specification"]["execution"] != execution_specification():
         raise ValueError("Installed experimental execution differs from measured source")
     model = Path(plan["model_path"])
     for name in ("tokenizer.json", "tokenizer_config.json"):
@@ -42,7 +47,7 @@ def main():
             if row["status"] != "pass" or row["errors"] or not all(row["checks"].values()):
                 raise ValueError("Failed or incomplete pair")
             reports = []
-            for execution in ("reference", "fast"):
+            for execution in ("reference", label):
                 path = root / (name + "-" + execution)
                 item = row["executions"][execution]
                 for filename, field in (("report.json", "report_sha256"), ("journal.jsonl", "journal_sha256")):
