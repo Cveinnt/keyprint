@@ -33,6 +33,13 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+A lossless vector-commitment prototype now passes 75 local codec/audit checks.
+An offline audit of twelve retained Qwen outputs reconciles 490 tokens and
+1,470 vectors after correcting a probe-only report-field assumption. The failed
+probe remains recorded; SDK runtime and receipt contracts are unchanged. See
+[prototype and migration requirements](tools/VECTOR_COMMITMENTS.md). Helper
+speedups are not SDK cost acceptance; the measured runtime below is still current.
+
 Bounded native selection now preserves the complete reference filter law and
 receipt format. The matching `keyprint-native 0.1.0a2` wheel is required before
 model loading; an actual older wheel fails early. The current installation

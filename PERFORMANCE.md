@@ -1,11 +1,16 @@
 # Sampling performance
 
 The latest complete-path comparison fails the lightweight-runtime target:
-marked Keyprint takes 1.2812 times MLX-LM's time per token on the fixed local
+marked Keyprint takes 1.1376 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
-Exact partition filtering reduced the preceding 1.5266 ratio, but has not met
-the 1.05 screen. See [integrated partition filtering](#integrated-partition-filtering) before using
+Partition filtering, reused setup and bounded native selection reduced the
+preceding 1.5266 ratio, but have not met the 1.05 screen. See the bounded native
+selection results below before using
 any of the helper or within-SDK results below as a performance claim.
+
+The next [lossless vector-commitment experiment](tools/VECTOR_COMMITMENTS.md)
+remains outside the SDK. Its sparse helper improvement and exact reconstruction
+checks do not change the current end-to-end result or legacy receipt hashes.
 
 The portable Transformers backend and experimental SGLang/vLLM adapters use
 sparse execution of the existing binary64 sampling law. Post-filter excluded
