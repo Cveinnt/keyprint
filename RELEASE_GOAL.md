@@ -33,6 +33,18 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The latest optional-native candidate vectorizes digest-bit decoding for batches
+of at least 32 labels. Its isolated wheel installation passes 1,314 tests with
+zero skips; all 83 package files match source and wheel. Actual reference/native
+caller parity covers 24 outputs and 988 tokens. Both local client lifecycle
+checks and eleven structured requests pass. A full-path audit reconciles 72
+measured outputs, three warmups and 3,072 tokens. Marked/engine time per token is
+1.072251 (one-sided 95% upper 1.081295), so the unchanged 1.05 cost screen still
+fails. The default/reference path, native binary and journal contract are
+unchanged. This is macOS ARM64 evidence using existing pinned dependencies;
+no new platform, quality, detection or public-release acceptance follows.
+See [performance scope and retained failures](PERFORMANCE.md#native-digest-decoding).
+
 The installed playground now puts the real responses ahead of secondary display
 controls, keeps custom prompts in a keyboard-accessible disclosure, and provides
 an ordinary/marked response switch on narrow screens. Actual Qwen browser QA

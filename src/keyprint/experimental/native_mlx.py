@@ -19,6 +19,18 @@ from .._engine.research.keyprint_candidate_v3.adapter import digest
 VERSION = 'keyprint-mlx-native-experimental-v2'
 
 
+def _decode_bits(raw, labels, layers):
+    """Decode the trusted native batch without changing label/layer ordering."""
+    if len(labels) < 32:
+        return {label: tuple(raw[(index * layers + layer) * 32] & 1
+                             for layer in range(layers))
+                for index, label in enumerate(labels)}
+    # Every native digest is 32 bytes, label-major then layer-major. Convert
+    # only its first byte to a bit; tolist keeps the public table's Python ints.
+    bits = np.frombuffer(raw, dtype=np.uint8).reshape(len(labels), layers, 32)[:, :, 0] & 1
+    return dict(zip(labels, map(tuple, bits.tolist())))
+
+
 def native_backend():
     try:
         from keyprint_native import NativePRF
@@ -83,8 +95,7 @@ class _NativeProfile(_ContextProfile):
             batch=labels[start:start+1000]
             suffixes=[len(label).to_bytes(8,'big')+label for label in batch]
             raw=self._native.digests(key,prefix,suffixes,layers)
-            for index,label in enumerate(batch):
-                result[label]=tuple(raw[(index*layers+layer)*32]&1 for layer in range(layers))
+            result.update(_decode_bits(raw, batch, layers))
         return result
 
     def bits(self,key,context,label):

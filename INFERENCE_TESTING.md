@@ -943,6 +943,17 @@ and the deterministic CLI demo pass. All 83 SDK files match the retained wheel
 and installed environment. This is macOS ARM64/Python 3.13 evidence, not a fresh
 Linux/Python 3.12 or broad-framework CI matrix. It does not finish the null study.
 
+The later native digest decoder candidate passes **1,314 local Python tests
+without skips** from an isolated wheel target using the existing pinned
+dependency environment. Its SDK package files match source and wheel. Actual
+reference/native replay retains 24 identical outputs and 988 tokens; both local
+typed-client cancellation/reuse checks pass. Eleven structured requests
+reconcile 213 tokens and 175 masks. Whole-path timing retains 72 outputs and three
+warmups; independent audit reconciles 3,072 tokens. The unchanged cost screen
+still fails at 1.081295 upper marked/engine ratio. See
+[native digest decoding](PERFORMANCE.md#native-digest-decoding). Default reference
+execution and the frozen prompt-aware research score are unchanged.
+
 ### Interactive evidence notebook
 
 `tools/render_detection_evidence.py` combines the twelve audited generated pairs

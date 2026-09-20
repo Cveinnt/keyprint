@@ -84,6 +84,35 @@ def test_native_table_batches_large_explicit_label_sets():
     assert profile.table(key,context,labels)=={label:ref.bits(key,context,label) for label in labels}
 
 
+@pytest.mark.parametrize('size', [1, 31, 32, 33, 1000])
+@pytest.mark.parametrize('layers', [1, 30, 64])
+def test_native_digest_bit_decoding_matches_scalar_byte_order(size, layers):
+    from keyprint.experimental.native_mlx import _decode_bits
+    rng = random.Random(size * 100 + layers)
+    raw = rng.randbytes(size * layers * 32)
+    labels = [f'label-{i}'.encode() for i in range(size)]
+    # Include duplicate labels: final value wins without changing first order.
+    if size > 1:
+        labels[-1] = labels[0]
+    expected = {label: tuple(raw[(i * layers + j) * 32] % 2 for j in range(layers))
+                for i, label in enumerate(labels)}
+    actual = _decode_bits(raw, labels, layers)
+    assert list(actual.items()) == list(expected.items())
+    assert all(type(row) is tuple and all(type(bit) is int for bit in row)
+               for row in actual.values())
+
+
+@pytest.mark.parametrize('size', [31, 32, 33])
+def test_native_table_threshold_matches_independent_hmac_profile(size):
+    ref = Candidate()._base._binding.profile
+    profile = _NativeProfile(ref, native_module.NativePRF())
+    labels = [f'字-{i}'.encode() + b'\x00\xff' for i in range(size)]
+    key = bytes(reversed(range(32)))
+    context = (b'prior\x00', 'é'.encode())
+    assert profile.table(key, context, labels) == {
+        label: ref.bits(key, context, label) for label in labels}
+
+
 @pytest.mark.parametrize('failure', ['nan', 'padded_inf', 'wrong_dtype', 'invalid_utf8'])
 def test_filter_and_post_commit_failures_match_reference_receipts(failure):
     ref = Candidate()

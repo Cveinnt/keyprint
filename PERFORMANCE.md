@@ -1,11 +1,12 @@
 # Sampling performance
 
 The latest complete-path comparison fails the lightweight-runtime target:
-marked Keyprint takes 1.1082 times MLX-LM's time per token on the fixed local
+marked Keyprint takes 1.0723 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
-The new filter's helper improvement did not establish a full SDK improvement:
-the preceding runtime measured 1.0939. The unchanged 1.05 screen still fails.
-See [the range-check experiment](#full-gap-range-check) before using
+The latest one-sided 95% upper ratio is 1.0813. Previous separate studies
+measured 1.1082 and 1.0939; independent outputs and background activity prevent
+attributing those differences solely to code. The unchanged 1.05 screen fails.
+See [native digest decoding](#native-digest-decoding) before using
 any of the helper or within-SDK results below as a performance claim.
 
 The [lossless vector encoding](tools/VECTOR_COMMITMENTS.md) is integrated only
@@ -865,6 +866,48 @@ range shortcut; saved hashes, reports and journals reconcile. This rules out an
 unused shortcut in that probe, but supplies no serving-speed or acceptance
 claim. A better-controlled comparison is needed before calling this an SDK
 performance improvement. No quality, detection, cost or release gate closes.
+
+### Native digest decoding
+
+A fresh profile of the preceding runtime retains twelve outputs and 501 tokens.
+It identifies repeated Python label/layer loops in native digest decoding. The
+native path now decodes batches of at least 32 labels with NumPy byte views,
+while retaining scalar decoding for small batches. Label-major/layer-major
+order, Python integer bits, duplicate-label handling and the full native HMAC
+bytes stay unchanged. The native binary, default reference execution, sampling
+law and durable journal policy are unchanged; the execution source hash changes.
+
+Eighteen decoder/threshold cases plus the existing native suite pass. An
+isolated wheel target using the existing dependency runtime passes **1,314 tests
+without skips**; all 83 package files match source, wheel and installation.
+This is not a fresh dependency installation or cross-platform qualification.
+Twelve actual Qwen caller pairs reconcile 24 outputs and 988 tokens, including
+exact text, random draws, probability bytes and consumed work. Both local client
+protocols pass cancellation/replay/reuse checks. Eleven structured requests
+reconcile 213 tokens and 175 grammar masks. These are engineering checks, not
+quality approval or hosted GPT/Claude sampler integration.
+
+Decoder-only measurements retain seven alternating-order pairs per setting.
+For the default 30 layers, candidate/scalar median ratios are 0.1486 at 32
+labels, 0.1310 at 100 and 0.1261 at 1,000. One-label and 31-label cases retain
+ratios near one. These numbers exclude HMAC, model inference and serving.
+
+The unchanged full-path workload retains all 72 outputs and three warmups. Its
+independent audit reconciles 3,072 tokens, including 995 upstream-engine tokens,
+all text/rendering receipts, SDK journals and statistical arithmetic:
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.052950 | 1.058760 |
+| Marked Keyprint / MLX-LM | 1.072251 | 1.081295 |
+| Marked / ordinary Keyprint | 1.018330 | 1.024416 |
+
+The complete-path 5% screen still **fails**. Marking-only cost passes this small
+within-SDK screen. Marked/engine whole-request latency is 1.174492 (upper
+1.194106), retaining differing generated lengths. Unrelated VM and desktop
+workloads stayed running; no other model/test workload was active during timing.
+There were no replacements, retries or outlier exclusions. This observation
+does not isolate a causal speedup or establish production serving acceptance.
 
 ## Remaining qualification
 
