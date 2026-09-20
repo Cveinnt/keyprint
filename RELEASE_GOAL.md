@@ -171,6 +171,16 @@ The frozen reference/default caller remains unchanged. The original failed
 confirmation remains failed, and the new runtime needs fresh timing confirmation.
 This repairs a concrete experimental-path blocker without closing a release gate.
 
+The post-repair repetition completed all 64 measured requests and sixteen warmups
+without errors. Independent byte/draw reconciliation verified 10,727 committed
+tokens and 16,441 draws. Twenty-eight measured outputs were capped; all original
+texts are retained. The unchanged serving screen still fails: marked/ordinary
+seconds per token 1.053402, one-sided 95% upper 1.057928. This is a repetition of
+the same workload, not unseen-task validation. The original failed study stays
+failed. A post-hoc source review of 24 outputs also identifies classification
+contradictions and unsupported additions in both paths. Quality and A18 remain
+open. Profile the failed workload before proposing another execution change.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code

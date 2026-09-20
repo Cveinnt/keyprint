@@ -6,6 +6,7 @@ from pathlib import Path
 
 from analyze_mlx_capacity import read_journal
 from audit_serving import verify_output
+from audit_capped_rendering import verify_rendering
 from benchmark_serving import sha, summarize
 from serving_confirmation import select_cases, CORPUS_SHA
 from validate_compatibility import screens, write_report
@@ -32,6 +33,13 @@ def main():
         raise ValueError("Selected original corpus workload differs")
     if load["identity"]["runtime_profile_sha256"] != plan["expected_runtime_sha256"]:
         raise ValueError("Runtime changed after freezing candidate")
+    byte_audit = 'capped_utf8.py' in load['identity']['specification']['execution']['sources']
+    if byte_audit:
+        from keyprint.experimental.fast_reporting import _experimental_target
+        from keyprint._engine.legacy._impl.research.token_runtime_binding import runtime_binding
+        from keyprint._engine.legacy._impl.research.token_channel_host import EOS
+        _experimental_target(load['identity'])
+        token_bytes = runtime_binding(max_steps=load['identity']['max_steps']).token_bytes
     from keyprint.backends.mlx import ASSETS
     from transformers import AutoTokenizer
     for name in ("tokenizer.json", "tokenizer_config.json"):
@@ -48,6 +56,7 @@ def main():
             for condition in ("ordinary", "marked"):
                 expected.append((case, repeat, condition, f"{case['id']}-{repeat}-{condition}", case["max_tokens"]))
     rows, comparisons, token_count, capped = [], [], 0, 0
+    byte_checks = []
     for case, repeat, condition, name, cap in expected:
         row = json.loads((public / (name + ".json")).read_text())
         if (row["id"] != name or row["case"] != case["id"] or row["repeat"] != repeat
@@ -62,6 +71,8 @@ def main():
                                            tokenize=True, add_generation_prompt=True, enable_thinking=False,
                                            return_dict=False)
         token_count += verify_output(row, report, events, ids, load["identity"])
+        if byte_audit:
+            byte_checks.append({'id': name, **verify_rendering(report, events, token_bytes, EOS)})
         if repeat < 0:
             continue
         rows.append(row)
@@ -83,7 +94,7 @@ def main():
             or not math.isclose(independent_ratio, analysis["seconds_per_committed_token"]["geometric_mean_ratio"], rel_tol=1e-12)
             or summary["production_overhead_accepted"] is not False):
         raise ValueError("Timing summary differs or overclaims acceptance")
-    comparison = {"backend": "Pinned experimental Qwen3-8B / MLX; eight new Dolly tasks, four retained pairs each; Databricks Dolly, CC-BY-SA-3.0",
+    comparison = {"backend": "Pinned experimental Qwen3-8B / MLX; eight declared Dolly tasks, four retained pairs each; Databricks Dolly, CC-BY-SA-3.0",
                   "cases": [{**case, "id": f"{case['id']}-{repeat}"} for repeat in range(plan["repeats"]) for case in cases],
                   "runs": comparisons}
     comparison["source"] = {k:plan[k] for k in ("source_url", "attribution", "corpus_license", "corpus_revision", "corpus_sha256", "selection")}
@@ -96,6 +107,8 @@ def main():
               "independent_primary_ratio": independent_ratio, "analysis": analysis,
               "plan_sha256": sha(public / "plan.json"), "summary_sha256": sha(public / "summary.json"),
               "script_sha256": sha(Path(__file__)),
+              "byte_audit": {'required': byte_audit, 'outputs': byte_checks,
+                             'script_sha256': sha(Path(__file__).with_name('audit_capped_rendering.py'))},
               "scope": "Stored artifact and arithmetic integrity only; no model-head replay, semantic-quality or native-server-overhead acceptance"}
     with destination.open("x") as stream:
         json.dump(result, stream, indent=2, allow_nan=False)

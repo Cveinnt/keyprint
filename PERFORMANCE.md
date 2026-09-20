@@ -440,6 +440,45 @@ python tools/validate_capped_utf8.py --run ORIGINAL_FAILED_CONFIRMATION \
   --output NEW_PRIVATE_REPLAY
 ```
 
+### Post-repair repetition of the declared workload
+
+The fixed runtime completed 64 measured requests plus sixteen warmups without
+errors: 36 measured outputs reached EOS and 28 reached the token limit. This
+repeats the same eight declared Dolly tasks with new random draws; it is not an
+unseen-workload study. The independent auditor reconciled 10,727 committed tokens
+including warmups and 16,441 random draws. New byte checks reconstruct rendered
+text from all sampled token bytes, check pending-byte receipts and reconcile
+rejection draws, commit order and consumed-work totals. All eighty outputs ended
+on complete UTF-8 boundaries, so the original failure's exact replay and regression
+tests remain the direct evidence for partial-character handling.
+
+Marked/ordinary seconds per committed token were **1.053402**, with a one-sided
+95% upper ratio of **1.057928**. The unchanged 5% screen **fails**. Whole-request
+latency was 1.059622 (upper 1.101163). The earlier narrow development pass does
+not establish negligible serving cost on this workload. All 32 measured text
+pairs and 28 truncation flags remain visible. No production or A18 acceptance
+was added.
+
+A post-hoc, unblinded assistant review covers all 24 outputs from classification,
+closed QA and information extraction. Four marked classification outputs and
+two ordinary outputs contradict the pinned dataset's answer by classifying
+Zidane as a player who never won. One further ordinary response ends before
+classifying the full list. Both paths also add information absent from the
+provided passages. These are source-bound observations, not a blinded quality
+test or a causal estimate of watermark harm. The remaining forty measured
+outputs have not received that source review; quality stays open.
+
+The byte/draw auditor passes 21 focused tests, including serialized SDK reports,
+zero-draw deterministic samples and corrupted receipt rejection. Initial audit
+harness failures were retained and corrected before the final reconciliation;
+SDK execution and the serving study were not changed. To profile this workload
+without presenting instrumented timing as serving evidence:
+
+```sh
+python tools/profile_fast_serving.py --model PINNED_MODEL \
+  --confirmation PRIVATE_CONFIRMATION --output NEW_PRIVATE_PROFILE
+```
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.
