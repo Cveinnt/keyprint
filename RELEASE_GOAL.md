@@ -249,15 +249,24 @@ audit reconciles 9,957 generated-token records, 48 scores and 19,886 terms withi
 2e-14 score units. Fifty-three focused tests pass; the full comparison report
 also passes desktop/mobile and exact-text browser checks. This establishes a
 scoped fresh sensitivity result, not a population false-positive bound or a
-prompt-free detector. A larger frozen null study is next. Source-grounded quality
+prompt-free detector. Larger null validation remains necessary. Source-grounded quality
 issues, broader model/framework qualification and serving-cost gates remain open.
 
-A frozen local false-positive study is now running on 500 previously unused
+A frozen local false-positive study attempted 500 previously unused
 exact-field-connected Dolly groups, using the same two confirmation keys and
-unchanged prompt-aware score. All 500 must be available, with a one-sided 97.5%
-IID-only upper bound at most 1%; missing samples cannot count as negatives.
-An independent score audit follows completed records. This is an in-progress
-study, not a closed detection or release gate. Hosted CI remains disabled.
+unchanged prompt-aware score. The disk guard stopped model work after 288 scored
+documents, with zero flags. The remaining 212 are retained as unavailable. The
+study is incomplete and fails its all-500-available gate; no final false-positive
+bound is reported. An independent audit reconciles all 500 attempt records,
+60,054 model heads, 576 scores and 120,108 terms. Integrity passes; the statistical
+screen does not. The original attempt must remain unchanged through any separately
+declared operational recovery. Hosted CI remains disabled.
+
+An offline evidence notebook now combines all twelve generated pairs and all
+500 control attempt records. Exact text, category filters, keyboard record
+navigation, mobile response switching and explicit unavailable states pass
+rendered Chrome checks. Seven export-integrity tests plus twenty null-study tests
+pass. This improves inspectability without changing SDK behavior or release gates.
 
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.

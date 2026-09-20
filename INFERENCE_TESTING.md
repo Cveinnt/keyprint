@@ -843,7 +843,7 @@ python tools/audit_prompt_confirmation.py --study new-prompt-confirmation \
 
 ### Frozen prompt-aware null screen
 
-A local run is in progress on 500 unchanged Dolly human responses with their
+A local run attempted 500 unchanged Dolly human responses with their
 original instructions and reference context. The two keys, model, top-k,
 temperature, half-mixture score and `log(200)` cutoff are exactly those of the
 fresh confirmation above. No new key or threshold is selected for this screen.
@@ -876,9 +876,23 @@ python tools/audit_prompt_null.py --follow --study new-prompt-null \
   --source pinned-dolly.jsonl --model /path/to/pinned-qwen
 ```
 
-No final null result is claimed yet. Prompt-free detection, semantic quality,
-serving cost and broader platform/model qualification remain separate gates.
-Hosted SDK and SGLang workflows remain disabled; this work runs locally.
+The run ended **incomplete** when free space fell below its frozen 2 GiB guard.
+It retains **288 available documents with zero flags** and **212 unavailable
+documents**, each with its original disk-guard error. No unavailable case is a
+negative, and no final false-positive bound or screen pass is claimed. There
+were no retries, replacements or score changes. The independent audit reconciles
+all 500 attempt records, **60,054 model heads, 576 scores and 120,108 terms**,
+including 111,454 direct tournament transforms. Maximum aggregate discrepancy
+is 2.14e-14 score units. This is an integrity pass, not a statistical-screen pass.
+
+Eight idle, obsolete test environments were removed only after their package
+versions, configuration and exact SDK files were archived and SHA-256 verified.
+Model assets, original study receipts, distributions and the current test runtime
+remain retained. Cleanup recovered about 0.8 GB. Any operational recovery needs
+a separate declaration and receipts; it must not rewrite this failed attempt or
+claim that an already opened sample is fresh. Prompt-free detection, semantic
+quality, serving cost and broader model/platform qualification remain separate
+gates. Hosted SDK and SGLang workflows remain disabled.
 
 The accompanying local regression run passes **1,278 Python tests with no skips**
 and **10 JavaScript checks**. The first run passed 1,264 and skipped twelve native
@@ -888,6 +902,31 @@ Starlette/AnyIO deprecation warning remains. Dependency checks, `keyprint doctor
 and the deterministic CLI demo pass. All 83 SDK files match the retained wheel
 and installed environment. This is macOS ARM64/Python 3.13 evidence, not a fresh
 Linux/Python 3.12 or broad-framework CI matrix. It does not finish the null study.
+
+### Interactive evidence notebook
+
+`tools/render_detection_evidence.py` combines the twelve audited generated pairs
+and all retained human-control attempts into an offline notebook. It binds the
+original audit, plan, score/text receipts and result-prefix hashes before export.
+Source control answers and secret keys are not copied. A partial snapshot must
+be explicitly requested and cannot show a completed result; the final incomplete
+study shows all 212 unavailable records and no bound. Exact text remains available
+alongside an inert reading view. Category/decision filters, keyboard navigation,
+selected-record scores and mobile response switching expose the underlying data.
+
+```sh
+python tools/render_detection_evidence.py --confirmation audited-prompt-confirmation \
+  --null-study audited-prompt-null --output evidence-notebook
+```
+
+Seven export-integrity checks pass, including changed receipts, source/script
+escaping and rejection of partial counts relabeled as complete. Twenty null
+selection/audit checks also pass. Chrome 153 rendered checks preserve all 24
+response texts and twelve original requests exactly, exercise filtering and
+unavailable/empty states, and pass at 1440×1000 and 390×844 without console errors
+or horizontal overflow. Screenshots and QA receipts remain outside source control.
+This is a research evidence surface, not a replacement for the real-model SDK
+playground or a claim of universal detector validity.
 
 The ideal random-key argument does not establish fixed-HMAC-key deployment
 calibration, finite-precision error guarantees or robustness to key-dependent

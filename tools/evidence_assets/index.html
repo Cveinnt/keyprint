@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+<title>Keyprint · A signal, and its controls</title><link rel="stylesheet" href="style.css">
+<script defer src="data.js"></script><script defer src="reader.js"></script><script defer src="view.js"></script></head>
+<body><a class="skip" href="#examples">Skip to responses</a>
+<header><a class="wordmark" href="#top">Keyprint</a><span>Research notebook / 01</span><a href="data.json" download>Download evidence</a></header>
+<main id="top"><div id="state" role="status"></div>
+<section class="intro"><p class="eyebrow">Original-prompt detection · local research</p>
+<h1>A signal is only useful<br>if its controls hold.</h1>
+<p class="lede">Can a small change in how a model chooses words leave a pattern we can recover? Read the responses. Then inspect what happens when no watermark was added.</p>
+<div class="stats"><article><p>Marked responses detected</p><strong id="marked-count"></strong><small>Matching key · independent samples</small></article>
+<article><p>Ordinary responses flagged</p><strong id="ordinary-count"></strong><small>Either key · one check per response</small></article>
+<article><p>Human controls flagged</p><strong id="human-count"></strong><small id="human-scope"></small></article></div>
+<p id="bound" class="scope"></p>
+<nav aria-label="Explore evidence"><a href="#examples">01 / Read both responses <span>↗</span></a><a href="#controls">02 / Inspect human controls <span>↗</span></a><a href="#method">03 / What this establishes <span>↗</span></a></nav></section>
+<section id="examples"><div class="section-heading"><span>01</span><h2>The words are the experiment.</h2></div>
+<p class="section-note">Both responses use the same request. They are separate samples, so a wording difference alone does not show a quality effect.</p>
+<div class="toolbar"><label>Example<select id="example"></select></label><label>Display<select id="format"><option value="reading">Reading view</option><option value="exact">Exact text</option></select></label></div>
+<details class="request"><summary>Read the original request and reference</summary><p id="prompt"></p></details>
+<div class="mobile-tabs" role="group" aria-label="Response to read"><button data-side="ordinary" aria-pressed="false">Ordinary</button><button data-side="marked" aria-pressed="true">With Keyprint</button></div>
+<div class="pair" data-side="marked"><article data-kind="ordinary"><div class="response-head"><h3>Ordinary</h3><span id="ordinary-decision"></span></div><p id="ordinary-meta" class="metadata"></p><div id="ordinary-text" class="response"></div><p id="ordinary-score" class="score"></p></article>
+<article data-kind="marked"><div class="response-head"><h3>With Keyprint</h3><span id="marked-decision"></span></div><p id="marked-meta" class="metadata"></p><div id="marked-text" class="response"></div><p id="marked-score" class="score"></p></article></div>
+<p class="scope">The detector receives the original request and pinned model. It does not read private generation probabilities or journals. All token-capped responses remain included; factual and semantic quality are not approved by this score.</p></section>
+<section id="controls"><div class="section-heading"><span>02</span><h2>Look where a signal should be absent.</h2></div>
+<p class="section-note">Each tile is an unchanged human-source answer. Both keys are checked; a flag under either key counts once. Source text stays outside this export.</p>
+<div class="toolbar"><label>Source category<select id="category"><option value="all">All categories</option></select></label><label>Show<select id="decision"><option value="all">All records</option><option value="flagged">Flagged records</option><option value="unavailable">Unavailable records</option></select></label><p id="filter-count" aria-live="polite"></p></div>
+<div class="control-layout"><div><div class="legend"><span><i></i>No flag</span><span><i class="flagged"></i>Flag</span><span><i class="unavailable"></i>Unavailable</span></div>
+<p class="keyboard-help" id="grid-help">Select a tile to inspect it. Use arrow keys to move between records.</p><div id="grid" role="listbox" aria-label="Human control records" aria-describedby="grid-help" tabindex="0"></div><p id="empty" hidden>No records match these filters.</p></div>
+<aside id="control-detail" aria-live="polite"><p class="eyebrow" id="control-id"></p><h3 id="control-title"></h3><p id="control-meta"></p><dl><div><dt>Key A score</dt><dd id="control-a"></dd></div><div><dt>Key B score</dt><dd id="control-b"></dd></div><div><dt>Frozen cutoff</dt><dd id="cutoff"></dd></div></dl><p class="scope">Flag if either score ≥ cutoff. These are log scores, not probabilities of AI authorship.</p></aside></div></section>
+<section id="method"><div class="section-heading"><span>03</span><h2>A result with boundaries.</h2></div><div class="method-grid"><article><h3>What was tested</h3><p>Twelve fresh task groups, two new keys and pinned Qwen3-8B on MLX. A separate, frozen sample of 500 previously unused source groups tests human controls with those same keys.</p><p>No thresholds are fitted to this screen. Every failed attempt remains in the record. Missing results cannot count as negatives.</p></article><article><h3>What remains open</h3><p>Detection without the original prompt. Editing and paraphrase robustness. Broader models and inference frameworks. Output quality and serving cost.</p><p>These results do not identify Anthropic’s private algorithm, establish universal compatibility or authorize a public release.</p></article></div>
+<details><summary>Inspect provenance and statistical assumptions</summary><p>The one-sided 97.5% binomial bound assumes independent, identically distributed documents. Exact shared-field grouping does not eliminate dependencies by author, topic or near-duplicate content. Model-training overlap is unknown.</p><p>The integrity audit recomputes every retained score term and checks source selection, original prompts and literal tokens. It does not rerun the underlying model kernels.</p><pre id="provenance"></pre></details></section>
+</main><footer><p id="attribution"></p><p><a href="https://huggingface.co/datasets/databricks/databricks-dolly-15k">Source dataset</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> · All attempts retained · Public release held</p></footer>
+<noscript>This evidence view requires JavaScript. The complete exported records are available in <a href="data.json">data.json</a>.</noscript></body></html>
