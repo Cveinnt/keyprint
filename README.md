@@ -29,8 +29,8 @@ SmolLM2 integration example; its answer quality is limited.
 
 Open the complete local session URL printed in the terminal. The prefilled
 example runs once when the model is ready. Then enter your own prompt, compare
-the responses, or choose **Rewrite your own text** to compare your source with
-one actual local rewrite. You can also edit and inspect the marked text.
+the responses, or edit and inspect the marked text. Automatic rewriting of
+existing text is blocked until language and meaning preservation are validated.
 Results are real local model output;
 the signal chart is an uncalibrated diagnostic, not a detection verdict.
 
@@ -113,20 +113,19 @@ labeled as stale. A new completed generation clears the previous pair's edit.
 While work runs, the page shows the actual generation or inspection stage and
 elapsed time. Each result separates generation from inspection time. These are
 individual local observations, not a serving-throughput benchmark.
-Use **Stop** to end an active generation, rewrite or inspection at the next safe boundary.
+Use **Stop** to end an active generation or inspection at the next safe boundary.
 Controls stay locked until the worker stops; completed responses and measurements
 remain visible. Refresh reconnects to the same attempt, including a pending stop,
 without starting new work. An active model step or inspection must finish first.
 
-**Rewrite your own text** starts with an editable example email. Paste up to
-8,000 characters of prose within the model's context capacity, and optionally enter exact phrases to keep, one per
-line. The page calls the real `rewrite()` method once, keeps the source unchanged
-and labels it **Your original**, then shows the **Local rewrite** alongside it.
-The comparison exposes failed literal checks; passing them still does not
-establish meaning preservation or a detectable watermark. Both input drafts
-survive mode switches, and refresh restores the source, phrases and candidate
-from the same server process without generating again. This mode is experimental;
-the [quality review](QUALITY_REVIEW.md) retains known semantic failures.
+**Automatic rewriting is unavailable.** `rewrite()`, `rewrite_openai()` and
+`rewrite_anthropic()` raise `RewriteUnavailableError` before inference or output
+creation. The playground disables rewriting and rejects direct rewrite requests.
+Known translations and changed conditions are failures, not acceptable watermark
+outputs. Keep existing text unchanged. Use `generate()` only for new responses;
+it is not an equivalent way to watermark an existing document. Native generation
+still needs output-quality evaluation. Historical rewrite samples remain in the
+[quality review](QUALITY_REVIEW.md); their lexical checks do not certify meaning.
 See [sampling performance](PERFORMANCE.md) for reproducible arithmetic and
 real-model parity checks, with the remaining performance limits.
 See [actual inference testing](INFERENCE_TESTING.md) for paired text comparisons,
@@ -385,11 +384,11 @@ identities and do not automatically qualify the repaired caller.
 | OpenAI Python client | Real local HTTP request tested; single-message Chat Completions subset |
 | Anthropic Python client | Real local HTTP requests on pinned Qwen/MLX and SmolLM2/Transformers; one user string or text block, explicit token cap |
 | OpenAI-hosted GPT / Anthropic-hosted Claude | Their public APIs do not expose this custom sampler hook; no native integration |
-| Completed GPT / Claude prose | Explicit experimental local rewrite; original retained, meaning and detection unvalidated |
+| Completed GPT / Claude prose | Rewriting blocked before inference; language and meaning preservation unvalidated |
 
-See [provider examples](PROVIDERS.md) for `keyprint serve` and
-`watermark.rewrite_openai(response)` / `watermark.rewrite_anthropic(message)`.
-These helpers never imply that a hosted provider ran the Keyprint sampler.
+See [provider examples](PROVIDERS.md) for `keyprint serve` and the rewrite
+restriction. Local client compatibility does not insert Keyprint into hosted
+OpenAI or Claude generation.
 The optional `clients` extra accepts OpenAI `>=1.109.1,<4` and Anthropic
 `>=0.83.0,<2`; both older and newer client pairs have local inference evidence.
 See the provider guide for exact tested versions and limitations.

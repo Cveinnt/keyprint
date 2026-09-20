@@ -3,6 +3,10 @@
 Reviewed September 16, 2026. This is an engineering audit and implementation plan,
 not a claim that the planned adapters are available.
 
+September 20 update: all post-generation rewrite entry points are blocked before
+inference. Earlier rewrite observations below are historical failure evidence,
+not available product behavior. See [provider restrictions](PROVIDERS.md#existing-gpt-or-claude-text).
+
 ### Current private development branch
 
 `clean-keyprint-sdk` builds the unpublished `keyprint==0.1.0a1` package and
@@ -11,8 +15,8 @@ derivative manifest and behavior comparisons, without changing the released
 bundle. A Transformers CPU float32 adapter now generates text with
 SmolLM2-135M-Instruct at revision `12fd25f77366fa6b3b4b768ec3050bf629380bac`.
 Its ByteLevel profile is explicitly experimental and receives no reference
-scientific acceptances. A local OpenAI-client endpoint and experimental local
-rewriter are implemented. A separate vLLM CPU source-level pilot completed two
+scientific acceptances. Local client endpoints are implemented. Post-generation
+rewriting is blocked until language and meaning preservation are validated. A separate vLLM CPU source-level pilot completed two
 batched generations. Broad framework and hosted-provider product readiness
 remain open; details below.
 
@@ -164,11 +168,11 @@ An OpenAI-compatible endpoint is not an OpenAI-hosted model. Reading a Claude
 response into Python is not watermarking it. SDK interfaces must make this
 distinction explicit, including in examples and error messages.
 
-See [provider usage](PROVIDERS.md). The completed-response helpers parse actual
-OpenAI and Anthropic SDK object types, reject unsupported response modes and
-run an explicit local rewrite. They return both texts and lexical checks. No
-hosted model call was made in these tests. A rewrite can pass lexical checks
-while reversing meaning; it always requires review and has no detector claim.
+See [provider usage](PROVIDERS.md). Completed-response helpers now reject
+rewriting before inference with `RewriteUnavailableError`; provider response
+objects stay unchanged. Earlier tests parsed real SDK objects and generated
+local candidates, including meaning reversals missed by literal checks.
+No hosted model call was made in those historical tests.
 
 ### Experimental vLLM CPU pilot
 
@@ -306,7 +310,7 @@ against journals, not presented as uniquely matched request identities.
 
 ## Hosted-provider options worth evaluating
 
-1. Generate with GPT/Claude, then use a local marked rewriter. This can ingest
+1. Post-generation rewriting is currently blocked. A future local marked rewriter could ingest
    either provider's visible text, but changes wording and adds a second model
    pass. Facts, citations, code, multilingual meaning, latency and detection
    need new evaluations. Never silently rewrite tool calls, JSON or thinking

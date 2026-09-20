@@ -26,3 +26,13 @@ class InputLimitError(ValueError):
             message = (f"Input has {input_tokens} tokens and the response budget is {max_tokens}; "
                        f"the context limit is {limit}. {advice}")
         super().__init__(message)
+
+
+class RewriteUnavailableError(ValueError):
+    """Post-generation watermark rewriting is blocked before inference."""
+
+    def __init__(self):
+        super().__init__(
+            "Watermark rewriting is unavailable: language and meaning preservation "
+            "have not been validated. No text was rewritten. Keep the original text; "
+            "use generate() only when you intend to generate a new response.")

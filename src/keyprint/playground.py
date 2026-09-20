@@ -21,7 +21,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from .api import Keyprint, KeyprintError, KeyprintCancelled
-from .errors import InputLimitError
+from .errors import InputLimitError, RewriteUnavailableError
 from .cancellation import check_cancellation, _CancellationRequested
 from .inspection import Inspection
 from .rewrite import plain_text, protected_literals
@@ -228,31 +228,6 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 stage("inspecting_edit")
                 return {"inspection": inspect_text(model[0], params.text, control_key, cancellation),
                         "seconds": time.perf_counter() - started}
-            if params.action == "rewrite":
-                stage("rewriting")
-                check_cancellation(cancellation)
-                generation_start = time.perf_counter()
-                rewritten = model[0].rewrite(params.text, preserve=params.preserve,
-                    max_tokens=params.max_tokens, output=run / "marked", cancel_event=cancellation)
-                generation_seconds = time.perf_counter() - generation_start
-                stage("inspecting_source")
-                source_inspection = inspect_text(model[0], params.text, control_key, cancellation)
-                outputs["ordinary"] = {"text": rewritten.original, "completion": "source", "usage": None,
-                                       "inspection": source_inspection}
-                stage("inspecting_marked")
-                inspection_start = time.perf_counter()
-                inspection = inspect_text(model[0], rewritten.text, control_key, cancellation)
-                result = rewritten.generation
-                payload = result.report.get("payload", result.report)
-                outputs["marked"] = {"text": rewritten.text, "usage": result.report.get("usage"),
-                    "completion": payload.get("completion"), "inspection": inspection,
-                    "timing": {"generation_seconds": generation_seconds,
-                               "inspection_seconds": time.perf_counter() - inspection_start}}
-                return {"action": "rewrite", "outputs": outputs, "max_tokens": params.max_tokens,
-                        "seconds": time.perf_counter() - started, "independent_randomness": False,
-                        "calibrated": False, "preserve": params.preserve,
-                        "rewrite": {"status": rewritten.status, "checks": rewritten.checks,
-                                    "mode": rewritten.mode, "hosted_provider_watermark": False}}
             for condition in ("ordinary", "marked"):
                 stage("generating_" + condition)
                 check_cancellation(cancellation)
@@ -301,6 +276,8 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 raise ValueError("preserve applies only to rewriting")
         except (ValidationError, ValueError):
             return error("Use 1–6000 characters for prompts, 1–8000 of prose for rewriting, or 1–16000 for inspection; token cap 32–1024. Preserved phrases must be distinct, present in the source, and used only with rewriting.", 400)
+        if params.action == "rewrite":
+            return error(str(RewriteUnavailableError()), 400)
         identity = request.headers.get("idempotency-key", "")
         if not identity or len(identity) > 128 or not identity.isascii():
             return error("An idempotency key is required", 400)

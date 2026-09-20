@@ -6,6 +6,14 @@ Publicity remains postponed until the release candidate meets this bar.
 The user's September 19 direction makes production quality of both SDK and
 demos the release objective. A green test suite alone does not satisfy it.
 
+September 20 preservation safeguard: all SDK rewrite entry points now reject
+before inference with `RewriteUnavailableError`. The playground disables the
+mode and rejects direct rewrite requests without consuming a run or replacing
+prior results. This prevents the known unsafe rewriting path from delivering
+translated or semantically altered candidates. It does not validate native model
+quality, close A02, or make launch ready. The older rewrite results and UI history
+below are retained as evidence; they describe behavior before this restriction.
+
 September 20 local model expansion: the portable adapter now accepts verified
 ordinary ASCII added tokens and explicitly requests non-thinking chat templates.
 Pinned SmolLM3-3B completed 16 actual requests, including all six ordinary/marked

@@ -3,7 +3,7 @@ from .api import Keyprint, Generation, KeyprintError, KeyprintCancelled
 from .integrity import verify
 from .rewrite import Rewrite
 from .inspection import Inspection
-from .errors import InputLimitError
+from .errors import InputLimitError, RewriteUnavailableError
 
 __version__ = "0.1.0a1"
-__all__ = ["Keyprint", "Generation", "Rewrite", "Inspection", "KeyprintError", "KeyprintCancelled", "InputLimitError", "verify"]
+__all__ = ["Keyprint", "Generation", "Rewrite", "Inspection", "KeyprintError", "KeyprintCancelled", "InputLimitError", "RewriteUnavailableError", "verify"]

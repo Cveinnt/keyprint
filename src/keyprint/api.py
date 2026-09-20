@@ -200,22 +200,22 @@ class Keyprint:
                 output: str | Path | None = None, condition: str = "marked",
                 preserve: list[str] | tuple[str, ...] = (),
                 cancel_event: Event | None = None) -> Rewrite:
-        """Experimental local rewriting; returns original, candidate and checks.
+        """Unavailable: raises RewriteUnavailableError before inference.
 
-        cancel_event follows generate()'s cooperative cancellation contract.
-        Lexical checks do not certify meaning preservation or watermark presence.
+        Language and meaning preservation are not validated. The signature is
+        retained so existing callers receive an actionable error.
         """
         from .rewrite import rewrite
         return rewrite(self, text, max_tokens=max_tokens, output=output, condition=condition,
                        preserve=preserve, cancel_event=cancel_event)
 
     def rewrite_openai(self, response: Any, **settings: Any) -> Rewrite:
-        """Rewrite completed text locally; makes no OpenAI API call."""
+        """Reject rewriting; never changes the supplied OpenAI response."""
         from .rewrite import openai_text
         return self.rewrite(openai_text(response), **settings)
 
     def rewrite_anthropic(self, response: Any, **settings: Any) -> Rewrite:
-        """Rewrite a completed text-only message locally; makes no Claude call."""
+        """Reject rewriting; never changes the supplied Anthropic message."""
         from .rewrite import anthropic_text
         return self.rewrite(anthropic_text(response), **settings)
 

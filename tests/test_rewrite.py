@@ -1,10 +1,8 @@
 import json
-import hashlib
-from pathlib import Path
 
 import pytest
 
-from keyprint import Generation, Keyprint, KeyprintCancelled
+from keyprint import Keyprint, RewriteUnavailableError
 from keyprint.rewrite import anthropic_text, fidelity_checks, openai_text, plain_text
 
 
@@ -114,40 +112,8 @@ def test_weekday_check_allows_case_but_does_not_claim_event_alignment():
     assert reordered["meaning_preservation"] == "not_measured"
 
 
-def test_original_and_candidate_retained(tmp_path):
-    kp = Keyprint(key=bytes(range(32)))
-    def generate(prompt, *, max_tokens, output, condition):
-        assert '"Meet at 10:30."' in prompt
-        Path(output).mkdir(mode=0o700)
-        return Generation("Please meet at 11:30.", {"completion": "eos"}, Path(output))
-    kp.generate = generate
-    result = kp.rewrite_openai(chat("Meet at 10:30."), output=tmp_path / "rewrite")
-    assert result.original == "Meet at 10:30."
-    assert result.text == "Please meet at 11:30."
-    assert result.checks["numbers_preserved"] is False
-    assert result.status == "failed_checks"
-    saved = json.loads((result.generation.artifacts / "rewrite.json").read_text())
-    assert saved["original"] == result.original and saved["candidate"] == result.text
-    assert saved["hosted_provider_watermark"] is False
 
 
-@pytest.mark.parametrize('provider', ['rewrite', 'rewrite_openai', 'rewrite_anthropic'])
-def test_rewrite_forwards_cancellation_without_producing_a_rewrite_receipt(tmp_path, provider):
-    from threading import Event
-    stop = Event(); stop.set()
-    kp = Keyprint(key=bytes(range(32)))
-    seen = []
-    def generate(prompt, **kwargs):
-        assert kwargs['cancel_event'] is stop
-        seen.append(prompt)
-        raise KeyprintCancelled({'cancellation_requested':True}, tmp_path)
-    kp.generate = generate
-    source = 'Meet at 10:30.'
-    value = source if provider == 'rewrite' else chat(source) if provider == 'rewrite_openai' else claude()
-    with pytest.raises(KeyprintCancelled):
-        getattr(kp, provider)(value, cancel_event=stop, output=tmp_path/'attempt')
-    assert len(seen) == 1
-    assert not (tmp_path/'attempt/rewrite.json').exists()
 
 
 def test_review_required_even_when_lexical_checks_pass():
@@ -208,21 +174,30 @@ def test_exact_phrases_do_not_claim_semantic_fidelity():
     assert Rewrite(original, candidate, None, checks).status == "needs_review"
 
 
-@pytest.mark.parametrize("provider", ["rewrite_openai", "rewrite_anthropic"])
-def test_provider_helpers_keep_constraints_and_failed_receipt(tmp_path, provider):
+
+
+@pytest.mark.parametrize("provider", ["rewrite", "rewrite_openai", "rewrite_anthropic", "module"])
+@pytest.mark.parametrize("source", [
+    "Bonjour Maya, merci de relire le document. Ne le publiez pas avant mon approbation.",
+    "Do not publish unless I approve. An acknowledgement is not approval.",
+    "No publiques el documento sin mi aprobación.",
+    "未经我批准，请勿发布。",
+    "Bonjour Maya. Keep the quoted English phrase unchanged.",
+])
+def test_rewriting_is_blocked_without_inference_or_source_mutation(tmp_path, provider, source):
+    import copy
+    from keyprint.rewrite import rewrite
     kp = Keyprint(key=bytes(range(32)))
-    original = "Maya will meet Alex at 10:30."
-    calls = []
-    def generate(prompt, *, max_tokens, output, condition):
-        calls.append(prompt)
-        assert '["Maya", "10:30"]' in prompt
-        Path(output).mkdir(mode=0o700)
-        return Generation("Ana will meet Alex at 10:30.", {"completion": "eos"}, Path(output))
-    kp.generate = generate
-    response = chat(original) if provider == "rewrite_openai" else claude(content=[{"type": "text", "text": original}])
-    result = getattr(kp, provider)(response, preserve=["Maya", "10:30"], output=tmp_path / "attempt")
-    assert len(calls) == 1 and result.status == "failed_checks"
-    saved = json.loads((result.generation.artifacts / "rewrite.json").read_text())
-    assert saved["preserve"] == ["Maya", "10:30"]
-    assert saved["candidate"] == result.text and saved["checks"] == result.checks
-    assert saved["prompt_sha256"] == hashlib.sha256(calls[0].encode()).hexdigest()
+    def forbidden(*args, **kwargs):
+        pytest.fail("unvalidated rewrite reached inference")
+    kp.generate = forbidden
+    value = (chat(source) if provider == "rewrite_openai" else
+             claude(content=[{"type": "text", "text": source}]) if provider == "rewrite_anthropic" else source)
+    before = copy.deepcopy(value)
+    with pytest.raises(RewriteUnavailableError, match="No text was rewritten"):
+        if provider == "module":
+            rewrite(kp, source, output=tmp_path / "attempt")
+        else:
+            getattr(kp, provider)(value, output=tmp_path / "attempt")
+    assert value == before
+    assert not (tmp_path / "attempt").exists()

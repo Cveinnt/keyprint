@@ -2,6 +2,11 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Block post-generation rewriting with `RewriteUnavailableError` before inference
+  or output creation. Disable the playground mode and reject direct requests.
+  Known translations and meaning drift remain release-blocking failures; literal
+  checks do not authorize delivering a rewrite. Native sampling is unchanged.
+
 - Share one immutable raw-head snapshot and SHA-256 commitment between the
   experimental native caller and filter. Keep separate pre/post-grammar hashes,
   all numeric checks and durable journal ordering. Add a local matched-path

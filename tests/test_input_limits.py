@@ -104,7 +104,7 @@ def test_api_error_replay_and_recovery_preserve_redaction(tmp_path, protocol, ty
         assert good.status_code == 200 and model.attempts == 2
 
 
-@pytest.mark.parametrize("action", ["generate", "rewrite"])
+@pytest.mark.parametrize("action", ["generate"])
 def test_playground_limit_preserves_result_replays_and_recovers(tmp_path, action):
     pytest.importorskip("fastapi")
     from test_playground import Model, client_for, BODY, HEADERS

@@ -1,7 +1,8 @@
 # OpenAI and Anthropic clients
 
-Private development preview. These are two different integration paths. Neither
-inserts Keyprint into OpenAI-hosted GPT or Anthropic-hosted Claude sampling.
+Private development preview. The supported path uses provider clients with a
+local model. Post-generation rewriting is blocked. Neither path inserts Keyprint
+into OpenAI-hosted GPT or Anthropic-hosted Claude sampling.
 
 The optional `clients` extra accepts `openai>=1.109.1,<4` and
 `anthropic>=0.83.0,<2`, so installing Keyprint need not replace an existing
@@ -254,99 +255,21 @@ generation now separately uses reference sampling with the same retained-byte
 token-limit policy. Its `keyprint.bounded-reference-report.v1` reports carry a
 new runtime identity; the archived research caller remains unchanged.
 
-## Inspect a local rewrite of GPT or Claude prose
+## Existing GPT or Claude text
 
-For an **already completed** provider result, load a local model and explicitly
-request a second generation. No provider request is made by these helpers:
+`rewrite()`, `rewrite_openai()` and `rewrite_anthropic()` are unavailable. They
+raise the public `RewriteUnavailableError` before inference or output creation.
+Provider responses are not modified. There is no retry, automatic translation,
+unchecked candidate return or fallback claiming the unchanged original is marked.
 
-```python
-from pathlib import Path
-from keyprint import Keyprint
+The earlier rewriting pipeline produced unrequested translations and changed
+approval conditions. Literal checks and same-language prompts cannot guarantee
+preservation. An experimental label does not make those outputs acceptable.
+Historical samples remain in [QUALITY_REVIEW.md](QUALITY_REVIEW.md); they are
+failure evidence, not examples of a supported feature. Historical rewrite tools
+now encounter this same rejection rather than bypassing it.
 
-watermark = Keyprint.from_mlx(
-    "models/qwen3-8b-4bit", key=Path("keyprint.key").read_bytes(),
-)
-# `response` is an existing OpenAI ChatCompletion or completed Responses result.
-comparison = watermark.rewrite_openai(response, max_tokens=384)
-# For an existing Anthropic Message: watermark.rewrite_anthropic(message)
-print(comparison.original)
-print(comparison.text)
-print(comparison.status, comparison.checks)
-```
-
-Plain prose can also use `watermark.rewrite(text)`. The returned text is always
-a candidate. `failed_checks` means a lexical or completion check failed;
-`needs_review` means those checks passed, **not** that meaning, quality or a
-detectable watermark was verified. There is no automatic approved status.
-Both texts and checks are saved in the private generation directory. Failed or
-unchanged outputs are retained without retry or substitution.
-
-For a visual comparison, run `keyprint playground` with the chosen local backend,
-then select **Rewrite your own text**. The original and actual candidate appear
-side by side with their literal checks. **Stop** cooperatively cancels the local
-rewrite and retains the preceding result. The Python `rewrite`, `rewrite_openai`
-and `rewrite_anthropic` methods also accept `cancel_event=threading.Event()`;
-set it from another thread and catch `KeyprintCancelled`. This does not cancel
-a hosted provider request; these helpers perform local rewriting only.
-
-For names, timestamps or entire clauses that must stay verbatim, supply
-`preserve` to any of the three rewrite methods:
-
-```python
-comparison = watermark.rewrite(
-    "Please ask Maya to review the draft by Friday at 09:30. Thanks for helping.",
-    preserve=["Maya", "Friday at 09:30"],
-)
-print(comparison.original, comparison.text)
-print(comparison.status, comparison.checks["protected_literals"])
-```
-
-Each phrase must occur in the source. Supply a list or tuple of at most 32
-distinct, nonempty phrases, each at most 256 characters. Invalid settings fail
-before generation starts. The instruction asks
-the model to keep these phrases; the SDK then checks exact, case-sensitive,
-non-overlapping occurrence counts, including accents, spacing and punctuation.
-Missing, modified or duplicated phrases produce `failed_checks`. Empty output
-also fails. The private `rewrite.json` retains the requested phrases, observed
-counts, both texts and the exact rewrite prompt's SHA-256, including failures. The SDK does not force token choices,
-repair the response or automatically retry.
-
-This is literal preservation, not entity recognition or a semantic guarantee.
-A phrase can remain present while surrounding negation or its meaning changes.
-Even an all-pass lexical result stays `needs_review`; no automatic approval is
-introduced. Use the original and candidate together when judging the result.
-
-The fixed local Qwen screen completes twelve rewrites across English, Spanish,
-French and Chinese through plain text and both provider-object helpers. Ten
-pass the literal checks; both technical rewrites alter a protected sentence
-and remain flagged. Three ordinary/marked pairs are identical despite separate
-draws and changed prepared weights. Originals, candidates and counts remain
-available side by side. These are integration examples, not quality or detection
-acceptance; see [the reproduction steps](INFERENCE_TESTING.md#reproduce-locally).
-Case, punctuation, surrounding quotes and whitespace alone do not count as a
-paraphrase: an unchanged case-folded Unicode word sequence fails the lexical
-screen. Changed words still do not establish preserved meaning or a watermark.
-
-The helpers reject provider responses containing tool use, thinking, citations,
-refusals, incomplete outputs or supported structured-output metadata. Obvious
-JSON/code-fenced prose is rejected too; that heuristic cannot classify all code.
-Do not send structured outputs, code or consequential content through this
-experimental path. Numbers, URLs and email addresses receive exact lexical
-checks; negation, names, translation and factual meaning require separate review.
-
-Tests construct actual OpenAI and Anthropic SDK response objects without hosted
-API calls. A paired local screen covers English email, negation and technical
-prose, plus Spanish, French and Chinese. It found unchanged candidates, escaped
-line breaks, numeric-format changes and wording changes needing review. The
-second prompt produced changed wording in all 12 runs; two French runs changed
-`09:30` to `09h30`. That is a strict fidelity failure, not evidence of a new time.
-These results do not establish negligible quality loss or watermark detection.
-
-A third prompt explicitly requested real line breaks. All 12 candidates changed
-wording and passed the escaped-line-break check; both French outputs still
-failed exact numeric preservation. All three screens are retained, including
-failed outputs. They are prompt-development runs, not a held-out quality study.
-
-The mode adds local model latency and may alter meaning. It has no transferred
-acceptances from the reference research ledger. Native hosted-provider sampling
-integration and a broadly usable, validated hosted-output product remain open.
+Keep existing documents unchanged. To create a new response, use the local
+client examples above, or `generate()`. This is a distinct operation and does not
+solve post-generation watermarking. Native output quality remains unqualified;
+this safety restriction does not close the quality requirement or enable launch.
