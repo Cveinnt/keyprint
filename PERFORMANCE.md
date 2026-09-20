@@ -150,6 +150,38 @@ The prototype remains in `tools/`; no global monkeypatch or SDK promotion was
 introduced. A separately identified execution path and full parity checks are
 required before using either optimization in generation.
 
+### Separately identified experimental execution
+
+`keyprint.experimental.fast_mlx.pipeline` now provides an explicit supplied-head
+pipeline combining sparse softmax execution with response-local HMAC context
+copies. Frozen reference files remain unchanged. The new runtime digest binds
+the experimental source and sparse arithmetic implementation; its score namespace
+remains the reference namespace. No reference acceptance transfers automatically.
+This low-level factory is not wired into default `Keyprint.generate`, the CLI or
+the HTTP service. Pipeline construction still creates a fresh bound candidate;
+startup and request reuse need measurement before production integration.
+
+```sh
+python tools/validate_fast_mlx.py --model PINNED_MODEL --output PRIVATE_PARITY_RUN
+```
+
+The September 20 freshly installed wheel completed twelve actual Qwen outputs
+across all six fixed cases and both conditions. All 494 model heads produced
+identical base/prepared probability hashes, sampled tokens, rejection transcripts,
+rendered increments, final text and diagnostic counts in reference and optimized
+pipelines. Both receive the same real model head and public-fixture random stream;
+this is a lockstep execution test, not independent stochastic quality validation.
+Every receipt and journal is retained and the recorded token paths were separately
+reconciled. HMAC state cleared on closure of every response.
+
+Tests also exercise repeated contexts, explicit random-draw rejection, reasoning
+and tool routing, proofread source protection, invalid heads/randomness,
+commit-before-control-error behavior, key changes and context isolation. The
+installed wheel's complete local suite passed 276 tests. Full caller lifecycle,
+end-to-end serving measurements and exact-revision hosted checks are still
+required. The earlier 7.6% incremental cost and failed 5% screen describe the
+unchanged default path; this parity result does not replace those measurements.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

@@ -108,6 +108,12 @@ and identified dense softmax iteration in both arms plus HMAC/tournament work
 in the marked arm. A development-only HMAC-context prototype preserved 540
 synthetic comparisons and 14,280 bits from actual committed-token contexts.
 Its narrow timing improvement does not close A18 or change SDK execution.
+The subsequent explicit experimental supplied-head pipeline has a separate
+runtime identity. Its freshly installed wheel matched twelve actual Qwen outputs
+and all 494 model steps against the reference, including probability hashes,
+randomness transcripts, text and counts. It is not integrated into default
+generation or serving; full lifecycle and paired timings remain open. All frozen
+reference files and the prior failed timing result remain unchanged.
 
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
