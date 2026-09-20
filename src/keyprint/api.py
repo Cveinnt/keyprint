@@ -157,10 +157,11 @@ class Keyprint:
                          constraint=constraint)
 
     def rewrite(self, text: str, *, max_tokens: int = 256,
-                output: str | Path | None = None, condition: str = "marked") -> Rewrite:
+                output: str | Path | None = None, condition: str = "marked",
+                preserve: list[str] | tuple[str, ...] = ()) -> Rewrite:
         """Experimental local rewriting; returns original, candidate and checks."""
         from .rewrite import rewrite
-        return rewrite(self, text, max_tokens=max_tokens, output=output, condition=condition)
+        return rewrite(self, text, max_tokens=max_tokens, output=output, condition=condition, preserve=preserve)
 
     def rewrite_openai(self, response: Any, **settings: Any) -> Rewrite:
         """Rewrite completed text locally; makes no OpenAI API call."""

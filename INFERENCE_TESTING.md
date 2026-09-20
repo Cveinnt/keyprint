@@ -8,6 +8,34 @@ estimate of watermark quality loss.
 
 ## Reproduce locally
 
+The preserved-phrase rewrite screen runs twelve actual Qwen/MLX generations,
+covering English, Spanish, French and Chinese. The plain-text API and both
+provider-object helpers accept `preserve=[...]`; the latter use constructed
+OpenAI/Anthropic objects and make no hosted calls. Run it from an installed
+wheel with the MLX and clients extras:
+
+```sh
+python tools/validate_preserved_rewrites.py --model models/qwen3-8b-4bit \
+  --output private-preserved-rewrite-run
+```
+
+The fixed September 20 run completes twelve responses and 772 tokens. Ten
+candidates pass all literal checks. Both technical rewrites paraphrase a
+sentence requested verbatim and correctly return `failed_checks`; every output
+remains visible in `public/comparison.html` with its original and requested
+phrases. Private receipts preserve exact occurrence counts and reconcile with
+displayed text, source hashes, journal chains and sampled token counts.
+
+The English email, negation and technical ordinary/marked pairs are identical.
+Their journals retain independent random draws and different prepared-weight
+hashes; generation was not replaced by a copied fixture. Changed weight hashes
+alone do not replay the sampling law or demonstrate detectable marks. These are
+prompt-development and integration results, not semantic-quality acceptance,
+a held-out comparison or a guarantee that a requested phrase will survive.
+The fresh installed wheel passes 647 Python tests, and all 78 packaged files
+match the installation and tested source. The new nonempty-output check also
+prevents a blank completed rewrite from receiving `needs_review`.
+
 Hosted `SDK checks` and `SGLang actual inference` workflows were manually disabled
 at the user's request on September 20 after repeated pre-execution billing-limit
 failures. Keep them disabled until the user requests otherwise. Run checks

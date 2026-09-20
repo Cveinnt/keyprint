@@ -33,6 +33,17 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+Rewrites now accept explicit source phrases to preserve, validate those
+settings before inference, and report missing/modified/duplicated literals.
+Empty completed candidates also fail the checks. Twelve actual Qwen requests
+across four languages and both provider-object helpers retain 772 tokens and
+two correctly flagged verbatim-preservation failures. Three ordinary/marked
+pairs are identical despite independent draws and changed prepared weights.
+The fresh wheel passes 647 Python tests; all 78 packaged files match the tested
+installation and source. This gives callers more precise fidelity controls and
+original/candidate comparisons, but does not guarantee literal compliance,
+semantic fidelity, quality preservation or detection. Those gates remain open.
+
 Native completion handling now verifies host text against returned token bytes,
 rejects unknown finish reasons, and retains incomplete UTF-8 tails at exact
 token limits. An actual SGLang stress run exposed a separate lifecycle bug:

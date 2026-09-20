@@ -265,6 +265,41 @@ a candidate. `failed_checks` means a lexical or completion check failed;
 detectable watermark was verified. There is no automatic approved status.
 Both texts and checks are saved in the private generation directory. Failed or
 unchanged outputs are retained without retry or substitution.
+
+For names, timestamps or entire clauses that must stay verbatim, supply
+`preserve` to any of the three rewrite methods:
+
+```python
+comparison = watermark.rewrite(
+    "Please ask Maya to review the draft by Friday at 09:30. Thanks for helping.",
+    preserve=["Maya", "Friday at 09:30"],
+)
+print(comparison.original, comparison.text)
+print(comparison.status, comparison.checks["protected_literals"])
+```
+
+Each phrase must occur in the source. Supply a list or tuple of at most 32
+distinct, nonempty phrases, each at most 256 characters. Invalid settings fail
+before generation starts. The instruction asks
+the model to keep these phrases; the SDK then checks exact, case-sensitive,
+non-overlapping occurrence counts, including accents, spacing and punctuation.
+Missing, modified or duplicated phrases produce `failed_checks`. Empty output
+also fails. The private `rewrite.json` retains the requested phrases, observed
+counts and both texts, including failures. The SDK does not force token choices,
+repair the response or automatically retry.
+
+This is literal preservation, not entity recognition or a semantic guarantee.
+A phrase can remain present while surrounding negation or its meaning changes.
+Even an all-pass lexical result stays `needs_review`; no automatic approval is
+introduced. Use the original and candidate together when judging the result.
+
+The fixed local Qwen screen completes twelve rewrites across English, Spanish,
+French and Chinese through plain text and both provider-object helpers. Ten
+pass the literal checks; both technical rewrites alter a protected sentence
+and remain flagged. Three ordinary/marked pairs are identical despite separate
+draws and changed prepared weights. Originals, candidates and counts remain
+available side by side. These are integration examples, not quality or detection
+acceptance; see [the reproduction steps](INFERENCE_TESTING.md#reproduce-locally).
 Case, punctuation, surrounding quotes and whitespace alone do not count as a
 paraphrase: an unchanged case-folded Unicode word sequence fails the lexical
 screen. Changed words still do not establish preserved meaning or a watermark.
