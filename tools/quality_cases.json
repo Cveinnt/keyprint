@@ -1,0 +1,75 @@
+[
+  {
+    "id": "project-update",
+    "prompt": "Write a project update email to Maya in three concise paragraphs, at most 180 words. Use only these facts: The Atlas migration rehearsal finished on Monday. Two validation issues remain. The proposed production start is Tuesday at 09:30. Maya must approve the rollback checklist by Monday at 17:00 before production may begin. If approval is late, postpone the start; do not proceed without it. The planned maintenance window is 45 minutes. Backups must remain available until the restore has been verified. Questions go to ops@example.com. The checklist is at https://example.com/atlas/checklist. Do not invent a reason, promise, extra date, or claim that approval or verification has already happened.",
+    "max_tokens": 512,
+    "max_words": 180,
+    "required_literals": [
+      "Maya",
+      "Atlas",
+      "Monday",
+      "Tuesday",
+      "09:30",
+      "17:00",
+      "45",
+      "ops@example.com",
+      "https://example.com/atlas/checklist"
+    ],
+    "review": "Three paragraphs; two unresolved issues, proposed start and approval cutoff correctly distinguished, approval prerequisite and postpone-on-delay preserved, no deletion before restore verification, correct contact/link, no invented completion or guarantee."
+  },
+  {
+    "id": "spanish-approval",
+    "prompt": "Redacta un correo en español a Maya, en tres párrafos breves y como máximo 140 palabras, usando solo estos hechos: la revisión del documento Atlas está pendiente. El plazo para revisarlo es el viernes a las 09:30. La publicación está prevista para el lunes a las 14:00, pero solo si Maya aprueba la versión final. Si no la aprueba, se debe aplazar la publicación, no publicarla automáticamente. Hay dos comentarios pendientes. Se conservará la copia de respaldo hasta confirmar que la restauración funciona. No inventes motivos ni digas que Maya ya aprobó el documento.",
+    "max_tokens": 512,
+    "max_words": 140,
+    "required_literals": [
+      "Maya",
+      "Atlas",
+      "viernes",
+      "09:30",
+      "lunes",
+      "14:00"
+    ],
+    "review": "Spanish throughout; review deadline vs proposed publication distinguished, publication only with approval, delay if absent, two pending comments, backup kept until successful restore, no invented approval or reason."
+  },
+  {
+    "id": "french-approval",
+    "prompt": "Rédige un courriel en français à Maya en trois paragraphes courts, de 140 mots au maximum, en utilisant uniquement ces faits : la relecture du document Atlas reste à faire. La date limite de relecture est vendredi à 09:30. La publication est prévue lundi à 14:00, mais uniquement si Maya approuve la version finale. Sans cette approbation, la publication doit être reportée, jamais lancée automatiquement. Deux commentaires restent à traiter. La sauvegarde doit être conservée jusqu'à confirmation du bon fonctionnement de la restauration. N'invente pas de motif et ne prétends pas que l'approbation a déjà été donnée.",
+    "max_tokens": 512,
+    "max_words": 140,
+    "required_literals": [
+      "Maya",
+      "Atlas",
+      "vendredi",
+      "09:30",
+      "lundi",
+      "14:00"
+    ],
+    "review": "French throughout; review deadline vs proposed publication distinguished, explicit approval prerequisite, no automatic publication, two unresolved comments, backup retention conditional on successful restore; punctuation spaces must remain sampled bytes."
+  },
+  {
+    "id": "long-rewrite",
+    "action": "rewrite",
+    "prompt": "Hi Maya,\n\nPlease review the Atlas migration note by Friday at 09:30. We have completed the rehearsal, but two validation issues remain open. The proposed production start is Monday at 14:00, with a 45-minute maintenance window. These are plans, not confirmation that the migration has been approved.\n\nDo not publish the note or start production until I approve the final version. If approval has not arrived by the deadline, postpone both actions and send me an update. Keep the backup until you have verified that the restore succeeded. Completing the review alone does not authorize publication.\n\nThe checklist is at https://example.com/atlas/checklist. Send questions to ops@example.com. Please mention the unresolved issues in your reply and keep the distinction between the review deadline and the proposed start time. Do not add a reason for the schedule change or say the issues are fixed.",
+    "max_tokens": 512,
+    "max_words": 200,
+    "preserve": [
+      "Maya",
+      "Atlas",
+      "https://example.com/atlas/checklist",
+      "ops@example.com"
+    ],
+    "required_literals": [
+      "Maya",
+      "Atlas",
+      "Friday",
+      "09:30",
+      "Monday",
+      "14:00",
+      "45",
+      "https://example.com/atlas/checklist",
+      "ops@example.com"
+    ],
+    "review": "Actual SDK rewrite call. Preserve all names, times, contact/link and quantities; two issues still open; review is not approval; neither publication nor production can proceed without original sender approval; postpone both if late; backup retention until verified restore. No new reasons or completed work."
+  }
+]

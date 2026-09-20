@@ -153,6 +153,26 @@ def test_raw_head_snapshot_does_not_alias_next_eval():
         np.testing.assert_array_equal(first, saved)
 
 
+def test_raw_decoder_preserves_french_punctuation_and_embedded_zero():
+    native = Native()
+    native.pieces = [b'', 'Bonjour'.encode(), b'', b' ?\x00']
+    def cleaned(*args):
+        pytest.fail('batch detokenize can remove the sampled punctuation space')
+    native.llama_detokenize = cleaned
+    kp = candidate(native=native)
+    assert kp._backend.decode_tokens([1, 3, 0]) == 'Bonjour ?\x00'
+    assert kp.identity['rendering_policy']['cleanup_tokenization_spaces'] is False
+
+
+def test_decoder_checks_actual_native_pieces_instead_of_echoing_binding(tmp_path):
+    native = Native()
+    kp = candidate(native=native)
+    native.pieces = [b'', b'B', b'', b'x' * 81]
+    with pytest.raises(KeyprintError) as caught:
+        kp.generate('hello', output=tmp_path/'mismatch')
+    assert caught.value.report['failed_phase'] == 'render'
+
+
 def test_failure_resets_cache_and_releases_lock(tmp_path):
     model = Model()
     original = model.eval

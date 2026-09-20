@@ -33,9 +33,24 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The subsequent Llama 3.2 3B Q8_0 extension exposed and fixed a byte-rendering
+bug: native full-sequence decoding removes French punctuation spaces. Raw
+native-piece verification now preserves sampled bytes. Exact replay retains
+595 original Llama tokens and 1,002 preceding SmolLM2 tokens with unchanged
+sampling events. Fresh Llama runs complete 20 outputs and 2,090 tokens, plus
+local client/rewrite probes. Longer English, Spanish and French cases retain
+approval and backup conditions in many outputs, but invented details, factual
+errors and a changed approval condition remain. Three long-form outputs fail
+mechanical screens; zero flags on the six short cases still miss semantic
+errors. [All pair findings and reproduction](QUALITY_REVIEW.md) are explicit.
+The updated installed wheel passes 1,414 Python tests without skips; another
+five harness-validation cases pass in the subsequent 49-test focused run.
+No UI code changed. This advances one additional model binding and fixes an
+integration defect; it does not close quality, detector or release gates.
+
 The SDK now includes an experimental CPU llama.cpp/GGUF backend through
 `Keyprint.from_llama_cpp()` and the existing CLI, local client server and
-interactive playground. The final installed wheel passes 1,403 Python tests
+interactive playground. The preceding installed wheel passed 1,403 Python tests
 without skips; 11 UI checks also pass. All 85 package files match source,
 wheel and both tested installations. Its pinned SmolLM2 Q8_0 run produced 12 ordinary/marked
 outputs. Independent native replay reconciles all 1,002 raw heads, probability

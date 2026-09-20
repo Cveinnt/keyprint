@@ -2,7 +2,9 @@
 
 Only decoder-only, non-recurrent GPT-2 byte-BPE vocabularies are admitted.
 Native byte APIs avoid the pinned wrapper's fixed-size token decoder and its
-unpopulated score cache when logits_all=False. No Ollama or GPU claim follows.
+unpopulated score cache when logits_all=False. Full-sequence llama_detokenize
+may normalize punctuation spacing; this profile preserves raw token pieces.
+No Ollama or GPU claim follows.
 """
 from __future__ import annotations
 
@@ -161,6 +163,8 @@ class LlamaCppModel(PortableGeneration):
             "adapter_sha256": _sha(__file__), "generation_source_sha256": _sha(Path(__file__).with_name("portable.py")),
             "binding_source_sha256": _sha(Path(__file__).with_name("bytelevel.py")),
             "sampling_execution": sampling_identity(), "temperature": temperature, "top_k": top_k,
+            "rendering_policy": {"decoder": "native_token_pieces", "cleanup_tokenization_spaces": False,
+                                 "utf8": "strict; pending suffix retained only at exact token cap"},
             "empirical_acceptance_transfers": False,
             "limitations": "CPU; single response; no structured output, tools, streaming, batching or calibrated detector"}
 
@@ -205,10 +209,14 @@ class LlamaCppModel(PortableGeneration):
         return self.model.tokenize(rendered.encode("utf-8"), add_bos=False, special=True)
 
     def decode_tokens(self, ids):
-        tokens = (self.native.llama_token * len(ids))(*ids)
-        raw = _native_bytes(lambda buf, length: self.native.llama_detokenize(
-            self.model._model.vocab, tokens, len(ids), buf, length, True, False), limit=16 << 20)
-        return raw.decode("utf-8", errors="strict")
+        # Re-read native pieces instead of trusting the cached binding table.
+        # llama_detokenize is not a verbatim decoder: some BPE families enable
+        # clean_spaces internally, deleting French punctuation spaces and
+        # changing the byte stream after sampling. Match the Python wrapper's
+        # raw-piece policy, with correct resizing for tokens over 32 bytes.
+        pieces = [_native_bytes(lambda buf, length: self.native.llama_token_to_piece(
+            self.model._model.vocab, index, buf, length, 0, False)) for index in ids]
+        return b"".join(pieces).decode("utf-8", errors="strict")
 
     def json_constraint(self, schema):
         raise ValueError("json_schema requires the MLX or Transformers backend")

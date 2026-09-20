@@ -12,6 +12,7 @@ import importlib.metadata
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import socket
 import threading
@@ -20,10 +21,46 @@ import time
 from keyprint import Keyprint
 
 
+def load_cases(path):
+    cases = json.loads(Path(path).read_text())
+    if not isinstance(cases, list) or not 1 <= len(cases) <= 64:
+        raise ValueError("provide 1 to 64 synthetic inference cases")
+    identifiers = set()
+    for case in cases:
+        if not isinstance(case, dict):
+            raise ValueError("each inference case must be an object")
+        identifier = case.get("id")
+        if (not isinstance(identifier, str) or not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", identifier)
+                or identifier in identifiers):
+            raise ValueError("case IDs must be unique safe directory names")
+        identifiers.add(identifier)
+        if (not isinstance(case.get("prompt"), str) or not case["prompt"].strip()
+                or len(case["prompt"]) > 16000 or not isinstance(case.get("review"), str)
+                or type(case.get("max_tokens")) is not int or not 1 <= case["max_tokens"] <= 1024):
+            raise ValueError("each case needs a prompt, review instructions and a 1 to 1024 token cap")
+        literals = case.get("required_literals", [])
+        if not isinstance(literals, list) or any(not isinstance(s, str) or not s for s in literals):
+            raise ValueError("required_literals must be a list of nonempty strings")
+        if "max_words" in case and (type(case["max_words"]) is not int or not 1 <= case["max_words"] <= 10000):
+            raise ValueError("max_words must be a positive integer up to 10000")
+        if "expected_json" in case and not isinstance(case["expected_json"], dict):
+            raise ValueError("expected_json must be an object")
+        if case.get("action", "generate") not in ("generate", "rewrite"):
+            raise ValueError("case action must be generate or rewrite")
+        if case.get("action") == "rewrite":
+            from keyprint.rewrite import plain_text, protected_literals
+            plain_text(case["prompt"])
+            protected_literals(case["prompt"], case.get("preserve", []))
+    return cases
+
+
 def screens(case, text, completion):
     result = {"complete": completion == "eos", "nonempty": bool(text.strip()),
               "missing_literals": [word for word in case.get("required_literals", []) if word not in text],
               "semantic_quality": "requires_review"}
+    if "max_words" in case:
+        result.update(whitespace_word_count=len(text.split()),
+                      within_word_limit=len(text.split()) <= case["max_words"])
     if "expected_json" in case:
         try:
             parsed = json.loads(text)
@@ -52,7 +89,9 @@ def write_report(output, report):
         {"case": row["case"], "condition": row["condition"], "screens": row["screens"]}
         for row in report["runs"] if "screens" in row and
         (not row["screens"]["complete"] or not row["screens"]["nonempty"] or
-         row["screens"]["missing_literals"] or row["screens"].get("exact_json") is False)]
+         row["screens"]["missing_literals"] or row["screens"].get("exact_json") is False or
+         row["screens"].get("within_word_limit") is False or
+         row["screens"].get("rewrite_checks_passed") is False)]
     report["quality_acceptance"] = "not_established; mechanical screens do not check meaning"
     public = output / "public"
     public.mkdir(exist_ok=True)
@@ -171,7 +210,10 @@ def main():
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--http-client", action="store_true")
+    parser.add_argument("--cases", type=Path, default=Path(__file__).with_name("inference_cases.json"),
+                        help="Synthetic public comparison cases; defaults to the six shared integration prompts")
     args = parser.parse_args()
+    cases = load_cases(args.cases)
     if args.backend == "transformers":
         import torch
         torch.set_num_threads(1)
@@ -183,9 +225,10 @@ def main():
     factory = {"mlx": Keyprint.from_mlx, "transformers": Keyprint.from_transformers, "llama-cpp": Keyprint.from_llama_cpp}[args.backend]
     loader = lambda: factory(args.model, key=key)
     candidate = loader()
-    cases = json.loads(Path(__file__).with_name("inference_cases.json").read_text())
     report = {"backend":args.backend, "keyprint_version":importlib.metadata.version("keyprint"),
               "identity":candidate.identity, "cases":cases, "runs":[], "clients":{},
+              "canonical_cases_sha256":hashlib.sha256(json.dumps(cases, sort_keys=True, ensure_ascii=False,
+                                                   separators=(",", ":")).encode()).hexdigest(),
               "scope":"Actual local inference screen, not a quality, calibrated detector or production acceptance", "engineering_failures":[]}
     for i, case in enumerate(cases):
         order = ("ordinary", "marked") if i % 2 == 0 else ("marked", "ordinary")
@@ -193,11 +236,19 @@ def main():
             row = {"case":case["id"], "condition":condition}
             started = time.perf_counter()
             try:
-                result = candidate.generate(case["prompt"], condition=condition, max_tokens=case["max_tokens"],
-                                            output=args.output/(case["id"]+"-"+condition))
+                settings = dict(condition=condition, max_tokens=case["max_tokens"],
+                                output=args.output/(case["id"]+"-"+condition))
+                if case.get("action") == "rewrite":
+                    rewritten = candidate.rewrite(case["prompt"], preserve=case.get("preserve", []), **settings)
+                    result = rewritten.generation
+                    row["rewrite"] = {"status": rewritten.status, "checks": rewritten.checks}
+                else:
+                    result = candidate.generate(case["prompt"], **settings)
                 completion = result.report.get("payload", result.report)["completion"]
                 row.update(text=result.text, completion=completion, usage=result.report["usage"],
                            screens=screens(case, result.text, completion), diagnostic=inspect(candidate, result.text, control))
+                if "rewrite" in row:
+                    row["screens"]["rewrite_checks_passed"] = row["rewrite"]["status"] != "failed_checks"
                 assert result.text.strip(), "empty generated text"
                 assert 0 < result.report["usage"]["completion_tokens"] <= case["max_tokens"]
             except Exception as exc:

@@ -201,6 +201,21 @@ GPU execution, Ollama, streaming, tools, JSON constraints and other model
 families are not qualified by this backend. The native context handles one
 request at a time and rejects concurrent use; the context manager releases it.
 
+A second measured binding is Llama 3.2 3B Instruct Q8_0 (3.42 GB). Download it
+explicitly, under the model's Llama 3.2 license, then use the same interface:
+
+```sh
+hf download bartowski/Llama-3.2-3B-Instruct-GGUF Llama-3.2-3B-Instruct-Q8_0.gguf \
+  --revision 5ab33fa94d1d04e903623ae72c95d1696f09f9e8 --local-dir models/llama3.2
+keyprint playground --backend llama-cpp \
+  --model models/llama3.2/Llama-3.2-3B-Instruct-Q8_0.gguf
+```
+
+Twenty fresh ordinary/marked outputs completed on this binding. Factual errors,
+invented details and rewrite meaning drift remain visible in the
+[quality review](QUALITY_REVIEW.md). A larger model does not establish production
+quality or transfer detection evidence from another model.
+
 To try a larger multilingual model, the same CPU adapter accepts the pinned
 SmolLM3-3B tokenizer and requests its non-thinking chat template:
 

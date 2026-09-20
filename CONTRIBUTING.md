@@ -86,6 +86,8 @@ python -m pytest tests/test_llama_cpp.py tests/test_server.py tests/test_playgro
 keyprint doctor --playground --backend llama-cpp --model /path/to/model.gguf
 python tools/validate_compatibility.py --backend llama-cpp \
   --model /path/to/model.gguf --output gguf-results --http-client
+python tools/validate_compatibility.py --backend llama-cpp \
+  --model /path/to/model.gguf --cases tools/quality_cases.json --output gguf-longform
 python tools/validate_cancellation.py --backend llama-cpp --protocol openai \
   --model /path/to/model.gguf --output gguf-cancel-openai
 python tools/validate_cancellation.py --backend llama-cpp --protocol anthropic \
@@ -101,3 +103,11 @@ success does not approve quality. Native libraries and the GGUF are hashed in
 the reports; each tokenizer binding is separate from the reference profile.
 The fixture download is explicit through `keyprint playground --backend
 llama-cpp --download`. No hosted provider calls or model code downloads occur.
+
+`--cases` accepts 1 to 64 bounded synthetic cases. Prompts and ordinary/marked
+outputs are exported into the report; do not use private or customer content.
+Safe unique IDs prevent artifact collisions. `action: rewrite` invokes the real
+SDK rewrite path with the supplied source and `preserve` phrases. The report
+records a canonical case hash. Explicit word limits use whitespace counts;
+literal and rewrite checks do not determine meaning. Read the
+[retained quality findings](QUALITY_REVIEW.md) before making quality claims.

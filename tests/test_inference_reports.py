@@ -1,7 +1,8 @@
 """Validate the real-inference harness's reporting boundaries."""
 import json
+import pytest
 
-from tools.validate_compatibility import screens, write_report
+from tools.validate_compatibility import screens, write_report, load_cases
 
 
 def test_json_screen_rejects_strings_numbers_and_wrappers():
@@ -26,3 +27,44 @@ def test_quality_flags_do_not_approve_semantics_or_hide_failures(tmp_path):
     assert "<script>bad()" not in page and "&lt;script&gt;" in page
     assert "private fixture" not in page
     assert sorted(p.name for p in (tmp_path/"public").iterdir()) == ["comparison.html", "comparison.json"]
+
+
+def test_word_limit_violation_is_retained_as_a_quality_flag(tmp_path):
+    case = {"id":"bounded", "prompt":"Use at most two words", "review":"No more than two", "max_tokens":8, "max_words":2}
+    row = {"case":"bounded", "condition":"ordinary", "text":"one two three", "screens":screens(case,"one two three","eos")}
+    report = {"backend":"fixture", "cases":[case], "runs":[row], "clients":{}, "engineering_failures":[]}
+    write_report(tmp_path,report)
+    exported = json.loads((tmp_path/'public/comparison.json').read_text())
+    assert exported['screening_failures'] == [dict(case='bounded',condition='ordinary',screens=row['screens'])]
+    assert row['screens']['whitespace_word_count'] == 3
+    assert row['screens']['semantic_quality'] == 'requires_review'
+
+
+@pytest.mark.parametrize('change', [dict(id='../escape'), dict(id='a/b'), dict(max_tokens=True),
+    dict(max_tokens=1025), dict(prompt=' '), dict(required_literals='Maya'), dict(max_words=False),
+    dict(action='unknown'), dict(action='rewrite', preserve=['absent']),
+    dict(action='rewrite', prompt='```code```'), dict(action='rewrite', preserve='hello')])
+def test_custom_cases_reject_unsafe_or_unbounded_requests(tmp_path,change):
+    case = {'id':'safe','prompt':'hello','review':'review','max_tokens':8,**change}
+    path = tmp_path/'cases.json';path.write_text(json.dumps([case]))
+    with pytest.raises(ValueError):load_cases(path)
+
+
+def test_custom_cases_reject_duplicate_artifact_paths(tmp_path):
+    case = {'id':'same','prompt':'hello','review':'review','max_tokens':8}
+    path = tmp_path/'cases.json';path.write_text(json.dumps([case,case]))
+    with pytest.raises(ValueError,match='unique'):load_cases(path)
+
+
+def test_rewrite_failure_is_flagged_even_when_text_screens_pass(tmp_path):
+    case = {'id':'rewrite', 'prompt':'Hi Maya.', 'review':'Keep name', 'max_tokens':32,
+            'action':'rewrite', 'preserve':['Maya']}
+    path = tmp_path/'cases.json'; path.write_text(json.dumps([case]))
+    assert load_cases(path) == [case]
+    row = {'case':'rewrite', 'condition':'marked', 'text':'Maya, hello Maya.',
+           'screens':{**screens(case, 'Maya, hello Maya.', 'eos'), 'rewrite_checks_passed':False}}
+    report = {'backend':'fixture', 'cases':[case], 'runs':[row], 'clients':{}, 'engineering_failures':[]}
+    write_report(tmp_path, report)
+    exported = json.loads((tmp_path/'public/comparison.json').read_text())
+    assert len(exported['screening_failures']) == 1
+    assert exported['quality_acceptance'].startswith('not_established')

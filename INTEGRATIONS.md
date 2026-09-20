@@ -62,6 +62,25 @@ This is a single-response CPU integration. Ollama, GPU/multi-request serving,
 other GGUF tokenizer families, output quality and production performance remain
 unqualified. See [local reproduction](CONTRIBUTING.md#llamacpp-local-checks).
 
+The second CPU binding is `bartowski/Llama-3.2-3B-Instruct-GGUF`, revision
+`5ab33fa94d1d04e903623ae72c95d1696f09f9e8`, file
+`Llama-3.2-3B-Instruct-Q8_0.gguf` (3,421,899,296 bytes), SHA-256
+`b5607b5090a8280063fff2d706bb3408ca6542341b06aab39c3eca0a28575921`.
+It uses the same CPU settings above. Initial French responses exposed native
+full-sequence decoding that deletes spaces before punctuation. The adapter now
+independently re-reads native token pieces with correctly sized buffers and
+strict UTF-8 decoding. It preserves sampled bytes and records this policy in
+the runtime identity. It does not change the numerical sampling profile.
+
+Exact replay retains all 595 original Llama tokens, probability hashes, draws
+and model calls, including the two initially failed French responses. The
+preceding 1,002-token SmolLM2 run also replays exactly. Fresh Llama runs complete
+20 outputs and 2,090 tokens across the six integration prompts and four longer
+English/Spanish/French cases, including an actual SDK rewrite. Both local HTTP
+clients pass. Zero mechanical flags in the six-case screen still miss semantic
+errors; three long-form outputs trigger lexical/word-limit flags. See the
+[review and reproduction](QUALITY_REVIEW.md). No quality acceptance follows.
+
 ### September 20 optional native MLX execution
 
 An unpublished `keyprint-native` wheel provides explicit
@@ -138,7 +157,7 @@ Qwen3-8B-4bit checkpoint. Installed-wheel tests passed on Linux/macOS and Python
 | SGLang | Custom logits processor and request parameters, integrated inside the serving stack | Pinned ARM CPU source build: six ordinary/marked SmolLM2 pairs, 620 matching returned tokens; NUMA workaround required, output quality and production lifecycle unvalidated |
 | vLLM | Stateful batched logits-processor extension; native watermarking is also documented upstream | Experimental CPU 0.29.0+cpu: latest two batched SmolLM2 requests returned 125 tokens matching private selection journals; production server lifecycle and broader models unvalidated |
 | Hugging Face Transformers | Keyprint owns a single-response CPU sampling loop and KV cache | SmolLM2 real generation tested on the private branch; broader model and quality coverage missing |
-| llama.cpp / GGUF | Direct native raw logits and exact byte token binding; Keyprint selects each next token | Pinned SmolLM2 Q8_0, macOS ARM64 CPU: six ordinary/marked pairs, local client replay and cancellation passed; no Ollama/GPU/production-quality claim |
+| llama.cpp / GGUF | Direct native raw logits and exact byte token binding; Keyprint selects each next token | Pinned SmolLM2 and Llama 3.2 3B Q8_0 on macOS ARM64 CPU; local clients and byte replay tested, cancellation tested on SmolLM2; no Ollama/GPU/production-quality claim |
 | MLX | Public `run_response` caller and pinned local example | One exact model/tokenizer tested |
 
 An OpenAI-compatible endpoint is not an OpenAI-hosted model. Reading a Claude
