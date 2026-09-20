@@ -2,6 +2,10 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Add bounded native top-k selection with exact token-ID ties, signed-zero and
+  subnormal ordering. Retain NumPy paths for equal scores, small inputs and
+  larger k. Require `keyprint-native==0.1.0a2` and reject incompatible wheels
+  before model loading. Probability arithmetic, hashes and journals are unchanged.
 - Prepare immutable, unkeyed tokenizer/profile metadata once per explicitly
   selected native candidate. Preserve per-request asset integrity checks,
   reject changed binding fields, and create fresh request state and carriers.

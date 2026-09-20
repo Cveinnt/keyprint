@@ -1,9 +1,19 @@
 """Full filtering parity, including validation and rounded gap boundaries."""
 import numpy as np
 import pytest
+import sys
 
 from keyprint.experimental.partition_filter import partition_support_filter
 from keyprint._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
+
+
+@pytest.fixture(params=[False, True], autouse=True)
+def compare_backend(request, monkeypatch):
+    if request.param:
+        native = pytest.importorskip('keyprint_native').NativePRF()
+        original = partition_support_filter
+        monkeypatch.setattr(sys.modules[__name__], 'partition_support_filter',
+                            lambda *a, **k: original(*a, **k, native=native))
 
 
 def compare(head, **settings):

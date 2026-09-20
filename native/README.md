@@ -1,6 +1,6 @@
 # Keyprint native accelerator (unreleased)
 
-Private packaging candidate for the optional native HMAC batch helper. This is
+Private packaging candidate for optional native HMAC and top-k helpers. This is
 not a standalone watermark detector or a published SDK integration.
 
 Prebuilt wheels contain the native library and statically linked OpenSSL;
@@ -19,7 +19,7 @@ context across calls. Model inference and full-caller acceptance are separate.
 The package is not on PyPI. Given the exact reviewed wheel from a private build:
 
 ```sh
-python -m pip install ./keyprint_native-0.1.0a1-py3-none-macosx_11_0_arm64.whl
+python -m pip install ./keyprint_native-0.1.0a2-py3-none-macosx_11_0_arm64.whl
 ```
 
 Install the core SDK and its MLX dependencies separately. With the pinned model
@@ -40,7 +40,16 @@ print(result.text)
 
 Retain the same private key when inspecting results later; the snippet creates a
 new key for this process. Missing or corrupted accelerator files fail before
-model loading. There is no silent fallback to another execution.
+model loading. The current SDK requires the reviewed `0.1.0a2` accelerator and
+rejects older or incompatible wheels before loading weights. There is no silent
+fallback to another execution.
+
+Top-k selection uses a bounded heap for up to 512 choices from 151,669 finite
+binary32 scores. Integer ranking preserves subnormals and treats signed zeros
+as ties, ordered by original token ID. Equal-score, small-input and large-k paths
+keep their existing exact NumPy selection. The new C helper uses bounded stack
+workspace, no global state and no output writes before complete input validation. Journals,
+probability arithmetic and full SHA-256 receipts remain unchanged.
 
 The September 20 wheel bundles OpenSSL 3.6.4 and has no external crypto-library
 dependency. A clean environment containing only this package passes full-digest

@@ -728,6 +728,50 @@ OS background work prevent an identical-path causal interpretation. No timing
 result closes quality, detection, A18 or production-serving gates. Every attempt
 and earlier cost result remains retained.
 
+### Bounded native selection
+
+Accelerator `0.1.0a2` adds a bounded heap for finite binary32 scores. It retains
+at most 512 entries and sorts only the retained set. Integer ordering preserves
+subnormals, signed-zero ties and ascending token IDs. The SDK uses it only for
+at least 1,024 candidates and k at most 512; equal scores, smaller inputs and
+larger k retain the existing exact NumPy paths. Probability arithmetic and
+dense SHA-256 receipt formats are unchanged. Older accelerator wheels fail
+before model loading rather than failing during generation.
+
+The first helper screen exposed slower equal-score selection; that result is
+retained. With the existing equal-score shortcut preserved, all ninety final
+full-width orders match an independent lexsort oracle. Median helper-time
+ratios versus partition selection are 0.1752 for normal scores, 0.2087 for
+rounded ties and 0.9856 for equal scores. These are helper measurements only.
+
+The fresh core/native installation passes 918 tests without skips. Native tests
+cover finite bit patterns, extremes, subnormals, signed zeros, ascending and
+descending data, byte bounds, invalid input, output canaries and concurrent
+calls. Both Python and native filtering paths pass 44 full-filter cases.
+ASan/UBSan stress completes 10,000 valid and 10,000 invalid calls with unaligned
+input and output guards; this is not a leak check or instrumented OpenSSL audit.
+An isolated accelerator-only installation checks both HMAC digests and selection
+without other Python packages. An actual older wheel is rejected before loading
+weights. Qwen full-caller parity again reconciles 988 tokens, both client
+lifecycle checks pass, and eleven structured requests reconcile 213 tokens and
+175 grammar masks.
+
+The unchanged full study completes 72 measured outputs and three warmups, with
+3,018 audited tokens including 995 engine tokens:
+
+| Time per token comparison | Geometric mean ratio | One-sided 95% upper |
+| --- | ---: | ---: |
+| Ordinary Keyprint / MLX-LM | 1.099011 | 1.106781 |
+| Marked Keyprint / MLX-LM | 1.137564 | 1.146169 |
+| Marked / ordinary Keyprint | 1.035080 | 1.039791 |
+
+The complete-path 5% screen still fails. Marked/engine request latency is
+1.153182 (upper 1.173548). The preceding runtime's marked/engine token ratio
+was 1.150419; the new point estimate is modestly lower. Separate draws, output
+lengths, native sampling policies and OS background work prevent a clean causal
+comparison between experiments. No retries, outlier exclusions, quality,
+detection or production acceptance follow from these results.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

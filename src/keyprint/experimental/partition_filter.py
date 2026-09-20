@@ -14,7 +14,7 @@ from .._engine.research.keyprint_stable_support_filter_v3 import (
 )
 
 
-def select_top_k(candidate_ids, scores, top_k):
+def select_top_k(candidate_ids, scores, top_k, native=None):
     """Same descending-score/ascending-ID order on validated filter candidates.
 
     The filter supplies strictly increasing candidate IDs and finite float64
@@ -22,10 +22,18 @@ def select_top_k(candidate_ids, scores, top_k):
     temperature arithmetic, gap boundaries or the final immutable probability
     support. It only avoids sorting discarded candidates.
     """
+    if native is not None:
+        from keyprint_native import NativePRF
+        if type(native) is not NativePRF:
+            raise TypeError('exact native backend required')
     if len(scores) <= top_k:
         return np.lexsort((candidate_ids, -scores))
     if np.all(scores == scores[0]):
         return np.arange(top_k)
+    if native is not None and top_k <= 512 and len(scores) >= 1024:
+        # These binary64 values came exactly from binary32 model scores.
+        # Candidate IDs are ascending, so original-index ties preserve ID ties.
+        return np.asarray(native.select_indices(scores.astype('<f4').tobytes(), top_k), dtype=np.int64)
     threshold = np.partition(scores, len(scores) - top_k)[len(scores) - top_k]
     above = np.flatnonzero(scores > threshold)
     tied = np.flatnonzero(scores == threshold)[:top_k - len(above)]
@@ -35,7 +43,7 @@ def select_top_k(candidate_ids, scores, top_k):
 
 def partition_support_filter(logits, *, temperature=.7, top_k=100,
                           max_logit_gap=DEFAULT_MAX_LOGIT_GAP,
-                          mapped_vocabulary_size=None):
+                          mapped_vocabulary_size=None, native=None):
     """Define explicit post-filter support identically for both generation arms.
 
     A mapping argument admits a prefix of the model head. By default, all columns
@@ -101,7 +109,7 @@ def partition_support_filter(logits, *, temperature=.7, top_k=100,
     candidate_ids, scaled_losses = candidate_ids[inside], scaled_losses[inside]
     if not len(candidate_ids):
         raise ArithmeticError("the maximum token must survive stable support filtering")
-    order = select_top_k(candidate_ids, row[candidate_ids], top_k)
+    order = select_top_k(candidate_ids, row[candidate_ids], top_k, native=native)
     selected, scaled = candidate_ids[order], scaled_losses[order]
     out = np.full((1, width), -np.inf, dtype=np.float64)
     out[0, selected] = -scaled

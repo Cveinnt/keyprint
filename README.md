@@ -250,8 +250,9 @@ for the validation scope; this option does not establish a serving-speed claim.
 
 A separate, unpublished `keyprint-native` wheel enables
 `execution="experimental-native"` on Apple Silicon macOS. It batches the same
-HMAC computation in a bundled library and selects top-k support with exact
-reference tie-breaking; the core package never compiles or
+HMAC computation and bounded top-k selection in a bundled library, preserving
+exact reference tie-breaking. This SDK requires accelerator version `0.1.0a2`
+and rejects older wheels before model loading; the core package never compiles or
 downloads it automatically. Full-caller output parity and both local provider
 cancellation paths have been tested, with a distinct binary-bound identity.
 Validated unkeyed metadata is prepared once per candidate; each request still

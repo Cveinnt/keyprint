@@ -45,6 +45,7 @@ class BuildNative(build_py):
         source = Path('src/keyprint_native/_native.c')
         command = ['clang','-std=c11','-O3','-Wall','-Wextra','-Werror','-dynamiclib',
                    '-arch','arm64',f'-mmacosx-version-min={target}',str(source),
+                   'src/keyprint_native/_select.c',
                    '-I'+str(root/'include'),str(archive),'-o',str(binary),
                    '-Wl,-dead_strip','-Wl,-install_name,@rpath/_native.dylib']
         subprocess.run(command, check=True)
@@ -59,8 +60,8 @@ class BuildNative(build_py):
         arch = subprocess.check_output(['lipo','-archs',str(binary)],text=True).strip()
         if arch!='arm64':
             raise RuntimeError('Native binary architecture mismatch')
-        files=['_native.c','__init__.py','licenses/OpenSSL.txt','_native.dylib']
-        receipt={'schema':'keyprint.native-build.v1','package_version':'0.1.0a1',
+        files=['_native.c','_select.c','__init__.py','licenses/OpenSSL.txt','_native.dylib']
+        receipt={'schema':'keyprint.native-build.v1','package_version':'0.1.0a2',
                  'architecture':arch,'minimum_macos':minimums[0],
                  'openssl_object_minimum_macos':archive_minimum,
                  'dynamic_dependencies':dependencies[1:],

@@ -23,14 +23,22 @@ def native_backend():
         from keyprint_native import NativePRF
     except ImportError as exc:
         raise ImportError('experimental-native requires the separate keyprint-native wheel; see native/README.md. No automatic build or download was started.') from exc
-    return NativePRF()
+    native = NativePRF()
+    expected = {'encoding':'little-endian-binary32',
+                'order':'descending score, ascending original index; signed zeros tie',
+                'maximum_scores':151669,'maximum_top_k':512}
+    if (native.identity.get('package_version') != '0.1.0a2'
+            or native.identity.get('selection') != expected
+            or not callable(getattr(native, 'select_indices', None))):
+        raise ImportError('experimental-native requires keyprint-native==0.1.0a2 with bounded selection support; install the matching reviewed wheel before loading a model')
+    return native
 
 
 def execution_specification(native=None):
     result=python_execution()
     result['native_sdk_source_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     result['support_filter_execution']={
-        'implementation':'exact-partition-top-k-v1',
+        'implementation':'bounded-native-top-k-with-exact-partition-fallback-v1',
         'source_sha256':hashlib.sha256(Path(partition_filter.__file__).read_bytes()).hexdigest(),
         'policy':'unchanged reference support law; exact cutoff ties by ascending token ID',
     }
@@ -111,7 +119,7 @@ class _NativeHost(_SparseV3Host):
                 raise ValueError('v3 requires the complete raw model head')
             attempt['raw_logits_sha256'] = hashlib.sha256(raw_logits.tobytes()).hexdigest()
             filtered = partition_filter.partition_support_filter(raw_logits,
-                **self._filter_settings, mapped_vocabulary_size=self.mapped_size)
+                **self._filter_settings, mapped_vocabulary_size=self.mapped_size, native=self._native)
             attempt.update(filter_profile_sha256=filtered.identity['filter_profile_sha256'],
                            admitted_token_ids=list(filtered.admitted_token_ids),
                            filtered_logits_sha256=hashlib.sha256(filtered.filtered_logits.tobytes()).hexdigest(),

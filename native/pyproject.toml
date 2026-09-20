@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "keyprint-native"
-version = "0.1.0a1"
-description = "Optional experimental native HMAC accelerator for Keyprint"
+version = "0.1.0a2"
+description = "Optional experimental native HMAC and selection accelerator for Keyprint"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT AND Apache-2.0"
@@ -17,4 +17,4 @@ dependencies = []
 where = ["src"]
 
 [tool.setuptools.package-data]
-keyprint_native = ["_native.c", "licenses/*.txt"]
+keyprint_native = ["_native.c", "_select.c", "licenses/*.txt"]

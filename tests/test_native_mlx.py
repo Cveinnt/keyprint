@@ -32,7 +32,7 @@ def test_packaged_binary_full_digests_and_identity():
     assert native.identity['build']['files']
 
 
-@pytest.mark.parametrize('filename',['_native.dylib','_native.c','__init__.py','licenses/OpenSSL.txt'])
+@pytest.mark.parametrize('filename',['_native.dylib','_native.c','_select.c','__init__.py','licenses/OpenSSL.txt'])
 def test_corruption_rejected_before_library_load(monkeypatch,tmp_path,filename):
     source=Path(native_module.__file__).parent
     shutil.copytree(source,tmp_path/'keyprint_native')

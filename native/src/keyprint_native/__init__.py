@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import platform
 
-__version__ = '0.1.0a1'
+__version__ = '0.1.0a2'
 
 
 class NativePRF:
@@ -16,7 +16,7 @@ class NativePRF:
         manifest_path=root/'native-build.json'
         try:
             manifest=json.loads(manifest_path.read_text())
-            expected={'_native.c','__init__.py','licenses/OpenSSL.txt','_native.dylib'}
+            expected={'_native.c','_select.c','__init__.py','licenses/OpenSSL.txt','_native.dylib'}
             if (manifest['schema']!='keyprint.native-build.v1' or manifest['package_version']!=__version__
                     or set(manifest['files'])!=expected or manifest['architecture']!='arm64'
                     or manifest['dynamic_dependencies']!=['/usr/lib/libSystem.B.dylib']):
@@ -37,12 +37,19 @@ class NativePRF:
         self._call.argtypes=[ctypes.c_void_p,ctypes.c_size_t]*3+[
             ctypes.POINTER(ctypes.c_size_t),ctypes.c_size_t,ctypes.c_size_t,ctypes.c_void_p,ctypes.c_size_t]
         self._call.restype=ctypes.c_int
+        self._select=self._library.keyprint_select_f32
+        self._select.argtypes=[ctypes.c_void_p,ctypes.c_size_t,ctypes.c_size_t,
+                              ctypes.c_void_p,ctypes.c_size_t]
+        self._select.restype=ctypes.c_int
         version=self._library.keyprint_prf_openssl_version
         version.argtypes=[]
         version.restype=ctypes.c_char_p
         self._identity={'schema':'keyprint.native-prf.v1','package_version':__version__,
                         'manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
                         'build':manifest,'openssl_version':version().decode('ascii'),
+                        'selection':{'encoding':'little-endian-binary32',
+                                     'order':'descending score, ascending original index; signed zeros tie',
+                                     'maximum_scores':151669,'maximum_top_k':512},
                         'persistent_key_cache':False,'empirical_acceptance_transfers':False}
 
     @property
@@ -71,3 +78,13 @@ class NativePRF:
         if self._call(key,len(key),prefix,len(prefix),data,len(data),sizes,len(offsets),layers,result,len(result))!=1:
             raise RuntimeError('native HMAC batch failed; no partial result accepted')
         return result.raw
+
+    def select_indices(self, scores, top_k):
+        """Finite binary32 byte scores; immutable positions in descending order."""
+        if (type(scores) is not bytes or len(scores)%4 or not 4<=len(scores)<=151669*4
+                or type(top_k) is not int or not 1<=top_k<=min(512,len(scores)//4)):
+            raise ValueError('bounded binary32 bytes and integer top-k from 1 to 512 required')
+        output=(ctypes.c_uint32*top_k)()
+        if self._select(scores,len(scores),top_k,output,ctypes.sizeof(output))!=1:
+            raise RuntimeError('native selection failed; no partial result accepted')
+        return tuple(output)

@@ -1,5 +1,5 @@
-/* Development-only batched fixed-key HMAC-SHA256 experiment.
- * No SDK integration. EVP primitives implement SHA; no custom hash rounds.
+/* Bounded batched fixed-key HMAC-SHA256 for the optional SDK accelerator.
+ * EVP primitives implement SHA; no custom hash rounds.
  * Address bytes and output layout are defined by the Python caller.
  */
 #include <stddef.h>

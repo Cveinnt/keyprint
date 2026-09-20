@@ -65,6 +65,24 @@ def test_missing_native_accelerator_fails_before_model_loading(monkeypatch):
         Keyprint.from_mlx("unused-model-path", key=KEY, execution="experimental-native")
 
 
+@pytest.mark.parametrize('fault', ['old_version', 'missing_selection', 'missing_method'])
+def test_incompatible_native_wheel_fails_before_model_loading(monkeypatch, fault):
+    native_module = pytest.importorskip('keyprint_native')
+    from keyprint.backends.mlx import MLXModel
+    import copy
+    identity = copy.deepcopy(native_module.NativePRF().identity)
+    if fault == 'old_version': identity['package_version'] = '0.1.0a1'
+    if fault == 'missing_selection': identity.pop('selection')
+    class Incompatible:
+        def __init__(self): self.identity = identity
+        def select_indices(self, *args): raise AssertionError('selection reached')
+    if fault == 'missing_method': Incompatible.select_indices = None
+    monkeypatch.setattr(native_module, 'NativePRF', Incompatible)
+    monkeypatch.setattr(MLXModel, 'load', lambda *a, **k: pytest.fail('model loading reached'))
+    with pytest.raises(ImportError, match='keyprint-native==0.1.0a2'):
+        Keyprint.from_mlx('unused', key=bytes(32), execution='experimental-native')
+
+
 @pytest.mark.skipif(not (ROOT / "sdk/keyprint_v3/__init__.py").exists(),
                     reason="reference parity needs the repository's preserved SDK tree")
 def test_reference_parity(tmp_path):

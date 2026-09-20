@@ -33,10 +33,19 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+Bounded native selection now preserves the complete reference filter law and
+receipt format. The matching `keyprint-native 0.1.0a2` wheel is required before
+model loading; an actual older wheel fails early. The current installation
+passes 918 tests without skips, selector sanitizer stress, full Qwen caller
+parity, both client lifecycle checks and eleven structured requests. The
+unchanged 72-output study reconciles 3,018 tokens and measures marked SDK/engine
+time per token at 1.137564 (upper 1.146169). This remains above the 1.05 target.
+No cost, quality, detection or public release gate is marked closed.
+
 Candidate-local unkeyed setup now avoids rebuilding token profiles and parsing
 tokenizer metadata per request, while preserving file hashes, binding checks,
-fresh ownership and failure accounting. The current installed wheel passes 822
-tests; all 81 SDK files match source. Actual reference/native caller parity,
+fresh ownership and failure accounting. That preceding installed wheel passed
+822 tests; all 81 SDK files matched source. Actual reference/native caller parity,
 both client cancellation/reuse flows and eleven structured requests pass.
 The unchanged 72-output engine study measures marked SDK/engine time per token
 at 1.150419 (upper 1.158634), with 3,065 audited tokens including warmups.
