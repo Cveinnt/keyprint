@@ -149,6 +149,16 @@ candidate before independent confirmation, wider workloads and separate startup
 qualification. Sixteen French exact-time flags remain; quality, reader
 indistinguishability, short-text detection and hosted release checks remain open.
 
+The independently declared Dolly timing workload did not confirm readiness.
+All 64 requests were retained: 29 EOS, 34 capped outputs and one ordinary request
+that raised UnicodeDecodeError when its token cap ended inside a character.
+Exact replay matched 192 original model heads and 302 recorded draws; pending
+UTF-8 bytes were e2 9c. Its timing analysis remains null and the auditor rejects
+the incomplete study. Fix graceful character-boundary finalization while retaining
+all sampled tokens, raw trailing bytes and consumed-work receipts, then declare
+a fresh confirmation. Do not convert this failed attempt into a success or treat
+the earlier development timing pass as production acceptance.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code

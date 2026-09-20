@@ -356,6 +356,58 @@ These are sequential development experiments on a fixed workload. Even a timing
 screen pass would require independent confirmation and wider workloads before
 production or negligible-overhead claims.
 
+### Frozen-candidate confirmation workload
+
+`tools/serving_confirmation.py` binds the exact experimental runtime digest before
+collecting timings. It selects one source-hash-ranked record from each of the
+eight categories in the pinned Databricks Dolly corpus, preserving its instruction
+and context. Selection uses no generated output. Records must have a nonempty
+instruction and a formatted prompt of at most 8,000 characters. The same source
+was used in earlier research; these tasks are new to the timing workload, not a
+claim that the entire corpus was previously unseen.
+
+The declaration retains sixteen 32-token warmups, one ordinary/marked pair per
+case, followed by four measured pairs per case: 64 measured requests. The output
+cap is 192 tokens; every EOS, cap and failure stays in the result. The primary
+screen remains the one-sided 95% upper marked/ordinary time-per-token ratio at
+most 1.05, using the unchanged paired-bootstrap implementation. Whole-request
+ratios and memory remain descriptive. This confirmation does not measure native
+server overhead, separate cold-start distributions or deployment load.
+
+```sh
+python tools/serving_confirmation.py --model PINNED_MODEL \
+  --corpus PINNED_DOLLY_JSONL --expected-runtime FROZEN_RUNTIME_SHA256 \
+  --output PRIVATE_CONFIRMATION --idle-host-confirmed
+python tools/audit_serving_confirmation.py --model PINNED_MODEL \
+  --corpus PINNED_DOLLY_JSONL --run PRIVATE_CONFIRMATION
+```
+
+The auditor regenerates selection from the original corpus and reconciles every
+prompt, condition, cap, runtime, artifact hash, journal chain, committed count,
+text and timing summary. The comparison artifact attributes Databricks and retains
+the corpus's CC BY-SA 3.0 notice. Timing integrity does not approve the answers.
+
+The frozen-candidate confirmation completed all 64 measured attempts: 29 reached
+EOS, 34 returned capped output, and one ordinary request failed during finalization
+at its 192-token cap. The summary is **incomplete**, with null timing analysis;
+the independent audit rejects it. Do not remove the failed request or transfer
+the earlier narrow development pass into confirmation acceptance.
+
+Exact replay of the failed classification request matched all 192 raw model-head
+hashes and reused all 302 recorded random draws. Its final token had bytes
+`20 e2 9c`; the decoder retained `e2 9c`, an incomplete UTF-8 sequence, and raised
+`UnicodeDecodeError` at finalization. The replay retains a diagnostic prefix and
+byte evidence separately; it does not change the original failed attempt. An
+initial replay-tool cleanup error was fixed and its artifacts were retained.
+This is now a concrete SDK release blocker: handle a token budget ending inside
+a character without inventing replacement bytes, drawing extra tokens beyond
+the cap or discarding consumed-work evidence.
+
+`tools/render_confirmation_attempts.py` displays all 64 original attempts,
+including the error and truncation flags, without a timing acceptance result.
+The SDK source remained frozen throughout this confirmation. The new harness's
+14 focused tests passed; this does not close the observed runtime failure.
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.
