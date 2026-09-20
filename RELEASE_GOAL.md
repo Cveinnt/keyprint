@@ -6,6 +6,16 @@ Publicity remains postponed until the release candidate meets this bar.
 The user's September 19 direction makes production quality of both SDK and
 demos the release objective. A green test suite alone does not satisfy it.
 
+September 20 local model expansion: the portable adapter now accepts verified
+ordinary ASCII added tokens and explicitly requests non-thinking chat templates.
+Pinned SmolLM3-3B completed 16 actual requests, including all six ordinary/marked
+pairs, both local rewrite helpers and both local HTTP client protocols. A fresh
+wheel passed 523 Python and seven JavaScript tests; 544 generated tokens matched
+private journals. The larger model retains useful negation/rewrite examples,
+but JSON formatting, invented email detail and a changed French deadline remain
+visible failures. This advances model coverage without closing output quality,
+detection or release gates. Hosted CI remains disabled at the user's request.
+
 ## Current release gates
 
 - [ ] First-use flow: a fresh install reaches a useful, real result through one

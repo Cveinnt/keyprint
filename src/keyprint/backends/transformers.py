@@ -41,6 +41,7 @@ class TransformersModel:
                          "sampling_execution": sampling_identity(),
                          "dependencies": {name: importlib.metadata.version(name) for name in ("torch", "transformers", "numpy", "tokenizers")},
                          "temperature": temperature, "top_k": top_k,
+                         "chat_template_kwargs": {"enable_thinking": False},
                          "empirical_acceptance_transfers": False,
                          "limitations": "CPU float32; visible text only; no calibrated detector, tools, reasoning, streaming or batching"}
 
@@ -104,7 +105,8 @@ class TransformersModel:
         if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 16000:
             raise ValueError("prompt must contain 1 to 16000 characters")
         encoded = self.tokenizer.apply_chat_template([{"role": "user", "content": prompt}],
-                    tokenize=True, add_generation_prompt=True, return_dict=False)
+                    tokenize=True, add_generation_prompt=True, return_dict=False,
+                    enable_thinking=False)
         if any(type(i) is not int or not 0 <= i < len(self.binding.pieces) for i in encoded):
             raise ValueError("prompt tokens are outside the declared model binding")
         if not encoded or len(encoded) + max_tokens > min(self.model.config.max_position_embeddings, 8192):

@@ -112,6 +112,25 @@ production model. The portable profile supports explicit ByteLevel BPE token
 bindings and rejects unsupported tokenizers. Its evidence is separate from
 the pinned Qwen research profile. See [integration coverage](INTEGRATIONS.md).
 
+To try a larger multilingual model, the same CPU adapter accepts the pinned
+SmolLM3-3B tokenizer and requests its non-thinking chat template:
+
+```sh
+hf download HuggingFaceTB/SmolLM3-3B \
+  --revision a07cc9a04f16550a088caea529712d1d335b0ac1 \
+  --include '*.json' '*.safetensors' '*.jinja' \
+  --local-dir models/smollm3
+keyprint generate --backend transformers --model models/smollm3 \
+  --key keyprint.key --prompt 'Explain why the sky is blue in two sentences.'
+```
+
+Weights download is approximately 6.2 GB; CPU float32 weights alone use about
+12.3 GB, with additional memory required for inference. This remains an
+experimental integration, not a production-quality or detector guarantee.
+`enable_thinking=False` is passed to the model's template; templates that ignore
+that option are not thereby qualified for non-thinking output. No reasoning or
+tool channel is parsed, and generated text is never silently stripped.
+
 ## Python API
 
 ```python
@@ -188,7 +207,7 @@ identities and do not automatically qualify the repaired caller.
 | --- | --- |
 | Python / NumPy | Supplied-logit reference pipeline and offline demo |
 | MLX | Exact pinned Qwen3-8B-4bit model on Apple Silicon |
-| Transformers | Experimental local CPU float32 text generation; SmolLM2 integration tested |
+| Transformers | Experimental local CPU float32 text generation; SmolLM2 and SmolLM3-3B integration tested; output quality unqualified |
 | vLLM | Experimental CPU 0.29.0 adapter: two batched SmolLM2 generations; not a production integration |
 | SGLang | Experimental pinned ARM CPU source build: six ordinary/marked SmolLM2 pairs with returned-token verification; NUMA workaround required, quality unvalidated |
 | OpenAI Python client | Real local HTTP request tested; single-message Chat Completions subset |

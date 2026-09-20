@@ -46,6 +46,16 @@ reports. Open `public/comparison.html` to read ordinary and marked text side by
 side. Every attempt is retained. A failed generation fails the engineering run;
 truncation, missing literals and incorrect JSON are reported separately.
 
+For the larger SmolLM3-3B checkpoint, download the explicit revision in README.md
+and substitute `--model models/smollm3` in the same command. The portable adapter
+passes `enable_thinking=False` and records that template policy in each identity.
+The template includes the current date; exact prompt token IDs are retained in
+each private journal, so a later-day repeat is not an identical-prompt replay.
+SmolLM3's eight ordinary added tokens have exact ASCII/ByteLevel byte agreement.
+Added tokens containing whitespace, non-ASCII characters or matching
+transformations remain rejected; they require a separate verified binding.
+The original SmolLM2 prompt tokens are unchanged by the non-thinking option.
+
 The HTTP check runs actual OpenAI and Anthropic SDK requests through a TCP socket
 to one local model worker. It verifies generated text against private reports,
 exact idempotency replay, one generation per client and rejection of unsupported

@@ -19,6 +19,31 @@ remain open; details below.
 The repository is temporarily private while this work is reviewed. The old
 PyPI research package and website remain public. No new launch date is set.
 
+### September 20 local SmolLM3 extension
+
+The Transformers adapter now also runs HuggingFaceTB/SmolLM3-3B at revision
+`a07cc9a04f16550a088caea529712d1d335b0ac1`, using CPU float32, temperature 0.7,
+top-k 100 and its non-thinking chat template. Its eight non-special added ASCII
+tokens have verified ByteLevel rendering; ambiguous added-token forms still
+fail before model loading. This does not qualify other tokenizer families or
+SmolLM3 under the native SGLang/vLLM adapters.
+
+A fresh installed wheel passed 523 Python and seven JavaScript tests. Actual
+inference completed all twelve paired-case outputs, two local provider-object
+rewrites and two HTTP client requests. Independent reconciliation matched 544
+generated tokens, source/assets identities, journal chains, text and usage.
+Both OpenAI and Anthropic local clients replayed without another generation.
+All sixteen requests reached EOS. No hosted provider calls were made.
+
+This fixes integration blockers, not quality acceptance: both JSON responses
+included prohibited Markdown fences; the ordinary email invented a reason;
+the ordinary French response changed a deadline into an availability question.
+The marked science response used one sentence instead of two. Both negation
+samples and the two synthetic rewrites retained their respective conditions. All
+outputs and a post-hoc unblinded assistant review are retained. Neither the
+small sample nor mechanical screens establish semantic equivalence, detection
+calibration or acceptable overhead. CI remains manually disabled.
+
 ## What works now
 
 The published rc3 SDK supports supplied NumPy logits and a separately supplied

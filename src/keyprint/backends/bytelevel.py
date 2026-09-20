@@ -33,11 +33,26 @@ class ByteLevelBinding:
             alphabet[chr(256 + offset)] = byte
         vocab = dict(data["model"]["vocab"])
         special = set(special_ids)
+        added_ids: set[int] = set()
         for added in data.get("added_tokens", []):
+            index, content = added["id"], added["content"]
+            if type(index) is not int or not 0 <= index < vocabulary_size or index in added_ids:
+                raise ValueError("added tokens require unique IDs within the model head")
+            added_ids.add(index)
+            if content in vocab and vocab[content] != index:
+                raise ValueError("added token conflicts with the base vocabulary")
             if not added.get("special", False):
-                raise ValueError("non-special added tokens need a separate byte binding")
-            special.add(added["id"])
-            vocab[added["content"]] = added["id"]
+                # These literals have identical UTF-8 and ByteLevel bytes.
+                # Reject whitespace/Unicode and matching transformations rather
+                # than guessing how an added token affects adjacent bytes.
+                if (index in special or not content
+                        or any(not 33 <= ord(c) <= 126 for c in content)
+                        or any(added.get(flag, False) for flag in
+                               ("single_word", "lstrip", "rstrip", "normalized"))):
+                    raise ValueError("ordinary added tokens require nonempty ASCII literals without matching transformations")
+            else:
+                special.add(index)
+            vocab[content] = index
         if not set(eos_ids) <= special:
             raise ValueError("EOS tokens must be declared special tokens")
         if any(type(i) is not int or not 0 <= i < vocabulary_size for i in vocab.values()):

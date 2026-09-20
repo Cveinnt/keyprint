@@ -14,6 +14,7 @@ from keyprint.backends.transformers import TransformersModel
 
 class Tokenizer:
     def apply_chat_template(self, *args, **kwargs):
+        self.template_kwargs = kwargs
         return [1]
 
     def decode(self, ids, **kwargs):
@@ -68,6 +69,15 @@ def test_cache_eos_controls_and_receipts(condition, tmp_path):
     assert phases.index("commit_requested") < phases.index("committed")
     assert result.report["verdict"] is None
     assert result.report["identity"]["empirical_acceptance_transfers"] is False
+
+
+def test_visible_text_requests_non_thinking_template_and_records_policy(tmp_path):
+    kp = candidate(Model())
+    result = kp.generate("hello", max_tokens=4, output=tmp_path / "run")
+    assert kp._backend.tokenizer.template_kwargs["enable_thinking"] is False
+    assert result.report["identity"]["chat_template_kwargs"] == {"enable_thinking": False}
+    events = [json.loads(line)["event"] for line in (result.artifacts / "journal.jsonl").read_text().splitlines()]
+    assert events[0]["identity"]["chat_template_kwargs"] == {"enable_thinking": False}
 
 
 def test_failure_does_not_retry_and_retains_attempt(tmp_path):
