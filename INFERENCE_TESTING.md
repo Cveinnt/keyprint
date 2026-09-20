@@ -660,7 +660,7 @@ failures, not a causal estimate of watermark-induced degradation.
 
 The same 24 opened responses have now been used for the following development
 comparisons. They are no longer held-out confirmation data for candidate choice.
-The five short marked responses contain 100–400 words. All four methods had zero
+The five short marked responses contain 100–400 words. The methods below had zero
 flags in the paired negative checks (12 ordinary texts under two keys, plus 12
 marked texts under the wrong key); those 36 checks do not establish a deployment
 false-positive rate.
@@ -672,12 +672,13 @@ false-positive rate.
 | Full surrogate tournament likelihood | 7/12 | 0/5 | Reject development candidate |
 | Model-centered bit betting mixture | 8/12 | 1/5 | Reject development candidate |
 | Fixed layer-weighted model-centered mixture | 9/12 | 2/5 | Reject development candidate |
+| Original-prompt model likelihood | 12/12 | 5/5 | Pass development screen; original prompt required |
 
 The predictability filter's separate 500-control run had eight flags among 499
 usable controls and one recording failure. Preserve that incomplete result;
 the failed case is neither a negative nor a candidate for silent replacement.
 
-The final row uses `tools/residual_bet.py` and `tools/develop_residual_bet.py`.
+The fourth method uses `tools/residual_bet.py` and `tools/develop_residual_bet.py`.
 For each new canonical context and layer it subtracts the model's predictive
 bit average from the observed bit. Five fixed betting stakes are averaged over
 the whole document; it never selects the best stake after seeing the text.
@@ -739,6 +740,54 @@ detection or launch gate. Reproduce with:
 python tools/diagnose_surrogate_gap.py --study private-weighted-power \
   --surrogate private-surrogate-likelihood --oracle private-short-capacity \
   --output private-surrogate-gap
+```
+
+### Replay with the original prompt
+
+`tools/develop_prompt_conditioned_likelihood.py` now reconstructs predictive
+probabilities from the original prompt and visible output using the pinned Qwen
+model. It reads no private generation journal, original probability vector or
+sampling draw. `tools/prompt_conditioned_likelihood.py` changes only the frozen
+measurement's conditioning prefix. The fixed 64-position batches, temperature
+0.7, top-k 100, literal-context eligibility, half-mixture score and `log(200)`
+cutoff remain unchanged. This tests a different input contract: the original
+prompt and model are available. It does not solve detection from pasted text
+and a key alone.
+
+All 24 already-opened responses are retained. Reconstructed probabilities detect
+12/12 marked texts, including all 5/5 short marked texts, with zero flags across
+12 ordinary texts under both keys and 12 marked texts under the wrong key.
+The frozen development gate passes. This is not fresh confirmation or a
+false-positive bound; repeated evaluation of these texts prevents treating them
+as held-out candidate-selection evidence. No threshold changed or failed sample
+was replaced. Actual model replay took about 369 seconds for this development
+collection, including measurement and scoring; it is not a serving benchmark.
+
+The independent audit uses direct per-label PRF calls, Python log-space token
+masses and separate normalization, avoiding the scorer's grouped NumPy/SciPy
+transform. Its calculation is tested against high-precision enumeration of
+ordered token pairs, including grouped canonical labels and tiny probabilities.
+The audit also checks source hashes, tokenization, exact prompt-template IDs,
+all eligibility decisions and same-prefix model-head hashes across ordinary/
+marked pairs. The first audit attempt stopped on Transformers' dictionary
+return type; explicitly requesting token IDs corrects the audit input contract.
+Inference receipts remain unchanged. The completed audit reconciles all 48 scores
+and 32,270 terms, including 29,812 independent tournament transforms, with maximum
+score error below 3e-14. All 151 shared-prefix heads match. Thirty-six focused
+contract, numerical and audit tests pass. These are score-replay checks, not a
+second model-kernel execution or calibration study.
+
+The next evidence requirement is fresh prompt-aware power and ordinary/wrong-key
+controls with a frozen rule, independent task groups and new keys. Prompt-free
+recovery, numerical error guarantees, editing robustness and broader models
+remain separate requirements. This research path is not an SDK detection verdict
+or release approval. Reproduce with:
+
+```sh
+python tools/develop_prompt_conditioned_likelihood.py --study private-weighted-power \
+  --model /path/to/pinned-qwen --output private-prompt-conditioned
+python tools/audit_prompt_conditioned_likelihood.py --study private-weighted-power \
+  --development private-prompt-conditioned --model /path/to/pinned-qwen
 ```
 
 The ideal random-key argument does not establish fixed-HMAC-key deployment

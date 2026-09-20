@@ -230,6 +230,17 @@ not a solved detector: original prompts/probabilities are private oracle inputs,
 and no fresh negative controls were run. Detection, SDK promotion and launch
 remain open. Both calculations reuse archived evidence; hosted CI stays disabled.
 
+Actual original-prompt replay now reconstructs probabilities without private
+generation logs or saved probabilities. On all 24 opened responses, the unchanged
+half-mixture score and cutoff detect 12/12 marked answers, including 5/5 short
+answers, with zero flags in 36 paired negative checks. An independent full-term
+audit reconciles 48 scores, 32,270 terms and 29,812 tournament transforms within
+3e-14 score units; 151 shared-prefix model heads match. Thirty-six focused checks
+pass. The development gate passes for this prompt-aware input contract. Fresh
+tasks, new keys, empirical false-positive validation and prompt-free detection
+remain open. SDK behavior and launch gates are unchanged; this research result
+does not turn the interactive bit fraction into a detection verdict.
+
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
 - [ ] Supported configurations: real inference, returned-token verification and
