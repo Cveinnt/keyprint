@@ -199,6 +199,27 @@ Added tokens containing whitespace, non-ASCII characters or matching
 transformations remain rejected; they require a separate verified binding.
 The original SmolLM2 prompt tokens are unchanged by the non-thinking option.
 
+### Local client version matrix
+
+The optional client dependency ranges are tested at OpenAI 1.109.1 with
+Anthropic 0.83.0 and OpenAI 3.14.1 with Anthropic 1.6.0. Fresh wheel environments
+resolve both pairs and pass dependency checks. Each runs 115 focused contract
+tests with zero skips. Both actual Qwen/MLX reference structured runs pass
+eleven requests, 213 tokens and 175 grammar masks, including typed parsing and
+exact replay. Both pairs' real cancellation checks pass for both protocols.
+The older pair's inference used the preceding wheel, whose 83 package files are identical to
+the new wheel; only dependency metadata and documentation changed.
+
+The initial older-client no-dependency overlay failed to import because `distro`
+was missing. Its skipped fixture run is not compatibility evidence. Fresh
+environments install complete dependencies and retain that setup failure.
+The prior exact-pin wheel demonstrably fails fresh dependency resolution with
+the older clients; the new candidate resolves them without changing their
+versions. All numerical/model pins remain fixed. See the
+[local matrix procedure](CONTRIBUTING.md#client-version-checks). These checks do
+not cover every accepted client version or hosted GPT/Claude sampling. Hosted
+CI remains disabled.
+
 ### Structured output and typed clients
 
 Install the `structured` extra with Transformers, server and clients, then run:

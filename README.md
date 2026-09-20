@@ -324,10 +324,15 @@ identities and do not automatically qualify the repaired caller.
 See [provider examples](PROVIDERS.md) for `keyprint serve` and
 `watermark.rewrite_openai(response)` / `watermark.rewrite_anthropic(message)`.
 These helpers never imply that a hosted provider ran the Keyprint sampler.
+The optional `clients` extra accepts OpenAI `>=1.109.1,<4` and Anthropic
+`>=0.83.0,<2`; both older and newer client pairs have local inference evidence.
+See the provider guide for exact tested versions and limitations.
 
-The normal portable backend runs one response at a time. Streaming, batching, tools,
-reasoning channels, beam search, speculative decoding, quantized checkpoints
-and grammar constraints are unsupported. An AI setup wizard would not solve
+The portable Transformers backend runs one response at a time. Streaming,
+batching, tools, reasoning channels, beam search, speculative decoding and
+quantized checkpoints are unsupported. Optional bounded JSON-schema constraints
+are supported through the `structured` extra, as described above; arbitrary
+grammars are unsupported. An AI setup wizard would not solve
 these compatibility gaps. Explicit extras, short commands and useful errors do.
 
 ## Research scope

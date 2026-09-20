@@ -43,3 +43,33 @@ Do not commit keys, private journals, model weights, API credentials or personal
 prompts. Use public fixtures for bug reports and publish only reviewed evidence.
 A score is not an authorship judgment. Claims must point to the exact measured
 configuration; preserve failures as well as successes.
+
+## Client version checks
+
+Keep these checks local while hosted CI is disabled. Test the built wheel in
+separate fresh environments with both dependency sets:
+
+| Set | OpenAI | Anthropic |
+| --- | --- | --- |
+| Lower bounds | 1.109.1 | 0.83.0 |
+| Additional tested pair | 3.14.1 | 1.6.0 |
+
+For each set, install the wheel's `test,server,clients,structured,mlx` extras
+alongside the exact client versions above, then run `python -m pip check`.
+Use the Transformers extra instead of MLX for a separate CPU backend check;
+the version-matrix inference evidence currently covers MLX only.
+
+Run the client contract tests against each installed wheel:
+
+```sh
+python -m pytest tests/test_rewrite.py tests/test_server.py \
+  tests/test_messages_server.py tests/test_mlx_structured.py -q -rs
+```
+
+Then run `tools/validate_mlx_structured.py` and `tools/validate_cancellation.py`
+with each client pair, the pinned Qwen model, `--execution reference`, and fresh
+output directories. Cancellation needs separate `--protocol openai` and
+`--protocol anthropic` runs with `--backend mlx`. Follow
+[inference testing](INFERENCE_TESTING.md) for assets and receipt handling.
+Do not treat fixture tests, a resolver pass, or accepted version ranges as
+proof of real inference across every client release.

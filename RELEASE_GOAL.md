@@ -33,6 +33,20 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+Client installation now accepts bounded OpenAI and Anthropic version ranges
+instead of forcing exact versions. Fresh environments with OpenAI 1.109.1 /
+Anthropic 0.83.0 and OpenAI 3.14.1 / Anthropic 1.6.0 both resolve and pass
+dependency checks, then each pass 115 focused client tests with zero skips.
+Both pairs pass eleven actual Qwen structured requests with typed parsing and
+exact replay: 426 tokens and 350 grammar masks across the two runs. Both pairs
+also pass both real cancellation/lifecycle checks. The older pair's inference
+run used the preceding wheel; all 83 package files match the candidate wheel
+byte for byte. The metadata change leaves numerical pins, model bindings and
+sampling identities unchanged. Existing upstream deprecation warnings and older
+Anthropic parsed-object serialization warnings are retained. These two tested
+pairs do not qualify every release within the allowed ranges. Hosted CI remains
+disabled, and public launch remains held.
+
 The latest candidate removes redundant MLX support-mask/index allocations while
 retaining validation, immutable snapshots and journal events. Its isolated wheel
 installation passes 1,335 tests with zero skips; all 83 package files match source

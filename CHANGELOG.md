@@ -2,6 +2,9 @@
 
 ## 0.1.0a1 (unreleased)
 
+- Allow existing OpenAI and Anthropic client versions through bounded optional
+  dependency ranges instead of exact client pins. Test older and newer client
+  pairs locally; retain numerical and model-backend pins. Hosted CI stays disabled.
 - Add bounded native top-k selection with exact token-ID ties, signed-zero and
   subnormal ordering. Retain NumPy paths for equal scores, small inputs and
   larger k. Require `keyprint-native==0.1.0a2` and reject incompatible wheels

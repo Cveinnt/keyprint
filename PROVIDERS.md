@@ -3,6 +3,21 @@
 Private development preview. These are two different integration paths. Neither
 inserts Keyprint into OpenAI-hosted GPT or Anthropic-hosted Claude sampling.
 
+The optional `clients` extra accepts `openai>=1.109.1,<4` and
+`anthropic>=0.83.0,<2`, so installing Keyprint need not replace an existing
+compatible client. The server itself does not need either client package;
+omit `clients` if your application already manages those dependencies.
+Numerical and model-backend dependencies retain their separate pinned contracts.
+
+Two client pairs have been tested locally: OpenAI 1.109.1 with Anthropic 0.83.0,
+and OpenAI 3.14.1 with Anthropic 1.6.0. These are tested endpoints within the
+allowed ranges, not a test of every intervening or future release. The older
+pair passes actual Qwen text cancellation/replay and typed JSON parsing/replay.
+Its structured run reconciles eleven requests, 213 tokens and 175 grammar masks.
+Anthropic 0.83.0 emits Pydantic serialization warnings for parsed response objects;
+the parsed values and replay checks pass, and the warnings remain in the log.
+See [local version-matrix instructions](CONTRIBUTING.md#client-version-checks).
+
 ## Use the OpenAI client with a local model
 
 From this checkout, install the server and one backend. Download the pinned
@@ -96,7 +111,7 @@ also accepts `x-api-key` with the same local token.
 ## Typed JSON output
 
 Install `.[server,clients,transformers,structured]` and start the Transformers
-server above with `--model models/smollm3`. The pinned OpenAI and Anthropic
+server above with `--model models/smollm3`. The tested OpenAI and Anthropic
 clients can parse a shared Pydantic type directly:
 
 The same client code also works with the pinned MLX server. Install

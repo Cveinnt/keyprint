@@ -19,6 +19,19 @@ remain open; details below.
 The repository is temporarily private while this work is reviewed. The old
 PyPI research package and website remain public. No new launch date is set.
 
+### September 20 client dependency compatibility
+
+The `clients` extra now permits OpenAI `>=1.109.1,<4` and Anthropic
+`>=0.83.0,<2`. The prior exact client pins made an otherwise working older
+client environment impossible to resolve. Numerical and backend pins remain
+unchanged. OpenAI 1.109.1 with Anthropic 0.83.0 passes real pinned Qwen/MLX
+typed JSON parsing, replay, cancellation after partial generation, subsequent
+worker reuse and graceful shutdown. OpenAI 3.14.1 with Anthropic 1.6.0 passes
+the same fresh checks in a separate environment. Accepted ranges do not qualify every version,
+hosted provider generation, other models or production workloads. See
+[provider scope and known warnings](PROVIDERS.md) and
+[reproduction instructions](CONTRIBUTING.md#client-version-checks).
+
 ### September 20 optional native MLX execution
 
 An unpublished `keyprint-native` wheel provides explicit
