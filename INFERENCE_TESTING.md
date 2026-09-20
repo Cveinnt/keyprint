@@ -645,6 +645,7 @@ false-positive rate.
 | Hard predictability filter | 10/12 | 3/5 | Separate null run adds false flags |
 | Full surrogate tournament likelihood | 7/12 | 0/5 | Reject development candidate |
 | Model-centered bit betting mixture | 8/12 | 1/5 | Reject development candidate |
+| Fixed layer-weighted model-centered mixture | 9/12 | 2/5 | Reject development candidate |
 
 The predictability filter's separate 500-control run had eight flags among 499
 usable controls and one recording failure. Preserve that incomplete result;
@@ -667,6 +668,52 @@ This is explicitly a bounded diagnostic audit, not full residual replay or
 authorization for null expansion. Ten tests include exhaustive ideal-PRF
 normalization over two contexts, repeated-context exclusion, canonical-label
 grouping and mixture aggregation.
+
+The fifth method retains those same residuals, five stakes, eligibility rules
+and `log(200)` cutoff, but scales each layer's stake by fixed linear weights
+from 1 to 0.1. These have the same relative weighting as SynthID Text's documented
+10-to-1 weighted mean; the betting calculation is independent. It averages
+whole-document processes rather than selecting the best stake. The rule and
+source hashes were recorded before candidate scoring, with the same development
+gate of at least 10/12 overall and 4/5 short detections and zero negative flags.
+Its 9/12 and 2/5 result fails that gate. All 24 responses remain included.
+An independent product-based aggregation audit reconciles 48 scores and 32,270
+terms within 1.12e-13 log units. It checks archived source hashes and calculation,
+not every underlying residual or model head. No null expansion or SDK promotion
+follows this result. Run:
+
+```sh
+python tools/develop_layer_weighted_bet.py --study private-weighted-power \
+  --residuals private-residual-bet --output private-layer-weighted-bet
+python tools/audit_layer_weighted_bet.py --study private-weighted-power \
+  --residuals private-residual-bet --development private-layer-weighted-bet
+```
+
+### Original-conditioning diagnosis
+
+`tools/diagnose_surrogate_gap.py` compares the retained full surrogate likelihood
+with the original generation likelihood on exactly the same selected positions.
+It requires matching literal/generation token prefixes, unchanged generation
+reports and journals, the prior exact-replay audit, and all five short marked
+responses. Both arms use the same half-mixture formula and `log(200)` reference
+cutoff. Across 1,496 aligned positions, the original-prompt oracle is above the
+cutoff for 5/5 responses, while the prompt-free surrogate is above it for 0/5.
+Oracle log evidence ranges from 11.61 to 80.01; surrogate values range from
+-46.95 to -11.29. No new model calls, generation or randomness are involved.
+
+This points to missing conditioning information as a substantial limitation of
+the tested surrogate, rather than an absence of generation-path evidence in
+these five texts. It does not isolate every prompt, model-kernel or numerical
+difference. The oracle requires original prompts and private generation
+probabilities; it is not an available pasted-text detector. There are no new
+ordinary controls or fresh confirmation in this diagnosis, and it closes no
+detection or launch gate. Reproduce with:
+
+```sh
+python tools/diagnose_surrogate_gap.py --study private-weighted-power \
+  --surrogate private-surrogate-likelihood --oracle private-short-capacity \
+  --output private-surrogate-gap
+```
 
 The ideal random-key argument does not establish fixed-HMAC-key deployment
 calibration, finite-precision error guarantees or robustness to key-dependent

@@ -192,6 +192,17 @@ a bounded diagnostic audit pass, but neither is detection acceptance. This
 candidate remains outside the SDK; no larger null run or cutoff change follows.
 `INFERENCE_TESTING.md` compares the tested formulas and their limitations.
 
+Fixed 10-to-1 relative layer weighting of those same model-centered residuals
+improves opened-data results to 9/12 overall and 2/5 short detections, still below
+the unchanged 10/12 and 4/5 gate. All 24 responses are retained; 48 aggregations
+and 32,270 terms independently reconcile. A separate diagnosis on the exact
+same 1,496 positions in all five short marked responses finds original-prompt
+generation likelihood above the reference cutoff in 5/5 cases, versus 0/5 for
+the prompt-free surrogate. This localizes a conditioning-information problem,
+not a solved detector: original prompts/probabilities are private oracle inputs,
+and no fresh negative controls were run. Detection, SDK promotion and launch
+remain open. Both calculations reuse archived evidence; hosted CI stays disabled.
+
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
 - [ ] Supported configurations: real inference, returned-token verification and
