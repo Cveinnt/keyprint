@@ -159,6 +159,18 @@ all sampled tokens, raw trailing bytes and consumed-work receipts, then declare
 a fresh confirmation. Do not convert this failed attempt into a success or treat
 the earlier development timing pass as production acceptance.
 
+The experimental caller now finalizes an exact token limit with a valid UTF-8
+prefix and explicit pending-byte receipt. Complete output, EOS and control
+boundaries retain strict decoding. The reproduced 192-token failure passes on
+the separately identified fixed runtime with the same 192 model-head hashes,
+302 draws and consumed-work counts; no extra token is sampled. Literal replay
+of that incomplete carrier is unavailable. The fresh installed wheel passes
+415 tests, including the OpenAI-client length response and idempotent replay;
+actual Qwen-over-HTTP cancellation, terminal replay and worker reuse also pass.
+The frozen reference/default caller remains unchanged. The original failed
+confirmation remains failed, and the new runtime needs fresh timing confirmation.
+This repairs a concrete experimental-path blocker without closing a release gate.
+
 GitHub CI for `67799b3` and `e0f1f6b` did not start. Both workflows failed before executing
 steps, with GitHub reporting failed account payments or an Actions spending
 limit. This is a runner-account blocker, not a passing check or a diagnosed code

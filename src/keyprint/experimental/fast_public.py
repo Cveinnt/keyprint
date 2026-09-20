@@ -64,7 +64,7 @@ class FastPublicCandidate(PublicCandidate):
             raise ValueError('generation target mismatch')
         final = receipt['final']
         completion = 'incomplete' if final is None else 'eos' if final['reason'] == 'declared_eos' else 'length'
-        diagnostics, content, replay_status = [], None, []
+        diagnostics, content, replay_status, rendering = [], None, [], []
         if final is not None:
             if final['runtime_profile_sha256'] != self._target['runtime_profile_sha256']:
                 raise ValueError('final runtime mismatch')
@@ -75,6 +75,10 @@ class FastPublicCandidate(PublicCandidate):
                 if carrier['profile_sha256'] != self._target['runtime_profile_sha256'] or carrier['deployment_calibrated'] is not False:
                     raise ValueError('carrier identity or calibration mismatch')
                 score = carrier['text_score']
+                rendering.append({'channel': channel_name,
+                    'status': carrier.get('rendering_status', 'complete_utf8'),
+                    'pending_utf8_hex': carrier.get('pending_utf8_hex', ''),
+                    'committed_token_ids': carrier['token_ids']})
                 replay_status.append({'channel': channel_name,
                     'availability': 'available' if score is not None else 'unavailable',
                     'reason': carrier.get('unavailable_reason') if score is None else None})
@@ -101,6 +105,7 @@ class FastPublicCandidate(PublicCandidate):
                              scorer_identity=self._scorer if diagnostics else None, payload=payload)
         report['rendered_carriers'] = content
         report['literal_replay_status'] = replay_status
+        report['carrier_rendering'] = rendering
         if latest_text is not None: report['latest_emitted_text'] = latest_text
         report['trace_artifact_availability'] = 'hash_reference_only_original_private_trace_not_exported'
         return self._decorate(report)

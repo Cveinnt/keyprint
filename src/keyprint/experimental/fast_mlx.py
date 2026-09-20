@@ -12,12 +12,13 @@ import numpy as np
 
 from .hmac_context import SHAContext
 from .batched_tournament import BatchedTokenSourceSession
+from .capped_utf8 import CappedPipeline
 from ..integrity import verify
 from ..sampling import sparse_softmax, identity as sampling_identity
 from .._engine.research.keyprint_candidate_v2.adapter import (
     V2Host, sampler, project_supported_logits, ChannelStep, digest,
 )
-from .._engine.research.keyprint_candidate_v3.adapter import Candidate, V3Host, Pipeline
+from .._engine.research.keyprint_candidate_v3.adapter import Candidate, V3Host
 from .._engine.legacy._impl.research.grouped_canonical_prototype import Profile, pack
 from .._engine.legacy._impl.research.token_runtime_profile import RuntimeBoundProfile
 from .._engine.legacy._impl.research.token_source_sparse_execution import SparseTokenSourceSession
@@ -172,7 +173,7 @@ def execution_specification():
     """Bind every experimental implementation and reporting source."""
     return {
             "sources": {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py", "hmac_context.py", "batched_tournament.py")},
+                        for name in ("fast_mlx.py", "fast_caller.py", "fast_public.py", "fast_reporting.py", "hmac_context.py", "batched_tournament.py", "capped_utf8.py")},
             "sampling": sampling_identity(), "request_local_hmac_context": True,
             "reference_results_transfer": False}
 
@@ -213,7 +214,7 @@ class FastCandidate:
                            request=SourceRequest(purpose, source_text),
                            channels=ChannelRequest(allow_thinking, allow_tools),
                            v2_identity=self.identity, filter_settings=self.filter_settings)
-        return Pipeline(raw, hashlib.sha256(key).hexdigest())
+        return CappedPipeline(raw, hashlib.sha256(key).hexdigest())
 
 
 def pipeline(key, *, condition="marked", temperature=.7, top_k=100, max_steps=2048,

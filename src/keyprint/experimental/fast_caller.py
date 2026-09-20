@@ -199,7 +199,7 @@ def run_response(candidate, model, prompt_ids, *, key, condition, random_bits,
                     return {**result, "response": response}
                 next_input = backend.array([step.token_id], dtype=backend.int32)
         state["phase"] = "finish"
-        response = asdict(pipeline.finish())
+        response = asdict(pipeline.finish_at_limit(max_tokens))
         state["phase"] = "terminal_journal"
         result = snapshot("length")
         record(result)

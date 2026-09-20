@@ -408,6 +408,38 @@ including the error and truncation flags, without a timing acceptance result.
 The SDK source remained frozen throughout this confirmation. The new harness's
 14 focused tests passed; this does not close the observed runtime failure.
 
+### Token-limit finalization repair
+
+The subsequent experimental runtime has an explicit `finish_at_limit` path.
+It verifies the exact reached token budget and retains the valid UTF-8 prefix,
+every committed token ID and the decoder's pending bytes. No replacement
+character or additional generation step is introduced. EOS, control boundaries,
+invalid bytes and ordinary supplied-head `finish()` remain strict. A capped
+carrier has unavailable literal-replay diagnostics rather than a substituted
+generation-path score. The frozen reference and default caller are unchanged.
+
+The fixed-runtime replay matched all 192 original model heads and 302 random
+draws, retained the original prefix and `e2 9c` suffix, and returned `length`
+with unchanged consumed-work counts. The original failed confirmation is still
+failed. The replay's first validation harness had a variable-name collision;
+its journal and failure log were retained, the harness was corrected, and a
+separate replay passed. This is a regression repair, not new timing evidence.
+
+The newly installed wheel passes 415 tests. Coverage includes all UTF-8 prefix
+lengths, strict non-cap failures, zero-budget behavior, generated channels,
+reuse, and a fixture-driven OpenAI-client length response with idempotent replay.
+Separately, actual Qwen inference through the OpenAI client over TCP passes
+cancellation after one committed token, terminal replay and a new 32-token
+response on the same worker. Hosted CI remains unavailable because the account's
+Actions jobs cannot start. Fresh serving confirmation is still required.
+
+```sh
+python tools/validate_capped_utf8.py --run ORIGINAL_FAILED_CONFIRMATION \
+  --attempt ORIGINAL_FAILED_ATTEMPT --model PINNED_MODEL \
+  --postmortem ORIGINAL_REPLAY_POSTMORTEM --expected-runtime FIXED_RUNTIME_SHA256 \
+  --output NEW_PRIVATE_REPLAY
+```
+
 - Qualify real SGLang/vLLM request lifecycles using this new adapter source.
 - Profile isolated end-to-end ordinary and marked serving, including journals.
 - Measure more model/tokenizer families and realistic batch sizes.

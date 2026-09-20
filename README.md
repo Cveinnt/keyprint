@@ -171,6 +171,14 @@ receipts with a distinct experimental runtime and reporting schema. The default
 remains the reference path. See [performance evidence](PERFORMANCE.md#separately-identified-experimental-execution)
 for the validation scope; this option does not establish a serving-speed claim.
 
+On this experimental path, a token limit inside a UTF-8 character returns the
+valid text prefix with `completion="length"`. The report's `carrier_rendering`
+retains every committed token ID and the unfinished bytes as `pending_utf8_hex`.
+That carrier's literal-score diagnostic is unavailable; the rendered prefix is
+not presented as the complete sampled text. EOS, channel boundaries and invalid
+byte sequences remain strict. The default reference path has not adopted this
+behavior.
+
 ## What works, and what does not
 
 | Stack | Scope |
