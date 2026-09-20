@@ -27,6 +27,16 @@ acceptance. Structured output under MLX/native frameworks remains open.
 
 ## Current release gates
 
+The September 20 prompt-free surrogate-likelihood development candidate failed
+its frozen power gate: 7/12 marked answers detected, including 0/5 short answers,
+with zero ordinary or wrong-key flags in this 24-text development sample. Its
+log-space calculation avoids probability flooring; the preceding numerical
+attempt remains retained as 24 scoring errors, not negatives. All 16,135 retained
+model-head hashes, text/token identities and fixed prefixes match the earlier
+fixed-batch inference receipts. This identity check is not a score or calibration
+audit. No threshold adjustment, larger null run or SDK promotion follows this
+failed screen. Short-text detection and public launch remain open.
+
 - [ ] First-use flow: a fresh install reaches a useful, real result through one
   documented path; dependency/model costs and failures are understandable.
 - [ ] Supported configurations: real inference, returned-token verification and
