@@ -68,3 +68,20 @@ def test_partial_count_cannot_be_relabelled_completed(renderer, tmp_path):
     (tmp_path / 'public/integrity.json').write_text(json.dumps(audit))
     with pytest.raises(ValueError, match='all controls'):
         renderer.null_rows(tmp_path)
+
+
+def test_recovery_cannot_export_without_full_extra_audit(renderer, tmp_path):
+    audit_path = partial_fixture(tmp_path)
+    plan_path = tmp_path / 'public/plan.json'; plan = json.loads(plan_path.read_text())
+    plan['recovery'] = {'scope': 'recovery'}; plan_path.write_text(json.dumps(plan))
+    audit = json.loads(audit_path.read_text()); audit['plan_sha256'] = renderer.sha(plan_path.read_bytes())
+    audit_path.write_text(json.dumps(audit))
+    with pytest.raises(ValueError, match='both complete'):
+        renderer.null_rows(tmp_path, audit_path)
+    summary_path = tmp_path / 'public/summary.json'
+    summary_path.write_text(json.dumps({'status': 'incomplete', 'available': 1, 'attempts': 1, 'false_hits': 0}))
+    audit.update(status='pass', summary_sha256=renderer.sha(summary_path.read_bytes()))
+    (tmp_path / 'public/integrity.json').write_text(json.dumps(audit))
+    with pytest.raises(FileNotFoundError): renderer.null_rows(tmp_path)
+    (tmp_path / 'public/recovery-integrity.json').write_text(json.dumps({'status':'pass','original_attempt_unchanged':True,'original_screen_passed':True,'fresh_sample':False}))
+    with pytest.raises(ValueError, match='original success'): renderer.null_rows(tmp_path)

@@ -12,11 +12,16 @@ text("ordinary-count", `${evidence.cases.filter(c => c.ordinary.scores.some(s =>
 text("human-count", `${hits} / ${available.length}`);
 text("human-scope", evidence.partial ? `Audited snapshot · ${evidence.planned_controls} planned` : `${available.length} available / ${evidence.planned_controls} planned`);
 const complete = !evidence.partial && evidence.null_summary?.status === "completed";
-text("state", evidence.partial ? `Study running. This snapshot contains ${controls.length} of ${evidence.planned_controls} planned human controls. No final false-positive result.` : complete ? `Study complete. ${evidence.null_summary.null_screen_passed ? "Frozen corpus screen passed" : "Frozen corpus screen failed"}. Public release remains held.` : `Study incomplete. ${evidence.planned_controls - available.length} of ${evidence.planned_controls} controls are unavailable. No false-positive bound or passing claim.`);
+text("state", evidence.partial ? `Study running. This snapshot contains ${controls.length} of ${evidence.planned_controls} planned human controls. No final false-positive result.` : complete ? evidence.recovery ? `Completed across two executions. ${evidence.null_summary.null_screen_passed ? "Combined observation screen passed" : "Combined observation screen failed"}; the original attempt remains incomplete. Public release held.` : `Study complete. ${evidence.null_summary.null_screen_passed ? "Frozen corpus screen passed" : "Frozen corpus screen failed"}. Public release remains held.` : `Study incomplete. ${evidence.planned_controls - available.length} of ${evidence.planned_controls} controls are unavailable. No false-positive bound or passing claim.`);
 text("bound", complete ? `Human-control flags: ${hits}/${available.length}. One-sided 97.5% IID-only upper bound: ${(100 * evidence.null_summary.iid_only_upper_97_5_percent).toFixed(4)}%. The bound depends on an independence assumption this corpus cannot establish.` : "A false-positive bound will only be shown after all planned controls finish and the final integrity audit passes. These scores are not probabilities of AI authorship.");
 text("cutoff", `log(200) ≈ ${scoreText(evidence.cutoff)}`);
 text("attribution", evidence.attribution);
 text("provenance", JSON.stringify(evidence.provenance, null, 2));
+if (evidence.recovery) {
+  const note = document.createElement("p"); note.className = "scope";
+  note.textContent = `${evidence.recovery.retained_controls} original results retained; ${evidence.recovery.recovered_controls} previously unmeasured controls recovered after a disk-space failure. Same fixed sample, keys and cutoff. This is not a fresh independent sample. Select a control to see which execution supplied it.`;
+  $("bound").after(note);
+}
 
 for (const [index, item] of evidence.cases.entries()) {
   const option = document.createElement("option"); option.value = index;
@@ -59,7 +64,8 @@ function inspect(index) {
   for (const option of $("grid").children) option.setAttribute("aria-selected", String(option.id === row.id));
   text("control-id", `${row.id} / source ${row.source_index}`);
   text("control-title", row.error ? "Unavailable" : row.flagged ? "Flagged" : "No flag");
-  text("control-meta", `${categoryName(row.category)} · ${row.words} words${row.error ? " · " + row.error : ""}`);
+  const origin = row.origin === "recovery" ? " · Recovery attempt after original disk guard" : row.origin === "retained" ? " · Retained from original attempt" : "";
+  text("control-meta", `${categoryName(row.category)} · ${row.words} words${row.error ? " · " + row.error : ""}${origin}`);
   text("control-a", row.error ? "Unavailable" : scoreText(row.scores[0]));
   text("control-b", row.error ? "Unavailable" : scoreText(row.scores[1]));
 }

@@ -64,16 +64,28 @@ def null_rows(study, partial_audit=None):
                     or type(bound) not in (int, float) or not math.isfinite(bound) or not 0 <= bound <= 1
                     or summary['null_screen_passed'] != (bound <= .01)):
                 raise ValueError('Completed summary requires all controls and a valid bound')
+    recovery_audit = None
+    if 'recovery' in plan:
+        if partial_audit:
+            raise ValueError('Recovered evidence requires both complete integrity audits')
+        recovery_audit = load(public / 'recovery-integrity.json')
+        if (recovery_audit['status'] != 'pass' or not recovery_audit['original_attempt_unchanged']
+                or recovery_audit['original_screen_passed'] or recovery_audit['fresh_sample']):
+            raise ValueError('Recovery provenance is incomplete or overstates original success')
+        bind(public / 'plan.json', recovery_audit['plan_sha256'])
+        bind(public / 'summary.json', recovery_audit['summary_sha256'])
+        bind(public / 'integrity.json', recovery_audit['numerical_audit_sha256'])
     for index, row in enumerate(rows):
         if row['id'] != f'null-{index:03d}' or row['source_index'] != plan['tasks'][index]['source_index']:
             raise ValueError('Null task order differs')
         if 'error' not in row and (len(row['working_log_ratios']) != 2
                 or row['flagged'] != any(s >= plan['fixed_log_cutoff'] for s in row['working_log_ratios'])):
             raise ValueError('Null decision differs')
-    controls = [{k: r[k] for k in ('id', 'category', 'source_index', 'words')} | (
+    controls = [{k: r[k] for k in ('id', 'category', 'source_index', 'words')}
+        | {'origin': r.get('execution_origin', 'original'), 'prior_error': r.get('original_error', {}).get('type')} | (
         {'error': r['error']['type']} if 'error' in r else
         {'scores': r['working_log_ratios'], 'flagged': r['flagged']}) for r in rows]
-    return plan, summary, controls, audit
+    return plan, summary, controls, {**audit, 'recovery_audit': recovery_audit}
 
 
 def build(confirmation, null_study, *, partial_audit=None):
@@ -115,6 +127,12 @@ def build(confirmation, null_study, *, partial_audit=None):
         'cutoff': plan['fixed_log_cutoff'], 'cases': cases, 'controls': controls,
         'confirmation': summary, 'null_summary': null_summary,
         'planned_controls': null_plan['planned_documents'],
+        'recovery': ({'retained_controls': null_audit['recovery_audit']['retained_records'],
+            'recovery_attempts': null_audit['recovery_audit']['recovery_attempts'],
+            'recovered_controls': null_audit['recovery_audit']['recovered_available'],
+            'original_attempt_status': 'incomplete', 'fresh_sample': False,
+            'parent_audit_sha256': null_audit['recovery_audit']['parent_audit_sha256']}
+            if null_audit['recovery_audit'] else None),
         'source': plan['source'], 'license': plan['license'], 'attribution': plan['attribution'],
         'provenance': {'confirmation_plan_sha256': audit['plan_sha256'],
             'null_plan_sha256': null_audit['plan_sha256'],

@@ -894,6 +894,43 @@ claim that an already opened sample is fresh. Prompt-free detection, semantic
 quality, serving cost and broader model/platform qualification remain separate
 gates. Hosted SDK and SGLang workflows remain disabled.
 
+#### Operational recovery, separately declared
+
+A cache-disabled MLX preflight remeasures only three already scored controls,
+selected by smallest, median and largest combined prompt/text token counts. All
+**588 raw model heads and six complete score records match exactly**. The free
+allocator cache returns to zero after each document; tracked MLX peak is about
+5.6 GB across these cases. This is a three-case parity/resource check, not a
+timing benchmark, a general numerical proof or a causal diagnosis of the earlier
+disk failure. No new source task is inspected during preflight.
+
+A separate recovery run is now measuring every and only the **212** original
+disk-guard cases that had no model-head or score files. The original **288** valid
+records and receipts are retained byte-for-byte. All 500 source tasks, prompts,
+keys, model assets, literal tokenization and scoring parameters stay fixed. New
+heads and scores use lossless compact JSON; a prospective storage allowance is
+reserved in addition to the original 2 GiB guard. The original attempt remains
+incomplete. This is operational completion of an already selected sample, not a
+fresh independent sample or a retroactive first-attempt pass.
+
+The ordinary numerical auditor rechecks the full combined record stream. A
+second provenance audit must bind the failed parent, exact recovery set,
+unchanged retained records, preflight parity and resource policy before the
+notebook can export a recovered result. No combined final result is claimed yet.
+Thirty-eight focused export, recovery, selection and audit tests pass. SDK code
+and its allocator policy remain unchanged.
+
+```sh
+python tools/preflight_prompt_null_memory.py --study incomplete-prompt-null \
+  --source pinned-dolly.jsonl --model /path/to/pinned-qwen --output memory-preflight
+python tools/recover_prompt_null.py --study incomplete-prompt-null \
+  --source pinned-dolly.jsonl --model /path/to/pinned-qwen \
+  --preflight memory-preflight --output recovered-prompt-null
+python tools/audit_prompt_null.py --follow --study recovered-prompt-null \
+  --source pinned-dolly.jsonl --model /path/to/pinned-qwen
+python tools/audit_prompt_null_recovery.py --study recovered-prompt-null
+```
+
 The accompanying local regression run passes **1,278 Python tests with no skips**
 and **10 JavaScript checks**. The first run passed 1,264 and skipped twelve native
 development-library tests; selecting the retained, hash-verified library and
@@ -919,14 +956,18 @@ python tools/render_detection_evidence.py --confirmation audited-prompt-confirma
   --null-study audited-prompt-null --output evidence-notebook
 ```
 
-Seven export-integrity checks pass, including changed receipts, source/script
-escaping and rejection of partial counts relabeled as complete. Twenty null
-selection/audit checks also pass. Chrome 153 rendered checks preserve all 24
+Eight export-integrity checks pass, including changed receipts, source/script
+escaping, rejection of partial counts relabeled as complete and mandatory
+recovery provenance. Thirty null/recovery selection and audit checks also pass.
+Chrome 153 regression checks on the original incomplete study preserve all 24
 response texts and twelve original requests exactly, exercise filtering and
 unavailable/empty states, and pass at 1440×1000 and 390×844 without console errors
 or horizontal overflow. Screenshots and QA receipts remain outside source control.
 This is a research evidence surface, not a replacement for the real-model SDK
 playground or a claim of universal detector validity.
+
+The recovered-result branch remains pending actual completed recovery data and
+both audits; it is not claimed as rendered or statistically accepted yet.
 
 The ideal random-key argument does not establish fixed-HMAC-key deployment
 calibration, finite-precision error guarantees or robustness to key-dependent
