@@ -1,0 +1,21 @@
+{
+  "model_sha256": "b5607b5090a8280063fff2d706bb3408ca6542341b06aab39c3eca0a28575921",
+  "backend": "llama-cpp",
+  "threads_per_worker": 2,
+  "context_size": 2048,
+  "max_tokens": 64,
+  "workers": 2,
+  "cases": [
+    "Explain in one sentence why a seed needs water.",
+    "En français, demande à Maya de garder la sauvegarde jusqu’à la vérification de la restauration."
+  ],
+  "versions": {
+    "litellm": "1.102.0",
+    "openai": "2.54.0",
+    "llama-cpp-python": "0.3.35"
+  },
+  "scope": "Explicit routes, sync/async text and same-worker replay; not production failover",
+  "num_retries": 0,
+  "max_fallbacks": 0,
+  "cache_responses": false
+}

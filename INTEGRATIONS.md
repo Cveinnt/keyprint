@@ -1,6 +1,6 @@
 # Integration readiness
 
-Reviewed September 16, 2026. This is an engineering audit and implementation plan,
+Reviewed September 16, 2026; current client/serving additions September 21. This is an engineering audit and implementation plan,
 not a claim that the planned adapters are available.
 
 September 20 update: all post-generation rewrite entry points are blocked before
@@ -144,6 +144,15 @@ samples and the two synthetic rewrites retained their respective conditions. All
 outputs and a post-hoc unblinded assistant review are retained. Neither the
 small sample nor mechanical screens establish semantic equivalence, detection
 calibration or acceptable overhead. CI remains manually disabled.
+
+## September 21 native HTTP and external clients
+
+See the [current matrix](COMPATIBILITY.md#september-21-native-serving-extension)
+for vLLM native OpenAI/Anthropic HTTP, concurrency, disconnect and recovery
+evidence. Earlier statements below that HTTP serving was untested describe
+the preceding CPU hook pilot. GPU, production and broader lifecycle claims
+remain unqualified. Optional Ollama Python and LiteLLM clients now have real
+local inference evidence; neither dependency was added to the core.
 
 ## What works now
 

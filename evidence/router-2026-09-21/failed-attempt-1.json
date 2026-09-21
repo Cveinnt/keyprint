@@ -1,0 +1,69 @@
+{
+  "status": "failed",
+  "ordinary": [
+    {
+      "route": 0,
+      "text": "A seed needs water to break dormancy, relax its seed coat, and initiate germination, allowing it to grow and develop into a new plant.",
+      "usage": {
+        "prompt_tokens": 46,
+        "completion_tokens": 31,
+        "total_tokens": 77
+      }
+    },
+    {
+      "route": 1,
+      "text": "Voici la demande :\n\n\"Maya, s'il te plaît, garde les sauvegardes jusqu'à ce que nous ayons vérifié la restauration. Ça nous aidera à nous assurer que tout est en ordre avant de continuer.\"",
+      "usage": {
+        "prompt_tokens": 59,
+        "completion_tokens": 56,
+        "total_tokens": 115
+      }
+    }
+  ],
+  "marked": [
+    {
+      "route": 0,
+      "mode": "sync",
+      "prompt": "Explain in one sentence why a seed needs water.",
+      "text": "A seed needs water to activate the germination process, allowing it to sprout and grow by releasing stored food and initiating the development of roots and leaves.",
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 46,
+        "total_tokens": 78,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "replay_exact": true
+    },
+    {
+      "route": 1,
+      "mode": "async",
+      "prompt": "En français, demande à Maya de garder la sauvegarde jusqu’à la vérification de la restauration.",
+      "text": "\"Maya, s'il te plaît, garde la sauvegarde jusqu'à ce que nous ayons vérifié la restauration. Je ne veux pas perdre les données importantes.\"",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 59,
+        "total_tokens": 101,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "replay_exact": true
+    }
+  ],
+  "checks": {
+    "explicit_route_isolation_and_header_forwarding": true,
+    "unsupported_features_do_not_fallback": true,
+    "graceful_shutdown": true
+  },
+  "quality_acceptance": false,
+  "hosted_calls": false,
+  "error_type": "ServiceUnavailableError",
+  "model_calls_by_route": [
+    2,
+    1
+  ],
+  "http_requests_by_route": [
+    6,
+    2
+  ]
+}

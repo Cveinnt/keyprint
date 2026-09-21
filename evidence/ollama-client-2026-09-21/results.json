@@ -1,0 +1,151 @@
+{
+  "status": "pass",
+  "ordinary": [
+    {
+      "id": "english",
+      "prompt": "Explain in one sentence why a seed needs water.",
+      "text": "A seed needs water to initiate and sustain the germination process, allowing it to absorb essential nutrients and energy to grow into a new plant.",
+      "usage": {
+        "prompt_tokens": 46,
+        "completion_tokens": 29,
+        "total_tokens": 75
+      },
+      "completion": "eos"
+    },
+    {
+      "id": "french",
+      "prompt": "En français, écris une phrase demandant à Maya de garder la sauvegarde jusqu’à la vérification de la restauration.",
+      "text": "\"Maya, s'il te plaît, garde la sauvegarde jusqu'à ce que nous ayons vérifié la restauration.\"",
+      "usage": {
+        "prompt_tokens": 65,
+        "completion_tokens": 31,
+        "total_tokens": 96
+      },
+      "completion": "eos"
+    },
+    {
+      "id": "spanish",
+      "prompt": "En español, escribe una frase pidiendo a Maya que espere mi aprobación antes de publicar el documento.",
+      "text": "\"Maya, por favor espera mi aprobación antes de publicar el documento para asegurarnos de que todo esté en orden.\"",
+      "usage": {
+        "prompt_tokens": 61,
+        "completion_tokens": 31,
+        "total_tokens": 92
+      },
+      "completion": "eos"
+    }
+  ],
+  "marked": [
+    {
+      "id": "english",
+      "prompt": "Explain in one sentence why a seed needs water.",
+      "text": "A seed needs water to activate its germination process, allowing it to break through its seed coat and begin growing roots and developing its embryo into a new plant.",
+      "usage": {
+        "input_tokens": 46,
+        "output_tokens": 33
+      },
+      "replay_exact": true,
+      "mode": "generate",
+      "ollama_runtime": false
+    },
+    {
+      "id": "french",
+      "prompt": "En français, écris une phrase demandant à Maya de garder la sauvegarde jusqu’à la vérification de la restauration.",
+      "text": "\"Maya, s'il te plaît, garde la sauvegarde jusqu'à ce que nous ayons vérifié la restauration pour être sûrs qu'elle n'a été modifiée accidentellement.\"",
+      "usage": {
+        "input_tokens": 65,
+        "output_tokens": 46
+      },
+      "replay_exact": true,
+      "mode": "async-chat",
+      "ollama_runtime": false
+    },
+    {
+      "id": "spanish",
+      "prompt": "En español, escribe una frase pidiendo a Maya que espere mi aprobación antes de publicar el documento.",
+      "text": "\"Maya, antes de publicar el documento, por favor asegúrate de que he visto y aprobado el contenido para asegurarnos de que esté todo correcto.\"",
+      "usage": {
+        "input_tokens": 61,
+        "output_tokens": 40
+      },
+      "replay_exact": true,
+      "mode": "chat",
+      "ollama_runtime": false
+    }
+  ],
+  "quality_acceptance": false,
+  "identity": {
+    "profile": "gguf-byte-bpe-v1-experimental",
+    "profile_sha256": "d26d1972490a3b9b3fc5a08e3a1f95975702d385d2b71128769cfbc8c0e246d8",
+    "tokenizer_binding_sha256": "978d410a1875e37908f0c787d3228d1b9b62ae80a8fb3e16fa87e355bdc9626f",
+    "engine_manifest_sha256": "926aa9995523c78666e973f0127f2d9cf77ec7a1393207a3e75c19b2ad991ed5",
+    "adapter_sha256": "a51f8c0b8c0610e4eba64f0ea5319539078900ab035eadf18e84ff71829d7a61",
+    "generation_source_sha256": "0e78f90f8cc8c3e54a3cde59ea05e8482f69ec6729d16b3de000e03df3a35c3f",
+    "binding_source_sha256": "29ff21344726275cf14a852675b96e1d598732d4083f5e76ae0dcea8912db9c3",
+    "sampling_execution": {
+      "implementation": "sparse-reference-binary64-v1",
+      "source_sha256": "446557088e1fcf0736427a17a1d121ae9facda4a1cb0c6610f0613b96bfc859c",
+      "sample_index_scope": "original_vocabulary_token_id"
+    },
+    "temperature": 0.7,
+    "top_k": 100,
+    "rendering_policy": {
+      "decoder": "native_token_pieces",
+      "cleanup_tokenization_spaces": false,
+      "utf8": "strict; pending suffix retained only at exact token cap"
+    },
+    "empirical_acceptance_transfers": false,
+    "limitations": "CPU; single response; no structured output, tools, streaming, batching or calibrated detector",
+    "model_assets": {
+      "gguf_sha256": "b5607b5090a8280063fff2d706bb3408ca6542341b06aab39c3eca0a28575921"
+    },
+    "dependencies": {
+      "llama-cpp-python": "0.3.35",
+      "numpy": "2.5.2",
+      "jinja2": "3.1.6"
+    },
+    "wrapper_sources": {
+      "llama.py": "fff35cbe5f93076683089447cf7b38195c85a9d7bb344459fa22361994b1f228",
+      "llama_cpp.py": "83ae7f29c45bec14e0cef2a5ec6b9207129382ad1b4d0f312e860db330c57d02",
+      "_internals.py": "349a1794a0061685ce1ad52e38aba0c9906a7907e83df1167cf36bfbbba0dd58",
+      "llama_chat_format.py": "b9e3ce37b1e09df6d90a13ed26b39d83759dcf2a616b4c1d329aae704d056d97"
+    },
+    "native_libraries": {
+      "libggml-base.0.20.0.dylib": "2f0d8a576b55c760851ea1425e48717d415136bed74f314a7bdae3f9388417f8",
+      "libggml-base.0.dylib": "2f0d8a576b55c760851ea1425e48717d415136bed74f314a7bdae3f9388417f8",
+      "libggml-base.dylib": "2f0d8a576b55c760851ea1425e48717d415136bed74f314a7bdae3f9388417f8",
+      "libggml-cpu.0.20.0.dylib": "11ac4b5be6c62a0d0e23b5beda83b42ae11a77fd8ef303d057fa5a4768fb6705",
+      "libggml-cpu.0.dylib": "11ac4b5be6c62a0d0e23b5beda83b42ae11a77fd8ef303d057fa5a4768fb6705",
+      "libggml-cpu.dylib": "11ac4b5be6c62a0d0e23b5beda83b42ae11a77fd8ef303d057fa5a4768fb6705",
+      "libggml-metal.0.20.0.dylib": "c1898fdd134cc96fa7498c94659a30a38fe83754fd762fa20a09e18c7504cbba",
+      "libggml-metal.0.dylib": "c1898fdd134cc96fa7498c94659a30a38fe83754fd762fa20a09e18c7504cbba",
+      "libggml-metal.dylib": "c1898fdd134cc96fa7498c94659a30a38fe83754fd762fa20a09e18c7504cbba",
+      "libggml.0.20.0.dylib": "2d281c1891dd63a4a67912799b4ba700999244c90ae8b8c2e952b06c762ed86c",
+      "libggml.0.dylib": "2d281c1891dd63a4a67912799b4ba700999244c90ae8b8c2e952b06c762ed86c",
+      "libggml.dylib": "2d281c1891dd63a4a67912799b4ba700999244c90ae8b8c2e952b06c762ed86c",
+      "libllama.0.1.0.dylib": "4ab2fe890c8d9927a805e8049c99f394996856d236b002d064612984175c3e94",
+      "libllama.0.dylib": "4ab2fe890c8d9927a805e8049c99f394996856d236b002d064612984175c3e94",
+      "libllama.dylib": "4ab2fe890c8d9927a805e8049c99f394996856d236b002d064612984175c3e94",
+      "libmtmd.SOVERSION.dylib": "a931260ef2178d0c319ab41c9d13e7b9216ff8678314b195aac04c1b54b0d92e",
+      "libmtmd.dylib": "a931260ef2178d0c319ab41c9d13e7b9216ff8678314b195aac04c1b54b0d92e"
+    },
+    "execution": {
+      "device": "cpu",
+      "n_gpu_layers": 0,
+      "context_size": 2048,
+      "threads": 2,
+      "batch_size": 128,
+      "logits_all": false
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "rejections": {
+    "tools": 400,
+    "multi_turn": 400
+  },
+  "actual_marked_requests": 3,
+  "journals": 3,
+  "exact_text_and_usage_match_private_receipts": true
+}

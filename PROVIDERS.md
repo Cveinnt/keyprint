@@ -276,3 +276,53 @@ Keep existing documents unchanged. To create a new response, use the local
 client examples above, or `generate()`. This is a distinct operation and does not
 solve post-generation watermarking. Native output quality remains unqualified;
 this safety restriction does not close the quality requirement or enable launch.
+
+
+## Ollama Python client, local Keyprint worker
+
+The optional client requires a separate `pip install ollama==0.6.2`. Keyprint
+adds no Ollama or LiteLLM dependency to its core or server extras. Use the same
+`keyprint serve` command and local API key described above.
+
+[Runnable example](examples/ollama_local.py). `Client.chat()` and
+`AsyncClient.chat()` accept one user text message; `Client.generate()` accepts
+a prompt. Set `model="keyprint"`, `stream=False`, and
+`options={"num_predict": 96}` (1–1,024). The official client sends empty tools
+by default; only that empty list is accepted. Nonempty tools, streaming, images,
+model downloads, `keep_alive`, thinking, raw/template modes, custom sampling,
+JSON formats and multi-turn conversations are not supported. Unknown options
+fail before inference. The shared cancellation endpoint and process-local
+idempotency rules apply across all three client protocols.
+
+This is **Ollama client compatibility with Keyprint's local worker**, not a
+plugin inside the Ollama daemon. It neither installs Ollama nor claims that
+pointing Keyprint at an arbitrary Ollama/LM Studio endpoint inserts a sampler.
+The tested native worker was Llama 3.2 3B Q8_0 through llama.cpp on ARM64 CPU.
+Three ordinary/marked pairs, sync generate/chat, async chat, exact replay and
+text/usage reconciliation passed. All outputs are retained in
+[evidence](evidence/ollama-client-2026-09-21/results.json), including added detail.
+Quality and detection were not accepted. Other backend/client combinations
+remain untested even when the server routes share code.
+
+## Routing without duplicating or losing watermarking
+
+[LiteLLM example](examples/litellm_local.py), tested with 1.102.0. Two explicit
+local routes passed sync/async requests, forwarded idempotency headers, isolated
+workers and replayed exact text/usage. A deliberate pre-inference barrier caused
+an actual client timeout; the accepted attempt was recovered without a second
+generation or fallback. Unsupported tools, running-attempt conflicts and busy
+responses did not dispatch to the other worker. Five actual outputs and the
+failed first harness attempt remain in [evidence](evidence/router-2026-09-21/).
+
+Keep routing outside Keyprint. Start with one endpoint per alias, no automatic
+retries, no fallback, and no response cache. Preserve the same worker, request
+body and idempotency key for recovery. A different worker has no shared replay
+record, even if it uses the same model/key. A timeout is not proof no tokens
+were generated. The working configuration is an explicit-route pilot, not
+qualification of LiteLLM Proxy, auto-routing, failover or distributed replay.
+
+Future automatic routing must select only approved marked backends, retain the
+selected identity with the response, and keep accepted work on its original
+worker. It must reject unavailable routes rather than silently return hosted or
+unmarked output as watermarked. No external tracing or prompt logging was enabled
+in these tests. Do not globally enable parameter dropping to hide incompatibility.

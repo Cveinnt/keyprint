@@ -267,7 +267,7 @@ def main(argv: list[str] | None = None) -> int:
     playground.add_argument("--port", type=int, default=8766)
     playground.add_argument("--output", type=Path, help="Private run directory; otherwise create a new temporary directory")
     execution_argument(playground)
-    serve = commands.add_parser("serve", help="Serve local text endpoints for OpenAI and Anthropic clients")
+    serve = commands.add_parser("serve", help="Serve local text endpoints for OpenAI, Anthropic and Ollama clients")
     serve.add_argument("--backend", choices=("mlx", "transformers", "llama-cpp"), default=default_backend(),
                        help="Default: MLX on Apple Silicon macOS; Transformers elsewhere")
     serve.add_argument("--model", type=Path, help="Local model directory or GGUF file; otherwise use a documented pinned cache")

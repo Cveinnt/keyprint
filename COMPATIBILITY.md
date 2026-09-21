@@ -11,7 +11,7 @@ support or transfer of the original research acceptances.
 | Transformers | Tested local | SmolLM2 / SmolLM3 · CPU | Tested | Tested | Not tested | Single response; typed JSON tested. Other tokenizer families unqualified. |
 | llama.cpp / GGUF | Tested local | SmolLM2 / Llama 3.2 3B · CPU | Tested | Tested | Tested on Llama | LangChain sync + async; no tools, streaming or constrained JSON. |
 | SGLang | Experimental hook | Pinned modified ARM CPU build · SmolLM2 | Not tested | Not tested | Not tested | 620 returned tokens matched journals. Server lifecycle and GPU unqualified. |
-| vLLM | Experimental hook | 0.29.0+cpu · SmolLM2 | Not tested | Not tested | Not tested | 125 batched tokens matched journals. Server lifecycle and GPU unqualified. |
+| vLLM | Experimental native server | 0.29.0+cpu · SmolLM2 | Tested native HTTP | Tested native HTTP | Not tested | Concurrent requests, disconnect and recovery tested; GPU and production remain unqualified. |
 | Ollama | No Keyprint adapter | Upstream OpenAI-compatible API | Not integrated | Not integrated | Not integrated | An API-compatible endpoint does not expose the required native sampling hook. |
 | Hosted GPT / Claude | No Keyprint sampling hook | Provider-hosted generation | Client only | Client only | Not integrated | Local client compatibility does not watermark hosted GPT or Claude. Rewriting is blocked. |
 
@@ -28,8 +28,9 @@ the server process. See [provider usage](PROVIDERS.md) for exact boundaries.
 | OpenAI Python | Local text and typed JSON; versions 1.109.1 and 3.14.1 with direct clients; 3.16.2 via LangChain | Any additional API features or version combinations |
 | Anthropic Python | Local text and typed JSON; versions 0.83.0 and 1.6.0 | Any additional API features or version combinations |
 | LangChain ChatOpenAI | 1.6.2, langchain-core 1.6.4; sync and async text, exact replay, pre-inference tool/multi-turn rejection | Other backends, agents, tools, streaming and structured-output wrappers |
+| Ollama Python | 0.6.2: generate, chat, async chat, exact replay through Keyprint llama.cpp worker | Native Ollama daemon integration and other backend/client combinations |
 | PydanticAI | Not tested; a configurable OpenAI endpoint alone is insufficient | Explicit Chat Completions route, request headers, parsing, replay and rejected features |
-| LiteLLM | Not tested with Keyprint | Proxy routing, retries, request transformation and response accounting |
+| LiteLLM | 1.102.0 Router: two explicit local routes, sync/async, replay and timeout recovery tested | Proxy, automatic failover, distributed replay and additional runtimes |
 | Vercel AI SDK | Not tested with Keyprint | Non-streaming request shape, headers, response parsing and retry behavior |
 
 ## New LangChain evidence
@@ -71,3 +72,47 @@ custom endpoints; it still needs its own end-to-end Keyprint check.
 
 See the [detailed runtime audit](INTEGRATIONS.md),
 [output-quality contract](OUTPUT_QUALITY.md) and [release gates](RELEASE_GOAL.md).
+
+
+## September 21 native serving extension
+
+vLLM 0.29.0+cpu now passes actual OpenAI 3.14.1 and Anthropic 1.6.0 HTTP
+requests on the pinned CPU image, with the custom Keyprint processor installed
+server-side. Four simultaneous ordinary/marked requests and a recovery request
+returned 99 native token IDs matching journals exactly. Two Anthropic responses
+returned 50 output tokens whose text and counts match selected-token receipts;
+that protocol does not independently return final token IDs. All seven full
+responses are retained. A streamed request was disconnected after one received
+token; native sampling stopped after two selections, before the 384-token cap,
+and another request succeeded. Graceful shutdown exited 0 without OOM.
+
+This closes the previously untested native HTTP/client pilot and one disconnect
+case. It does not establish exhaustive streaming equivalence, durable replay,
+GPU execution, sustained load or production readiness. Native vLLM does not
+inherit the Keyprint preview server's idempotency/cancellation extension.
+
+[Results](evidence/vllm-server-2026-09-21/results.json) ·
+[Independent token/text audit](evidence/vllm-server-2026-09-21/audit.json) ·
+[Native server setup](tools/VLLM_SERVING.md).
+
+The first native-server command used the wrong class separator and failed at
+startup. Client attempt 1 used removed Anthropic Python sampling keyword
+arguments; attempt 2 sent only x-api-key to a bearer-authenticated vLLM server.
+The working client explicitly sends the local bearer token and local sampling
+settings via `extra_body`. Failed runs and their returned outputs are retained.
+
+## Additional ecosystem candidates, without growing the core
+
+- [LM Studio](https://lmstudio.ai/docs/developer/openai-compat): local API server;
+  no Keyprint native hook is implemented. Reusing an HTTP protocol is insufficient.
+- [Bifrost](https://github.com/maximhq/bifrost): external gateway/router candidate;
+  no Keyprint end-to-end test yet. Apply the same route identity and retry rules.
+- [LiteLLM](https://docs.litellm.ai/docs/routing): tested explicit-route recipe;
+  its automatic fallback machinery requires separate validation.
+- PydanticAI and Vercel AI SDK: application clients; keep them optional and test
+  their actual request schemas rather than promising every framework feature.
+
+SGLang remains at its earlier modified CPU hook pilot. Its runtime image/build
+cache is no longer present locally, so no new lifecycle pass is claimed. Restore
+the pinned build and measure HTTP traffic, disconnect/cancellation, reuse and
+shutdown before promoting it. No hosted CI or notifications were enabled.

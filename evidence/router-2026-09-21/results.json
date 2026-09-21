@@ -1,0 +1,83 @@
+{
+  "status": "pass",
+  "ordinary": [
+    {
+      "route": 0,
+      "text": "A seed needs water to initiate germination, allowing it to sprout and grow by providing the necessary moisture for enzymes to break down stored nutrients and trigger the seedling's development.",
+      "usage": {
+        "prompt_tokens": 46,
+        "completion_tokens": 37,
+        "total_tokens": 83
+      }
+    },
+    {
+      "route": 1,
+      "text": "\"Maya, s'il te plaît, garde la sauvegarde jusqu'à ce que nous ayons vérifié la restauration. Nous ne voulons pas perdre quoi que ce soit.\"",
+      "usage": {
+        "prompt_tokens": 59,
+        "completion_tokens": 44,
+        "total_tokens": 103
+      }
+    }
+  ],
+  "marked": [
+    {
+      "route": 0,
+      "mode": "sync",
+      "prompt": "Explain in one sentence why a seed needs water.",
+      "text": "A seed needs water to activate its germination process, allowing it to sprout and grow into a plant by replenishing the moisture that has been locked within the seed.",
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 46,
+        "total_tokens": 81,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "replay_exact": true
+    },
+    {
+      "route": 1,
+      "mode": "async",
+      "prompt": "En français, demande à Maya de garder la sauvegarde jusqu’à la vérification de la restauration.",
+      "text": "\"Pouvez-vous m'aider, Maya ? Je veux garder la sauvegarde jusqu'à ce que nous ayons vérifié la restauration. Merci !\"",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 59,
+        "total_tokens": 96,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "replay_exact": true
+    },
+    {
+      "route": 0,
+      "mode": "timeout-recovery",
+      "prompt": "Explain how rain forms in one sentence.",
+      "text": "Rain forms through a process called the water cycle, where water evaporates from the Earth's surface into the air as water vapor, condenses into clouds, and eventually falls back to the ground as precipitation, known as rain.",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 44,
+        "total_tokens": 90,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      }
+    }
+  ],
+  "checks": {
+    "explicit_route_isolation_and_header_forwarding": true,
+    "unsupported_features_do_not_fallback": true,
+    "timeout_busy_recovery_without_retry_or_fallback": true,
+    "texts_and_usage_match_private_reports": true,
+    "graceful_shutdown": true
+  },
+  "quality_acceptance": false,
+  "hosted_calls": false,
+  "model_calls_by_route": [
+    2,
+    1
+  ],
+  "http_requests_by_route": [
+    13,
+    2
+  ]
+}

@@ -8,7 +8,8 @@ has not been published to PyPI. The old `keyprint-research-v3` release is a
 separate research reference, not the install command for this branch.
 
 [Framework and client compatibility](COMPATIBILITY.md): tested local OpenAI,
-Anthropic and LangChain requests; separate experimental SGLang/vLLM hooks.
+Anthropic, LangChain and Ollama-client requests; optional LiteLLM routing,
+and scoped native vLLM/SGLang pilots.
 
 ## Start here
 

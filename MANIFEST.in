@@ -14,3 +14,7 @@ include native/LICENSE native/README.md native/MANIFEST.in native/pyproject.toml
 recursive-include native/src/keyprint_native *.py *.c *.txt
 include COMPATIBILITY.md
 recursive-include evidence/langchain-2026-09-21 *.json
+recursive-include evidence/router-2026-09-21 *.json
+recursive-include evidence/ollama-client-2026-09-21 *.json
+recursive-include evidence/vllm-server-2026-09-21 *.json
+include tools/VLLM_SERVING.md

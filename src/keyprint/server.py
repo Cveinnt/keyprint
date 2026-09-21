@@ -1,7 +1,8 @@
-"""Authenticated local Chat Completions and Messages text subsets."""
+"""Authenticated local OpenAI, Anthropic and Ollama text subsets."""
 from __future__ import annotations
 
 import asyncio
+from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import asynccontextmanager
 import hashlib
@@ -106,11 +107,42 @@ class MessagesRequest(BaseModel):
         return value
 
 
+class OllamaOptions(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    num_predict: int = Field(ge=1, le=1024)
+
+
+class OllamaRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    model: Literal["keyprint"]
+    stream: Literal[False] = False
+    options: OllamaOptions
+
+    @field_validator("stream", mode="before")
+    @classmethod
+    def exact_stream(cls, value):
+        if type(value) is not bool:
+            raise ValueError("stream must be a boolean")
+        return value
+
+
+class OllamaChatRequest(OllamaRequest):
+    messages: list[Message] = Field(min_length=1, max_length=1)
+    # The official client sends [] even when no tools were supplied.
+    tools: list[dict] | None = Field(default=None, max_length=0)
+
+
+class OllamaGenerateRequest(OllamaRequest):
+    prompt: str = Field(min_length=1, max_length=16000)
+
+
 def error(message: str, status: int, request_id: str | None = None, *, protocol="openai") -> JSONResponse:
     headers = {"x-should-retry": "false"}
     if request_id is not None:
         headers.update({"request-id": request_id, "x-request-id": request_id})
-    if protocol == "anthropic":
+    if protocol == "ollama":
+        body = {"error": message}
+    elif protocol == "anthropic":
         kind = {401: "authentication_error", 403: "permission_error", 404: "not_found_error",
                 413: "request_too_large", 429: "rate_limit_error", 500: "api_error",
                 503: "overloaded_error"}.get(status, "invalid_request_error")
@@ -174,7 +206,8 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
             if header in request.headers:
                 supplied.append(secrets.compare_digest(request.headers[header].encode(), expected.encode()))
         if not supplied or not all(supplied):
-            protocol = "anthropic" if request.url.path == "/v1/messages" else "openai"
+            protocol = ("ollama" if request.url.path in ("/api/chat", "/api/generate")
+                        else "anthropic" if request.url.path == "/v1/messages" else "openai")
             return error("Invalid local API token", 401, protocol=protocol)
         return await call_next(request)
 
@@ -202,10 +235,13 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                              "message": "Worker remains busy until a safe boundary; completion may win the race"},
                             status_code=202)
 
+    @app.post("/api/chat")
+    @app.post("/api/generate")
     @app.post("/v1/messages")
     @app.post("/v1/chat/completions")
     async def completion(request: Request):
-        protocol = "anthropic" if request.url.path == "/v1/messages" else "openai"
+        protocol = ("ollama" if request.url.path in ("/api/chat", "/api/generate")
+                        else "anthropic" if request.url.path == "/v1/messages" else "openai")
         fail = partial(error, protocol=protocol)
         if protocol == "anthropic":
             if request.headers.get("anthropic-version") != "2023-06-01":
@@ -220,26 +256,35 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
             if len(raw) > 131072:
                 return fail("Request exceeds 128 KiB", 413)
         try:
-            params = (MessagesRequest if protocol == "anthropic" else CompletionRequest).model_validate_json(bytes(raw))
+            request_type = {"/api/chat": OllamaChatRequest, "/api/generate": OllamaGenerateRequest,
+                            "/v1/messages": MessagesRequest, "/v1/chat/completions": CompletionRequest}[request.url.path]
+            params = request_type.model_validate_json(bytes(raw))
         except ValidationError:
+            if protocol == "ollama":
+                return fail("Supported: model=keyprint, one user text message or generate prompt, options.num_predict=1..1024, stream=false. Other options are rejected.", 400)
             if protocol == "anthropic":
                 return fail("Supported: model=keyprint, one user message containing a string or one text block, max_tokens=1..1024, stream=false. Other options are rejected.", 400)
             return fail("Supported: model=keyprint, one user text message, one token cap, stream=false, n=1. Other options are rejected.", 400)
         if protocol == "openai" and params.max_tokens is not None and params.max_completion_tokens is not None:
             return fail("Choose one token cap", 400)
-        cap = params.max_tokens if protocol == "anthropic" else params.max_completion_tokens or params.max_tokens or 128
+        if protocol == "ollama":
+            cap = params.options.num_predict
+        elif protocol == "anthropic":
+            cap = params.max_tokens
+        else:
+            cap = params.max_completion_tokens or params.max_tokens or 128
         schema = None
         if protocol == "openai" and params.response_format is not None:
             schema = params.response_format.json_schema.schema_value
         elif protocol == "anthropic" and params.output_config is not None:
             schema = params.output_config.format.schema_value
-        content = params.messages[0].content
+        content = params.prompt if isinstance(params, OllamaGenerateRequest) else params.messages[0].content
         prompt = content if isinstance(content, str) else content[0].text
         request_id = ("msg_" if protocol == "anthropic" else "chatcmpl-") + uuid.uuid4().hex
         idempotency = request.headers.get("idempotency-key", request_id)
         if not idempotency or len(idempotency) > 128 or not idempotency.isascii():
             return fail("Invalid idempotency key", 400)
-        digest = hashlib.sha256(json.dumps({"protocol": protocol, "request": params.model_dump()}, sort_keys=True).encode()).hexdigest()
+        digest = hashlib.sha256(json.dumps({"protocol": protocol, "path": request.url.path, "request": params.model_dump()}, sort_keys=True).encode()).hexdigest()
         previous = records.get(idempotency)
         if previous:
             return previous[1] if previous[0] == digest else fail("Idempotency key was used for another request", 409)
@@ -284,7 +329,19 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                         raise ValueError("Structured request has no matching validation receipt")
                     format_receipt = ({"structured_output": {name: structured[name] for name in
                                       ("status", "schema_validated")}} if structured is not None else {})
-                    if protocol == "anthropic":
+                    if protocol == "ollama":
+                        if payload.get("completion") not in ("eos", "length") or not isinstance(usage, dict):
+                            raise ValueError("Generation has no completed usage receipt")
+                        text_field = ({"response": result.text} if request.url.path == "/api/generate"
+                                      else {"message": {"role": "assistant", "content": result.text}})
+                        response = JSONResponse({"model": "keyprint",
+                            "created_at": datetime.now(timezone.utc).isoformat(), "done": True,
+                            "done_reason": "stop" if payload["completion"] == "eos" else "length",
+                            "prompt_eval_count": usage["prompt_tokens"], "eval_count": usage["completion_tokens"],
+                            **text_field, "keyprint": {"mode": "local_marked_generation",
+                            "runtime": "keyprint", "ollama_runtime": False, "detection_calibrated": False}},
+                            headers={"x-request-id": request_id})
+                    elif protocol == "anthropic":
                         if payload.get("completion") not in ("eos", "length") or not isinstance(usage, dict):
                             raise ValueError("Generation has no completed usage receipt")
                         response = JSONResponse({"id": request_id, "type": "message", "role": "assistant",

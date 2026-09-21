@@ -67,6 +67,23 @@ The Pretext-level release remains unfinished. The concrete work is:
    public install and links before rescheduling publicity. No new release or
    social dispatch is implied by this update.
 
+## September 21 routing and serving progress
+
+Closed bounded integration gaps: native vLLM OpenAI/Anthropic HTTP, four-request
+concurrency, one disconnect/recovery scenario and graceful exit; Ollama Python
+sync/async protocol calls through Keyprint; LiteLLM explicit-route isolation and
+timeout recovery without duplicate generation. The [matrix](COMPATIBILITY.md)
+links exact versions, all outputs, failures and independent audits.
+
+The core dependency list is unchanged. Ollama protocol handling shares the same
+single model worker and error/replay/cancellation path. It does not add a router,
+start another runtime or post-process generated text.
+
+Still open: SGLang lifecycle on a restored pinned runtime, native Ollama/LM Studio
+hooks, GPU and sustained serving qualification, safe automatic failover, output
+quality acceptance, detector calibration and final release/demo verification.
+The 22/25 historical research tally is unchanged. Publicity remains held.
+
 ## Current release gates
 
 The [output quality contract](OUTPUT_QUALITY.md) makes language, facts, actors,
