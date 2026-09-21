@@ -31,8 +31,11 @@ responses can share the same mistake. Separate baseline model failures from
 watermark-attributable harm. Do not select only favorable examples or rerun a
 failure until it passes.
 
-Any translation, changed condition or invented fact in a proposed supported
-workflow blocks its qualification until addressed and independently rechecked.
+An unrequested translation, changed condition or invented fact fails that
+individual output. A baseline model error does not, by itself, prove watermark
+harm or disprove the mechanism. Qualify the supported workflow using the frozen
+paired quality criterion and investigate any systematic error introduced by the
+watermark or adapter. The withdrawn rewriting path remains unavailable.
 The fixed multilingual decision screen is not prose-quality evidence. The older
 A02 harm bound exceeds its registered target, A03 remains unestablished, and the
 serving-cost gate remains open. Historical scoped acceptances do not transfer to

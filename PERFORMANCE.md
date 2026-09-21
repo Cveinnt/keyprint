@@ -1,5 +1,20 @@
 # Sampling performance
 
+Anthropic states that watermarking has negligible speed impact and adds no
+extra watermark tokens or serving price. It publishes no numeric latency
+budget. The 5% upper-bound screen below is our engineering operationalization,
+not an Anthropic requirement.
+
+In the last completed three-arm support-mask study, the marking increment
+within Keyprint passed that screen: 3.48% observed, 3.90% one-sided upper bound.
+The complete Keyprint path versus native MLX-LM failed: 8.40% observed, 9.18%
+upper bound. The latter includes different sampling machinery and durable
+journals; it does not isolate watermark-transform cost. See the exact study
+limits below. The subsequent snapshot revision has no fresh native-engine
+baseline. Neither denominator establishes production batch throughput.
+
+Source: [Anthropic announcement](https://www.anthropic.com/news/claude-text-watermark).
+
 The latest complete-path comparison fails the lightweight-runtime target:
 marked Keyprint takes 1.0840 times MLX-LM's time per token on the fixed local
 workload. The much smaller marking-only cost measures a different denominator.
