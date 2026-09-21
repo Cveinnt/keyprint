@@ -19,6 +19,9 @@ Anthropic 0.83.0 emits Pydantic serialization warnings for parsed response objec
 the parsed values and replay checks pass, and the warnings remain in the log.
 See [local version-matrix instructions](CONTRIBUTING.md#client-version-checks).
 
+See [all runtime/client combinations](COMPATIBILITY.md) and the tested
+[LangChain example](examples/langchain_local.py).
+
 ## Use the OpenAI client with a local model
 
 From this checkout, install the server and one backend. Download the pinned

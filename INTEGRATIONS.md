@@ -7,6 +7,8 @@ September 20 update: all post-generation rewrite entry points are blocked before
 inference. Earlier rewrite observations below are historical failure evidence,
 not available product behavior. See [provider restrictions](PROVIDERS.md#existing-gpt-or-claude-text).
 
+See the September 21 [framework × client matrix](COMPATIBILITY.md) for the current overview, including actual LangChain inference.
+
 ### Current private development branch
 
 `clean-keyprint-sdk` builds the unpublished `keyprint==0.1.0a1` package and

@@ -13,6 +13,13 @@ journals; it does not isolate watermark-transform cost. See the exact study
 limits below. The subsequent snapshot revision has no fresh native-engine
 baseline. Neither denominator establishes production batch throughput.
 
+**Product acceptance, September 21:** Vincent accepts the observed 8.40% total
+per-token overhead as negligible for that measured local setup. This removes
+that setup's product latency objection. It does not change the frozen 5% screen,
+its failed result, the historical A18 research status, or qualify unmeasured
+frameworks, current revisions, HTTP overhead or production batch throughput.
+The one-sided upper bound remains 9.18%.
+
 Source: [Anthropic announcement](https://www.anthropic.com/news/claude-text-watermark).
 
 The latest complete-path comparison fails the lightweight-runtime target:

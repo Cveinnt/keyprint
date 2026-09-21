@@ -7,6 +7,9 @@ claims are audited. This branch builds **`keyprint 0.1.0a1`**; that name/version
 has not been published to PyPI. The old `keyprint-research-v3` release is a
 separate research reference, not the install command for this branch.
 
+[Framework and client compatibility](COMPATIBILITY.md): tested local OpenAI,
+Anthropic and LangChain requests; separate experimental SGLang/vLLM hooks.
+
 ## Start here
 
 The interactive playground generates two real responses, lets you change the

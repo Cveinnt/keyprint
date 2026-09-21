@@ -39,6 +39,34 @@ Unicode values and backup prerequisite are preserved. Native framework
 structured output, broader semantics and constrained-output detection remain
 open; this integration does not close those gates. CI remains disabled.
 
+## September 21 product acceptance and next steps
+
+Vincent accepts the measured 8.40% complete-path per-token overhead for the
+recorded local Qwen/MLX setup. This is scoped product acceptance, not a changed
+benchmark verdict or measured throughput for all adapters. See [performance](PERFORMANCE.md).
+
+The [compatibility matrix](COMPATIBILITY.md) now separates native runtimes,
+client protocols and application SDKs. LangChain sync/async actual inference
+and exact retry replay pass with Llama 3.2 3B CPU. Six retained outputs include
+unrequested elaboration; the integration check does not accept output quality.
+No sampling code changed and CI stays disabled.
+
+The Pretext-level release remains unfinished. The concrete work is:
+
+1. Complete owner review of the prepared ordinary/marked prose samples and
+   define the accepted model/workload. Do not replace that with lexical checks.
+2. Qualify the advertised native SGLang/vLLM serving paths: real client traffic,
+   cancellation, request reuse, concurrency and failure recovery. Current CPU
+   hook pilots do not meet that bar. Ollama has no Keyprint adapter.
+3. Calibrate any advertised detector for the actual released profile; current
+   interactive diagnostic curves must not imply detection confidence.
+4. Verify the final installable artifact and fresh-machine setup, then the
+   prefilled real-inference demo, custom prompt, edits, errors and recovery.
+   Preserve the selected website design and distinguish its teaching model.
+5. Publish the clean package/repository only after those checks; verify actual
+   public install and links before rescheduling publicity. No new release or
+   social dispatch is implied by this update.
+
 ## Current release gates
 
 The [output quality contract](OUTPUT_QUALITY.md) makes language, facts, actors,
