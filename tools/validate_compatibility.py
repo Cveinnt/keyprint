@@ -84,7 +84,37 @@ def inspect(candidate, text, other_key):
     return result
 
 
+def quality_verdict(row):
+    """Fail closed for delivery; integration checks never approve semantics."""
+    measured = row.get("screens", {})
+    reasons = []
+    if row.get("error_type"):
+        reasons.append("operation_failed_or_unavailable")
+    if not measured:
+        reasons.append("output_not_measured")
+    else:
+        for name in ("complete", "nonempty"):
+            if measured.get(name) is not True:
+                reasons.append(name)
+        if measured.get("missing_literals"):
+            reasons.append("missing_literals")
+        for name in ("exact_json", "within_word_limit", "rewrite_checks_passed"):
+            if name in measured and measured[name] is not True:
+                reasons.append(name)
+    return {"status": "blocked" if reasons else "unreviewed", "reasons": reasons,
+            "approved_for_delivery": False,
+            "unverified": ["requested_language", "facts_and_roles", "negation_and_conditions",
+                           "dates_and_relationships", "no_invented_content"]}
+
+
 def write_report(output, report):
+    for row in report["runs"]:
+        row["output_quality"] = quality_verdict(row)
+    report["output_quality_summary"] = {
+        "approved": 0,
+        "blocked": sum(row["output_quality"]["status"] == "blocked" for row in report["runs"]),
+        "unreviewed": sum(row["output_quality"]["status"] == "unreviewed" for row in report["runs"]),
+    }
     report["screening_failures"] = [
         {"case": row["case"], "condition": row["condition"], "screens": row["screens"]}
         for row in report["runs"] if "screens" in row and
@@ -102,7 +132,8 @@ def write_report(output, report):
                       key=lambda row: row["condition"] != "ordinary")
         columns = []
         for row in rows:
-            columns.append('<article><h3>' + html.escape(row["condition"]) + '</h3><pre>' +
+            columns.append('<article><h3>' + html.escape(row["condition"]) + '</h3><p>Output quality: <strong>' +
+                           row["output_quality"]["status"] + '</strong>. Not approved for delivery.</p><pre>' +
                            html.escape(row.get("text", "Generation failed")) + '</pre><details><summary>Measured results and review flags</summary><pre>' +
                            html.escape(json.dumps({k:v for k,v in row.items() if k != "text"}, indent=2, ensure_ascii=False)) + '</pre></details></article>')
         sections.append('<section><h2>' + html.escape(case["id"]) + '</h2><p>' + html.escape(case["prompt"]) +
@@ -118,7 +149,7 @@ def write_report(output, report):
 <title>Keyprint inference comparisons</title><style>body{max-width:1160px;margin:48px auto;padding:0 24px;background:#f7f5ee;color:#292923;font:18px/1.55 Georgia,serif}h1{font-size:42px}h2{font-size:28px}section{border-top:1px solid #ccc6b7;padding:24px 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}article{background:#fffdf8;padding:22px;min-width:0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:16px/1.6 Georgia,serif}details pre{font:12px/1.5 monospace}summary{cursor:pointer}@media(max-width:650px){.pair{grid-template-columns:1fr}}</style>
 <h1>Actual inference. Both texts.</h1><p>Independent ordinary and marked samples. All attempts retained. Mechanical flags are not semantic approval; fractions are not detection confidence.</p>''' +
         '<p>' + html.escape(report["backend"]) + ' · ' + str(len(report["screening_failures"])) +
-        ' generated outputs flagged by mechanical screens. Semantic quality remains unapproved.</p>' + ''.join(sections) + ''.join(client_sections) +
+        ' generated outputs flagged by mechanical screens. Zero outputs approved for delivery by this harness; language and meaning remain unverified.</p>' + ''.join(sections) + ''.join(client_sections) +
         '<section><h2>Client checks</h2><pre>' + html.escape(json.dumps(report.get("clients", {}), indent=2, ensure_ascii=False)) + '</pre></section>')
 
 

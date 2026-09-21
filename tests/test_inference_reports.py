@@ -68,3 +68,40 @@ def test_rewrite_failure_is_flagged_even_when_text_screens_pass(tmp_path):
     exported = json.loads((tmp_path/'public/comparison.json').read_text())
     assert len(exported['screening_failures']) == 1
     assert exported['quality_acceptance'].startswith('not_established')
+
+
+@pytest.mark.parametrize("instruction,candidate,literals", [
+    ("Rédigez en français. Maya doit approuver.", "Maya must approve.", ["Maya"]),
+    ("Do not send the file to Maya.", "Send the file to Maya.", ["Maya"]),
+    ("Wait for Maya's approval, not just a reply.", "Proceed when Maya replies.", ["Maya"]),
+    ("Maya approves; Ravi receives the file.", "Ravi approves; Maya receives the file.", ["Maya", "Ravi"]),
+    ("Review at 09:30; publish at 14:00.", "Review at 14:00; publish at 09:30.", ["09:30", "14:00"]),
+    ("Approval is pending from Maya.", "Approval was received from Maya.", ["Maya"]),
+])
+def test_literal_pass_never_approves_language_or_meaning_failures(tmp_path, instruction, candidate, literals):
+    case = {"id":"preservation", "prompt":instruction, "review":"Preserve every obligation",
+            "required_literals":literals}
+    row = {"case":case["id"], "condition":"marked", "text":candidate,
+           "screens":screens(case, candidate, "eos")}
+    report = {"backend":"fixture", "cases":[case], "runs":[row], "clients":{}, "engineering_failures":[]}
+    write_report(tmp_path, report)
+    saved = json.loads((tmp_path/'public/comparison.json').read_text())
+    assert saved['screening_failures'] == []  # These lexical checks miss the semantic failure.
+    assert saved['runs'][0]['text'] == candidate
+    verdict = saved['runs'][0]['output_quality']
+    assert verdict['status'] == 'unreviewed' and verdict['approved_for_delivery'] is False
+    assert saved['output_quality_summary'] == {'approved':0,'blocked':0,'unreviewed':1}
+    assert 'Not approved for delivery' in (tmp_path/'public/comparison.html').read_text()
+
+
+@pytest.mark.parametrize('row', [
+    {'error_type':'RewriteUnavailableError'}, {},
+    {'screens':{'complete':False,'nonempty':True,'missing_literals':[]}},
+    {'screens':{'complete':True,'nonempty':False,'missing_literals':[]}},
+    {'screens':{'complete':True,'nonempty':True,'missing_literals':['Maya']}},
+])
+def test_missing_or_failed_quality_evidence_is_blocked(row):
+    from tools.validate_compatibility import quality_verdict
+    verdict = quality_verdict(row)
+    assert verdict['status'] == 'blocked'
+    assert verdict['approved_for_delivery'] is False and verdict['reasons']

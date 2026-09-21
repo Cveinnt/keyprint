@@ -41,6 +41,12 @@ open; this integration does not close those gates. CI remains disabled.
 
 ## Current release gates
 
+The [output quality contract](OUTPUT_QUALITY.md) makes language, facts, actors,
+conditions and dates explicit release obligations. The actual-inference report
+now marks each output blocked or unreviewed in both JSON and HTML; mechanical
+passes cannot become delivery approval. This is a reporting safeguard, not a
+new semantic validator or a closed research gap.
+
 The fixed multilingual decision screen passes 128/128 exact answers (64 ordinary,
 64 marked) on pinned Qwen3-8B/MLX reference execution. Sixteen positive/negative
 prompts run four times per condition under a JSON grammar permitting both

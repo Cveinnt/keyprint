@@ -1,5 +1,9 @@
 # Llama 3.2 3B local quality review
 
+Current safeguard: SDK rewriting is blocked before inference. The observations
+below describe historical runs. [Output quality contract](OUTPUT_QUALITY.md)
+defines the required language, facts, roles, conditions and provenance checks.
+
 Twenty fresh ordinary/marked outputs completed with no engineering failures.
 They still contain invented details, factual errors and meaning drift. This
 screen does not approve automatic rewriting or production output quality.
