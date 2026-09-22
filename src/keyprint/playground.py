@@ -38,37 +38,7 @@ class Experiment(BaseModel):
     preserve: list[str] = Field(default_factory=list, max_length=32)
 
 
-def inspect_text(model: Keyprint, text: str, control_key: bytes, cancel_event: Event | None = None) -> dict:
-    """Recompute complete literal diagnostics at bounded character prefixes.
-
-    These are not per-token attribution or a calibrated detector trajectory.
-    Prefix retokenization is intentional and disclosed in the interface.
-    """
-    def measure(value: str, key: bytes | None = None) -> Inspection:
-        check_cancellation(cancel_event)
-        try:
-            return model.inspect(value, **({"key": key} if key is not None else {}))
-        except (KeyprintError, ValueError):
-            # A token-boundary or replay failure is not a zero signal, and must
-            # not discard a successfully generated response.
-            return Inspection(None, None, None, {"kind": "literal_diagnostic", "verdict": None,
-                "availability": "unavailable", "reason": "Literal replay unavailable for this text and profile"})
-
-    positions = sorted({len(text), *(round(len(text) * i / 16) for i in range(1, 16))} - {0})
-    series = []
-    for end in positions:
-        matching = measure(text[:end])
-        control = measure(text[:end], key=control_key)
-        series.append({"characters": end, "matching": matching.fraction,
-                       "control": control.fraction})
-    # The final prefix is the complete text. Reuse those exact reports rather
-    # than replaying it twice more after plotting it.
-    if not positions:
-        matching, control = measure(text), measure(text, key=control_key)
-    return {"series": series, "events": matching.events, "ones": matching.ones,
-            "trials": matching.trials, "fraction": matching.fraction,
-            "control_fraction": control.fraction, "report": matching.report,
-            "control_report": control.report, "calibrated": False, "verdict": None}
+from .comparison import inspect_text, compare
 
 
 def create_playground(load_model: Callable[[], Keyprint], *, token: str, output: Path,
@@ -228,23 +198,9 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
                 stage("inspecting_edit")
                 return {"inspection": inspect_text(model[0], params.text, control_key, cancellation),
                         "seconds": time.perf_counter() - started}
-            for condition in ("ordinary", "marked"):
-                stage("generating_" + condition)
-                check_cancellation(cancellation)
-                generation_start = time.perf_counter()
-                result = model[0].generate(params.text, max_tokens=params.max_tokens,
-                                           condition=condition, output=run / condition, cancel_event=cancellation)
-                generation_seconds = time.perf_counter() - generation_start
-                stage("inspecting_" + condition)
-                inspection_start = time.perf_counter()
-                inspection = inspect_text(model[0], result.text, control_key, cancellation)
-                payload = result.report.get("payload", result.report)
-                outputs[condition] = {"text": result.text, "usage": result.report.get("usage"),
-                                      "completion": payload.get("completion"), "inspection": inspection,
-                                      "timing": {"generation_seconds": generation_seconds,
-                                                 "inspection_seconds": time.perf_counter() - inspection_start}}
-            return {"outputs": outputs, "max_tokens": params.max_tokens, "seconds": time.perf_counter() - started,
-                    "independent_randomness": True, "calibrated": False}
+            return compare(model[0], params.text, max_tokens=params.max_tokens,
+                           control_key=control_key, output=run, cancel_event=cancellation,
+                           on_stage=stage, outputs=outputs).result
         except (KeyprintCancelled, _CancellationRequested):
             (run / "cancelled.json").write_text(json.dumps({
                 "action": params.action, "stage": progress["stage"],

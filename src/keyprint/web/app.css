@@ -630,3 +630,12 @@ footer {
   letter-spacing: 0.25px;
   margin: 8px 0 0;
 }
+
+/* Keep replay and live generation in one editorial shell. */
+#setup { scroll-margin-top: 24px; }
+#setup code { overflow-wrap: anywhere; }
+#setup pre { overflow-x: auto; }
+[hidden] { display: none !important; }
+#copy-status:empty { display: none; }
+body[data-mode="replay"] .intro .eyebrow { color: var(--rust); }
+body[data-mode="replay"] #edited { background: transparent; }

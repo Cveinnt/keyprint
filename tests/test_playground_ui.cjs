@@ -5,11 +5,12 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-function ui() {
+function ui(extra = {}) {
   const nodes = new Map();
   function node() {
     return {
       textContent: '', value: '0', children: [], attributes: {}, listeners: {},
+      options: [{value:'128'}], focus() {}, scrollIntoView() {},
       classList: { add() {}, remove() {}, toggle() {} },
       addEventListener(event, fn) { this.listeners[event] = fn; },
       setAttribute(key, value) { this.attributes[key] = String(value); },
@@ -23,8 +24,9 @@ function ui() {
     return nodes.get(id);
   };
   const context = vm.createContext({
-    document: { getElementById: get, createElementNS: () => node(), createElement: () => node(), querySelectorAll: () => [] },
+    document: { body: {dataset: {mode:extra.replay ? "replay" : "live"}}, getElementById: get, createElementNS: () => node(), createElement: () => node(), querySelectorAll: () => [] },
     location: { hash: '' }, sessionStorage: { getItem: () => null }, URLSearchParams,
+    fetch: extra.fetch, renderResponse: (target,text) => {target.textContent=text;},
   });
   // No token: startup reports the normal session instruction without network IO.
   vm.runInContext(fs.readFileSync(require.resolve('../src/keyprint/web/app.js'), 'utf8'), context);
@@ -170,4 +172,40 @@ test('Restored rewrite recovers source and protected phrases', () => {
   assert.equal(app.get('prompt').value, 'Hi Maya.');
   assert.equal(app.get('preserve').value, 'Maya');
   assert.equal(app.get('prompt-preview').textContent, 'Hi Maya.');
+});
+
+
+test('Recorded viewer makes no model request and keeps draft prompts distinct from outputs', async () => {
+  const requests = [];
+  const row = {text:'Recorded 🌱', completion:'eos', usage:{completion_tokens:4},
+    inspection:{fraction:.6,control_fraction:.5,events:1,trials:30,
+      series:[{characters:10,matching:.6,control:.5}]}};
+  const app=ui({replay:true, fetch:async path => {
+    requests.push(path);
+    return {ok:true,json:async()=>({schema:'keyprint-comparison-v1',prompt:'Original prompt',
+      experiment:{outputs:{ordinary:row,marked:row},max_tokens:128,seconds:1}})};
+  }});
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.deepEqual(requests,['./replay.json']);
+  assert.match(app.get('status').textContent,/Recorded SDK run/);
+  assert.match(app.get('status').textContent,/identical/);
+  assert.equal(app.get('edited').readOnly,true);
+  assert.equal(app.get('prompt-controls').open,false);
+  app.get('prompt').value='My different prompt'; app.get('prompt').listeners.input();
+  assert.match(app.get('status').textContent,/has not been run/);
+  assert.match(app.get('recipe').textContent,/My different prompt/);
+  assert.equal(app.get('marked-text').textContent,'Recorded 🌱');
+  await app.run('run("generate")');
+  assert.deepEqual(requests,['./replay.json']);
+  assert.equal(app.get('setup').open,true);
+});
+
+test('Bad recording fails visibly without pretending to run inference', async () => {
+  const requests=[];
+  const app=ui({replay:true,fetch:async path=>{requests.push(path);return {ok:false};}});
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.match(app.get('status').textContent,/Recording unavailable/);
+  assert.equal(app.get('reconnect').hidden,false);
+  assert.deepEqual(requests,['./replay.json']);
+  assert.equal(app.run('experiment'),null);
 });

@@ -5,7 +5,7 @@ include QUALITY_REVIEW.md OUTPUT_QUALITY.md
 include DECISION_QUALITY.md
 recursive-include evidence/decision-quality-2026-09-20 *.json
 recursive-include tests *.py
-recursive-include examples *.py
+recursive-include examples *.py *.md
 recursive-include tools *.py *.json
 include tools/sglang-arm.Dockerfile
 include tools/SGLANG_LICENSE
@@ -18,3 +18,5 @@ recursive-include evidence/router-2026-09-21 *.json
 recursive-include evidence/ollama-client-2026-09-21 *.json
 recursive-include evidence/vllm-server-2026-09-21 *.json
 include tools/VLLM_SERVING.md
+
+recursive-include evidence/product-experience-2026-09-22 *.json

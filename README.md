@@ -17,19 +17,19 @@ The interactive playground generates two real responses, lets you change the
 prompt, and shows how edits affect the watermark signal. No hosted API key or
 account is needed. Start from this private checkout with Python 3.12 or 3.13.
 
-**Apple Silicon Mac:**
+**Recommended first run:**
 
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install '.[mlx,server]'
+python -m pip install '.[playground]'
 keyprint playground --download
 ```
 
-**CPU alternative:** replace the install and launch commands with
-`python -m pip install '.[transformers,server]'` and
-`keyprint playground --backend transformers --download`. This uses the small
-SmolLM2 integration example; its answer quality is limited.
+The extra selects MLX on Apple Silicon and Transformers elsewhere, matching
+`keyprint playground`'s default. Backends stay optional for normal SDK installs.
+The CPU default uses the small SmolLM2 integration model; its answer quality is
+limited. Platform selection does not extend the tested compatibility scope.
 
 Open the complete local session URL printed in the terminal. The prefilled
 example runs once when the model is ready. Then enter your own prompt, compare
@@ -53,6 +53,36 @@ For an optional model-free check: `python -m pip install .`, then `keyprint demo
 That fixture uses A/B/C/D choices and does not generate prose. `keyprint doctor`
 checks package imports and engine integrity; `keyprint verify` checks the engine
 manifest. Neither certifies a model or detector. Add `--json` for reports.
+
+## Build from the same data as the demo
+
+```python
+from keyprint import Keyprint
+
+with Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:
+    pair = wm.compare("In two sentences, explain how a seed becomes a tree.")
+    print(pair.marked)
+    pair.export("my-demo")
+```
+
+`pair.ordinary` and `pair.marked` preserve the generated text exactly.
+`pair.to_dict()` exposes paired text, prefix measurements and timing for your
+own visuals. `pair.export()` writes a standalone recorded viewer using the
+same HTML, CSS and JavaScript as the live playground. Serve it with
+`python -m http.server --directory my-demo`; no model runs during playback.
+The export destination must be new. Nothing is uploaded automatically.
+**Review the prompt and output text before sharing.** Keys, raw reports and
+private journals are excluded. Backend-specific `from_transformers` and
+`from_llama_cpp` constructors work with this same comparison API.
+
+Prefix inspection adds work beyond generation. The plotted fractions are
+uncalibrated observations, not confidence scores. Ordinary and marked outputs
+use independent randomness; identical outputs are valid and differences alone
+are not a causal quality measurement. No post-generation rewrite is performed.
+
+Three small [remix recipes](examples/README.md) cover a shareable comparison,
+a prefix-signal explorer and model comparisons. They reuse this API and add no
+framework or client dependency to the core package.
 
 ## The interactive playground
 

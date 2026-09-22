@@ -1,0 +1,10 @@
+{
+  "wheel_sha256": "32d4c4bd59633e95b38ddc2be11103ea2c0b0393c2acbc9524bbcf0ceca340da",
+  "wheel_bytes": 2359684,
+  "package_files_matching_source": 87,
+  "exported_viewer_bytes": 67430,
+  "exact_public_replay_matches": true,
+  "private_keys_excluded": true,
+  "inference_wheel_sha256": "ab8b86f71c2bc25dcda32209847cda64b63c1b3b15f9696d2594b96e03cc598c",
+  "final_wheel_package_bytes_match_inference_install": true
+}

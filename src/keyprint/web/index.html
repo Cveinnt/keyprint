@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Keyprint — the local playground</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/app.css" />
-    <script src="/reader.js" defer></script>
-    <script src="/app.js" defer></script>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./app.css" />
+    <script src="./reader.js" defer></script>
+    <script src="./app.js" defer></script>
   </head>
   <body>
     <main>
@@ -17,16 +17,16 @@
         ><a href="#method">How to read this</a>
       </header>
       <section id="top" class="intro">
-        <p class="eyebrow">
+        <p id="experience-label" class="eyebrow">
           The local playground · private development preview
         </p>
         <h1>Ordinary words. A pattern underneath.</h1>
         <div class="intro-bottom">
-          <p>
+          <p id="intro-copy">
             Generate a paragraph. Change a few words.<br />Explore what happens
             to its keyed signal.
           </p>
-          <a class="technical" href="#explore"
+          <a id="explore-link" class="technical" href="#explore"
             >Explore the signal ↓<br />Real measurements · on your computer</a
           >
         </div>
@@ -37,14 +37,14 @@
           <h2 id="generate-title">See what changes.</h2>
           <span id="model-label" class="eyebrow">Connecting to your model</span>
         </div>
-        <div class="task-picker">
+        <div class="task-picker" hidden>
           <label for="task-mode">Try Keyprint</label>
           <select id="task-mode">
             <option value="generate">Generate from a prompt</option>
             <option value="rewrite" disabled>Rewriting unavailable: preservation unvalidated</option>
           </select>
         </div>
-        <details id="prompt-controls" class="prompt-controls">
+        <details id="prompt-controls" class="prompt-controls" open>
           <summary><span id="input-summary">Change prompt or response limit</span><span id="prompt-preview">In 60 words, explain how a seed becomes a tree to a curious adult.</span></summary>
           <div class="prompt-layout">
           <div>
@@ -146,7 +146,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
         </div>
         <div class="lab-grid">
           <div class="editor">
-            <label for="edited">Edit the marked response</label
+            <label id="edit-label" for="edited">Edit the marked response</label
             ><textarea
               id="edited"
               rows="9"
@@ -174,7 +174,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             <div class="legend">
               <span class="original">Original · matching key</span
               ><span class="control">Original · other key</span
-              ><span class="edited">Edited · matching key</span>
+              ><span id="edited-legend" class="edited">Edited · matching key</span>
             </div>
             <svg
               id="chart"
@@ -237,9 +237,8 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             strengthen, weaken, or leave the diagnostic unchanged.
           </p>
           <p>
-            Prompt mode compares independent samples. Rewrite mode compares your
-            unchanged source with one local candidate. Neither comparison alone
-            establishes a quality effect. Prefixes can tokenize
+            The pair uses independent samples. Wording differences alone do not
+            establish a quality effect. Prefixes can tokenize
             differently; no individual word is labeled “watermarked.” A weak or
             unavailable signal does not prove human authorship.
           </p>
@@ -255,23 +254,26 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
           </div>
           <pre id="report">Run an experiment to see its report.</pre>
         </details>
-        <details>
-          <summary>Use the same SDK in Python</summary>
-          <pre>
-from pathlib import Path
-from keyprint import Keyprint
+        <details id="setup">
+          <summary>Build your own experiment</summary>
+          <p>Generate, compare, export. The same SDK produces this view and the live local playground.
+            Recorded playback needs no model. New prompts and edits run in your local model.</p>
+          <pre id="recipe">from keyprint import Keyprint
 
-wm = Keyprint.from_mlx("models/qwen3-8b-4bit",
-    key=Path("keyprint.key").read_bytes())
-result = wm.generate("Explain how a seed becomes a tree.")
-inspection = wm.inspect(result.text)
-print(result.text)
-print(inspection.fraction)  # observed fraction, not confidence</pre>
-          <p>
-            Use the pinned model documented in the README. Transformers has a
-            separate experimental backend. This preview makes no hosted GPT or
-            Claude call.
-          </p>
+with Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:
+    pair = wm.compare("Explain how a seed becomes a tree.")
+    print(pair.marked)
+    pair.export("my-demo")</pre>
+          <button id="copy-recipe" type="button">Copy Python</button>
+          <p id="copy-status" role="status"></p>
+          <p>Private development checkout · Python 3.12–3.13 · Apple Silicon</p>
+          <pre>python -m pip install '.[mlx,server]'
+keyprint playground --download</pre>
+          <p>The public SDK release remains held. These commands require the private checkout;
+            they are not a public PyPI install. Downloads are explicit, about 4.62 GB for the
+            pinned Qwen model. Reuse local weights with <code>--model PATH</code>.
+            CPU alternatives and supported models are documented in the README.</p>
+          <p>No hosted GPT or Claude call. No automatic rewriting or translation of existing text.</p>
         </details>
       </section>
       <footer>

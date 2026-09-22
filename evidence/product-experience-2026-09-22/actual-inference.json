@@ -1,0 +1,29 @@
+{
+  "backend": "mlx",
+  "model": "545dc4251c05440727734bcd94334791f6ab0192",
+  "prompt": "In two sentences, explain how a seed becomes a tree to a curious adult.",
+  "ordinary": "A seed starts as a tiny package with all the parts a tree needs, like food and a baby plant. When conditions are right, the seed cracks open, the baby plant grows up through the soil, and eventually becomes a full tree.",
+  "marked": "A seed starts as a tiny, dormant package with all the parts a growing plant needs. When it gets water, sunlight, and the right soil, it sprouts a seedling, which grows taller and stronger over time, eventually becoming a full tree.",
+  "elapsed_including_load": 18.40516841597855,
+  "timings": {
+    "ordinary": {
+      "generation_seconds": 6.060466792201623,
+      "inspection_seconds": 0.06512129097245634
+    },
+    "marked": {
+      "generation_seconds": 3.6381984169129282,
+      "inspection_seconds": 0.19776312494650483
+    }
+  },
+  "completion": {
+    "ordinary": "eos",
+    "marked": "eos"
+  },
+  "fractions": {
+    "ordinary": 0.48541666666666666,
+    "marked": 0.49869281045751634
+  },
+  "export_text_matches_generated_text": true,
+  "verdict": null,
+  "quality_accepted": false
+}

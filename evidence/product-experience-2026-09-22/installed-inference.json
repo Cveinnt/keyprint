@@ -1,0 +1,11 @@
+{
+  "prompt": "En français, explique en deux phrases pourquoi le ciel est bleu.",
+  "ordinary": "Le ciel apparaît bleu à cause de la diffusion de la lumière solaire par les molécules de l'air. Les longueurs d'onde courtes de la lumière bleue sont diffusées dans toutes les directions, ce qui rend le ciel visible en bleu à l'œil humain.",
+  "marked": "Le ciel apparaît bleu à cause de la diffusion de la lumière par les molécules de l'air, un phénomène appelé diffusion de Rayleigh. La lumière bleue, étant plus courte en longueur d'onde, est diffusée de manière plus efficace dans toutes les directions, ce qui donne au ciel une apparence bleue.",
+  "seconds_including_load": 27.18828266696073,
+  "completion": {
+    "ordinary": "eos",
+    "marked": "eos"
+  },
+  "public_verdict": null
+}

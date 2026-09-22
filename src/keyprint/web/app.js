@@ -8,6 +8,7 @@ function modelLabel(identity = {}) {
 
 "use strict";
 const $ = (id) => document.getElementById(id);
+const replayMode = document.body?.dataset?.mode === "replay";
 const fragment = new URLSearchParams(location.hash.slice(1));
 const token =
   fragment.get("session") || sessionStorage.getItem("keyprint-session");
@@ -19,6 +20,7 @@ let busy = false,
   modelReady = false,
   connecting = false,
   experiment = null,
+  recordedPrompt = null,
   editMeasurement = null,
   measuredText = null,
   pending = null,
@@ -54,7 +56,17 @@ function selectTaskMode(mode) {
   syncPromptPreview();
 }
 
+function syncRecipe() {
+  if (!$("recipe")) return;
+  $("recipe").textContent = `from keyprint import Keyprint\n\nwith Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:\n    pair = wm.compare(${JSON.stringify($("prompt").value)}, max_tokens=${Number($("cap").value) || 192})\n    print(pair.marked)\n    pair.export("my-demo")`;
+}
 function syncPromptPreview() {
+  syncRecipe();
+  if (replayMode && recordedPrompt !== null && experiment) {
+    $("status").textContent = $("prompt").value !== recordedPrompt
+      ? `Your new prompt has not been run. The recorded outputs below still answer: “${recordedPrompt}”`
+      : "Recorded SDK run. Explore its exact outputs and prefix measurements. No model runs in this browser.";
+  }
   $("prompt-preview").textContent = $("prompt").value.trim() ||
     (taskMode === "rewrite" ? "Paste your text to try a local rewrite." : "Enter a prompt to generate your own pair.");
 }
@@ -468,6 +480,13 @@ function showRewriteChecks(rewrite) {
 }
 
 async function run(action) {
+  if (replayMode) {
+    $("setup").open = true;
+    syncRecipe();
+    $("setup").scrollIntoView({behavior: "smooth", block: "start"});
+    $("copy-recipe").focus({preventScroll: true});
+    return;
+  }
   if (busy || !modelReady) return;
   const text = action !== "inspect" ? $("prompt").value : $("edited").value;
   if (!text.trim()) {
@@ -703,5 +722,53 @@ async function connect() {
     connecting = false;
   }
 }
-$("reconnect").addEventListener("click", connect);
-connect();
+$("reconnect").addEventListener("click", () => replayMode ? loadReplay() : connect());
+$("cap").addEventListener("change", syncRecipe);
+$("copy-recipe").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText($("recipe").textContent);
+    $("copy-status").textContent = "Copied. Run from your local SDK environment with your model path.";
+  } catch {
+    $("copy-status").textContent = "Copy unavailable. Select the Python above to copy it.";
+  }
+});
+
+async function loadReplay() {
+  // Static replay never sends a prompt, key or request to a model endpoint.
+  $("reconnect").hidden = true;
+  $("experience-label").textContent = "Recorded SDK run · explore without an install";
+  $("model-label").textContent = "Recorded model output";
+  $("status").textContent = "Loading the recorded SDK run…";
+  try {
+    const response = await fetch("./replay.json");
+    if (!response.ok) throw new Error("The recording could not be loaded.");
+    const data = await response.json();
+    if (data.schema !== "keyprint-comparison-v1" || typeof data.prompt !== "string")
+      throw new Error("Unsupported recording format.");
+    $("prompt").value = data.prompt;
+    recordedPrompt = data.prompt;
+    $("prompt-controls").open = false;
+    $("intro-copy").textContent = "Read two real responses. Follow the measured pattern. Then build your own.";
+    $("explore-link").textContent = "Explore the recorded signal ↓";
+    $("explore-title").textContent = "Follow the signal through the text.";
+    $("edited-legend").hidden = true;
+    showGeneration(data.experiment, true);
+    $("outputs").setAttribute("aria-busy", "false");
+    $("status").textContent = "Recorded SDK run. These exact outputs and prefix measurements were produced by a local model. No generation runs in this browser." +
+      (Object.values(data.experiment.outputs).some(r => r.completion === "length") ? " A response reached its token limit; the original ending is retained." : "") +
+      (data.experiment.outputs.ordinary.text === data.experiment.outputs.marked.text ? " Both samples are identical; that is a valid possible outcome." : "");
+    $("generate").disabled = false;
+    $("generate").textContent = "Use this prompt locally";
+    $("run-description").textContent = "Change the prompt, then copy the matching Python recipe. Live generation requires your local SDK.";
+    $("edited").readOnly = true;
+    $("edit-label").textContent = "Recorded marked response";
+    $("edit-status").textContent = "Scrub the chart to explore actual prefix measurements. Arbitrary edits require the live local playground.";
+    for (const id of ["half", "restore", "inspect", "stop-edit"]) $(id).hidden = true;
+    syncRecipe();
+  } catch (error) {
+    $("status").textContent = "Recording unavailable. " + error.message;
+    $("reconnect").textContent = "Reload recording";
+    $("reconnect").hidden = false;
+  }
+}
+replayMode ? loadReplay() : connect();

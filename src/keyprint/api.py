@@ -2,7 +2,10 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .comparison import Comparison
 import json
 import secrets
 import tempfile
@@ -195,6 +198,20 @@ class Keyprint:
         return self._run(self._backend.model, ids, max_tokens=max_tokens,
                          condition=condition, output=output, cancel_event=cancel_event,
                          constraint=constraint)
+
+    def compare(self, prompt: str, *, max_tokens: int = 192,
+                output: str | Path | None = None, cancel_event: Event | None = None) -> "Comparison":
+        """Generate ordinary/marked text and inspect both with a control key.
+
+        Returns a reusable Comparison with .ordinary, .marked, .to_dict() and
+        .export(directory). Extra prefix inspection work is included; this is
+        an exploratory demo, not a serving-performance benchmark.
+        """
+        self._ensure_open()
+        from .comparison import compare
+        return compare(self, prompt, max_tokens=max_tokens,
+                       output=Path(output) if output is not None else None,
+                       cancel_event=cancel_event)
 
     def rewrite(self, text: str, *, max_tokens: int = 256,
                 output: str | Path | None = None, condition: str = "marked",

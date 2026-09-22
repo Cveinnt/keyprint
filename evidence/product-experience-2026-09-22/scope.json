@@ -1,0 +1,20 @@
+{
+  "python_checks": {
+    "passed": 214,
+    "skipped": 3
+  },
+  "javascript_checks": 16,
+  "sites_checks": 4,
+  "live_browser": "English pair, edit inspection and refresh restored without new work",
+  "recorded_browser": "Actual outputs, prefix scrubbing, draft prompt recipe; no generation in browser",
+  "narrow_view": "390 CSS pixels, document width 390; response tabs operate",
+  "release_ready": false,
+  "core_dependencies_added": false,
+  "fresh_environment": "Python 3.13.13 on Apple Silicon; wheel[playground]; package and model caches reused",
+  "remaining": [
+    "polished creative gallery",
+    "generation-choice visualization",
+    "scoped quality and deployment qualification",
+    "public package release"
+  ]
+}

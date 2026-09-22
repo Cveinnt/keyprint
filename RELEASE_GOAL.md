@@ -1,5 +1,25 @@
 # Keyprint release goal
 
+## Pretext productization update, September 22
+
+- Implemented one shared comparison primitive for the live playground and Python
+  (`wm.compare`, `.ordinary`, `.marked`, `.to_dict`, `.export`). No added core dependencies.
+- Added a `[playground]` extra matching the CLI's platform default. Fresh Python
+  3.13 environment installed the wheel and passed local model preflight.
+- Exported a real Qwen/MLX English pair into the same viewer used by the live SDK.
+  Static replay is labeled recorded, never runs inference, and creates matching
+  Python recipes for user prompts. A second French pair ran from the installed wheel.
+- Added three small remix recipes. These are starter code, not three finished
+  showcase experiences. Shared viewer is about 67 KB before compression, excluding
+  optional runtimes and model weights.
+- Local landing preview connects the existing visual identity to that replay and
+  recovers from teaching text without supplied alternatives. No production deploy.
+- Remaining product bar: a polished creative demo gallery, real generation-choice
+  visualization, public package installation after release gates, and broader
+  scoped model/runtime and quality qualification. Existing research acceptances
+  are unchanged; short diagnostic fractions do not establish detection.
+
+
 Deliver a focused, dependable watermarking library with Pretext-level ease of
 use and an interactive demonstration that makes its real capability visible.
 Publicity remains postponed until the release candidate meets this bar.
