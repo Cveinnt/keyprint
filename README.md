@@ -84,6 +84,22 @@ Three small [remix recipes](examples/README.md) cover a shareable comparison,
 a prefix-signal explorer and model comparisons. They reuse this API and add no
 framework or client dependency to the core package.
 
+Build a gallery from your own real runs:
+
+```python
+from keyprint import export_gallery
+
+# Each value is a Comparison from wm.compare(...).
+export_gallery({"Explanation": explanation, "Email": email}, "my-gallery")
+```
+
+Serve `my-gallery` with `python -m http.server --directory my-gallery`. Each
+example switches its prompt, exact outputs, tokens, measurements and Python
+recipe together. Optional `notes={"Email": "Describe a limitation here"}` keeps
+review findings visible beside the selected example. Export adds no inference
+calls or dependencies, supports up to twelve examples, and does not filter bad
+or identical outputs. [Generate a three-example gallery](examples/gallery.py).
+
 For a single generation, `wm.generate(prompt, trace=True)` adds `result.trace`.
 Each immutable step contains the token ID, raw bytes, exact emitted text and
 Unicode character offsets. Split UTF-8 characters complete across tokens;

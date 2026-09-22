@@ -1,0 +1,12 @@
+{
+  "wheel": "keyprint-0.1.0a1-py3-none-any.whl",
+  "sha256": "d319e8c275bbc716264f5d83756ed5df7d2f7d490e3d58cdae3cd716146de536",
+  "matching_source_and_installed_files": 90,
+  "installed_export": true,
+  "recordings": 3,
+  "all_6_token_traces_reconstruct_exactly": true,
+  "new_inference_this_turn": 4,
+  "prior_outputs_reused": 2,
+  "bytes_gallery_json": 123932,
+  "quality_accepted": false
+}

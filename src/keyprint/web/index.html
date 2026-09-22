@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./app.css" />
     <script src="./reader.js" defer></script>
     <script src="./trace.js" defer></script>
+    <script src="./gallery.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -31,6 +32,14 @@
             >Explore the signal ↓<br />Real measurements · on your computer</a
           >
         </div>
+      </section>
+      <section id="gallery" class="gallery" aria-labelledby="gallery-title" hidden>
+        <div class="gallery-heading"><h2 id="gallery-title">Choose a place to start.</h2>
+          <p>Choose a real run. Read both versions. Take it apart.</p></div>
+        <div id="gallery-cards" class="gallery-cards" role="group" aria-label="Recorded examples"></div>
+        <p id="gallery-current" class="input-note" role="status"></p>
+        <p id="gallery-note" class="gallery-note" hidden></p>
+        <button id="gallery-custom" type="button">Try your own prompt ↗</button>
       </section>
       <section class="experiment" aria-labelledby="generate-title">
         <div class="section-heading">
@@ -278,6 +287,14 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
         </details>
         <details id="setup">
           <summary>Build your own experiment</summary>
+          <label for="recipe-backend">Your local backend</label>
+          <select id="recipe-backend">
+            <option value="mlx">MLX · Apple silicon</option>
+            <option value="transformers">Transformers · qualified local model</option>
+            <option value="llama_cpp">llama.cpp · qualified GGUF</option>
+          </select>
+          <p>Install this recipe’s backend extra from the private checkout:</p>
+          <pre id="backend-install">python -m pip install '.[mlx]'</pre>
           <p>Generate, compare, export. The same SDK produces this view and the live local playground.
             Recorded playback needs no model. New prompts and edits run in your local model.</p>
           <pre id="recipe">from keyprint import Keyprint
@@ -288,12 +305,13 @@ with Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:
     pair.export("my-demo")</pre>
           <button id="copy-recipe" type="button">Copy Python</button>
           <p id="copy-status" role="status"></p>
-          <p>Private development checkout · Python 3.12–3.13 · Apple Silicon</p>
-          <pre>python -m pip install '.[mlx,server]'
+          <p>Local playground · private checkout · Python 3.12–3.13</p>
+          <pre>python -m pip install '.[playground]'
 keyprint playground --download</pre>
           <p>The public SDK release remains held. These commands require the private checkout;
-            they are not a public PyPI install. Downloads are explicit, about 4.62 GB for the
-            pinned Qwen model. Reuse local weights with <code>--model PATH</code>.
+            they are not a public PyPI install. Downloads are explicit: the platform default is
+            Qwen/MLX on Apple silicon (about 4.62 GB), or SmolLM2/Transformers elsewhere
+            (about 270 MB). Reuse local weights with <code>--model PATH</code>.
             CPU alternatives and supported models are documented in the README.</p>
           <p>No hosted GPT or Claude call. No automatic rewriting or translation of existing text.</p>
         </details>

@@ -1,0 +1,31 @@
+✔ switches real recordings, preserves exact data and uses inert text (0.571791ms)
+✔ malformed recordings fail before replacing the prior gallery (0.439584ms)
+✔ remix recipe and install extra follow selected backend without inference (2.63025ms)
+✔ Python code-point prefixes align with chart endpoints and pointer scrubbing (1.244375ms)
+✔ Keep first half cannot split a supplementary character without spaces (0.595417ms)
+✔ Undoing pending edits restores the matching metric label for original and edited text (0.629ms)
+✔ Response switch changes only display selection and accessible pressed state (0.495375ms)
+✔ Prompt disclosure preview follows literal input without generating (0.63075ms)
+✔ Global stop stays available during generation with collapsed prompt controls (0.567958ms)
+✔ Backend labels distinguish GGUF and never invent a model for unknown identities (0.413417ms)
+✔ Switching input modes keeps separate drafts and never relabels old results (0.55775ms)
+✔ Rewrite details expose literal failures without claiming semantic approval (0.978292ms)
+✔ Restored rewrite recovers source and protected phrases (0.485333ms)
+✔ Recorded viewer makes no model request and keeps draft prompts distinct from outputs (3.497667ms)
+✔ Bad recording fails visibly without pretending to run inference (0.576125ms)
+✔ gallery selection switches all recorded data with one static fetch (0.765083ms)
+✔ model HTML, links, images and script syntax stay inert (0.71425ms)
+✔ headings, emphasis, list numbering and fenced code read correctly (0.454417ms)
+✔ exact mode round-trips whitespace, Unicode and unfinished Markdown (0.292666ms)
+✔ unmatched inline markers stay visible and code does not parse emphasis (0.063417ms)
+✔ renders exact Unicode as text, exposes pending bytes and control tokens (1.29025ms)
+✔ replay stops at end and switching conditions cancels replay (0.4045ms)
+✔ reduced motion steps without a timer; old recordings hide explorer (0.770542ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.768583

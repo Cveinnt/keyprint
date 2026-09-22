@@ -60,7 +60,15 @@ function selectTaskMode(mode) {
 
 function syncRecipe() {
   if (!$("recipe")) return;
-  $("recipe").textContent = `from keyprint import Keyprint\n\nwith Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:\n    pair = wm.compare(${JSON.stringify($("prompt").value)}, max_tokens=${Number($("cap").value) || 192})\n    print(pair.marked)\n    pair.export("my-demo")`;
+  const selected = $("recipe-backend")?.value;
+  const [constructor,path] = ({
+    mlx: ['from_mlx','path/to/qwen3-8b-4bit'],
+    transformers: ['from_transformers','path/to/qualified-local-model'],
+    llama_cpp: ['from_llama_cpp','path/to/qualified-model.gguf'],
+  })[selected] || ['from_mlx','path/to/qwen3-8b-4bit'];
+  if ($("backend-install")) $("backend-install").textContent =
+    `python -m pip install '.[${({transformers:'transformers',llama_cpp:'llama-cpp'})[selected] || 'mlx'}]'`;
+  $("recipe").textContent = `from keyprint import Keyprint\n\nwith Keyprint.${constructor}(${JSON.stringify(path)}, key=Keyprint.new_key()) as wm:\n    pair = wm.compare(${JSON.stringify($("prompt").value)}, max_tokens=${Number($("cap").value) || 192})\n    print(pair.marked)\n    pair.export("my-demo")`;
 }
 function syncPromptPreview() {
   syncRecipe();
@@ -402,6 +410,10 @@ function showGeneration(data, retained = false) {
   }
   syncPromptPreview();
   experiment = data;
+  if (["mlx", "transformers", "llama_cpp"].includes(data.backend)) {
+    $("recipe-backend").value = data.backend;
+    syncRecipe();
+  }
   tokenExplorer?.show(data);
   if (retained) restoreLimit(data.max_tokens);
   editMeasurement = null;
@@ -727,6 +739,12 @@ async function connect() {
 }
 $("reconnect").addEventListener("click", () => replayMode ? loadReplay() : connect());
 $("cap").addEventListener("change", syncRecipe);
+$("recipe-backend").addEventListener("change", syncRecipe);
+$("gallery-custom").addEventListener("click", () => {
+  $("prompt-controls").open = true;
+  $("prompt").focus();
+  $("prompt-controls").scrollIntoView({block: "start"});
+});
 $("copy-recipe").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText($("recipe").textContent);
@@ -736,18 +754,9 @@ $("copy-recipe").addEventListener("click", async () => {
   }
 });
 
-async function loadReplay() {
-  // Static replay never sends a prompt, key or request to a model endpoint.
-  $("reconnect").hidden = true;
-  $("experience-label").textContent = "Recorded SDK run · explore without an install";
-  $("model-label").textContent = "Recorded model output";
-  $("status").textContent = "Loading the recorded SDK run…";
-  try {
-    const response = await fetch("./replay.json");
-    if (!response.ok) throw new Error("The recording could not be loaded.");
-    const data = await response.json();
-    if (data.schema !== "keyprint-comparison-v1" || typeof data.prompt !== "string")
-      throw new Error("Unsupported recording format.");
+function showRecording(data) {
+  if (data.schema !== "keyprint-comparison-v1" || typeof data.prompt !== "string")
+    throw new Error("Unsupported recording format.");
     $("prompt").value = data.prompt;
     recordedPrompt = data.prompt;
     $("prompt-controls").open = false;
@@ -768,6 +777,23 @@ async function loadReplay() {
     $("edit-status").textContent = "Scrub the chart to explore actual prefix measurements. Arbitrary edits require the live local playground.";
     for (const id of ["half", "restore", "inspect", "stop-edit"]) $(id).hidden = true;
     syncRecipe();
+}
+
+async function loadReplay() {
+  // Static replay never sends a prompt, key or request to a model endpoint.
+  $("reconnect").hidden = true;
+  $("experience-label").textContent = "Recorded SDK run · explore without an install";
+  $("model-label").textContent = "Recorded model output";
+  $("status").textContent = "Loading the recorded SDK run…";
+  try {
+    const response = await fetch(document.body?.dataset?.gallery === "true" ? "./gallery.json" : "./replay.json");
+    if (!response.ok) throw new Error("The recording could not be loaded.");
+    const data = await response.json();
+    if (document.body?.dataset?.gallery === "true") {
+      mountGallery(document, data, showRecording);
+    } else {
+      showRecording(data);
+    }
   } catch (error) {
     $("status").textContent = "Recording unavailable. " + error.message;
     $("reconnect").textContent = "Reload recording";

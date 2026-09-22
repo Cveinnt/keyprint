@@ -2,6 +2,15 @@
 
 ## Pretext productization update, September 22
 
+- Added a reusable gallery export and prefilled explanation/email/French runs in
+  the shared viewer. Switching examples updates real text, trace, measurement
+  and recipe together. No dependencies or extra generation calls are added by
+  export. This is a working example gallery, not completion of the creative-demo bar.
+- New actual email generation violates its explicit no-time/location prompt:
+  the marked result invents "the park around noon". The exact sample remains
+  visible with a review note; A02 is still open. Two new French outputs remain
+  French. Neither observation is a broad quality acceptance.
+
 - Implemented one shared comparison primitive for the live playground and Python
   (`wm.compare`, `.ordinary`, `.marked`, `.to_dict`, `.export`). No added core dependencies.
 - Added a `[playground]` extra matching the CLI's platform default. Fresh Python

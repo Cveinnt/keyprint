@@ -1,0 +1,11 @@
+{
+  "desktop": 1280,
+  "mobile": 390,
+  "mobile_scroll_width": 390,
+  "example_switches_prompt_text_trace_recipe": true,
+  "email_constraint_failure_visible": true,
+  "custom_prompt_retains_original_results": true,
+  "backend_install_and_constructor_match": true,
+  "console_errors": 0,
+  "production_deployed": false
+}

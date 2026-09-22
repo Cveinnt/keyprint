@@ -3,6 +3,20 @@
 Private development SDK. Start with the root README's local install. These
 recipes use real local inference, not the browser teaching illustration.
 
+## Prefilled interactive gallery
+
+`python examples/gallery.py /path/to/qwen3-8b-4bit my-gallery`
+
+Generate explanation, email and French pairs, then serve with
+`python -m http.server --directory my-gallery`. Click an example to switch all
+of its real data: prompt, both responses, exact token trace, prefix curve and
+remix recipe. Edit `PROMPTS` to make your own collection. The public helper
+`export_gallery({"Title": comparison}, "new-directory", notes={"Title": "Review note"})`
+exports existing comparisons without more model calls. Review the text before
+sharing; generation can still invent details or fail instructions. The retained
+development email example violates its no-time/location requirement and is
+explicitly flagged. No sample is silently repaired or regenerated for display.
+
 ## 1. Share a paired response
 
 `python examples/compare_live.py /path/to/qwen3-8b-4bit my-demo`

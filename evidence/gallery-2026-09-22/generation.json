@@ -1,0 +1,8 @@
+{
+  "new_pairs": 2,
+  "prior_pair_reused": 1,
+  "seconds": 30.521223291987553,
+  "selection": "All generated pairs retained; no quality or signal filtering",
+  "model": "mlx-community/Qwen3-8B-4bit",
+  "revision": "545dc4251c05440727734bcd94334791f6ab0192"
+}

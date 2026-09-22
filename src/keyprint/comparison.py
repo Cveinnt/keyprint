@@ -99,6 +99,8 @@ def compare(model: Keyprint, prompt: str, *, max_tokens: int = 192,
             "timing": {"generation_seconds": generation_seconds,
                        "inspection_seconds": time.perf_counter() - inspection_start}}
     return Comparison(prompt, {"outputs": outputs, "max_tokens": max_tokens,
+        "backend": {"MLXModel": "mlx", "TransformersModel": "transformers",
+                    "LlamaCppModel": "llama_cpp"}.get(type(getattr(model, "_backend", None)).__name__),
         "seconds": time.perf_counter() - started, "independent_randomness": True,
         "calibrated": False})
 
@@ -145,7 +147,10 @@ class Comparison:
                 series=[{k: point.get(k) for k in ("characters", "matching", "control")}
                         for point in inspection["series"]])
         data = {"schema": "keyprint-comparison-v1", "prompt": self.prompt,
-            "experiment": {"outputs": outputs, "seconds": self.result["seconds"],
+            "experiment": {"outputs": outputs,
+                "backend": self.result.get("backend") if self.result.get("backend") in
+                    ("mlx", "transformers", "llama_cpp") else None,
+                "seconds": self.result["seconds"],
                 "max_tokens": self.result["max_tokens"], "independent_randomness": True,
                 "calibrated": False}}
         return json.loads(json.dumps(data, ensure_ascii=False, allow_nan=False))
@@ -161,7 +166,7 @@ class Comparison:
         target = Path(directory)
         target.mkdir(parents=True, exist_ok=False)
         web = files("keyprint").joinpath("web")
-        for name in ("index.html", "app.js", "app.css", "reader.js", "trace.js", "favicon.svg"):
+        for name in ("index.html", "app.js", "app.css", "reader.js", "trace.js", "gallery.js", "favicon.svg"):
             content = web.joinpath(name).read_text()
             if name == "index.html":
                 content = content.replace('<body>', '<body data-mode="replay">')
@@ -174,3 +179,34 @@ class Comparison:
             "No watermark keys or private journals are included. No model runs in replay.\n"
             "Fractions are uncalibrated observations, not detection confidence.\n")
         return target / "index.html"
+
+
+def export_gallery(comparisons: dict[str, Comparison], directory: str | Path, *,
+                   notes: dict[str, str] | None = None) -> Path:
+    """Export up to twelve named, real comparisons in one static viewer.
+
+    No generation or upload occurs. All recordings are retained in insertion
+    order, without ranking by signal or quality. Prompts, outputs and titles
+    become shareable content; review them before publishing the directory.
+    """
+    if not isinstance(comparisons, dict) or not 1 <= len(comparisons) <= 12:
+        raise ValueError("gallery needs between 1 and 12 named comparisons")
+    notes = {} if notes is None else notes
+    if not isinstance(notes, dict) or any(title not in comparisons or
+            not isinstance(note, str) or len(note) > 1000 for title, note in notes.items()):
+        raise ValueError("gallery notes must name an included example and contain at most 1000 characters")
+    recordings = []
+    for title, pair in comparisons.items():
+        if not isinstance(title, str) or not title.strip() or len(title) > 80:
+            raise ValueError("gallery titles must contain 1 to 80 characters")
+        if not isinstance(pair, Comparison):
+            raise TypeError("gallery values must be Comparison instances")
+        recordings.append({"title": title, "note": notes.get(title, ""), "recording": pair.to_dict()})
+    # Serialize and validate before creating any files.
+    payload = json.dumps({"schema": "keyprint-gallery-v1", "examples": recordings},
+                         ensure_ascii=False, allow_nan=False, indent=2)
+    entry = next(iter(comparisons.values())).export(directory)
+    entry.write_text(entry.read_text().replace('data-mode="replay"',
+                                             'data-mode="replay" data-gallery="true"'))
+    (entry.parent / "gallery.json").write_text(payload)
+    return entry

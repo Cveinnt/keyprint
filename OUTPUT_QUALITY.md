@@ -7,6 +7,13 @@ does not override these requirements.
 
 ## Current enforcement
 
+September 22 gallery check: the marked Qwen/MLX email invents "the park around
+noon" despite a prompt that forbids a time or location. The exact prompt and
+both outputs remain in `evidence/gallery-2026-09-22/gallery.json`, with a visible
+review note in the local gallery. This individual output fails its constraints;
+one independent pair does not estimate a failure rate or establish causation.
+The gallery and trace implementation do not change sampling or repair the text.
+
 All post-generation rewrite entry points reject before inference. Their literal
 checks are historical diagnostic helpers, not delivery authorization. The native
 sampler operates during generation; the SDK must not rewrite or translate its

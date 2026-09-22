@@ -15,7 +15,7 @@ function ui(extra = {}) {
       addEventListener(event, fn) { this.listeners[event] = fn; },
       setAttribute(key, value) { this.attributes[key] = String(value); },
       replaceChildren() { this.children = []; },
-      append(child) { this.children.push(child); },
+      append(...children) { this.children.push(...children); },
       getBoundingClientRect() { return { left: 0, width: 560 }; },
     };
   }
@@ -24,7 +24,8 @@ function ui(extra = {}) {
     return nodes.get(id);
   };
   const context = vm.createContext({
-    document: { body: {dataset: {mode:extra.replay ? "replay" : "live"}}, getElementById: get, createElementNS: () => node(), createElement: () => node(), querySelectorAll: () => [] },
+    document: { body: {dataset: {mode:extra.replay ? "replay" : "live",gallery:extra.gallery ? "true" : undefined}}, getElementById: get, createElementNS: () => node(), createElement: () => node(), querySelectorAll: () => [] },
+    mountGallery:require('../src/keyprint/web/gallery.js').mountGallery,
     location: { hash: '' }, sessionStorage: { getItem: () => null }, URLSearchParams,
     fetch: extra.fetch, renderResponse: (target,text) => {target.textContent=text;},
   });
@@ -41,6 +42,23 @@ function experiment(text) {
       { characters: [...text].length, matching: 0.6, control: 0.5 }],
   } } } };
 }
+
+test('remix recipe and install extra follow selected backend without inference', () => {
+  const app=ui();
+  app.get('prompt').value='A "quoted" prompt\nwith another line';
+  for (const [backend,constructor,extra] of [
+    ['mlx','from_mlx','mlx'],['transformers','from_transformers','transformers'],
+    ['llama_cpp','from_llama_cpp','llama-cpp'],
+  ]) {
+    app.get('recipe-backend').value=backend;
+    app.get('recipe-backend').listeners.change();
+    assert.ok(app.get('recipe').textContent.includes('Keyprint.'+constructor+'('));
+    assert.ok(app.get('backend-install').textContent.includes('.['+extra+']'));
+    assert.ok(app.get('recipe').textContent.includes(JSON.stringify(app.get('prompt').value)));
+  }
+  app.get('gallery-custom').listeners.click();
+  assert.equal(app.get('prompt-controls').open,true);
+});
 
 test('Python code-point prefixes align with chart endpoints and pointer scrubbing', () => {
   const app = ui();
@@ -208,4 +226,25 @@ test('Bad recording fails visibly without pretending to run inference', async ()
   assert.equal(app.get('reconnect').hidden,false);
   assert.deepEqual(requests,['./replay.json']);
   assert.equal(app.run('experiment'),null);
+});
+
+test('gallery selection switches all recorded data with one static fetch', async()=>{
+  const requests=[];
+  const example=(title,backend)=>{const row={text:title,completion:'eos',inspection:{series:[],fraction:null}};
+    return {title,note:title+' review',recording:{schema:'keyprint-comparison-v1',prompt:title+' prompt',
+      experiment:{backend,outputs:{ordinary:row,marked:row},seconds:1,max_tokens:128}}}};
+  const data={schema:'keyprint-gallery-v1',examples:[example('First','mlx'),example('Second','transformers')]};
+  const app=ui({replay:true,gallery:true,fetch:async path=>{
+    requests.push(path);return {ok:true,json:async()=>data};
+  }});
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.deepEqual(requests,['./gallery.json']);
+  app.get('gallery-cards').children[1].listeners.click();
+  assert.equal(app.get('marked-text').textContent,'Second');
+  assert.equal(app.get('prompt').value,'Second prompt');
+  assert.equal(app.get('gallery-note').textContent,'Second review');
+  assert.equal(app.get('recipe-backend').value,'transformers');
+  assert.match(app.get('recipe').textContent,/from_transformers/);
+  await app.run('run("generate")');
+  assert.deepEqual(requests,['./gallery.json']);
 });
