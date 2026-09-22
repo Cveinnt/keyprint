@@ -27,7 +27,7 @@ class Model:
         self.started, self.release = threading.Event(), threading.Event()
         self.fail, self.block = fail, block
 
-    def generate(self, prompt, *, max_tokens, condition, output, cancel_event=None):
+    def generate(self, prompt, *, max_tokens, condition, output, cancel_event=None, trace=False):
         assert threading.get_ident() == self.owner
         self.calls.append(condition)
         self.started.set()
@@ -270,7 +270,7 @@ def test_longer_budget_is_forwarded_and_long_output_remains_inspectable(tmp_path
     observed = []
 
     class LongOutput(Model):
-        def generate(self, prompt, *, max_tokens, condition, output, cancel_event=None):
+        def generate(self, prompt, *, max_tokens, condition, output, cancel_event=None, trace=False):
             observed.append(max_tokens)
             result = super().generate(prompt, max_tokens=max_tokens, condition=condition, output=output, cancel_event=cancel_event)
             return Generation("Long output. " * 500, {"completion": "length", "usage": {"completion_tokens": max_tokens}}, result.artifacts)

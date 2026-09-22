@@ -9,6 +9,8 @@ function modelLabel(identity = {}) {
 "use strict";
 const $ = (id) => document.getElementById(id);
 const replayMode = document.body?.dataset?.mode === "replay";
+const tokenExplorer = typeof createTokenExplorer === "function"
+  ? createTokenExplorer(document, {reducedMotion: () => matchMedia('(prefers-reduced-motion: reduce)').matches}) : null;
 const fragment = new URLSearchParams(location.hash.slice(1));
 const token =
   fragment.get("session") || sessionStorage.getItem("keyprint-session");
@@ -400,6 +402,7 @@ function showGeneration(data, retained = false) {
   }
   syncPromptPreview();
   experiment = data;
+  tokenExplorer?.show(data);
   if (retained) restoreLimit(data.max_tokens);
   editMeasurement = null;
   measuredText = null;

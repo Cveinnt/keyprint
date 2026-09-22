@@ -1,7 +1,7 @@
 """Reusable paired generation and prefix diagnostics, without a web dependency."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from importlib.resources import files
 import json
 from pathlib import Path
@@ -86,7 +86,7 @@ def compare(model: Keyprint, prompt: str, *, max_tokens: int = 192,
         check_cancellation(cancel_event)
         generation_start = time.perf_counter()
         result = model.generate(prompt, max_tokens=max_tokens, condition=condition,
-                                output=run / condition, cancel_event=cancel_event)
+                                output=run / condition, cancel_event=cancel_event, trace=True)
         generation_seconds = time.perf_counter() - generation_start
         if on_stage:
             on_stage("inspecting_" + condition)
@@ -95,6 +95,7 @@ def compare(model: Keyprint, prompt: str, *, max_tokens: int = 192,
         payload = result.report.get("payload", result.report)
         outputs[condition] = {"text": result.text, "usage": result.report.get("usage"),
             "completion": payload.get("completion"), "inspection": inspection,
+            "trace": [asdict(step) for step in result.trace] if result.trace is not None else None,
             "timing": {"generation_seconds": generation_seconds,
                        "inspection_seconds": time.perf_counter() - inspection_start}}
     return Comparison(prompt, {"outputs": outputs, "max_tokens": max_tokens,
@@ -135,6 +136,11 @@ class Comparison:
                 "inspection": {k: inspection.get(k) for k in
                     ("events", "ones", "trials", "fraction", "control_fraction")}
             }
+            # Trace is an allowlisted projection, never the raw generation journal.
+            if row.get("trace") is not None:
+                outputs[condition]["trace"] = [{k: step[k] for k in
+                    ("index", "token_id", "bytes_hex", "text", "start", "end", "kind")}
+                    for step in row["trace"]]
             outputs[condition]["inspection"].update(calibrated=False, verdict=None,
                 series=[{k: point.get(k) for k in ("characters", "matching", "control")}
                         for point in inspection["series"]])
@@ -155,7 +161,7 @@ class Comparison:
         target = Path(directory)
         target.mkdir(parents=True, exist_ok=False)
         web = files("keyprint").joinpath("web")
-        for name in ("index.html", "app.js", "app.css", "reader.js", "favicon.svg"):
+        for name in ("index.html", "app.js", "app.css", "reader.js", "trace.js", "favicon.svg"):
             content = web.joinpath(name).read_text()
             if name == "index.html":
                 content = content.replace('<body>', '<body data-mode="replay">')

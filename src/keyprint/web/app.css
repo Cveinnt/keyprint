@@ -639,3 +639,15 @@ footer {
 #copy-status:empty { display: none; }
 body[data-mode="replay"] .intro .eyebrow { color: var(--rust); }
 body[data-mode="replay"] #edited { background: transparent; }
+
+.token-explorer{padding:40px 0;border-top:1px solid var(--line)}
+.token-explorer>p:not(.trace-prefix){max-width:780px;line-height:1.6}
+.trace-toolbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:24px 0}
+.trace-toolbar select{width:auto;margin:0;min-height:44px;padding:8px 28px 8px 12px;border:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink);font:inherit}.trace-toolbar input{flex:1;min-width:140px;accent-color:var(--rust)}
+.trace-tokens{display:flex;flex-wrap:wrap;gap:5px;padding:24px 0;border-block:1px solid var(--line)}
+.trace-tokens button{font:21px/1.4 Georgia,serif;white-space:pre-wrap;padding:6px 8px;min-height:44px;border-color:transparent}
+.trace-tokens button[aria-pressed="true"]{color:var(--rust);background:#ead8c9;border-color:var(--rust)}
+.trace-tokens button.trace-future{color:var(--muted)}
+.trace-prefix{font-size:25px;line-height:1.55;min-height:110px;margin:24px 0}
+#trace-details{font:13px/1.7 monospace;overflow-wrap:anywhere}
+@media(max-width:650px){.trace-toolbar{gap:12px}.trace-toolbar input{flex-basis:100%}.trace-prefix{font-size:21px}.trace-tokens button{font-size:18px}}

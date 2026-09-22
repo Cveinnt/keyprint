@@ -14,6 +14,7 @@ from threading import Event
 from .integrity import verify
 from .rewrite import Rewrite
 from .inspection import Inspection
+from .trace import TokenChoice, token_trace
 from .cancellation import check_cancellation, _CancellationRequested
 
 
@@ -37,6 +38,7 @@ class Generation:
     text: str
     report: dict[str, Any]
     artifacts: Path
+    trace: tuple[TokenChoice, ...] | None = None
 
 
 class Keyprint:
@@ -162,17 +164,21 @@ class Keyprint:
     def generate(self, prompt: str, *, max_tokens: int = 64,
                  condition: str = "marked", output: str | Path | None = None,
                  cancel_event: Event | None = None,
-                 json_schema: dict[str, Any] | None = None) -> Generation:
+                 json_schema: dict[str, Any] | None = None, trace: bool = False) -> Generation:
         """Generate once; an optional Event requests cooperative cancellation.
 
         Set the event from another thread. A model call already in progress may
         finish; cancellation is checked before the next call or sample. A
         stopped attempt raises KeyprintCancelled with retained receipts. Use a
         fresh Event for each attempt; do not clear or reuse a requested event.
+        trace=True exposes exact committed-token rendering without another model
+        call. It does not expose probabilities, private keys or random draws.
         json_schema enables constrained JSON on MLX and Transformers with
         the [structured] extra. Token-capped results remain incomplete.
         """
         self._ensure_open()
+        if type(trace) is not bool:
+            raise TypeError("trace must be a boolean")
         if self._backend is None:
             raise ValueError("load a supported backend first, for example Keyprint.from_mlx(...)")
         if condition not in ("ordinary", "marked"):
@@ -191,13 +197,21 @@ class Keyprint:
             elif not isinstance(self._backend, TransformersModel):
                 raise ValueError("json_schema requires the MLX or Transformers backend")
         if hasattr(self._backend, "generate"):
-            return self._backend.generate(prompt, key=self._key, max_tokens=max_tokens,
+            result = self._backend.generate(prompt, key=self._key, max_tokens=max_tokens,
                                           condition=condition, output=output, cancel_event=cancel_event,
                                           **({"json_schema": json_schema} if json_schema is not None else {}))
+            return Generation(result.text, result.report, result.artifacts,
+                token_trace(result.report, result.text, self._backend.binding.pieces)) if trace else result
         ids = self._backend.encode_prompt(prompt)
-        return self._run(self._backend.model, ids, max_tokens=max_tokens,
+        result = self._run(self._backend.model, ids, max_tokens=max_tokens,
                          condition=condition, output=output, cancel_event=cancel_event,
                          constraint=constraint)
+        if not trace:
+            return result
+        core = self._candidate._core
+        reference = getattr(core, "reference", core)
+        return Generation(result.text, result.report, result.artifacts,
+            token_trace(result.report, result.text, reference._base._binding.token_bytes))
 
     def compare(self, prompt: str, *, max_tokens: int = 192,
                 output: str | Path | None = None, cancel_event: Event | None = None) -> "Comparison":

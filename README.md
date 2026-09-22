@@ -66,7 +66,7 @@ with Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:
 ```
 
 `pair.ordinary` and `pair.marked` preserve the generated text exactly.
-`pair.to_dict()` exposes paired text, prefix measurements and timing for your
+`pair.to_dict()` exposes paired text, committed-token traces, prefix measurements and timing for your
 own visuals. `pair.export()` writes a standalone recorded viewer using the
 same HTML, CSS and JavaScript as the live playground. Serve it with
 `python -m http.server --directory my-demo`; no model runs during playback.
@@ -83,6 +83,15 @@ are not a causal quality measurement. No post-generation rewrite is performed.
 Three small [remix recipes](examples/README.md) cover a shareable comparison,
 a prefix-signal explorer and model comparisons. They reuse this API and add no
 framework or client dependency to the core package.
+
+For a single generation, `wm.generate(prompt, trace=True)` adds `result.trace`.
+Each immutable step contains the token ID, raw bytes, exact emitted text and
+Unicode character offsets. Split UTF-8 characters complete across tokens;
+control tokens emit no text. The viewer lets you select or replay these choices.
+Replay timing is illustrative. These records do not contain alternative-token
+probabilities or identify which words caused a watermark signal. The trace adds
+no model calls and does not change sampling; it is disabled by default for
+single generations.
 
 ## The interactive playground
 

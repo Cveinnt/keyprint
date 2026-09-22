@@ -68,3 +68,14 @@ def test_world_readable_output_rejected(tmp_path):
     run=tmp_path/'run'; run.mkdir(mode=0o755); model=Model()
     with pytest.raises(ValueError,match='private'): compare(model,'Seed',output=run)
     assert not model.calls and not list(run.iterdir())
+
+
+def test_export_trace_allowlist_and_asset(tmp_path):
+    pair=compare(Model(),'Seed',output=tmp_path/'run')
+    pair.result['outputs']['marked']['trace']=[dict(index=0,token_id=1,
+        bytes_hex='41',text='A',start=0,end=1,kind='text',private_key='SECRET')]
+    data=pair.to_dict()
+    assert 'SECRET' not in json.dumps(data)
+    assert data['experiment']['outputs']['marked']['trace'][0]['text']=='A'
+    entry=pair.export(tmp_path/'site')
+    assert (entry.parent/'trace.js').read_bytes()==Path('src/keyprint/web/trace.js').read_bytes()

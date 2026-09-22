@@ -1,0 +1,12 @@
+{
+  "origin": "http://127.0.0.1:8831/play/",
+  "token_selection": true,
+  "condition_switch": true,
+  "keyboard_home": true,
+  "replay_button": true,
+  "desktop_width": 1280,
+  "mobile_width": 390,
+  "mobile_scroll_width": 390,
+  "console_errors": 0,
+  "production_deployed": false
+}

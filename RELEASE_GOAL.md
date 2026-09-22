@@ -14,7 +14,12 @@
   optional runtimes and model weights.
 - Local landing preview connects the existing visual identity to that replay and
   recovers from teaching text without supplied alternatives. No production deploy.
-- Remaining product bar: a polished creative demo gallery, real generation-choice
+- Added exact committed-token traces and an interactive token explorer to the
+  shared live/exported viewer. Actual Qwen/MLX outputs reconstruct exactly from
+  their traces. Token selection, replay, Unicode byte boundaries and reduced
+  motion are covered locally. This shows selected tokens, not alternative
+  probabilities or causal watermark attribution; those remain outside the trace.
+- Remaining product bar: a polished creative demo gallery, richer sampling-choice
   visualization, public package installation after release gates, and broader
   scoped model/runtime and quality qualification. Existing research acceptances
   are unchanged; short diagnostic fractions do not establish detection.

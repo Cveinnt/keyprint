@@ -140,6 +140,10 @@ def create_playground(load_model: Callable[[], Keyprint], *, token: str, output:
         return Response(files("keyprint").joinpath(f"web/app.{extension}").read_text(),
                         media_type="text/javascript" if extension == "js" else "text/css")
 
+    @app.get("/trace.js")
+    async def trace_asset():
+        return Response(files("keyprint").joinpath("web/trace.js").read_text(), media_type="text/javascript")
+
     @app.get("/reader.js")
     async def reader():
         return Response(files("keyprint").joinpath("web/reader.js").read_text(), media_type="text/javascript")

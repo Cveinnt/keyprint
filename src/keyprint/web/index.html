@@ -7,6 +7,7 @@
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./app.css" />
     <script src="./reader.js" defer></script>
+    <script src="./trace.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -139,9 +140,30 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
           <span>Basic formatting only. Inspection and exports use exact text.</span>
         </div>
       </section>
+      <section id="choices" class="token-explorer" aria-labelledby="choices-title" hidden>
+        <div class="section-heading"><span class="number">02</span>
+          <h2 id="choices-title">The text, one choice at a time.</h2>
+          <span class="eyebrow">Actual generation trace</span>
+        </div>
+        <p>Each piece below is a token the model actually selected. Follow how they form the response.</p>
+        <div class="trace-toolbar">
+          <label for="trace-condition">Response</label>
+          <select id="trace-condition"><option value="marked">With Keyprint</option><option value="ordinary">Ordinary</option></select>
+          <button type="button" id="trace-play" aria-pressed="false">Replay tokens</button>
+          <label for="trace-position">Selected token</label>
+          <input id="trace-position" type="range" min="0" max="0" value="0" />
+        </div>
+        <div id="trace-tokens" class="trace-tokens" role="group" aria-label="Generated tokens"></div>
+        <p id="trace-readout" class="eyebrow" role="status"></p>
+        <p id="trace-prefix" class="trace-prefix"></p>
+        <details><summary>Inspect this token</summary><p id="trace-details"></p>
+          <p>Offsets count Unicode characters. A token can hold part of a character;
+            its exact bytes stay visible until another token completes it.</p></details>
+        <p class="input-note">These are committed choices, not alternative probabilities or labels of which words are watermarked. Playback timing is illustrative; generation timing is reported above.</p>
+      </section>
       <section id="explore" class="explore" aria-labelledby="explore-title">
         <div class="section-heading">
-          <span class="number">02</span>
+          <span class="number">03</span>
           <h2 id="explore-title">Make it your own. Follow the signal.</h2>
         </div>
         <div class="lab-grid">
@@ -220,7 +242,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
       </section>
       <section id="method" class="method">
         <div class="section-heading">
-          <span class="number">03</span>
+          <span class="number">04</span>
           <h2>What the lines can tell you.</h2>
         </div>
         <div class="method-grid">

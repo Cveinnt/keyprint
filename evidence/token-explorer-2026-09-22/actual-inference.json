@@ -1,0 +1,17 @@
+{
+  "elapsed_seconds": 14.843336792197078,
+  "conditions": {
+    "ordinary": {
+      "text": "A seed starts as a tiny package with all the parts a growing plant needs, like food and instructions. When the seed gets the right mix of water, sunlight, and soil, it cracks open, and a new plant grows out of it, eventually becoming a tree.",
+      "tokens": 55,
+      "exact_reconstruction": true,
+      "final_kind": "control"
+    },
+    "marked": {
+      "text": "A seed starts as a tiny package with all the parts a growing plant needs. When the seed has the right conditions\u2014like water, sunlight, and soil\u2014it sprouts a small plant, which grows taller over time and becomes a tree.",
+      "tokens": 49,
+      "exact_reconstruction": true,
+      "final_kind": "control"
+    }
+  }
+}
