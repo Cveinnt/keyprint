@@ -19,3 +19,15 @@ Browser QA verified example switching, flagged failure, custom-prompt handoff,
 backend-specific recipes and 390px mobile layout. Screenshots remain in local
 receipts. A gallery request fetches only local static data, never a model API.
 No new dependencies, public deployment or social dispatch. CI stays disabled.
+
+## Installed live playground
+
+The same fresh environment then installed the `[playground]` extra and loaded
+the existing cached Qwen/MLX model. Browser first-use generated a prefilled pair;
+a custom basil prompt generated another complete pair in about five seconds.
+All four outputs reconcile token IDs with private reports and render exactly
+from their traces. One first-half edit inspection completed. Browser refresh
+restored the custom prompt, pair and measured edit without another generation
+or inspection. No browser console errors were observed. This adds actual
+installed inference and recovery evidence for this cached Mac/MLX setup;
+other platforms and a first-time model download remain separate qualifications.

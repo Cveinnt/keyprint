@@ -10,6 +10,10 @@
   the marked result invents "the park around noon". The exact sample remains
   visible with a review note; A02 is still open. Two new French outputs remain
   French. Neither observation is a broad quality acceptance.
+- The fresh installed wheel also passed live browser first-use, custom-prompt
+  generation, text-edit inspection and refresh recovery on cached Qwen/MLX.
+  Four outputs reconcile exactly with committed IDs. This closes this local
+  installed-playground check, not Windows/Linux or first-download qualification.
 
 - Implemented one shared comparison primitive for the live playground and Python
   (`wm.compare`, `.ordinary`, `.marked`, `.to_dict`, `.export`). No added core dependencies.
@@ -91,7 +95,8 @@ The Pretext-level release remains unfinished. The concrete work is:
    define the accepted model/workload. Do not replace that with lexical checks.
 2. Qualify the advertised native SGLang/vLLM serving paths: real client traffic,
    cancellation, request reuse, concurrency and failure recovery. Current CPU
-   hook pilots do not meet that bar. Ollama has no Keyprint adapter.
+   hook pilots do not meet that bar. Ollama Python protocol calls are tested;
+   a native Ollama daemon sampler hook remains unavailable.
 3. Calibrate any advertised detector for the actual released profile; current
    interactive diagnostic curves must not imply detection confidence.
 4. Verify the final installable artifact and fresh-machine setup, then the
