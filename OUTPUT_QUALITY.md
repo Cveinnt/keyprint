@@ -5,7 +5,36 @@ relationships. Do not invent facts, approvals or completed actions. An unrequest
 translation is a failed output. A correct-looking sentence or watermark signal
 does not override these requirements.
 
+## How quality affects release decisions
+
+An individual failed output is not, by itself, evidence that watermarking caused
+a regression or a blanket blocker for the SDK. The relevant comparison is task
+performance with and without marking on the same declared workload and settings.
+Keep baseline errors, marked errors and unresolved attribution separate.
+
+The September 12 exact-v3 benchmark recorded 106/144 ordinary passes and 108/144
+marked passes. Four ordinary-only passes produced a conservative KL/Chernoff
+upper harm bound of 7.50%, above the registered 5% target. That criterion was not
+met; the aggregate pass count did not decline. This historical benchmark does
+not automatically qualify new configurations. The retained September 16 clue
+ledger explicitly permits a disclosed research preview while A02 remains open.
+
+Accordingly, keep the scientific quality claim unresolved, record individual
+failures, and assess SDK/demo readiness separately. Do not silently mark A02
+closed, promise unchanged meaning for every output, or require a zero-error base
+model as a substitute for the comparative quality criterion. Publicity remains
+held until the requested product readiness bar is met.
+
 ## Current enforcement
+
+September 23 fixed prose pilot: ordinary 10/12 versus marked 8/12 task passes.
+All 24 generations retained the requested language. Approval constraints passed
+in both conditions; two ordinary picnic outputs invented a location. Four marked
+French outputs repeated a coherent but less complete explanation and failed the
+frozen, stricter scattering rubric. Fresh model calls and distinct random-draw
+transcripts were verified for every attempt. This three-prompt, one-key pilot
+does not close A02 or establish a general causal effect. All samples, ratings
+and scope limits: [prose pilot](evidence/prose-quality-2026-09-23/README.md).
 
 September 22 gallery check: the marked Qwen/MLX email invents "the park around
 noon" despite a prompt that forbids a time or location. The exact prompt and

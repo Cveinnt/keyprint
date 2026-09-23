@@ -1,0 +1,383 @@
+{
+  "plan_sha256": "9fb601b1d64c1e15d23f70984e3855bd73e9ca38c05b87a1cc579a5e4fefc8dc",
+  "frozen_ratings_sha256": "ff4823e2ba26b2cac6a953f8931576afa0f71577ba653ab50c8ef28faec1d46b",
+  "summary": {
+    "complete": true,
+    "conditions": {
+      "ordinary": {
+        "attempts": 12,
+        "task_pass": 10,
+        "task_fail": 2,
+        "unreviewed": 0,
+        "runtime_errors": 0,
+        "language_pass": 12,
+        "specific_forbidden_details": 2
+      },
+      "marked": {
+        "attempts": 12,
+        "task_pass": 8,
+        "task_fail": 4,
+        "unreviewed": 0,
+        "runtime_errors": 0,
+        "language_pass": 12,
+        "specific_forbidden_details": 0
+      }
+    },
+    "paired_outcomes": {
+      "both_pass": 6,
+      "marked_only_pass": 2,
+      "ordinary_only_pass": 4
+    },
+    "marked_minus_ordinary_failure_rate": 0.16666666666666666,
+    "quality_acceptance": false,
+    "effect": "unresolved",
+    "scope": "Descriptive task-adherence pilot, three prompts and one key. Assistant review blinded to condition; not independent human review, a powered noninferiority study or global launch decision.",
+    "by_case": {
+      "picnic": {
+        "complete": true,
+        "conditions": {
+          "ordinary": {
+            "attempts": 4,
+            "task_pass": 2,
+            "task_fail": 2,
+            "unreviewed": 0,
+            "runtime_errors": 0
+          },
+          "marked": {
+            "attempts": 4,
+            "task_pass": 4,
+            "task_fail": 0,
+            "unreviewed": 0,
+            "runtime_errors": 0
+          }
+        },
+        "paired_outcomes": {
+          "both_pass": 2,
+          "marked_only_pass": 2
+        },
+        "marked_minus_ordinary_failure_rate": -0.5,
+        "quality_acceptance": false,
+        "effect": "unresolved",
+        "scope": "Descriptive task-adherence pilot, three prompts and one key. Assistant review blinded to condition; not independent human review, a powered noninferiority study or global launch decision."
+      },
+      "approval": {
+        "complete": true,
+        "conditions": {
+          "ordinary": {
+            "attempts": 4,
+            "task_pass": 4,
+            "task_fail": 0,
+            "unreviewed": 0,
+            "runtime_errors": 0
+          },
+          "marked": {
+            "attempts": 4,
+            "task_pass": 4,
+            "task_fail": 0,
+            "unreviewed": 0,
+            "runtime_errors": 0
+          }
+        },
+        "paired_outcomes": {
+          "both_pass": 4
+        },
+        "marked_minus_ordinary_failure_rate": 0.0,
+        "quality_acceptance": false,
+        "effect": "unresolved",
+        "scope": "Descriptive task-adherence pilot, three prompts and one key. Assistant review blinded to condition; not independent human review, a powered noninferiority study or global launch decision."
+      },
+      "french": {
+        "complete": true,
+        "conditions": {
+          "ordinary": {
+            "attempts": 4,
+            "task_pass": 4,
+            "task_fail": 0,
+            "unreviewed": 0,
+            "runtime_errors": 0
+          },
+          "marked": {
+            "attempts": 4,
+            "task_pass": 0,
+            "task_fail": 4,
+            "unreviewed": 0,
+            "runtime_errors": 0
+          }
+        },
+        "paired_outcomes": {
+          "ordinary_only_pass": 4
+        },
+        "marked_minus_ordinary_failure_rate": 1.0,
+        "quality_acceptance": false,
+        "effect": "unresolved",
+        "scope": "Descriptive task-adherence pilot, three prompts and one key. Assistant review blinded to condition; not independent human review, a powered noninferiority study or global launch decision."
+      }
+    }
+  },
+  "runs": [
+    {
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "a624a5da2e34",
+      "text": "Hi [Name],  \n\nJoin me for a cozy picnic this weekend! It's a perfect chance to relax and catch up. Bring your favorite blanket and snacks—let’s make it memorable. See you there!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_rendering": true,
+      "seconds": 4.144646332992124
+    },
+    {
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "e4d65c2c6c9a",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—bring a blanket, snacks, and good vibes. It’ll be fun and relaxing. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 58,
+      "exact_rendering": true,
+      "seconds": 4.176381083991146
+    },
+    {
+      "case": "approval",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "cb43d03a5617",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_rendering": true,
+      "seconds": 3.8521785830089357
+    },
+    {
+      "case": "approval",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "916ffa80b138",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "seconds": 3.4486242499988293
+    },
+    {
+      "case": "french",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "5416abb57172",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde courtes de la lumière bleue sont diffusées dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "tokens": 68,
+      "exact_rendering": true,
+      "seconds": 4.703136791998986
+    },
+    {
+      "case": "french",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "f896b0f4305e",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "seconds": 4.844699666995439
+    },
+    {
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "9f79387123b9",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—bring a blanket, snacks, and good vibes. It’ll be fun and relaxing. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 58,
+      "exact_rendering": true,
+      "seconds": 4.240094166001654
+    },
+    {
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "fe684c5f9538",
+      "text": "Hi [Name],  \n\nHope you're well! This weekend, let's catch up with a picnic. Bring a blanket, snacks, and a good mood. The park is perfect for a relaxing day. See you there!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 55,
+      "exact_rendering": true,
+      "seconds": 3.882097875000909
+    },
+    {
+      "case": "approval",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "39c371f87c39",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_rendering": true,
+      "seconds": 3.839608207999845
+    },
+    {
+      "case": "approval",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "7231084331ce",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "seconds": 3.7965744590037502
+    },
+    {
+      "case": "french",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "dbf92b801df6",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "seconds": 5.502229042002
+    },
+    {
+      "case": "french",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "79592974d73b",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui donne au ciel une apparence bleue.",
+      "completion": "eos",
+      "tokens": 56,
+      "exact_rendering": true,
+      "seconds": 4.1809107909939485
+    },
+    {
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "0f2faeef10b7",
+      "text": "Subject: Let's Picnic This Weekend!\n\nHey [Friend's Name],  \n\nThe weather’s perfect for a picnic! Let’s grab some snacks, a blanket, and enjoy the sunshine. Just bring your favorite food and a good book. See you this weekend!  \n\nCan’t wait to catch up! 😊",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "seconds": 4.491033457990852
+    },
+    {
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "f2d551c18a9e",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic where we can relax, chat, and enjoy the weather. Bring a blanket, snacks, and your smile. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 62,
+      "exact_rendering": true,
+      "seconds": 4.639451374998316
+    },
+    {
+      "case": "approval",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "5580c8d24786",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_rendering": true,
+      "seconds": 3.987312541998108
+    },
+    {
+      "case": "approval",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "fbfa58ab8da0",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "seconds": 3.5738668750127545
+    },
+    {
+      "case": "french",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "ecbbb7570ad8",
+      "text": "Le ciel apparaît bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules dispersent davantage la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "tokens": 72,
+      "exact_rendering": true,
+      "seconds": 4.9017544590024045
+    },
+    {
+      "case": "french",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "4e60dd9d1533",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "seconds": 4.826763208009652
+    },
+    {
+      "case": "picnic",
+      "repetition": 3,
+      "condition": "marked",
+      "review_id": "ce042c7eb142",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—bring a blanket, snacks, and good vibes. It’ll be fun and relaxing. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 58,
+      "exact_rendering": true,
+      "seconds": 4.142984209000133
+    },
+    {
+      "case": "picnic",
+      "repetition": 3,
+      "condition": "ordinary",
+      "review_id": "7f77392636b9",
+      "text": "Hi [Name],  \n\nHope you're well! This weekend, let's grab some snacks and enjoy a picnic in the park. It'll be relaxing and fun—just us and the sunshine. Let me know if you're free! Can't wait to see you.  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "seconds": 4.39621041699138
+    },
+    {
+      "case": "approval",
+      "repetition": 3,
+      "condition": "ordinary",
+      "review_id": "a3c6460c1101",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.9271299169922713
+    },
+    {
+      "case": "approval",
+      "repetition": 3,
+      "condition": "marked",
+      "review_id": "87028927696f",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_rendering": true,
+      "seconds": 4.027533417000086
+    },
+    {
+      "case": "french",
+      "repetition": 3,
+      "condition": "marked",
+      "review_id": "eca3ef22c1ee",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "seconds": 4.930031374999089
+    },
+    {
+      "case": "french",
+      "repetition": 3,
+      "condition": "ordinary",
+      "review_id": "cf57c6a3dff7",
+      "text": "Le ciel apparaît bleu à cause de la diffusion de la lumière solaire par les molécules d'air. Les longueurs d'onde courtes de la lumière bleue sont diffusées dans toutes les directions, ce qui donne au ciel une apparence bleue.",
+      "completion": "eos",
+      "tokens": 63,
+      "exact_rendering": true,
+      "seconds": 4.35808087499754
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+[
+  {
+    "review_id": "fe684c5f9538",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Name],  \n\nHope you're well! This weekend, let's catch up with a picnic. Bring a blanket, snacks, and a good mood. The park is perfect for a relaxing day. See you there!  \n\nWarmly,  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 35,
+    "error_type": null
+  },
+  {
+    "review_id": "0f2faeef10b7",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Subject: Let's Picnic This Weekend!\n\nHey [Friend's Name],  \n\nThe weather’s perfect for a picnic! Let’s grab some snacks, a blanket, and enjoy the sunshine. Just bring your favorite food and a good book. See you this weekend!  \n\nCan’t wait to catch up! 😊",
+    "completion": "eos",
+    "word_count": 43,
+    "error_type": null
+  },
+  {
+    "review_id": "fbfa58ab8da0",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+    "completion": "eos",
+    "word_count": 33,
+    "error_type": null
+  },
+  {
+    "review_id": "e4d65c2c6c9a",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—bring a blanket, snacks, and good vibes. It’ll be fun and relaxing. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "ecbbb7570ad8",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules dispersent davantage la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "word_count": 40,
+    "error_type": null
+  },
+  {
+    "review_id": "cf57c6a3dff7",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu à cause de la diffusion de la lumière solaire par les molécules d'air. Les longueurs d'onde courtes de la lumière bleue sont diffusées dans toutes les directions, ce qui donne au ciel une apparence bleue.",
+    "completion": "eos",
+    "word_count": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "87028927696f",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "word_count": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "a3c6460c1101",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "word_count": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "9f79387123b9",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—bring a blanket, snacks, and good vibes. It’ll be fun and relaxing. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "4e60dd9d1533",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+    "completion": "eos",
+    "word_count": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "dbf92b801df6",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+    "completion": "eos",
+    "word_count": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "eca3ef22c1ee",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+    "completion": "eos",
+    "word_count": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "7231084331ce",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+    "completion": "eos",
+    "word_count": 36,
+    "error_type": null
+  },
+  {
+    "review_id": "f896b0f4305e",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions, ce qui fait que le ciel paraît bleu à nos yeux.",
+    "completion": "eos",
+    "word_count": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "ce042c7eb142",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—bring a blanket, snacks, and good vibes. It’ll be fun and relaxing. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "a624a5da2e34",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Name],  \n\nJoin me for a cozy picnic this weekend! It's a perfect chance to relax and catch up. Bring your favorite blanket and snacks—let’s make it memorable. See you there!  \n\nWarmly,  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 34,
+    "error_type": null
+  },
+  {
+    "review_id": "39c371f87c39",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "word_count": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "7f77392636b9",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Name],  \n\nHope you're well! This weekend, let's grab some snacks and enjoy a picnic in the park. It'll be relaxing and fun—just us and the sunshine. Let me know if you're free! Can't wait to see you.  \n\nWarmly,  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 41,
+    "error_type": null
+  },
+  {
+    "review_id": "5416abb57172",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde courtes de la lumière bleue sont diffusées dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "word_count": 40,
+    "error_type": null
+  },
+  {
+    "review_id": "916ffa80b138",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+    "completion": "eos",
+    "word_count": 33,
+    "error_type": null
+  },
+  {
+    "review_id": "f2d551c18a9e",
+    "case": "picnic",
+    "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+    "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail.",
+    "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic where we can relax, chat, and enjoy the weather. Bring a blanket, snacks, and your smile. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+    "completion": "eos",
+    "word_count": 42,
+    "error_type": null
+  },
+  {
+    "review_id": "cb43d03a5617",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "word_count": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "5580c8d24786",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "word_count": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "79592974d73b",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui donne au ciel une apparence bleue.",
+    "completion": "eos",
+    "word_count": 37,
+    "error_type": null
+  }
+]

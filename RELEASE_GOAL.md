@@ -1,5 +1,22 @@
 # Keyprint release goal
 
+## September 23 quality-gate clarification
+
+The failed gallery email is a failed sample with unresolved attribution, not a
+blanket SDK launch blocker. The earlier 144-pair benchmark recorded 108 marked
+passes versus 106 ordinary passes; its conservative 7.50% upper harm bound missed
+the registered 5% criterion. Preserve that scientific limitation without calling
+it an observed aggregate quality decline. A02 remains open; a clearly disclosed
+preview does not require pretending it is closed. SDK, demonstration and launch
+readiness remain separate work, and publicity is still held for that product bar.
+
+New fixed prose comparison is retained in
+[September 23 evidence](evidence/prose-quality-2026-09-23/README.md): 24 actual
+generations, all in the requested language, ordinary 10/12 and marked 8/12 under
+the frozen task rubric. Four repeated marked French answers missed the stricter
+explanation criterion despite fresh draws. Investigate this across keys; do not
+present this small pilot as quality acceptance or a closed research gap.
+
 ## Pretext productization update, September 22
 
 - Added a reusable gallery export and prefilled explanation/email/French runs in

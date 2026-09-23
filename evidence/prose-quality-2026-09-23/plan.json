@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "id": "picnic",
+      "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+      "rubric": "English invitation to a picnic this weekend, at most 60 whitespace-separated words. No concrete extra date, time, place or named person. Generic placeholders are allowed. Suggestions to coordinate later are allowed. Any specified lunch/noon/morning/park or similar invented detail fails. Friendly suggestions of food or a blanket alone do not fail."
+    },
+    {
+      "id": "approval",
+      "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+      "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed."
+    },
+    {
+      "id": "french",
+      "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+      "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable."
+    }
+  ],
+  "repeats": 4,
+  "max_tokens": 192,
+  "temperature": 0.7,
+  "top_k": 100,
+  "model_revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "backend": "MLX reference",
+  "script_sha256": "40a20c0f047c4413e1a5c81ec848f53dd76de74d08cd35d409037831366f45a4",
+  "cases_sha256": "f9b9547f17d97b783988b861c7e99a1177cbc0cda54c1625b1e597e452a8b17b",
+  "ordering": "Alternate first condition by case index plus repetition",
+  "failure_rule": "Retain all 24 attempts; no retries, replacement outputs or edits",
+  "review_rule": "Freeze assistant task-adherence ratings against supplied rubric before joining condition mapping. Incomplete output fails. Uncertain ratings must be explained, not treated as human acceptance.",
+  "primary": "Descriptive ordinary/marked failure counts and paired discordance; no launch pass or causal conclusion from this pilot"
+}

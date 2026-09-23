@@ -1,0 +1,240 @@
+{
+  "attempts": 24,
+  "unique_draw_transcripts": 24,
+  "all_draws_recorded": true,
+  "all_token_counts_match": true,
+  "all_model_calls_recorded": true,
+  "unique_outputs": {
+    "picnic": {
+      "ordinary": 4,
+      "marked": 2
+    },
+    "approval": {
+      "ordinary": 3,
+      "marked": 2
+    },
+    "french": {
+      "ordinary": 4,
+      "marked": 1
+    }
+  },
+  "scope": "Private transcripts differ and every attempt records model calls; this checks freshness, not RNG statistical quality or general diversity.",
+  "rows": [
+    {
+      "review_id": "a624a5da2e34",
+      "case": "picnic",
+      "condition": "ordinary",
+      "draw_calls": 84,
+      "draw_transcript_sha256": "c4fdf197355efe2211f1d047554ce7e9ad055ebd4c0fb64c5e244e5a0f875e2f",
+      "tokens_match": true,
+      "model_forward_calls": 53
+    },
+    {
+      "review_id": "e4d65c2c6c9a",
+      "case": "picnic",
+      "condition": "marked",
+      "draw_calls": 85,
+      "draw_transcript_sha256": "0e9a0a0e490f5d47615b59726c6db0e3e19b8c50dc663dbdb84c659fdd0c3697",
+      "tokens_match": true,
+      "model_forward_calls": 59
+    },
+    {
+      "review_id": "cb43d03a5617",
+      "case": "approval",
+      "condition": "marked",
+      "draw_calls": 84,
+      "draw_transcript_sha256": "e78b13e2c8b6f34c029b8737dc131bfc67eff10a60ec319253ad9722357127e0",
+      "tokens_match": true,
+      "model_forward_calls": 53
+    },
+    {
+      "review_id": "916ffa80b138",
+      "case": "approval",
+      "condition": "ordinary",
+      "draw_calls": 77,
+      "draw_transcript_sha256": "d38f476805f53bdb2741ffd288a753d5dcc204548316ec03815e4888920f7fc2",
+      "tokens_match": true,
+      "model_forward_calls": 48
+    },
+    {
+      "review_id": "5416abb57172",
+      "case": "french",
+      "condition": "ordinary",
+      "draw_calls": 97,
+      "draw_transcript_sha256": "aba028161d33f45f6efd1ebe80a5eba680d9733f8e80153e03574bc9eeb9e4df",
+      "tokens_match": true,
+      "model_forward_calls": 69
+    },
+    {
+      "review_id": "f896b0f4305e",
+      "case": "french",
+      "condition": "marked",
+      "draw_calls": 109,
+      "draw_transcript_sha256": "e11dadd90b323387afdcaf5dc82b1c6787d35b17d7e9f3640bd719c151f4914b",
+      "tokens_match": true,
+      "model_forward_calls": 68
+    },
+    {
+      "review_id": "9f79387123b9",
+      "case": "picnic",
+      "condition": "marked",
+      "draw_calls": 79,
+      "draw_transcript_sha256": "ee1efcc97671bd6fc407830ec002b616b11a6232285e701f99780e4bb60a98bb",
+      "tokens_match": true,
+      "model_forward_calls": 59
+    },
+    {
+      "review_id": "fe684c5f9538",
+      "case": "picnic",
+      "condition": "ordinary",
+      "draw_calls": 84,
+      "draw_transcript_sha256": "a1a88c0bab2010a3c1dd11b2866a45a62a4d0ad1c5b8420072b68c733b95b949",
+      "tokens_match": true,
+      "model_forward_calls": 56
+    },
+    {
+      "review_id": "39c371f87c39",
+      "case": "approval",
+      "condition": "ordinary",
+      "draw_calls": 83,
+      "draw_transcript_sha256": "61a0e2dbb2ed5bb7deeb689c380945f77ed0925da061ea381e3dd99e8b6fe029",
+      "tokens_match": true,
+      "model_forward_calls": 53
+    },
+    {
+      "review_id": "7231084331ce",
+      "case": "approval",
+      "condition": "marked",
+      "draw_calls": 78,
+      "draw_transcript_sha256": "8692ec996726e34ef586d913e477acdeb2ac84dd30531daa95b477149c398ea7",
+      "tokens_match": true,
+      "model_forward_calls": 51
+    },
+    {
+      "review_id": "dbf92b801df6",
+      "case": "french",
+      "condition": "marked",
+      "draw_calls": 105,
+      "draw_transcript_sha256": "ec7cb87ab8934a76eafd9870764b5f7dd5fb0f7913b96de472a84535cdf4640f",
+      "tokens_match": true,
+      "model_forward_calls": 68
+    },
+    {
+      "review_id": "79592974d73b",
+      "case": "french",
+      "condition": "ordinary",
+      "draw_calls": 78,
+      "draw_transcript_sha256": "754e2ee4cd75829f722b4b9e59ff0af189aa6ed5ed4d63ce4bebd4643c808f0d",
+      "tokens_match": true,
+      "model_forward_calls": 57
+    },
+    {
+      "review_id": "0f2faeef10b7",
+      "case": "picnic",
+      "condition": "ordinary",
+      "draw_calls": 98,
+      "draw_transcript_sha256": "7735e45a18efc824bdf6a609c08005c8b4fe10f575c6ec520d6ca8ac3b0838f6",
+      "tokens_match": true,
+      "model_forward_calls": 65
+    },
+    {
+      "review_id": "f2d551c18a9e",
+      "case": "picnic",
+      "condition": "marked",
+      "draw_calls": 96,
+      "draw_transcript_sha256": "847646b940fc1f06800fa8613841e03acbd283a63f4b5d795798f138b6af51e9",
+      "tokens_match": true,
+      "model_forward_calls": 63
+    },
+    {
+      "review_id": "5580c8d24786",
+      "case": "approval",
+      "condition": "marked",
+      "draw_calls": 71,
+      "draw_transcript_sha256": "74f5813e007e0bfdada5e66dc4a38ac12687bea323b14cecef64d296f49d5505",
+      "tokens_match": true,
+      "model_forward_calls": 53
+    },
+    {
+      "review_id": "fbfa58ab8da0",
+      "case": "approval",
+      "condition": "ordinary",
+      "draw_calls": 79,
+      "draw_transcript_sha256": "ca8c309d1e04e3439c9e7c9cf3d5b543174f80f34efced467b4fe958aaee2f36",
+      "tokens_match": true,
+      "model_forward_calls": 48
+    },
+    {
+      "review_id": "ecbbb7570ad8",
+      "case": "french",
+      "condition": "ordinary",
+      "draw_calls": 111,
+      "draw_transcript_sha256": "562dbde824f19311782fb43b3d2f80d7110c3f6ffec9299e44b81d94d53963e8",
+      "tokens_match": true,
+      "model_forward_calls": 73
+    },
+    {
+      "review_id": "4e60dd9d1533",
+      "case": "french",
+      "condition": "marked",
+      "draw_calls": 108,
+      "draw_transcript_sha256": "0ed77c70f630ddbb0d8a90718a10fb0586473adf69b0973385f1ba469402278e",
+      "tokens_match": true,
+      "model_forward_calls": 68
+    },
+    {
+      "review_id": "ce042c7eb142",
+      "case": "picnic",
+      "condition": "marked",
+      "draw_calls": 82,
+      "draw_transcript_sha256": "a575ad3975a6035df075012f33bd650e12d695e8438f3e1959e0d5b9db5bcf9b",
+      "tokens_match": true,
+      "model_forward_calls": 59
+    },
+    {
+      "review_id": "7f77392636b9",
+      "case": "picnic",
+      "condition": "ordinary",
+      "draw_calls": 91,
+      "draw_transcript_sha256": "d7b9dc434b7d16ebf68f39cc06a4da012d1173fefad472f39602b3b41e12016f",
+      "tokens_match": true,
+      "model_forward_calls": 65
+    },
+    {
+      "review_id": "a3c6460c1101",
+      "case": "approval",
+      "condition": "ordinary",
+      "draw_calls": 87,
+      "draw_transcript_sha256": "371faaf264e93c6e1c36dae57e8d62ab25774aa17083c2a1b7c88fe45196ed09",
+      "tokens_match": true,
+      "model_forward_calls": 52
+    },
+    {
+      "review_id": "87028927696f",
+      "case": "approval",
+      "condition": "marked",
+      "draw_calls": 73,
+      "draw_transcript_sha256": "7f3bece0092462f03ec27f70274bde6c021fdde7392a0bd6227ff7d8e398010b",
+      "tokens_match": true,
+      "model_forward_calls": 53
+    },
+    {
+      "review_id": "eca3ef22c1ee",
+      "case": "french",
+      "condition": "marked",
+      "draw_calls": 101,
+      "draw_transcript_sha256": "fd6b415c4533b21b710036f9dbe2734e80a9573073d75ed92b11f03825c0324d",
+      "tokens_match": true,
+      "model_forward_calls": 68
+    },
+    {
+      "review_id": "cf57c6a3dff7",
+      "case": "french",
+      "condition": "ordinary",
+      "draw_calls": 80,
+      "draw_transcript_sha256": "9efe50c6398574e62bbb70f4b0e2df66dcbf1302b7286731a35747ea73576314",
+      "tokens_match": true,
+      "model_forward_calls": 64
+    }
+  ]
+}

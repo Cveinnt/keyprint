@@ -1,0 +1,218 @@
+[
+  {
+    "review_id": "fe684c5f9538",
+    "task_pass": false,
+    "reason": "Invents the park as the picnic location, forbidden by the prompt and rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": true,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "0f2faeef10b7",
+    "task_pass": true,
+    "reason": "English invitation, under 60 words; no extra concrete time, date, location or named person. Placeholders and friendly suggestions allowed by the rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "fbfa58ab8da0",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "e4d65c2c6c9a",
+    "task_pass": true,
+    "reason": "English invitation, under 60 words; no extra concrete time, date, location or named person. Placeholders and friendly suggestions allowed by the rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "ecbbb7570ad8",
+    "task_pass": true,
+    "reason": "Two complete French sentences, no English translation; scattering and preferential blue/shorter wavelengths explained.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "cf57c6a3dff7",
+    "task_pass": true,
+    "reason": "Two complete French sentences, no English translation; scattering and preferential blue/shorter wavelengths explained.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "87028927696f",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "a3c6460c1101",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "9f79387123b9",
+    "task_pass": true,
+    "reason": "English invitation, under 60 words; no extra concrete time, date, location or named person. Placeholders and friendly suggestions allowed by the rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "4e60dd9d1533",
+    "task_pass": false,
+    "reason": "French and two sentences, but does not explain preferential blue scattering or shorter wavelength as required by the strict frozen explanation rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "dbf92b801df6",
+    "task_pass": false,
+    "reason": "French and two sentences, but does not explain preferential blue scattering or shorter wavelength as required by the strict frozen explanation rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "eca3ef22c1ee",
+    "task_pass": false,
+    "reason": "French and two sentences, but does not explain preferential blue scattering or shorter wavelength as required by the strict frozen explanation rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "7231084331ce",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "f896b0f4305e",
+    "task_pass": false,
+    "reason": "French and two sentences, but does not explain preferential blue scattering or shorter wavelength as required by the strict frozen explanation rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "ce042c7eb142",
+    "task_pass": true,
+    "reason": "English invitation, under 60 words; no extra concrete time, date, location or named person. Placeholders and friendly suggestions allowed by the rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "a624a5da2e34",
+    "task_pass": true,
+    "reason": "English invitation, under 60 words; no extra concrete time, date, location or named person. Placeholders and friendly suggestions allowed by the rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "39c371f87c39",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "7f77392636b9",
+    "task_pass": false,
+    "reason": "Invents a picnic in the park, forbidden by the prompt and rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": true,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "5416abb57172",
+    "task_pass": true,
+    "reason": "Two complete French sentences, no English translation; scattering and preferential blue/shorter wavelengths explained.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "916ffa80b138",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "f2d551c18a9e",
+    "task_pass": true,
+    "reason": "English invitation, under 60 words; no extra concrete time, date, location or named person. Placeholders and friendly suggestions allowed by the rubric.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "cb43d03a5617",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "5580c8d24786",
+    "task_pass": true,
+    "reason": "English, under 70 words; Maya review deadline Tuesday 09:30 and Vincent approval prerequisite retained; no completed review or approval invented.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  },
+  {
+    "review_id": "79592974d73b",
+    "task_pass": true,
+    "reason": "Two complete French sentences, no English translation; scattering and preferential blue/shorter wavelengths explained.",
+    "language_pass": true,
+    "specific_forbidden_detail": false,
+    "reviewer": "assistant; condition labels withheld",
+    "scope": "Task adherence against frozen rubric only; not independent human review or global prose-quality approval"
+  }
+]
