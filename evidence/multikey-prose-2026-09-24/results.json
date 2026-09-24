@@ -1,0 +1,1808 @@
+{
+  "summary_script_sha256": "de07474534ae09e73913c0680d6ba5061faa0bfbb6406cc037077fd3bf727312",
+  "plan_sha256": "9ab9d4d0bce4782484c94c3030e9c3b93538bad4797f7f299fdde1226ad60ea9",
+  "frozen_ratings_sha256": "c407688438a6f941bd222e2496f20dee837c987f8ec89380e57a73e1ffc2f9e1",
+  "summary": {
+    "complete": true,
+    "conditions": {
+      "ordinary": {
+        "attempts": 36,
+        "task_pass": 31,
+        "task_fail": 5,
+        "unreviewed": 0,
+        "runtime_errors": 0
+      },
+      "marked": {
+        "attempts": 36,
+        "task_pass": 32,
+        "task_fail": 4,
+        "unreviewed": 0,
+        "runtime_errors": 0
+      }
+    },
+    "paired_outcomes": {
+      "both_pass": 28,
+      "ordinary_only_pass": 3,
+      "marked_only_pass": 4,
+      "both_fail": 1
+    },
+    "marked_minus_ordinary_failure_rate": -0.02777777777777779,
+    "quality_acceptance": false,
+    "effect": "unresolved",
+    "scope": "Three reused prompts, four fresh keys; descriptive assistant review, not independent human acceptance or a powered quality study."
+  },
+  "breakdown": [
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 2
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 2
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 2
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 2
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 2
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 0
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "condition": "ordinary",
+      "attempts": 3,
+      "task_pass": 2
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "condition": "marked",
+      "attempts": 3,
+      "task_pass": 3
+    }
+  ],
+  "repetition": {
+    "complete": true,
+    "attempts": 72,
+    "groups": [
+      {
+        "key_slot": 0,
+        "case": "picnic",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 0,
+        "case": "picnic",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 0,
+        "case": "approval",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 0,
+        "case": "approval",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 0,
+        "case": "french",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 0,
+        "case": "french",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 1,
+        "case": "picnic",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 1,
+        "case": "picnic",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 1,
+        "case": "approval",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 1,
+        "case": "approval",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 1,
+        "case": "french",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 1,
+        "case": "french",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 2,
+        "case": "picnic",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 2,
+        "case": "picnic",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 2,
+        "largest_identical_group": 2
+      },
+      {
+        "key_slot": 2,
+        "case": "approval",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 2,
+        "largest_identical_group": 2
+      },
+      {
+        "key_slot": 2,
+        "case": "approval",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 2,
+        "largest_identical_group": 2
+      },
+      {
+        "key_slot": 2,
+        "case": "french",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 2,
+        "case": "french",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 3,
+        "case": "picnic",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 3,
+        "case": "picnic",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 3,
+        "case": "approval",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 2,
+        "largest_identical_group": 2
+      },
+      {
+        "key_slot": 3,
+        "case": "approval",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      },
+      {
+        "key_slot": 3,
+        "case": "french",
+        "condition": "ordinary",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 3,
+        "largest_identical_group": 1
+      },
+      {
+        "key_slot": 3,
+        "case": "french",
+        "condition": "marked",
+        "attempts": 3,
+        "completed": 3,
+        "distinct_texts": 1,
+        "largest_identical_group": 3
+      }
+    ],
+    "scope": "Exact-text repetition counts on three reused prompts and four keys; not quality acceptance or a general diversity estimate."
+  },
+  "language_pass": 72,
+  "freshness": {
+    "attempts_audited": 72,
+    "unique_draw_transcripts": 72,
+    "all_model_calls_recorded": true,
+    "all_draws_recorded": true,
+    "all_token_counts_match": true,
+    "scope": "Fresh calls and distinct transcripts do not establish statistical RNG quality.",
+    "rows": [
+      {
+        "review_id": "5ef1af617010",
+        "draw_calls": 99,
+        "draw_transcript_sha256": "082fb728444f757c09ec9e7db376aa68b508c547476ba7aaff221abbee1257b3",
+        "model_forward_calls": 65,
+        "tokens_match": true
+      },
+      {
+        "review_id": "8ff9d3e16d66",
+        "draw_calls": 101,
+        "draw_transcript_sha256": "631e87ca4788e4c94d8b63a9155df9f56f1c4e96801da58761fabe9f1a38e54b",
+        "model_forward_calls": 62,
+        "tokens_match": true
+      },
+      {
+        "review_id": "8d33e85e1204",
+        "draw_calls": 88,
+        "draw_transcript_sha256": "2f4809109f701668bd64693694b195559be21a68c64febb311870d63ce6c4025",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "439795b69f26",
+        "draw_calls": 87,
+        "draw_transcript_sha256": "3583aac8c5fcdd4c38eebcbc26442083665d898fd852f2e25a45dece0d70037b",
+        "model_forward_calls": 53,
+        "tokens_match": true
+      },
+      {
+        "review_id": "462c44f30daf",
+        "draw_calls": 103,
+        "draw_transcript_sha256": "db659445207f45c9050fd0834fa622dc947e45ecd1dd8852001f0bf83e4e759b",
+        "model_forward_calls": 69,
+        "tokens_match": true
+      },
+      {
+        "review_id": "e7677e6320c2",
+        "draw_calls": 112,
+        "draw_transcript_sha256": "5ed149a17634df64247ac881ddce6930ef66badfab01787f85dccb000f00c3d2",
+        "model_forward_calls": 82,
+        "tokens_match": true
+      },
+      {
+        "review_id": "7d2e75814b7e",
+        "draw_calls": 104,
+        "draw_transcript_sha256": "f07ad6a72c3f48707f1d94fcb91821406e677d40a6ab601ac3d4516eed3290b6",
+        "model_forward_calls": 69,
+        "tokens_match": true
+      },
+      {
+        "review_id": "be164750af36",
+        "draw_calls": 94,
+        "draw_transcript_sha256": "e2c06709b4154ce2b1626364c4c1813f32364d6171fb2bca930d8d3cc6c7f521",
+        "model_forward_calls": 63,
+        "tokens_match": true
+      },
+      {
+        "review_id": "9557bf30e34f",
+        "draw_calls": 71,
+        "draw_transcript_sha256": "f2cfc00b60a4340b935ded057f81fca0aafdbe431825702a14560239e48f1b7b",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "eea388ca4747",
+        "draw_calls": 96,
+        "draw_transcript_sha256": "ef3138e7ba83d34d2fb2f3580d351d2eaf1a8ba14e47587a099205f8eead2099",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "dddfb65b98fa",
+        "draw_calls": 128,
+        "draw_transcript_sha256": "cedab11751a5da9f05dfac5c7a4a5bf1815bf594d53521a5032080eea093884b",
+        "model_forward_calls": 82,
+        "tokens_match": true
+      },
+      {
+        "review_id": "8a57376aa6e6",
+        "draw_calls": 129,
+        "draw_transcript_sha256": "dbf5ac67bf24548b7a98d33c620a588ad32ccdb8d561c563c35c76dad9d304db",
+        "model_forward_calls": 83,
+        "tokens_match": true
+      },
+      {
+        "review_id": "2465461e9553",
+        "draw_calls": 94,
+        "draw_transcript_sha256": "72488f8e0d5f2f3922ae51c4a0212b15e60a34aa1d7249153f4ba2b0765f8f5b",
+        "model_forward_calls": 74,
+        "tokens_match": true
+      },
+      {
+        "review_id": "4889052d4abd",
+        "draw_calls": 98,
+        "draw_transcript_sha256": "0e36cef84d32535df3871c736a4454db2a4e9acefb2c4362a77b752f49b66114",
+        "model_forward_calls": 60,
+        "tokens_match": true
+      },
+      {
+        "review_id": "e2a883a5a7a9",
+        "draw_calls": 81,
+        "draw_transcript_sha256": "fbd99301851a3e9e9250dfb41d4fa2bcac422c83de8517b526b02b1617a79cb6",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "5867817d6afd",
+        "draw_calls": 81,
+        "draw_transcript_sha256": "3c6f14fabd63337ea859952250cecd6da81f66138540fc8b9c68a41df301506a",
+        "model_forward_calls": 51,
+        "tokens_match": true
+      },
+      {
+        "review_id": "f7f8f7bbf5b1",
+        "draw_calls": 79,
+        "draw_transcript_sha256": "c59f20eba416075fb8022d342a2e2a2fec30bb8681af8e1b3d0934efef173778",
+        "model_forward_calls": 57,
+        "tokens_match": true
+      },
+      {
+        "review_id": "ed38effb88c2",
+        "draw_calls": 109,
+        "draw_transcript_sha256": "3bdadda44f9254d5897214ed311bdec127af55b5022675685f2c300393e6ffe6",
+        "model_forward_calls": 82,
+        "tokens_match": true
+      },
+      {
+        "review_id": "47059f62a9eb",
+        "draw_calls": 105,
+        "draw_transcript_sha256": "16a84c77fa688ecd5577d767cdedbd076e22232e89f84dfee41dffec5690977b",
+        "model_forward_calls": 64,
+        "tokens_match": true
+      },
+      {
+        "review_id": "44661b734d13",
+        "draw_calls": 105,
+        "draw_transcript_sha256": "f8b779865b00b07206aeb990fb29e358e2c92a4b8798fcf3033408c976497955",
+        "model_forward_calls": 62,
+        "tokens_match": true
+      },
+      {
+        "review_id": "145ebb5cec25",
+        "draw_calls": 79,
+        "draw_transcript_sha256": "5045ae4e92168b98ae7fec877ddaa3638fc64d90e6e85f42a9f4a69406654b6c",
+        "model_forward_calls": 51,
+        "tokens_match": true
+      },
+      {
+        "review_id": "bb42ab954100",
+        "draw_calls": 66,
+        "draw_transcript_sha256": "392878101f76e9a95629b4cd8532a558bcc738f55e449b8b1e8a03ef9b6a23fc",
+        "model_forward_calls": 48,
+        "tokens_match": true
+      },
+      {
+        "review_id": "981eb9c80cb4",
+        "draw_calls": 98,
+        "draw_transcript_sha256": "528a1942fd8f1c5cacac6c0553d92a2c9856251baa776bd5fce2cb56bcfb8fa2",
+        "model_forward_calls": 58,
+        "tokens_match": true
+      },
+      {
+        "review_id": "5c600d1d4caf",
+        "draw_calls": 98,
+        "draw_transcript_sha256": "3217ac1593c60e0226c51636bee67e02b0904796c989a23f7b47d7de78f192e8",
+        "model_forward_calls": 66,
+        "tokens_match": true
+      },
+      {
+        "review_id": "51a47bb42470",
+        "draw_calls": 123,
+        "draw_transcript_sha256": "19b17e8b963855b88d4e0af80498156b06e105578af62c053ece11aec788eb6a",
+        "model_forward_calls": 71,
+        "tokens_match": true
+      },
+      {
+        "review_id": "9c90670bf5ec",
+        "draw_calls": 106,
+        "draw_transcript_sha256": "aac97776131bc4d252f2d9567612b7752bf757d29b380541417dacda44797217",
+        "model_forward_calls": 64,
+        "tokens_match": true
+      },
+      {
+        "review_id": "e39b46d7bfaa",
+        "draw_calls": 66,
+        "draw_transcript_sha256": "05dd8edf76db23fd2a1243b7f57f48ebf33fe7ae940ce39110a12e2a6fb02951",
+        "model_forward_calls": 48,
+        "tokens_match": true
+      },
+      {
+        "review_id": "167bb3b8702a",
+        "draw_calls": 76,
+        "draw_transcript_sha256": "0166e421d2a97460f45f4b975b659ca8eaa0663d76c52695736325a0d13d38ec",
+        "model_forward_calls": 48,
+        "tokens_match": true
+      },
+      {
+        "review_id": "6b51029f567e",
+        "draw_calls": 142,
+        "draw_transcript_sha256": "46f9348577b4bb6a3493aa44342d21428b880d966ddcb55974dab95b756c97d7",
+        "model_forward_calls": 90,
+        "tokens_match": true
+      },
+      {
+        "review_id": "8ce2809eb087",
+        "draw_calls": 91,
+        "draw_transcript_sha256": "3fe04cc7ae797a54d403f36deccef41c0444bbb1064fcfa9a6a3f29fe7c5ed8d",
+        "model_forward_calls": 58,
+        "tokens_match": true
+      },
+      {
+        "review_id": "ad4adcdf083f",
+        "draw_calls": 90,
+        "draw_transcript_sha256": "2a8fbcd5d327c84598bc2cc8e831b6e870d1f045c24c80dfd518c3085dcf9833",
+        "model_forward_calls": 64,
+        "tokens_match": true
+      },
+      {
+        "review_id": "ef4de71aab02",
+        "draw_calls": 89,
+        "draw_transcript_sha256": "4a4f1cd88ecadff09c1af0b75dd07c9e6d354b2736539d709aebd6c5485ec566",
+        "model_forward_calls": 67,
+        "tokens_match": true
+      },
+      {
+        "review_id": "1825253939bd",
+        "draw_calls": 75,
+        "draw_transcript_sha256": "8ed6ff445747c7024de4eff468b451f8c898fc3731ee4417a88f202128d90f23",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "ab4974ff8d33",
+        "draw_calls": 77,
+        "draw_transcript_sha256": "f499773dd26b1a1fd503c14ed8aea67332850718dfacabb11bdffa29763c9d03",
+        "model_forward_calls": 48,
+        "tokens_match": true
+      },
+      {
+        "review_id": "63a956d12c00",
+        "draw_calls": 76,
+        "draw_transcript_sha256": "22c96c98189b7de30651e7da3e3c4fa2ae7688465bb0c193d2a05e0a7c0c3dee",
+        "model_forward_calls": 58,
+        "tokens_match": true
+      },
+      {
+        "review_id": "4458818a655a",
+        "draw_calls": 83,
+        "draw_transcript_sha256": "ca9ca2076a9a7544788faa4c67d739bf4884d776aae7733f3602620768cb4bbf",
+        "model_forward_calls": 64,
+        "tokens_match": true
+      },
+      {
+        "review_id": "8c54f1c479ef",
+        "draw_calls": 82,
+        "draw_transcript_sha256": "34dfd580618cb4141a94ef7153a5e255581eeb0721c643d5a42205d2cde12b46",
+        "model_forward_calls": 61,
+        "tokens_match": true
+      },
+      {
+        "review_id": "2253399e9e4a",
+        "draw_calls": 95,
+        "draw_transcript_sha256": "a5b3c30bcc9fe5db21bc9234e8ec0a3a455b6bed10fa8ebd2ca8787af05652c0",
+        "model_forward_calls": 66,
+        "tokens_match": true
+      },
+      {
+        "review_id": "6b573e919ded",
+        "draw_calls": 75,
+        "draw_transcript_sha256": "5d5f52a1bd83b260c13054f312b7e1fd41f658a70432570ae885800389bb1c35",
+        "model_forward_calls": 51,
+        "tokens_match": true
+      },
+      {
+        "review_id": "88d113eaf11d",
+        "draw_calls": 85,
+        "draw_transcript_sha256": "0f2d93cc75524052cef4c8dc0c1d00d0023fd92c82c3112b39041b34dc9c9538",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "6062234c49cf",
+        "draw_calls": 112,
+        "draw_transcript_sha256": "11cac38c6a903a953d74074aa36bbe03324195fbadc6d72f38a970e4c48eabe6",
+        "model_forward_calls": 71,
+        "tokens_match": true
+      },
+      {
+        "review_id": "156e8fd93345",
+        "draw_calls": 121,
+        "draw_transcript_sha256": "4d1f911a7e5bfa9daf9dbb98bebcbe8e562a1bcaa7669a9915ddba59db91a422",
+        "model_forward_calls": 81,
+        "tokens_match": true
+      },
+      {
+        "review_id": "9ef924df65e9",
+        "draw_calls": 95,
+        "draw_transcript_sha256": "0fc8f6c70f3cda432ea7ae46e0788eb4b8f1b6c45bb545c35b21c9cc6856fe8e",
+        "model_forward_calls": 61,
+        "tokens_match": true
+      },
+      {
+        "review_id": "de3a717a74d4",
+        "draw_calls": 79,
+        "draw_transcript_sha256": "afdc1d35f699d49f7975cd07e2ec68539da58e7858ad15fc250d9b8c341f1fe2",
+        "model_forward_calls": 61,
+        "tokens_match": true
+      },
+      {
+        "review_id": "326aa635209e",
+        "draw_calls": 75,
+        "draw_transcript_sha256": "09e2625ca2d20de02cdfadf8058cd0a74a5f87eb3f9473201ce187810650bf2c",
+        "model_forward_calls": 50,
+        "tokens_match": true
+      },
+      {
+        "review_id": "66c8200a9f38",
+        "draw_calls": 81,
+        "draw_transcript_sha256": "8e23846fa4d21e42a0ec1cc7b31637c443000072ac9b3a63788144fe5a0ec675",
+        "model_forward_calls": 51,
+        "tokens_match": true
+      },
+      {
+        "review_id": "b84f91a34ef7",
+        "draw_calls": 101,
+        "draw_transcript_sha256": "963443748082b6f11178cbceb9d0be3c57ff7f72a71b293c8c9ab63dad423ce3",
+        "model_forward_calls": 81,
+        "tokens_match": true
+      },
+      {
+        "review_id": "125f017d93ad",
+        "draw_calls": 89,
+        "draw_transcript_sha256": "4a3c0b1c64de4fe9e6c217cec93d5d1111ff48a82584f51a6788dc1c1fb6135c",
+        "model_forward_calls": 60,
+        "tokens_match": true
+      },
+      {
+        "review_id": "1b6599e7abf9",
+        "draw_calls": 87,
+        "draw_transcript_sha256": "c263c057c98e48004bbf4ada87fff5be2b5e39ffc20c83dd96e56658ab6ae4fd",
+        "model_forward_calls": 59,
+        "tokens_match": true
+      },
+      {
+        "review_id": "1d623140349b",
+        "draw_calls": 88,
+        "draw_transcript_sha256": "e7b9b238d042f7d8268a886495d8091ac570c44791787184e5275ef3870250e1",
+        "model_forward_calls": 61,
+        "tokens_match": true
+      },
+      {
+        "review_id": "6624ed2f45b1",
+        "draw_calls": 79,
+        "draw_transcript_sha256": "b68659811b1e2533f1bfde1c8d39545d1d2e45082dd004debaf30a1d3522944f",
+        "model_forward_calls": 50,
+        "tokens_match": true
+      },
+      {
+        "review_id": "28d8ecec104a",
+        "draw_calls": 86,
+        "draw_transcript_sha256": "768a2ff8f2b337e2da6f2d4e6c0649d56d8fcf4e3f45688556dc081559df5cbc",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "5be21879a3b8",
+        "draw_calls": 87,
+        "draw_transcript_sha256": "4d1b5bedee97b9dad9be66d7a864021855b8a8767bcf7dff109379031325fc1f",
+        "model_forward_calls": 61,
+        "tokens_match": true
+      },
+      {
+        "review_id": "0bdf38c479c7",
+        "draw_calls": 139,
+        "draw_transcript_sha256": "954a8f5e7627e13750a26b37021f25a20bf303f35842366eff69279114a201ce",
+        "model_forward_calls": 81,
+        "tokens_match": true
+      },
+      {
+        "review_id": "f66b0dd0440c",
+        "draw_calls": 101,
+        "draw_transcript_sha256": "d2037fe7df3f364d47d2b6f6d2ab19bad53447bdf6dca110e99ba18cb5268085",
+        "model_forward_calls": 65,
+        "tokens_match": true
+      },
+      {
+        "review_id": "a3273988cd30",
+        "draw_calls": 93,
+        "draw_transcript_sha256": "3a818324ee1478a0cea169fe58d8980842830b4137b01ce34143722cdb75fc50",
+        "model_forward_calls": 67,
+        "tokens_match": true
+      },
+      {
+        "review_id": "2d57ac03d4bd",
+        "draw_calls": 68,
+        "draw_transcript_sha256": "eb9cd067488a23063170361160bc3e5f3e4b5be764d51fef54251b3f11be0e9a",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "ded52c957bfc",
+        "draw_calls": 74,
+        "draw_transcript_sha256": "79d792c4f6be061f279811358ca694667e895735db17c192b34ec3fb81c08b33",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "49fd3c6655b5",
+        "draw_calls": 118,
+        "draw_transcript_sha256": "2c59a167e0380cadd650cc485a03b81deee1aad8d481d24ab40759bf6006c4b1",
+        "model_forward_calls": 76,
+        "tokens_match": true
+      },
+      {
+        "review_id": "2ce1f09646a2",
+        "draw_calls": 114,
+        "draw_transcript_sha256": "00e1a5952a796daea6d4221eceb371cb2dc8aaa44871e2f28d64cc1edad08cc7",
+        "model_forward_calls": 72,
+        "tokens_match": true
+      },
+      {
+        "review_id": "23d25e5e10fa",
+        "draw_calls": 97,
+        "draw_transcript_sha256": "1485dba7726b3f13c5e2daf6fecc675292a6bb9bd2ea430e45deb63d8b0e936d",
+        "model_forward_calls": 70,
+        "tokens_match": true
+      },
+      {
+        "review_id": "63389c80f5ee",
+        "draw_calls": 98,
+        "draw_transcript_sha256": "e91d2518f2e70c20fbde5870c01e3ea5f3e9ca24aab6ab537996c5c2e40b8cfd",
+        "model_forward_calls": 65,
+        "tokens_match": true
+      },
+      {
+        "review_id": "619788aa57a0",
+        "draw_calls": 77,
+        "draw_transcript_sha256": "cf71918269c6033f9285572bae592f9649fe8e7c19f00858aa2b683d989b6e8b",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "63efa168842f",
+        "draw_calls": 84,
+        "draw_transcript_sha256": "09f9bbabdf5b08d3999cc7b6207a6166d5d7c872cc66c607e1dad70e93c087b5",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "02db5f014d08",
+        "draw_calls": 105,
+        "draw_transcript_sha256": "91bc7eed50c9b068af5bfbcc254441ff45d491d7b48ae4a0d768ef9bf20ce813",
+        "model_forward_calls": 73,
+        "tokens_match": true
+      },
+      {
+        "review_id": "6209ca3f6b76",
+        "draw_calls": 114,
+        "draw_transcript_sha256": "26fe5337740233e84bb1694af180b322b3ea1ac85fb8b5ae13eaeb3a252733a2",
+        "model_forward_calls": 76,
+        "tokens_match": true
+      },
+      {
+        "review_id": "a8078f376a6a",
+        "draw_calls": 90,
+        "draw_transcript_sha256": "edcc021452d0a95609dbd95f6b5b53309541cb16a1b7c6610272aec8a7a6328a",
+        "model_forward_calls": 65,
+        "tokens_match": true
+      },
+      {
+        "review_id": "123f732c60c3",
+        "draw_calls": 115,
+        "draw_transcript_sha256": "e94ecb9b04881ce49bdedfffb9c0c57714ec015b963dcfcb5f4d3a30e49adf32",
+        "model_forward_calls": 68,
+        "tokens_match": true
+      },
+      {
+        "review_id": "e0b9e02c2d19",
+        "draw_calls": 67,
+        "draw_transcript_sha256": "840c3b28db501533fa4b1df05a302ae8390a196cf5efe97c0fb54ae2e26f1a5e",
+        "model_forward_calls": 50,
+        "tokens_match": true
+      },
+      {
+        "review_id": "1e57448bccc2",
+        "draw_calls": 76,
+        "draw_transcript_sha256": "14d886e91685adf5a5381ac1b6a7ba86a1d331cd49ee61e1de88c09d61a6e5dd",
+        "model_forward_calls": 52,
+        "tokens_match": true
+      },
+      {
+        "review_id": "80bd97e64ff3",
+        "draw_calls": 125,
+        "draw_transcript_sha256": "75c82121b2432f9edab7eb7b6ffec7e5dd16d43c9d55759ea828e1a11608fe47",
+        "model_forward_calls": 76,
+        "tokens_match": true
+      },
+      {
+        "review_id": "9071330a33d4",
+        "draw_calls": 86,
+        "draw_transcript_sha256": "a9f275104e184c885b352da02b4f3e90da9ade8d02d1b10a7caf4e40b01de0c7",
+        "model_forward_calls": 58,
+        "tokens_match": true
+      }
+    ]
+  },
+  "runs": [
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "5ef1af617010",
+      "text": "Hi [Friend's Name],  \n\nHope you're well! Let's grab a picnic this weekend—sunshine, good food, and great company. Bring your favorite blanket and snacks. Let me know what day works best for you. Can't wait to catch up!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "seconds": 5.017213833023561
+    },
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "8ff9d3e16d66",
+      "text": "Hi [Name],  \n\nThe weather looks perfect this weekend—let’s grab a picnic! Bring your favorite blanket and snacks. We can relax, laugh, and enjoy the sunshine. Let me know if you’re in. Can’t wait to see you!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 61,
+      "exact_rendering": true,
+      "seconds": 4.408608625002671
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "8d33e85e1204",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.8357159589941148
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "439795b69f26",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_rendering": true,
+      "seconds": 3.7324101669946685
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "462c44f30daf",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est plus facilement dispersée dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "tokens": 68,
+      "exact_rendering": true,
+      "seconds": 4.798705249995692
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "e7677e6320c2",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+      "completion": "eos",
+      "tokens": 81,
+      "exact_rendering": true,
+      "seconds": 5.990995708008995
+    },
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "7d2e75814b7e",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let’s grab some food, good company, and the sun! Bring a blanket, snacks, and your smile. I’ll meet you at the park around noon. Let’s make it a fun, relaxed day. Looking forward to it!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 68,
+      "exact_rendering": true,
+      "seconds": 5.042081708001206
+    },
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "be164750af36",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—perfect for catching up and enjoying the weather. Bring a blanket, snacks, and your smile. Let me know if you’re in!  \n\nCan’t wait to see you!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 62,
+      "exact_rendering": true,
+      "seconds": 4.74584958300693
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "9557bf30e34f",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.8272340830008034
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "eea388ca4747",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.824080499995034
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "dddfb65b98fa",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+      "completion": "eos",
+      "tokens": 81,
+      "exact_rendering": true,
+      "seconds": 6.608034000004409
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "8a57376aa6e6",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans la direction des petits angles, ce qui donne une teinte bleue. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent principalement la lumière bleue vers le ciel.",
+      "completion": "eos",
+      "tokens": 82,
+      "exact_rendering": true,
+      "seconds": 5.8977581660146825
+    },
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "2465461e9553",
+      "text": "Subject: Let's Picnic This Weekend!\n\nHey [Friend's Name],  \n\nThe weather’s perfect for a picnic! Let’s grab some snacks, spread out a blanket, and enjoy the sunshine. Just bring your favorite food and a good book—no need for a date or time, just come whenever you’re free. See you there! 🌻",
+      "completion": "eos",
+      "tokens": 73,
+      "exact_rendering": true,
+      "seconds": 4.984719416999724
+    },
+    {
+      "key_slot": 0,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "4889052d4abd",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let’s grab some food, good company, and nice weather! Join me for a picnic—bring your favorite snack and a blanket. It’ll be relaxing and fun. Looking forward to seeing you!  \n\nCheers,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 59,
+      "exact_rendering": true,
+      "seconds": 4.209276208013762
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "e2a883a5a7a9",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.734477958001662
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "5867817d6afd",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "seconds": 3.549126249999972
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "f7f8f7bbf5b1",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par l'air de la Terre. La lumière bleue, étant plus courte, est plus facilement diffusée dans toutes les directions par les molécules d'air.",
+      "completion": "eos",
+      "tokens": 56,
+      "exact_rendering": true,
+      "seconds": 3.8427825830003712
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "ed38effb88c2",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+      "completion": "eos",
+      "tokens": 81,
+      "exact_rendering": true,
+      "seconds": 5.69640045898268
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "47059f62a9eb",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let's grab some snacks, a blanket, and good vibes for a picnic! It'll be fun, relaxing, and just us. Let me know if you're in. Can't wait to catch up outdoors!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 63,
+      "exact_rendering": true,
+      "seconds": 5.051303749991348
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "44661b734d13",
+      "text": "Hi [Friend's Name],  \n\nHope you're well! This weekend, let's grab some food, sun, and good company. Bring a blanket and your appetite—picnic spot is ready. Let me know if you can make it!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 61,
+      "exact_rendering": true,
+      "seconds": 4.067980541993165
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "145ebb5cec25",
+      "text": "Subject: Project Deadline Reminder  \n\nMaya, please review the draft by Tuesday at 09:30. Vincent must approve publication; if his approval has not arrived by then, publication must wait. Ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "seconds": 3.4412090000114404
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "bb42ab954100",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "seconds": 3.425727374997223
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "981eb9c80cb4",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel bleu.",
+      "completion": "eos",
+      "tokens": 57,
+      "exact_rendering": true,
+      "seconds": 4.094544207997387
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "5c600d1d4caf",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère terrestre et est diffusée principalement par les molécules d'air. Cette diffusion rend le ciel apparemment bleu lorsqu'on le regarde depuis la surface de la Terre.",
+      "completion": "eos",
+      "tokens": 65,
+      "exact_rendering": true,
+      "seconds": 4.318151624989696
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "51a47bb42470",
+      "text": "Hi [Name],  \n\nLet’s catch up this weekend! Join me for a picnic—bring a blanket, snacks, and your good mood. It’ll be sunny, and I’ve got a great spot in mind. Let me know if you’re in. Can’t wait to relax and chat!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "seconds": 4.696114375023171
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "9c90670bf5ec",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let's grab some snacks, a blanket, and good vibes for a picnic! It'll be fun, relaxing, and just us. Let me know if you're in. Can't wait to catch up outdoors!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 63,
+      "exact_rendering": true,
+      "seconds": 4.408728207985405
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "e39b46d7bfaa",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "seconds": 3.3892704999889247
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "167bb3b8702a",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "seconds": 3.2548197919968516
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "6b51029f567e",
+      "text": "Le ciel apparaît bleu parce que la lumière du Soleil, composée de différentes couleurs, est diffusée de manière plus intense par les molécules de l'air dans les longueurs d'onde bleues. La lumière bleue se propage plus facilement dans l'atmosphère et atteint nos yeux, donnant ainsi l'impression d'un ciel bleu.",
+      "completion": "eos",
+      "tokens": 89,
+      "exact_rendering": true,
+      "seconds": 5.8282341249869205
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "8ce2809eb087",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel bleu.",
+      "completion": "eos",
+      "tokens": 57,
+      "exact_rendering": true,
+      "seconds": 4.029573041014373
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "ad4adcdf083f",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let's grab some snacks, a blanket, and good vibes for a picnic! It'll be fun, relaxing, and just us. Let me know if you're in. Can't wait to catch up outdoors!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 63,
+      "exact_rendering": true,
+      "seconds": 4.399011083994992
+    },
+    {
+      "key_slot": 1,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "ef4de71aab02",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let’s grab some snacks, a blanket, and some sunshine! I’ll bring the food, you bring the laughs. Meet at the park around noon. Let’s make it a relaxing day outdoors. Looking forward to seeing you!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "seconds": 4.389286916994024
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "1825253939bd",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.5333590420195833
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "ab4974ff8d33",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "seconds": 3.51307824999094
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "63a956d12c00",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel bleu.",
+      "completion": "eos",
+      "tokens": 57,
+      "exact_rendering": true,
+      "seconds": 4.167247250006767
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "4458818a655a",
+      "text": "Le ciel apparaît bleu à cause de la diffusion de la lumière par les molécules de l'air. La lumière du Soleil, composée de différentes couleurs, est diffusée de manière plus intense par le bleu en raison de sa courte longueur d'onde.",
+      "completion": "eos",
+      "tokens": 63,
+      "exact_rendering": true,
+      "seconds": 4.341563333990052
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "8c54f1c479ef",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—perfect for catching up and enjoying the weather. Bring a blanket, snacks, and your smile. Let me know if you're in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 60,
+      "exact_rendering": true,
+      "seconds": 4.142473666986916
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "2253399e9e4a",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic — it’ll be fun, relaxed, and just what we both need. Bring a blanket, snacks, and your smile. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 65,
+      "exact_rendering": true,
+      "seconds": 4.558349041995825
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "6b573e919ded",
+      "text": "Subject: Draft Review and Approval Deadline  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "seconds": 3.6124572090047877
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "88d113eaf11d",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.546603542024968
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "6062234c49cf",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde bleues sont diffusées dans toutes les directions par les particules de l'air, ce qui donne au ciel un aspect bleu.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "seconds": 4.692992750002304
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "156e8fd93345",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement vers les couleurs bleues. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+      "completion": "eos",
+      "tokens": 80,
+      "exact_rendering": true,
+      "seconds": 5.556375666987151
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "9ef924df65e9",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—perfect for catching up and enjoying the weather. Bring a blanket, snacks, and your smile. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 60,
+      "exact_rendering": true,
+      "seconds": 4.243555708002532
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "de3a717a74d4",
+      "text": "Hi [Name],  \n\nThis weekend, let’s grab some snacks, sunscreen, and good vibes for a picnic! The weather’s perfect, and I’d love to catch up outdoors. Just bring your favorite blanket and a laugh. See you there!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 60,
+      "exact_rendering": true,
+      "seconds": 4.006840125017334
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "326aa635209e",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the draft is ready for review.",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "seconds": 3.411977082985686
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "66c8200a9f38",
+      "text": "Subject: Draft Review and Approval Deadline  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "seconds": 3.609526165993884
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "b84f91a34ef7",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement vers les couleurs bleues. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+      "completion": "eos",
+      "tokens": 80,
+      "exact_rendering": true,
+      "seconds": 5.587844624998979
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "125f017d93ad",
+      "text": "Le ciel apparaît bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui donne au ciel son aspect bleu.",
+      "completion": "eos",
+      "tokens": 59,
+      "exact_rendering": true,
+      "seconds": 4.047439666988794
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "1b6599e7abf9",
+      "text": "Hi [Name],  \n\nHope you're well! This weekend, let's grab a picnic and catch up. Bring your favorite snack and a blanket—we’ll find a sunny spot. It’ll be fun and relaxing. Looking forward to it!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 58,
+      "exact_rendering": true,
+      "seconds": 3.9530764170049224
+    },
+    {
+      "key_slot": 2,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "1d623140349b",
+      "text": "Hi [Friend's Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic—perfect for catching up and enjoying the weather. Bring a blanket, snacks, and your smile. Let me know if you’re in!  \n\nLooking forward to it!  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 60,
+      "exact_rendering": true,
+      "seconds": 4.19792495801812
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "6624ed2f45b1",
+      "text": "Subject: Draft Review and Approval  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "seconds": 3.579277542012278
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "28d8ecec104a",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.530195667000953
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "5be21879a3b8",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère terrestre et se disperse dans toutes les directions. La lumière bleue, étant plus courte, est plus facilement dispersée, ce qui donne au ciel sa couleur bleue.",
+      "completion": "eos",
+      "tokens": 60,
+      "exact_rendering": true,
+      "seconds": 4.020241082995199
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "0bdf38c479c7",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement vers les couleurs bleues. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+      "completion": "eos",
+      "tokens": 80,
+      "exact_rendering": true,
+      "seconds": 5.611073167005088
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "f66b0dd0440c",
+      "text": "Hi [Friend's Name],  \n\nHope you're well! Join me for a picnic this weekend—sunshine, good food, and great company. Bring a blanket and your favorite snack. Let me know if you can make it! Can't wait to catch up.  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "seconds": 4.558614125009626
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "a3273988cd30",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let’s catch up over a picnic! Bring a blanket, snacks, and your sense of adventure. We can relax, laugh, and enjoy the sunshine. Let me know if you're in—can’t wait to see you!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "seconds": 4.38181274998351
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "2d57ac03d4bd",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.5255398750014137
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "ded52c957bfc",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.6869089999818243
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "condition": "marked",
+      "review_id": "49fd3c6655b5",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules de poussière dispersent plus facilement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "tokens": 75,
+      "exact_rendering": true,
+      "seconds": 5.291246917011449
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "condition": "ordinary",
+      "review_id": "2ce1f09646a2",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules de poussière diffusent plus intensément la lumière bleue, qui est alors perçue par nos yeux.",
+      "completion": "eos",
+      "tokens": 71,
+      "exact_rendering": true,
+      "seconds": 4.815640791988699
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "23d25e5e10fa",
+      "text": "Hi [Friend's Name],  \n\nThis weekend, let’s grab some snacks, sunscreen, and good vibes for a picnic! Bring your favorite blanket and a game. We’ll find a sunny spot to relax and catch up. See you there!  \n\nCan’t wait to spend time with you.  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_rendering": true,
+      "seconds": 4.624485625012312
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "63389c80f5ee",
+      "text": "Hi [Friend's Name],  \n\nHope you're well! Join me for a picnic this weekend—sunshine, good food, and great company. Bring a blanket and your favorite snack. Let me know if you can make it! Can't wait to catch up.  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "seconds": 4.577622874989174
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "619788aa57a0",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.752463541983161
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "63efa168842f",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 3.567779708013404
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "condition": "ordinary",
+      "review_id": "02db5f014d08",
+      "text": "Le ciel apparaît bleu parce que la lumière du soleil, composée de différentes couleurs, est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui donne à l'œil l'impression d'un ciel bleu.",
+      "completion": "eos",
+      "tokens": 72,
+      "exact_rendering": true,
+      "seconds": 4.840957625012379
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "condition": "marked",
+      "review_id": "6209ca3f6b76",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules de poussière dispersent plus facilement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "tokens": 75,
+      "exact_rendering": true,
+      "seconds": 5.438238208997063
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "a8078f376a6a",
+      "text": "Hi [Friend's Name],  \n\nHope you're well! Join me for a picnic this weekend—sunshine, good food, and great company. Bring a blanket and your favorite snack. Let me know if you can make it! Can't wait to catch up.  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "seconds": 4.644791083992459
+    },
+    {
+      "key_slot": 3,
+      "case": "picnic",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "123f732c60c3",
+      "text": "Hi [Friend's Name],  \n\nJoin me for a relaxing picnic this weekend! It'll be a great chance to catch up and enjoy some good food and sunshine. Let me know if you can make it—I'd love to spend some quality time with you. Looking forward to it!  \n\nWarmly,  \n[Your Name]",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "seconds": 4.5252446249942295
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "e0b9e02c2d19",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "seconds": 3.490847125009168
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "1e57448bccc2",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "seconds": 4.281611665996024
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 2,
+      "condition": "marked",
+      "review_id": "80bd97e64ff3",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules de poussière dispersent plus facilement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "tokens": 75,
+      "exact_rendering": true,
+      "seconds": 5.3386010830290616
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 2,
+      "condition": "ordinary",
+      "review_id": "9071330a33d4",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Le bleu est le couleur de la lumière qui est diffusée dans toutes les directions par ces molécules.",
+      "completion": "eos",
+      "tokens": 57,
+      "exact_rendering": true,
+      "seconds": 3.861317999981111
+    }
+  ]
+}

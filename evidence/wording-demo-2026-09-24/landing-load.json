@@ -1,0 +1,20 @@
+{
+  "initial_js_before_bytes_approx": 1004210,
+  "initial_js_after_bytes": 313945,
+  "initial_js_gzip_before_bytes_approx": 237570,
+  "initial_js_gzip_after_bytes_approx": 86700,
+  "deferred_pair_asset_bytes": 689828,
+  "pair_records_preserved": 144,
+  "site_tests_passed": 4,
+  "build_passed": true,
+  "browser_normal_console_errors_or_warnings": 0,
+  "pair_asset_absent_from_initial_server_requests": true,
+  "direct_outputs_link_loads": true,
+  "reading_family_options": 48,
+  "simulated_asset_404_showed_retry": true,
+  "retry_restored_all_144_tasks": true,
+  "custom_draft_preserved_on_retry": true,
+  "full_page_source_before_sha256": "088df033f9b922771ed5e9e4b1ffd60ee178507ef36530c70ccb3da6777a3fc0",
+  "full_page_source_after_sha256": "8b510b94b27ff3f6594caa57da03b211ae47d18db4c77188a0f325197d60b9f1",
+  "scope": "Initial JS byte reduction only, not measured full-page speed. Pair data still downloads when approaching the section. Production unchanged."
+}

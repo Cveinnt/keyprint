@@ -166,6 +166,13 @@ Reading view formats basic headings, lists, bold text and code blocks. Switch to
 Exact text to see every original character. Formatting never changes the text
 used for editing, inspection or export; generated HTML, links and images remain
 inert text. Long response panels are keyboard-focusable and scrollable.
+**Highlight differences** compares exact wording above the response panels,
+including in exported galleries. It does not label watermarked words or infer
+causation from independent samples. Identical responses are stated explicitly.
+Long dissimilar passages use a bounded block comparison without truncating text.
+Toggle it off to restore your previous reading mode. It adds no model calls or
+dependencies. Repeated prompts can yield repeated marked text under a fixed key;
+see the [four-key evidence](evidence/multikey-prose-2026-09-24/README.md).
 Measured edits also survive a refresh within the same server process. A failed
 inspection restores its input alongside the last successful measurement, clearly
 labeled as stale. A new completed generation clears the previous pair's edit.

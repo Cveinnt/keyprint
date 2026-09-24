@@ -1,5 +1,32 @@
 # Keyprint release goal
 
+## September 24 progress
+
+- Four-key actual inference: all 72 outputs retained; ordinary 31/36 and marked
+  32/36 pass unchanged narrow task rubrics. Language retained in 72/72. Marked
+  French responses repeat within each key; one key repeatedly fails the rubric,
+  three pass. No retries or favorable-key selection. This is evidence about key
+  variation and repetition, not closure of general quality or the 25-clue ledger.
+- Added an explicit wording comparison to the shared live/exported viewer.
+  It preserves exact text, handles identical outputs honestly, and leaves the
+  selected visual design intact. Highlighted differences are not watermarked-word
+  attribution. No model calls, sampler changes or dependencies are added.
+- Verified the changed viewer from a fresh installed wheel: 90 package files
+  match, two real live pairs retain exact traces, custom prompts and refresh
+  recovery work, and the identical-output case shows zero highlights. Desktop,
+  390px mobile and keyboard checks pass. Local checks: 65 Python, 28 JavaScript.
+  See [installed viewer evidence](evidence/wording-demo-2026-09-24/README.md).
+- Deferred the landing page's 144-pair payload until its section approaches the
+  viewport. Initial JS fell from 1,004.21 kB to 313.95 kB. All records remain;
+  direct links, task filtering and recovery from a missing asset pass in browser.
+  Production build and four site checks pass. No deployment or page-speed claim.
+- Prepared concise [launch copy](LAUNCH_DRAFT.md) with explicit local-model and
+  diagnostic scope. It remains unscheduled; no public package or repo exposure.
+- Publicity remains held. Next qualification should explain and quantify
+  fixed-key diversity, retain failures, and finish the scoped install/demo and
+  serving acceptance work. Broader native-runtime claims stay bounded by their
+  actual evidence, not protocol compatibility alone.
+
 ## September 23 quality-gate clarification
 
 The failed gallery email is a failed sample with unresolved attribution, not a

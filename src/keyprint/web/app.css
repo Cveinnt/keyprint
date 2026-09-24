@@ -296,6 +296,8 @@ article + article h3 {
   color: var(--muted);
 }
 .reading-controls label { margin: 0; }
+.reading-controls button[aria-pressed="true"] { border-color: var(--rust); color: var(--rust); }
+.wording-difference { background: #ead6c8; color: inherit; text-decoration: underline; text-decoration-color: var(--rust); text-underline-offset: 0.16em; }
 .reading-controls select {
   color: var(--ink);
   background: transparent;

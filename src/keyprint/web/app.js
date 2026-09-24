@@ -371,6 +371,15 @@ function restoreRequest(session) {
 
 function renderOutputs() {
   if (!experiment) return;
+  $("wording-toggle").disabled = false;
+  const differences = $("wording-toggle").getAttribute("aria-pressed") === "true";
+  $("wording-note").hidden = !differences;
+  $("reading-mode").disabled = differences;
+  if (differences) {
+    $("wording-note").textContent = renderWordingPair($("ordinary-text"), $("marked-text"),
+      experiment.outputs.ordinary.text, experiment.outputs.marked.text);
+    return;
+  }
   for (const condition of ["ordinary", "marked"])
     renderResponse($(condition + "-text"), experiment.outputs[condition].text,
       $("reading-mode").value === "exact");
@@ -574,6 +583,12 @@ $("rewrite-example").addEventListener("click", () => {
 $("stop").addEventListener("click", stopExperiment);
 $("stop-edit").addEventListener("click", stopExperiment);
 $("reading-mode").addEventListener("change", renderOutputs);
+$("wording-toggle").addEventListener("click", () => {
+  const active = $("wording-toggle").getAttribute("aria-pressed") !== "true";
+  $("wording-toggle").setAttribute("aria-pressed", String(active));
+  $("wording-toggle").textContent = active ? "Hide differences" : "Highlight differences";
+  renderOutputs();
+});
 $("inspect").addEventListener("click", () => run("inspect"));
 $("edited").addEventListener("input", markDirty);
 $("scrub").addEventListener("input", chart);

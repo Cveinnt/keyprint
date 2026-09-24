@@ -1,0 +1,38 @@
+--- a/src/FullPage.jsx
++++ b/src/FullPage.jsx
+@@ -1,6 +1,5 @@
+ import { useEffect, useRef, useState } from 'react';
+ import ledger from './data/clues.json';
+-import study from './data/pairs.json';
+ import compatibility from './data/compatibility.json';
+ import './full-page.css';
+ 
+@@ -38,6 +37,28 @@
+  return html.split(/(<mark>|<\/mark>)/).reduce((acc,part)=>{if(part==='<mark>'){acc.marked=true;}else if(part==='</mark>'){acc.marked=false;}else if(part){const decoded=part.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#x27;|&#39;/g,"'").replace(/&amp;/g,'&');acc.nodes.push(acc.marked?<mark key={acc.nodes.length}>{decoded}</mark>:decoded);}return acc;},{nodes:[],marked:false}).nodes;
+ }
+ function PairViewer(){
++ const root=useRef(null),started=useRef(false),mounted=useRef(false);
++ const [study,setStudy]=useState(null),[state,setState]=useState('idle');
++ async function load(){
++  if(started.current)return;started.current=true;setState('loading');
++  try{
++   const response=await fetch(new URL('./data/pairs.json',import.meta.url));
++   if(!response.ok)throw new Error('Recorded comparisons unavailable');
++   const data=await response.json();
++   if(!Array.isArray(data.pairs)||data.pairs.length!==144||!Number.isInteger(data.summary?.default_index)||data.summary.default_index<0||data.summary.default_index>=data.pairs.length)throw new Error('Invalid comparison data');
++   if(mounted.current)setStudy(data);
++  }catch{started.current=false;if(mounted.current)setState('error');}
++ }
++ useEffect(()=>{
++  mounted.current=true;
++  if(!('IntersectionObserver' in window)){load();return()=>{mounted.current=false;};}
++  const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){observer.disconnect();load();}},{rootMargin:'400px'});
++  observer.observe(root.current);return()=>{mounted.current=false;observer.disconnect();};
++ },[]);
++ if(study)return <LoadedPairViewer study={study}/>;
++ return <section ref={root} className="chapter pairs-chapter" id="outputs" aria-busy={state==='loading'}><div className="wide-intro"><div><Label n="03">Real generations</Label><h2>Same task.<br/><em>What actually changed?</em></h2></div><p>144 recorded pairs. Math, reading comprehension and instruction following. Inspect both responses, including failures and identical outputs.</p></div><p role="status">{state==='error'?'The recorded comparisons could not load. Your text above is unchanged.':state==='loading'?'Loading recorded comparisons…':'Recorded comparisons load when you reach this section.'}</p>{state==='error'&&<button type="button" onClick={load}>Retry comparisons</button>}</section>;
++}
++function LoadedPairViewer({study}){
+  const [index,setIndex]=useState(study.summary.default_index),[highlight,setHighlight]=useState(true),[domain,setDomain]=useState('all');
+  const indices=study.pairs.map((p,i)=>({p,i})).filter(({p})=>domain==='all'||p.dataset===domain),pos=indices.findIndex(x=>x.i===index),pair=study.pairs[index];
+  function changeDomain(value){setDomain(value);setIndex(study.pairs.findIndex(p=>value==='all'||p.dataset===value));}

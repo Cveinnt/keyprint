@@ -27,6 +27,14 @@ held until the requested product readiness bar is met.
 
 ## Current enforcement
 
+September 24 four-key follow-up: ordinary 31/36 and marked 32/36 pass the same
+fixed task rubrics; all 72 outputs retain the requested language. Marked French
+answers repeat within every key, while three keys pass 3/3 and one fails 0/3.
+Fresh calls and distinct draw transcripts reconcile for all attempts. This
+identifies a repeatability limitation and variation across keys, not general
+quality acceptance. Do not advertise unchanged output diversity under a fixed
+key. See [all outputs and ratings](evidence/multikey-prose-2026-09-24/README.md).
+
 September 23 fixed prose pilot: ordinary 10/12 versus marked 8/12 task passes.
 All 24 generations retained the requested language. Approval constraints passed
 in both conditions; two ordinary picnic outputs invented a location. Four marked

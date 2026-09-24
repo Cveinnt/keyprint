@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-24",
+  "python_tests_passed": 65,
+  "javascript_tests_passed": 28,
+  "live_pairs": 2,
+  "exact_traces_verified": 4,
+  "observed_request_directories_after_refresh": 2,
+  "static_gallery_checked": true,
+  "desktop_highlight_exact_text": true,
+  "gallery_switch_preserves_mode_and_failure_note": true,
+  "mobile_width": 390,
+  "mobile_document_width": 390,
+  "keyboard_toggle_checked": true,
+  "custom_prompt_entry_checked": true,
+  "live_custom_identical_pair_zero_highlights": true,
+  "refresh_restores_without_new_generation": true,
+  "browser_console_errors_or_warnings_observed": 0,
+  "scope": "Cached Qwen/MLX on this Mac. No Windows/Linux, new model download or other native serving qualification; no production deployment."
+}

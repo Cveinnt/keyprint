@@ -1,0 +1,9 @@
+{
+  "ratings_sha256": "c407688438a6f941bd222e2496f20dee837c987f8ec89380e57a73e1ffc2f9e1",
+  "blind_review_sha256": "57c318095f68ff5915e3c313cc9786b880834c7c6d4bbfd2c46a47fcb366656e",
+  "plan_sha256": "9ab9d4d0bce4782484c94c3030e9c3b93538bad4797f7f299fdde1226ad60ea9",
+  "conditions_joined": false,
+  "review_count": 72,
+  "unique_text_groups": 44,
+  "review": "Identical strings rated consistently as groups; all 72 attempt ratings retained before joining conditions or keys."
+}

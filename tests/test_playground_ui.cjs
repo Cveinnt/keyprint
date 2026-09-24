@@ -14,6 +14,7 @@ function ui(extra = {}) {
       classList: { add() {}, remove() {}, toggle() {} },
       addEventListener(event, fn) { this.listeners[event] = fn; },
       setAttribute(key, value) { this.attributes[key] = String(value); },
+      getAttribute(key) { return this.attributes[key] ?? null; },
       replaceChildren() { this.children = []; },
       append(...children) { this.children.push(...children); },
       getBoundingClientRect() { return { left: 0, width: 560 }; },
@@ -28,6 +29,7 @@ function ui(extra = {}) {
     mountGallery:require('../src/keyprint/web/gallery.js').mountGallery,
     location: { hash: '' }, sessionStorage: { getItem: () => null }, URLSearchParams,
     fetch: extra.fetch, renderResponse: (target,text) => {target.textContent=text;},
+    renderWordingPair: (a,b,x,y) => {a.textContent=x;b.textContent=y;return x===y ? 'Identical wording' : 'Independent samples';},
   });
   // No token: startup reports the normal session instruction without network IO.
   vm.runInContext(fs.readFileSync(require.resolve('../src/keyprint/web/app.js'), 'utf8'), context);
@@ -209,6 +211,14 @@ test('Recorded viewer makes no model request and keeps draft prompts distinct fr
   assert.match(app.get('status').textContent,/identical/);
   assert.equal(app.get('edited').readOnly,true);
   assert.equal(app.get('prompt-controls').open,false);
+  app.get('wording-toggle').listeners.click();
+  assert.equal(app.get('wording-toggle').getAttribute('aria-pressed'),'true');
+  assert.equal(app.get('reading-mode').disabled,true);
+  assert.match(app.get('wording-note').textContent,/Identical wording/);
+  assert.equal(app.get('marked-text').textContent,'Recorded 🌱');
+  app.get('wording-toggle').listeners.click();
+  assert.equal(app.get('reading-mode').disabled,false);
+  assert.equal(app.get('wording-note').hidden,true);
   app.get('prompt').value='My different prompt'; app.get('prompt').listeners.input();
   assert.match(app.get('status').textContent,/has not been run/);
   assert.match(app.get('recipe').textContent,/My different prompt/);

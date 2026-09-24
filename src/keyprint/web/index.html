@@ -109,6 +109,15 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
         </p>
         <button id="stop" type="button" aria-label="Stop current experiment" disabled hidden>Stop</button>
         <button id="reconnect" type="button" hidden>Check connection</button>
+        <div class="reading-controls">
+          <button id="wording-toggle" type="button" aria-pressed="false" aria-controls="outputs" disabled>Highlight differences</button>
+          <label for="reading-mode">Response display</label>
+          <select id="reading-mode">
+            <option value="reading">Reading view</option>
+            <option value="exact">Exact text</option>
+          </select>
+        </div>
+        <p id="wording-note" class="input-note" role="status" hidden></p>
         <div class="response-switch" role="group" aria-label="Response to read">
           <button id="read-ordinary" type="button" aria-pressed="false" aria-controls="ordinary-response">Ordinary</button>
           <button id="read-marked" type="button" aria-pressed="true" aria-controls="marked-response">With Keyprint</button>
@@ -140,14 +149,6 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
           <ul id="rewrite-issues"></ul>
           <p>These checks do not verify meaning or watermark presence. Your original stays alongside the candidate; neither text is silently repaired or substituted.</p>
         </aside>
-        <div class="reading-controls">
-          <label for="reading-mode">Response display</label>
-          <select id="reading-mode">
-            <option value="reading">Reading view</option>
-            <option value="exact">Exact text</option>
-          </select>
-          <span>Basic formatting only. Inspection and exports use exact text.</span>
-        </div>
       </section>
       <section id="choices" class="token-explorer" aria-labelledby="choices-title" hidden>
         <div class="section-heading"><span class="number">02</span>
