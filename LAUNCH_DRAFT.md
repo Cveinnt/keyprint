@@ -4,6 +4,11 @@ Draft only. Nothing here is scheduled or posted. The GitHub repo is private and
 the new `keyprint` package is not publicly installable. Replace placeholder links
 only after anonymous access and installation have been verified.
 
+The launch should earn attention through a useful, inspectable watermarking
+tool. Pretext is a benchmark for impact and presentation, not a feature or size
+checklist. No copy or demo may trade semantic fidelity or clue conformance for
+speed, smaller assets, stronger-looking signals or a more impressive example.
+
 ## X opening
 
 I built Keyprint to make text watermarking something you can actually play with.

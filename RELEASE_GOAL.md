@@ -1,5 +1,31 @@
 # Keyprint release goal
 
+## Priority: watermark fidelity before launch polish
+
+Pretext is the benchmark for launch impact, clarity, creative demonstrations and
+ease of use. Its framework architecture, feature list and package size are not
+requirements for Keyprint. Never trade watermark validity, language, meaning,
+facts, conditions or public-clue conformance for a smaller or more viral demo.
+
+Keep existing input text unchanged. The supported mechanism chooses tokens during
+native generation; it does not translate, rewrite or silently repair completed
+text. Its ordinary and marked samples need not be word-for-word identical, but
+changed facts, intent, language or important details fail the preservation goal.
+Do not present equivalent-looking wording as proof that meaning is preserved.
+
+Validate task fidelity and watermark performance separately on declared profiles:
+retained ordinary/marked outputs, fixed-key behavior, and detection power at the
+registered false-positive target. A higher diagnostic fraction, selected good
+key, altered threshold or favorable subset cannot substitute for those checks.
+Public-source clue coverage remains evidence-backed; it does not identify
+Anthropic's undisclosed implementation or establish untested guarantees.
+
+The latest size reduction only deferred loading unchanged website comparison
+records. The sampling engine, model bindings, tokenization and detector code
+were untouched. The wording highlighter changes presentation only; generation
+text and exported data remain exact. These changes provide no new scientific
+acceptance and do not resolve existing quality or detection gaps.
+
 ## September 24 progress
 
 - Four-key actual inference: all 72 outputs retained; ordinary 31/36 and marked
