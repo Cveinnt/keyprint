@@ -26,6 +26,31 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 newer-model baseline
+
+- Ran all eight planned ordinary Qwen3.5-9B MLX 4-bit responses on the unchanged
+  four longer factual tasks. All reach EOS and retain language. Strict content
+  and full-task passes: 2/8. Accepting both conservative judgments gives 4/8
+  content and 3/8 full task. No watermark applied or post-generation repair.
+- All 2,391 sampled tokens reconcile with upstream native decoding and retained
+  events; 2,407 model forwards counted. All 13 model assets verified before
+  inference. Seven new receipt checks and 35 combined local study checks pass.
+- This establishes that facts can fail without watermarking; it does not
+  excuse watermark-added harm or make the different-model comparison causal.
+  [All outputs, frozen labels and methods](evidence/model-baseline-2026-09-28/README.md).
+- Identified concrete Qwen3.5 admission issues: 248,320-token head, NFC normalizer,
+  and nested EOS 248044 versus the actual runtime stop token 248046. Current
+  SDK correctly rejects this binding. First audit's wrong nested-EOS assumption
+  is retained; corrected audit follows the actual upstream loader, with no rerun.
+- Next implement and independently audit the wider-vocabulary/native MLX binding,
+  including exact bytes, Unicode literal replay and explicit stopping policy,
+  before paired watermark evaluation. Do not bypass current guards or transfer
+  original Qwen3-8B detector/quality acceptance to a new tokenizer.
+- Qwen3.5-27B required more internal disk than available; external Archive denied
+  writes. The 9B choice was made before outputs were generated. No user files
+  deleted or permissions changed. This is not a new perfect-baseline launch gate.
+- SDK sampler/defaults, production page, CI and public launch remain unchanged.
+
 ## September 28 longer factual writing
 
 - Completed 32 actual unchanged-SDK outputs across four longer tasks, four

@@ -14,7 +14,7 @@ TITLES = {
 }
 
 
-def build(source):
+def build(source, *, ordinary_baseline=False):
     rows = json.loads(source)
     if not isinstance(rows, list) or not 1 <= len(rows) <= 500:
         raise ValueError('Require 1-500 review records')
@@ -41,6 +41,9 @@ def build(source):
     payload = {'study_sha256': hashlib.sha256(source.encode()).hexdigest(), 'rows': clean}
     encoded = json.dumps(payload, ensure_ascii=True).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     template = Path(__file__).with_name('fact_review.html').read_text()
+    if ordinary_baseline:
+        template = template.replace('Sampler and key identity are hidden.',
+            'These are ordinary generations only; no watermark was applied. Attempt order and seeds are hidden.')
     return template.replace('__REVIEW_DATA__', encoded)
 
 
@@ -48,5 +51,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('input', type=Path)
     parser.add_argument('output', type=Path)
+    parser.add_argument('--ordinary-baseline', action='store_true')
     args = parser.parse_args()
-    args.output.write_text(build(args.input.read_text()))
+    args.output.write_text(build(args.input.read_text(), ordinary_baseline=args.ordinary_baseline))

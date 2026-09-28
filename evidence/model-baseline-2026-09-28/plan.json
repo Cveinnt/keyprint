@@ -1,0 +1,163 @@
+{
+  "schema": "keyprint.model-baseline.v1",
+  "model": "mlx-community/Qwen3.5-9B-4bit",
+  "revision": "8b2b98c00a6b4d291155e4890773ca8f769aee53",
+  "assets_sha256": {
+    ".gitattributes": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930",
+    "README.md": "1407e3e3337063c280b2fe1a63724908a5051cfbf26cd8b98f247432b0382537",
+    "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "config.json": "a96942cb6a8a1d3f1d17514d81a1925d04362a6a3233b389d13012211baaa9f8",
+    "model-00001-of-00002.safetensors": "a68b87558c6ef43f74c2bd63ce7e9092ceddc3101f3def0030774bae5f42aadd",
+    "model-00002-of-00002.safetensors": "b0a770bf8469c7f3f18756a0e0283f1c1174344a83e059a4e483f6af4907352d",
+    "model.safetensors.index.json": "dd023913fb87cfdae27fb11dcf695117c925833796ccac3c64117d6652d8ff1e",
+    "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+    "processor_config.json": "14932921ca485d458a04dafd8069fbb0a4505622a48208d19ed247115801385b",
+    "tokenizer.json": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+    "tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+    "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+    "vocab.json": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+  },
+  "script_sha256": "336c036c96c8d85dd8ec6c1a891e5b3112adf10a416cbb73f38b719bad4c26e0",
+  "cases_sha256": "830a6fe388d5f96e2a7adb769ff2b5ffad1673ae70cd45a9eae3c3f072aa1e35",
+  "cases": [
+    {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "min_words": 200,
+      "max_words": 260,
+      "paragraphs": 3,
+      "prompt": "Redacta en español una actualización para un cliente de entre 200 y 260 palabras, exactamente tres párrafos de prosa, sin título ni listas. Conserva todos los hechos del siguiente resumen. Puedes explicar la diferencia entre un plan y una confirmación o entre salida y entrega, pero no añadas nuevos hechos, compromisos, causas, fechas, horas, precios o empresas. Resumen: el pedido AX-17 contiene 6 teclados; 4 son blancos y 2 negros. Los 6 están reservados para este pedido y ninguno ha salido del almacén. La salida está prevista para el viernes, pero aún no está confirmada. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada. El cliente pidió que no se divida el envío; esa instrucción está registrada. No se ha ofrecido una sustitución. La persona de contacto es Lucía. No conviertas la fecha de salida en fecha de entrega. No prometas enviar avisos ni realizar acciones no incluidas en el resumen.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "4 white and 2 black",
+        "all 6 reserved for this order; none has left warehouse",
+        "dispatch planned Friday but not confirmed",
+        "tracking number unavailable",
+        "delivery date unconfirmed",
+        "customer requested no split shipment; instruction recorded",
+        "no substitution offered",
+        "contact is Lucía"
+      ],
+      "forbidden": "Friday delivery or confirmed dispatch; invented tracking/carrier/timing/price/cause; substitution already offered; new promises."
+    },
+    {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "min_chars": 400,
+      "max_chars": 600,
+      "paragraphs": 3,
+      "prompt": "400文字以上600文字以下の日本語で、見出しや箇条書きを使わず、ちょうど3段落の保守案内を書いてください。次の事実をすべて保ってください。計画と確認、バックアップ作成と復元テストの違いを説明しても構いませんが、新しい事実、約束、作業、理由、年、曜日を加えないでください。事実：対象サービスはKumo。保守は10月8日13:00から13:20まで東京時間で予定されている。予定は変更される可能性がある。バックアップは作成済みだが、復元テストはまだ実施されていない。利用者は保守開始まで文書を閲覧できる。保守中は新しいアップロードを停止する予定だが、既存の文書は削除しない。完了の確認はまだ出ていない。窓口は佐藤さん。復元が成功した、保守が完了した、予定が確定したとは書かないでください。通知や連絡など新しい対応を約束しないでください。",
+      "facts": [
+        "service Kumo",
+        "maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "schedule may change",
+        "backup created; restoration not tested",
+        "users can view documents until maintenance starts",
+        "new uploads planned to stop during maintenance",
+        "existing documents will not be deleted",
+        "completion not confirmed",
+        "contact is 佐藤"
+      ],
+      "forbidden": "Invented year/weekday/cause/work/promise; successful restoration; completed maintenance; confirmed schedule; deletion of existing documents."
+    },
+    {
+      "id": "comparison_fr",
+      "language": "French",
+      "min_words": 200,
+      "max_words": 260,
+      "paragraphs": 3,
+      "prompt": "Rédige en français une comparaison de 200 à 260 mots, exactement trois paragraphes de prose, sans titre ni liste. Conserve tous les faits ci-dessous. Tu peux reformuler les différences et expliquer pourquoi un prix mensuel et une capacité de stockage sont deux caractéristiques distinctes, mais n'ajoute aucun fait, engagement ou calcul absent du résumé. Ne recommande aucun forfait. Résumé : le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Les deux incluent l'assistance par e-mail, mais aucun ne comprend l'assistance téléphonique. Aucun ne propose de stockage illimité. Les prix indiqués sont mensuels; aucun prix annuel n'est fourni. Le forfait B n'est pas moins cher que le forfait A. Le délai de réponse de l'assistance n'est pas précisé. N'invente pas de remise, de durée d'engagement, de taxes, de frais, de garantie ou de prix par Go. Ne transforme pas une information absente en condition confirmée.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "both include email support",
+        "neither includes telephone support",
+        "neither offers unlimited storage",
+        "prices monthly; annual prices not supplied",
+        "B is not cheaper than A",
+        "support response time unspecified"
+      ],
+      "forbidden": "Recommendation; invented per-GB calculation/discount/contract term/taxes/fees/guarantee; absent detail treated as confirmed policy; swapped price/capacity/support."
+    },
+    {
+      "id": "handoff_en",
+      "language": "English",
+      "min_words": 200,
+      "max_words": 260,
+      "paragraphs": 3,
+      "prompt": "Write an English project handoff of 200 to 260 words in exactly three prose paragraphs, without headings or lists. Preserve every fact in this brief. You may explain the distinctions between pending work and completion, or between the two owners, but add no new facts, commitments, causes, schedules or procedures. Brief: Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Verification is pending. Documentation work may continue meanwhile. The migration has not been confirmed complete, and deployment has not been confirmed. The staging environment is available for documentation screenshots; this does not establish production readiness. The current public guide is version 1.7. Theo's planned update is version 1.8, which has not been published. Do not swap owners, claim all work must stop, promise a deployment time, invent a checklist or claim the pending backup has passed verification.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "verification pending",
+        "documentation may continue",
+        "migration completion and deployment unconfirmed",
+        "staging available for documentation screenshots; not proof of production readiness",
+        "current public guide version 1.7",
+        "planned guide update version 1.8 not published"
+      ],
+      "forbidden": "Swapped owners; all work stopped; completed backup verification/migration/deployment/publication; staging equated to production-ready; invented checklist/time/procedure/commitment."
+    }
+  ],
+  "schedule": [
+    {
+      "case": "shipping_es",
+      "repetition": 0,
+      "seed": 2026092801
+    },
+    {
+      "case": "maintenance_ja",
+      "repetition": 0,
+      "seed": 2026092803
+    },
+    {
+      "case": "comparison_fr",
+      "repetition": 0,
+      "seed": 2026092805
+    },
+    {
+      "case": "handoff_en",
+      "repetition": 0,
+      "seed": 2026092807
+    },
+    {
+      "case": "shipping_es",
+      "repetition": 1,
+      "seed": 2026092802
+    },
+    {
+      "case": "maintenance_ja",
+      "repetition": 1,
+      "seed": 2026092804
+    },
+    {
+      "case": "comparison_fr",
+      "repetition": 1,
+      "seed": 2026092806
+    },
+    {
+      "case": "handoff_en",
+      "repetition": 1,
+      "seed": 2026092808
+    }
+  ],
+  "settings": {
+    "temperature": 0.7,
+    "top_k": 100,
+    "top_p": 0.0,
+    "max_tokens": 1024,
+    "enable_thinking": false
+  },
+  "dependencies": {
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.2",
+    "transformers": "5.16.1",
+    "tokenizers": "0.23.1",
+    "numpy": "2.5.2"
+  },
+  "failure_policy": "Eight attempts, two per unchanged task. No retries, replacements, repairs or output selection. Retain all errors/caps.",
+  "review": "Assistant fact/no-addition/language/prose labels frozen before opening seed/order metadata. Model identity and source tasks are known; not independent or model-blind review.",
+  "decision": "Model feasibility only: report content, language, format and execution separately and jointly, with every failure retained. This is not a new launch gate. Determine whether the prior all-failing baseline persists before attributing harm to a watermark; native binding and paired watermark evidence must be qualified separately. Even eight passes cannot prove general preservation.",
+  "scope": "Upstream ordinary text-only MLX-LM, not Keyprint generation. No watermark keys, detector scores, private-algorithm identification or launch acceptance. Same opened source tasks; different model/runtime sampling is not a controlled causal comparison to prior SDK samples."
+}

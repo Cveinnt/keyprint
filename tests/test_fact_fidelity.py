@@ -64,6 +64,16 @@ def review_row():
               'facts': ['No approval yet'], 'prompt': 'Preserve the fact', 'forbidden': 'Approval', 'max_words': 5}}
 
 
+def test_ordinary_baseline_disclosure_does_not_change_generated_text():
+    row = review_row()
+    row['text'] = 'Sampler and key identity are hidden.'
+    source = json.dumps([row])
+    ordinary = build(source, ordinary_baseline=True)
+    assert 'These are ordinary generations only; no watermark was applied.' in ordinary
+    assert json.dumps(row['text']) in ordinary
+    assert 'These are ordinary generations only;' not in build(source)
+
+
 def test_review_builder_keeps_generated_markup_inert_and_ratings_empty():
     source = json.dumps([review_row()])
     output = build(source)

@@ -21,6 +21,15 @@ user text message, a token cap and an idempotency key. Tools, system/multi-turn
 messages and streaming are rejected before inference. Replay lasts only for
 the server process. See [provider usage](PROVIDERS.md) for exact boundaries.
 
+## Newer Qwen model boundary
+
+Qwen3.5-9B has [eight ordinary upstream MLX outputs](evidence/model-baseline-2026-09-28/README.md),
+not a Keyprint adapter. Its 248,320-token head and NFC normalizer exceed the
+current portable binding's declared scope. Its nested EOS ID also differs from
+the actual runtime stop token. Wider-vocabulary sampling, exact byte rendering,
+Unicode replay and stop-policy identity must be audited before marked inference.
+The pinned Qwen3-8B MLX row above does not imply Qwen-family-wide support.
+
 ## Other application SDKs
 
 | Client layer | Current Keyprint evidence | Next validation needed |
@@ -75,7 +84,8 @@ and [Ollama](https://docs.ollama.com/api/openai-compatibility) document
 OpenAI-compatible interfaces. That describes the request protocol, not installation
 of Keyprint's sampler. SGLang and vLLM require separate native integration and
 lifecycle testing. [PydanticAI](https://pydantic.dev/docs/ai/models/openai/) supports
-custom endpoints; it still needs its own end-to-end Keyprint check.
+custom endpoints; the scoped local path is tested above. Additional features and
+backends still need their own end-to-end checks.
 
 See the [detailed runtime audit](INTEGRATIONS.md),
 [output-quality contract](OUTPUT_QUALITY.md) and [release gates](RELEASE_GOAL.md).

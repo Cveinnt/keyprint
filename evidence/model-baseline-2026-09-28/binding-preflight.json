@@ -1,0 +1,37 @@
+{
+  "model_vocabulary_size": 248320,
+  "tokenizer_model": "BPE",
+  "decoder": {
+    "type": "ByteLevel",
+    "add_prefix_space": false,
+    "trim_offsets": false,
+    "use_regex": false
+  },
+  "normalizer": {
+    "type": "NFC"
+  },
+  "eos_ids": [
+    248044
+  ],
+  "special_ids": [
+    248046,
+    248044,
+    248070,
+    248071,
+    248076,
+    248056,
+    248057,
+    248053,
+    248054
+  ],
+  "current_sdk_rejection": "portable profile does not support tokenizer normalization",
+  "eos_ids_source": "Nested text_config only; not the actual upstream stopping policy",
+  "upstream_termination_policy": {
+    "resolved_upstream_eos_ids": [
+      248046
+    ],
+    "nested_config_eos": 248044,
+    "top_level_config_eos": null,
+    "source": "mlx_lm.utils.load tokenizer resolution; no generation rerun or text change"
+  }
+}

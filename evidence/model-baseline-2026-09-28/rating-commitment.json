@@ -1,0 +1,6 @@
+{
+  "plan.json": "f883a85e0b465d5fe06719e0a9ed58739efafd4a44bb8e039044291c9cdc4fc6",
+  "blind-review.json": "b6309e6433f1b4be0a401e0b1795882a000b5b276d19b9e53e5cdcbb52496601",
+  "frozen-ratings.json": "bf3c0df8984049adaa5ed3dd174fe2892c7118e4e26a487135d16571b624d985",
+  "scope": "Eight assistant ratings frozen before opening seed/repetition metadata. Model identity known; not independent or model-blind review. Two conservative judgments flagged before revealing attempt metadata. Original prompts and rubric retained."
+}

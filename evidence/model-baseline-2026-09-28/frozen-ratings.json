@@ -1,0 +1,152 @@
+[
+  {
+    "review_id": "70e585c87347",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "All listed maintenance facts and contact retained. Backup as contingency and restoration as a distinct verification step are allowed explanatory elaborations; no specific new notification, weekday or operational procedure is promised. Overall schedule remains explicitly provisional."
+  },
+  {
+    "review_id": "808caa606267",
+    "fact_checks": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Fails to explicitly preserve that none of the reserved keyboards has left the warehouse. Adds successfully processed status, inventory/resource guarantees, logistics-system validation and assured future single-expedition shipment beyond the recorded request."
+  },
+  {
+    "review_id": "853bc80c13f1",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Invents Tuesday despite a prompt explicitly forbidding an unsupplied weekday. Omits Sato as contact; remaining operational facts retained."
+  },
+  {
+    "review_id": "68e074db9ee5",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Source ownership, block, pending verification, versions and readiness boundaries retained. Adds a condition that documentation must not interfere with verification, invents Theos team and directs what it should prioritize."
+  },
+  {
+    "review_id": "265c0d607f3f",
+    "fact_checks": [
+      true,
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Strict ambiguity failures: capacite de stockage superieure de 20 Go can mean 20 GB more than A rather than B total 20 GB; missing annual prices becomes missing annual engagement information. Flagged conservative because awkward phrasing could be read as a higher capacity of 20 GB and absent annual pricing context. No definitive added product policy or calculation."
+  },
+  {
+    "review_id": "8d9304111c0a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "All prices, capacities, support limits, monthly/annual distinction and unspecified response time retained. Economic ranking is supplied arithmetic ordering, not a recommendation; no new policy, calculation or guarantee is introduced."
+  },
+  {
+    "review_id": "d712e694a421",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Strict failure: invents a migration team and calls staging a safe space, neither established by the source. Conservative wording boundary: team may loosely refer to the named owner and safe space may describe its documentation purpose rather than a security guarantee."
+  },
+  {
+    "review_id": "20631bbef2be",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained, but adds correct processing, logistics-team validation/loading procedures, missing formal authorization, intermediate causes, a guarantee of one shipment, no substitution even considered and future coordination by Lucia."
+  }
+]
