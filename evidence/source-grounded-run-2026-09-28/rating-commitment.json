@@ -1,0 +1,6 @@
+{
+  "plan.json": "8bda97cf8faf21d950d16abc83f3e58694567b58417d75f3295d286f6bc5bb77",
+  "blind-review.json": "b786027799e40f04c8fce39d5a8dd6a2fd26921ec12f67de97d94600db5d5253",
+  "frozen-ratings.json": "8648f7ba2dc4de680415edcf66244ff047eb31d95578e94a9751ad80a7d27b5a",
+  "phase": "All 128 source-only assistant judgments and uncertain fields frozen before condition, key or count join. No independent human acceptance."
+}

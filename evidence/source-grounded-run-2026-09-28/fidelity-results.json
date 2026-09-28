@@ -1,0 +1,977 @@
+{
+  "schema": "keyprint.source-grounded-fidelity.v1",
+  "commitment": {
+    "plan.json": "8bda97cf8faf21d950d16abc83f3e58694567b58417d75f3295d286f6bc5bb77",
+    "blind-review.json": "b786027799e40f04c8fce39d5a8dd6a2fd26921ec12f67de97d94600db5d5253",
+    "frozen-ratings.json": "8648f7ba2dc4de680415edcf66244ff047eb31d95578e94a9751ad80a7d27b5a",
+    "phase": "All 128 source-only assistant judgments and uncertain fields frozen before condition, key or count join. No independent human acceptance."
+  },
+  "strict": {
+    "groups": {
+      "ordinary": {
+        "attempts": 64,
+        "essential_facts": 47,
+        "supported_claims": 39,
+        "content": 33,
+        "language": 64,
+        "format": 63,
+        "full_task": 32
+      },
+      "marked": {
+        "attempts": 64,
+        "essential_facts": 36,
+        "supported_claims": 38,
+        "content": 23,
+        "language": 64,
+        "format": 63,
+        "full_task": 22
+      }
+    },
+    "paired": {
+      "essential_facts": {
+        "both_pass": 31,
+        "ordinary_only": 16,
+        "marked_only": 5,
+        "neither_pass": 12
+      },
+      "supported_claims": {
+        "both_pass": 26,
+        "ordinary_only": 13,
+        "marked_only": 12,
+        "neither_pass": 13
+      },
+      "content": {
+        "both_pass": 16,
+        "ordinary_only": 17,
+        "marked_only": 7,
+        "neither_pass": 24
+      },
+      "language": {
+        "both_pass": 64,
+        "ordinary_only": 0,
+        "marked_only": 0,
+        "neither_pass": 0
+      },
+      "format": {
+        "both_pass": 62,
+        "ordinary_only": 1,
+        "marked_only": 1,
+        "neither_pass": 0
+      },
+      "full_task": {
+        "both_pass": 16,
+        "ordinary_only": 16,
+        "marked_only": 6,
+        "neither_pass": 26
+      }
+    },
+    "by_case": {
+      "bdd7d99e55ea1217": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 0,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "fdb686ec46ca8003": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 1,
+          "supported_claims": 3,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 4,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "4884454d294a782f": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 2,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 1,
+          "supported_claims": 1,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "7c398604a53b30a9": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 4,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        }
+      },
+      "a663a04d3d40d159": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 1,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        }
+      },
+      "4242dee80ddc4b37": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 1,
+          "supported_claims": 1,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 1,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "9e4236870ee98870": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        }
+      },
+      "5c35b1f44848772d": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 1,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        }
+      },
+      "d207aed5e23cdd2b": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 0,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "070741606692f144": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 1,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 2,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "e579a7acacdcf26d": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 3,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        }
+      },
+      "bfba6146fa86a934": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      },
+      "0d4f07a298ed0988": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 2,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "d7ee277160123eab": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 4,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      },
+      "d0683258137edcee": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 1,
+          "supported_claims": 1,
+          "content": 1,
+          "language": 4,
+          "format": 3,
+          "full_task": 0
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 4,
+          "content": 2,
+          "language": 4,
+          "format": 3,
+          "full_task": 1
+        }
+      },
+      "1f7317d2eefa0600": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 4,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        }
+      }
+    },
+    "by_key": {
+      "0": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 12,
+          "supported_claims": 14,
+          "content": 11,
+          "language": 16,
+          "format": 15,
+          "full_task": 10
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 10,
+          "supported_claims": 9,
+          "content": 5,
+          "language": 16,
+          "format": 16,
+          "full_task": 5
+        }
+      },
+      "1": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 13,
+          "supported_claims": 7,
+          "content": 7,
+          "language": 16,
+          "format": 16,
+          "full_task": 7
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 8,
+          "supported_claims": 9,
+          "content": 5,
+          "language": 16,
+          "format": 16,
+          "full_task": 5
+        }
+      },
+      "2": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 12,
+          "supported_claims": 9,
+          "content": 9,
+          "language": 16,
+          "format": 16,
+          "full_task": 9
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 9,
+          "supported_claims": 10,
+          "content": 6,
+          "language": 16,
+          "format": 16,
+          "full_task": 6
+        }
+      },
+      "3": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 10,
+          "supported_claims": 9,
+          "content": 6,
+          "language": 16,
+          "format": 16,
+          "full_task": 6
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 9,
+          "supported_claims": 10,
+          "content": 7,
+          "language": 16,
+          "format": 15,
+          "full_task": 6
+        }
+      }
+    }
+  },
+  "all_uncertain_fields_accepted": {
+    "groups": {
+      "ordinary": {
+        "attempts": 64,
+        "essential_facts": 56,
+        "supported_claims": 47,
+        "content": 43,
+        "language": 64,
+        "format": 63,
+        "full_task": 42
+      },
+      "marked": {
+        "attempts": 64,
+        "essential_facts": 48,
+        "supported_claims": 45,
+        "content": 37,
+        "language": 64,
+        "format": 63,
+        "full_task": 36
+      }
+    },
+    "paired": {
+      "essential_facts": {
+        "both_pass": 45,
+        "ordinary_only": 11,
+        "marked_only": 3,
+        "neither_pass": 5
+      },
+      "supported_claims": {
+        "both_pass": 35,
+        "ordinary_only": 12,
+        "marked_only": 10,
+        "neither_pass": 7
+      },
+      "content": {
+        "both_pass": 30,
+        "ordinary_only": 13,
+        "marked_only": 7,
+        "neither_pass": 14
+      },
+      "language": {
+        "both_pass": 64,
+        "ordinary_only": 0,
+        "marked_only": 0,
+        "neither_pass": 0
+      },
+      "format": {
+        "both_pass": 62,
+        "ordinary_only": 1,
+        "marked_only": 1,
+        "neither_pass": 0
+      },
+      "full_task": {
+        "both_pass": 29,
+        "ordinary_only": 13,
+        "marked_only": 7,
+        "neither_pass": 15
+      }
+    },
+    "by_case": {
+      "bdd7d99e55ea1217": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 1,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        }
+      },
+      "fdb686ec46ca8003": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 4,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      },
+      "4884454d294a782f": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 4,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 1,
+          "supported_claims": 1,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "7c398604a53b30a9": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 4,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        }
+      },
+      "a663a04d3d40d159": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 3,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 3,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        }
+      },
+      "4242dee80ddc4b37": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 1,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 1,
+          "supported_claims": 1,
+          "content": 1,
+          "language": 4,
+          "format": 4,
+          "full_task": 1
+        }
+      },
+      "9e4236870ee98870": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 3,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        }
+      },
+      "5c35b1f44848772d": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 3,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        }
+      },
+      "d207aed5e23cdd2b": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 3,
+          "supported_claims": 0,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "070741606692f144": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 1,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 0,
+          "supported_claims": 3,
+          "content": 0,
+          "language": 4,
+          "format": 4,
+          "full_task": 0
+        }
+      },
+      "e579a7acacdcf26d": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 3,
+          "content": 3,
+          "language": 4,
+          "format": 4,
+          "full_task": 3
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 2,
+          "supported_claims": 3,
+          "content": 2,
+          "language": 4,
+          "format": 4,
+          "full_task": 2
+        }
+      },
+      "bfba6146fa86a934": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      },
+      "0d4f07a298ed0988": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      },
+      "d7ee277160123eab": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      },
+      "d0683258137edcee": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 2,
+          "content": 2,
+          "language": 4,
+          "format": 3,
+          "full_task": 1
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 3,
+          "full_task": 3
+        }
+      },
+      "1f7317d2eefa0600": {
+        "ordinary": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        },
+        "marked": {
+          "attempts": 4,
+          "essential_facts": 4,
+          "supported_claims": 4,
+          "content": 4,
+          "language": 4,
+          "format": 4,
+          "full_task": 4
+        }
+      }
+    },
+    "by_key": {
+      "0": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 14,
+          "supported_claims": 14,
+          "content": 12,
+          "language": 16,
+          "format": 15,
+          "full_task": 11
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 13,
+          "supported_claims": 11,
+          "content": 9,
+          "language": 16,
+          "format": 16,
+          "full_task": 9
+        }
+      },
+      "1": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 15,
+          "supported_claims": 9,
+          "content": 9,
+          "language": 16,
+          "format": 16,
+          "full_task": 9
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 11,
+          "supported_claims": 10,
+          "content": 9,
+          "language": 16,
+          "format": 16,
+          "full_task": 9
+        }
+      },
+      "2": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 13,
+          "supported_claims": 12,
+          "content": 11,
+          "language": 16,
+          "format": 16,
+          "full_task": 11
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 13,
+          "supported_claims": 13,
+          "content": 10,
+          "language": 16,
+          "format": 16,
+          "full_task": 10
+        }
+      },
+      "3": {
+        "ordinary": {
+          "attempts": 16,
+          "essential_facts": 14,
+          "supported_claims": 12,
+          "content": 11,
+          "language": 16,
+          "format": 16,
+          "full_task": 11
+        },
+        "marked": {
+          "attempts": 16,
+          "essential_facts": 11,
+          "supported_claims": 11,
+          "content": 9,
+          "language": 16,
+          "format": 15,
+          "full_task": 8
+        }
+      }
+    }
+  },
+  "uncertain_fields": 60,
+  "raw_diagnostics": {
+    "ordinary": {
+      "matching": {
+        "available": 64,
+        "unavailable": 0,
+        "ones": 176105,
+        "trials": 352200,
+        "events": 11740
+      },
+      "next_key": {
+        "available": 64,
+        "unavailable": 0,
+        "ones": 175853,
+        "trials": 352200,
+        "events": 11740
+      }
+    },
+    "marked": {
+      "matching": {
+        "available": 64,
+        "unavailable": 0,
+        "ones": 173184,
+        "trials": 335580,
+        "events": 11186
+      },
+      "next_key": {
+        "available": 64,
+        "unavailable": 0,
+        "ones": 168025,
+        "trials": 335580,
+        "events": 11186
+      }
+    }
+  },
+  "script_sha256": "54438e0fb8a1c2f820772fe8d9e4a2c65634b081e3dfe28d42d45d90fb092c97",
+  "scope": "Assistant development review of sixteen predetermined English source tasks, four reused keys, one experimental Qwen3.5 profile. No independent human acceptance, calibrated detector, powered noninferiority result or universal meaning-preservation guarantee. Counts are correlated; no bitwise significance claim. Source passages and derived outputs remain private, separate from the MIT SDK. Earlier multilingual stress failures remain.",
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}

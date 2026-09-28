@@ -26,7 +26,7 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
-## September 28 source-grounded execution and blinded review
+## September 28 source-grounded execution and frozen factual review
 
 - Completed all 128 predetermined English source-based outputs across sixteen
   tasks and four existing keys. Every output reaches EOS; zero runtime errors or
@@ -34,9 +34,18 @@ acceptance and do not resolve existing quality or detection gaps.
 - All 24,465 native tokens pass the complete prompt/byte/usage/EOS/draw/commit
   receipt audit. Every blinded view matches its exact source, frozen rubric and
   recorded output. This is not independent model-forward replay or calibration.
-- Sixty-four of 128 source-only assistant judgments are retained with uncertainty
-  flags and a partial hash commitment. Conditions, keys and raw counts remain
-  hidden until all ratings are complete and frozen. No quality comparison yet.
+- All 128 source-only assistant judgments and sixty uncertain fields were frozen
+  before condition/key/count joins. Strict content passes are 33/64 ordinary and
+  23/64 marked; accepting all pre-flagged ambiguities gives 43/64 and 37/64.
+  Full-task passes are 32/64 and 22/64, or 42/64 and 36/64 under sensitivity.
+- Required source-fact coverage passes 47/64 ordinary versus 36/64 marked;
+  supported-claim checks pass 39/64 versus 38/64. Both arms retain English in all
+  64 outputs and format in 63/64. Missing detail drives more of the measured
+  difference than unsupported claims. This fixed 16-task/four-key study is
+  descriptive, not a causal estimate or powered quality acceptance.
+- All matching/next-key inspections are available, but correlated raw counts
+  have no calibrated new-profile detector threshold. Independent arithmetic
+  recomputation matches both strict and sensitivity component totals.
 - Actual-data review UI passes desktop/mobile source visibility, blank ratings,
   format checks, navigation, persistence and partial export checks, with no
   console errors or overflow. QA actions are not human ratings.

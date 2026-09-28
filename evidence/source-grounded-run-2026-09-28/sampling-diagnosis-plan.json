@@ -1,0 +1,16 @@
+{
+  "schema": "keyprint.source-sampling-diagnosis.v1",
+  "study_plan_sha256": "8bda97cf8faf21d950d16abc83f3e58694567b58417d75f3295d286f6bc5bb77",
+  "runs_sha256": "637a6a4878987bb004e5638633277e34dd7b72c74a632e8441eb81d4aa7dca07",
+  "script_sha256": "10ffdd0f241e24cf1ef57c615fa091c2ebbb941385bf7e090c3513c4f0615f43",
+  "helper_sha256": {
+    "replay_wide_mlx.py": "b86bb5d431e04b9a7440391fae703cb5da64a8c1003d54a69ee17f6a24b6423a",
+    "audit_pydantic_ai.py": "23a7bd6cef6cb9a9a31d2c03fac17cb57360f4fde9483557a0c7d115e4c2d4ed",
+    "multikey_prose_pilot.py": "1bebd008d57049583586a2fc138631dab81fd981c462802db42472105fe931a4"
+  },
+  "selection": "All 128 recorded paths and all steps, original order, regardless of rating, key or signal.",
+  "hypothesis": "Measure whether marking concentrates conditional distributions, amplifies low-base-probability choices or changes EOS probability. Coverage loss may have other causes; these measurements do not establish semantic causation.",
+  "randomness": "Use every original draw transcript; no new generation, random draws, retries or repaired output.",
+  "independence": "Direct native forwards, gap-first full-head reference filter, scalar TokenSourceSession and exact categorical reference. Shared kernels, tokenizer binding and reference primitives.",
+  "scope": "Exploratory diagnosis after frozen factual review. No candidate promotion, old-profile detector threshold, causal quality claim or launch acceptance."
+}

@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "method": "Independent one-pass recomputation from frozen component judgments; does not call the summary implementation. Strict and pre-flagged sensitivity counts match for both arms.",
+  "ratings_sha256": "8648f7ba2dc4de680415edcf66244ff047eb31d95578e94a9751ad80a7d27b5a",
+  "results_sha256": "29090f758ccfeee6dc476eb303345c8a65c3b8c6f2e1ad21e2867f1aeb7803db",
+  "source_rubrics_sha256": "69b430a07f0e31b88d7c9f1419a962933f87291b82ec049d1d5ed59f2ca0ce0c",
+  "quality_acceptance": false
+}
