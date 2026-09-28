@@ -1,0 +1,602 @@
+[
+  {
+    "review_id": "4f29d3869a7a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "All listed facts retained, but final paragraph promises notifications, tracking and updates. Dispatch is also incorrectly explained as preparation to send rather than departure."
+  },
+  {
+    "review_id": "0785ea19ab9f",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Strict failure: promises continued updating as new details arrive; also explains dispatch as preparation rather than departure. Flagged conservative because generic status-update wording could be read as boilerplate rather than a new customer-facing obligation."
+  },
+  {
+    "review_id": "2b02c15b9df1",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Annual prices not supplied is omitted. Incorrectly claims B has a higher price per GB (18/20 versus 12/5); adds suitability advice and speculative commercial strategy."
+  },
+  {
+    "review_id": "b337d855d3b5",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "All source facts retained; invents plans to inspect system state using backup data and to undertake restoration testing later."
+  },
+  {
+    "review_id": "cb5d0d54a9a4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained with schedule-change qualification. Adds stability rationale, preparations to minimize impact and planned post-maintenance system checks."
+  },
+  {
+    "review_id": "45c2a6a05a6b",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents that users will receive no notifications/contact during maintenance, and anticipates a document-state checking procedure."
+  },
+  {
+    "review_id": "b9b8a38a02a4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Says no user-notification or new-response plans currently exist, whereas source only forbids inventing promises. Conservative boundary: could be read as a report of what is presently supplied rather than a claim that no such plans exist."
+  },
+  {
+    "review_id": "2118ad5d2c70",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Adds no scheduled verification actions, no timeline, no overlapping/shared ownership and no link from migration progress to documentation release. Conservative boundary: some may read these as restating separate owners and the supplied lack of commitments; the source does not establish the broader absence claims."
+  },
+  {
+    "review_id": "432964d7ca93",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": false,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained, but promises communication and notification of changes/confirmation; dispatch also becomes preparation. Inserts English neither in otherwise Spanish prose, a language intrusion rather than wholesale translation."
+  },
+  {
+    "review_id": "ad88cac16982",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts and dispatch/delivery distinction retained. Strict failure: promises maintaining communication under unspecified available terms. Conservative generic closing; no specific notification action or timing is stated."
+  },
+  {
+    "review_id": "4e1f3f5037b9",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents a requirement to wait for Sato to contact the reader to obtain changes/information; expands absent detail into claims about unknown maintenance scope."
+  },
+  {
+    "review_id": "9a85df778ebc",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed price/capacity/support/annual-price facts retained, but 20 GB is incorrectly called five times 5 GB. Adds no long-term commitment and no guarantees/discounts/conditions, which were not established."
+  },
+  {
+    "review_id": "17b1eab7e8fe",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained through migration pending due to verification and documentation independence. Strict failure: pending verification is described as in progress, and the text asserts no new procedures/dependencies/constraints. Conservative because pending can include in-progress work and these additions may be read as editorial restatement."
+  },
+  {
+    "review_id": "20c90f56cc61",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained, including explicit migration block. Strict failure: describes verification as in progress and adds that no new factors/procedures are being introduced. Conservative status/boilerplate interpretation; pending alone does not prove execution has started."
+  },
+  {
+    "review_id": "e4a9b864a38f",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents a customer instruction to take no action beyond the brief and promises future reporting when new data arrive."
+  },
+  {
+    "review_id": "9f19c926a17c",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Omitted the explicit absence of annual prices. Adds asserted distinct commercial strategies and proposed target users. Source numbers and other support facts retained."
+  },
+  {
+    "review_id": "4524f92fa06e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Source prices/capacities, monthly-only supplied data and support channels retained. Omits that support response time is unspecified. Conditional user preferences are treated as explanatory comparison, not a definite recommendation or additional product fact."
+  },
+  {
+    "review_id": "ec262b8eb8a6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Infers variable response delays from absent phone support, asserts price/capacity dependence and describes absence of guarantees/taxes/discounts/fees rather than clearly their unspecified status."
+  },
+  {
+    "review_id": "301be4d66396",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Strict failure: says B has no additional unmentioned benefits and asserts the plans are designed for limited needs. Conservative boundary between a source-limited comparison and an unsupported product/design claim."
+  },
+  {
+    "review_id": "f7a0dd06b215",
+    "fact_checks": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Owners, versions and most status facts retained. Final sentence describes migration and documentation as progressing independently despite the migration block; merely pending completion does not preserve that block. Adds active development/review status. One paragraph, handled separately by mechanical format check."
+  },
+  {
+    "review_id": "ee155f3d7c5c",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents absence of data-consistency checking and promises later contact when information becomes available; source did not establish either."
+  },
+  {
+    "review_id": "e221ef2e1179",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Strict failure: says no additional action has been taken on the shipping requirement and promises continuing communication under established terms not supplied. Conservative generic closing and scope-restatement interpretation."
+  },
+  {
+    "review_id": "d5f5649e82c4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained with explicit migration stall. Strict failure: verification becomes in progress, and final wording suggests a shared dependency beyond which none is indicated. Conservative because the passage elsewhere explicitly keeps documentation independent and could be read as a loose status summary."
+  },
+  {
+    "review_id": "e0c1f1e92c1e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed base facts retained but 20 GB is incorrectly described as twice 5 GB. Adds prohibited per-GB reasoning. One paragraph is a separate format failure."
+  },
+  {
+    "review_id": "bb0c3a2ff687",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "All listed facts retained and dispatch/delivery distinction correct. Final sentence promises to keep the customer informed as details arrive, explicitly forbidden by the prompt."
+  },
+  {
+    "review_id": "32d4b9fa261c",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents planned system checks and preparations for restoration tests during maintenance, plus instructions to continue scheduled operation and check updates afterward."
+  },
+  {
+    "review_id": "b8446633504d",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained initially. Adds no current deployment plans, a staging purpose for testing, no proposed ownership/timeline changes and no indication either task will be paused/accelerated. These absence and procedural claims are unsupported."
+  },
+  {
+    "review_id": "1430e837bf62",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Monthly prices and main features retained, but absence of an annual price becomes no annual version and a confirmed billing schedule. Invents no discount/commitment/guarantee/hidden additions, and adds a forbidden capacity calculation and suitability advice."
+  },
+  {
+    "review_id": "e96b029ee4de",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents ongoing communication with Lucia, an assurance that order composition/shipping will not change, no procedural changes and future updates."
+  },
+  {
+    "review_id": "e25cc70523a6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents two independently operating teams, upgrades pending verification to in-progress work, and adds an unestablished absence of timeline commitments."
+  },
+  {
+    "review_id": "cf1f272d485e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Listed facts retained. Strict failure: calls backup verification the only active blocker, adds the intended content of the guide and promises replacement by 1.8 once finalized. Conservative because these could be read as a source-limited restatement and explanation of the planned update; exhaustive blockers and automatic publication are not established."
+  },
+  {
+    "review_id": "dee4d644b27a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Listed facts retained. Invents system checks during maintenance, stability rationale, prior communication of effects, no new notifications/responses and planned later checks."
+  }
+]

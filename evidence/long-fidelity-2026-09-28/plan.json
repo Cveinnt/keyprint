@@ -1,0 +1,276 @@
+{
+  "schema": "keyprint.long-fidelity.v1",
+  "cases": [
+    {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "min_words": 200,
+      "max_words": 260,
+      "paragraphs": 3,
+      "prompt": "Redacta en español una actualización para un cliente de entre 200 y 260 palabras, exactamente tres párrafos de prosa, sin título ni listas. Conserva todos los hechos del siguiente resumen. Puedes explicar la diferencia entre un plan y una confirmación o entre salida y entrega, pero no añadas nuevos hechos, compromisos, causas, fechas, horas, precios o empresas. Resumen: el pedido AX-17 contiene 6 teclados; 4 son blancos y 2 negros. Los 6 están reservados para este pedido y ninguno ha salido del almacén. La salida está prevista para el viernes, pero aún no está confirmada. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada. El cliente pidió que no se divida el envío; esa instrucción está registrada. No se ha ofrecido una sustitución. La persona de contacto es Lucía. No conviertas la fecha de salida en fecha de entrega. No prometas enviar avisos ni realizar acciones no incluidas en el resumen.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "4 white and 2 black",
+        "all 6 reserved for this order; none has left warehouse",
+        "dispatch planned Friday but not confirmed",
+        "tracking number unavailable",
+        "delivery date unconfirmed",
+        "customer requested no split shipment; instruction recorded",
+        "no substitution offered",
+        "contact is Lucía"
+      ],
+      "forbidden": "Friday delivery or confirmed dispatch; invented tracking/carrier/timing/price/cause; substitution already offered; new promises."
+    },
+    {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "min_chars": 400,
+      "max_chars": 600,
+      "paragraphs": 3,
+      "prompt": "400文字以上600文字以下の日本語で、見出しや箇条書きを使わず、ちょうど3段落の保守案内を書いてください。次の事実をすべて保ってください。計画と確認、バックアップ作成と復元テストの違いを説明しても構いませんが、新しい事実、約束、作業、理由、年、曜日を加えないでください。事実：対象サービスはKumo。保守は10月8日13:00から13:20まで東京時間で予定されている。予定は変更される可能性がある。バックアップは作成済みだが、復元テストはまだ実施されていない。利用者は保守開始まで文書を閲覧できる。保守中は新しいアップロードを停止する予定だが、既存の文書は削除しない。完了の確認はまだ出ていない。窓口は佐藤さん。復元が成功した、保守が完了した、予定が確定したとは書かないでください。通知や連絡など新しい対応を約束しないでください。",
+      "facts": [
+        "service Kumo",
+        "maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "schedule may change",
+        "backup created; restoration not tested",
+        "users can view documents until maintenance starts",
+        "new uploads planned to stop during maintenance",
+        "existing documents will not be deleted",
+        "completion not confirmed",
+        "contact is 佐藤"
+      ],
+      "forbidden": "Invented year/weekday/cause/work/promise; successful restoration; completed maintenance; confirmed schedule; deletion of existing documents."
+    },
+    {
+      "id": "comparison_fr",
+      "language": "French",
+      "min_words": 200,
+      "max_words": 260,
+      "paragraphs": 3,
+      "prompt": "Rédige en français une comparaison de 200 à 260 mots, exactement trois paragraphes de prose, sans titre ni liste. Conserve tous les faits ci-dessous. Tu peux reformuler les différences et expliquer pourquoi un prix mensuel et une capacité de stockage sont deux caractéristiques distinctes, mais n'ajoute aucun fait, engagement ou calcul absent du résumé. Ne recommande aucun forfait. Résumé : le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Les deux incluent l'assistance par e-mail, mais aucun ne comprend l'assistance téléphonique. Aucun ne propose de stockage illimité. Les prix indiqués sont mensuels; aucun prix annuel n'est fourni. Le forfait B n'est pas moins cher que le forfait A. Le délai de réponse de l'assistance n'est pas précisé. N'invente pas de remise, de durée d'engagement, de taxes, de frais, de garantie ou de prix par Go. Ne transforme pas une information absente en condition confirmée.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "both include email support",
+        "neither includes telephone support",
+        "neither offers unlimited storage",
+        "prices monthly; annual prices not supplied",
+        "B is not cheaper than A",
+        "support response time unspecified"
+      ],
+      "forbidden": "Recommendation; invented per-GB calculation/discount/contract term/taxes/fees/guarantee; absent detail treated as confirmed policy; swapped price/capacity/support."
+    },
+    {
+      "id": "handoff_en",
+      "language": "English",
+      "min_words": 200,
+      "max_words": 260,
+      "paragraphs": 3,
+      "prompt": "Write an English project handoff of 200 to 260 words in exactly three prose paragraphs, without headings or lists. Preserve every fact in this brief. You may explain the distinctions between pending work and completion, or between the two owners, but add no new facts, commitments, causes, schedules or procedures. Brief: Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Verification is pending. Documentation work may continue meanwhile. The migration has not been confirmed complete, and deployment has not been confirmed. The staging environment is available for documentation screenshots; this does not establish production readiness. The current public guide is version 1.7. Theo's planned update is version 1.8, which has not been published. Do not swap owners, claim all work must stop, promise a deployment time, invent a checklist or claim the pending backup has passed verification.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "verification pending",
+        "documentation may continue",
+        "migration completion and deployment unconfirmed",
+        "staging available for documentation screenshots; not proof of production readiness",
+        "current public guide version 1.7",
+        "planned guide update version 1.8 not published"
+      ],
+      "forbidden": "Swapped owners; all work stopped; completed backup verification/migration/deployment/publication; staging equated to production-ready; invented checklist/time/procedure/commitment."
+    }
+  ],
+  "schedule": [
+    {
+      "key_slot": 0,
+      "case": "shipping_es",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "shipping_es",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "maintenance_ja",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "maintenance_ja",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "comparison_fr",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "comparison_fr",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "handoff_en",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "handoff_en",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "shipping_es",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "shipping_es",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "maintenance_ja",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "maintenance_ja",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "comparison_fr",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "comparison_fr",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "handoff_en",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "handoff_en",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 2,
+      "case": "shipping_es",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "shipping_es",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 2,
+      "case": "maintenance_ja",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 2,
+      "case": "maintenance_ja",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "comparison_fr",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "comparison_fr",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 2,
+      "case": "handoff_en",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 2,
+      "case": "handoff_en",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "shipping_es",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 3,
+      "case": "shipping_es",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "maintenance_ja",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "maintenance_ja",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 3,
+      "case": "comparison_fr",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 3,
+      "case": "comparison_fr",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "handoff_en",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "handoff_en",
+      "condition": "marked"
+    }
+  ],
+  "max_tokens": 1024,
+  "temperature": 0.7,
+  "top_k": 100,
+  "model_revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "script_sha256": "17568e33f8dfc76dbee98c8417a3cf76b03e30213bab50233321f0b27703918c",
+  "cases_sha256": "830a6fe388d5f96e2a7adb769ff2b5ffad1673ae70cd45a9eae3c3f072aa1e35",
+  "engine_integrity": {
+    "status": "pass",
+    "files": 39,
+    "manifest_sha256": "926aa9995523c78666e973f0127f2d9cf77ec7a1393207a3e75c19b2ad991ed5",
+    "scope": "Namespaced derivative integrity; no detector or scientific acceptance verdict."
+  },
+  "source_sha256": {
+    "multikey_prose_pilot.py": "1bebd008d57049583586a2fc138631dab81fd981c462802db42472105fe931a4",
+    "layer_likelihood.py": "75a378d2c898abf79d4b9d1420e74ebc806674951edb1d3a2b4c07d901cab1a2",
+    "weighted_null.py": "4c6470e6e089fbe4c10e3c10977b8d510f155bad62f968594ba7bf147431abe9"
+  },
+  "prior_plan_sha256": "9ab9d4d0bce4782484c94c3030e9c3b93538bad4797f7f299fdde1226ad60ea9",
+  "key_sha256": [
+    "615464322e2494a94837c0ff1cd6ee2daef365ad754c5ff647f3448ff8dd9de5",
+    "54577da96d5bc536b0b46fcace3c1d5fa9fc371205172976b4ed8fa8cca3c86c",
+    "2b56df261dcdca36aa1de4f319bc3c6b8a07e02c9ec8cc6164f60ebe37904f3f",
+    "fa1b1fa38b7c99d3b9c5bdffc1ee56ff69617dce2a7a9030a9deb6b7ad6aa936"
+  ],
+  "key_policy": "All four existing keys, including known failure; no selection or rotation",
+  "failure_policy": "32 attempts, no retries/replacement/rewriting; retain errors and caps",
+  "review": "Freeze per-fact and forbidden-addition content ratings, language ratings and mechanical format results before revealing conditions/keys/scores. Assistant review; not independent human acceptance.",
+  "primary": "Require registered minimum/maximum length and exactly three prose paragraphs separately from content. Preserve all failures. Joint outcome is full-task pass AND matching hit AND no other-key hit. Separate content, language, format and execution failures; per-task/paired/key counts. Descriptive longer-task development on deliberately selected prior-failure domains, not a powered noninferiority or causal study.",
+  "detector": "Unchanged weighted 30-layer tail <= .005 per key for matching/next-slot keys; nominal two-key 1%, uncalibrated. Same nominal threshold as short study, no length-based cutoff change. Detection and full-task pass must hold on the same output; report their intersection.",
+  "scope": "Four new longer prompts built from previously examined source-fact domains, four languages, one Qwen/MLX model and four reused keys. No open-domain factual, framework, scientific or launch acceptance."
+}

@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "files": 90,
+  "wheel_sha256": "d12d94548a4ccd5ad643f0dfe97839dd9dbb4550d740509d74adc5df933b4aee",
+  "engine": {
+    "status": "pass",
+    "files": 39,
+    "manifest_sha256": "926aa9995523c78666e973f0127f2d9cf77ec7a1393207a3e75c19b2ad991ed5",
+    "scope": "Namespaced derivative integrity; no detector or scientific acceptance verdict."
+  },
+  "scope": "Current SDK source and installed package equal prior wheel; long-study and review tools remain outside package."
+}

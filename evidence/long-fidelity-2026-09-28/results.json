@@ -1,0 +1,1756 @@
+{
+  "summary": {
+    "groups": {
+      "ordinary": {
+        "attempts": 16,
+        "execution_pass": 16,
+        "content_pass": 0,
+        "language_pass": 16,
+        "format_pass": 3,
+        "task_pass": 0,
+        "joint_pass": 0,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      "marked": {
+        "attempts": 16,
+        "execution_pass": 16,
+        "content_pass": 0,
+        "language_pass": 15,
+        "format_pass": 2,
+        "task_pass": 0,
+        "joint_pass": 0,
+        "matching_hits": 11,
+        "other_hits": 0
+      }
+    },
+    "paired": {
+      "content_pass": {
+        "both_fail": 16
+      },
+      "task_pass": {
+        "both_fail": 16
+      },
+      "joint_pass": {
+        "both_fail": 16
+      }
+    },
+    "by_case": [
+      {
+        "case": "shipping_es",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 2,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "shipping_es",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 3,
+        "format_pass": 2,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "maintenance_ja",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "maintenance_ja",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "comparison_fr",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "comparison_fr",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "handoff_en",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 1,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "handoff_en",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      }
+    ],
+    "judgments": {
+      "ad88cac16982": {
+        "length": 195,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e96b029ee4de": {
+        "length": 265,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "b9b8a38a02a4": {
+        "length": 364,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "45c2a6a05a6b": {
+        "length": 384,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "9f19c926a17c": {
+        "length": 275,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "301be4d66396": {
+        "length": 272,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "2118ad5d2c70": {
+        "length": 271,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "20c90f56cc61": {
+        "length": 293,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "4f29d3869a7a": {
+        "length": 208,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e221ef2e1179": {
+        "length": 183,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "4e1f3f5037b9": {
+        "length": 359,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "ee155f3d7c5c": {
+        "length": 371,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "ec262b8eb8a6": {
+        "length": 286,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "4524f92fa06e": {
+        "length": 291,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "17b1eab7e8fe": {
+        "length": 218,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "b8446633504d": {
+        "length": 284,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "0785ea19ab9f": {
+        "length": 217,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "432964d7ca93": {
+        "length": 205,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": false,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "32d4b9fa261c": {
+        "length": 393,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "b337d855d3b5": {
+        "length": 330,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "9a85df778ebc": {
+        "length": 267,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e0c1f1e92c1e": {
+        "length": 174,
+        "paragraphs": 1,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "cf1f272d485e": {
+        "length": 297,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e25cc70523a6": {
+        "length": 322,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "bb0c3a2ff687": {
+        "length": 196,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e4a9b864a38f": {
+        "length": 212,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "dee4d644b27a": {
+        "length": 396,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "cb5d0d54a9a4": {
+        "length": 343,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "1430e837bf62": {
+        "length": 270,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "2b02c15b9df1": {
+        "length": 293,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "f7a0dd06b215": {
+        "length": 164,
+        "paragraphs": 1,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "d5f5649e82c4": {
+        "length": 275,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      }
+    },
+    "quality_acceptance": false,
+    "detector_calibrated": false,
+    "scope": "Four new longer prompts built from previously examined source-fact domains, four languages, one Qwen/MLX model and four reused keys. No open-domain factual, framework, scientific or launch acceptance.",
+    "interpretation": "Joint pass requires factual, language, length, paragraph/prose and execution pass plus matching-key hit and no other-key hit on the same output. Descriptive uncalibrated development measure, never general quality or deployment acceptance."
+  },
+  "runs": [
+    {
+      "key_slot": 0,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "ad88cac16982",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 son negros. Todos los artículos están reservados exclusivamente para este pedido y no han sido movidos del almacén. La fecha prevista de salida es el viernes, aunque aún no se ha confirmado el envío. No se ha proporcionado un número de seguimiento y la entrega no tiene fecha definida. El cliente solicitó que el envío no se dividiera, y esa instrucción ha sido registrada en el sistema.\n\nEs importante aclarar que la salida del almacén y la entrega son dos etapas distintas. La salida se refiere a la fecha en que el producto dejará el almacén, mientras que la entrega se refiere al momento en que se entregará al cliente. En este caso, la salida aún no está confirmada, por lo que no se puede establecer una fecha de entrega concreta. No se ha ofrecido ninguna alternativa o sustitución para el pedido.\n\nLa persona de contacto para este asunto es Lucía. No se han realizado promesas adicionales ni se han solicitado acciones fuera del resumen proporcionado. Se mantendrá la comunicación según los datos disponibles, sin añadir información o compromisos no previstos.",
+      "completion": "eos",
+      "tokens": 278,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2341990821157695,
+          "centered_sum": 11628,
+          "events": 272,
+          "lattice_size": 262144,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.733731630454781e-13,
+          "support": 1301520
+        },
+        {
+          "reference_tail": 0.13285519879576138,
+          "centered_sum": 17848,
+          "events": 272,
+          "lattice_size": 262144,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.733731630454781e-13,
+          "support": 1301520
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "e96b029ee4de",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 son negros. Todos los artículos están reservados exclusivamente para este pedido y no han salido del almacén. La fecha prevista de salida es el viernes, aunque aún no está confirmada. En este momento no existe un número de seguimiento disponible, y la fecha de entrega tampoco está definida. Se ha registrado la solicitud del cliente de que el envío no se divida, y se ha mantenido el registro de esta instrucción. No se ha mencionado la posibilidad de sustituciones para este pedido.\n\nEs importante aclarar que la diferencia entre la fecha de salida y la de entrega radica en que la primera se refiere a la fecha en que el producto comienza su tránsito hacia el cliente, mientras que la segunda corresponde a la fecha en que se espera que el cliente reciba el paquete. En este caso, no se ha confirmado cualquiera de las dos fechas. No se ha proporcionado información sobre el estado de los teclados ni se han realizado cambios en el proceso. Se mantiene la comunicación con la persona de contacto, Lucía, para seguir la evolución del pedido.\n\nSe ha asegurado que el pedido no se altere en cuanto a su composición o en la forma de envío. No se han realizado compromisos adicionales, ni se han ofrecido soluciones alternativas. Se mantendrá la actualización conforme se disponga de nuevos datos. No se han notificado cambios ni se han realizado ajustes en el procedimiento actual. La información proporcionada se basa únicamente en los hechos registrados hasta la fecha.",
+      "completion": "eos",
+      "tokens": 367,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 8.160788743944184e-07,
+          "centered_sum": 88178,
+          "events": 358,
+          "lattice_size": 524288,
+          "alias_bound": 1.6022492919986681e-44,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.03746202633816e-13,
+          "support": 1713030
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -34356,
+          "events": 358,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "b9b8a38a02a4",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間に予定されています。予定は変更される可能性があるため、現時点で確定した内容ではありません。保守期間中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧可能です。\n\nバックアップはすでに作成済みですが、復元テストはまだ実施されていません。そのため、復元が成功したかどうかは現時点では確認されていません。保守作業の完了確認や予定の確定については、現時点では情報がありません。\n\n保守作業に関するお問い合わせは佐藤さんまでお願いいたします。利用者への通知や新しい対応については、現時点で予定はありません。保守の進行状況には変化がある可能性があるため、最新情報を確認するための窓口として佐藤さんをご利用ください。",
+      "completion": "eos",
+      "tokens": 213,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.007770205250713613,
+          "centered_sum": 34088,
+          "events": 210,
+          "lattice_size": 262144,
+          "alias_bound": 3.218154868071721e-19,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.244658058825917e-13,
+          "support": 1004850
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7182,
+          "events": 210,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "45c2a6a05a6b",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間に予定されています。予定時間は変更される可能性があるため、最新情報を確認する必要があります。保守中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧することが可能です。\n\nバックアップはすでに作成済みですが、復元テストはまだ実施されていません。保守作業の完了後、文書の状態を確認するための手続きが進められると考えられます。ただし、復元の成功を確認する段階には至っていません。保守の進行状況や結果についての明確な確認は現時点では得られていません。\n\n保守作業の窓口は佐藤さんです。保守中は利用者向けの通知や連絡は行われず、現時点で予定の確定や完了の確認は出されていません。保守に関する最新情報や変更点については、佐藤さんまでお問い合わせください。",
+      "completion": "eos",
+      "tokens": 239,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4718,
+          "events": 234,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -20362,
+          "events": 234,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "9f19c926a17c",
+      "text": "Le forfait A et le forfait B présentent des différences notables en termes de prix et de capacité de stockage. Le forfait A se révèle plus abordable, avec un coût mensuel de 12 euros, contre 18 euros pour le forfait B. Cependant, la capacité de stockage varie considérablement : le forfait A offre 5 Go, tandis que le forfait B propose 20 Go. Ces différences reflètent des stratégies commerciales distinctes, où l’un privilégie le prix, et l’autre la quantité de stockage disponible. Aucun des deux forfaits ne propose de stockage illimité, ce qui signifie que les utilisateurs doivent évaluer leurs besoins en conséquence.\n\nBien que les deux forfaits incluent l’assistance par e-mail, aucun ne propose d’assistance téléphonique. Cela soulève une question sur le niveau de support fourni, mais le délai de réponse n’est pas précisé, laissant une marge d’interprétation. Ces deux caractéristiques — le prix mensuel et la capacité de stockage — sont distinctes car elles répondent à des besoins différents : l’une concerne le coût, l’autre la quantité d’espace disponible. Ainsi, le choix dépendra des priorités de l’utilisateur, qu’il privilégie l’économie ou le volume de stockage.\n\nLe forfait B n’est pas moins cher que le forfait A, ce qui indique que l’augmentation du prix n’est pas liée à une réduction de la capacité de stockage. Cela suggère que le forfait B s’adresse à un public ayant des besoins plus importants en espace. En l’absence de données sur la durée de l’engagement, les taxes, ou les conditions de résiliation, il est impossible de comparer davantage les deux options. Les informations fournies restent donc limitées, mais suffisantes pour évaluer les différences fondamentales entre les deux forfaits.",
+      "completion": "eos",
+      "tokens": 460,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2848660250954585,
+          "centered_sum": 11475,
+          "events": 431,
+          "lattice_size": 524288,
+          "alias_bound": 4.714948358572626e-37,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.963133247425306e-13,
+          "support": 2062335
+        },
+        {
+          "reference_tail": 0.13559186292981473,
+          "centered_sum": 22211,
+          "events": 431,
+          "lattice_size": 524288,
+          "alias_bound": 4.714948358572626e-37,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.963133247425306e-13,
+          "support": 2062335
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "301be4d66396",
+      "text": "Le forfait A propose un service à 12 EUR par mois, avec une capacité de stockage de 5 Go. Le forfait B, quant à lui, coûte 18 EUR par mois pour 20 Go. Bien que le forfait B soit plus cher que le forfait A, il offre une capacité de stockage plus importante. Ces deux forfaits incluent l’assistance par e-mail, mais aucun ne permet d’obtenir un soutien téléphonique. Aucun des deux forfaits ne propose de stockage illimité, ce qui limite leur utilisation pour les utilisateurs nécessitant une plus grande capacité. Les prix indiqués sont mensuels, sans mention d’offres annuelles ou de réductions.\n\nLes différences entre les deux forfaits résident principalement dans leur prix et leur capacité de stockage. Le forfait A est donc plus abordable, mais moins adapté à des besoins importants en espace de stockage. En revanche, le forfait B couvre une plus grande quantité de données, ce qui peut être utile pour des utilisateurs souhaitant stocker davantage d’informations. Cependant, il ne s’agit pas d’un forfait moins cher, ni d’une offre avec des avantages complémentaires non mentionnés. Les deux forfaits restent donc comparables sur ces critères.\n\nLe forfait B n’est pas moins cher que le forfait A, ce qui signifie que l’option la plus économique n’est pas nécessairement celle qui propose la plus grande capacité. De plus, aucun des deux ne propose de stockage illimité, ce qui montre qu’il s’agit de solutions conçues pour des besoins limités. L’assistance par e-mail est disponible, mais les délais de réponse ne sont pas précisés. Ainsi, les utilisateurs doivent se baser sur les critères de prix et de stockage pour choisir entre les deux options.",
+      "completion": "eos",
+      "tokens": 424,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.014122221541340949,
+          "centered_sum": 42177,
+          "events": 391,
+          "lattice_size": 524288,
+          "alias_bound": 8.441365192271027e-41,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.959359466728103e-13,
+          "support": 1870935
+        },
+        {
+          "reference_tail": 0.23785394030696744,
+          "centered_sum": 13713,
+          "events": 391,
+          "lattice_size": 524288,
+          "alias_bound": 8.441365192271027e-41,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.959359466728103e-13,
+          "support": 1870935
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "2118ad5d2c70",
+      "text": "Imani is responsible for the database migration, which remains pending due to the need for backup verification. This verification process has not yet been completed, and as such, the migration cannot proceed. Theo, on the other hand, is in charge of updating the documentation, and while the migration is on hold, his work can continue. The current public guide is version 1.7, and Theo has outlined plans for version 1.8, which has not yet been released. It is important to note that the migration itself has not been confirmed as complete, nor has deployment been officially confirmed. The staging environment is available for Theo to take screenshots for the documentation update, but this does not indicate that the system is ready for production use.\n\nTheo’s documentation work is not dependent on the migration’s status, allowing progress to continue independently. However, the migration’s completion is still contingent on the verification of the backup, which is currently pending. No further actions have been scheduled or confirmed regarding this verification. The migration’s status remains unconfirmed, and no commitments have been made about when it will be resolved. The staging environment remains a tool for documentation purposes and should not be considered a sign of readiness for deployment.\n\nTheo’s update to version 1.8 is in the planning phase and has not been published. The migration’s progress is not linked to this documentation release, and no timeline has been established for either. All current statuses reflect the latest known information, with no additional dependencies or commitments introduced. The distinction between the two owners’ responsibilities remains clear, with no overlap or shared ownership of the pending tasks.",
+      "completion": "eos",
+      "tokens": 325,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.003323791932642607,
+          "centered_sum": 46904,
+          "events": 316,
+          "lattice_size": 524288,
+          "alias_bound": 2.2071378970430085e-50,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 5.333025004705748e-13,
+          "support": 1512060
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -31478,
+          "events": 316,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "20c90f56cc61",
+      "text": "Imani is responsible for the database migration, which remains pending due to the incomplete verification of the backup process. This verification is still in progress, and as a result, the migration has not been confirmed as complete. Deployment of the updated system has not been confirmed either, meaning the current state of the database is not yet finalized. Theo, on the other hand, oversees the documentation update, with a planned release of version 1.8. While the migration is blocked, Theo’s documentation work may proceed independently, as it does not depend on the backup verification. The current public guide is version 1.7, and Theo’s update will build upon that, though it has not yet been published.\n\nThe staging environment is available for Theo to take screenshots for the documentation, but this does not imply that the system is ready for production use. The availability of the staging environment supports the documentation process without affecting the status of the database migration. Since the backup verification is still pending, the migration cannot be considered fully completed, and therefore, the deployment of the updated environment remains unconfirmed. There are no new commitments or schedules to share at this time, and the work remains in its current state pending the resolution of the backup verification.\n\nTheo’s documentation update is currently in progress, and while it may continue independently, it is not yet published. Imani’s migration is blocked until the backup verification is resolved, and the migration itself has not been confirmed as complete. The distinction between the two areas of responsibility ensures that each task is managed according to its own dependencies. No additional factors or procedures are being introduced at this time, and the current status of both the database migration and the documentation work remains unchanged.",
+      "completion": "eos",
+      "tokens": 342,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -201,
+          "events": 327,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -10823,
+          "events": 327,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "4f29d3869a7a",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 son negros. Todos los teclados están reservados exclusivamente para este pedido y no han salido del almacén. La salida está programada para el viernes, aunque aún no se ha confirmado. En este momento, no se ha proporcionado un número de seguimiento ni se ha establecido una fecha de entrega concreta. El cliente solicitó que el envío no se dividiera, y esa instrucción ha sido registrada en el sistema.\n\nEs importante aclarar que el término “salida” se refiere al momento en que los productos se preparan para ser enviados, mientras que “entrega” se refiere al momento en que llegan al cliente. Por lo tanto, la fecha de salida no equivale necesariamente a la fecha de entrega. No se ha ofrecido ninguna alternativa o sustitución para el pedido. El contacto designado para este asunto es Lucía.\n\nEl cliente ha solicitado que se respete su instrucción sobre el envío único y se ha tomado nota de ello. No se han realizado promesas adicionales ni se han acordado acciones fuera del resumen proporcionado. En caso de actualizaciones, se notificará conforme se reciban. Por el momento, se mantendrá el seguimiento del pedido y se informará en caso de cambios.",
+      "completion": "eos",
+      "tokens": 306,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.013656867163591121,
+          "centered_sum": 36979,
+          "events": 297,
+          "lattice_size": 524288,
+          "alias_bound": 1.4057700372372863e-53,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.611663376349042e-13,
+          "support": 1421145
+        },
+        {
+          "reference_tail": 0.006298323270344356,
+          "centered_sum": 41803,
+          "events": 297,
+          "lattice_size": 524288,
+          "alias_bound": 1.4057700372372863e-53,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.611663376349042e-13,
+          "support": 1421145
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "e221ef2e1179",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 son negros. Todos los artículos están reservados exclusivamente para este pedido y aún no han salido del almacén. La salida está programada para el viernes, aunque aún no se ha confirmado con certeza. No se ha proporcionado un número de seguimiento, por lo que no es posible rastrear el envío en este momento.\n\nEs importante destacar que el cliente solicitó que el envío no se dividiera, y esa instrucción ha sido registrada en el sistema. No se ha realizado ninguna acción adicional en relación con este requisito, y no se ha ofrecido ninguna alternativa o sustitución. La fecha de entrega no está confirmada, ya que se distingue claramente entre la salida del almacén y la fecha en la que se realizará la entrega final.\n\nLa persona de contacto para este pedido es Lucía. No se ha establecido ninguna fecha o hora específica para la entrega, y no se han realizado compromisos adicionales. En caso de que surjan más preguntas o actualizaciones, se mantendrá la comunicación en los términos establecidos.",
+      "completion": "eos",
+      "tokens": 263,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7075,
+          "events": 255,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7421,
+          "events": 255,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "4e1f3f5037b9",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間が予定されており、変更の可能性があります。保守中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧可能です。保守の完了確認はまだ得られていません。\n\nバックアップは既に作成済みですが、復元テストはまだ実施されていません。復元テストが実施されれば、サービスの動作確認が可能になりますが、現時点ではその段階には至っていません。保守の進行状況についての詳細は、現時点では確認されていません。\n\n窓口は佐藤さんで、保守に関するお問い合わせはそちらにどうぞ。保守の内容や影響範囲についての詳細は、現時点ではまだ明らかになっていません。予定変更や追加の情報を得るには、佐藤さんから連絡を待つ必要があります。",
+      "completion": "eos",
+      "tokens": 226,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -6711,
+          "events": 219,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.08230231959563629,
+          "centered_sum": 19997,
+          "events": 219,
+          "lattice_size": 262144,
+          "alias_bound": 1.9051948297718873e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.024702245295625e-13,
+          "support": 1047915
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "ee155f3d7c5c",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間に予定されています。この予定は変更される可能性があるため、現時点で確定ではありません。保守中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧できる状態を維持します。\n\nバックアップの作成は既に完了していますが、復元テストはまだ実施されていません。そのため、復元の動作確認やデータの一貫性の検証は現時点では行われていません。保守作業中に発生した変更やエラーに対しては、事後の確認や対応が必要となる可能性があります。\n\n保守作業の完了確認や予定変更の通知については、現時点ではまだ出ていません。保守に関するお問い合わせや確認は、佐藤さんまでお願いいたします。今後、関連する情報が確認できた場合は、追って連絡する予定です。",
+      "completion": "eos",
+      "tokens": 232,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.059164847652800036,
+          "centered_sum": 23030,
+          "events": 230,
+          "lattice_size": 262144,
+          "alias_bound": 1.3861736545051146e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.762971721904024e-13,
+          "support": 1100550
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3238,
+          "events": 230,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "ec262b8eb8a6",
+      "text": "Le forfait A propose un prix mensuel de 12 EUR avec une capacité de stockage de 5 Go, tandis que le forfait B se monte à 18 EUR pour 20 Go. Ces deux options présentent des différences significatives, soit en termes de coût, soit en matière de stockage disponible. Le forfait B n’est pas moins cher que le forfait A, ce qui souligne une différence de prix notable, même si le forfait B offre une capacité de stockage plus importante. Il est important de noter que les deux forfaits incluent l’assistance par e-mail, mais aucun ne propose de support téléphonique. Cela signifie que les utilisateurs doivent s’attendre à des délais de réponse variables, sans précision sur la rapidité de traitement.\n\nLa capacité de stockage et le prix mensuel sont deux caractéristiques indépendantes, qui peuvent être optimisées selon les besoins de l’utilisateur. Un forfait avec une capacité plus élevée entraîne un coût plus élevé, ce qui reflète une relation directe entre ces deux éléments. Aucun des deux forfaits ne propose de stockage illimité, ce qui limite les options pour les utilisateurs ayant des besoins importants. Les deux forfaits s’appliquent sur une base mensuelle, sans mention d’un prix annuel ou de conditions d’engagement.\n\nEn résumé, le choix entre les deux forfaits dépend des priorités de l’utilisateur : capacité de stockage ou coût. Le forfait A est moins cher mais offre moins d’espace, tandis que le forfait B propose davantage de stockage à un prix plus élevé. L’absence de garantie, de taxes, de remises ou de frais complique la comparaison, car ces facteurs pourraient influencer le coût global. Enfin, le délai de réponse de l’assistance n’est pas précisé, ce qui laisse une certaine incertitude sur la rapidité du service.",
+      "completion": "eos",
+      "tokens": 439,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.000254334048290699,
+          "centered_sum": 68760,
+          "events": 414,
+          "lattice_size": 524288,
+          "alias_bound": 1.477226139985113e-38,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.954849919721999e-13,
+          "support": 1980990
+        },
+        {
+          "reference_tail": 0.08288473494668204,
+          "centered_sum": 27418,
+          "events": 414,
+          "lattice_size": 524288,
+          "alias_bound": 1.477226139985113e-38,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.954849919721999e-13,
+          "support": 1980990
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "4524f92fa06e",
+      "text": "Le forfait A propose un prix mensuel de 12 euros avec une capacité de stockage de 5 Go, tandis que le forfait B s'élève à 18 euros pour 20 Go. Ces deux forfaits comprennent l'assistance par e-mail, mais aucun ne fournit d'assistance téléphonique. Bien que le forfait B soit plus onéreux que le forfait A, il offre une capacité de stockage plus importante, ce qui peut être un avantage pour les utilisateurs ayant besoin d'espace. Cependant, aucun des deux forfaits ne propose de stockage illimité, limitant ainsi la flexibilité pour ceux qui exigent une capacité plus grande. Les prix indiqués sont exclusivement mensuels, sans mention d'option annuelle ou de remise.\n\nLa différence entre les deux forfaits réside non seulement dans le coût, mais aussi dans la quantité de stockage disponible. Cela souligne que les caractéristiques comme le prix mensuel et la capacité de stockage sont distinctes, car une ne dépend pas de l'autre. Ainsi, un utilisateur pourrait privilégier le forfait A pour un usage modéré et un coût réduit, tandis qu’un autre opterait pour le forfait B s’il a besoin d’un espace de stockage plus conséquent. Cependant, aucun forfait ne suggère de compromis entre ces deux éléments, ce qui rend la comparaison plus complexe.\n\nEnfin, les deux options restent des choix à considérer selon les besoins individuels. Bien que le forfait B soit plus cher, il offre une capacité de stockage plus importante, ce qui pourrait être décisif pour certains utilisateurs. En revanche, le forfait A reste une option plus économique, mais il s'avère insuffisant pour ceux qui nécessitent davantage d'espace. Aucun des deux n’inclut d’assistance téléphonique, ce qui limite les options de support technique. Ainsi, le choix dépend de l’équilibre entre prix, capacité de stockage et attentes en matière d’assistance.",
+      "completion": "eos",
+      "tokens": 470,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -161,
+          "events": 427,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.16689448140336474,
+          "centered_sum": 19419,
+          "events": 427,
+          "lattice_size": 524288,
+          "alias_bound": 2.1397433695543535e-37,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.960467065989884e-13,
+          "support": 2043195
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "17b1eab7e8fe",
+      "text": "Imani is responsible for the database migration, which remains pending due to the incomplete verification of the backup process. This verification is still in progress and has not yet been confirmed, meaning the migration itself has not been finalized. While the migration is not yet complete, Theo is tasked with updating the documentation, and his work can proceed independently. The staging environment is currently available for Theo to take screenshots as needed, though it should be noted that this does not imply the system is ready for production use.\n\nTheo’s documentation update is planned as version 1.8, which has not yet been published. This follows the current public guide version 1.7, and the documentation work does not depend on the migration being fully completed. Since the backup verification is still pending, the migration cannot be confirmed as done, and therefore, deployment has not been confirmed either. There are no new commitments or schedules introduced, and no claims are made about the status of the backup verification.\n\nThe ownership of the migration and documentation remains distinct: Imani oversees the migration, while Theo handles the documentation. The staging environment’s availability does not alter the current status of the project. No new procedures or dependencies have been introduced, and all work continues under the existing structure without additional constraints or promises.",
+      "completion": "eos",
+      "tokens": 255,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -43752,
+          "events": 250,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.11901414437765992,
+          "centered_sum": 18140,
+          "events": 250,
+          "lattice_size": 262144,
+          "alias_bound": 3.270051774326276e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.2884045176027707e-13,
+          "support": 1196250
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "b8446633504d",
+      "text": "Imani is responsible for the database migration, a task that remains pending due to the incomplete verification of the backup process. Until this verification is confirmed, the migration cannot proceed, and its completion status has not been officially determined. Deployment of the migrated database has not been confirmed, and there are no current plans or commitments to schedule it. Theo, on the other hand, is tasked with updating the documentation, with a planned revision to version 1.8. This update has not yet been published, and the current public guide remains at version 1.7. While the documentation work can continue independently of the migration status, the staging environment is available for Theo to capture screenshots, though it does not indicate that the system is ready for production use.\n\nTheo's documentation efforts are not dependent on the migration's progress, as the two tasks are managed separately. The staging environment provides a means to test and prepare documentation content without affecting the production readiness of the system. The migration's status remains unresolved, and no changes to the ownership or timeline of either task have been proposed. The backup verification is still pending, meaning the migration cannot be confirmed as complete, and the environment remains in a state of transition.\n\nThe current version of the public guide is 1.7, which reflects the state of documentation prior to Theo's planned update. Version 1.8 is under development but has not yet been released. There are no assurances or schedules for when this update will be published. The migration and documentation updates are being handled as separate responsibilities, with no indication that either will be paused or accelerated. The project remains in a state of ongoing work with no confirmed endpoints.",
+      "completion": "eos",
+      "tokens": 334,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.5091138307707463e-07,
+          "centered_sum": 89912,
+          "events": 326,
+          "lattice_size": 524288,
+          "alias_bound": 7.520711546081522e-49,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.245872234483913e-13,
+          "support": 1559910
+        },
+        {
+          "reference_tail": 0.054900722160867894,
+          "centered_sum": 28072,
+          "events": 326,
+          "lattice_size": 524288,
+          "alias_bound": 7.520711546081522e-49,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.245872234483913e-13,
+          "support": 1559910
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "0785ea19ab9f",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 negros. Todos los artículos están reservados exclusivamente para este pedido y no han sido retirados del almacén. La salida del pedido está prevista para el viernes, aunque aún no se ha confirmado. En este momento no hay número de seguimiento disponible, y la entrega no tiene fecha definida. Se ha registrado la solicitud del cliente de que el envío no se divida, y esta instrucción sigue vigente. No se ha ofrecido ninguna alternativa o sustitución en este caso.\n\nEs importante aclarar que la diferencia entre la salida y la entrega radica en que la salida se refiere al momento en que el pedido se prepara para ser enviado, mientras que la entrega corresponde al momento en que el cliente recibe el paquete. En este caso, el proceso aún no ha alcanzado la fase de entrega. No se han realizado compromisos adicionales ni se planean acciones fuera de lo indicado en el resumen.\n\nLa persona de contacto para el pedido AX-17 es Lucía. No se han proporcionado fechas, horas o precios adicionales, y no se han realizado promesas de notificaciones o actualizaciones externas. El estado del pedido se mantiene en concordancia con la información proporcionada y se seguirá actualizando conforme se obtengan nuevos detalles.",
+      "completion": "eos",
+      "tokens": 304,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.06195860158082919,
+          "centered_sum": 25693,
+          "events": 295,
+          "lattice_size": 524288,
+          "alias_bound": 6.131322723893637e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.648039542759139e-13,
+          "support": 1411575
+        },
+        {
+          "reference_tail": 0.3496602206146337,
+          "centered_sum": 6451,
+          "events": 295,
+          "lattice_size": 524288,
+          "alias_bound": 6.131322723893637e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.648039542759139e-13,
+          "support": 1411575
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "432964d7ca93",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 son negros. Todos los artículos están reservados exclusivamente para este pedido y no han salido del almacén. La fecha prevista para la salida del pedido es el viernes, aunque aún no se ha confirmado. No se ha proporcionado un número de seguimiento, y la fecha de entrega no está aún definida. Se ha registrado la instrucción del cliente de que el envío no se divida, y no se ha ofrecido ninguna alternativa o sustitución.\n\nEs importante aclarar que la salida del pedido se refiere al momento en que los productos se preparan para ser enviados, mientras que la entrega se refiere al momento en que llegan al cliente. En este caso, no se ha confirmado neither la salida ni la entrega con precisión. No se han realizado compromisos adicionales ni se han ofrecido servicios extras. El cliente ha solicitado mantener el envío en un solo lote, lo cual se ha documentado.\n\nLa persona de contacto para este pedido es Lucía. No se ha proporcionado información sobre posibles notificaciones o actualizaciones adicionales. Se mantendrá la comunicación según los términos establecidos y se notificará cualquier cambio o confirmación una vez que esté disponible.",
+      "completion": "eos",
+      "tokens": 288,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.009632513172408794,
+          "centered_sum": 37664,
+          "events": 274,
+          "lattice_size": 262144,
+          "alias_bound": 7.894263078462714e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.6824115252633693e-13,
+          "support": 1311090
+        },
+        {
+          "reference_tail": 0.44772423439274117,
+          "centered_sum": 2116,
+          "events": 274,
+          "lattice_size": 262144,
+          "alias_bound": 7.894263078462714e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.6824115252633693e-13,
+          "support": 1311090
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "32d4b9fa261c",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間に予定されています。予定時間は変更される可能性があるため、最新情報を確認する必要があります。保守中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧可能です。\n\nバックアップはすでに作成済みですが、復元テストはまだ実施されていません。保守作業の完了後、復元テストの結果について確認する必要がありますが、現時点では結果が明らかになっていません。保守中はシステムの動作を確認し、復元テストを実施するための準備を進める予定です。\n\n保守作業に関連する窓口は佐藤さんです。保守の進行状況や復元テストの結果については、今後の確認が必要となります。現時点で完了の確認や予定変更の通知は出されていません。利用者は予定通りの運用を継続し、保守終了後に更新情報を確認してください。",
+      "completion": "eos",
+      "tokens": 241,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.00032880131404580524,
+          "centered_sum": 50658,
+          "events": 234,
+          "lattice_size": 262144,
+          "alias_bound": 2.723563527752023e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 4.668972660435151e-13,
+          "support": 1119690
+        },
+        {
+          "reference_tail": 0.3525929299310241,
+          "centered_sum": 5628,
+          "events": 234,
+          "lattice_size": 262144,
+          "alias_bound": 2.723563527752023e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 4.668972660435151e-13,
+          "support": 1119690
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "b337d855d3b5",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間に予定されています。今回の保守は変更される可能性があるため、最新情報を確認することをお勧めします。利用者は保守開始までに文書を閲覧可能です。保守中は新しいアップロードを停止する予定ですが、既存の文書は削除されません。\n\nバックアップは既に作成済みですが、復元テストはまだ実施されていません。保守作業の際、バックアップデータを用いてシステムの状態を確認していく予定です。復元テストの実施は今後の計画の一つとして進められることになります。\n\n保守作業後の完了確認については、現時点では結果が明らかになっていません。Kumoの窓口は佐藤さんで、保守の進捗やその後の対応についてお気軽にお尋ねください。",
+      "completion": "eos",
+      "tokens": 206,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.17790536568177906,
+          "centered_sum": 12824,
+          "events": 204,
+          "lattice_size": 262144,
+          "alias_bound": 9.012788982444135e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.39417054363707e-13,
+          "support": 976140
+        },
+        {
+          "reference_tail": 0.4894009627143857,
+          "centered_sum": 370,
+          "events": 204,
+          "lattice_size": 262144,
+          "alias_bound": 9.012788982444135e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.39417054363707e-13,
+          "support": 976140
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "9a85df778ebc",
+      "text": "Le forfait A propose un prix mensuel de 12 euros avec une capacité de stockage de 5 Go, tandis que le forfait B s'élève à 18 euros par mois pour 20 Go. Ces deux options présentent des caractéristiques distinctes : le prix mensuel reflète le coût de l'abonnement, tandis que la capacité de stockage indique la quantité d'espace disponible. Bien que le forfait B soit plus cher, il offre une quantité de stockage cinq fois supérieure, ce qui peut être un avantage pour les utilisateurs ayant des besoins plus importants. Les deux forfaits incluent l'assistance par e-mail, mais aucun ne propose d'assistance téléphonique, ce qui limite les canaux de support.\n\nLes deux options excluent le stockage illimité, ce qui signifie que les utilisateurs doivent gérer leur espace de manière proactive. Le forfait B n'est pas moins cher que le forfait A, confirmant que le prix est directement lié à la capacité de stockage. Aucun prix annuel n'est indiqué, ce qui suggère que les abonnements sont payés mensuellement, sans engagement à long terme. Les informations sur le délai de réponse de l'assistance restent indiquées, sans précision.\n\nEn comparant les deux forfaits, il apparaît que le choix dépend des priorités de l'utilisateur : le forfait A est plus économique mais offre moins d'espace, tandis que le forfait B permet un stockage plus important à un coût plus élevé. Aucun des deux n'offre de garantie, de réduction ou de condition supplémentaire, ce qui maintient les options simples et transparentes. La différenciation entre prix et capacité montre que ces deux caractéristiques ne sont pas directement comparables, mais influencent différemment l'expérience utilisateur.",
+      "completion": "eos",
+      "tokens": 418,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -368,
+          "events": 396,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.01378345494529087,
+          "centered_sum": 42630,
+          "events": 396,
+          "lattice_size": 524288,
+          "alias_bound": 2.7301921321093756e-40,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.955616775153558e-13,
+          "support": 1894860
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "e0c1f1e92c1e",
+      "text": "Le forfait A propose un prix mensuel de 12 EUR avec une capacité de stockage de 5 Go. Le forfait B, quant à lui, coûte 18 EUR par mois et offre 20 Go de stockage. Bien que le forfait B soit plus cher, il fournit une capacité deux fois supérieure à celle du forfait A. Les deux forfaits comprennent l’assistance par e-mail, mais aucun ne propose de support téléphonique. Cela suggère que les utilisateurs doivent s’attendre à un délai de réponse non spécifié pour obtenir de l’aide. Le forfait B n’est pas moins cher que le forfait A, ce qui indique que le prix par Go est plus avantageux dans le second cas. Cependant, aucun des deux ne propose de stockage illimité, ce qui limite leur utilité pour les utilisateurs ayant des besoins importants. Les prix affichés sont mensuels, sans indication d’options annuelles. Ainsi, les deux forfaits présentent des caractéristiques distinctes : le prix mensuel et la capacité de stockage, ce qui rend leur comparaison complexe sans indication de durabilité ou de conditions supplémentaires.",
+      "completion": "eos",
+      "tokens": 270,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.004902613382105995,
+          "centered_sum": 40486,
+          "events": 260,
+          "lattice_size": 262144,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.0403469313024743e-13,
+          "support": 1244100
+        },
+        {
+          "reference_tail": 0.12094327825592685,
+          "centered_sum": 18348,
+          "events": 260,
+          "lattice_size": 262144,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.0403469313024743e-13,
+          "support": 1244100
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "cf1f272d485e",
+      "text": "Imani is responsible for the database migration, which remains unconfirmed as complete. The migration is currently blocked due to pending backup verification, a step that has not yet been finalized. While the migration itself has not been confirmed, the staging environment is available for Theo to capture screenshots for the documentation update. Theo owns the task of updating the public guide, currently at version 1.7, with a planned release of version 1.8. This update has not been published yet. The staging environment’s availability does not imply production readiness, and deployment has not been confirmed. The migration and documentation work are progressing independently, with the backup verification being the only active blocking factor for the database migration.\n\nTheo’s documentation work can proceed in parallel with the pending backup verification, as the migration is not yet confirmed. The documentation update is intended to reflect the current state of the system, with version 1.8 representing the next iteration. However, no commitment has been made regarding the timeline for publication or the completion of the documentation. The pending verification of the backup does not indicate that it has passed or that the migration is now ready to move forward. Therefore, the migration status remains under review, and the documentation is being prepared based on the available information.\n\nThe migration and documentation are managed by separate owners, with distinct responsibilities and progress indicators. The migration is dependent on the completion of the backup verification, which is not yet confirmed. Theo’s documentation efforts are ongoing, and the public guide will be updated to version 1.8 once the work is finalized. There are no assurances or commitments regarding a specific deployment date or the resolution of all pending tasks. The current status reflects the separation of ownership and the independent progress of each task.",
+      "completion": "eos",
+      "tokens": 348,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 9.955791165626147e-06,
+          "centered_sum": 75556,
+          "events": 332,
+          "lattice_size": 524288,
+          "alias_bound": 5.641640350429982e-48,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.198879635542614e-13,
+          "support": 1588620
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -41582,
+          "events": 332,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "e25cc70523a6",
+      "text": "Imani is responsible for the database migration, which remains pending due to the incomplete verification of the backup process. The backup verification is currently in progress and has not yet been confirmed, which blocks the migration from proceeding. As a result, the migration has not been confirmed complete, and no deployment has been officially confirmed. Theo, on the other hand, is in charge of updating the documentation, and his planned update, version 1.8, has not yet been published. While the migration is on hold, Theo may continue with the documentation work, as it is not dependent on the backup verification. The current public guide remains version 1.7, and the staging environment is available for taking screenshots for the documentation update. It is important to note that access to the staging environment does not imply the system is ready for production use.\n\nTheo’s documentation work is separate from the migration process, and the two teams are independently managing their respective tasks. The documentation update is not contingent on the migration’s completion, so progress can continue as long as the migration remains blocked. However, the migration itself is not yet confirmed as complete, and the backup verification is a prerequisite that must be fulfilled before any further action can be taken. The staging environment’s availability does not equate to production readiness, and the public guide remains at version 1.7 until the documentation update is finalized and published.\n\nThe ownership of the migration and documentation is distinct, with Imani focused on the database transition and Theo on the content update. Since the backup verification is still pending, the migration cannot proceed, and the documentation update is not dependent on that milestone. Therefore, the teams are working independently, with Theo continuing to develop version 1.8 while the migration remains in a pending state. No commitments have been made regarding the timeline for either task, and the current status reflects the ongoing dependency between the two processes.",
+      "completion": "eos",
+      "tokens": 380,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.42849790110283686,
+          "centered_sum": 3362,
+          "events": 368,
+          "lattice_size": 524288,
+          "alias_bound": 2.5292927990114205e-43,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.997172139665398e-13,
+          "support": 1760880
+        },
+        {
+          "reference_tail": 0.3760598290680881,
+          "centered_sum": 5892,
+          "events": 368,
+          "lattice_size": 524288,
+          "alias_bound": 2.5292927990114205e-43,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.997172139665398e-13,
+          "support": 1760880
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "bb0c3a2ff687",
+      "text": "El pedido AX-17 incluye 6 teclados, de los cuales 4 son blancos y 2 negros. Todos los artículos están reservados exclusivamente para este pedido y no han salido del almacén. La salida está prevista para el viernes, aunque aún no se ha confirmado. No existe un número de seguimiento disponible en este momento. El cliente ha solicitado que el envío no se divida, y esa instrucción ha sido registrada en el sistema.\n\nEs importante aclarar que la diferencia entre la salida y la entrega radica en que la salida se refiere al momento en que los productos dejan el almacén, mientras que la entrega corresponde al momento en que el cliente recibe el paquete. En este caso, la entrega aún no tiene fecha confirmada. No se ha realizado ninguna oferta de sustitución ni se ha proporcionado información sobre posibles alternativas.\n\nLa persona de contacto para este pedido es Lucía. No se han realizado promesas ni se han comunicado acciones adicionales que no estén incluidas en el resumen. Por el momento, no se puede proporcionar un número de seguimiento ni una fecha exacta de entrega. Se mantendrá el cliente informado una vez que haya más detalles disponibles.",
+      "completion": "eos",
+      "tokens": 272,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.001152653195829479,
+          "centered_sum": 48233,
+          "events": 265,
+          "lattice_size": 262144,
+          "alias_bound": 2.5593442541290016e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.9134404571774003e-13,
+          "support": 1268025
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1209,
+          "events": 265,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "e4a9b864a38f",
+      "text": "El pedido AX-17 incluye un total de seis teclados, distribuidos en cuatro blancos y dos negros. Todos los artículos están reservados exclusivamente para este pedido y no han sido retirados del almacén. La fecha prevista de salida del envío es el viernes, aunque aún no se ha confirmado con certeza. En este momento, no existe un número de seguimiento disponible, y la fecha exacta de entrega aún no está establecida. El cliente ha solicitado que el envío no se divida, y este pedido está registrado en el sistema.\n\nSe ha mantenido la instrucción del cliente de no realizar ninguna acción adicional fuera de lo especificado en el resumen. No se ha ofrecido ninguna alternativa o sustitución para los teclados mencionados. Además, no se ha proporcionado información sobre posibles retrasos o cambios en los plazos. Los detalles sobre la salida y la entrega se distinguen claramente: la salida se refiere a la fecha en que el envío dejará el almacén, mientras que la entrega indica el momento en que el cliente recibirá los productos.\n\nLa persona de contacto para cualquier consulta relacionada con este pedido es Lucía. No se han establecido compromisos adicionales ni se han prometido notificaciones sobre el estado del envío. Se seguirá informando conforme se obtengan nuevos datos o confirmaciones.",
+      "completion": "eos",
+      "tokens": 304,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.02831752495209017,
+          "centered_sum": 32206,
+          "events": 302,
+          "lattice_size": 524288,
+          "alias_bound": 1.0664309839943562e-52,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.526942919206865e-13,
+          "support": 1445070
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1166,
+          "events": 302,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "dee4d644b27a",
+      "text": "Kumoに対する保守作業は10月8日13:00から13:20まで、東京時間で予定されています。予定時間は変更される可能性があるため、現時点で確定ではありません。保守期間中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧することが可能です。\n\nバックアップはすでに作成済みですが、復元テストはまだ実施されていません。そのため、復元の実績や動作確認は行っていません。保守作業が完了したという通知や確認はまだ出ていません。保守中はシステムの動作を確認しながら進められることになります。\n\n保守作業はKumoサービスの安定性を確保するためのものであり、保守中の動作や影響範囲は事前に周知されています。窓口として佐藤さんをご利用ください。利用者に対し、新たな通知や対応は今のところありません。保守の進捗や結果については、後日確認する予定です。",
+      "completion": "eos",
+      "tokens": 237,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.1870589646185076,
+          "centered_sum": 13220,
+          "events": 234,
+          "lattice_size": 262144,
+          "alias_bound": 2.723563527752023e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 4.668972660435151e-13,
+          "support": 1119690
+        },
+        {
+          "reference_tail": 0.27660899990869137,
+          "centered_sum": 8820,
+          "events": 234,
+          "lattice_size": 262144,
+          "alias_bound": 2.723563527752023e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 4.668972660435151e-13,
+          "support": 1119690
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "cb5d0d54a9a4",
+      "text": "Kumoの保守作業は10月8日13:00から13:20まで東京時間に行われます。予定通り実施される可能性もありますが、変更がある場合があります。保守期間中は新しい文書のアップロードを停止する予定ですが、既存の文書は削除されません。利用者は保守開始までに文書を閲覧可能です。\n\nバックアップはすでに作成済みですが、復元テストはまだ実施されていません。保守作業中はシステムの安定性を確保するため、一時的に新しい文書のアップロードを停止する予定です。利用者への影響を最小限に抑えられるよう、準備を進めています。\n\n保守作業の完了確認はまだ出されていません。保守後にはシステムの動作確認を進める予定ですが、具体的な確認結果は今後となります。何か不明点があれば、佐藤さんまでお問い合わせください。",
+      "completion": "eos",
+      "tokens": 209,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.0004472909486169698,
+          "centered_sum": 45206,
+          "events": 196,
+          "lattice_size": 262144,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.596750517391447e-13,
+          "support": 937860
+        },
+        {
+          "reference_tail": 0.11620450823992576,
+          "centered_sum": 16256,
+          "events": 196,
+          "lattice_size": 262144,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.596750517391447e-13,
+          "support": 937860
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "1430e837bf62",
+      "text": "Le forfait A propose un prix mensuel de 12 euros pour un volume de stockage de 5 Go, tandis que le forfait B s'élève à 18 euros pour 20 Go. Bien que le forfait B soit plus cher, il offre une capacité de stockage plus importante, ce qui en fait un choix plus adapté pour les utilisateurs ayant besoin d'espace. Les deux forfaits incluent l'assistance par e-mail, mais aucun ne propose d'assistance téléphonique, ce qui limite les options de support technique. Ni l'un ni l'autre ne propose de stockage illimité, ce qui signifie que les utilisateurs doivent s'attendre à des limites clairement définies.\n\nLes différences entre les deux forfaits s'expliquent par la combinaison de leur prix et de leur capacité. Le forfait A est donc plus économique, mais avec une capacité réduite. En revanche, le forfait B, bien qu'au-dessus du forfait A en prix, offre une capacité de stockage quatre fois supérieure. Cela suggère que le forfait B est plus orienté vers les utilisateurs nécessitant plus d'espace, même si le coût est plus élevé. Les deux forfaits sont donc conçus pour des besoins distincts, sans que l'un ne soit nécessairement meilleur que l'autre.\n\nL'absence de stockage illimité et de délai de réponse précis pour l'assistance montre que les deux forfaits sont conçus avec des limites claires. Aucun ne propose de réduction, de engagement ou de garantie, ce qui permet aux utilisateurs de choisir selon leurs besoins sans contraintes supplémentaires. Le prix mensuel indiqué ne comporte pas de version annuelle, ce qui signifie que les utilisateurs paieront selon le calendrier mensuel. Cela souligne une approche de tarification transparente, sans additions cachées.",
+      "completion": "eos",
+      "tokens": 429,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 2.7041356516731963e-06,
+          "centered_sum": 88204,
+          "events": 398,
+          "lattice_size": 524288,
+          "alias_bound": 4.330310357374661e-40,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.954786915760222e-13,
+          "support": 1904430
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -47064,
+          "events": 398,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "2b02c15b9df1",
+      "text": "Le forfait A propose un prix mensuel de 12 euros avec une capacité de stockage de 5 Go, tandis que le forfait B affiche un coût de 18 euros pour 20 Go. Ces deux forfaits offrent une assistance par e-mail, mais aucun ne fournit d’assistance téléphonique. Bien que le forfait B soit plus coûteux, il propose une capacité de stockage plus importante, ce qui en fait un choix plus adapté pour les utilisateurs nécessitant plus d’espace. Cependant, le prix par Go est plus élevé pour le forfait B, ce qui soulève une question de valeur selon les besoins individuels. Les deux forfaits excluent le stockage illimité, ce qui limite leur utilité pour les utilisateurs exigeants en espace de stockage.\n\nLe prix mensuel est une caractéristique distincte de la capacité de stockage, car l’un détermine le coût global, tandis que l’autre définit la quantité d’espace disponible. Ainsi, un forfait peut être plus cher mais offrir davantage d’espace, ou inversement. Cela implique que l’utilisateur doit évaluer ses besoins en termes de prix et de stockage pour choisir le forfait le plus pertinent. L’absence de stockage illimité et d’assistance téléphonique rend la comparaison plus complexe, car elle limite les options d’adaptation aux besoins.\n\nEnfin, les deux forfaits se distinguent par leur approche de la tarification et de l’espace de stockage, mais aucun ne propose de compromis sur les services. Le forfait B n’est pas moins cher que le forfait A, ce qui signifie que la capacité de stockage est facturée à un taux plus élevé. Cela souligne une différence de stratégie entre les deux options, mais ne permet pas de conclure sur leur supériorité respective. L’absence de précisions sur le délai de réponse de l’assistance ou la présence de conditions cachées rend difficile une évaluation complète.",
+      "completion": "eos",
+      "tokens": 455,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -16086,
+          "events": 426,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.4031806599844237,
+          "centered_sum": 4920,
+          "events": 426,
+          "lattice_size": 524288,
+          "alias_bound": 1.7521693654141095e-37,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.960024923404806e-13,
+          "support": 2038410
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "f7a0dd06b215",
+      "text": "Imani is responsible for the database migration, which remains pending due to the incomplete verification of the backup process. The verification status is currently undetermined, and as such, the migration has not been officially confirmed as complete. Deployment of the updated system has not been confirmed either, meaning the project is still in a state of active development and review. Theo, on the other hand, is in charge of updating the documentation. His planned update, version 1.8, has not yet been published, but work on it can continue in parallel with the migration process. The current public guide is version 1.7, and the staging environment is available for Theo to take screenshots as needed for the documentation update. It is important to note that access to the staging environment does not imply that the system is ready for production use. The responsibilities between Imani and Theo remain distinct, with the migration and documentation updates progressing independently, pending the resolution of the backup verification status.",
+      "completion": "eos",
+      "tokens": 194,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -14287,
+          "events": 191,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -12821,
+          "events": 191,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "d5f5649e82c4",
+      "text": "Imani is responsible for the database migration, which remains pending due to the incomplete verification of the backup process. While the migration itself has not been confirmed complete, the staging environment is currently accessible for Theo to take screenshots for the documentation update. Theo, who owns the documentation work, is preparing an update to version 1.8, which has not yet been published. This version is intended to replace the current public guide, version 1.7, but no confirmation has been given regarding its readiness or release. The documentation work can proceed independently of the migration status, as the backup verification is still pending and does not currently block Theo’s progress.\n\nThe migration and its associated tasks have not reached a confirmed completion stage, and no deployment has been officially confirmed. While the staging environment is available for documentation purposes, it should not be considered an indicator of production readiness. The ownership of the migration and documentation remains distinct, with Imani focusing on the database transition and Theo on the guide update. The backup verification, which is essential for the migration to proceed, is still in progress and has not yet been finalized.\n\nAs the project stands, the migration is stalled until the backup verification is resolved, while Theo continues to work on the documentation. The ongoing status of the migration and the pending verification mean that no final confirmation of completion or deployment is available. The documentation update, version 1.8, remains under development and has not been released. The project is currently in a state of partial progress, with distinct responsibilities assigned to each owner and no indication of a shared dependency beyond the backup verification.",
+      "completion": "eos",
+      "tokens": 319,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.0004283446267601862,
+          "centered_sum": 56878,
+          "events": 308,
+          "lattice_size": 524288,
+          "alias_bound": 1.1123458622867986e-51,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.435052925882474e-13,
+          "support": 1473780
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -39640,
+          "events": 308,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    }
+  ],
+  "summary_script_sha256": "7880618407be5deca8607262b5d3fa096e7b4bba9a3e691e2dd213c7c8521710",
+  "plan_sha256": "32c663635b3132c071550e654a99c3bbe9f3f2504a05d379f372e4a3798a0c94",
+  "freshness": {
+    "attempts": 32,
+    "tokens": 10047,
+    "distinct_draw_transcripts": 32,
+    "rows": [
+      {
+        "review_id": "ad88cac16982",
+        "tokens": 278,
+        "report_sha256": "620059b3c254a8a84bf1d12c3ae6d439bf6eff437b35f0511eeae4bdfb543f81",
+        "journal_sha256": "01dcb8daa1b1d9127c1bfa0250f8390a35e138777294d71d2a60bd0978129f00",
+        "draw_transcript_sha256": "3809224a7ef97efdc4513b5f05fcc4f3d03e3e0e199811c67027060607d163ec"
+      },
+      {
+        "review_id": "e96b029ee4de",
+        "tokens": 367,
+        "report_sha256": "eed530ae3cbedab41340e916d10bf3ff6cfeadf6c726cea44b7f39d5f838a756",
+        "journal_sha256": "ba9fb2218fca5dcfd0abf546d54d970b5bce2a359918651bd16cc1845a4f4f1f",
+        "draw_transcript_sha256": "ce44c222ddbe52e8135ad5c466e3b879992ff872701e84c3014a382aee39342c"
+      },
+      {
+        "review_id": "b9b8a38a02a4",
+        "tokens": 213,
+        "report_sha256": "ceb39c3f9a757f5e3c92c448eea8de0ddc6e9c904e8c110692f12224c2a0e07b",
+        "journal_sha256": "0a00a7df289bf9123b9c772f1dbdddaf4b83a96d272cccb90b4ca0a8f417517a",
+        "draw_transcript_sha256": "063c85537c880c4ebd965918900edfa7d846e8d3886c68deb70943e026578273"
+      },
+      {
+        "review_id": "45c2a6a05a6b",
+        "tokens": 239,
+        "report_sha256": "a6c787a464edcead364d103e4d6d1f8651e90a84b2f5f18d10acbf0c0778142a",
+        "journal_sha256": "c0d7c83e78c77fb995a175a8607f6778e770d070cf2bdd41469eb0ce8d017d9f",
+        "draw_transcript_sha256": "3fe343e5f388e4a143fe1bb03b88bf47416d26aa7d17f57c1259f37a4b849c0d"
+      },
+      {
+        "review_id": "9f19c926a17c",
+        "tokens": 460,
+        "report_sha256": "9d6ec70a58b66568a0935e069286725917b6ca2e5e43f43024d89cc44f860595",
+        "journal_sha256": "7fd9ad5a0826275f9d897f2962a057473899dec4ce0fd06f1b1d1c097d3bf058",
+        "draw_transcript_sha256": "6006656842ea6cdc6261a3edf450dfbe1629481f8c93e23939c428f34cdcc2e0"
+      },
+      {
+        "review_id": "301be4d66396",
+        "tokens": 424,
+        "report_sha256": "9c05177eb9f4c0ac7ae8275c38427f134855e54968e0c9b0e9f4dcf5ae768d83",
+        "journal_sha256": "0f529e098adf1a89c3889551580748c2b14c39b14b3f45151c06d8c101fa97d7",
+        "draw_transcript_sha256": "04f0fddff2233627ccd152c22e0f66a8c3d367fc012734a1b1c5e3f8d2a66b20"
+      },
+      {
+        "review_id": "2118ad5d2c70",
+        "tokens": 325,
+        "report_sha256": "d9b97964db1735a5c5108859ae6ab095c3deb1161755f2c184b14e1b15b1d26d",
+        "journal_sha256": "55ef5abb4a58443e36c14dc29f6890879d46b7fddb443c417ae2880fba962fa0",
+        "draw_transcript_sha256": "0535f498dd4dcf42db30a2fa13cebc601dfb1a6df29001749a6abcb9e94c853c"
+      },
+      {
+        "review_id": "20c90f56cc61",
+        "tokens": 342,
+        "report_sha256": "8e2abb58704df8d0acd6f4cea6c748d190acbe3d99e633b2dec47db4c3380791",
+        "journal_sha256": "5d619159e7c9ff50288f37a16f6af8ff48ed70447c6e676e2f474c55a5d8f79e",
+        "draw_transcript_sha256": "3eeff42a5719a55b48574e194516945043cfb99ad4b74dc23bf00ba482997de9"
+      },
+      {
+        "review_id": "4f29d3869a7a",
+        "tokens": 306,
+        "report_sha256": "6b2ecff07159bb759596915777eba88853ff9b68607d33a1ecc2391696551e69",
+        "journal_sha256": "43378b39bcaf4b89813d9f2cc14ce506a1426f58734d757d126a07c27f62333f",
+        "draw_transcript_sha256": "1eb3396843d0f8026743f467ce434c6b110dc051c8aa4c74f3d8d78bfe82d6ff"
+      },
+      {
+        "review_id": "e221ef2e1179",
+        "tokens": 263,
+        "report_sha256": "a43f11f49464404dd05ecd5d482f6a11249f06e060afaf29f6aa503d0a026313",
+        "journal_sha256": "2e512e5e5e8a5fcdd3aedd9650abb369a684010e7ffe11cc292fff0852390e66",
+        "draw_transcript_sha256": "74a85701229940b525333bc6d006839aadaf768aa0c3dace073db08faf7b548d"
+      },
+      {
+        "review_id": "4e1f3f5037b9",
+        "tokens": 226,
+        "report_sha256": "0c8b2a0101fef9d71892db67c2663a9990861b88469feca2c88491a59d4c39aa",
+        "journal_sha256": "795156e46e96ea9e3a31f28a733ea49cc97f03fac0b528fd783b36751f3fee38",
+        "draw_transcript_sha256": "62ef2d6fec115b6ac9ae538e4b9e3acd28824e867c7d08374589d32de1cb605e"
+      },
+      {
+        "review_id": "ee155f3d7c5c",
+        "tokens": 232,
+        "report_sha256": "ce715490c3578e6f45adf00ea5cd3fb7aa5396c40ce1e34ec3bd06a9b0f63884",
+        "journal_sha256": "7eb73ae8ef4d89eff8426fabbe0ee7701c334eedadb111f60a37ca30ad833718",
+        "draw_transcript_sha256": "77f61a9f2875907a7612dba38c9db1e9e9c03582b00609314f2e706f4c47c910"
+      },
+      {
+        "review_id": "ec262b8eb8a6",
+        "tokens": 439,
+        "report_sha256": "ad535cdc820b6c3c897fbfbc09c061941904883c0de94ea2bb36e52d815654d8",
+        "journal_sha256": "aaf65668e1579b98d503e64480a6a12d39a18e473206b9c9896b3471c41b059b",
+        "draw_transcript_sha256": "aafa158edf2c128dd71be10f62266ca24f92d8f3832df7ee58a11fdd159b8995"
+      },
+      {
+        "review_id": "4524f92fa06e",
+        "tokens": 470,
+        "report_sha256": "1139536976b04b48d063e52b3382327c4736e4934ee8fd1317d8f8ace320ee4c",
+        "journal_sha256": "4aeb4571f7f0af50e9575eefc2999d7f5d86e5bf45fcf40561e5c0644686d0ff",
+        "draw_transcript_sha256": "dbd916536bcba09b290e40aeff392b33a7ca0eeba45c98de5e5bdae56b2819ff"
+      },
+      {
+        "review_id": "17b1eab7e8fe",
+        "tokens": 255,
+        "report_sha256": "9b63b8adee0219c713e3cbe26715adb593e47758fe8704a7831c15d71137bed4",
+        "journal_sha256": "98a925eefdaf4f38d96b98ee6cee846a9ab0ec6f4bc4b72bd2462bbe68ebe86b",
+        "draw_transcript_sha256": "bba7f81d41d592985c720e6ac7a72f73345e64a3d5230994bc2e0a6d12a1116e"
+      },
+      {
+        "review_id": "b8446633504d",
+        "tokens": 334,
+        "report_sha256": "5d011938e528578d616c5b4d67d6be58a0f0b51aadd7cec623c0db7a5685f878",
+        "journal_sha256": "1fbe032a001583714abaf8ae1bad2af74ff4a75298f226c0bb136df70daf8582",
+        "draw_transcript_sha256": "5dccf757859dc8f7224a7bd7ef5b5e42b6f406e10b59c12a233963583ef34365"
+      },
+      {
+        "review_id": "0785ea19ab9f",
+        "tokens": 304,
+        "report_sha256": "637580a26ab467ea5baf72a494f70a1510e0493fe88db45d06345215aadee6a5",
+        "journal_sha256": "c90d607fd9f1d4d4991cfedf8a3a465d61603f70ec216f48330b9a6b66124289",
+        "draw_transcript_sha256": "451d45c835afe9971e46393650bf5db23954f97da066833a3a1281be783963ff"
+      },
+      {
+        "review_id": "432964d7ca93",
+        "tokens": 288,
+        "report_sha256": "c0f1919e10320dbc997f75e70febaf2770dd4d8ff945314b7895c425fd7bb69e",
+        "journal_sha256": "d5b5e3885bfd1dc8b45a3f5c4e9f1e7a5f035c80ceea2221b287a3d4e22e5c05",
+        "draw_transcript_sha256": "081e6d8cce73234ab92374bc06200be26afe16f8788e4bacfec8eebf643835ca"
+      },
+      {
+        "review_id": "32d4b9fa261c",
+        "tokens": 241,
+        "report_sha256": "10e3d8141da0b22684009dee10417a2d4f0bcafad6296a8bf601f994d3f1f66b",
+        "journal_sha256": "4705cc50298a44baec64ee70b65e6cf93e5ec82d1e9d33b748925d4f6cc0b3f1",
+        "draw_transcript_sha256": "84fba412058e2dee0b5cdb7660f1e906c55eaa5d45b8740cc880b640ffa5dab6"
+      },
+      {
+        "review_id": "b337d855d3b5",
+        "tokens": 206,
+        "report_sha256": "7aa1eddf3ced673a95885e3bf478b633ee89b54688c7295001f3aa33c303a05c",
+        "journal_sha256": "8704f6c78ebcfcdb2dfeadb28aa7ee646b49c708b73f61d4c7a8f42aabfbe7f8",
+        "draw_transcript_sha256": "1272d42eb566fd5beaebbe069f8c683a33a531a2f6bfec78b5569d3ad9f9ae75"
+      },
+      {
+        "review_id": "9a85df778ebc",
+        "tokens": 418,
+        "report_sha256": "176c76aaa6d363a3505994c0b307f2b64e31e5d90e9099d24763192619615e05",
+        "journal_sha256": "92a85525a4fcd892d025b2083c70dc55181000d4d226a6b4800468bba83a9a6d",
+        "draw_transcript_sha256": "880ad30a6f4afdc15497e77864ec32e6ab81d307c40cd5b01ee5f278a7298c37"
+      },
+      {
+        "review_id": "e0c1f1e92c1e",
+        "tokens": 270,
+        "report_sha256": "760d826e5b0eb5a77226552206f401c773011eef0311abf2886d10809146a849",
+        "journal_sha256": "a9bd9ee7b239fb72134bba41654a175b6013181896eac9040faefcbb52a9ec28",
+        "draw_transcript_sha256": "92618732ff66b9f8f00934705ea38ffd706a816231c5daf63365666cab166af7"
+      },
+      {
+        "review_id": "cf1f272d485e",
+        "tokens": 348,
+        "report_sha256": "f1de4c27cbf2b31557a769313d9721b263d3276030f327f3715cea2b0cef1d56",
+        "journal_sha256": "1f6fcf44dcac033ac38a5f54a1e2f0de6db44d90b5fc59e3e257b1724c612f77",
+        "draw_transcript_sha256": "41f845b68e06fa88d6c3effa62ff72bfbc2225ce881659f29389188eb7d6a649"
+      },
+      {
+        "review_id": "e25cc70523a6",
+        "tokens": 380,
+        "report_sha256": "112ff346cb71e9fd1f81c09485ecae7b4b82d220e179f6873c7bcaf1bb099a28",
+        "journal_sha256": "05580e99c46c739b70a5bd48be7e083f43165ee59feff86687fc17c2bd6aa7c2",
+        "draw_transcript_sha256": "d16491e0a43739fcae59f949631f90ba7dbdb7a9bd8bccfac909c010b15f78ee"
+      },
+      {
+        "review_id": "bb0c3a2ff687",
+        "tokens": 272,
+        "report_sha256": "b98c3521204aa58aac5ee3f93d8b72b13f68dc09f4370502e030b053854c9f8b",
+        "journal_sha256": "de080531453a88599e8ac358cb402bf868c5c535ecc59d98559dc353cf0e6091",
+        "draw_transcript_sha256": "4172d2b78aea261a3e99ae09f4a7b0959fd5286ee475f5395dbf835803e554f6"
+      },
+      {
+        "review_id": "e4a9b864a38f",
+        "tokens": 304,
+        "report_sha256": "b913f2fd9f161a585a5057608e1415dafe3356cde9b52ac2e66390a6dfef30b5",
+        "journal_sha256": "ef3dc6b1d083c8cf8824e05f18e1104dfe9ac43187077a4e53c6d296879be12b",
+        "draw_transcript_sha256": "ebfa5a5310e697755c842f4a307a481df3f170b90f7fb777f04ab58f38b37b9b"
+      },
+      {
+        "review_id": "dee4d644b27a",
+        "tokens": 237,
+        "report_sha256": "26e58ffc4b15966e795ecf44876cb412ac318ce9eefa0cace2522979e57df6a3",
+        "journal_sha256": "93f78ee9154d2571ea9169e8aa2df48be66478725560f882e0c025516a64bbaa",
+        "draw_transcript_sha256": "59a331f509dc84d61ba949a3f8fa9645d6bdd7cbc93fe4e761e13365cf8c196b"
+      },
+      {
+        "review_id": "cb5d0d54a9a4",
+        "tokens": 209,
+        "report_sha256": "e70bbe12b2ea133dc1fc78f9407c64603d14f55b6f17c3625f53bb694fd8d21b",
+        "journal_sha256": "740b68c0ee612502631b63908fa1ea36194f63bc8c36d29c6e344f1a65ff5231",
+        "draw_transcript_sha256": "7f5f8ebbbc225e5fc8d2bd2d8bca539fd96e96c161410048b4b6476b2c7657f8"
+      },
+      {
+        "review_id": "1430e837bf62",
+        "tokens": 429,
+        "report_sha256": "a4145cefb683e9f2de8f4cdc2b792faff4bbac1509f85cc60f8d804146c3d780",
+        "journal_sha256": "f92be52644a36183b99657101135c62d0d50090ea3a409586d41155c1c56ac2c",
+        "draw_transcript_sha256": "971fd13e0f79ac603f646550233add8846c214cebb27b98d601ce6318bc47c12"
+      },
+      {
+        "review_id": "2b02c15b9df1",
+        "tokens": 455,
+        "report_sha256": "38d2706edd3092db284c953c42c32aad4227d91311d7e5188062aacbb46a05be",
+        "journal_sha256": "b3132a23e38ecc35f2ad469846e886cadbcd592e78cf49a420433af163b4dadc",
+        "draw_transcript_sha256": "17cf128e23e99475056a966c276e4cfbe0556e2f95a04d2c8878a10036aa2abe"
+      },
+      {
+        "review_id": "f7a0dd06b215",
+        "tokens": 194,
+        "report_sha256": "05a8f324c2ae047fcaafcdce0104145f929a792eb4b5c8087e91696bfbe63d01",
+        "journal_sha256": "027086337e7186dc932e19abceb206920e7d6cdeed4ee12e3e4804e96bd2d965",
+        "draw_transcript_sha256": "ea734a4cb8f9392af26f86203625e176f75ee141fa98332a70dc3e0b1dcdc508"
+      },
+      {
+        "review_id": "d5f5649e82c4",
+        "tokens": 319,
+        "report_sha256": "b4ca953249459094eb6589d87f648ab415a936f2f50df2b64cbdf42bf07b6bf0",
+        "journal_sha256": "1e8b874b318ed586907ac24453fb3c65cc66d4b8a3da18d2ac5624714902e3fd",
+        "draw_transcript_sha256": "d1b368df551bc01c5dae2cd3c94bd634b340e332ce749141878d7054ca13046e"
+      }
+    ]
+  }
+}

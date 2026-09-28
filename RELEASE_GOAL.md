@@ -26,6 +26,32 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 longer factual writing
+
+- Completed 32 actual unchanged-SDK outputs across four longer tasks, four
+  languages and every existing key. All reach EOS; all 10,047 native tokens and
+  32 distinct draw transcripts reconcile. SDK source, installed package and
+  prior wheel match all 90 files; frozen engine integrity passes all 39 files.
+- Matching-key diagnostics rise to 11/16 marked versus 0/16 ordinary. No
+  next-slot-key hits occur. Zero outputs pass strict content, language, format
+  and detection jointly. Do not trade fidelity for longer-text signal.
+- Strict content passes are 0/16 in both arms; accepting all ten conservative
+  judgments frozen before unblinding gives 5/16 in each. Added promises,
+  invented maintenance work and wrong comparisons remain. One marked Spanish
+  response inserts the English word "neither"; no wholesale translation occurs.
+- Requested length/paragraph format passes are 3/16 ordinary and 2/16 marked.
+  Neither reaches the generation cap. Format failures stay separate from facts.
+  Joint marked passes remain zero even with all conservative judgments accepted.
+- [All samples, methods, sensitivity and offline review](evidence/long-fidelity-2026-09-28/README.md).
+  27 relevant local checks pass; no thresholds, defaults or criteria changed.
+- This strict expansion study produces a floor effect in both arms and cannot
+  isolate watermark-caused harm. Next establish ordinary-generation adequacy
+  with a stronger pinned local model before paired watermark qualification.
+- Local landing copy now exposes the September 28 short-study failures and
+  human-review samples and corrects PydanticAI's previously stale untested label.
+  Desktop/mobile navigation and existing editorial styling checked. No deploy,
+  posting, public package release or CI enablement. Launch remains held.
+
 ## September 28 source-grounded fidelity and review
 
 - Ran 96 actual generations through the unchanged public SDK: twelve fresh tasks,

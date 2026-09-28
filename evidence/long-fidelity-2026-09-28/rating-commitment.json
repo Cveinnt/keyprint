@@ -1,0 +1,6 @@
+{
+  "plan.json": "32c663635b3132c071550e654a99c3bbe9f3f2504a05d379f372e4a3798a0c94",
+  "blind-review.json": "be021efdb36d462a0fb12520b770335a088d79ae38e52fbda920ea7a4ffa01b3",
+  "frozen-ratings.json": "64497768be102b18d116a2ea2dbe379cff04704c2685c97aaf5fe37e939b15be",
+  "scope": "32 assistant fact-level ratings committed before opening conditions, keys or scores. Not independent human review. Ten conservative boilerplate/status interpretations flagged before unblinding. Language failure is one English word intrusion, not wholesale translation. Format computed separately; same-text joint outcome mandatory."
+}

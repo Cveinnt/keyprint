@@ -1,0 +1,496 @@
+{
+  "policy": "Accept all ten judgments flagged conservative before unblinding. Original ratings untouched. Format, language, execution and detector rules unchanged.",
+  "review_ids": [
+    "0785ea19ab9f",
+    "b9b8a38a02a4",
+    "2118ad5d2c70",
+    "ad88cac16982",
+    "17b1eab7e8fe",
+    "20c90f56cc61",
+    "301be4d66396",
+    "e221ef2e1179",
+    "d5f5649e82c4",
+    "cf1f272d485e"
+  ],
+  "summary": {
+    "groups": {
+      "ordinary": {
+        "attempts": 16,
+        "execution_pass": 16,
+        "content_pass": 5,
+        "language_pass": 16,
+        "format_pass": 3,
+        "task_pass": 2,
+        "joint_pass": 0,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      "marked": {
+        "attempts": 16,
+        "execution_pass": 16,
+        "content_pass": 5,
+        "language_pass": 15,
+        "format_pass": 2,
+        "task_pass": 0,
+        "joint_pass": 0,
+        "matching_hits": 11,
+        "other_hits": 0
+      }
+    },
+    "paired": {
+      "content_pass": {
+        "ordinary_only": 4,
+        "marked_only": 4,
+        "both_fail": 7,
+        "both_pass": 1
+      },
+      "task_pass": {
+        "ordinary_only": 2,
+        "both_fail": 14
+      },
+      "joint_pass": {
+        "both_fail": 16
+      }
+    },
+    "by_case": [
+      {
+        "case": "shipping_es",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 2,
+        "task_pass": 1,
+        "joint_pass": 0
+      },
+      {
+        "case": "shipping_es",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 3,
+        "format_pass": 2,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "maintenance_ja",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "maintenance_ja",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 1,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "comparison_fr",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "comparison_fr",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 1,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      },
+      {
+        "case": "handoff_en",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 2,
+        "language_pass": 4,
+        "format_pass": 1,
+        "task_pass": 1,
+        "joint_pass": 0
+      },
+      {
+        "case": "handoff_en",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 0,
+        "task_pass": 0,
+        "joint_pass": 0
+      }
+    ],
+    "judgments": {
+      "ad88cac16982": {
+        "length": 195,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e96b029ee4de": {
+        "length": 265,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "b9b8a38a02a4": {
+        "length": 364,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "45c2a6a05a6b": {
+        "length": 384,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "9f19c926a17c": {
+        "length": 275,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "301be4d66396": {
+        "length": 272,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "2118ad5d2c70": {
+        "length": 271,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "20c90f56cc61": {
+        "length": 293,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "4f29d3869a7a": {
+        "length": 208,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e221ef2e1179": {
+        "length": 183,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "4e1f3f5037b9": {
+        "length": 359,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "ee155f3d7c5c": {
+        "length": 371,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "ec262b8eb8a6": {
+        "length": 286,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "4524f92fa06e": {
+        "length": 291,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "17b1eab7e8fe": {
+        "length": 218,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true,
+        "joint_pass": false
+      },
+      "b8446633504d": {
+        "length": 284,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "0785ea19ab9f": {
+        "length": 217,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true,
+        "joint_pass": false
+      },
+      "432964d7ca93": {
+        "length": 205,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": false,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "32d4b9fa261c": {
+        "length": 393,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "b337d855d3b5": {
+        "length": 330,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "9a85df778ebc": {
+        "length": 267,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e0c1f1e92c1e": {
+        "length": 174,
+        "paragraphs": 1,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "cf1f272d485e": {
+        "length": 297,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e25cc70523a6": {
+        "length": 322,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "bb0c3a2ff687": {
+        "length": 196,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "e4a9b864a38f": {
+        "length": 212,
+        "paragraphs": 3,
+        "length_pass": true,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "dee4d644b27a": {
+        "length": 396,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "cb5d0d54a9a4": {
+        "length": 343,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "1430e837bf62": {
+        "length": 270,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "2b02c15b9df1": {
+        "length": 293,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "f7a0dd06b215": {
+        "length": 164,
+        "paragraphs": 1,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      },
+      "d5f5649e82c4": {
+        "length": 275,
+        "paragraphs": 3,
+        "length_pass": false,
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": false,
+        "task_pass": false,
+        "joint_pass": false
+      }
+    },
+    "quality_acceptance": false,
+    "detector_calibrated": false,
+    "scope": "Four new longer prompts built from previously examined source-fact domains, four languages, one Qwen/MLX model and four reused keys. No open-domain factual, framework, scientific or launch acceptance.",
+    "interpretation": "Joint pass requires factual, language, length, paragraph/prose and execution pass plus matching-key hit and no other-key hit on the same output. Descriptive uncalibrated development measure, never general quality or deployment acceptance."
+  }
+}

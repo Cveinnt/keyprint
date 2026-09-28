@@ -28,10 +28,16 @@ def build(source):
             raise ValueError('Unique review IDs required')
         seen.add(uid)
         case = row['case']
+        unit = 'words' if 'max_words' in case else 'chars'
+        unit_name = 'words' if unit == 'words' else 'characters'
+        lower = f"{case['min_' + unit]} to " if 'min_' + unit in case else ''
+        limit = f"{lower}{case['max_' + unit]} {unit_name}"
+        if 'paragraphs' in case:
+            limit += f"; {case['paragraphs']} prose paragraphs"
         clean.append({'review_id': uid, 'text': row['text'], 'completion': row['completion'],
                       'title': TITLES.get(case['id'], case['id'].replace('_', ' ').capitalize()),
                       'case': {k: case[k] for k in ('id', 'language', 'prompt', 'facts', 'forbidden')},
-                      'format_limit': f"{case['max_words']} words" if 'max_words' in case else f"{case['max_chars']} characters"})
+                      'format_limit': limit})
     payload = {'study_sha256': hashlib.sha256(source.encode()).hexdigest(), 'rows': clean}
     encoded = json.dumps(payload, ensure_ascii=True).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     template = Path(__file__).with_name('fact_review.html').read_text()
