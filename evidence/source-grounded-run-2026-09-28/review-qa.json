@@ -1,0 +1,46 @@
+{
+  "mode": "actual",
+  "url": "http://127.0.0.1:54974/review.html",
+  "flow": "Original source and generated output -> blank fact/claim/language/format ratings -> persistence, navigation and explicit partial export.",
+  "fallback": "Browser plugin not available; bundled Playwright with isolated installed Chrome",
+  "results": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "pageIdentity": true,
+      "meaningfulContent": true,
+      "noOverlay": true,
+      "noOverflow": true,
+      "consoleErrors": [],
+      "sourceVisible": true,
+      "metadataHidden": true,
+      "blankInitialRatings": true,
+      "formatRequired": true,
+      "persistence": true,
+      "partialExport": true,
+      "uncertainIsNull": true,
+      "navigation": true,
+      "ratingsConfinedToIsolatedQAContext": true
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "pageIdentity": true,
+      "meaningfulContent": true,
+      "noOverlay": true,
+      "noOverflow": true,
+      "consoleErrors": [],
+      "sourceVisible": true,
+      "metadataHidden": true,
+      "blankInitialRatings": true,
+      "formatRequired": true,
+      "persistence": true,
+      "partialExport": true,
+      "uncertainIsNull": true,
+      "navigation": true,
+      "ratingsConfinedToIsolatedQAContext": true
+    }
+  ]
+}

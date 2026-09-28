@@ -1,0 +1,17 @@
+{
+  "rated": 64,
+  "planned": 128,
+  "draft_ratings_sha256": "ea16c42e61c8cd95b9866dc65b03ba5223d1e9676ca979a876ae64cafe1efda9",
+  "blind_review_sha256": "b786027799e40f04c8fce39d5a8dd6a2fd26921ec12f67de97d94600db5d5253",
+  "rated_case_ids": [
+    "0d4f07a298ed0988",
+    "1f7317d2eefa0600",
+    "4242dee80ddc4b37",
+    "7c398604a53b30a9",
+    "9e4236870ee98870",
+    "a663a04d3d40d159",
+    "bfba6146fa86a934",
+    "d7ee277160123eab"
+  ],
+  "phase": "Partial assistant review, conditions/keys/counts still hidden. No aggregate scores or launch acceptance. Complete all 128 and freeze final ratings before unblinding."
+}

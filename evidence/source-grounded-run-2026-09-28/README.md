@@ -1,8 +1,11 @@
-# Source-grounded paired inference: in progress
+# Source-grounded paired inference: execution complete, review in progress
 
-The 128-attempt run has started. No factual-quality result, detector qualification
-or launch acceptance is available from this study yet. All prior multilingual
-and expansion-task failures remain; this adds a natural source-based task family.
+All 128 planned outputs completed at EOS, with no execution errors or truncations.
+All 24,465 sampled tokens pass the complete receipt audit. No factual-quality
+comparison, detector qualification or launch acceptance is available from this
+study yet: 64 of 128 source-only assistant judgments are retained, with condition,
+key and count metadata still hidden. All prior multilingual and expansion-task
+failures remain; this adds a natural source-based task family.
 
 ## Frozen before generation
 
@@ -18,14 +21,15 @@ and expansion-task failures remain; this adds a natural source-based task family
 - [Identity](identity.json): pinned model, assets, native runtime, tokenizer and
   sampling profile. SDK sources remain unchanged during this run.
 
-## Verification snapshot
+## Complete receipt verification
 
-[Partial receipt audit](partial-audit.json) verifies the first 45 completed
-attempts and 8,642 committed tokens, with no execution errors in that snapshot.
-This is not a full-schedule audit or independent model-forward replay. It checks
-native bytes, prompt IDs, usage, EOS/cap behavior, journal hash chains, RNG rejection
-transcripts and commit order. No semantic labels or condition-level counts were
-read to prepare the review machinery.
+[Complete receipt audit](receipt-audit.json) verifies all 128 attempts and all
+24,465 committed tokens: native bytes, prompt IDs, usage, EOS/cap behavior,
+journal hash chains, RNG rejection transcripts and commit order. It also binds
+each blinded view to the exact original source, frozen rubric and recorded output.
+All 128 draw transcripts are distinct. This is not independent model-forward or
+keyed-source re-execution, semantic acceptance or detector calibration. The
+[earlier partial snapshot](partial-audit.json) remains retained.
 
 [Local checks](local-checks.json): 55 tests pass. They reject missing, reordered
 or duplicate attempts; changed review text, sources or rubrics; leaked condition
@@ -34,7 +38,7 @@ also keep token caps in the denominator, separate coverage from supported claims
 apply sensitivity only to explicitly pre-flagged uncertain fields, and treat
 unavailable detection measurements as unavailable rather than negative results.
 
-## Review after inference
+## Review progress
 
 `tools/audit_source_grounded.py` requires all 128 scheduled attempts and the
 complete metadata-hidden review. It verifies source/rubric and SDK commitments,
@@ -46,12 +50,19 @@ re-execution of the keyed model path.
 `tools/build_source_review.py` builds a private offline page with each original
 passage, task, output and criteria. Human ratings start blank. Coverage, claims,
 language and format stay separate; exported partial or unsure answers never
-become acceptance. This new page has unit coverage; rendered browser QA is still
-pending until the actual completed study is available. The production landing
-page is unchanged.
+become acceptance. [Actual-data browser QA](review-qa.json) passes desktop
+1440×1000 and mobile 390×844 checks: page identity, nonblank content, no framework
+overlay/console errors/overflow, source visibility, hidden labels, blank initial
+ratings, required format check, persistence, partial export, uncertainty as null,
+and navigation through all 128 entries. QA actions remain confined to isolated
+browser contexts and are not study ratings. The production landing page is unchanged.
 
-Assistant ratings must be frozen against shuffled outputs before joining key,
-condition or count metadata. `tools/summarize_source_grounded.py` then reports
+The [partial-rating commitment](rating-progress.json) binds the first 64 manual
+assistant judgments across eight complete cases. Clear factual failures and
+interpretively uncertain fields are recorded separately. No partial arm-level
+comparison has been computed. The remaining 64 judgments and final commitment
+must be completed before joining key, condition or count metadata.
+`tools/summarize_source_grounded.py` then reports
 all 64 pairs, by-case and by-key outcomes, and a sensitivity analysis limited to
 the pre-flagged fields. Missing detector verdicts remain missing. No thresholds
 from another profile or bitwise significance claims are used.

@@ -26,6 +26,24 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 source-grounded execution and blinded review
+
+- Completed all 128 predetermined English source-based outputs across sixteen
+  tasks and four existing keys. Every output reaches EOS; zero runtime errors or
+  truncations. No retries, rewriting or selection of favorable responses.
+- All 24,465 native tokens pass the complete prompt/byte/usage/EOS/draw/commit
+  receipt audit. Every blinded view matches its exact source, frozen rubric and
+  recorded output. This is not independent model-forward replay or calibration.
+- Sixty-four of 128 source-only assistant judgments are retained with uncertainty
+  flags and a partial hash commitment. Conditions, keys and raw counts remain
+  hidden until all ratings are complete and frozen. No quality comparison yet.
+- Actual-data review UI passes desktop/mobile source visibility, blank ratings,
+  format checks, navigation, persistence and partial export checks, with no
+  console errors or overflow. QA actions are not human ratings.
+- [Execution and review evidence](evidence/source-grounded-run-2026-09-28/README.md).
+  SDK/defaults and landing design unchanged; no new scientific clue acceptance,
+  package publication, deployment, hosted CI enablement or public launch.
+
 ## September 28 Qwen3.5 semantic review and full native replay
 
 - Froze source-fact ratings on all 32 shuffled outputs before revealing
@@ -49,8 +67,9 @@ acceptance and do not resolve existing quality or detection gaps.
 - [Next source-grounded selection](evidence/source-grounded-selection-2026-09-28/README.md):
   16 real English summarization contexts selected from a pinned Dolly snapshot
   by fixed hash, independent of reference answers or model outputs. Sources are
-  private and separate from the MIT SDK. Freeze task coverage criteria and the
-  complete runner before new inference. This complements, not replaces, failed
+  private and separate from the MIT SDK. Task coverage criteria and the complete
+  runner were subsequently frozen before the execution recorded above. This adds
+  evidence alongside, rather than replacing, failed
   stress tests. No new-profile detector threshold, scientific clue or launch
   acceptance is claimed. Publicity stays held.
 
