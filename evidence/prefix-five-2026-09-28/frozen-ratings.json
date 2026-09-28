@@ -1,0 +1,338 @@
+[
+  {
+    "review_id": "2208a827f308",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "70a645a40b55",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "08a9a23f506b",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Two French sentences, but nonphysical directions where blue is present plus reflection in place of a clear scattering account. Conservative failure; borderline reflection wording retained for sensitivity review.",
+    "borderline": true
+  },
+  {
+    "review_id": "a26df2fafcfd",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Two French sentences; first names air scattering, but second says sunlight is scattered by blue itself (par le bleu), reversing the causal agent. Conservative ambiguity failure retained for sensitivity review.",
+    "borderline": true
+  },
+  {
+    "review_id": "b264a67ee7aa",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Three Spanish paragraphs and 197 words, but registers loan date without specifying when the borrower must return the book. Required due-date detail missing.",
+    "borderline": false
+  },
+  {
+    "review_id": "d0fbc90b08fd",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "25fad4fc5e04",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three English prose paragraphs within 150-200 words; correct short-term weather/long-term climate distinction and limitation of a single cold day. No invented named place/person, measured statistic or specific date.",
+    "borderline": false
+  },
+  {
+    "review_id": "6d139f57f954",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "14d806394b60",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three English prose paragraphs within 150-200 words; correct short-term weather/long-term climate distinction and limitation of a single cold day. No invented named place/person, measured statistic or specific date.",
+    "borderline": false
+  },
+  {
+    "review_id": "aadd2f2d7316",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "8a6ff151b822",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three English prose paragraphs within 150-200 words; correct short-term weather/long-term climate distinction and limitation of a single cold day. No invented named place/person, measured statistic or specific date.",
+    "borderline": false
+  },
+  {
+    "review_id": "81e5d7b32385",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "a35cc851301f",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "d290af5e43d2",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "b31d4f846fc1",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three English prose paragraphs within 150-200 words; correct short-term weather/long-term climate distinction and limitation of a single cold day. No invented named place/person, measured statistic or specific date.",
+    "borderline": false
+  },
+  {
+    "review_id": "f46ce6a09768",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "62f835718388",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "d370d59c2dc8",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "fc66a49e70d9",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three English prose paragraphs within 150-200 words; correct short-term weather/long-term climate distinction and limitation of a single cold day. No invented named place/person, measured statistic or specific date.",
+    "borderline": false
+  },
+  {
+    "review_id": "c488f0ae6f72",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "74ce06542f4d",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three English prose paragraphs within 150-200 words; correct short-term weather/long-term climate distinction and limitation of a single cold day. No invented named place/person, measured statistic or specific date.",
+    "borderline": false
+  },
+  {
+    "review_id": "8e92171df0cc",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "eaac4421a615",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "bea076e47c5d",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Two French sentences with scattering and shorter wavelengths, but makes preferential scattering toward the sky the explanation. Conservative directional ambiguity failure retained for sensitivity review.",
+    "borderline": true
+  },
+  {
+    "review_id": "8b396496ba63",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three Spanish paragraphs within 150-200 words; recommends possible arrangements, includes book/borrower/return date, rule-dependent renewal and data protection; no invented named entities, specific dates, prices or fines.",
+    "borderline": false
+  },
+  {
+    "review_id": "641271d2a84c",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "4503ad9c2cdb",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Two French sentences, but describes scattering in the direction of violet and blue colors rather than preferential scattering of those components. Conservative ambiguity failure retained for sensitivity review.",
+    "borderline": true
+  },
+  {
+    "review_id": "9a06e15262e9",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "b2826150db4f",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "b4f8d507ceb8",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Two French sentences, but explicitly explains blue sky by air molecules reflecting sunlight upward, a materially incorrect explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "bafa09ba6570",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Three Spanish paragraphs but 215 words exceeds 200. Also suggests storing name/address without additional details assures privacy/use limitation, an unsupported assurance.",
+    "borderline": false
+  },
+  {
+    "review_id": "d6df1fe6958e",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "57882c6eba80",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "a551cf978eeb",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "ee5235dac18b",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "db5b013f5b2a",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "9c493786b561",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three Spanish paragraphs within 150-200 words; recommends possible arrangements, includes book/borrower/return date, rule-dependent renewal and data protection; no invented named entities, specific dates, prices or fines.",
+    "borderline": false
+  },
+  {
+    "review_id": "bd2a77fd5475",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Spanish content covers required details, but 208 words exceeds the explicit 200-word cap.",
+    "borderline": false
+  },
+  {
+    "review_id": "128a107340e3",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Three Spanish paragraphs within 150-200 words; recommends possible arrangements, includes book/borrower/return date, rule-dependent renewal and data protection; no invented named entities, specific dates, prices or fines.",
+    "borderline": false
+  },
+  {
+    "review_id": "2d5b9a7eb20f",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "67cc8455ff03",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "First French sentence gives appropriate scattering, but second incorrectly attributes an impression of blue night to the daytime sky explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "daf6f969dc83",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  },
+  {
+    "review_id": "f36480139f54",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "da5f3eb6920c",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "406852935dbb",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Two French sentences, but explicitly says air molecules reflect light upward to produce blue sky, a materially incorrect explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "71fa3c9d8339",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Two complete French sentences; explains preferential scattering of blue sunlight by air, with shorter wavelengths explicit or implied. No translation or material change in the core explanation.",
+    "borderline": false
+  },
+  {
+    "review_id": "48a4eb41e6ed",
+    "task_pass": false,
+    "language_pass": true,
+    "reason": "Accurate French scattering account but three complete prose sentences violates the explicit two-sentence requirement.",
+    "borderline": false
+  },
+  {
+    "review_id": "2c6905286e17",
+    "task_pass": true,
+    "language_pass": true,
+    "reason": "Within 70 English words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting for approval. No claim of completed review or approval.",
+    "borderline": false
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "rows": 500,
+  "errors": 0,
+  "hits": 4,
+  "screen": "not_rejected_not_calibrated",
+  "iid_only_upper_97_5_percent": 0.020355632593744212,
+  "fixed_key_calibrated": false,
+  "caveat": "Opened-data development; iid confidence bound does not address dependencies or fixed-key transfer",
+  "results_sha256": "46f5e90832b9e192c920dca4094397a3620801971f09058e850efe50eb373d9a"
+}

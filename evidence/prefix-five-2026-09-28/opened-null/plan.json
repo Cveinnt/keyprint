@@ -1,0 +1,15 @@
+{
+  "scope": "Five-layer diagnostic on all 500 previously opened public null responses.\n\nExisting heldout keys/data have already been examined in earlier development.\nThis is an additional rejection screen, never fresh confirmation or calibration.\n",
+  "script_sha256": "619f5b874ff0b990bb8e505b33dca7dd493665e869ecc1fd2c64b3bf54ea4555",
+  "candidate_sha256": "8858e9509f9050bfe0aa9d87320c4b33d129a5c333a6ee71bc67a30e618baa1b",
+  "source_sha256": "2df9083338b4abd6bceb5635764dab5d833b393b55759dffb0959b6fcbf794ec",
+  "prior_rows_sha256": "3397a124522e10de243de206fa3a4f077664f99bdd09c5ca3ff71c0c5527b272",
+  "keys_sha256": [
+    "606cb0d12892772d81264ca56b454213f00f2719fbb02b4abf4c0d4006c79ce2",
+    "c56dc3796db5c21e41a84d3b09193f31d3489ba423e7b3841c679cd17aea4a49"
+  ],
+  "rule": "First five layers, exact fair-binomial upper tail <= .005 per key; either of two keys counts once",
+  "planned": 500,
+  "rejection": "Do not advance a candidate with observed hit fraction above nominal 1%; passing is not fixed-key calibration",
+  "selection": "All 500 previously opened rows, original order, same two keys, no tuning or replacement"
+}

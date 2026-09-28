@@ -1,0 +1,6 @@
+{
+  "plan.json": "4f28d6c46a7ea0ad90e9e81195c43f1c327aa091649833718ebca984f933b5e5",
+  "blind-review.json": "f1343d0f52c728dd84496fc6734cb278e6301eb57c4c7952031f4db68fa23c2e",
+  "frozen-ratings.json": "aff5fb3217a69a40d5b7e73174163d15201eb38318e07af0e2370fa51021b29e",
+  "scope": "Assistant ratings frozen before reading condition/key mapping and detector outcomes. Prior samples/design known; not independent human or fully blinded evaluation. Four conservative ambiguous French failures marked for separate sensitivity analysis; never replace primary ratings."
+}

@@ -1,0 +1,9 @@
+{
+  "scope": "All four pre-flagged ambiguous ratings treated as passes; primary frozen ratings remain unchanged.",
+  "task_pass": {
+    "ordinary": 14,
+    "reference": 14,
+    "prefix_five": 13
+  },
+  "rejection_unchanged": true
+}

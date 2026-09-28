@@ -26,6 +26,27 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 five-layer comparison
+
+- Completed 48 new actual generations: ordinary/current/five-layer task passes
+  are 12/16, 14/16 and 11/16. Longer matching-key detections are 0/4, 3/4 and 1/4
+  under the respective frozen rules. Reject the five-layer candidate; it improves
+  neither fidelity nor detection in this development screen.
+- All 48 outputs retain language and reach EOS; all 5,211 tokens and 48 distinct
+  random-draw transcripts reconcile. Every sample and failure is retained.
+  Assistant ratings are metadata-hidden, not independent human acceptance.
+- Accepting all four ambiguous ratings still leaves the candidate behind.
+  One reference output crosses the wrong-key rule. Five-layer scoring on 500
+  opened null responses yields four hits, with a 2.04% IID-only upper bound:
+  neither result closes detector calibration or attribution.
+- [Results, full samples and methods](evidence/prefix-five-2026-09-28/README.md).
+  49 local checks pass; 39 frozen engine files remain intact. SDK/website/CI
+  unchanged. No scientific clue closes; publicity remains held.
+- Both simple attenuation approaches failed. Next separate model factual
+  limitations from watermark effects on fresh broader tasks, evaluating fidelity,
+  matching-key sensitivity and wrong-key behavior jointly. Do not keep reducing
+  signal strength merely to produce more varied examples.
+
 ## September 28 application-client progress
 
 - Closed the untested PydanticAI one-turn text/native-JSON integration check on

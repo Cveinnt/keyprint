@@ -1,0 +1,348 @@
+{
+  "schema": "keyprint.prefix-five-development.v1",
+  "model_revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "script_sha256": "faf755f6c899728340b87beec27a95f5dd0cdc011d3c926d32383df2d309c905",
+  "source_sha256": {
+    "prefix_candidate.py": "8858e9509f9050bfe0aa9d87320c4b33d129a5c333a6ee71bc67a30e618baa1b",
+    "mixture_research_runner.py": "487b94105fd05fa3a063863c30a5108eb7009f683c58952025fade1e4411d2ff",
+    "prose_quality_cases.json": "f9b9547f17d97b783988b861c7e99a1177cbc0cda54c1625b1e597e452a8b17b",
+    "weighted_null.py": "4c6470e6e089fbe4c10e3c10977b8d510f155bad62f968594ba7bf147431abe9",
+    "layer_likelihood.py": "75a378d2c898abf79d4b9d1420e74ebc806674951edb1d3a2b4c07d901cab1a2"
+  },
+  "rationale": "Five fixed tournament layers avoid post-transform signal dilution. Original 30-layer PRF namespace retained; distinct candidate identity. No adaptive depth or parameter sweep.",
+  "prior_plan_sha256": "9ab9d4d0bce4782484c94c3030e9c3b93538bad4797f7f299fdde1226ad60ea9",
+  "keys": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "cases": [
+    {
+      "id": "approval",
+      "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+      "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed."
+    },
+    {
+      "id": "french",
+      "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+      "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable."
+    },
+    {
+      "id": "weather_english",
+      "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+      "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation."
+    },
+    {
+      "id": "library_spanish",
+      "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+      "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims."
+    }
+  ],
+  "schedule": [
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 0,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 0,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 1,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 1,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 1,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 2,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 2,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "arm": "prefix_five"
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 3,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "ordinary"
+    },
+    {
+      "key_slot": 3,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "reference"
+    },
+    {
+      "key_slot": 3,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "prefix_five"
+    }
+  ],
+  "temperature": 0.7,
+  "top_k": 100,
+  "short_max_tokens": 192,
+  "long_max_tokens": 768,
+  "key_policy": "Every key from the concentration audit; no rotation, selection or regeneration",
+  "failure_policy": "Retain every attempt, cap and error; no retries or output replacement",
+  "detector": {
+    "rule": "Reference: unchanged 30-layer weighted tail. Candidate: exact fair-binomial tail over first five layers. Matching plus next-slot key, each <= .005; never OR the two detectors.",
+    "nominal_family_target": 0.01,
+    "deployment_calibrated": false,
+    "limitations": "Existing fixed-key null qualification failed; this is a frozen nominal target for comparative screening, not verified 1% deployment FPR"
+  },
+  "primary_signal_scope": "Four longer outputs per arm; short-text scores retained separately",
+  "review": "Assistant condition/key-hidden rubric ratings frozen before revealing mapping; not independent human review",
+  "candidate_screen": "Reject promotion on lower long-text matching hits, higher rubric failure count than reference, or more ordinary/wrong-key hits under the candidate detector than the reference detector. Ordinary controls are evaluated by both detectors separately. Ties or apparent improvements only justify a larger fresh study; they cannot establish noninferiority or launch acceptance.",
+  "scope": "Development on four existing keys and four prompts; no quality, detector or launch acceptance. Assistant has seen prior outputs and designs, so review is only metadata-hidden, not independent blindness. Research caller redundantly evaluates reference layers; timings cannot qualify serving."
+}

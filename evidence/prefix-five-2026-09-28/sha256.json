@@ -1,0 +1,15 @@
+{
+  "METHOD.md": "ab31e6a3bebb4fff2b2ca3d4f3bad6fddbaca3755f8bef1bc067c1066a04f32c",
+  "README.md": "a8e3eccee212203d43a8dcbd0bf2d56bbfb4f5bd0552a4f37e4627adcf070c43",
+  "REVIEW_SAMPLES.md": "bb06d62706ede7ae5664a8bae74d60aae6f8057cd39812ebfdb945d7e719bee4",
+  "blind-review.json": "f1343d0f52c728dd84496fc6734cb278e6301eb57c4c7952031f4db68fa23c2e",
+  "frozen-ratings.json": "aff5fb3217a69a40d5b7e73174163d15201eb38318e07af0e2370fa51021b29e",
+  "identities.json": "8b27534bb78f9d47dfc98ecc0f6daebc94bdc01b96460bf301f7690c37400c1f",
+  "opened-null/plan.json": "c25e08b1466518bd84ca82a9dfc43d1990aa45e9e7dc6fcafedf141891b6b0eb",
+  "opened-null/results.jsonl": "46f5e90832b9e192c920dca4094397a3620801971f09058e850efe50eb373d9a",
+  "opened-null/summary.json": "1a39bed2d33be19881249ab5166a510e8be99dac805793fb550e0376939585f5",
+  "plan.json": "4f28d6c46a7ea0ad90e9e81195c43f1c327aa091649833718ebca984f933b5e5",
+  "rating-commitment.json": "4b91ab3fc9f3b59d325e29b15e800540ea2bd763b381c7a89abcaaa122b839d0",
+  "results.json": "4a17f786dac2f740276988ce569e35eeec03a106cc7c8d46becfb98f85ca72d5",
+  "sensitivity.json": "163de6e7cae7597f4fbb0788c68430b3a64e8f9cb7acb595bfde3ab409e031ef"
+}
