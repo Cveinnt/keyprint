@@ -1,0 +1,1151 @@
+{
+  "attempts": 8,
+  "committed_steps": 568,
+  "unique_draw_transcripts": 8,
+  "all_reference_probabilities_bitwise_equal": true,
+  "rows": [
+    {
+      "key_slot": 0,
+      "condition": "ordinary",
+      "matches_prior_same_condition": 0,
+      "all_steps": {
+        "steps": 64,
+        "mean_base_entropy_bits": 0.29378127947427785,
+        "mean_base_max_probability": 0.9123144320045448,
+        "mean_base_collision_probability": 0.8850291635620879,
+        "mean_prepared_entropy_bits": 0.29378127947427785,
+        "mean_prepared_max_probability": 0.9123144320045448,
+        "mean_prepared_collision_probability": 0.8850291635620879,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 44,
+        "prepared_above_99_percent": 44
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 20,
+        "mean_base_entropy_bits": 0.9292187182795736,
+        "mean_base_max_probability": 0.7204815064346939,
+        "mean_base_collision_probability": 0.6342360027604899,
+        "mean_prepared_entropy_bits": 0.9292187182795736,
+        "mean_prepared_max_probability": 0.7204815064346939,
+        "mean_prepared_collision_probability": 0.6342360027604899,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 0
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 64,
+          "entropy_bits": 0.29378127947427785,
+          "max_probability": 0.9123144320045448
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -17.054573514618358,
+        "prepared": -17.054573514618358
+      },
+      "transformed_steps": 0,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 0,
+      "condition": "marked",
+      "matches_prior_same_condition": 3,
+      "all_steps": {
+        "steps": 81,
+        "mean_base_entropy_bits": 0.20696366111463355,
+        "mean_base_max_probability": 0.9418003304051201,
+        "mean_base_collision_probability": 0.9205625116128444,
+        "mean_prepared_entropy_bits": 0.005374137121861903,
+        "mean_prepared_max_probability": 0.9989709755944897,
+        "mean_prepared_collision_probability": 0.9981007812549453,
+        "mean_total_variation": 0.07808772254304673,
+        "mean_kl_prepared_base_bits": 0.17607054660231736,
+        "base_above_99_percent": 59,
+        "prepared_above_99_percent": 80
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 22,
+        "mean_base_entropy_bits": 0.7519427498992455,
+        "mean_base_max_probability": 0.7867902855958766,
+        "mean_base_collision_probability": 0.7096556051181562,
+        "mean_prepared_entropy_bits": 0.019786189929389422,
+        "mean_prepared_max_probability": 0.9962113358249172,
+        "mean_prepared_collision_probability": 0.9930074550745223,
+        "mean_total_variation": 0.28643392588014166,
+        "mean_kl_prepared_base_bits": 0.6467104393879337,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 21
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 81,
+          "entropy_bits": 0.20696366111463355,
+          "max_probability": 0.9418003304051201
+        },
+        {
+          "layer": 1,
+          "steps": 81,
+          "entropy_bits": 0.20160229549657055,
+          "max_probability": 0.9456643047525656
+        },
+        {
+          "layer": 2,
+          "steps": 81,
+          "entropy_bits": 0.2039816944823321,
+          "max_probability": 0.9432939225383741
+        },
+        {
+          "layer": 3,
+          "steps": 81,
+          "entropy_bits": 0.17680031784429912,
+          "max_probability": 0.9535785866672299
+        },
+        {
+          "layer": 4,
+          "steps": 81,
+          "entropy_bits": 0.15759592281745585,
+          "max_probability": 0.9572164233396091
+        },
+        {
+          "layer": 5,
+          "steps": 81,
+          "entropy_bits": 0.13133359957709498,
+          "max_probability": 0.9649388441751041
+        },
+        {
+          "layer": 6,
+          "steps": 81,
+          "entropy_bits": 0.12327874471008071,
+          "max_probability": 0.9671723534036164
+        },
+        {
+          "layer": 7,
+          "steps": 81,
+          "entropy_bits": 0.11546289612592793,
+          "max_probability": 0.9665811327223631
+        },
+        {
+          "layer": 8,
+          "steps": 81,
+          "entropy_bits": 0.11026852814031804,
+          "max_probability": 0.9670810361648504
+        },
+        {
+          "layer": 9,
+          "steps": 81,
+          "entropy_bits": 0.09499639328473276,
+          "max_probability": 0.9737075341742399
+        },
+        {
+          "layer": 10,
+          "steps": 81,
+          "entropy_bits": 0.07774115560585311,
+          "max_probability": 0.9800710965754577
+        },
+        {
+          "layer": 11,
+          "steps": 81,
+          "entropy_bits": 0.05738566372984313,
+          "max_probability": 0.9844459239134784
+        },
+        {
+          "layer": 12,
+          "steps": 81,
+          "entropy_bits": 0.039113995177301054,
+          "max_probability": 0.9897950677884023
+        },
+        {
+          "layer": 13,
+          "steps": 81,
+          "entropy_bits": 0.03213127738320315,
+          "max_probability": 0.9926654314522325
+        },
+        {
+          "layer": 14,
+          "steps": 81,
+          "entropy_bits": 0.03156048529729634,
+          "max_probability": 0.9908326305587204
+        },
+        {
+          "layer": 15,
+          "steps": 81,
+          "entropy_bits": 0.03274212257120253,
+          "max_probability": 0.9924725871517611
+        },
+        {
+          "layer": 16,
+          "steps": 81,
+          "entropy_bits": 0.04206311564184489,
+          "max_probability": 0.9882332693387094
+        },
+        {
+          "layer": 17,
+          "steps": 81,
+          "entropy_bits": 0.037473914588853185,
+          "max_probability": 0.9897470303713449
+        },
+        {
+          "layer": 18,
+          "steps": 81,
+          "entropy_bits": 0.03643047731871801,
+          "max_probability": 0.9885017289105066
+        },
+        {
+          "layer": 19,
+          "steps": 81,
+          "entropy_bits": 0.02528254185190275,
+          "max_probability": 0.9926103797218373
+        },
+        {
+          "layer": 20,
+          "steps": 81,
+          "entropy_bits": 0.025242192413364284,
+          "max_probability": 0.9926105942081277
+        },
+        {
+          "layer": 21,
+          "steps": 81,
+          "entropy_bits": 0.01622679858456803,
+          "max_probability": 0.9966144685776004
+        },
+        {
+          "layer": 22,
+          "steps": 81,
+          "entropy_bits": 0.014031968266839515,
+          "max_probability": 0.9969491324674726
+        },
+        {
+          "layer": 23,
+          "steps": 81,
+          "entropy_bits": 0.015758314955816748,
+          "max_probability": 0.9960952935292519
+        },
+        {
+          "layer": 24,
+          "steps": 81,
+          "entropy_bits": 0.018780989921756888,
+          "max_probability": 0.9945536376464219
+        },
+        {
+          "layer": 25,
+          "steps": 81,
+          "entropy_bits": 0.01859764652876599,
+          "max_probability": 0.9945708001520817
+        },
+        {
+          "layer": 26,
+          "steps": 81,
+          "entropy_bits": 0.01470159992502613,
+          "max_probability": 0.9938644716630858
+        },
+        {
+          "layer": 27,
+          "steps": 81,
+          "entropy_bits": 0.012951320560066752,
+          "max_probability": 0.9961561352170569
+        },
+        {
+          "layer": 28,
+          "steps": 81,
+          "entropy_bits": 0.012950259178452255,
+          "max_probability": 0.9961561907016018
+        },
+        {
+          "layer": 29,
+          "steps": 81,
+          "entropy_bits": 0.014529622673261041,
+          "max_probability": 0.9958138072186782
+        },
+        {
+          "layer": 30,
+          "steps": 81,
+          "entropy_bits": 0.005374137121861903,
+          "max_probability": 0.9989709755944897
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -14.679799402514497,
+        "prepared": -0.12516454675031366
+      },
+      "transformed_steps": 81,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 1,
+      "condition": "marked",
+      "matches_prior_same_condition": 0,
+      "all_steps": {
+        "steps": 60,
+        "mean_base_entropy_bits": 0.2184359353077438,
+        "mean_base_max_probability": 0.9437489349491491,
+        "mean_base_collision_probability": 0.9160894376224121,
+        "mean_prepared_entropy_bits": 0.03839220954462751,
+        "mean_prepared_max_probability": 0.9860774738413185,
+        "mean_prepared_collision_probability": 0.9820850292415276,
+        "mean_total_variation": 0.07765679443948417,
+        "mean_kl_prepared_base_bits": 0.19529765198554208,
+        "base_above_99_percent": 40,
+        "prepared_above_99_percent": 57
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 20,
+        "mean_base_entropy_bits": 0.6492220947983657,
+        "mean_base_max_probability": 0.8317638918851592,
+        "mean_base_collision_probability": 0.7493006529989512,
+        "mean_prepared_entropy_bits": 0.11517648551276412,
+        "mean_prepared_max_probability": 0.9582324272270002,
+        "mean_prepared_collision_probability": 0.946255099130671,
+        "mean_total_variation": 0.23245330198163075,
+        "mean_kl_prepared_base_bits": 0.5851460871450183,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 17
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 60,
+          "entropy_bits": 0.2184359353077438,
+          "max_probability": 0.9437489349491491
+        },
+        {
+          "layer": 1,
+          "steps": 60,
+          "entropy_bits": 0.1807220760227875,
+          "max_probability": 0.9504011863864192
+        },
+        {
+          "layer": 2,
+          "steps": 60,
+          "entropy_bits": 0.15906355668435085,
+          "max_probability": 0.953744171564955
+        },
+        {
+          "layer": 3,
+          "steps": 60,
+          "entropy_bits": 0.1397131220862856,
+          "max_probability": 0.9598334554347473
+        },
+        {
+          "layer": 4,
+          "steps": 60,
+          "entropy_bits": 0.12006633525373621,
+          "max_probability": 0.9670770974671868
+        },
+        {
+          "layer": 5,
+          "steps": 60,
+          "entropy_bits": 0.11536670455972868,
+          "max_probability": 0.9703828405589185
+        },
+        {
+          "layer": 6,
+          "steps": 60,
+          "entropy_bits": 0.11134332777408716,
+          "max_probability": 0.9666110582547288
+        },
+        {
+          "layer": 7,
+          "steps": 60,
+          "entropy_bits": 0.09924358009939858,
+          "max_probability": 0.9715961744743323
+        },
+        {
+          "layer": 8,
+          "steps": 60,
+          "entropy_bits": 0.08694469158304591,
+          "max_probability": 0.9763986306329244
+        },
+        {
+          "layer": 9,
+          "steps": 60,
+          "entropy_bits": 0.07525182160464912,
+          "max_probability": 0.98126057941119
+        },
+        {
+          "layer": 10,
+          "steps": 60,
+          "entropy_bits": 0.07562585302497352,
+          "max_probability": 0.9824749425722666
+        },
+        {
+          "layer": 11,
+          "steps": 60,
+          "entropy_bits": 0.07090893350645933,
+          "max_probability": 0.9804809413220319
+        },
+        {
+          "layer": 12,
+          "steps": 60,
+          "entropy_bits": 0.05555815839248284,
+          "max_probability": 0.9844535868552825
+        },
+        {
+          "layer": 13,
+          "steps": 60,
+          "entropy_bits": 0.05520474962686504,
+          "max_probability": 0.9815332621317966
+        },
+        {
+          "layer": 14,
+          "steps": 60,
+          "entropy_bits": 0.04794485530103697,
+          "max_probability": 0.9880922889040702
+        },
+        {
+          "layer": 15,
+          "steps": 60,
+          "entropy_bits": 0.04530260535961978,
+          "max_probability": 0.9895087154389325
+        },
+        {
+          "layer": 16,
+          "steps": 60,
+          "entropy_bits": 0.03665224553264232,
+          "max_probability": 0.9930753838063735
+        },
+        {
+          "layer": 17,
+          "steps": 60,
+          "entropy_bits": 0.04370621765145075,
+          "max_probability": 0.990376591151956
+        },
+        {
+          "layer": 18,
+          "steps": 60,
+          "entropy_bits": 0.049575896924225815,
+          "max_probability": 0.9864470300907431
+        },
+        {
+          "layer": 19,
+          "steps": 60,
+          "entropy_bits": 0.049708525244025886,
+          "max_probability": 0.9860693586827608
+        },
+        {
+          "layer": 20,
+          "steps": 60,
+          "entropy_bits": 0.04668772956722196,
+          "max_probability": 0.9864033588398676
+        },
+        {
+          "layer": 21,
+          "steps": 60,
+          "entropy_bits": 0.04876933063915096,
+          "max_probability": 0.9837191455031791
+        },
+        {
+          "layer": 22,
+          "steps": 60,
+          "entropy_bits": 0.04032100950631566,
+          "max_probability": 0.9873016200915483
+        },
+        {
+          "layer": 23,
+          "steps": 60,
+          "entropy_bits": 0.04215254793740164,
+          "max_probability": 0.9860904788187352
+        },
+        {
+          "layer": 24,
+          "steps": 60,
+          "entropy_bits": 0.04225565103294439,
+          "max_probability": 0.9860831444811691
+        },
+        {
+          "layer": 25,
+          "steps": 60,
+          "entropy_bits": 0.03402920764044524,
+          "max_probability": 0.9886897338602637
+        },
+        {
+          "layer": 26,
+          "steps": 60,
+          "entropy_bits": 0.03460922752859236,
+          "max_probability": 0.9877883497945033
+        },
+        {
+          "layer": 27,
+          "steps": 60,
+          "entropy_bits": 0.034645517024667394,
+          "max_probability": 0.9877860842681407
+        },
+        {
+          "layer": 28,
+          "steps": 60,
+          "entropy_bits": 0.03701035989088245,
+          "max_probability": 0.9844013969155064
+        },
+        {
+          "layer": 29,
+          "steps": 60,
+          "entropy_bits": 0.035939036056893095,
+          "max_probability": 0.9879736241249141
+        },
+        {
+          "layer": 30,
+          "steps": 60,
+          "entropy_bits": 0.03839220954462751,
+          "max_probability": 0.9860774738413185
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -19.21161069650317,
+        "prepared": -1.9866017831189624
+      },
+      "transformed_steps": 60,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 1,
+      "condition": "ordinary",
+      "matches_prior_same_condition": 0,
+      "all_steps": {
+        "steps": 62,
+        "mean_base_entropy_bits": 0.26349123301043903,
+        "mean_base_max_probability": 0.9289787232401997,
+        "mean_base_collision_probability": 0.9021671466099231,
+        "mean_prepared_entropy_bits": 0.26349123301043903,
+        "mean_prepared_max_probability": 0.9289787232401997,
+        "mean_prepared_collision_probability": 0.9021671466099231,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 43,
+        "prepared_above_99_percent": 43
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 19,
+        "mean_base_entropy_bits": 0.8539114950588476,
+        "mean_base_max_probability": 0.7687761234249332,
+        "mean_base_collision_probability": 0.6818134650534567,
+        "mean_prepared_entropy_bits": 0.8539114950588476,
+        "mean_prepared_max_probability": 0.7687761234249332,
+        "mean_prepared_collision_probability": 0.6818134650534567,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 0
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 62,
+          "entropy_bits": 0.26349123301043903,
+          "max_probability": 0.9289787232401997
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -21.87140434145139,
+        "prepared": -21.87140434145139
+      },
+      "transformed_steps": 0,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 2,
+      "condition": "ordinary",
+      "matches_prior_same_condition": 0,
+      "all_steps": {
+        "steps": 60,
+        "mean_base_entropy_bits": 0.24680544013923927,
+        "mean_base_max_probability": 0.9312050014634312,
+        "mean_base_collision_probability": 0.90394733346766,
+        "mean_prepared_entropy_bits": 0.24680544013923927,
+        "mean_prepared_max_probability": 0.9312050014634312,
+        "mean_prepared_collision_probability": 0.90394733346766,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 41,
+        "prepared_above_99_percent": 41
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 19,
+        "mean_base_entropy_bits": 0.7711267712697526,
+        "mean_base_max_probability": 0.7835556474114295,
+        "mean_base_collision_probability": 0.69827541919981,
+        "mean_prepared_entropy_bits": 0.7711267712697526,
+        "mean_prepared_max_probability": 0.7835556474114295,
+        "mean_prepared_collision_probability": 0.69827541919981,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 0
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 60,
+          "entropy_bits": 0.24680544013923927,
+          "max_probability": 0.9312050014634312
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -16.980381477163046,
+        "prepared": -16.980381477163046
+      },
+      "transformed_steps": 0,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 2,
+      "condition": "marked",
+      "matches_prior_same_condition": 0,
+      "all_steps": {
+        "steps": 96,
+        "mean_base_entropy_bits": 0.2894191494606652,
+        "mean_base_max_probability": 0.9214881915099802,
+        "mean_base_collision_probability": 0.891521177420981,
+        "mean_prepared_entropy_bits": 0.017285035982959527,
+        "mean_prepared_max_probability": 0.9953137719746423,
+        "mean_prepared_collision_probability": 0.992901366624932,
+        "mean_total_variation": 0.10699356314228083,
+        "mean_kl_prepared_base_bits": 0.2740470433995846,
+        "base_above_99_percent": 62,
+        "prepared_above_99_percent": 94
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 34,
+        "mean_base_entropy_bits": 0.8119522529082641,
+        "mean_base_max_probability": 0.7788174184223927,
+        "mean_base_collision_probability": 0.6946992338372291,
+        "mean_prepared_entropy_bits": 0.04880446233195425,
+        "mean_prepared_max_probability": 0.9867683115259839,
+        "mean_prepared_collision_probability": 0.9799568282537907,
+        "mean_total_variation": 0.3016016637219227,
+        "mean_kl_prepared_base_bits": 0.7730603656476525,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 32
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 96,
+          "entropy_bits": 0.2894191494606652,
+          "max_probability": 0.9214881915099802
+        },
+        {
+          "layer": 1,
+          "steps": 96,
+          "entropy_bits": 0.26577026613409505,
+          "max_probability": 0.9233323448578004
+        },
+        {
+          "layer": 2,
+          "steps": 96,
+          "entropy_bits": 0.2436574929553218,
+          "max_probability": 0.9282172771902882
+        },
+        {
+          "layer": 3,
+          "steps": 96,
+          "entropy_bits": 0.22243510417588813,
+          "max_probability": 0.9396976081079988
+        },
+        {
+          "layer": 4,
+          "steps": 96,
+          "entropy_bits": 0.20247909582669432,
+          "max_probability": 0.9431959061740142
+        },
+        {
+          "layer": 5,
+          "steps": 96,
+          "entropy_bits": 0.19206437112684455,
+          "max_probability": 0.9458947400740029
+        },
+        {
+          "layer": 6,
+          "steps": 96,
+          "entropy_bits": 0.17837836245319263,
+          "max_probability": 0.9485347759717407
+        },
+        {
+          "layer": 7,
+          "steps": 96,
+          "entropy_bits": 0.15782909970404455,
+          "max_probability": 0.9576043251809386
+        },
+        {
+          "layer": 8,
+          "steps": 96,
+          "entropy_bits": 0.12329117141588553,
+          "max_probability": 0.968657479126399
+        },
+        {
+          "layer": 9,
+          "steps": 96,
+          "entropy_bits": 0.10719154131313287,
+          "max_probability": 0.9729727636962218
+        },
+        {
+          "layer": 10,
+          "steps": 96,
+          "entropy_bits": 0.09984101005875931,
+          "max_probability": 0.9721734694879817
+        },
+        {
+          "layer": 11,
+          "steps": 96,
+          "entropy_bits": 0.10053916879190558,
+          "max_probability": 0.971908388971845
+        },
+        {
+          "layer": 12,
+          "steps": 96,
+          "entropy_bits": 0.08795135481876365,
+          "max_probability": 0.9735392955550157
+        },
+        {
+          "layer": 13,
+          "steps": 96,
+          "entropy_bits": 0.08985074342535615,
+          "max_probability": 0.9719699106118694
+        },
+        {
+          "layer": 14,
+          "steps": 96,
+          "entropy_bits": 0.07759020802497249,
+          "max_probability": 0.9771229214972806
+        },
+        {
+          "layer": 15,
+          "steps": 96,
+          "entropy_bits": 0.07100973277753393,
+          "max_probability": 0.9801900459735685
+        },
+        {
+          "layer": 16,
+          "steps": 96,
+          "entropy_bits": 0.07130921685800008,
+          "max_probability": 0.9797508190307687
+        },
+        {
+          "layer": 17,
+          "steps": 96,
+          "entropy_bits": 0.07910324018099911,
+          "max_probability": 0.975221368013104
+        },
+        {
+          "layer": 18,
+          "steps": 96,
+          "entropy_bits": 0.06313595491372515,
+          "max_probability": 0.9815963594003967
+        },
+        {
+          "layer": 19,
+          "steps": 96,
+          "entropy_bits": 0.053536939741391204,
+          "max_probability": 0.9830672222548328
+        },
+        {
+          "layer": 20,
+          "steps": 96,
+          "entropy_bits": 0.04484503169906556,
+          "max_probability": 0.9863020899977396
+        },
+        {
+          "layer": 21,
+          "steps": 96,
+          "entropy_bits": 0.050278366697772935,
+          "max_probability": 0.9840951747691655
+        },
+        {
+          "layer": 22,
+          "steps": 96,
+          "entropy_bits": 0.04878646097871436,
+          "max_probability": 0.9836938320656046
+        },
+        {
+          "layer": 23,
+          "steps": 96,
+          "entropy_bits": 0.03986243249067568,
+          "max_probability": 0.9880971436820907
+        },
+        {
+          "layer": 24,
+          "steps": 96,
+          "entropy_bits": 0.0365316115133477,
+          "max_probability": 0.9888812385900604
+        },
+        {
+          "layer": 25,
+          "steps": 96,
+          "entropy_bits": 0.03419591655038107,
+          "max_probability": 0.9912607314891962
+        },
+        {
+          "layer": 26,
+          "steps": 96,
+          "entropy_bits": 0.022782171158845274,
+          "max_probability": 0.9938861069862236
+        },
+        {
+          "layer": 27,
+          "steps": 96,
+          "entropy_bits": 0.022115632334491032,
+          "max_probability": 0.9928704938286363
+        },
+        {
+          "layer": 28,
+          "steps": 96,
+          "entropy_bits": 0.015129321683649699,
+          "max_probability": 0.9947038772723362
+        },
+        {
+          "layer": 29,
+          "steps": 96,
+          "entropy_bits": 0.015762041238912144,
+          "max_probability": 0.9944730177247257
+        },
+        {
+          "layer": 30,
+          "steps": 96,
+          "entropy_bits": 0.017285035982959527,
+          "max_probability": 0.9953137719746423
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -26.866303666696105,
+        "prepared": -1.9981884772590406
+      },
+      "transformed_steps": 96,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 3,
+      "condition": "marked",
+      "matches_prior_same_condition": 3,
+      "all_steps": {
+        "steps": 75,
+        "mean_base_entropy_bits": 0.2492122215033254,
+        "mean_base_max_probability": 0.9311856733329976,
+        "mean_base_collision_probability": 0.9025253620123912,
+        "mean_prepared_entropy_bits": 0.015033319763388772,
+        "mean_prepared_max_probability": 0.9955518074017901,
+        "mean_prepared_collision_probability": 0.993462217551616,
+        "mean_total_variation": 0.0864932042845406,
+        "mean_kl_prepared_base_bits": 0.18220429681223937,
+        "base_above_99_percent": 51,
+        "prepared_above_99_percent": 73
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 24,
+        "mean_base_entropy_bits": 0.7733072451541464,
+        "mean_base_max_probability": 0.7854992912765199,
+        "mean_base_collision_probability": 0.6964761688429781,
+        "mean_prepared_entropy_bits": 0.04697894942282811,
+        "mean_prepared_max_probability": 0.9860994050359335,
+        "mean_prepared_collision_probability": 0.9795694436594782,
+        "mean_total_variation": 0.2697472081752123,
+        "mean_kl_prepared_base_bits": 0.5686021676840326,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 22
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 75,
+          "entropy_bits": 0.2492122215033254,
+          "max_probability": 0.9311856733329976
+        },
+        {
+          "layer": 1,
+          "steps": 75,
+          "entropy_bits": 0.19696764892991217,
+          "max_probability": 0.947789430293688
+        },
+        {
+          "layer": 2,
+          "steps": 75,
+          "entropy_bits": 0.18586345048954517,
+          "max_probability": 0.9462529810655236
+        },
+        {
+          "layer": 3,
+          "steps": 75,
+          "entropy_bits": 0.1670339266791883,
+          "max_probability": 0.9549090091240453
+        },
+        {
+          "layer": 4,
+          "steps": 75,
+          "entropy_bits": 0.16475403728456525,
+          "max_probability": 0.9555366364884716
+        },
+        {
+          "layer": 5,
+          "steps": 75,
+          "entropy_bits": 0.1158159253708544,
+          "max_probability": 0.9731439729792287
+        },
+        {
+          "layer": 6,
+          "steps": 75,
+          "entropy_bits": 0.09283419786417793,
+          "max_probability": 0.9789429092954339
+        },
+        {
+          "layer": 7,
+          "steps": 75,
+          "entropy_bits": 0.08449203197269935,
+          "max_probability": 0.9801006198841034
+        },
+        {
+          "layer": 8,
+          "steps": 75,
+          "entropy_bits": 0.09423981174659872,
+          "max_probability": 0.9736937589790978
+        },
+        {
+          "layer": 9,
+          "steps": 75,
+          "entropy_bits": 0.08847392637893518,
+          "max_probability": 0.9739003269299894
+        },
+        {
+          "layer": 10,
+          "steps": 75,
+          "entropy_bits": 0.08231514542456268,
+          "max_probability": 0.9765120161540545
+        },
+        {
+          "layer": 11,
+          "steps": 75,
+          "entropy_bits": 0.06974320681398445,
+          "max_probability": 0.980268181340111
+        },
+        {
+          "layer": 12,
+          "steps": 75,
+          "entropy_bits": 0.07245318030914988,
+          "max_probability": 0.9786277879356117
+        },
+        {
+          "layer": 13,
+          "steps": 75,
+          "entropy_bits": 0.07215468810345464,
+          "max_probability": 0.9795560656570592
+        },
+        {
+          "layer": 14,
+          "steps": 75,
+          "entropy_bits": 0.06465231091715791,
+          "max_probability": 0.9809114993361746
+        },
+        {
+          "layer": 15,
+          "steps": 75,
+          "entropy_bits": 0.049166987052056466,
+          "max_probability": 0.9865035031798319
+        },
+        {
+          "layer": 16,
+          "steps": 75,
+          "entropy_bits": 0.05159902861971575,
+          "max_probability": 0.9850673406960866
+        },
+        {
+          "layer": 17,
+          "steps": 75,
+          "entropy_bits": 0.04822877372627184,
+          "max_probability": 0.9867686282266278
+        },
+        {
+          "layer": 18,
+          "steps": 75,
+          "entropy_bits": 0.05179393451755922,
+          "max_probability": 0.9827698795461243
+        },
+        {
+          "layer": 19,
+          "steps": 75,
+          "entropy_bits": 0.04302114642229873,
+          "max_probability": 0.9867411986078863
+        },
+        {
+          "layer": 20,
+          "steps": 75,
+          "entropy_bits": 0.04461199370399545,
+          "max_probability": 0.9862641090802458
+        },
+        {
+          "layer": 21,
+          "steps": 75,
+          "entropy_bits": 0.031987265397627675,
+          "max_probability": 0.9918888163492716
+        },
+        {
+          "layer": 22,
+          "steps": 75,
+          "entropy_bits": 0.03942721494502333,
+          "max_probability": 0.988067640928837
+        },
+        {
+          "layer": 23,
+          "steps": 75,
+          "entropy_bits": 0.035516962309647016,
+          "max_probability": 0.988812029124942
+        },
+        {
+          "layer": 24,
+          "steps": 75,
+          "entropy_bits": 0.0338507861129631,
+          "max_probability": 0.9898961289741438
+        },
+        {
+          "layer": 25,
+          "steps": 75,
+          "entropy_bits": 0.03827387452581715,
+          "max_probability": 0.9848281812144684
+        },
+        {
+          "layer": 26,
+          "steps": 75,
+          "entropy_bits": 0.029232905456358677,
+          "max_probability": 0.9904894135182857
+        },
+        {
+          "layer": 27,
+          "steps": 75,
+          "entropy_bits": 0.02121440698787806,
+          "max_probability": 0.9943360515226595
+        },
+        {
+          "layer": 28,
+          "steps": 75,
+          "entropy_bits": 0.016070885084508005,
+          "max_probability": 0.9965672541999868
+        },
+        {
+          "layer": 29,
+          "steps": 75,
+          "entropy_bits": 0.012456882553526965,
+          "max_probability": 0.9972801060394888
+        },
+        {
+          "layer": 30,
+          "steps": 75,
+          "entropy_bits": 0.015033319763388772,
+          "max_probability": 0.9955518074017901
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -15.172118944201463,
+        "prepared": -0.5611252899913175
+      },
+      "transformed_steps": 75,
+      "repeated_context_steps": 0
+    },
+    {
+      "key_slot": 3,
+      "condition": "ordinary",
+      "matches_prior_same_condition": 0,
+      "all_steps": {
+        "steps": 70,
+        "mean_base_entropy_bits": 0.14084347208517484,
+        "mean_base_max_probability": 0.9563346592270198,
+        "mean_base_collision_probability": 0.9431470001857546,
+        "mean_prepared_entropy_bits": 0.14084347208517484,
+        "mean_prepared_max_probability": 0.9563346592270198,
+        "mean_prepared_collision_probability": 0.9431470001857546,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 57,
+        "prepared_above_99_percent": 57
+      },
+      "base_not_already_above_99_percent": {
+        "steps": 13,
+        "mean_base_entropy_bits": 0.735182814727025,
+        "mean_base_max_probability": 0.7671042340891596,
+        "mean_base_collision_probability": 0.6983035375796548,
+        "mean_prepared_entropy_bits": 0.735182814727025,
+        "mean_prepared_max_probability": 0.7671042340891596,
+        "mean_prepared_collision_probability": 0.6983035375796548,
+        "mean_total_variation": 0.0,
+        "mean_kl_prepared_base_bits": 0.0,
+        "base_above_99_percent": 0,
+        "prepared_above_99_percent": 0
+      },
+      "layer_means": [
+        {
+          "layer": 0,
+          "steps": 70,
+          "entropy_bits": 0.14084347208517484,
+          "max_probability": 0.9563346592270198
+        }
+      ],
+      "selected_path_log2_probability": {
+        "base": -15.842384094328851,
+        "prepared": -15.842384094328851
+      },
+      "transformed_steps": 0,
+      "repeated_context_steps": 0
+    }
+  ],
+  "limits": "One reused prompt and four existing keys. Same-prefix probabilities isolate the transform, not whole-answer quality. Intermediate layers use the 30-layer PRF domain. Observational timing cannot measure serving overhead. Path probability is conditional on recorded model heads; not a calibrated detector or general repeat rate.",
+  "all_observed_probability_hashes_match_sdk_receipts": true,
+  "receipts": [
+    {
+      "key_slot": 0,
+      "condition": "ordinary",
+      "report_sha256": "13dc56833ebcbd39d3e87b53fad24110c68a2fcd4ed997b409fc7716b7287d1c",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 64
+    },
+    {
+      "key_slot": 0,
+      "condition": "marked",
+      "report_sha256": "9bd541c9eabb44e0588c761f78b14a5166958a2c18bb799a53cef4639e9df8cf",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 81
+    },
+    {
+      "key_slot": 1,
+      "condition": "marked",
+      "report_sha256": "237a492ee410d633803faca3cb78db3280861f3b5042320c3bb360f440687bb7",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 60
+    },
+    {
+      "key_slot": 1,
+      "condition": "ordinary",
+      "report_sha256": "5e6df95f06606424ee1ba67e3dcbf974ed5d371a5b95900e2616e235a7c965bd",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 62
+    },
+    {
+      "key_slot": 2,
+      "condition": "ordinary",
+      "report_sha256": "8059511b36e477f8975bf0042991dae4c506aceec2123a518898e5ad348d1a6f",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 60
+    },
+    {
+      "key_slot": 2,
+      "condition": "marked",
+      "report_sha256": "3769a2013b9b1f8251ceab7e9144d83c93df0fd5daea9598034556875613d08d",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 96
+    },
+    {
+      "key_slot": 3,
+      "condition": "marked",
+      "report_sha256": "3f354d86e7847fbc320b521efad0286257b6014bb599e1901f94f10c99c30be9",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 75
+    },
+    {
+      "key_slot": 3,
+      "condition": "ordinary",
+      "report_sha256": "6f23e2fb99c7248300e9fe2910e542b6137d33deec662f9e357860c7c39d895d",
+      "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+      "steps": 70
+    }
+  ],
+  "plan_sha256": "8f25cfdcbf40f7136e7ec13146b762850d384f5317b50f3a0ee4ea74134e76e7",
+  "results_sha256": "8db511e332d492276559f74808445f6509d1321577803d28a853451b096e9bfa",
+  "summary_script_sha256": "c2c5c6484e7d1bd18034141892e3fe32b641377c6a10a353f8f99f0af0078859"
+}

@@ -26,6 +26,22 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 concentration diagnosis
+
+- Eight fresh actual generations across all four existing keys isolate the
+  concentration of the current 30-layer transform. Every one of 568 committed
+  steps matches the separate probability reference bit for bit.
+- On marked paths, 92/100 positions whose base maximum was at most 99% ended
+  above 99%. Two marked answers repeat previous text exactly; two vary. The
+  previously failing key still gives the incorrect upward-reflection explanation.
+- The immediate next action is a separately identified concentration-limiting
+  candidate evaluated jointly for task fidelity, diversity and detection power
+  at the same false-positive target. Do not weaken the released profile, choose
+  favorable keys or transfer detector acceptance to an altered sampling law.
+- [Full measurements and limits](evidence/concentration-audit-2026-09-28/README.md).
+  Diagnostic and sampling tests: 37 passed; frozen engine manifest: 39 files pass.
+  No SDK default or scientific acceptance changed; publicity remains held.
+
 ## September 24 progress
 
 - Four-key actual inference: all 72 outputs retained; ordinary 31/36 and marked

@@ -371,6 +371,12 @@ These are **uncalibrated diagnostics**, without
 an authorship verdict, detection threshold or false-positive guarantee.
 Retokenizing visible text can differ from the generated token path.
 
+Fixed-key generation can repeat answers: in a four-key French
+[probability audit](evidence/concentration-audit-2026-09-28/README.md), the current
+transform pushed 92/100 initially less-concentrated token positions above 99%
+maximum probability. Its optimized and reference probabilities matched exactly.
+This is a measured diversity limitation, not a claim of unchanged output quality.
+
 To stop generation cooperatively, pass `cancel_event=stop`, where `stop` is a
 `threading.Event`, and call `stop.set()` from another thread. Catch
 `KeyprintCancelled` to inspect retained work and receipts. Keep the model on its

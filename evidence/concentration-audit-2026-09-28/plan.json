@@ -1,0 +1,26 @@
+{
+  "script_sha256": "76ec4a2da6487983cbb42e3b90f9fd3f4ad11a3a11b30194905eec84f99438d5",
+  "cases_sha256": "f9b9547f17d97b783988b861c7e99a1177cbc0cda54c1625b1e597e452a8b17b",
+  "prior_runs_sha256": "6481bdb3ef83299bc0ae1040cc28a4e072b0197de09eddbeb634e2efd8fef8da",
+  "prior_plan_sha256": "9ab9d4d0bce4782484c94c3030e9c3b93538bad4797f7f299fdde1226ad60ea9",
+  "model_revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "case": {
+    "id": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable."
+  },
+  "keys": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "attempts": 8,
+  "max_tokens": 192,
+  "temperature": 0.7,
+  "top_k": 100,
+  "selection": "All four prior key slots, one ordinary and one marked output each; no retries or key selection",
+  "ordering": "Key slot ascending; ordinary first for even slots, marked first for odd slots",
+  "measurement": "Observer of actual prepare/commit calls; same-prefix before/after probabilities; every layer replayed with original PRF domain",
+  "limits": "Diagnostic, not quality acceptance, detector calibration, or lower-layer candidate evaluation. Observer overhead invalidates latency measurements."
+}
