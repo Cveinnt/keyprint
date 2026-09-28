@@ -1,0 +1,482 @@
+[
+  {
+    "review_id": "8905b761c953",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel apparaître bleu.",
+    "completion": "eos",
+    "words": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "c8d337e6ae3d",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+    "completion": "eos",
+    "words": 33,
+    "error_type": null
+  },
+  {
+    "review_id": "198b6e7e3e47",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les très petites particules diffusent plus efficacement la lumière bleue, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "1412b85a4425",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules présentes dans l'air dispersent plus efficacement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 44,
+    "error_type": null
+  },
+  {
+    "review_id": "f10b2592169d",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "words": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "c16da7c4c245",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Draft Review and Approval Status  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+    "completion": "eos",
+    "words": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "99b01ee222fa",
+    "case": "weather_english",
+    "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+    "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation.",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place at a specific time. It includes factors like temperature, precipitation, humidity, and wind. For example, a sunny day with a high of 75°F or a sudden thunderstorm are all examples of weather. These conditions can change within hours or days and are what people typically report when they talk about the “forecast.”\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects the typical patterns and trends of temperature, precipitation, and other atmospheric elements. Climate helps us understand what to expect in terms of seasons, typical rainfall, and overall environmental conditions in a particular area.\n\nIt’s important to note that a single cold day or a hot week does not indicate a shift in climate. Climate is about long-term trends, not individual events. Understanding this distinction helps avoid confusion between short-term weather changes and the broader, more gradual shifts in our planet’s climate system.",
+    "completion": "eos",
+    "words": 170,
+    "error_type": null
+  },
+  {
+    "review_id": "a76cc5898716",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère terrestre et les molécules d'air dispersent plus facilement la lumière bleue que les autres couleurs. Cette lumière bleue se réfléchit dans toutes les directions, donnant ainsi au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 43,
+    "error_type": null
+  },
+  {
+    "review_id": "bc7a803aa59f",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu car les molécules de l'air diffusent plus facilement la lumière bleue que les autres couleurs du spectre. Cette diffusion, appelée diffusion de Rayleigh, fait que la lumière bleue vient de toutes les directions et atteint nos yeux.",
+    "completion": "eos",
+    "words": 41,
+    "error_type": null
+  },
+  {
+    "review_id": "7b0a9d92e4be",
+    "case": "library_spanish",
+    "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+    "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims.",
+    "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema que permite registrar los detalles de cada préstamo. Para ello, se puede establecer un registro que incluya el título del libro, el nombre de la persona que lo recibe y la fecha en que se debe devolver. Así, la biblioteca mantiene un control sobre los libros y asegura que estén disponibles para otros usuarios.\n\nAdemás, se puede permitir la renovación de los préstamos, siempre que el sistema lo permita. Esto significa que el usuario puede solicitar una extensión del préstamo siempre que los registros indiquen que el libro no ha sido reservado por otra persona. Las reglas sobre renovaciones pueden variar según las normas de la biblioteca.\n\nEs importante también proteger los datos personales de los usuarios. La biblioteca debe garantizar que la información como nombres o direcciones no se comparta con terceros sin autorización. Esto asegura la privacidad de quienes utilizan los servicios. En resumen, el sistema de préstamos debe ser claro, accesible y respetuoso con la confidencialidad de los usuarios.",
+    "completion": "eos",
+    "words": 172,
+    "error_type": null
+  },
+  {
+    "review_id": "9adf312796f5",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+    "completion": "eos",
+    "words": 36,
+    "error_type": null
+  },
+  {
+    "review_id": "3b1cf261d420",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+    "completion": "eos",
+    "words": 33,
+    "error_type": null
+  },
+  {
+    "review_id": "f340667bcd38",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+    "completion": "eos",
+    "words": 35,
+    "error_type": null
+  },
+  {
+    "review_id": "aac0bf56d488",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu à cause de la diffusion de la lumière par les molécules de l'air. La lumière du Soleil, composée de différentes couleurs, est dispersée dans toutes les directions, mais la lumière bleue, étant plus courte, se disperse davantage.",
+    "completion": "eos",
+    "words": 41,
+    "error_type": null
+  },
+  {
+    "review_id": "7cdd3a7f7c0a",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, qui a une longueur d'onde courte, est plus facilement diffusée dans toutes les directions que les autres couleurs.",
+    "completion": "eos",
+    "words": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "b9438d3d7a1f",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel apparaître bleu.",
+    "completion": "eos",
+    "words": 39,
+    "error_type": null
+  },
+  {
+    "review_id": "39077201757e",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans la direction des petits angles, ce qui donne l'impression de bleu. Les particules de l'air et les molécules d'oxygène et d'azote absorbent les couleurs plus longues comme le rouge et le jaune, laissant le bleu dominant.",
+    "completion": "eos",
+    "words": 54,
+    "error_type": null
+  },
+  {
+    "review_id": "c0d607bf99b1",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "words": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "92f1f1827886",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est diffusée dans toutes les directions par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée davantage que les autres couleurs, ce qui donne au ciel son aspect bleu.",
+    "completion": "eos",
+    "words": 45,
+    "error_type": null
+  },
+  {
+    "review_id": "f08f292a9668",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui rend le ciel visible en bleu.",
+    "completion": "eos",
+    "words": 40,
+    "error_type": null
+  },
+  {
+    "review_id": "c79b74602b1f",
+    "case": "library_spanish",
+    "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+    "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims.",
+    "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema de registro que permite seguir el historial de cada préstamo. En este sistema, se anota qué libro se presta, quién lo recibe y la fecha en que debe devolverse. Esto ayuda a mantener un control ordenado y facilita la gestión de las solicitudes. Se puede optar por un sistema físico, como tarjetas o listas, o digital, utilizando software especializado que simplifica la organización.\n\nAdemás, las bibliotecas pueden ofrecer la opción de renovar los libros, siempre que se respeten las reglas establecidas. Esta renovación depende del horario de la biblioteca y de la disponibilidad del libro. Es importante que los usuarios conozcan estas condiciones para evitar inconvenientes al momento de la devolución. También se debe considerar establecer límites claros para evitar la acumulación de materiales prestados por parte de los usuarios.\n\nPor último, es fundamental proteger los datos personales de los usuarios. La biblioteca debe garantizar que la información de los préstamos se maneje con confidencialidad, respetando la privacidad de los lectores. Esto puede lograrse mediante medidas como el uso de identificadores anónimos o la limitación del acceso a los registros solo para personal autorizado. Estas prácticas contribuyen a mantener la seguridad y la confianza de los usuarios en el servicio de préstamo.",
+    "completion": "eos",
+    "words": 212,
+    "error_type": null
+  },
+  {
+    "review_id": "5e8e5dc95717",
+    "case": "weather_english",
+    "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+    "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation.",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements like temperature, precipitation, humidity, and wind. For example, a day might be sunny and warm, or rainy and cold. These conditions can change rapidly, from one hour to the next, and are what people typically talk about when they discuss the \"weather\" on a given day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects patterns and trends, such as average temperatures, typical rainfall, and seasonal variations. Climate tells us what to expect over years, not days, and helps us understand broader environmental changes.\n\nIt is important to distinguish between the two because a single cold day or a hot spell does not indicate a shift in climate. Climate changes occur gradually and are influenced by complex factors like greenhouse gas emissions and ocean currents. Understanding this difference helps avoid misunderstandings when discussing environmental issues or weather events.",
+    "completion": "eos",
+    "words": 170,
+    "error_type": null
+  },
+  {
+    "review_id": "18275329ffc2",
+    "case": "weather_english",
+    "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+    "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation.",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements such as temperature, humidity, precipitation, wind, and cloud cover. Weather can change rapidly, from sunny skies to a thunderstorm in a matter of hours. These changes are influenced by local conditions and can be predicted for a few days ahead with varying degrees of accuracy.\n\nClimate, on the other hand, describes the long-term patterns of weather in a region. It is based on average conditions observed over decades or even centuries. Climate includes not only temperature but also factors like rainfall, wind patterns, and seasonal variations. Understanding climate helps us predict general trends and prepare for long-term environmental changes.\n\nIt is important to distinguish between the two, as a single cold day or a warm week does not indicate a shift in climate. Climate change refers to gradual shifts in long-term patterns, which can be influenced by natural processes and human activities. Recognizing this difference helps avoid misinterpretations of short-term weather events as evidence of climate trends.",
+    "completion": "eos",
+    "words": 173,
+    "error_type": null
+  },
+  {
+    "review_id": "fab048e4aaf4",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les petits particules dispersent plus efficacement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 42,
+    "error_type": null
+  },
+  {
+    "review_id": "92425e11d9d3",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Draft Review and Approval Deadline  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+    "completion": "eos",
+    "words": 36,
+    "error_type": null
+  },
+  {
+    "review_id": "3a754cd37ae8",
+    "case": "weather_english",
+    "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+    "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation.",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place at a specific time. It includes elements like temperature, humidity, precipitation, wind, and cloud cover. For example, a sunny afternoon or a sudden thunderstorm are both examples of weather. These conditions can change rapidly, sometimes from hour to hour or day to day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects patterns and trends, such as average rainfall, seasonal temperatures, and the frequency of extreme weather events. Climate gives us a broader picture of what to expect in terms of weather over time.\n\nA single cold day or a hot summer does not change the climate. Climate is about long-term trends, not individual events. Understanding this distinction is important for making sense of environmental changes and weather forecasts. Recognizing the difference helps people avoid misinterpreting short-term variations as long-term shifts in climate.",
+    "completion": "eos",
+    "words": 160,
+    "error_type": null
+  },
+  {
+    "review_id": "20e4f99ad339",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans les directions où les longueurs d'onde courtes, comme le bleu, sont présentes. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+    "completion": "eos",
+    "words": 54,
+    "error_type": null
+  },
+  {
+    "review_id": "2e4c8840e80d",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure timely follow-up.",
+    "completion": "eos",
+    "words": 31,
+    "error_type": null
+  },
+  {
+    "review_id": "54881550c0a1",
+    "case": "library_spanish",
+    "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+    "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims.",
+    "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema de registro que incluye el título del libro, el nombre de la persona que lo recibe y la fecha de devolución estimada. Este proceso permite que los usuarios conozcan qué libros están disponibles y cuándo pueden recogerlos. La biblioteca puede ofrecer opciones como préstamos por semana o por mes, dependiendo de sus reglas. Además, se puede permitir la posibilidad de renovar los libros siempre que el usuario cumpla con las condiciones establecidas.\n\nPara garantizar la organización, la biblioteca debe mantener un registro actualizado de los préstamos, que incluya el nombre del usuario, el libro prestado y la fecha en que debe devolverse. Esta información ayuda a gestionar la disponibilidad de los materiales y a notificar a los usuarios si no devuelven los libros a tiempo. También es importante que la biblioteca establezca límites claros sobre las renovaciones, que pueden variar según su política interna.\n\nEs fundamental proteger los datos personales de los usuarios, especialmente al manejar información sensible como nombres y fechas de préstamo. La biblioteca debe asegurarse de que los registros se almacenen de manera segura y solo sean accesibles por personal autorizado. Al hacerlo, se respeta la privacidad de los usuarios y se fomenta un entorno confiable para el préstamo de libros.",
+    "completion": "eos",
+    "words": 214,
+    "error_type": null
+  },
+  {
+    "review_id": "658637bd6a8d",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse principalement vers les couleurs bleues et violettes. Nos yeux sont plus sensibles au bleu qu'au violet, ce qui fait que nous percevons le ciel comme étant bleu.",
+    "completion": "eos",
+    "words": 42,
+    "error_type": null
+  },
+  {
+    "review_id": "997acfd4ea49",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse en différentes couleurs. Le bleu est le plus dispersé, donc il domine le ciel en journée.",
+    "completion": "eos",
+    "words": 31,
+    "error_type": null
+  },
+  {
+    "review_id": "c0109ad25d14",
+    "case": "library_spanish",
+    "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+    "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims.",
+    "text": "Una biblioteca puede organizar préstamos de libros utilizando un sistema informático que permite registrar los detalles de cada préstamo. En este sistema, se anota el título del libro, su autor y el código de identificación, junto con el nombre y la dirección del usuario. Esto ayuda a gestionar los préstamos de manera eficiente y a mantener un registro de los materiales disponibles. Además, se marca la fecha en que el libro se presta y la fecha límite de devolución, para que los usuarios sepan cuándo debe devolverlo.\n\nPara garantizar un buen uso de los recursos, la biblioteca puede establecer reglas sobre la renovación de los préstamos. Esto significa que los usuarios pueden solicitar la extensión del préstamo siempre que haya disponibilidad, siempre que las reglas de la biblioteca lo permitan. Esta opción ayuda a evitar que los libros estén bloqueados por largos períodos y a mantener un acceso justo para todos los lectores.\n\nEs importante que la biblioteca proteja los datos personales de los usuarios. Por lo tanto, solo se registran los datos necesarios para gestionar el préstamo, como nombre y dirección, y se garantiza su confidencialidad. Esta medida asegura que los usuarios se sientan seguros al utilizar los servicios de la biblioteca y respeta su privacidad.",
+    "completion": "eos",
+    "words": 207,
+    "error_type": null
+  },
+  {
+    "review_id": "ea72a1a23439",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "a088271433f3",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "words": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "6f1461074905",
+    "case": "library_spanish",
+    "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+    "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims.",
+    "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema que permita registrar los detalles de cada préstamo. Para ello, se puede establecer que cada libro tenga un código único, que se anote junto con el nombre del usuario y la fecha de préstamo. Esto ayuda a llevar un control claro de qué libro se presta y a quién. Además, se puede fijar una fecha límite de devolución, que el usuario debe respetar para garantizar el acceso a otros lectores.\n\nEn cuanto a la renovación de los préstamos, la biblioteca puede permitir que los usuarios soliciten una extensión siempre que no haya reservas o conflictos. Esta opción depende de las reglas internas de la biblioteca, por lo que se debe informar con anticipación sobre los términos y condiciones. En este caso, la decisión de renovar o no corresponde a la institución, y el usuario debe seguir las indicaciones establecidas.\n\nEs importante también proteger los datos personales de los usuarios. La biblioteca debe garantizar que la información registrada, como nombres o números de identificación, se almacene de manera segura y solo se acceda cuando sea necesario. Esto contribuye a mantener la privacidad de los lectores y a cumplir con estándares de seguridad y ética en el manejo de información.",
+    "completion": "eos",
+    "words": 208,
+    "error_type": null
+  },
+  {
+    "review_id": "9be95dc19e65",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "words": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "85fce731a8d3",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et les molécules d'air dispersent plus facilement la lumière bleue que les autres couleurs. Cette lumière bleue réfléchie vers nos yeux donne à l'ensemble du ciel une teinte bleue.",
+    "completion": "eos",
+    "words": 41,
+    "error_type": null
+  },
+  {
+    "review_id": "215d31f383a0",
+    "case": "approval",
+    "prompt": "Write a brief English project email using only these facts: Maya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived, publication must wait. Keep these names, deadline and approval condition. Do not invent completed work or approval. Use at most 70 words.",
+    "rubric": "English, at most 70 whitespace-separated words. Maya is the draft reviewer, Tuesday at 09:30 is her deadline, Vincent is publication approver, and absent his approval publication waits. No reversed actors, invented completed review or approval. Harmless salutation, signature placeholders and courteous framing allowed.",
+    "text": "Subject: Project Timeline Update  \n\nMaya, please review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all details are addressed before sharing with Vincent.",
+    "completion": "eos",
+    "words": 38,
+    "error_type": null
+  },
+  {
+    "review_id": "149d36a0b4da",
+    "case": "library_spanish",
+    "prompt": "Escribe entre 150 y 200 palabras en español, en tres párrafos breves, explicando cómo una biblioteca puede organizar préstamos de libros. Presenta las recomendaciones como posibilidades, no como hechos de una biblioteca real. Explica que se registra qué libro se presta, quién lo recibe y cuándo debe devolverlo; que una renovación depende de las reglas de la biblioteca; y que conviene proteger los datos personales. No inventes nombres, fechas específicas, precios ni multas.",
+    "rubric": "Spanish, 150 to 200 whitespace-separated words in three prose paragraphs. Presents recommendations rather than facts about a real library. Covers book, borrower, due date, rule-dependent renewal and protection of personal data. No invented names, specific dates, prices or fines; no materially incorrect claims.",
+    "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema que registre la información necesaria para cada préstamo. Para ello, se debe anotar el título del libro, el nombre del usuario y la fecha en que se lo prestó. Además, se debe indicar la fecha límite para la devolución, para que el usuario sepa cuándo debe devolverlo. Este registro ayuda a mantener el control de los libros y facilita la gestión de los préstamos.\n\nOtra opción es permitir la renovación de los libros, siempre que se respeten las reglas de la biblioteca. Esto significa que el usuario puede extender el plazo de préstamo si el libro no está reservado y se cumple con los requisitos establecidos. Sin embargo, la disponibilidad de esta opción depende de las políticas internas de la biblioteca.\n\nEs importante proteger los datos personales del usuario, como su nombre y el título del libro prestado, para garantizar la privacidad. La biblioteca debe asegurarse de que esta información se almacene de manera segura y solo se acceda cuando sea necesario. Al hacerlo, se respetan las normas de seguridad y se fomenta la confianza entre los usuarios y la institución.",
+    "completion": "eos",
+    "words": 191,
+    "error_type": null
+  },
+  {
+    "review_id": "90eea8369fbb",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules de poussière dispersent plus efficacement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 43,
+    "error_type": null
+  },
+  {
+    "review_id": "e63b2fe96421",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+    "completion": "eos",
+    "words": 47,
+    "error_type": null
+  },
+  {
+    "review_id": "5dbbe94ae7b9",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Les longueurs d'onde courtes, comme le bleu, sont diffusées dans toutes les directions par les molécules, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 46,
+    "error_type": null
+  },
+  {
+    "review_id": "dc6edb1e63b3",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans la direction des petits angles, ce qui rend le ciel apparemment bleu. Cela s'appelle l'effet de diffusion de Rayleigh.",
+    "completion": "eos",
+    "words": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "fd36bbf6f3c0",
+    "case": "weather_english",
+    "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+    "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation.",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. These include elements like temperature, precipitation, humidity, and wind. Weather can change rapidly, from sunny skies to a sudden storm within hours. It is what you experience on a daily basis and is often discussed in news reports or forecasts.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects patterns and trends, such as average temperatures and typical rainfall amounts. Climate is more about what is usually expected in a particular area, rather than what happens on any given day.\n\nA single cold day or a hot week does not indicate a shift in climate. Climate change refers to long-term shifts in these patterns, which can be influenced by various factors, including human activities. Understanding the difference between weather and climate is essential for interpreting environmental changes and making informed decisions.",
+    "completion": "eos",
+    "words": 160,
+    "error_type": null
+  },
+  {
+    "review_id": "e8097e07ac13",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+    "completion": "eos",
+    "words": 37,
+    "error_type": null
+  },
+  {
+    "review_id": "44a275c0ebda",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans les directions où les longueurs d'onde courtes, comme le bleu, sont présentes. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+    "completion": "eos",
+    "words": 54,
+    "error_type": null
+  },
+  {
+    "review_id": "d0b48687d0ba",
+    "case": "french",
+    "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+    "rubric": "Exactly two complete French prose sentences. Explains that air scatters the blue component of sunlight more than red/longer wavelengths; shorter blue wavelengths implied is acceptable. No English translation or changed language. No materially false explanation such as reflection from the sea. Minor style differences are acceptable.",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui rend le ciel visible en bleu.",
+    "completion": "eos",
+    "words": 40,
+    "error_type": null
+  },
+  {
+    "review_id": "e2b8097f7654",
+    "case": "weather_english",
+    "prompt": "Write 150 to 200 words in English, in three short paragraphs, explaining the difference between weather and climate for a general reader. Explain that weather describes short-term atmospheric conditions, climate describes long-term patterns, and a single cold day does not establish a long-term climate trend. Do not invent a named place, person, measured statistic or a specific date.",
+    "rubric": "English, 150 to 200 whitespace-separated words in three prose paragraphs. Correct short-term weather versus long-term climate distinction; a cold day alone does not establish a climate trend. No invented named places, people, statistics or dates; no materially false scientific explanation.",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements such as temperature, humidity, precipitation, wind, and cloud cover. Weather can change rapidly, from sunny skies to a thunderstorm in just a few hours. These variations are influenced by local conditions and can be unpredictable from day to day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects the typical patterns of temperature, precipitation, and other atmospheric factors that define a region's overall character. Climate helps us understand what to expect in terms of seasons, rainfall, and extreme weather events over time.\n\nA single cold day or a warm spell does not indicate a shift in climate. Climate changes occur gradually and are influenced by complex factors such as ocean currents, atmospheric composition, and natural cycles. Understanding the difference between weather and climate is essential for interpreting environmental changes and making informed decisions about the future.",
+    "completion": "eos",
+    "words": 168,
+    "error_type": null
+  }
+]

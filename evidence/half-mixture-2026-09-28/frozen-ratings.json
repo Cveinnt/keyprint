@@ -1,0 +1,338 @@
+[
+  {
+    "review_id": "8905b761c953",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "c8d337e6ae3d",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "198b6e7e3e47",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "1412b85a4425",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "f10b2592169d",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "c16da7c4c245",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "99b01ee222fa",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three English paragraphs, 170 words, correct weather/climate distinction and single-day limitation. The 75°F example is explicitly hypothetical, not a claimed measured statistic; 30 years is conventional context, not invented observation."
+  },
+  {
+    "review_id": "a76cc5898716",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": true,
+    "reason": "Preferential scattering is correctly stated, but the second sentence substitutes reflection as the mechanism. Conservative factual-fidelity failure; the reflection wording is borderline rather than a new upward-path claim."
+  },
+  {
+    "review_id": "bc7a803aa59f",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "7b0a9d92e4be",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three Spanish paragraphs within 150–200 words; proposed library process records book, borrower and due date, keeps renewal conditional on rules and protects personal data. No invented specific names, dates, prices or fines."
+  },
+  {
+    "review_id": "9adf312796f5",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "3b1cf261d420",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "f340667bcd38",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "aac0bf56d488",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "7cdd3a7f7c0a",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "b9438d3d7a1f",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "39077201757e",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Incorrectly attributes blue sky to small-angle dispersion and absorption of red/yellow by air molecules; materially false explanation."
+  },
+  {
+    "review_id": "c0d607bf99b1",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "92f1f1827886",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "f08f292a9668",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "c79b74602b1f",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Spanish content covers the requested library process, renewal rules and privacy, but 212 words exceeds the fixed 200-word limit. All three paragraphs retained; no truncation or automatic repair."
+  },
+  {
+    "review_id": "5e8e5dc95717",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three English paragraphs within 150–200 words; correct short-term weather/long-term climate distinction and limitation of single weather events. No invented named person/place, actual measurement or specific date."
+  },
+  {
+    "review_id": "18275329ffc2",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three English paragraphs within 150–200 words; correct short-term weather/long-term climate distinction and limitation of single weather events. No invented named person/place, actual measurement or specific date."
+  },
+  {
+    "review_id": "fab048e4aaf4",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Two French sentences explain preferential scattering of blue by air. Minor grammatical error in petits particules; no language change or materially different explanation."
+  },
+  {
+    "review_id": "92425e11d9d3",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "3a754cd37ae8",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three English paragraphs within 150–200 words; correct short-term weather/long-term climate distinction and limitation of single weather events. No invented named person/place, actual measurement or specific date."
+  },
+  {
+    "review_id": "20e4f99ad339",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Claims air molecules reflect light upward; materially false causal account despite mentioning short blue wavelengths."
+  },
+  {
+    "review_id": "2e4c8840e80d",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "54881550c0a1",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Spanish content covers the requested library process, renewal rules and privacy, but 214 words exceeds the fixed 200-word limit. All three paragraphs retained; no truncation or automatic repair."
+  },
+  {
+    "review_id": "658637bd6a8d",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Two French sentences associate atmospheric scattering mainly with blue/violet and explain blue perception. Loose wording about scattering toward colors; accepted under the narrow rubric."
+  },
+  {
+    "review_id": "997acfd4ea49",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Two French sentences connect the atmosphere with preferential blue scattering. The phrase about dispersion into different colors is imprecise; accepted under the narrow explanatory rubric, not full technical prose approval."
+  },
+  {
+    "review_id": "c0109ad25d14",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Spanish content covers the requested library process, renewal rules and privacy, but 207 words exceeds the fixed 200-word limit. All three paragraphs retained; no truncation or automatic repair."
+  },
+  {
+    "review_id": "ea72a1a23439",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "a088271433f3",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "6f1461074905",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Spanish content covers the requested library process, renewal rules and privacy, but 208 words exceeds the fixed 200-word limit. All three paragraphs retained; no truncation or automatic repair."
+  },
+  {
+    "review_id": "9be95dc19e65",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya as reviewer, Tuesday 09:30, Vincent as approver and waiting without approval. No invented completed review or approval. The added by-then wording does not remove the explicit approval prerequisite."
+  },
+  {
+    "review_id": "85fce731a8d3",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": true,
+    "reason": "Preferential scattering is correctly stated, but the second sentence calls the light reflected. Conservative factual-fidelity failure; this wording is borderline rather than a new upward-path claim."
+  },
+  {
+    "review_id": "215d31f383a0",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "English, within 70 words; preserves Maya, Tuesday 09:30, Vincent and the approval prerequisite. The final editorial instruction adds workflow wording but does not claim completed work or approval."
+  },
+  {
+    "review_id": "149d36a0b4da",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three Spanish paragraphs within 150–200 words; proposed library process records book, borrower and due date, keeps renewal conditional on rules and protects personal data. No invented specific names, dates, prices or fines."
+  },
+  {
+    "review_id": "90eea8369fbb",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "e63b2fe96421",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "5dbbe94ae7b9",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "dc6edb1e63b3",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Attributes blue sky to preferential scattering into small angles, without the required wavelength-dependent explanation; naming Rayleigh scattering does not repair that claim."
+  },
+  {
+    "review_id": "fd36bbf6f3c0",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three English paragraphs within 150–200 words; correct short-term weather/long-term climate distinction and limitation of single weather events. No invented named person/place, actual measurement or specific date."
+  },
+  {
+    "review_id": "e8097e07ac13",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "44a275c0ebda",
+    "task_pass": false,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Claims air molecules reflect light upward; materially false causal account despite mentioning short blue wavelengths."
+  },
+  {
+    "review_id": "d0b48687d0ba",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Exactly two French sentences; explains scattering by air with preferential blue scattering or the accepted shorter-blue-wavelength implication. No English translation or materially false extra explanation."
+  },
+  {
+    "review_id": "e2b8097f7654",
+    "task_pass": true,
+    "language_pass": true,
+    "borderline_factual_wording": false,
+    "reason": "Three English paragraphs within 150–200 words; correct short-term weather/long-term climate distinction and limitation of single weather events. No invented named person/place, actual measurement or specific date."
+  }
+]

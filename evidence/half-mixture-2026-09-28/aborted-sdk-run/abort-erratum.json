@@ -1,0 +1,5 @@
+{
+  "original_abort_sha256": "91bd5e88c371593188f298460dd1ef3d021fd11d314de04cfc770880d6146122",
+  "correction": "The signal-interrupted completed attempt was reference, not ordinary. Seven half_mixture errors had empty journals. A later reference attempt was unfinalized. Original frozen abort metadata is retained because the new plan binds its hash.",
+  "rows_sha256": "f7fb3726d5ae856e1cfd50bd215d1a2cbada76fd777817c21d31bd31c93c55ea"
+}

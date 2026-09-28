@@ -26,6 +26,28 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 candidate comparison
+
+- Tested a separately versioned half-mixture candidate through 48 actual Qwen/MLX
+  generations with every existing key, ordinary/current/candidate conditions,
+  French repetitions, approval emails and longer English/Spanish text.
+- Rejected it: rubric passes were 13/16 ordinary, 13/16 current and 12/16 mixture;
+  longer matching-key detections fell from 3/4 current to 0/4 mixture under the
+  unchanged nominal rule. More varied French answers did not establish better
+  factual fidelity. All 48 remained in the requested language and reached EOS.
+- All 5,169 committed tokens and 48 distinct draw transcripts reconcile. Ratings
+  were committed before joining condition metadata. They remain assistant review;
+  detector calibration and quality noninferiority are still unestablished.
+- A prior SDK-facade attempt rejected the unknown research identity. That aborted
+  run, errors and metadata correction are retained. The corrected caller is
+  explicitly research-only; SDK identity checks remain intact.
+- [Results and all long-form review samples](evidence/half-mixture-2026-09-28/README.md).
+  52 relevant tests pass; all 39 frozen engine files pass integrity checks.
+  No SDK default, public release, production design or CI setting changed.
+- Keep the reference intact. Next work must address detection and fidelity
+  together; blanket dilution is ruled out by this development screen. No scientific
+  clue closes from a more varied output or a nominal, uncalibrated threshold.
+
 ## September 28 concentration diagnosis
 
 - Eight fresh actual generations across all four existing keys isolate the

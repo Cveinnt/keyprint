@@ -1,0 +1,2319 @@
+{
+  "summary": {
+    "complete": true,
+    "groups": {
+      "ordinary": {
+        "attempts": 16,
+        "task_pass": 13,
+        "errors": 0,
+        "language_pass": 16,
+        "non_eos": 0,
+        "long_detection": {
+          "planned": 4,
+          "available": 4,
+          "matching_hits": 0,
+          "other_hits": 0
+        }
+      },
+      "reference": {
+        "attempts": 16,
+        "task_pass": 13,
+        "errors": 0,
+        "language_pass": 16,
+        "non_eos": 0,
+        "long_detection": {
+          "planned": 4,
+          "available": 4,
+          "matching_hits": 3,
+          "other_hits": 0
+        }
+      },
+      "half_mixture": {
+        "attempts": 16,
+        "task_pass": 12,
+        "errors": 0,
+        "language_pass": 16,
+        "non_eos": 0,
+        "long_detection": {
+          "planned": 4,
+          "available": 4,
+          "matching_hits": 0,
+          "other_hits": 0
+        }
+      }
+    },
+    "by_case": [
+      {
+        "arm": "ordinary",
+        "case": "approval",
+        "attempts": 4,
+        "task_pass": 4,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "ordinary",
+        "case": "french",
+        "attempts": 8,
+        "task_pass": 6,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "ordinary",
+        "case": "weather_english",
+        "attempts": 2,
+        "task_pass": 2,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "ordinary",
+        "case": "library_spanish",
+        "attempts": 2,
+        "task_pass": 1,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "reference",
+        "case": "approval",
+        "attempts": 4,
+        "task_pass": 4,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "reference",
+        "case": "french",
+        "attempts": 8,
+        "task_pass": 6,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "reference",
+        "case": "weather_english",
+        "attempts": 2,
+        "task_pass": 2,
+        "matching_hits": 2,
+        "other_hits": 0
+      },
+      {
+        "arm": "reference",
+        "case": "library_spanish",
+        "attempts": 2,
+        "task_pass": 1,
+        "matching_hits": 1,
+        "other_hits": 0
+      },
+      {
+        "arm": "half_mixture",
+        "case": "approval",
+        "attempts": 4,
+        "task_pass": 4,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "half_mixture",
+        "case": "french",
+        "attempts": 8,
+        "task_pass": 6,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "half_mixture",
+        "case": "weather_english",
+        "attempts": 2,
+        "task_pass": 2,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      {
+        "arm": "half_mixture",
+        "case": "library_spanish",
+        "attempts": 2,
+        "task_pass": 0,
+        "matching_hits": 0,
+        "other_hits": 0
+      }
+    ],
+    "repetition": [
+      {
+        "key_slot": 0,
+        "arm": "ordinary",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 0,
+        "arm": "reference",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 1
+      },
+      {
+        "key_slot": 0,
+        "arm": "half_mixture",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 1,
+        "arm": "ordinary",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 1,
+        "arm": "reference",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 1
+      },
+      {
+        "key_slot": 1,
+        "arm": "half_mixture",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 2,
+        "arm": "ordinary",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 2,
+        "arm": "reference",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 1
+      },
+      {
+        "key_slot": 2,
+        "arm": "half_mixture",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 3,
+        "arm": "ordinary",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 3,
+        "arm": "reference",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      },
+      {
+        "key_slot": 3,
+        "arm": "half_mixture",
+        "attempts": 2,
+        "completed": 2,
+        "distinct_texts": 2
+      }
+    ],
+    "paired_reference_mixture": {
+      "both_pass": 11,
+      "reference_only": 2,
+      "both_fail": 2,
+      "mixture_only": 1
+    },
+    "candidate_rejection_reasons": [
+      "fewer rubric passes than reference",
+      "fewer long-text matching hits at frozen detector rule"
+    ],
+    "development_screen": "rejected",
+    "sdk_promotion": false,
+    "quality_acceptance": false,
+    "detector_calibrated": false,
+    "scope": "Development on four existing keys and four prompts; no quality, detector or launch acceptance",
+    "detector_limitations": "Existing fixed-key null qualification failed; this is a frozen nominal target for comparative screening, not verified 1% deployment FPR",
+    "summary_script_sha256": "7733912ee12fce6025dc839d5ea1ada6e7cb07d6d5395cf15d45467525671314",
+    "plan_sha256": "6e63b35f4b9631af660a2a08f49e186fd8388d5ecf35e99c05d9fd84a1f518a6",
+    "ratings_sha256": "a5c617a33fc1009159f92aef118cb6e05c2d7cc1cc4cf5e12b52b9bf1cee1e8e",
+    "freshness": {
+      "audited_attempts": 48,
+      "audited_tokens": 5169,
+      "unique_draw_transcripts": 48,
+      "rows": [
+        {
+          "review_id": "85fce731a8d3",
+          "tokens": 70,
+          "report_sha256": "2f2c62f8b81b816416779c06131fd3fcc1002e03ad328b4eed36935c6bac1be7",
+          "journal_sha256": "d0fda0e96773594f099f0d6d39d5367c16508726c0c7371e772e6e64b7c984ae"
+        },
+        {
+          "review_id": "f08f292a9668",
+          "tokens": 66,
+          "report_sha256": "02a8716d14d6c82db3d4c2bd4a7a768883bc7599732ba7d0276a080198cb231d",
+          "journal_sha256": "34e11f682a715e2efc353c50f93fa47e71d8ff32d439864994ba98d2f3e3e211"
+        },
+        {
+          "review_id": "e63b2fe96421",
+          "tokens": 81,
+          "report_sha256": "e6d30e682ccdbb1ff2955c04dbf414d3a21cac5a586c590d5ee9589754e92d77",
+          "journal_sha256": "5ee8133ebbd7912b42a3f02edb499b943f3486068fa77b319df641c9b759df78"
+        },
+        {
+          "review_id": "f10b2592169d",
+          "tokens": 51,
+          "report_sha256": "3b2b57c18eac748fc92391ab4a96f4c2dd8db3ebc3b338a15e68545d51c3d539",
+          "journal_sha256": "becaa455c62f5e5f9521d63a59976edbfe4348b990ad9d976920231dc2fa73ed"
+        },
+        {
+          "review_id": "a088271433f3",
+          "tokens": 52,
+          "report_sha256": "499fb4c1dafa1fc8fe1a3946cff71dbce197308b8e9c0d4646a2cb017dc8752d",
+          "journal_sha256": "5d62ddf7f515c36fdd233dc3fe98596c9045436f4afe3d7a1382376be4b5a752"
+        },
+        {
+          "review_id": "f340667bcd38",
+          "tokens": 49,
+          "report_sha256": "5514cb3f672ae34e452c0e4c3a95e83178987b23847b4e05c4cc107a586398f7",
+          "journal_sha256": "ce39628663f9d9b06fd501771c18cdb25933cec4f0d7aad5da8ac37875d3f5e3"
+        },
+        {
+          "review_id": "bc7a803aa59f",
+          "tokens": 65,
+          "report_sha256": "ee024a703f17167d189bf4dbac04da1b3feb0023465198494f991ad56c7d295e",
+          "journal_sha256": "8833a3a58a70b5ca71763f0edee3eae8aba60a509d53d340b850889bee922064"
+        },
+        {
+          "review_id": "5dbbe94ae7b9",
+          "tokens": 86,
+          "report_sha256": "f749ba0eab735699a2a8d57d4cc8df9483b255a7263e2b0094cdafafc255fe4d",
+          "journal_sha256": "9f47281fdaa1790b8fa61fe33764531f6e0d19e42a2d29d14448d43445e3d7f1"
+        },
+        {
+          "review_id": "d0b48687d0ba",
+          "tokens": 66,
+          "report_sha256": "23c00f00b4ba797b613cdbca8b4009db6b80b93b8eb9c57469e3da1ea1469487",
+          "journal_sha256": "60fd9a49816486e15ea400ee015f5d42497d3c154fcce58073304ef0a86fd0fd"
+        },
+        {
+          "review_id": "5e8e5dc95717",
+          "tokens": 202,
+          "report_sha256": "86537c8d372ba48143dba553b5240d85a28f1fdeaa10d2a9e9d0958be81ce68d",
+          "journal_sha256": "a6a69d31064bb8384f4e84a469b39df80f32daabc8492bf7d525e3239889c84e"
+        },
+        {
+          "review_id": "3a754cd37ae8",
+          "tokens": 195,
+          "report_sha256": "61f5dcc1c7cf2b648af350d61a0f8bb167c968b1355f6d01bb914c520e0deedf",
+          "journal_sha256": "8c30b6faac7a9ad159b65e21658d6a3b0bc8ec9b567a79c0f0d660309b9d5306"
+        },
+        {
+          "review_id": "99b01ee222fa",
+          "tokens": 206,
+          "report_sha256": "69acb3c9ac06d5e25cbff93139887630c4956f712a913b3b14e9826a30bf2cb4",
+          "journal_sha256": "adaecfa75c0f51e177d766fcfc4ee3f3d84cd0c30a9e9397dc530714bca4f6d7"
+        },
+        {
+          "review_id": "8905b761c953",
+          "tokens": 60,
+          "report_sha256": "797b36148871c3f2259706e68c6110e125009cde9b8ed30e35095560366dd3e0",
+          "journal_sha256": "fc590e21284b548f85c13d4becd525de0102b234049f51b3d1a7936a7b207402"
+        },
+        {
+          "review_id": "a76cc5898716",
+          "tokens": 74,
+          "report_sha256": "ac9b1c8acb68c4cae602dec367a0a6d9c6e1d72e46b6bdc2ebfe685c3b33c670",
+          "journal_sha256": "690e4d8b3009d1fcf659949e2d09a94a4112bd5d1761ffda4534f14aa855a414"
+        },
+        {
+          "review_id": "7cdd3a7f7c0a",
+          "tokens": 60,
+          "report_sha256": "21f51fc1e791df0cbb57335b15095717f464a628f98dc55f36e9452da4d5dc26",
+          "journal_sha256": "075ee8bb2872f5af5d510fe29fc49d4eddaa25eefd66ce9b324b9a5bce638be3"
+        },
+        {
+          "review_id": "3b1cf261d420",
+          "tokens": 47,
+          "report_sha256": "6213d0fa30b4cecde15ae614244cfd87b2aa3a28b92c8d2f07ebe4469251c316",
+          "journal_sha256": "ab090c82c6bd4a0d870ccf278ef267d5b67a74d20fe5c20a4b6581f27e5dd68e"
+        },
+        {
+          "review_id": "9adf312796f5",
+          "tokens": 50,
+          "report_sha256": "c2d5f4ee154a148bc6ef377a71fe1c65012604b9398b5b40369562088476fcd9",
+          "journal_sha256": "d6aac275cb159805a5d34b9ca5067ab8af0e0e988d8eb8383a2e93f5287f07b2"
+        },
+        {
+          "review_id": "c8d337e6ae3d",
+          "tokens": 47,
+          "report_sha256": "c60a1bc5b878a360dae54d45cc5bcd4b8c8416f074e6f525fd54403208564779",
+          "journal_sha256": "a335a6070663712f399e059de63691fd6e5144cbf49e7d57ad0188c944bd0f7f"
+        },
+        {
+          "review_id": "ea72a1a23439",
+          "tokens": 57,
+          "report_sha256": "6712a98d64a44798041cf7a925abf2fb5a5e2a16474c94664e5b6c93da60670c",
+          "journal_sha256": "431508f4e8bcc2c753b64564b86c34f71822d6bae774eef08a0447cb47943ed6"
+        },
+        {
+          "review_id": "b9438d3d7a1f",
+          "tokens": 60,
+          "report_sha256": "de0c738b9ad16986c3c4ec683d1604151866768b13e4136a376a3534d4cf8bd2",
+          "journal_sha256": "26169e9b3eec888ceae5fac71a3485b0e88ad3a8f667801b17eed442855833b6"
+        },
+        {
+          "review_id": "e8097e07ac13",
+          "tokens": 58,
+          "report_sha256": "e2400b3ea09a9d62ee2cedf15b8a90ffb2606a4340946587367cefc4446a4911",
+          "journal_sha256": "0bcc6591eb757a0819e5cfa597b0416221b819972c4bd8b74d31725ec53c3283"
+        },
+        {
+          "review_id": "54881550c0a1",
+          "tokens": 300,
+          "report_sha256": "0ec25d5717c12969948b81fd8875f57b814765cb3038971925cdd2e5e48e0f56",
+          "journal_sha256": "9ed67b2f7d214dfd44ce08ac9d1f29ecbfde58591735fee1e8926a775362672f"
+        },
+        {
+          "review_id": "6f1461074905",
+          "tokens": 286,
+          "report_sha256": "0af7ad83129719a26d8cd27b12e24dfa4d24ead4ee954eb5185fbdd9b819f25b",
+          "journal_sha256": "9ee01f9b7c30efd26138dacf064f5ba1c8365888ab2432f9875bb1c6e471096f"
+        },
+        {
+          "review_id": "149d36a0b4da",
+          "tokens": 269,
+          "report_sha256": "d2d2be5b5bbb764c32ac421106e1381db4000554cf72bcff974c3db23c29495d",
+          "journal_sha256": "87c1b8d6e91cee7c1d4e622bdeb34e8f7d93825bbb3ef52bb1dec2285db6c25d"
+        },
+        {
+          "review_id": "997acfd4ea49",
+          "tokens": 49,
+          "report_sha256": "f10f97317cdb72bc08df17763df20eacb4eb14b289639b9df50c26cb57834aaa",
+          "journal_sha256": "37a302e0e54ae6f1987a349e64bff1bcbf1f9c46bafff96d7fabee4d5e818309"
+        },
+        {
+          "review_id": "658637bd6a8d",
+          "tokens": 68,
+          "report_sha256": "28763727fb91a691f6d14b146829fccb1790209ec062e612bc29a22180f381e6",
+          "journal_sha256": "ffdd86b03a6d49c719bd89c297fb91f2581f5912aa676b77a7f3336dea2772a8"
+        },
+        {
+          "review_id": "20e4f99ad339",
+          "tokens": 96,
+          "report_sha256": "e415e54f92d3d34afbdf896fc89fcf6d902afe8efa00a88c3d1eeaae6ae15bec",
+          "journal_sha256": "17022edb0f5e29641030903c2623d469dfbd12ca8b98be2b3a165eb1c7f4aa5e"
+        },
+        {
+          "review_id": "2e4c8840e80d",
+          "tokens": 46,
+          "report_sha256": "100a8dba9f7fabe01457349092fa7db4a39b7bed110d7345938fe2bffd568cbf",
+          "journal_sha256": "375cefb426671bbff80bbd4d1067c5a5dd356b935bab34c8d89350fa202e5c44"
+        },
+        {
+          "review_id": "92425e11d9d3",
+          "tokens": 50,
+          "report_sha256": "f891f2a5a26891bb24c8e052ba7daf66201d0a64c646aaef858fb3fc7c3594c0",
+          "journal_sha256": "728d065da0ab536d2534bf48dbf7ca048b179b473c2309d52f0b4ee608b75149"
+        },
+        {
+          "review_id": "c16da7c4c245",
+          "tokens": 52,
+          "report_sha256": "396bb85847ad7e696e5cc80d3a07d450b1a4e5491fbab5d8b0bb423c6a1a4d06",
+          "journal_sha256": "9a0482a6d873e94baadda3e38d4bf49e05f916d3f673f4ea423702353c4fb0d7"
+        },
+        {
+          "review_id": "44a275c0ebda",
+          "tokens": 96,
+          "report_sha256": "4bee2057c1917d75fb3fd9618ce337ad5e4d31e179e8d6723eb9e480d4d7cadc",
+          "journal_sha256": "cacfcc03ca84102df67c3455481efbe7fed2ea00bdfb12085488d33b2fadba6e"
+        },
+        {
+          "review_id": "39077201757e",
+          "tokens": 90,
+          "report_sha256": "9a4d1f72387010cc2d9e3262b722227c17a3ba96af36cc06ab4d4b8637e1a82a",
+          "journal_sha256": "25160d98d21c9990c76d23be8081c4490d7d8a0dd7ac11172f0acf2afbea1d41"
+        },
+        {
+          "review_id": "aac0bf56d488",
+          "tokens": 64,
+          "report_sha256": "ead865ac9e75f2b0f6cba52055f63e039d0232fd2982f6ecb53635b544394b90",
+          "journal_sha256": "ac19ec903ee656391c872d44c87d2ee3c9aff292cf44b41eb82b82a7e2e8390b"
+        },
+        {
+          "review_id": "e2b8097f7654",
+          "tokens": 198,
+          "report_sha256": "341f85c3fb217a1cca3386a6b28b843674e26b24d3edd531c0ee94f827510f3a",
+          "journal_sha256": "1a8e9a12918152f3b17886c86bdc802e83c39ec3b09baa791008e2afe782ad2f"
+        },
+        {
+          "review_id": "fd36bbf6f3c0",
+          "tokens": 186,
+          "report_sha256": "f8950e1077043560e5c831380844b4bab174201b789ed91fb0e2573d959b98d8",
+          "journal_sha256": "bf9dc73775b5b875fe7919c0b3c1f3aec4c750ad7d4e658d93fd2de87dfb8363"
+        },
+        {
+          "review_id": "18275329ffc2",
+          "tokens": 205,
+          "report_sha256": "dde00fea013abc831df3eb341404dce24210cbf600cbf9ca9c1c9192b3b6da57",
+          "journal_sha256": "414429e5f42e3712deefc00c018781f254211c362c7d531d563ba76d390e880d"
+        },
+        {
+          "review_id": "dc6edb1e63b3",
+          "tokens": 62,
+          "report_sha256": "2b60b81705331cfa10228252fd8e7b395dc7adf366a2cc28fa1f5d78e445f2dc",
+          "journal_sha256": "05c5248544ffa41f66e271502b55c74426d166989307ce6eb37c4eafc5e96778"
+        },
+        {
+          "review_id": "90eea8369fbb",
+          "tokens": 75,
+          "report_sha256": "065179c1677d3f0d0ddde79f565f1780ac2e2fcb9e0e2d9913b588bea89e5095",
+          "journal_sha256": "0bca8aa9b259bdebd62fe56a6cf66e684762f50b62a36494dd620773214f3480"
+        },
+        {
+          "review_id": "1412b85a4425",
+          "tokens": 77,
+          "report_sha256": "49c5344ff33694c2df9d736098f7a5cc40c7df8f7258239d1ec5b12936f20c41",
+          "journal_sha256": "830c53501ab5a161e6260e4e50ff8a789fe830b7ba79a273bdd7544d6df5b3b2"
+        },
+        {
+          "review_id": "c0d607bf99b1",
+          "tokens": 51,
+          "report_sha256": "21ccf400f869ceb944736d47ad3f00303bb35dce691e936e644bb1f42f30af24",
+          "journal_sha256": "211e589059c19de21018d3d89cadd0aab4cf52392b8d31c2b93fb2b7f9bcaefd"
+        },
+        {
+          "review_id": "215d31f383a0",
+          "tokens": 53,
+          "report_sha256": "9ddcb891164d143caf6984caa10c27ee704cb762d86c1e38bda603e24b45c0e4",
+          "journal_sha256": "23723e465b0f5893613ac63f21f603da5ed1d898c9a29fe078c87057723719be"
+        },
+        {
+          "review_id": "9be95dc19e65",
+          "tokens": 52,
+          "report_sha256": "87b8bb6323af4e27df1432cdb14258fa146dae6509ec3e13ef4529e3e63490fc",
+          "journal_sha256": "d0e3cd43bc8541d51c06233845ad6a8c0bb22697aa24845fcdec3a62366e295f"
+        },
+        {
+          "review_id": "fab048e4aaf4",
+          "tokens": 72,
+          "report_sha256": "3ddf514286d2a6dc491daaf9bb7e8f9ee122b8b115daedec1bcb2af15217cde3",
+          "journal_sha256": "9a2e14f37a2bcf9f488e47ebd8e8adc77e66b07b9c127fbcb4e95984809f8ca7"
+        },
+        {
+          "review_id": "92f1f1827886",
+          "tokens": 73,
+          "report_sha256": "22e20c708545cece8740bc2ef681831d2ad47235b04870776f90f28d2d86fe9b",
+          "journal_sha256": "7a7a279a2596ece6b7e68d9c6d84b4fc3fe364e4c1a72ee2b4e8a76ef5309b36"
+        },
+        {
+          "review_id": "198b6e7e3e47",
+          "tokens": 69,
+          "report_sha256": "66a2a3f7b3e34610226c0240cb77dc98303774bd8c8b8f2337796276c5f6e720",
+          "journal_sha256": "31a1a2a567cdc015f806998c1fb7155c79e473c6553fe246b1b2345890762823"
+        },
+        {
+          "review_id": "c0109ad25d14",
+          "tokens": 282,
+          "report_sha256": "37002178e3ded8dd7abc0db7912619716f58f0852d33b26a5f518231bbecbed6",
+          "journal_sha256": "b2cf663870b2a7d900bd816638af257ebd3d4c12fc9384fb2985ab072973e281"
+        },
+        {
+          "review_id": "7b0a9d92e4be",
+          "tokens": 238,
+          "report_sha256": "9312f679d2b3b1aa5c7de5d72aa228d342c8cf2bc2cce2081c22a6cb793c8ecd",
+          "journal_sha256": "7af9ef2efe23e79fb3521427f58e62df48a7fe07fd074fb7ad19618f1e905be9"
+        },
+        {
+          "review_id": "c79b74602b1f",
+          "tokens": 308,
+          "report_sha256": "f6b7e320751189d46b8d6f63a246f1a82b2376040ad567769e83d2748c125d9a",
+          "journal_sha256": "73f787931b908141d73646ab3a38ed358f422d357bae7771228310dfc00cd289"
+        }
+      ]
+    }
+  },
+  "runs": [
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "85fce731a8d3",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et les molécules d'air dispersent plus facilement la lumière bleue que les autres couleurs. Cette lumière bleue réfléchie vers nos yeux donne à l'ensemble du ciel une teinte bleue.",
+      "completion": "eos",
+      "words": 41,
+      "tokens": 70,
+      "exact_rendering": true,
+      "model_forward_calls": 71,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "0de68ba064f39367ff4b77a02b452bac23203392ee93eb40545fafe5bed7e30c",
+      "scores": [
+        {
+          "reference_tail": 0.14226619849016914,
+          "centered_sum": 8645,
+          "events": 69,
+          "lattice_size": 262144,
+          "alias_bound": 1.26956657021529e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.741290560257792e-13,
+          "support": 330165
+        },
+        {
+          "reference_tail": 0.031662442210559964,
+          "centered_sum": 14997,
+          "events": 69,
+          "lattice_size": 262144,
+          "alias_bound": 1.26956657021529e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.741290560257792e-13,
+          "support": 330165
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "f08f292a9668",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui rend le ciel visible en bleu.",
+      "completion": "eos",
+      "words": 40,
+      "tokens": 66,
+      "exact_rendering": true,
+      "model_forward_calls": 67,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "75445ed7704d68f545c391cacc35118ee04bf5f633092f3a99c6e385f40eb8ae",
+      "scores": [
+        {
+          "reference_tail": 0.35308149060895333,
+          "centered_sum": 2911,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        },
+        {
+          "reference_tail": 0.13425204517455702,
+          "centered_sum": 8541,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "e63b2fe96421",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+      "completion": "eos",
+      "words": 47,
+      "tokens": 81,
+      "exact_rendering": true,
+      "model_forward_calls": 82,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "3a5f5ed394692bd2fb05587ccfd22d3e25c00ce7509748fa22e63891cfef8d5c",
+      "scores": [
+        {
+          "reference_tail": 0.062389818189471334,
+          "centered_sum": 13350,
+          "events": 80,
+          "lattice_size": 262144,
+          "alias_bound": 9.295964881384862e-50,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 8.951420520243179e-13,
+          "support": 382800
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3304,
+          "events": 80,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "f10b2592169d",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "words": 37,
+      "tokens": 51,
+      "exact_rendering": true,
+      "model_forward_calls": 52,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "f7a9bcefe7b6c0374c77d3464c6d8171d31e5124615a63e0ffc097b742fbd811",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3210,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.40712627291199543,
+          "centered_sum": 1584,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "a088271433f3",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "words": 38,
+      "tokens": 52,
+      "exact_rendering": true,
+      "model_forward_calls": 53,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "6ff2bc3c190b652d5d834170838c6a3500db8bfe60a49e651c34de5f8f699784",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4799,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.43836299946797275,
+          "centered_sum": 1057,
+          "events": 49,
+          "lattice_size": 131072,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.052765908454467e-13,
+          "support": 234465
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "f340667bcd38",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "words": 35,
+      "tokens": 49,
+      "exact_rendering": true,
+      "model_forward_calls": 50,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "e2654b645678fb3050625303273999c0b2e08c468cbf3faec5385372d4497444",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2548,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -608,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "arm": "half_mixture",
+      "review_id": "bc7a803aa59f",
+      "text": "Le ciel apparaît bleu car les molécules de l'air diffusent plus facilement la lumière bleue que les autres couleurs du spectre. Cette diffusion, appelée diffusion de Rayleigh, fait que la lumière bleue vient de toutes les directions et atteint nos yeux.",
+      "completion": "eos",
+      "words": 41,
+      "tokens": 65,
+      "exact_rendering": true,
+      "model_forward_calls": 66,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "5679df6d35f91981b4461cffb29b7409f4b375dea4f6e0d1fa9b0683a8372019",
+      "scores": [
+        {
+          "reference_tail": 0.4942114056388612,
+          "centered_sum": 113,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        },
+        {
+          "reference_tail": 0.36197857080454693,
+          "centered_sum": 2727,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary",
+      "review_id": "5dbbe94ae7b9",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Les longueurs d'onde courtes, comme le bleu, sont diffusées dans toutes les directions par les molécules, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 46,
+      "tokens": 86,
+      "exact_rendering": true,
+      "model_forward_calls": 87,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "34c67c3a25b51f974dd4279bc473cb36b7803de471026a12ccee3e8dbaeb7030",
+      "scores": [
+        {
+          "reference_tail": 0.3462265325614077,
+          "centered_sum": 3526,
+          "events": 84,
+          "lattice_size": 262144,
+          "alias_bound": 2.0771715054167172e-47,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.988073972172915e-13,
+          "support": 401940
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3452,
+          "events": 84,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference",
+      "review_id": "d0b48687d0ba",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui rend le ciel visible en bleu.",
+      "completion": "eos",
+      "words": 40,
+      "tokens": 66,
+      "exact_rendering": true,
+      "model_forward_calls": 67,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "66146475fe5ccddce86016c9d2114fdceeee394e9f365b72a5e7bbf6cedbd717",
+      "scores": [
+        {
+          "reference_tail": 0.35308149060895333,
+          "centered_sum": 2911,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        },
+        {
+          "reference_tail": 0.13425204517455702,
+          "centered_sum": 8541,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "5e8e5dc95717",
+      "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements like temperature, precipitation, humidity, and wind. For example, a day might be sunny and warm, or rainy and cold. These conditions can change rapidly, from one hour to the next, and are what people typically talk about when they discuss the \"weather\" on a given day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects patterns and trends, such as average temperatures, typical rainfall, and seasonal variations. Climate tells us what to expect over years, not days, and helps us understand broader environmental changes.\n\nIt is important to distinguish between the two because a single cold day or a hot spell does not indicate a shift in climate. Climate changes occur gradually and are influenced by complex factors like greenhouse gas emissions and ocean currents. Understanding this difference helps avoid misunderstandings when discussing environmental issues or weather events.",
+      "completion": "eos",
+      "words": 170,
+      "tokens": 202,
+      "exact_rendering": true,
+      "model_forward_calls": 203,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "f360e0ae48adf55caf0300f1151811261b37a0d35058ebb0e314510a646b7fd8",
+      "scores": [
+        {
+          "reference_tail": 0.4246431166368832,
+          "centered_sum": 2614,
+          "events": 200,
+          "lattice_size": 262144,
+          "alias_bound": 3.6977350266557185e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.495312068678563e-13,
+          "support": 957000
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3306,
+          "events": 200,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "3a754cd37ae8",
+      "text": "Weather refers to the short-term atmospheric conditions in a specific place at a specific time. It includes elements like temperature, humidity, precipitation, wind, and cloud cover. For example, a sunny afternoon or a sudden thunderstorm are both examples of weather. These conditions can change rapidly, sometimes from hour to hour or day to day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects patterns and trends, such as average rainfall, seasonal temperatures, and the frequency of extreme weather events. Climate gives us a broader picture of what to expect in terms of weather over time.\n\nA single cold day or a hot summer does not change the climate. Climate is about long-term trends, not individual events. Understanding this distinction is important for making sense of environmental changes and weather forecasts. Recognizing the difference helps people avoid misinterpreting short-term variations as long-term shifts in climate.",
+      "completion": "eos",
+      "words": 160,
+      "tokens": 195,
+      "exact_rendering": true,
+      "model_forward_calls": 196,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "8e0767bd5911466566aed3331d134d1973025f68f92eb477c60271d9d23b7570",
+      "scores": [
+        {
+          "reference_tail": 0.00023027950821903956,
+          "centered_sum": 47301,
+          "events": 193,
+          "lattice_size": 262144,
+          "alias_bound": 7.115865112242764e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.673530466554805e-13,
+          "support": 923505
+        },
+        {
+          "reference_tail": 0.19323559588166986,
+          "centered_sum": 11699,
+          "events": 193,
+          "lattice_size": 262144,
+          "alias_bound": 7.115865112242764e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.673530466554805e-13,
+          "support": 923505
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "99b01ee222fa",
+      "text": "Weather refers to the short-term atmospheric conditions in a specific place at a specific time. It includes factors like temperature, precipitation, humidity, and wind. For example, a sunny day with a high of 75°F or a sudden thunderstorm are all examples of weather. These conditions can change within hours or days and are what people typically report when they talk about the “forecast.”\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects the typical patterns and trends of temperature, precipitation, and other atmospheric elements. Climate helps us understand what to expect in terms of seasons, typical rainfall, and overall environmental conditions in a particular area.\n\nIt’s important to note that a single cold day or a hot week does not indicate a shift in climate. Climate is about long-term trends, not individual events. Understanding this distinction helps avoid confusion between short-term weather changes and the broader, more gradual shifts in our planet’s climate system.",
+      "completion": "eos",
+      "words": 170,
+      "tokens": 206,
+      "exact_rendering": true,
+      "model_forward_calls": 207,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "d7e19cabe6a6ce47c3d30e03ae60ffd35cc7fe0398e2d9372889d760845d0c2f",
+      "scores": [
+        {
+          "reference_tail": 0.14657130426191656,
+          "centered_sum": 14528,
+          "events": 202,
+          "lattice_size": 262144,
+          "alias_bound": 5.798463897873799e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.444769064154213e-13,
+          "support": 966570
+        },
+        {
+          "reference_tail": 0.3942525436431268,
+          "centered_sum": 3708,
+          "events": 202,
+          "lattice_size": 262144,
+          "alias_bound": 5.798463897873799e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.444769064154213e-13,
+          "support": 966570
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "8905b761c953",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel apparaître bleu.",
+      "completion": "eos",
+      "words": 39,
+      "tokens": 60,
+      "exact_rendering": true,
+      "model_forward_calls": 61,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "fff4ed8073e0b8a8ba6695e51e19c5c58f4bd0a66f88800ceab7bf6f00c67ace",
+      "scores": [
+        {
+          "reference_tail": 0.04836307165884512,
+          "centered_sum": 12405,
+          "events": 59,
+          "lattice_size": 131072,
+          "alias_bound": 3.7850254327188384e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.371713139435842e-13,
+          "support": 282315
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3713,
+          "events": 59,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "a76cc5898716",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère terrestre et les molécules d'air dispersent plus facilement la lumière bleue que les autres couleurs. Cette lumière bleue se réfléchit dans toutes les directions, donnant ainsi au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 43,
+      "tokens": 74,
+      "exact_rendering": true,
+      "model_forward_calls": 75,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "18452fa1581ee29aede7517b9cbf7a58bdd5987532330b613da04127752c35e8",
+      "scores": [
+        {
+          "reference_tail": 0.12586394944059406,
+          "centered_sum": 9523,
+          "events": 73,
+          "lattice_size": 262144,
+          "alias_bound": 1.7288534920699242e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.836653738197859e-13,
+          "support": 349305
+        },
+        {
+          "reference_tail": 0.2836736962749329,
+          "centered_sum": 4753,
+          "events": 73,
+          "lattice_size": 262144,
+          "alias_bound": 1.7288534920699242e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.836653738197859e-13,
+          "support": 349305
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "7cdd3a7f7c0a",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, qui a une longueur d'onde courte, est plus facilement diffusée dans toutes les directions que les autres couleurs.",
+      "completion": "eos",
+      "words": 38,
+      "tokens": 60,
+      "exact_rendering": true,
+      "model_forward_calls": 61,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "56b41b51635d2aac521ad71cd8422255c5a07105131488f19eebada7116c8219",
+      "scores": [
+        {
+          "reference_tail": 0.06807510242289329,
+          "centered_sum": 11131,
+          "events": 59,
+          "lattice_size": 131072,
+          "alias_bound": 3.7850254327188384e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.371713139435842e-13,
+          "support": 282315
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -555,
+          "events": 59,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "3b1cf261d420",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "words": 33,
+      "tokens": 47,
+      "exact_rendering": true,
+      "model_forward_calls": 48,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "4c13c970f0eea68523c88837980c6c5014cc061a48a8e1f521cf51efc93265f6",
+      "scores": [
+        {
+          "reference_tail": 0.28266031641535294,
+          "centered_sum": 3710,
+          "events": 44,
+          "lattice_size": 131072,
+          "alias_bound": 7.534584436269909e-23,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.84348663123955e-13,
+          "support": 210540
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3160,
+          "events": 44,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "9adf312796f5",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "words": 36,
+      "tokens": 50,
+      "exact_rendering": true,
+      "model_forward_calls": 51,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "36ae7f8c4e0504d47684acda960482855a3e05373a09f4cae6b0933846bc95da",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1135,
+          "events": 47,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -919,
+          "events": 47,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "c8d337e6ae3d",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "words": 33,
+      "tokens": 47,
+      "exact_rendering": true,
+      "model_forward_calls": 48,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "fc6780fa90eac7569a96596df3b2724dad186b19dd3e43642374eb290d074e2a",
+      "scores": [
+        {
+          "reference_tail": 0.28266031641535294,
+          "centered_sum": 3710,
+          "events": 44,
+          "lattice_size": 131072,
+          "alias_bound": 7.534584436269909e-23,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.84348663123955e-13,
+          "support": 210540
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3160,
+          "events": 44,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary",
+      "review_id": "ea72a1a23439",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 37,
+      "tokens": 57,
+      "exact_rendering": true,
+      "model_forward_calls": 58,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "14d276d41a76cfae736d402ae83edd08188e9c951127812564d5e0c68019cb7c",
+      "scores": [
+        {
+          "reference_tail": 0.054167299245009924,
+          "centered_sum": 11684,
+          "events": 56,
+          "lattice_size": 131072,
+          "alias_bound": 4.810562715230925e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.289193577658442e-13,
+          "support": 267960
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2964,
+          "events": 56,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference",
+      "review_id": "b9438d3d7a1f",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel apparaître bleu.",
+      "completion": "eos",
+      "words": 39,
+      "tokens": 60,
+      "exact_rendering": true,
+      "model_forward_calls": 61,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "a6e4a66bbc77e752614d92083906b99ca6a6f4a0736997a7d6a168f3ab364f95",
+      "scores": [
+        {
+          "reference_tail": 0.04836307165884512,
+          "centered_sum": 12405,
+          "events": 59,
+          "lattice_size": 131072,
+          "alias_bound": 3.7850254327188384e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.371713139435842e-13,
+          "support": 282315
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3713,
+          "events": 59,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "french",
+      "repetition": 1,
+      "arm": "half_mixture",
+      "review_id": "e8097e07ac13",
+      "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 37,
+      "tokens": 58,
+      "exact_rendering": true,
+      "model_forward_calls": 59,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "fe33b87d2596604c061064a3f49d6b7aba1a591d4892cfff7e37a1a8314639df",
+      "scores": [
+        {
+          "reference_tail": 0.08477588062811105,
+          "centered_sum": 9996,
+          "events": 56,
+          "lattice_size": 131072,
+          "alias_bound": 4.810562715230925e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.289193577658442e-13,
+          "support": 267960
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2936,
+          "events": 56,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "54881550c0a1",
+      "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema de registro que incluye el título del libro, el nombre de la persona que lo recibe y la fecha de devolución estimada. Este proceso permite que los usuarios conozcan qué libros están disponibles y cuándo pueden recogerlos. La biblioteca puede ofrecer opciones como préstamos por semana o por mes, dependiendo de sus reglas. Además, se puede permitir la posibilidad de renovar los libros siempre que el usuario cumpla con las condiciones establecidas.\n\nPara garantizar la organización, la biblioteca debe mantener un registro actualizado de los préstamos, que incluya el nombre del usuario, el libro prestado y la fecha en que debe devolverse. Esta información ayuda a gestionar la disponibilidad de los materiales y a notificar a los usuarios si no devuelven los libros a tiempo. También es importante que la biblioteca establezca límites claros sobre las renovaciones, que pueden variar según su política interna.\n\nEs fundamental proteger los datos personales de los usuarios, especialmente al manejar información sensible como nombres y fechas de préstamo. La biblioteca debe asegurarse de que los registros se almacenen de manera segura y solo sean accesibles por personal autorizado. Al hacerlo, se respeta la privacidad de los usuarios y se fomenta un entorno confiable para el préstamo de libros.",
+      "completion": "eos",
+      "words": 214,
+      "tokens": 300,
+      "exact_rendering": true,
+      "model_forward_calls": 301,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "96f9a09329ecd622d1e0871f1818a7f4f43abc5f84b94ff59dfededc1e9d24fb",
+      "scores": [
+        {
+          "reference_tail": 0.00024042196274133318,
+          "centered_sum": 58489,
+          "events": 297,
+          "lattice_size": 524288,
+          "alias_bound": 1.4057700372372863e-53,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.611663376349042e-13,
+          "support": 1421145
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3511,
+          "events": 297,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "6f1461074905",
+      "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema que permita registrar los detalles de cada préstamo. Para ello, se puede establecer que cada libro tenga un código único, que se anote junto con el nombre del usuario y la fecha de préstamo. Esto ayuda a llevar un control claro de qué libro se presta y a quién. Además, se puede fijar una fecha límite de devolución, que el usuario debe respetar para garantizar el acceso a otros lectores.\n\nEn cuanto a la renovación de los préstamos, la biblioteca puede permitir que los usuarios soliciten una extensión siempre que no haya reservas o conflictos. Esta opción depende de las reglas internas de la biblioteca, por lo que se debe informar con anticipación sobre los términos y condiciones. En este caso, la decisión de renovar o no corresponde a la institución, y el usuario debe seguir las indicaciones establecidas.\n\nEs importante también proteger los datos personales de los usuarios. La biblioteca debe garantizar que la información registrada, como nombres o números de identificación, se almacene de manera segura y solo se acceda cuando sea necesario. Esto contribuye a mantener la privacidad de los lectores y a cumplir con estándares de seguridad y ética en el manejo de información.",
+      "completion": "eos",
+      "words": 208,
+      "tokens": 286,
+      "exact_rendering": true,
+      "model_forward_calls": 287,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "dd64c8a7aaf2aaa441c47a7b6b28521b3495a6432c2cf214184e25746df287d5",
+      "scores": [
+        {
+          "reference_tail": 0.09975427934292841,
+          "centered_sum": 21059,
+          "events": 285,
+          "lattice_size": 524288,
+          "alias_bound": 8.126215920235184e-56,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.839998158127971e-13,
+          "support": 1363725
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2989,
+          "events": 285,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "149d36a0b4da",
+      "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema que registre la información necesaria para cada préstamo. Para ello, se debe anotar el título del libro, el nombre del usuario y la fecha en que se lo prestó. Además, se debe indicar la fecha límite para la devolución, para que el usuario sepa cuándo debe devolverlo. Este registro ayuda a mantener el control de los libros y facilita la gestión de los préstamos.\n\nOtra opción es permitir la renovación de los libros, siempre que se respeten las reglas de la biblioteca. Esto significa que el usuario puede extender el plazo de préstamo si el libro no está reservado y se cumple con los requisitos establecidos. Sin embargo, la disponibilidad de esta opción depende de las políticas internas de la biblioteca.\n\nEs importante proteger los datos personales del usuario, como su nombre y el título del libro prestado, para garantizar la privacidad. La biblioteca debe asegurarse de que esta información se almacene de manera segura y solo se acceda cuando sea necesario. Al hacerlo, se respetan las normas de seguridad y se fomenta la confianza entre los usuarios y la institución.",
+      "completion": "eos",
+      "words": 191,
+      "tokens": 269,
+      "exact_rendering": true,
+      "model_forward_calls": 270,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "b6c5978b5c85aa88f5aedfe368f16eb78729968e396cd368084762cfd490edaf",
+      "scores": [
+        {
+          "reference_tail": 0.16641242594064626,
+          "centered_sum": 15329,
+          "events": 265,
+          "lattice_size": 262144,
+          "alias_bound": 2.5593442541290016e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.9134404571774003e-13,
+          "support": 1268025
+        },
+        {
+          "reference_tail": 0.1603968040548175,
+          "centered_sum": 15715,
+          "events": 265,
+          "lattice_size": 262144,
+          "alias_bound": 2.5593442541290016e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 3.9134404571774003e-13,
+          "support": 1268025
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "997acfd4ea49",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse en différentes couleurs. Le bleu est le plus dispersé, donc il domine le ciel en journée.",
+      "completion": "eos",
+      "words": 31,
+      "tokens": 49,
+      "exact_rendering": true,
+      "model_forward_calls": 50,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "a7303bb9c92767bf3a08f1c91778bc22064e8ebb0785629a53d1fea29a1c853c",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1890,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.011915456802562964,
+          "centered_sum": 15220,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "658637bd6a8d",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse principalement vers les couleurs bleues et violettes. Nos yeux sont plus sensibles au bleu qu'au violet, ce qui fait que nous percevons le ciel comme étant bleu.",
+      "completion": "eos",
+      "words": 42,
+      "tokens": 68,
+      "exact_rendering": true,
+      "model_forward_calls": 69,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "8c96d215aeaa535365e4c7f8969a01f0a23b8cc755c929a83e10ede2abb8631d",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7273,
+          "events": 67,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -10251,
+          "events": 67,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "20e4f99ad339",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans les directions où les longueurs d'onde courtes, comme le bleu, sont présentes. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+      "completion": "eos",
+      "words": 54,
+      "tokens": 96,
+      "exact_rendering": true,
+      "model_forward_calls": 97,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "9add461d6caf582681f76ecbc021fb13e69684fda569357740b50fd0de334ac1",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1999,
+          "events": 95,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.482410788708474,
+          "centered_sum": 419,
+          "events": 95,
+          "lattice_size": 262144,
+          "alias_bound": 5.7236592031915505e-42,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.944720634572985e-13,
+          "support": 454575
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "2e4c8840e80d",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure timely follow-up.",
+      "completion": "eos",
+      "words": 31,
+      "tokens": 46,
+      "exact_rendering": true,
+      "model_forward_calls": 47,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "51b4c5e2220dea68d9a857173462163cca4070547e56983cab42a205311bef94",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -49,
+          "events": 43,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1865,
+          "events": 43,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "92425e11d9d3",
+      "text": "Subject: Draft Review and Approval Deadline  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+      "completion": "eos",
+      "words": 36,
+      "tokens": 50,
+      "exact_rendering": true,
+      "model_forward_calls": 51,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "432b9892fbf7ab7a9071c6227ea90648c3b44a16540c210723c32587fba52a9a",
+      "scores": [
+        {
+          "reference_tail": 0.38244188379558064,
+          "centered_sum": 1995,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        },
+        {
+          "reference_tail": 0.4022693107247585,
+          "centered_sum": 1651,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "c16da7c4c245",
+      "text": "Subject: Draft Review and Approval Status  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+      "completion": "eos",
+      "words": 38,
+      "tokens": 52,
+      "exact_rendering": true,
+      "model_forward_calls": 53,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "5b4b9b189539485222617acbfb01b52c3f0ff52ec7ff08fa876dae8e67d76f68",
+      "scores": [
+        {
+          "reference_tail": 0.24625528108071496,
+          "centered_sum": 4673,
+          "events": 49,
+          "lattice_size": 131072,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.052765908454467e-13,
+          "support": 234465
+        },
+        {
+          "reference_tail": 0.38109537457488796,
+          "centered_sum": 2061,
+          "events": 49,
+          "lattice_size": 131072,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.052765908454467e-13,
+          "support": 234465
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference",
+      "review_id": "44a275c0ebda",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans les directions où les longueurs d'onde courtes, comme le bleu, sont présentes. Les particules de l'air et les molécules d'azote et d'oxygène réfléchissent cette lumière vers le haut, ce qui donne au ciel une teinte bleue.",
+      "completion": "eos",
+      "words": 54,
+      "tokens": 96,
+      "exact_rendering": true,
+      "model_forward_calls": 97,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "37ea75c1af8a711b31bf536883a99d0a0006a2ecaf08f7c4fe172baaba064469",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1999,
+          "events": 95,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.482410788708474,
+          "centered_sum": 419,
+          "events": 95,
+          "lattice_size": 262144,
+          "alias_bound": 5.7236592031915505e-42,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.944720634572985e-13,
+          "support": 454575
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "arm": "half_mixture",
+      "review_id": "39077201757e",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans la direction des petits angles, ce qui donne l'impression de bleu. Les particules de l'air et les molécules d'oxygène et d'azote absorbent les couleurs plus longues comme le rouge et le jaune, laissant le bleu dominant.",
+      "completion": "eos",
+      "words": 54,
+      "tokens": 90,
+      "exact_rendering": true,
+      "model_forward_calls": 91,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "a07717112030009ec0a729933b6c9fc238b4f6267b8b18a0e7a774fedffa03c0",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -19705,
+          "events": 89,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.23598969643013054,
+          "centered_sum": 6599,
+          "events": 89,
+          "lattice_size": 262144,
+          "alias_bound": 9.057285683313944e-45,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.996494659307279e-13,
+          "support": 425865
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary",
+      "review_id": "aac0bf56d488",
+      "text": "Le ciel apparaît bleu à cause de la diffusion de la lumière par les molécules de l'air. La lumière du Soleil, composée de différentes couleurs, est dispersée dans toutes les directions, mais la lumière bleue, étant plus courte, se disperse davantage.",
+      "completion": "eos",
+      "words": 41,
+      "tokens": 64,
+      "exact_rendering": true,
+      "model_forward_calls": 65,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "6ce5f6255b247632709799f2ceb5fa9762b97002da23a0761cb363e2689891d0",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7659,
+          "events": 63,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7089,
+          "events": 63,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "e2b8097f7654",
+      "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements such as temperature, humidity, precipitation, wind, and cloud cover. Weather can change rapidly, from sunny skies to a thunderstorm in just a few hours. These variations are influenced by local conditions and can be unpredictable from day to day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects the typical patterns of temperature, precipitation, and other atmospheric factors that define a region's overall character. Climate helps us understand what to expect in terms of seasons, rainfall, and extreme weather events over time.\n\nA single cold day or a warm spell does not indicate a shift in climate. Climate changes occur gradually and are influenced by complex factors such as ocean currents, atmospheric composition, and natural cycles. Understanding the difference between weather and climate is essential for interpreting environmental changes and making informed decisions about the future.",
+      "completion": "eos",
+      "words": 168,
+      "tokens": 198,
+      "exact_rendering": true,
+      "model_forward_calls": 199,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "a79eeb7c4853d2e44a8df291c93d57655f7b0db40ef1ff952a38fd2473f91c69",
+      "scores": [
+        {
+          "reference_tail": 0.01870156819917367,
+          "centered_sum": 28330,
+          "events": 196,
+          "lattice_size": 262144,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.596750517391447e-13,
+          "support": 937860
+        },
+        {
+          "reference_tail": 0.14277018139967043,
+          "centered_sum": 14538,
+          "events": 196,
+          "lattice_size": 262144,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.596750517391447e-13,
+          "support": 937860
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "fd36bbf6f3c0",
+      "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. These include elements like temperature, precipitation, humidity, and wind. Weather can change rapidly, from sunny skies to a sudden storm within hours. It is what you experience on a daily basis and is often discussed in news reports or forecasts.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects patterns and trends, such as average temperatures and typical rainfall amounts. Climate is more about what is usually expected in a particular area, rather than what happens on any given day.\n\nA single cold day or a hot week does not indicate a shift in climate. Climate change refers to long-term shifts in these patterns, which can be influenced by various factors, including human activities. Understanding the difference between weather and climate is essential for interpreting environmental changes and making informed decisions.",
+      "completion": "eos",
+      "words": 160,
+      "tokens": 186,
+      "exact_rendering": true,
+      "model_forward_calls": 187,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "ae472368a1e78b07a69e07bf18770bda58fa8f1a5e709350a29e5629459fd6d3",
+      "scores": [
+        {
+          "reference_tail": 0.06101719932664469,
+          "centered_sum": 20394,
+          "events": 184,
+          "lattice_size": 262144,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.905238236616514e-13,
+          "support": 880440
+        },
+        {
+          "reference_tail": 0.1223444947154413,
+          "centered_sum": 15344,
+          "events": 184,
+          "lattice_size": 262144,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.905238236616514e-13,
+          "support": 880440
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "weather_english",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "18275329ffc2",
+      "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements such as temperature, humidity, precipitation, wind, and cloud cover. Weather can change rapidly, from sunny skies to a thunderstorm in a matter of hours. These changes are influenced by local conditions and can be predicted for a few days ahead with varying degrees of accuracy.\n\nClimate, on the other hand, describes the long-term patterns of weather in a region. It is based on average conditions observed over decades or even centuries. Climate includes not only temperature but also factors like rainfall, wind patterns, and seasonal variations. Understanding climate helps us predict general trends and prepare for long-term environmental changes.\n\nIt is important to distinguish between the two, as a single cold day or a warm week does not indicate a shift in climate. Climate change refers to gradual shifts in long-term patterns, which can be influenced by natural processes and human activities. Recognizing this difference helps avoid misinterpretations of short-term weather events as evidence of climate trends.",
+      "completion": "eos",
+      "words": 173,
+      "tokens": 205,
+      "exact_rendering": true,
+      "model_forward_calls": 206,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "0c82344158258455486903659acbbf5fb88bec3101e0ecedcb92f63953f6bd29",
+      "scores": [
+        {
+          "reference_tail": 0.00219125223482196,
+          "centered_sum": 39562,
+          "events": 204,
+          "lattice_size": 262144,
+          "alias_bound": 9.012788982444135e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.39417054363707e-13,
+          "support": 976140
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -30992,
+          "events": 204,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "dc6edb1e63b3",
+      "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse plus facilement dans la direction des petits angles, ce qui rend le ciel apparemment bleu. Cela s'appelle l'effet de diffusion de Rayleigh.",
+      "completion": "eos",
+      "words": 37,
+      "tokens": 62,
+      "exact_rendering": true,
+      "model_forward_calls": 63,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "223b475e633cd44d1761fde8fd928c1828b3a86e674f5e069cfbbfd982a4ffd9",
+      "scores": [
+        {
+          "reference_tail": 0.3396472559190066,
+          "centered_sum": 3141,
+          "events": 61,
+          "lattice_size": 131072,
+          "alias_bound": 1.33771196514986e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.421121570951344e-13,
+          "support": 291885
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -10613,
+          "events": 61,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "90eea8369fbb",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules de poussière dispersent plus efficacement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 43,
+      "tokens": 75,
+      "exact_rendering": true,
+      "model_forward_calls": 76,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "afb2114eefd231a16f8ae60c83ba10aa44c8eb52e48ea934375eb040318cdf26",
+      "scores": [
+        {
+          "reference_tail": 0.10741551743229018,
+          "centered_sum": 10376,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2766,
+          "events": 74,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "1412b85a4425",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les particules présentes dans l'air dispersent plus efficacement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 44,
+      "tokens": 77,
+      "exact_rendering": true,
+      "model_forward_calls": 78,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "73833d4a480b93cc3c1d8382c239bb35e779cc366725ac011fb02bdcb65f3ecb",
+      "scores": [
+        {
+          "reference_tail": 0.3038027981450382,
+          "centered_sum": 4354,
+          "events": 76,
+          "lattice_size": 262144,
+          "alias_bound": 2.3541531365507445e-52,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.894572949530122e-13,
+          "support": 363660
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -6246,
+          "events": 76,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "c0d607bf99b1",
+      "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "words": 37,
+      "tokens": 51,
+      "exact_rendering": true,
+      "model_forward_calls": 52,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "d17ff991297ef8511358f9b476390f8ce7f40f2ddd9d3eb39da3002788ebc06d",
+      "scores": [
+        {
+          "reference_tail": 0.23832883808302424,
+          "centered_sum": 4796,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3210,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "215d31f383a0",
+      "text": "Subject: Project Timeline Update  \n\nMaya, please review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all details are addressed before sharing with Vincent.",
+      "completion": "eos",
+      "words": 38,
+      "tokens": 53,
+      "exact_rendering": true,
+      "model_forward_calls": 54,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "cb3017285ab55ce91e3857cd84b7ef1f94542af19d783578b3cdb8ff002e1699",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -9992,
+          "events": 50,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.39266819304432604,
+          "centered_sum": 1874,
+          "events": 50,
+          "lattice_size": 131072,
+          "alias_bound": 3.6977350266557185e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.090415053769783e-13,
+          "support": 239250
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "approval",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "9be95dc19e65",
+      "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+      "completion": "eos",
+      "words": 38,
+      "tokens": 52,
+      "exact_rendering": true,
+      "model_forward_calls": 53,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "246276ba14258033a8ddce85942d4916fe7052f329562fa5dec378dff07fe811",
+      "scores": [
+        {
+          "reference_tail": 0.29470024469622896,
+          "centered_sum": 3675,
+          "events": 49,
+          "lattice_size": 131072,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.052765908454467e-13,
+          "support": 234465
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4799,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "arm": "half_mixture",
+      "review_id": "fab048e4aaf4",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les petits particules dispersent plus efficacement la lumière bleue que les autres couleurs, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 42,
+      "tokens": 72,
+      "exact_rendering": true,
+      "model_forward_calls": 73,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "18b3eb74601a5da65dabccbfb867ff831a42991c39ef021bc2ad26b017f9eb1b",
+      "scores": [
+        {
+          "reference_tail": 0.1531463922088031,
+          "centered_sum": 8383,
+          "events": 71,
+          "lattice_size": 262144,
+          "alias_bound": 5.18619839681227e-56,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.791651798709658e-13,
+          "support": 339735
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2755,
+          "events": 71,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "arm": "ordinary",
+      "review_id": "92f1f1827886",
+      "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est diffusée dans toutes les directions par les molécules de l'air. La lumière bleue, étant plus courte, est diffusée davantage que les autres couleurs, ce qui donne au ciel son aspect bleu.",
+      "completion": "eos",
+      "words": 45,
+      "tokens": 73,
+      "exact_rendering": true,
+      "model_forward_calls": 74,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "5e03dd111d97c063317c4e28b0e9c2c9b14583727951259aaf11e3da33a5530b",
+      "scores": [
+        {
+          "reference_tail": 0.3196539307137229,
+          "centered_sum": 3814,
+          "events": 70,
+          "lattice_size": 262144,
+          "alias_bound": 8.332221920911758e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.767105890025362e-13,
+          "support": 334950
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -130,
+          "events": 70,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "french",
+      "repetition": 1,
+      "arm": "reference",
+      "review_id": "198b6e7e3e47",
+      "text": "Le ciel est bleu parce que la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre. Les molécules d'air et les très petites particules diffusent plus efficacement la lumière bleue, ce qui donne au ciel son apparence bleue.",
+      "completion": "eos",
+      "words": 39,
+      "tokens": 69,
+      "exact_rendering": true,
+      "model_forward_calls": 70,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "d41e851c703717d4a4296bef9efc04619d44a130bd5a232a290a68c78ab026c1",
+      "scores": [
+        {
+          "reference_tail": 0.19424007797338644,
+          "centered_sum": 6916,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7874,
+          "events": 68,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "ordinary",
+      "review_id": "c0109ad25d14",
+      "text": "Una biblioteca puede organizar préstamos de libros utilizando un sistema informático que permite registrar los detalles de cada préstamo. En este sistema, se anota el título del libro, su autor y el código de identificación, junto con el nombre y la dirección del usuario. Esto ayuda a gestionar los préstamos de manera eficiente y a mantener un registro de los materiales disponibles. Además, se marca la fecha en que el libro se presta y la fecha límite de devolución, para que los usuarios sepan cuándo debe devolverlo.\n\nPara garantizar un buen uso de los recursos, la biblioteca puede establecer reglas sobre la renovación de los préstamos. Esto significa que los usuarios pueden solicitar la extensión del préstamo siempre que haya disponibilidad, siempre que las reglas de la biblioteca lo permitan. Esta opción ayuda a evitar que los libros estén bloqueados por largos períodos y a mantener un acceso justo para todos los lectores.\n\nEs importante que la biblioteca proteja los datos personales de los usuarios. Por lo tanto, solo se registran los datos necesarios para gestionar el préstamo, como nombre y dirección, y se garantiza su confidencialidad. Esta medida asegura que los usuarios se sientan seguros al utilizar los servicios de la biblioteca y respeta su privacidad.",
+      "completion": "eos",
+      "words": 207,
+      "tokens": 282,
+      "exact_rendering": true,
+      "model_forward_calls": 283,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "2d3a3fb562f9c0e653bc5b06900370e9283dac72b02043262785f38e7b00bcb0",
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -9987,
+          "events": 277,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.4004224971035271,
+          "centered_sum": 4083,
+          "events": 277,
+          "lattice_size": 524288,
+          "alias_bound": 2.0424159570366583e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 6.006227954344993e-13,
+          "support": 1325445
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "reference",
+      "review_id": "7b0a9d92e4be",
+      "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema que permite registrar los detalles de cada préstamo. Para ello, se puede establecer un registro que incluya el título del libro, el nombre de la persona que lo recibe y la fecha en que se debe devolver. Así, la biblioteca mantiene un control sobre los libros y asegura que estén disponibles para otros usuarios.\n\nAdemás, se puede permitir la renovación de los préstamos, siempre que el sistema lo permita. Esto significa que el usuario puede solicitar una extensión del préstamo siempre que los registros indiquen que el libro no ha sido reservado por otra persona. Las reglas sobre renovaciones pueden variar según las normas de la biblioteca.\n\nEs importante también proteger los datos personales de los usuarios. La biblioteca debe garantizar que la información como nombres o direcciones no se comparta con terceros sin autorización. Esto asegura la privacidad de quienes utilizan los servicios. En resumen, el sistema de préstamos debe ser claro, accesible y respetuoso con la confidencialidad de los usuarios.",
+      "completion": "eos",
+      "words": 172,
+      "tokens": 238,
+      "exact_rendering": true,
+      "model_forward_calls": 239,
+      "runtime_profile_sha256": "f40275f087459d3d242b4a0c9f0bb0268685ebcc83ede3981d8404380d57330a",
+      "draw_transcript_sha256": "83606ae35f5f43eaf681fe6d9b7e1662e7b11c7253bf5d84a1507b78c35f364d",
+      "scores": [
+        {
+          "reference_tail": 0.043573828314545204,
+          "centered_sum": 25605,
+          "events": 237,
+          "lattice_size": 262144,
+          "alias_bound": 4.452765454921183e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.598735703461568e-13,
+          "support": 1134045
+        },
+        {
+          "reference_tail": 0.4589215600216556,
+          "centered_sum": 1545,
+          "events": 237,
+          "lattice_size": 262144,
+          "alias_bound": 4.452765454921183e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.598735703461568e-13,
+          "support": 1134045
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "library_spanish",
+      "repetition": 0,
+      "arm": "half_mixture",
+      "review_id": "c79b74602b1f",
+      "text": "Una biblioteca puede organizar préstamos de libros mediante un sistema de registro que permite seguir el historial de cada préstamo. En este sistema, se anota qué libro se presta, quién lo recibe y la fecha en que debe devolverse. Esto ayuda a mantener un control ordenado y facilita la gestión de las solicitudes. Se puede optar por un sistema físico, como tarjetas o listas, o digital, utilizando software especializado que simplifica la organización.\n\nAdemás, las bibliotecas pueden ofrecer la opción de renovar los libros, siempre que se respeten las reglas establecidas. Esta renovación depende del horario de la biblioteca y de la disponibilidad del libro. Es importante que los usuarios conozcan estas condiciones para evitar inconvenientes al momento de la devolución. También se debe considerar establecer límites claros para evitar la acumulación de materiales prestados por parte de los usuarios.\n\nPor último, es fundamental proteger los datos personales de los usuarios. La biblioteca debe garantizar que la información de los préstamos se maneje con confidencialidad, respetando la privacidad de los lectores. Esto puede lograrse mediante medidas como el uso de identificadores anónimos o la limitación del acceso a los registros solo para personal autorizado. Estas prácticas contribuyen a mantener la seguridad y la confianza de los usuarios en el servicio de préstamo.",
+      "completion": "eos",
+      "words": 212,
+      "tokens": 308,
+      "exact_rendering": true,
+      "model_forward_calls": 309,
+      "runtime_profile_sha256": "cfcadad1947354b470960b03d46feb2560bc9f798c92f39b175cd3bef005d1b8",
+      "draw_transcript_sha256": "f1267ae6cd6d4cb6dc43c0b3e5681025650d91531dfde0784788613e757b6ed2",
+      "scores": [
+        {
+          "reference_tail": 0.08975223249078372,
+          "centered_sum": 22830,
+          "events": 306,
+          "lattice_size": 524288,
+          "alias_bound": 5.143292402659863e-52,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.464564998530158e-13,
+          "support": 1464210
+        },
+        {
+          "reference_tail": 0.1023433233351895,
+          "centered_sum": 21572,
+          "events": 306,
+          "lattice_size": 524288,
+          "alias_bound": 5.143292402659863e-52,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.464564998530158e-13,
+          "support": 1464210
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    }
+  ]
+}

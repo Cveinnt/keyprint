@@ -1,0 +1,15 @@
+{
+  "status": "aborted_integration_failure",
+  "recorded_attempts": 21,
+  "recorded_errors": 8,
+  "unfinalized_attempt_directories": [
+    "1d6b6b4cd159"
+  ],
+  "next_planned_attempt": {
+    "key_slot": 1,
+    "case": "library_spanish",
+    "repetition": 0,
+    "arm": "reference"
+  },
+  "reason": "The SDK caller accepts only registered candidate classes; its report facade also rejects unknown identities. Seven half-mixture attempts failed with empty inference journals. A stop signal interrupted one ordinary attempt; one additional reference attempt has an unfinished journal. No guard is weakened. The corrected dedicated research caller is tested separately and a new study is registered; prior outputs/errors remain retained."
+}

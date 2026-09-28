@@ -1,0 +1,542 @@
+[
+  {
+    "key_slot": 0,
+    "case": "french",
+    "repetition": 0,
+    "arm": "ordinary",
+    "review_id": "c6db052722b8",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et se disperse principalement vers le bleu. Les particules de l'air réfléchissent cette lumière bleue dans toutes les directions, ce qui donne à l'œil l'impression d'un ciel bleu.",
+    "completion": "eos",
+    "words": 40,
+    "tokens": 71,
+    "exact_rendering": true,
+    "model_forward_calls": 72,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "22597bf4d65e87dc85b70ee84283e141fd0550d4180d85df4befe8e7d0c992e2",
+    "scores": [
+      {
+        "reference_tail": 0.31868794451447635,
+        "centered_sum": 3836,
+        "events": 70,
+        "lattice_size": 262144,
+        "alias_bound": 8.332221920911758e-57,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 8.767105890025362e-13,
+        "support": 334950
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -1844,
+        "events": 70,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "french",
+    "repetition": 0,
+    "arm": "reference",
+    "review_id": "d52121226781",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+    "completion": "eos",
+    "words": 47,
+    "tokens": 81,
+    "exact_rendering": true,
+    "model_forward_calls": 82,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "54b5473ab3c762d13ec83703366e1ddb43b47769f4e746c9ae5ce4dc57acfe8e",
+    "scores": [
+      {
+        "reference_tail": 0.062389818189471334,
+        "centered_sum": 13350,
+        "events": 80,
+        "lattice_size": 262144,
+        "alias_bound": 9.295964881384862e-50,
+        "numeric_margin": 1e-09,
+        "mass_error": 1.1102230246251565e-16,
+        "negative_mass": 8.951420520243179e-13,
+        "support": 382800
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -3304,
+        "events": 80,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "french",
+    "repetition": 0,
+    "arm": "half_mixture",
+    "review_id": "448918a299a3",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  },
+  {
+    "key_slot": 0,
+    "case": "approval",
+    "repetition": 0,
+    "arm": "reference",
+    "review_id": "8ef491081e70",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are followed to meet the deadline.",
+    "completion": "eos",
+    "words": 37,
+    "tokens": 51,
+    "exact_rendering": true,
+    "model_forward_calls": 52,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "b3695bd7f75a230ac9f123ab3167f3aa0d0bfc648a3cd066bd639bc3ba63d826",
+    "scores": [
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -3210,
+        "events": 48,
+        "scope": "nonpositive statistic conservatively returns one"
+      },
+      {
+        "reference_tail": 0.40712627291199543,
+        "centered_sum": 1584,
+        "events": 48,
+        "lattice_size": 131072,
+        "alias_bound": 5.568311577726838e-21,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 5.013791798378302e-13,
+        "support": 229680
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "approval",
+    "repetition": 0,
+    "arm": "half_mixture",
+    "review_id": "51dad67049c5",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  },
+  {
+    "key_slot": 0,
+    "case": "approval",
+    "repetition": 0,
+    "arm": "ordinary",
+    "review_id": "a447cf780696",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all conditions are met before proceeding.",
+    "completion": "eos",
+    "words": 35,
+    "tokens": 49,
+    "exact_rendering": true,
+    "model_forward_calls": 50,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "9d6fe6dc9e6f85f8a097f7a117024ce95552cd8b5510d815fab4593e6ba48f3a",
+    "scores": [
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -2548,
+        "events": 46,
+        "scope": "nonpositive statistic conservatively returns one"
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -608,
+        "events": 46,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "french",
+    "repetition": 1,
+    "arm": "half_mixture",
+    "review_id": "86eeadbd12e5",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  },
+  {
+    "key_slot": 0,
+    "case": "french",
+    "repetition": 1,
+    "arm": "ordinary",
+    "review_id": "c02932ee5460",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. La lumière bleue est diffusée dans toutes les directions par ces molécules, ce qui fait que nous percevons le ciel comme bleu lorsque nous le regardons.",
+    "completion": "eos",
+    "words": 48,
+    "tokens": 83,
+    "exact_rendering": true,
+    "model_forward_calls": 84,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "2d378bffea0e04258730d0ff881d7d06f510f9243a9ec9ef1d3ebcd0795a8263",
+    "scores": [
+      {
+        "reference_tail": 0.306449145588885,
+        "centered_sum": 4456,
+        "events": 82,
+        "lattice_size": 262144,
+        "alias_bound": 1.4843349933082404e-48,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 8.972486227795088e-13,
+        "support": 392370
+      },
+      {
+        "reference_tail": 0.3984143528521988,
+        "centered_sum": 2268,
+        "events": 82,
+        "lattice_size": 262144,
+        "alias_bound": 1.4843349933082404e-48,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 8.972486227795088e-13,
+        "support": 392370
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "french",
+    "repetition": 1,
+    "arm": "reference",
+    "review_id": "c64c52fa64e3",
+    "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, traverse l'atmosphère terrestre et interagit avec les molécules d'air. Le bleu est particulièrement diffusé dans toutes les directions en raison de sa courte longueur d'onde, ce qui rend le ciel visible sous cette teinte.",
+    "completion": "eos",
+    "words": 47,
+    "tokens": 81,
+    "exact_rendering": true,
+    "model_forward_calls": 82,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "a9cafb52e2e25c696965c21ea9f9d6198c4b44fcbaa22047c85f9a71ab285da0",
+    "scores": [
+      {
+        "reference_tail": 0.062389818189471334,
+        "centered_sum": 13350,
+        "events": 80,
+        "lattice_size": 262144,
+        "alias_bound": 9.295964881384862e-50,
+        "numeric_margin": 1e-09,
+        "mass_error": 1.1102230246251565e-16,
+        "negative_mass": 8.951420520243179e-13,
+        "support": 382800
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -3304,
+        "events": 80,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "weather_english",
+    "repetition": 0,
+    "arm": "ordinary",
+    "review_id": "55944f7ae7c2",
+    "text": "Weather refers to the short-term atmospheric conditions in a specific place and time. It includes elements like temperature, precipitation, humidity, and wind. For example, a sunny day with a high temperature of 75°F or a sudden thunderstorm are both examples of weather. These conditions can change rapidly, often within hours or days, and are what people typically refer to when they talk about the \"forecast\" for a particular day.\n\nClimate, on the other hand, describes the average weather conditions in a region over a much longer period, typically 30 years or more. It reflects the patterns and trends that emerge from long-term weather data, such as average temperatures, seasonal variations, and typical precipitation levels. Climate helps us understand what to expect in terms of weather over months or years, like the likelihood of a particular season being warmer or colder than usual.\n\nIt’s important to distinguish between the two because a single cold day or a hot week does not indicate a shift in climate. Climate change, for instance, refers to long-term shifts in global weather patterns, not the weather of a single day. Understanding this difference helps avoid confusion and ensures accurate interpretation of environmental changes.",
+    "completion": "eos",
+    "words": 197,
+    "tokens": 236,
+    "exact_rendering": true,
+    "model_forward_calls": 237,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "799cb0b40f38cef6834805b2f31098dcf2d8cc5b1643d565088166b9f24ff63e",
+    "scores": [
+      {
+        "reference_tail": 0.11292898566430923,
+        "centered_sum": 17975,
+        "events": 233,
+        "lattice_size": 262144,
+        "alias_bound": 2.3054287517571194e-17,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 4.69246613509157e-13,
+        "support": 1114905
+      },
+      {
+        "reference_tail": 0.11362772823971594,
+        "centered_sum": 17921,
+        "events": 233,
+        "lattice_size": 262144,
+        "alias_bound": 2.3054287517571194e-17,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 4.69246613509157e-13,
+        "support": 1114905
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 0,
+    "case": "weather_english",
+    "repetition": 0,
+    "arm": "reference",
+    "review_id": "705ab6f4ee08",
+    "error_type": "KeyprintError",
+    "error": "Keyprint operation failed; inspect .report for the phase and consumed work"
+  },
+  {
+    "key_slot": 0,
+    "case": "weather_english",
+    "repetition": 0,
+    "arm": "half_mixture",
+    "review_id": "ddf3ec554a67",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  },
+  {
+    "key_slot": 1,
+    "case": "french",
+    "repetition": 0,
+    "arm": "reference",
+    "review_id": "42f3b03864bb",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel apparaître bleu.",
+    "completion": "eos",
+    "words": 39,
+    "tokens": 61,
+    "exact_rendering": true,
+    "model_forward_calls": 62,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "b5a11d38081594eec99ca2f32322a6a6f31bd68b765736968ef39e126d7737b4",
+    "scores": [
+      {
+        "reference_tail": 0.02902435236142371,
+        "centered_sum": 14274,
+        "events": 60,
+        "lattice_size": 131072,
+        "alias_bound": 7.190926038632829e-17,
+        "numeric_margin": 1e-09,
+        "mass_error": 2.220446049250313e-16,
+        "negative_mass": 5.396916716101868e-13,
+        "support": 287100
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -2810,
+        "events": 60,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 1,
+    "case": "french",
+    "repetition": 0,
+    "arm": "half_mixture",
+    "review_id": "736467cbd814",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  },
+  {
+    "key_slot": 1,
+    "case": "french",
+    "repetition": 0,
+    "arm": "ordinary",
+    "review_id": "6e9c541694b7",
+    "text": "Le ciel est bleu car la lumière du Soleil, qui est blanche, est composée de différentes couleurs. Lorsque cette lumière traverse l'atmosphère terrestre, les molécules d'air dispersent plus fortement la lumière bleue que les autres couleurs.",
+    "completion": "eos",
+    "words": 36,
+    "tokens": 65,
+    "exact_rendering": true,
+    "model_forward_calls": 66,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "c64d243c43492b9d17af9cce242eea470e6a25025538ac5d6e96a6f3d51dd79d",
+    "scores": [
+      {
+        "reference_tail": 0.12970343433027445,
+        "centered_sum": 8774,
+        "events": 64,
+        "lattice_size": 131072,
+        "alias_bound": 7.665670457338955e-16,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 5.487166072330264e-13,
+        "support": 306240
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -3076,
+        "events": 64,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 1,
+    "case": "approval",
+    "repetition": 0,
+    "arm": "half_mixture",
+    "review_id": "e7afdef7a4f8",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  },
+  {
+    "key_slot": 1,
+    "case": "approval",
+    "repetition": 0,
+    "arm": "ordinary",
+    "review_id": "18d66e670f60",
+    "text": "Subject: Project Timeline Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure all steps are completed on time.",
+    "completion": "eos",
+    "words": 36,
+    "tokens": 50,
+    "exact_rendering": true,
+    "model_forward_calls": 51,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "3afb3b3fcefb3da3280a2140ae0cd35080052fbb1c1d8206a5e9a39169860d69",
+    "scores": [
+      {
+        "reference_tail": 0.36776781611053366,
+        "centered_sum": 2253,
+        "events": 47,
+        "lattice_size": 131072,
+        "alias_bound": 2.0341200581602134e-21,
+        "numeric_margin": 1e-09,
+        "mass_error": 1.1102230246251565e-16,
+        "negative_mass": 4.973185337307699e-13,
+        "support": 224895
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -6273,
+        "events": 47,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 1,
+    "case": "approval",
+    "repetition": 0,
+    "arm": "reference",
+    "review_id": "59401666ec86",
+    "text": "Subject: Project Update  \n\nMaya must review the draft by Tuesday at 09:30. Vincent must approve publication. If his approval has not arrived by then, publication must wait. Please ensure the timeline is followed.",
+    "completion": "eos",
+    "words": 33,
+    "tokens": 47,
+    "exact_rendering": true,
+    "model_forward_calls": 48,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "943d7406c177fb589715bd6071681fba0798998af239869f9dc794298d23c160",
+    "scores": [
+      {
+        "reference_tail": 0.28266031641535294,
+        "centered_sum": 3710,
+        "events": 44,
+        "lattice_size": 131072,
+        "alias_bound": 7.534584436269909e-23,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 4.84348663123955e-13,
+        "support": 210540
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -3160,
+        "events": 44,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 1,
+    "case": "french",
+    "repetition": 1,
+    "arm": "ordinary",
+    "review_id": "86c4c9776d1d",
+    "text": "Le ciel est bleu parce que la lumière du Soleil traverse l'atmosphère et interagit avec les molécules d'air. Les longueurs d'onde courtes, comme le bleu, sont diffusées dans toutes les directions, ce qui donne au ciel sa couleur bleue.",
+    "completion": "eos",
+    "words": 39,
+    "tokens": 68,
+    "exact_rendering": true,
+    "model_forward_calls": 69,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "d6894a65d83e4e8ed6bc72b8b12fa77339578e81e83fc8268ce67e3043795aee",
+    "scores": [
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -1061,
+        "events": 67,
+        "scope": "nonpositive statistic conservatively returns one"
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -743,
+        "events": 67,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 1,
+    "case": "french",
+    "repetition": 1,
+    "arm": "reference",
+    "review_id": "8999c6087917",
+    "text": "Le ciel est bleu parce que la lumière du Soleil est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui fait que nous voyons le ciel apparaître bleu.",
+    "completion": "eos",
+    "words": 39,
+    "tokens": 60,
+    "exact_rendering": true,
+    "model_forward_calls": 61,
+    "runtime_profile_sha256": "8c90e6935134b01ded1d2804a36b0b49a2678c7e4816d533db0db824e05f2771",
+    "draw_transcript_sha256": "03f3c03541b7be6bb6a5a6c519e199a398630c4492515a96f057eb0419224df3",
+    "scores": [
+      {
+        "reference_tail": 0.04836307165884512,
+        "centered_sum": 12405,
+        "events": 59,
+        "lattice_size": 131072,
+        "alias_bound": 3.7850254327188384e-17,
+        "numeric_margin": 1e-09,
+        "mass_error": 0.0,
+        "negative_mass": 5.371713139435842e-13,
+        "support": 282315
+      },
+      {
+        "reference_tail": 1.0,
+        "centered_sum": -3713,
+        "events": 59,
+        "scope": "nonpositive statistic conservatively returns one"
+      }
+    ],
+    "matching_hit": false,
+    "other_hit": false
+  },
+  {
+    "key_slot": 1,
+    "case": "french",
+    "repetition": 1,
+    "arm": "half_mixture",
+    "review_id": "c5c196eab364",
+    "error_type": "ValueError",
+    "error": "known bound execution target required"
+  }
+]

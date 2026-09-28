@@ -1,0 +1,7 @@
+{
+  "plan.json": "6e63b35f4b9631af660a2a08f49e186fd8388d5ecf35e99c05d9fd84a1f518a6",
+  "blind-review.json": "01cdc851b2c35ca7af20c11273e65caf8bfa410c3de692b7e76d1d3b6d2444d7",
+  "frozen-ratings.json": "a5c617a33fc1009159f92aef118cb6e05c2d7cc1cc4cf5e12b52b9bf1cee1e8e",
+  "review_count": 48,
+  "review_method": "Assistant ratings with condition/key mapping hidden. Prior project context and recognizable repeats limit blinding. Not independent human review. Two borderline reflection phrases conservatively fail and remain annotated."
+}

@@ -47,8 +47,9 @@ browser; arbitrary generation and edit inspection run in the local SDK.
 The compatibility table separates tested model runtimes from client protocols.
 Using OpenAI or Anthropic clients against a local Keyprint endpoint does not add
 our sampler to hosted GPT or Claude. Output-quality failures and repeated outputs
-under a fixed key are retained in the evidence, including all 72 outputs from
-the latest four-key comparison.
+under a fixed key are retained in the evidence, including a 72-output reference
+comparison and a 48-output candidate experiment. We rejected the candidate:
+more varied answers did not compensate for losing detection signal.
 
 I'd like feedback on the API and the experiments people want to build with it.
 
