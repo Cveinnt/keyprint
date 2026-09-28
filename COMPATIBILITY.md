@@ -1,6 +1,6 @@
 # Compatibility at a glance
 
-Updated September 21, 2026. Applies to the **private, unpublished Keyprint
+Updated September 28, 2026. Applies to the **private, unpublished Keyprint
 0.1.0a1 development branch**. “Tested” means actual inference through the
 listed local path. It does not mean production qualification, arbitrary model
 support or transfer of the original research acceptances.
@@ -25,11 +25,11 @@ the server process. See [provider usage](PROVIDERS.md) for exact boundaries.
 
 | Client layer | Current Keyprint evidence | Next validation needed |
 | --- | --- | --- |
-| OpenAI Python | Local text and typed JSON; versions 1.109.1 and 3.14.1 with direct clients; 3.16.2 via LangChain | Any additional API features or version combinations |
+| OpenAI Python | Local text and typed JSON; versions 1.109.1 and 3.14.1 with direct clients; 3.16.2 via LangChain; 3.20.0 via PydanticAI | Any additional API features or version combinations |
 | Anthropic Python | Local text and typed JSON; versions 0.83.0 and 1.6.0 | Any additional API features or version combinations |
 | LangChain ChatOpenAI | 1.6.2, langchain-core 1.6.4; sync and async text, exact replay, pre-inference tool/multi-turn rejection | Other backends, agents, tools, streaming and structured-output wrappers |
 | Ollama Python | 0.6.2: generate, chat, async chat, exact replay through Keyprint llama.cpp worker | Native Ollama daemon integration and other backend/client combinations |
-| PydanticAI | Not tested; a configurable OpenAI endpoint alone is insufficient | Explicit Chat Completions route, request headers, parsing, replay and rejected features |
+| PydanticAI | 2.51.0 on Qwen/MLX: sync/async text, explicit NativeOutput JSON, exact replay and request-ID conflict tested | Tools, system prompts, history and streaming unsupported; other backends untested |
 | LiteLLM | 1.102.0 Router: two explicit local routes, sync/async, replay and timeout recovery tested | Proxy, automatic failover, distributed replay and additional runtimes |
 | Vercel AI SDK | Not tested with Keyprint | Non-streaming request shape, headers, response parsing and retry behavior |
 
@@ -61,6 +61,13 @@ only its `public/` files are intended for sharing. Model hash and exact dependen
 versions are recorded before inference. This check runs locally; CI remains disabled.
 
 ## Why the distinctions matter
+
+PydanticAI now has [actual-inference evidence](evidence/pydantic-ai-2026-09-28/README.md)
+and an [optional recipe](examples/pydantic_ai_local.py). Eight outputs and 216
+committed tokens reconcile with private reports; native JSON preserves the tested
+names, deadline and approval condition. Replayed requests and rejected features
+consume no additional inference. This adds no PydanticAI dependency to Keyprint
+and does not establish general quality, detector or agent-loop support.
 
 [LangChain](https://docs.langchain.com/oss/python/integrations/chat/openai),
 [vLLM](https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/)
@@ -109,8 +116,8 @@ settings via `extra_body`. Failed runs and their returned outputs are retained.
   no Keyprint end-to-end test yet. Apply the same route identity and retry rules.
 - [LiteLLM](https://docs.litellm.ai/docs/routing): tested explicit-route recipe;
   its automatic fallback machinery requires separate validation.
-- PydanticAI and Vercel AI SDK: application clients; keep them optional and test
-  their actual request schemas rather than promising every framework feature.
+- PydanticAI: tested optional text/native-JSON recipe; additional agent features
+  remain unsupported. Vercel AI SDK still needs its own actual request test.
 
 SGLang remains at its earlier modified CPU hook pilot. Its runtime image/build
 cache is no longer present locally, so no new lifecycle pass is claimed. Restore

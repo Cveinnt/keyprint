@@ -258,6 +258,38 @@ generation now separately uses reference sampling with the same retained-byte
 token-limit policy. Its `keyprint.bounded-reference-report.v1` reports carry a
 new runtime identity; the archived research caller remains unchanged.
 
+## PydanticAI
+
+Start the local server above, then install the application client separately:
+
+```sh
+python -m pip install 'pydantic-ai-slim[openai]==2.51.0'
+python examples/pydantic_ai_local.py
+```
+
+The [recipe](examples/pydantic_ai_local.py) uses `OpenAIChatModel` with your local
+`AsyncOpenAI` client, disables automatic retries and sets an idempotency key for
+each logical request. `agent.run(...)` and `agent.run_sync(...)` are tested.
+In PydanticAI 2.51.0, token accounting is `result.usage.input_tokens` and
+`result.usage.output_tokens`; `usage` is a property.
+
+For a typed response, pass a Pydantic model to the recipe's
+`local_agent(client, output_type=YourModel)`. It explicitly selects
+`NativeOutput(..., strict=True, template=False)`. This requires the server's
+`structured` extra and a supported structured-output backend. Actual PydanticAI
+testing covers the pinned Qwen/MLX setup. Ordinary `Agent(..., output_type=YourModel)`
+selects tool output under this profile and is rejected; tool calls are not
+implemented by this endpoint.
+
+Keep each request to one user message. Instructions/system prompts, message
+history and streaming reject before inference. Reuse a request ID only with the
+identical request; conflicting reuse returns 409. This recipe does not watermark
+hosted OpenAI responses, add tools or enable autonomous agent loops.
+
+[Actual ordinary/marked samples, replay checks and install audit](evidence/pydantic-ai-2026-09-28/README.md).
+The recipe follows PydanticAI's [custom OpenAI client](https://pydantic.dev/docs/ai/models/openai/)
+and [native output](https://pydantic.dev/docs/ai/core-concepts/output/) interfaces.
+
 ## Existing GPT or Claude text
 
 `rewrite()`, `rewrite_openai()` and `rewrite_anthropic()` are unavailable. They

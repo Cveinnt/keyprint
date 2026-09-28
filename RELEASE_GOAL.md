@@ -26,6 +26,24 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 application-client progress
+
+- Closed the untested PydanticAI one-turn text/native-JSON integration check on
+  pinned Qwen/MLX. PydanticAI 2.51.0 and OpenAI 3.20.0 support sync/async requests,
+  exact replay, and explicit typed JSON through an optional recipe.
+- Four ordinary and four marked generations reach EOS; all 216 sampled tokens
+  reconcile with native bytes and journals. Typed JSON preserves the tested
+  names, deadline and approval condition. Replays/rejections add no inference.
+- Request-ID conflicts return 409; instructions/history/streaming reject with
+  400, and implicit tool output rejects in the client profile. No unsupported
+  feature is silently dropped. This does not qualify agent loops or other models.
+- Fresh installed wheel: all 90 package files match source; 44 relevant tests
+  pass. The first usage-property harness failure is retained separately from
+  the complete corrected run. [Evidence and paired samples](evidence/pydantic-ai-2026-09-28/README.md).
+- No core dependencies, sampling, website design, scientific statuses or hosted
+  CI settings changed. Detector/fidelity qualification and the full launch remain
+  open; this is a scoped ecosystem usability improvement.
+
 ## September 28 candidate comparison
 
 - Tested a separately versioned half-mixture candidate through 48 actual Qwen/MLX

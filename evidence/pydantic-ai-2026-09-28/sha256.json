@@ -1,0 +1,11 @@
+{
+  "README.md": "45af6b40b478a790bcdd590a77784fac2565e50a81dcdfd6cededc49515580ee",
+  "SAMPLES.md": "f94068e6829a93f09435fa481f724ee442ffadfdda27a0d14b0bd3f38951dc54",
+  "audit.json": "73719db6197035483d55b7bf690f9f065bfeaeaa2ac3a59470c61afe9e78c18d",
+  "failed-usage-check/frozen-recipe.py": "fade665cd62109e97966a4d913f57517f9a1827690e4896bbdaf6b65a08621c7",
+  "failed-usage-check/frozen-script.py": "e635234ed032a8b2d3ef7577011d86ad247d1face52500b48dfe96afc93cfd5a",
+  "failed-usage-check/plan.json": "4b4acae8c71dac4f843defca3876a9e3f069fb8c34497c72ccdf8a0b79e7612f",
+  "failed-usage-check/results.json": "d415256ce0ab42c693992a4a858f15da2b8089ed4746e2dc160bb560b04ad6b2",
+  "plan.json": "7d3c82ddb39effd51bd299860c9b098c458633e2fde7508b63b2942e3694d71e",
+  "results.json": "cce258184b3dab3ff72541890623dcc5f321bf168f93d44706ab1e18423c156a"
+}

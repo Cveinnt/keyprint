@@ -1,0 +1,70 @@
+{
+  "cases": [
+    [
+      "english",
+      "Explain in one sentence why a seed needs water."
+    ],
+    [
+      "french",
+      "En français, écris une phrase demandant à Maya de garder la sauvegarde jusqu’à la vérification de la restauration."
+    ],
+    [
+      "spanish",
+      "En español, escribe una frase pidiendo a Maya que espere mi aprobación antes de publicar el documento."
+    ],
+    [
+      "structured",
+      "Return JSON using only these facts: Maya reviews the draft by Tuesday 09:30. Vincent approves publication. Publication cannot proceed without approval. Use fields reviewer, deadline, approver, publish_without_approval. Preserve the names and exact deadline."
+    ]
+  ],
+  "max_tokens": 128,
+  "backend": "MLX reference",
+  "revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "versions": {
+    "keyprint": "0.1.0a1",
+    "pydantic-ai-slim": "2.51.0",
+    "openai": "3.20.0",
+    "httpx": "0.28.1",
+    "pydantic": "2.13.5",
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.2",
+    "llguidance": "1.8.0"
+  },
+  "approval_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "reviewer": {
+        "title": "Reviewer",
+        "type": "string"
+      },
+      "deadline": {
+        "title": "Deadline",
+        "type": "string"
+      },
+      "approver": {
+        "title": "Approver",
+        "type": "string"
+      },
+      "publish_without_approval": {
+        "title": "Publish Without Approval",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "reviewer",
+      "deadline",
+      "approver",
+      "publish_without_approval"
+    ],
+    "title": "Approval",
+    "type": "object"
+  },
+  "wheel_sha256": "d12d94548a4ccd5ad643f0dfe97839dd9dbb4550d740509d74adc5df933b4aee",
+  "script_sha256": "6a0f5730cbc74e957c714e04ce09de9d45a46a61e1a9c19332986a3c48163c5d",
+  "recipe_sha256": "c2a3345aaa8941c712f101f8f522ff9ee0a3c451fe7978e495b7f9a66581be5c",
+  "installed_package": "/Users/vincent/GitHub/wm-probe/launch/2026-09-16-audited/receipts/pydantic-ai-2026-09-28/env/lib/python3.13/site-packages/keyprint/__init__.py",
+  "scope": "One-turn text and explicit native JSON; replay, request conflict and rejection checks. No tools, system prompts, multi-turn, streaming, detection or quality acceptance.",
+  "hosted_calls": false,
+  "external_tracing": false,
+  "no_automatic_retries": true
+}

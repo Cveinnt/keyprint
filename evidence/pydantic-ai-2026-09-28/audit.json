@@ -1,0 +1,76 @@
+{
+  "status": "pass",
+  "wheel_sha256": "d12d94548a4ccd5ad643f0dfe97839dd9dbb4550d740509d74adc5df933b4aee",
+  "package_files_matched": 90,
+  "generations": 8,
+  "committed_tokens": 216,
+  "rows": [
+    {
+      "name": "ordinary-english/report.json",
+      "condition": "ordinary",
+      "tokens": 22,
+      "report_sha256": "4f7213208873c14cba796bed09e293b8b542a2a7e3983c12bc7f4df6c436b38d",
+      "journal_sha256": "f6c2703925ba3b4a8a6819616cb0dc3ed7ac270ff67f0080db5fccca266796a4",
+      "structured": false
+    },
+    {
+      "name": "ordinary-french/report.json",
+      "condition": "ordinary",
+      "tokens": 23,
+      "report_sha256": "5a3bdf680e5aefca721a43a9786909279f5b7c4b368a93388a7b41a36693cf06",
+      "journal_sha256": "eb62a49db6efa4984079f4a81b242d65040fc23d685e76abd2e986ecef379a9f",
+      "structured": false
+    },
+    {
+      "name": "ordinary-spanish/report.json",
+      "condition": "ordinary",
+      "tokens": 18,
+      "report_sha256": "c86636abb6ffd7799bf556c69c9ceeb5e972e57db7ca356f4827931afe924261",
+      "journal_sha256": "1a9f0882b3198601c91277042723fce87d8a1b7117fd5803a0efb61dc0b78c7b",
+      "structured": false
+    },
+    {
+      "name": "ordinary-structured/report.json",
+      "condition": "ordinary",
+      "tokens": 42,
+      "report_sha256": "ecf4efbb66228b7553fa7a95506e84d2593dd8362c1969ef9f793e5d4413b0e3",
+      "journal_sha256": "4ae0b6d120602cf718ab8d7912161538f03e126593b4c4ab7f18ddad25b5ecbb",
+      "structured": true
+    },
+    {
+      "name": "http/chatcmpl-16b72b02ad1e4eeab9e8a3dd20305867/report.json",
+      "condition": "marked",
+      "tokens": 24,
+      "report_sha256": "082f9f1017f8a8aa3202c920b6db88bce69d3b60f1af0432209ababaa136c1d6",
+      "journal_sha256": "9279b73f8648beb34f19441e609a6fd63728820a475a026e4473f55f48be9471",
+      "structured": false
+    },
+    {
+      "name": "http/chatcmpl-187aed254c6d417299e4fac1b989f5a6/report.json",
+      "condition": "marked",
+      "tokens": 18,
+      "report_sha256": "cbb934c6d6e20ada12e3b0358850f68704ca2df9514f2283d898d9fab1b789d7",
+      "journal_sha256": "3c132c203337d5418e8f93602c0792348a198e00359ce6b72a39568ab315991d",
+      "structured": false
+    },
+    {
+      "name": "http/chatcmpl-28a8000dd7104779b137fc4e8ac65147/report.json",
+      "condition": "marked",
+      "tokens": 27,
+      "report_sha256": "8893625ebcbe0c6e1a90d3d8430f6fc0b3978f0290bfb5a7a8289d289013a108",
+      "journal_sha256": "6222a8c99a342d8ed84f63ea3789f841260310aaadf3fd7084a2e2ea33ce841e",
+      "structured": false
+    },
+    {
+      "name": "http/chatcmpl-a0e2305d43af4f7f970fb35cd3e2cc60/report.json",
+      "condition": "marked",
+      "tokens": 42,
+      "report_sha256": "6100debc6603107fefcb2e437d52cbaf9af5c3f5ace343b15051c556d0b8a4d8",
+      "journal_sha256": "c951b0a1424e8c9baa2f0e2a9c0d63fd4c29f4bffdff4273d71243e9ed1d168a",
+      "structured": true
+    }
+  ],
+  "script_sha256": "23a7bd6cef6cb9a9a31d2c03fac17cb57360f4fde9483557a0c7d115e4c2d4ed",
+  "results_sha256": "cce258184b3dab3ff72541890623dcc5f321bf168f93d44706ab1e18423c156a",
+  "scope": "All eight native token renderings and journal chains match. Three Pydantic text outputs match verbatim; one typed output matches parsed JSON values. Input/output usage matches all four client receipts. Hash chains are consistency checks, not authenticity proof. No general quality/detection acceptance."
+}
