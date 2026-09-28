@@ -1,0 +1,246 @@
+{
+  "schema": "keyprint.wide-native-replay-results.v1",
+  "plan": {
+    "schema": "keyprint.wide-native-replay.v1",
+    "study_plan_sha256": "20bd9246bf670e0616b900669477d51c8184c2a7c7c2d8ab42e8b5647d5d0d9c",
+    "runs_sha256": "14999d7cef04286deb0dcc086a03a6b7ece7f029db462cc1b212444e8d9c4c43",
+    "script_sha256": "b86bb5d431e04b9a7440391fae703cb5da64a8c1003d54a69ee17f6a24b6423a",
+    "selection": "All 32 original attempts, original order; no selection by outcome, rating or signal",
+    "randomness": "Replay every recorded draw; no new random source or generation",
+    "independence": "Direct mlx_lm load/model calls; independent gap-first full-width filter; scalar TokenSourceSession; reference softmax/exact categorical primitives. No SDK generation/wide-filter/sparse-source calls. Native kernels, binding and reference primitives shared.",
+    "failure_policy": "Retain the first mismatch and consumed work for each attempt; no retries or output replacement"
+  },
+  "attempts": 32,
+  "passed": 32,
+  "matched_steps": 10239,
+  "model_calls": 10239,
+  "rows": [
+    {
+      "review_id": "6eb0f3e4d93a",
+      "matched_steps": 336,
+      "model_calls": 336,
+      "passed": true,
+      "elapsed_seconds": 19.53400329197757
+    },
+    {
+      "review_id": "ecf95f2365ed",
+      "matched_steps": 429,
+      "model_calls": 429,
+      "passed": true,
+      "elapsed_seconds": 27.51868654205464
+    },
+    {
+      "review_id": "c763cb2c90f3",
+      "matched_steps": 284,
+      "model_calls": 284,
+      "passed": true,
+      "elapsed_seconds": 18.71936587500386
+    },
+    {
+      "review_id": "79442ae065a6",
+      "matched_steps": 250,
+      "model_calls": 250,
+      "passed": true,
+      "elapsed_seconds": 14.74328741710633
+    },
+    {
+      "review_id": "7482a5f7440a",
+      "matched_steps": 371,
+      "model_calls": 371,
+      "passed": true,
+      "elapsed_seconds": 21.601633750018664
+    },
+    {
+      "review_id": "df2c0ce65dd1",
+      "matched_steps": 382,
+      "model_calls": 382,
+      "passed": true,
+      "elapsed_seconds": 24.780546291032806
+    },
+    {
+      "review_id": "751e6d6884f6",
+      "matched_steps": 330,
+      "model_calls": 330,
+      "passed": true,
+      "elapsed_seconds": 21.324154583038762
+    },
+    {
+      "review_id": "b93cfed0b2cd",
+      "matched_steps": 335,
+      "model_calls": 335,
+      "passed": true,
+      "elapsed_seconds": 19.512422667001374
+    },
+    {
+      "review_id": "70b4aa28f4fa",
+      "matched_steps": 309,
+      "model_calls": 309,
+      "passed": true,
+      "elapsed_seconds": 20.193776292027906
+    },
+    {
+      "review_id": "6f99989d44c7",
+      "matched_steps": 308,
+      "model_calls": 308,
+      "passed": true,
+      "elapsed_seconds": 18.05178795894608
+    },
+    {
+      "review_id": "86c9a68bea9f",
+      "matched_steps": 253,
+      "model_calls": 253,
+      "passed": true,
+      "elapsed_seconds": 14.958262416999787
+    },
+    {
+      "review_id": "33940e0a3f3a",
+      "matched_steps": 256,
+      "model_calls": 256,
+      "passed": true,
+      "elapsed_seconds": 17.00698333303444
+    },
+    {
+      "review_id": "6962a928633d",
+      "matched_steps": 375,
+      "model_calls": 375,
+      "passed": true,
+      "elapsed_seconds": 24.28244966699276
+    },
+    {
+      "review_id": "1f5ea01b8a58",
+      "matched_steps": 318,
+      "model_calls": 318,
+      "passed": true,
+      "elapsed_seconds": 18.64464133302681
+    },
+    {
+      "review_id": "c68dcb3db2d4",
+      "matched_steps": 238,
+      "model_calls": 238,
+      "passed": true,
+      "elapsed_seconds": 14.14964241697453
+    },
+    {
+      "review_id": "b62a008027ea",
+      "matched_steps": 316,
+      "model_calls": 316,
+      "passed": true,
+      "elapsed_seconds": 20.551644082996063
+    },
+    {
+      "review_id": "537b687a6845",
+      "matched_steps": 355,
+      "model_calls": 355,
+      "passed": true,
+      "elapsed_seconds": 20.879864374990575
+    },
+    {
+      "review_id": "d670eba635ef",
+      "matched_steps": 312,
+      "model_calls": 312,
+      "passed": true,
+      "elapsed_seconds": 20.33245949994307
+    },
+    {
+      "review_id": "94575fa91c46",
+      "matched_steps": 259,
+      "model_calls": 259,
+      "passed": true,
+      "elapsed_seconds": 16.983771750004962
+    },
+    {
+      "review_id": "299cc27ce0fb",
+      "matched_steps": 354,
+      "model_calls": 354,
+      "passed": true,
+      "elapsed_seconds": 20.79669670795556
+    },
+    {
+      "review_id": "fcfa6bb2512e",
+      "matched_steps": 385,
+      "model_calls": 385,
+      "passed": true,
+      "elapsed_seconds": 22.56319266697392
+    },
+    {
+      "review_id": "ba5364133e9d",
+      "matched_steps": 321,
+      "model_calls": 321,
+      "passed": true,
+      "elapsed_seconds": 20.880389042082243
+    },
+    {
+      "review_id": "f8fa33a454ed",
+      "matched_steps": 285,
+      "model_calls": 285,
+      "passed": true,
+      "elapsed_seconds": 18.526616708026268
+    },
+    {
+      "review_id": "14972d4d4343",
+      "matched_steps": 365,
+      "model_calls": 365,
+      "passed": true,
+      "elapsed_seconds": 21.40672829200048
+    },
+    {
+      "review_id": "e713d60b076e",
+      "matched_steps": 352,
+      "model_calls": 352,
+      "passed": true,
+      "elapsed_seconds": 22.982905916986056
+    },
+    {
+      "review_id": "d30422e5a9f3",
+      "matched_steps": 298,
+      "model_calls": 298,
+      "passed": true,
+      "elapsed_seconds": 17.54200233402662
+    },
+    {
+      "review_id": "c2e2f68f01a0",
+      "matched_steps": 264,
+      "model_calls": 264,
+      "passed": true,
+      "elapsed_seconds": 15.780588792054914
+    },
+    {
+      "review_id": "bab3d65f4af2",
+      "matched_steps": 245,
+      "model_calls": 245,
+      "passed": true,
+      "elapsed_seconds": 16.111257000011392
+    },
+    {
+      "review_id": "f5443beb6c66",
+      "matched_steps": 381,
+      "model_calls": 381,
+      "passed": true,
+      "elapsed_seconds": 24.643723292043433
+    },
+    {
+      "review_id": "fba0d266fc79",
+      "matched_steps": 346,
+      "model_calls": 346,
+      "passed": true,
+      "elapsed_seconds": 20.235871291952208
+    },
+    {
+      "review_id": "6ae2eec1fe32",
+      "matched_steps": 342,
+      "model_calls": 342,
+      "passed": true,
+      "elapsed_seconds": 19.91745412501041
+    },
+    {
+      "review_id": "0ff4c9826caf",
+      "matched_steps": 285,
+      "model_calls": 285,
+      "passed": true,
+      "elapsed_seconds": 18.546844250056893
+    }
+  ],
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}

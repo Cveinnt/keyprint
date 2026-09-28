@@ -1,0 +1,10 @@
+{
+  "schema": "keyprint.wide-native-replay.v1",
+  "study_plan_sha256": "20bd9246bf670e0616b900669477d51c8184c2a7c7c2d8ab42e8b5647d5d0d9c",
+  "runs_sha256": "14999d7cef04286deb0dcc086a03a6b7ece7f029db462cc1b212444e8d9c4c43",
+  "script_sha256": "b86bb5d431e04b9a7440391fae703cb5da64a8c1003d54a69ee17f6a24b6423a",
+  "selection": "All 32 original attempts, original order; no selection by outcome, rating or signal",
+  "randomness": "Replay every recorded draw; no new random source or generation",
+  "independence": "Direct mlx_lm load/model calls; independent gap-first full-width filter; scalar TokenSourceSession; reference softmax/exact categorical primitives. No SDK generation/wide-filter/sparse-source calls. Native kernels, binding and reference primitives shared.",
+  "failure_policy": "Retain the first mismatch and consumed work for each attempt; no retries or output replacement"
+}

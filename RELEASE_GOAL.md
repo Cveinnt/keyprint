@@ -26,6 +26,34 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 Qwen3.5 semantic review and full native replay
+
+- Froze source-fact ratings on all 32 shuffled outputs before revealing
+  conditions, key slots or raw counts. Strict content/full-task passes are 2/16
+  ordinary and 0/16 marked. Accepting all seven conservative flags yields 6/16
+  versus 3/16 content and 3/16 versus 2/16 full task. Format passes are 9/16 in
+  each arm; language passes 16/16 ordinary and 15/16 marked.
+- Clear failures include invented weekdays/logistics/deployment procedures, a
+  marked 20-GB-versus-5-GB comparison called fivefold, and marked Japanese with
+  the English word "itself". No wholesale translation. All judgments and failures
+  retained. Ordinary failures create a floor effect, not proof of causal
+  watermark harm or a new perfect-baseline acceptance gate.
+- Independently replayed all 32 complete native paths: all 10,239 model-head
+  hashes, transformed-weight hashes, categorical draws and committed tokens
+  match. Direct MLX calls, gap-first full-head filtering and scalar reference
+  source policy bypass SDK generation, wide projection and sparse source code.
+  Model kernels, tokenizer binding and reference primitives remain shared.
+- [Review, sensitivity and replay evidence](evidence/wide-mlx-2026-09-28/README.md).
+  Fifty-four local research/checker regression tests pass. No SDK/default/engine
+  change, hidden text repair, new package publication, deployment or CI enablement.
+- [Next source-grounded selection](evidence/source-grounded-selection-2026-09-28/README.md):
+  16 real English summarization contexts selected from a pinned Dolly snapshot
+  by fixed hash, independent of reference answers or model outputs. Sources are
+  private and separate from the MIT SDK. Freeze task coverage criteria and the
+  complete runner before new inference. This complements, not replaces, failed
+  stress tests. No new-profile detector threshold, scientific clue or launch
+  acceptance is claimed. Publicity stays held.
+
 ## September 28 native Qwen3.5 paired execution
 
 - Added an explicit `execution="experimental-wide"` Python API for the pinned
@@ -44,10 +72,9 @@ acceptance and do not resolve existing quality or detection gaps.
   recorded inference source, and all 39 frozen engine files verify. This is not
   a clean dependency-resolution or public registry publication claim.
 - [Complete samples, receipts and blank review page](evidence/wide-mlx-2026-09-28/README.md).
-  Semantic ratings remain pending. Next review the shuffled source-grounded
-  outputs before revealing conditions/counts, and independently replay native
-  forwards. New-profile detector calibration and serving qualification remain
-  open; no historical scientific clue closes. Public launch remains held.
+  The subsequent review and native replay are recorded above. New-profile
+  detector calibration and serving qualification remain open; no historical
+  scientific clue closes. Public launch remains held.
 
 ## September 28 newer-model baseline
 

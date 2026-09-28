@@ -50,7 +50,9 @@ Its tokenizer normalizes input to NFC; generated output bytes are never
 normalized or repaired. Literal inspection rejects text changed by tokenization.
 Existing reference/default behavior stays unchanged. No research acceptance,
 detector threshold, provider-client qualification or Qwen-family-wide support
-transfers. The paired study's semantic ratings are pending. JSON grammar, tools,
+transfers. Full native replay matches all 10,239 steps, but strict factual passes
+are 2/16 ordinary and 0/16 marked; accepting every conservative review flag gives
+6/16 and 3/16. Both conditions have frequent failures. JSON grammar, tools,
 reasoning, streaming, batching and concurrent native serving are unqualified.
 The [eight upstream ordinary baselines](evidence/model-baseline-2026-09-28/README.md)
 remain separate evidence and include factual failures.

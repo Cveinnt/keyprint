@@ -1,0 +1,153 @@
+{
+  "schema": "keyprint.source-grounded-selection.v1",
+  "dataset": "databricks/databricks-dolly-15k",
+  "revision": "bdd27f4d94b9c1f951818a7da7fd7aeea5dbff1a",
+  "url": "https://huggingface.co/datasets/databricks/databricks-dolly-15k/tree/bdd27f4d94b9c1f951818a7da7fd7aeea5dbff1a",
+  "dataset_sha256": "2df9083338b4abd6bceb5635764dab5d833b393b55759dffb0959b6fcbf794ec",
+  "card_sha256": "db06c60090a11b20e79d1933b2f316f781605f07761ff2ae2795d6523e3e960b",
+  "selector_sha256": "36aefba028806379da5da97b9f1da5ff407e5a118906fd4b5cb1f9cf0b4640fd",
+  "private_cases_sha256": "1894fa3e143c3552ad4242c4dff6776bf4d8c9ce6e861965746b1c60828b046c",
+  "records": 15011,
+  "eligible_records": 377,
+  "eligible_unique_sources": 362,
+  "selected": 16,
+  "salt": "keyprint-source-grounded-v1-2026-09-28",
+  "selection": "Category summarization; source 1200-6000 Unicode characters; nonempty instruction; deduplicate exact source by smallest instruction hash; take first 16 sorted fixed salted source hashes. No output/response/reference-answer/quality filtering.",
+  "cases": [
+    {
+      "row_index": 10356,
+      "source_sha256": "bdd7d99e55ea1217c41aae4914f9827d86d9ddfcf3f68429deae99020f5c704e",
+      "instruction_sha256": "c2661a6f55244631186f84c9a35bd4301e153ba8ff1551f12480637a2321b856",
+      "selection_sha256": "001c04b4d260616b52bd51915bb387f9ed469c26d0989c929abd6e2fbfa5b362",
+      "source_chars": 4880,
+      "id": "bdd7d99e55ea1217"
+    },
+    {
+      "row_index": 522,
+      "source_sha256": "fdb686ec46ca80031ca98d6fb8aa3f59358e0afdd911adeea1f646e85a81641e",
+      "instruction_sha256": "f12f8c26fdf3bc52bf1bb047de11e695b6e57ac4b93e9d616f21f8a2073c72a3",
+      "selection_sha256": "003e669894d1d2f2353653c42cc625ef0dea4b5c4bf2dbc6f3f16d262f796cef",
+      "source_chars": 1485,
+      "id": "fdb686ec46ca8003"
+    },
+    {
+      "row_index": 2455,
+      "source_sha256": "4884454d294a782f303d5bf64786671234fd11f45bc953532564a6ffb7705541",
+      "instruction_sha256": "7df5b8fac679e0b401b81b1625c89b0c376234b10303bc73a7bad439b3e45cec",
+      "selection_sha256": "005bf9ed1f5716ca5e2884c8eac9cc83ec5b851e80ecdb9952ad18d9de69abec",
+      "source_chars": 3256,
+      "id": "4884454d294a782f"
+    },
+    {
+      "row_index": 14280,
+      "source_sha256": "7c398604a53b30a9723eaec002ace609ff8452edf53fe2b37be51b98a6819b92",
+      "instruction_sha256": "4ccc6537958a31fd8ce42cf0539775bcec3520f890855bd9d299c5659a4a9149",
+      "selection_sha256": "029bedc6995ee2ee343f718a2830d9de2af8669d1e8b79745ac95354da492719",
+      "source_chars": 4110,
+      "id": "7c398604a53b30a9"
+    },
+    {
+      "row_index": 9799,
+      "source_sha256": "a663a04d3d40d159ee21644ea90d4ae206e71650f56574027c12f1fdafd1bd60",
+      "instruction_sha256": "a8d01b0b8c603df6af84d5814c028c8e62ac3ae0aae29c0c0c48109c66372c82",
+      "selection_sha256": "04b4c179eb21e0bf2448df6c2c3413b9b572c0c155942ea48c11ddb64b40e6c8",
+      "source_chars": 4152,
+      "id": "a663a04d3d40d159"
+    },
+    {
+      "row_index": 1896,
+      "source_sha256": "4242dee80ddc4b375dcd1e73feb2f21f04a80412c1d9c7a97413751bcf20d819",
+      "instruction_sha256": "05a3cdd0350ec1f9ece3535d9401aa8b299f9f70348ee338ffbc4e00a9e67a5b",
+      "selection_sha256": "0501190932cdf10b6164f2c81c652e092a196511425df596809dc9226f704e09",
+      "source_chars": 1474,
+      "id": "4242dee80ddc4b37"
+    },
+    {
+      "row_index": 894,
+      "source_sha256": "9e4236870ee98870378f125368369ad1907444449e5c86ab04b98f3a088f26ca",
+      "instruction_sha256": "c1020cb4a5d4c31b31fc5904ecbb4c735cca2744133fb16a197b6173d3476ade",
+      "selection_sha256": "050f32432387575d3ef5f063d824ac189fb89b297fdc504eb92cff899cb7e1e0",
+      "source_chars": 1272,
+      "id": "9e4236870ee98870"
+    },
+    {
+      "row_index": 2378,
+      "source_sha256": "5c35b1f44848772d3bfbefd60438005277417ad24a0034f878ce08ca8b1f821e",
+      "instruction_sha256": "585bed2c0b8781896496e710265827ff9b9ed5ddf3ffcb691e6fa9a63853f761",
+      "selection_sha256": "05fb61d5e311d4b3eab5032a5ac1b8c4a3182e6b13644029e22c0c6cae4e908c",
+      "source_chars": 1224,
+      "id": "5c35b1f44848772d"
+    },
+    {
+      "row_index": 1052,
+      "source_sha256": "d207aed5e23cdd2b02697eb8f5ae9dba8ec6d60e40d71f0df88958942f07fb57",
+      "instruction_sha256": "ca8a13c45c1b9ad0ff3b45ab87a4c731cb64b0ab5d77c6982d2b1f01f2cd558d",
+      "selection_sha256": "069b4e9ff7c2fbb3613c66cd47a87507034bafced87712921c3bd2ba16ff8d5e",
+      "source_chars": 4468,
+      "id": "d207aed5e23cdd2b"
+    },
+    {
+      "row_index": 2894,
+      "source_sha256": "070741606692f144511cc251dcea9ee53396a6db7e6ff548d691bf8d93d39e1e",
+      "instruction_sha256": "1f20feb4999e0b32e46b7aa9cd7f7eefe222bfad1611f37dcf5d7876ec786dbf",
+      "selection_sha256": "0722b1afbadabe373ffcb8b389452975f36ca2ed1ab4f6e62e6c2798032f9d15",
+      "source_chars": 1854,
+      "id": "070741606692f144"
+    },
+    {
+      "row_index": 11155,
+      "source_sha256": "e579a7acacdcf26d52b3f39900bc5ff99aa8cf4c33c2f167791a9b4bb27afa3f",
+      "instruction_sha256": "3be3d0197e52ce77138b850f804f35781672f90e344dd22e456a1da10cc657c8",
+      "selection_sha256": "07eb61246339a084caeb57644087adb2afb9a428083f0d866fda19f0d0c44220",
+      "source_chars": 1320,
+      "id": "e579a7acacdcf26d"
+    },
+    {
+      "row_index": 6356,
+      "source_sha256": "bfba6146fa86a934f9ba70b25584b501f58da25673af0ecc87fb4efa3c3d363d",
+      "instruction_sha256": "f45b824fec9434190e3020a7f97a18846c1f0b696bf7796c818f73f360f3efb9",
+      "selection_sha256": "0a1d8c8c8efe9467c14cb2e2a0930e2fd928b87090e96e5fec29e81dfe30d6ff",
+      "source_chars": 1221,
+      "id": "bfba6146fa86a934"
+    },
+    {
+      "row_index": 12619,
+      "source_sha256": "0d4f07a298ed0988a3a6bf63d754e447c8226b9f49fe6d4f2fe2afec517679fb",
+      "instruction_sha256": "e99eb85e7cbb3e2160fa176893dc93eef3f8fbd27ee0dd7f1e9e8b57558780d4",
+      "selection_sha256": "0afd7c2de73ef5101bef0a8ae5d352665dba26231bb0bd92ce717a25280cbca3",
+      "source_chars": 1284,
+      "id": "0d4f07a298ed0988"
+    },
+    {
+      "row_index": 6627,
+      "source_sha256": "d7ee277160123eab6e8b886c3c09f9139894d64a8ca8c024df1f6e7964ce313b",
+      "instruction_sha256": "48c9f4d5aa65a4d509ed09a89b3a20202eeaf8dc23535f22390ec071308d9c4f",
+      "selection_sha256": "0b1c8294d9a74ed7d456b653b7280e168d87a9722d098fd0ef7a83af330727ee",
+      "source_chars": 4148,
+      "id": "d7ee277160123eab"
+    },
+    {
+      "row_index": 12797,
+      "source_sha256": "d0683258137edcee5c5fcc250912ec853bf5114a453cb714738b50ab1e97e9ea",
+      "instruction_sha256": "637a4cdf2a2b675a8ba5c7dc615592fbe9f9c4bae815dee0a5231a7e98dd973d",
+      "selection_sha256": "0b8f844a15dd35c0df21ace757fbf5eb284eeee1b986f6d1846e93cf3383a886",
+      "source_chars": 3755,
+      "id": "d0683258137edcee"
+    },
+    {
+      "row_index": 5939,
+      "source_sha256": "1f7317d2eefa06009ca97d197915b81f291775769a87399891b68fff91e01f28",
+      "instruction_sha256": "6775e6c5279465d63ee4b2d6533aa237a81f10a0294b833f9d89786052582ad7",
+      "selection_sha256": "0b94e9f75bba488cd8ff122d1cf1c011f1d916096d2a001afeef57bd1313b548",
+      "source_chars": 1342,
+      "id": "1f7317d2eefa0600"
+    }
+  ],
+  "intended_execution": "Unchanged pinned Qwen3.5 experimental-wide, temperature .7, top_k 100, max_tokens 768, all four existing keys, ordinary/marked pairs. Freeze complete inference plan and source before execution; no retries or rewriting.",
+  "review": "Rate generated claims against the supplied source, important task coverage, requested format and language before unblinding condition/key/counts. Original dataset responses are not treated as gold truth. Retain every error and uncertain judgment.",
+  "scope": "Fresh to this development evaluation, not known held-out from model training. English summarization only. Additional natural-task evidence; does not replace failed multilingual expansion stress tests, registered acceptance criteria or detector calibration.",
+  "license": "CC-BY-SA-3.0 dataset per pinned Databricks card; attribution: Databricks databricks-dolly-15k and its listed contributors/source material. Source articles and derived inputs are separate from the MIT SDK, retained privately here; no source-data republication in this manifest.",
+  "generation_started": false,
+  "quality_acceptance": false,
+  "launch_ready": false
+}

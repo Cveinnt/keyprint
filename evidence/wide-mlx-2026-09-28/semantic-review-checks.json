@@ -1,0 +1,9 @@
+{
+  "local_checks_passed": 54,
+  "scope": "Frozen review summary, unavailable detection fields, independent filter/draw/source-policy oracle, receipt tampering, deterministic dataset selection and existing factual-study checks. No hosted CI, SDK mutation, default change or new generation in this review/replay step.",
+  "sources": {
+    "tools/summarize_wide_fidelity.py": "845540fe86312d4993c1651cc7581c7af56c605202629c3488217f5606b6f8c9",
+    "tools/replay_wide_mlx.py": "b86bb5d431e04b9a7440391fae703cb5da64a8c1003d54a69ee17f6a24b6423a",
+    "tools/prepare_source_grounded.py": "36aefba028806379da5da97b9f1da5ff407e5a118906fd4b5cb1f9cf0b4640fd"
+  }
+}

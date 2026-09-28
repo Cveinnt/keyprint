@@ -1,0 +1,6 @@
+{
+  "plan.json": "20bd9246bf670e0616b900669477d51c8184c2a7c7c2d8ab42e8b5647d5d0d9c",
+  "blind-review.json": "bcad6b938a2c3527033ccde5cdb0ff9016c031247d108fe16615fcdd51010c04",
+  "frozen-ratings.json": "336ba5ed0b68571c18eb57d6cf8dd5ad7421065e969e25c3f2f7f4d003926782",
+  "reviewer": "Assistant source-fact review, all 32 outputs; not independent human acceptance. Conditions, key slots and raw counts were not read during this review. All conservative flags frozen before joining metadata."
+}

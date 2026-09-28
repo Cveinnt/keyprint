@@ -1,0 +1,602 @@
+[
+  {
+    "review_id": "d670eba635ef",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Dispatch is planned Friday, but only delivery is explicitly called unconfirmed. Adds a distribution center, initial preparation status and a causal explanation for missing tracking; recorded no-split request is described as a commitment."
+  },
+  {
+    "review_id": "c68dcb3db2d4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Preserves owners, pending verification, separate documentation progress, staging limitation and both guide versions. Repetition and generic ongoing-situation wording add no concrete new commitment or procedure."
+  },
+  {
+    "review_id": "94575fa91c46",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds Saturday to October 8 despite explicit prohibition on a weekday. Other source facts retained; completion and restoration are not represented as successful."
+  },
+  {
+    "review_id": "b62a008027ea",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds a rule forbidding deployment to any environment until completion is confirmed, an updated interface, a public repository and an assurance that premature deployment cannot occur. Imani is later misspelled Imains."
+  },
+  {
+    "review_id": "bab3d65f4af2",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Core facts retained. Conservative flag: introduces an undetermined final-confirmation date and links Sato being contact to missing confirmations with therefore; these may be awkward generic prose rather than substantive added facts."
+  },
+  {
+    "review_id": "0ff4c9826caf",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds that deployment has not been scheduled and a formal-completion prerequisite before deployment can begin; the brief only leaves deployment unconfirmed. Core source facts otherwise retained."
+  },
+  {
+    "review_id": "751e6d6884f6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds a condition that documentation workers understand staging limitations and broadens unconfirmed deployment to documentation. Also adds a workflow/authority claim about swapping owners; these are absent from the brief."
+  },
+  {
+    "review_id": "6f99989d44c7",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Invents dispatch as an indispensable prerequisite for creating tracking, logistical delivery dependencies, guaranteed single-lot handling and a refusal to provide updates or substitutions until dispatch. Does not preserve the past fact that no substitution has been offered."
+  },
+  {
+    "review_id": "6eb0f3e4d93a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Omits tracking-number unavailability. Adds a processed-and-ready definition of confirmation, logistical dependencies, assured single-unit handling and future management of updates by Lucia."
+  },
+  {
+    "review_id": "ba5364133e9d",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Omits unspecified support response time. States no specific contract duration or discount accompanies the higher price, turning absent information into policy. Also claims a per-GB calculation is impossible despite the supplied prices/capacities."
+  },
+  {
+    "review_id": "c763cb2c90f3",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": false,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Inserts the English word itself inside Japanese prose. Adds recurring maintenance, system-wide backup scope, same-day causes of timing changes and a completion relationship to restoration testing."
+  },
+  {
+    "review_id": "e713d60b076e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds correct processing, a central warehouse, carrier communication status, a mandatory dispatch-before-tracking rule, standard-logistics causes and guaranteed one-unit shipment. Replaces no substitution offered with no substitution necessary."
+  },
+  {
+    "review_id": "1f5ea01b8a58",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Preserves price/capacity pairs, shared email support, absent phone/unlimited storage, monthly-only information, relative cost and unspecified response time. Repeats the no-invention instruction; no new concrete policy or computed value."
+  },
+  {
+    "review_id": "c2e2f68f01a0",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Changes restoration not yet tested into testing status unconfirmed. Invents stability as the purpose, claims environment readiness and implies restoration testing after maintenance. Awkward Japanese but no clear wholesale or lexical translation."
+  },
+  {
+    "review_id": "fcfa6bb2512e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "All core facts retained. Conservative flag: exclusively electronic support overstates email inclusion plus no phone; unit cost is ambiguous but plausibly refers to the monthly plan price. Absence of taxes/guarantees is explicitly scoped to the summary."
+  },
+  {
+    "review_id": "fba0d266fc79",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds that no other service or contract-condition differences exist, which is not established by the summary. Also claims a per-GB calculation is impossible; supplied prices/capacities permit calculation even though the prompt forbids adding one."
+  },
+  {
+    "review_id": "33940e0a3f3a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Invents Thursday for October 8 and says contingency preparations are ready despite untested restoration. Other core facts retained."
+  },
+  {
+    "review_id": "7482a5f7440a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Core facts retained. Conservative flag: claims per-GB calculation is impossible, although prices and capacities permit it; this may be meta-instruction not to add a derived calculation. The service-level distinction is awkward but may refer to email versus phone rather than a difference between plans."
+  },
+  {
+    "review_id": "f8fa33a454ed",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Core facts retained. Conservative flag: introduces new features and states there are no deployment-time commitments, where only deployment confirmation is absent; this could be generic exposition and a statement about commitments made by this handoff."
+  },
+  {
+    "review_id": "79442ae065a6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Invents Saturday for October 8. Source schedule uncertainty, backup status, upload plan, preserved documents and Sato contact otherwise remain."
+  },
+  {
+    "review_id": "14972d4d4343",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds a ban on migration-related code changes and data transfers and a new coordination requirement. Also invents a rule for when deployment commitments may be made; a blocked migration does not establish these procedures."
+  },
+  {
+    "review_id": "537b687a6845",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds preparation/dispatch completion as the reason for no tracking, carrier availability as a delivery dependency and future personalized updates managed by Lucia. Source facts are present but new logistics and service commitments are not authorized."
+  },
+  {
+    "review_id": "86c9a68bea9f",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Core facts retained. Conservative flag: only document viewing is described as available until maintenance and the text introduces a system recovered-to-normal framing; Japanese dake wa can instead emphasize at least this feature, and the recovery statement is negative rather than an asserted failure."
+  },
+  {
+    "review_id": "b93cfed0b2cd",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds a verification-success and formally-confirmed-completion deployment procedure, broadens unconfirmed deployment to documentation and invents owner pronouns. Imani is later misspelled Imeni; original owner mapping is stated correctly first."
+  },
+  {
+    "review_id": "f5443beb6c66",
+    "fact_checks": [
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Calls B a price above 18 per month rather than 18 EUR, and invents infrastructure-investment costs as the reason for its price. Unlimited storage has a malformed word but the intended negation is recognizable."
+  },
+  {
+    "review_id": "d30422e5a9f3",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Core facts retained but invents tracking-number availability as a prerequisite for delivery confirmation, plus logistical-center/team details absent from the brief."
+  },
+  {
+    "review_id": "70b4aa28f4fa",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Only delivery, not dispatch, is explicitly unconfirmed. Calls the plan a postponement, asserts no logistics movement, adds transport dependencies and guarantees a single consolidated package."
+  },
+  {
+    "review_id": "6ae2eec1fe32",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Core facts retained. Conservative flag: changes finishing verification to successful completion and says the entire project path depends on it, although documentation can continue. Could be generic wording about the migration stream rather than a newly imposed procedure."
+  },
+  {
+    "review_id": "299cc27ce0fb",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Omits Sato. Invents a full system stop, weather and unavoidable technical causes, a list-view interface and continued existing-document availability; the brief guarantees viewing only until maintenance starts."
+  },
+  {
+    "review_id": "ecf95f2365ed",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Adds pending logistics validation, unanticipated operational causes, a rule that tracking exists only after loading, transport dependencies, guaranteed joint shipment and future updates from Lucia. Core facts retained."
+  },
+  {
+    "review_id": "6962a928633d",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": false,
+    "reason": "Calls 20 GB five times 5 GB, an incorrect and prohibited added calculation. Adds an investment/value justification and suitability for archival needs; the primary prices and capacities themselves are stated correctly."
+  },
+  {
+    "review_id": "df2c0ce65dd1",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "prose_pass": true,
+    "borderline": true,
+    "reason": "Core values retained. Conservative flag: describes A as suitable for basic needs and support as email-only, while B price wording is ambiguous but plausibly 18 EUR per month. These may be loose restatements rather than new material facts. Four paragraphs are assessed separately by the mechanical format check."
+  }
+]
