@@ -25,6 +25,21 @@ closed, promise unchanged meaning for every output, or require a zero-error base
 model as a substitute for the comparative quality criterion. Publicity remains
 held until the requested product readiness bar is met.
 
+## Current source-grounded evidence
+
+The September 28 Qwen3.5 English study completed all 128 outputs with no runtime
+errors or truncation. Frozen assistant content checks pass 33/64 ordinary and
+23/64 marked, or 43/64 and 37/64 when all pre-flagged ambiguities are accepted.
+Coverage passes 47/64 versus 36/64; supported claims 39/64 versus 38/64. English
+is retained in all outputs. These sixteen tasks and four reused keys provide a
+descriptive comparison, not a powered causal or noninferiority result. See the
+[complete review](evidence/source-grounded-run-2026-09-28/README.md).
+
+The [source-to-claim audit](evidence/claim-boundaries-2026-09-28.md) explains why
+support preservation, factual-capacity measurements and singleton code witnesses
+must not become claims of universal output correctness. Historical scoped
+acceptances remain historical; they do not qualify this new model/profile.
+
 ## Current enforcement
 
 September 24 four-key follow-up: ordinary 31/36 and marked 32/36 pass the same

@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "passed": 16,
+  "command": "PYTHONPATH=src ../../receipts/pydantic-ai-2026-09-28/env/bin/python -m pytest -q tests/test_source_sampling_summary.py",
+  "scope": "Complete-cohort arithmetic plus file entrypoint; requires final replay and study/script/run hashes; refuses progress-only or failed results. Different-length fixture distinguishes token and equal-output weighting. Not a complete SDK suite, replay result or quality acceptance.",
+  "sha256": {
+    "tools/summarize_source_sampling.py": "45b2ff94864d531bb7176804da94be7e505fff1cfa4a5b013fee7a244e7920f3",
+    "tests/test_source_sampling_summary.py": "85631ae5be29a61463532080bc2cbe3909e25869cd4bf1ccb09143338a50179a"
+  }
+}

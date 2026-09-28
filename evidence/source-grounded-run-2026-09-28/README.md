@@ -111,6 +111,11 @@ missing/reordered/failed attempts, edited measurements and premature EOS. This
 suite overlaps earlier research checks; counts are not added together. The SDK
 and its default sampler remain unchanged during replay.
 
+[Summary entrypoint follow-up](summary-entrypoint-checks.json): 16 checks pass,
+including file-backed final-result commitments, refusal of progress-only and
+failed results, and a variable-length fixture separating token weighting from
+equal-output weighting. This overlaps the earlier suite and is not added to it.
+
 ## Review and execution tools
 
 `tools/audit_source_grounded.py` requires all 128 scheduled attempts and the
