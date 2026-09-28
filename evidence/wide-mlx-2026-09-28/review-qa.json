@@ -1,0 +1,21 @@
+{
+  "fallback": "Browser plugin not available; bundled Playwright with isolated installed Chrome",
+  "results": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "passed": true,
+      "consoleErrors": [],
+      "ratingsWritten": false
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "passed": true,
+      "consoleErrors": [],
+      "ratingsWritten": false
+    }
+  ]
+}

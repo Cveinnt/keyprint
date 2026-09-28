@@ -26,6 +26,29 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 native Qwen3.5 paired execution
+
+- Added an explicit `execution="experimental-wide"` Python API for the pinned
+  Qwen3.5-9B 4-bit MLX snapshot. Separate NFC/wider-head profile and runtime stop
+  policy; default reference behavior, frozen numerical bounds and engine files
+  remain intact. No silent output normalization or literal-inspection repair.
+- Completed all 32 scheduled ordinary/marked generations on the unchanged four
+  long tasks and all four existing keys. Zero execution errors. All 10,239 tokens
+  reconcile with exact returned bytes, prompt IDs, EOS and 32 distinct draw
+  transcripts. This receipt audit is not independent model-forward replay.
+- Exact filter/probability/draw tests cover high token IDs, ties, extreme
+  temperatures, subnormals, invalid padding and unchanged default rejection.
+  Request-local cache and real stop-token tests pass. 291 focused local checks
+  pass across the inference and Torch environments; three optional checks skip.
+- Built and isolated-installed a wheel; all 78 Python source files match the
+  recorded inference source, and all 39 frozen engine files verify. This is not
+  a clean dependency-resolution or public registry publication claim.
+- [Complete samples, receipts and blank review page](evidence/wide-mlx-2026-09-28/README.md).
+  Semantic ratings remain pending. Next review the shuffled source-grounded
+  outputs before revealing conditions/counts, and independently replay native
+  forwards. New-profile detector calibration and serving qualification remain
+  open; no historical scientific clue closes. Public launch remains held.
+
 ## September 28 newer-model baseline
 
 - Ran all eight planned ordinary Qwen3.5-9B MLX 4-bit responses on the unchanged

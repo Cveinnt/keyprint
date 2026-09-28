@@ -5,10 +5,14 @@ from dataclasses import dataclass
 import codecs
 import hashlib
 import json
+from typing import ClassVar
 
 
 @dataclass(frozen=True)
 class ByteLevelBinding:
+    vocabulary_limit: ClassVar[int] = 151669
+    allowed_normalizer: ClassVar[dict | None] = None
+    profile_name: ClassVar[str] = "keyprint-portable-bytelevel-v1-experimental"
     pieces: tuple[bytes | None, ...]
     eos_ids: frozenset[int]
     digest: str
@@ -19,10 +23,10 @@ class ByteLevelBinding:
         data = json.loads(serialized)
         if data.get("model", {}).get("type") != "BPE" or data.get("decoder", {}).get("type") != "ByteLevel":
             raise ValueError("portable profile requires a BPE tokenizer with a ByteLevel decoder")
-        if data.get("normalizer") is not None:
+        if data.get("normalizer") != cls.allowed_normalizer:
             raise ValueError("portable profile does not support tokenizer normalization")
-        if type(vocabulary_size) is not int or not 1 <= vocabulary_size <= 151669:
-            raise ValueError("portable vocabulary must contain 1 to 151669 tokens")
+        if type(vocabulary_size) is not int or not 1 <= vocabulary_size <= cls.vocabulary_limit:
+            raise ValueError(f"portable vocabulary must contain 1 to {cls.vocabulary_limit} tokens")
         if not eos_ids or any(type(i) is not int or not 0 <= i < vocabulary_size for i in [*special_ids, *eos_ids]):
             raise ValueError("valid, explicit special and EOS token IDs required")
         # GPT-2 ByteLevel alphabet, reconstructed bijectively without lossy
@@ -68,7 +72,7 @@ class ByteLevelBinding:
                     raise ValueError("token is outside the declared ByteLevel alphabet") from exc
                 if not pieces[index]:
                     raise ValueError("empty ordinary token is unsupported")
-        identity = json.dumps({"profile": "keyprint-portable-bytelevel-v1-experimental",
+        identity = json.dumps({"profile": cls.profile_name,
                                "tokenizer": data, "vocabulary_size": vocabulary_size,
                                "special_ids": sorted(special), "eos_ids": sorted(set(eos_ids)),
                                "channels": "visible_text_only", "source_policy": "general"},

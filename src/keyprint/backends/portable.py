@@ -15,6 +15,15 @@ from ..errors import InputLimitError
 
 
 class PortableGeneration:
+    # Execution hooks keep each adapter's declared numerical policy explicit.
+    _softmax = staticmethod(sparse_softmax)
+    _sample = staticmethod(sparse_sample)
+
+    def _filter(self, raw):
+        from .._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
+        return stable_support_filter(raw, temperature=self.temperature, top_k=self.top_k,
+                                     mapped_vocabulary_size=len(self.binding.pieces))
+
     def score(self, text: str, key: bytes) -> dict:
         from .._engine.legacy._impl.research.grouped_canonical_prototype import replay_events
         if not isinstance(text, str) or len(text) > 16000:
@@ -36,7 +45,6 @@ class PortableGeneration:
         from ..cancellation import check_cancellation, _CancellationRequested
         from .._engine.legacy._impl.research.token_source_sparse_execution import SparseTokenSourceSession
         from .._engine.research.keyprint_candidate_v3_caller import DurableJournal
-        from .._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
 
         if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 16000:
             raise ValueError("prompt must contain 1 to 16000 characters")
@@ -96,9 +104,8 @@ class PortableGeneration:
                             "allowed_count": int(allowed.sum())})
                         check_cancellation(cancel_event)
                         phase = "sample"
-                    filtered = stable_support_filter(raw, temperature=self.temperature, top_k=self.top_k,
-                                                     mapped_vocabulary_size=len(self.binding.pieces))
-                    base = sparse_softmax(filtered.filtered_logits[0])
+                    filtered = self._filter(raw)
+                    base = self._softmax(filtered.filtered_logits[0])
                     prepared = session.prepare(base)
                     journal.append({"phase": "prepared", "raw_logits_sha256": raw_hash,
                                     "weights_sha256": hashlib.sha256(prepared.probabilities.tobytes()).hexdigest()})
@@ -109,7 +116,7 @@ class PortableGeneration:
                         journal.append({"phase": "random_returned", "bits": count, "value": value})
                         return value
 
-                    draw = sparse_sample(prepared.probabilities, random_bits)
+                    draw = self._sample(prepared.probabilities, random_bits)
                     selected = draw.token_index
                     # Persist intent before any irreversible session mutation.
                     journal.append({"phase": "commit_requested", "token_id": selected, "draw": asdict(draw)})

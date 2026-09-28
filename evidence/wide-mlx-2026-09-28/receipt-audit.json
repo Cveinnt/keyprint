@@ -1,0 +1,208 @@
+{
+  "schema": "keyprint.wide-mlx-receipt-audit.v1",
+  "attempts": 32,
+  "verified": 32,
+  "tokens": 10239,
+  "failures": [],
+  "rows": [
+    {
+      "review_id": "6eb0f3e4d93a",
+      "tokens": 336,
+      "completion": "eos",
+      "draw_transcript_sha256": "46281845eef5bad109f16259832ec46acdd07b3a5d88f2ceb33dbc96cddf2725"
+    },
+    {
+      "review_id": "ecf95f2365ed",
+      "tokens": 429,
+      "completion": "eos",
+      "draw_transcript_sha256": "2c55f01cc14cef11b10ea64fab7cf1245d7ca5b6145b8b2af03c3e5085dc9db3"
+    },
+    {
+      "review_id": "c763cb2c90f3",
+      "tokens": 284,
+      "completion": "eos",
+      "draw_transcript_sha256": "1856c98a9c819200ca43dbb2d46644d0fbafe730dc381af0127043de2f35e490"
+    },
+    {
+      "review_id": "79442ae065a6",
+      "tokens": 250,
+      "completion": "eos",
+      "draw_transcript_sha256": "1b4d6f1a6db79cf693d8a3090e454ed908b40ce07166de0eebfb60eae547b5ab"
+    },
+    {
+      "review_id": "7482a5f7440a",
+      "tokens": 371,
+      "completion": "eos",
+      "draw_transcript_sha256": "225ca15239028a5da08a23b538fc8d49bc39e508270dc72b500f164b2f28e2f3"
+    },
+    {
+      "review_id": "df2c0ce65dd1",
+      "tokens": 382,
+      "completion": "eos",
+      "draw_transcript_sha256": "c5694241c77cd4b1f4f18823224e7ec08748aa2650477c22c04f17f3340ced49"
+    },
+    {
+      "review_id": "751e6d6884f6",
+      "tokens": 330,
+      "completion": "eos",
+      "draw_transcript_sha256": "541e7db733a281546d0298056afb51fff010b4e95417e6f2ea99fed477e39438"
+    },
+    {
+      "review_id": "b93cfed0b2cd",
+      "tokens": 335,
+      "completion": "eos",
+      "draw_transcript_sha256": "11301315c4dc4310769fa685cd4304d681962a58a44f65c87aa09646ce38c91e"
+    },
+    {
+      "review_id": "70b4aa28f4fa",
+      "tokens": 309,
+      "completion": "eos",
+      "draw_transcript_sha256": "b999ff194f41800107329a614c0d2bc42a34295caf45f62c9c67b8a728377df9"
+    },
+    {
+      "review_id": "6f99989d44c7",
+      "tokens": 308,
+      "completion": "eos",
+      "draw_transcript_sha256": "1acdf78b735e6b78cddf0eacc01155076b728ef7193d601d476b7400f3ddc153"
+    },
+    {
+      "review_id": "86c9a68bea9f",
+      "tokens": 253,
+      "completion": "eos",
+      "draw_transcript_sha256": "a66c2ac1fb6e7b3a04d96a2672c98041e3fcfcb9b6a2944619c22a34c03c6b3e"
+    },
+    {
+      "review_id": "33940e0a3f3a",
+      "tokens": 256,
+      "completion": "eos",
+      "draw_transcript_sha256": "205bb0f85ace2de388bb81a77544d6438571e2e070f70d8714e45606b2d158fc"
+    },
+    {
+      "review_id": "6962a928633d",
+      "tokens": 375,
+      "completion": "eos",
+      "draw_transcript_sha256": "6b6d241addbf2510f902e7134f070e8526e2ab60b056cb7bc760bd1dbfd7eaaf"
+    },
+    {
+      "review_id": "1f5ea01b8a58",
+      "tokens": 318,
+      "completion": "eos",
+      "draw_transcript_sha256": "dea7a49b8f243b2b3125d49c11acac10a1f5d25892f17d3d82d2dadc960451ad"
+    },
+    {
+      "review_id": "c68dcb3db2d4",
+      "tokens": 238,
+      "completion": "eos",
+      "draw_transcript_sha256": "6cebd11540724ac6e82f6f1445476aa2eb9f02ae2b57c8424a2052e2d83953ca"
+    },
+    {
+      "review_id": "b62a008027ea",
+      "tokens": 316,
+      "completion": "eos",
+      "draw_transcript_sha256": "a9e40ae77f8a5357be4c72102a6a24131f77ede3e3b4e2df87a9ed4ae1526ebf"
+    },
+    {
+      "review_id": "537b687a6845",
+      "tokens": 355,
+      "completion": "eos",
+      "draw_transcript_sha256": "a779a769bbf11afa78225cfbdea1e31ab08d2b97206a6eca811a60b667c74141"
+    },
+    {
+      "review_id": "d670eba635ef",
+      "tokens": 312,
+      "completion": "eos",
+      "draw_transcript_sha256": "c7d36e7f6477c11203f268a2f469fc3b80d29d73aca5e7b31cfe1cc7021bf8d7"
+    },
+    {
+      "review_id": "94575fa91c46",
+      "tokens": 259,
+      "completion": "eos",
+      "draw_transcript_sha256": "b80501344a7e896774d7e7a969a328a5f7606d9fbfda9502c4ee26b754b3c205"
+    },
+    {
+      "review_id": "299cc27ce0fb",
+      "tokens": 354,
+      "completion": "eos",
+      "draw_transcript_sha256": "76eb4932fb19b720dd018269350952951f7fd09287242d32e99baae9c7e95a98"
+    },
+    {
+      "review_id": "fcfa6bb2512e",
+      "tokens": 385,
+      "completion": "eos",
+      "draw_transcript_sha256": "3d4e58e5152c2dcfc6afd357e208423e218da5356dbce5b1e8ad8ad0979e1cff"
+    },
+    {
+      "review_id": "ba5364133e9d",
+      "tokens": 321,
+      "completion": "eos",
+      "draw_transcript_sha256": "1f0a818ff3b9da288079330530812d969bcea224581997b963b5c328278b6691"
+    },
+    {
+      "review_id": "f8fa33a454ed",
+      "tokens": 285,
+      "completion": "eos",
+      "draw_transcript_sha256": "4c64d2461ec864d70fb4a3d03e23c375fada2a3050ebcc7eb9587014cc749f46"
+    },
+    {
+      "review_id": "14972d4d4343",
+      "tokens": 365,
+      "completion": "eos",
+      "draw_transcript_sha256": "818f44ebfe24772b4df56750d7faffb29715aef1294493cf8af789a55d5480fc"
+    },
+    {
+      "review_id": "e713d60b076e",
+      "tokens": 352,
+      "completion": "eos",
+      "draw_transcript_sha256": "2ea81ec00852f77fe4e8148fdfbd579bf812816b8240376a7a8191d6df58e520"
+    },
+    {
+      "review_id": "d30422e5a9f3",
+      "tokens": 298,
+      "completion": "eos",
+      "draw_transcript_sha256": "2d06aa416cc196b04d68bad089f03eba1fcdbd2909a95c4e067953b8c38890ef"
+    },
+    {
+      "review_id": "c2e2f68f01a0",
+      "tokens": 264,
+      "completion": "eos",
+      "draw_transcript_sha256": "225bb5bbe7caa4c17d945165801ba2d8711e62dd4adc7a3e1ca65708b2fad700"
+    },
+    {
+      "review_id": "bab3d65f4af2",
+      "tokens": 245,
+      "completion": "eos",
+      "draw_transcript_sha256": "388653e60b5821127e48dfa22508e720f8212c3aa93ec05cc0b1aff94e8a6df6"
+    },
+    {
+      "review_id": "f5443beb6c66",
+      "tokens": 381,
+      "completion": "eos",
+      "draw_transcript_sha256": "25c58b98035f1589f364ad63de04bd05d4a1e0149f6239199a4841a81ac310a0"
+    },
+    {
+      "review_id": "fba0d266fc79",
+      "tokens": 346,
+      "completion": "eos",
+      "draw_transcript_sha256": "666ba91772f33b96fa6207bd3b48a8be99359fd898958a0f17122da30c17e86a"
+    },
+    {
+      "review_id": "6ae2eec1fe32",
+      "tokens": 342,
+      "completion": "eos",
+      "draw_transcript_sha256": "014b88c1dd8dce2d59aba9483e01634c6fd8a2ddbda133874b9fcc0f574d1252"
+    },
+    {
+      "review_id": "0ff4c9826caf",
+      "tokens": 285,
+      "completion": "eos",
+      "draw_transcript_sha256": "e120929a38e87c48271c0e166c69c140f7cc9b7a43450f6d3819bd81f3693946"
+    }
+  ],
+  "distinct_draw_transcripts": 32,
+  "audit_script_sha256": "e3691b713890ea02883c39444fce70c5c9de6f5ca2cb088c5a0bfe1ed4a3ae54",
+  "plan_sha256": "20bd9246bf670e0616b900669477d51c8184c2a7c7c2d8ab42e8b5647d5d0d9c",
+  "scope": "Receipt, exact native byte rendering, prompt, EOS and RNG/commit reconciliation. No independent forward/weight replay, semantic review or detector calibration.",
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}

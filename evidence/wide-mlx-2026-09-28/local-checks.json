@@ -1,0 +1,16 @@
+{
+  "focused_sdk_and_study_tests": 118,
+  "torch_regressions": 38,
+  "receipt_audit_tests": 9,
+  "frozen_engine": {
+    "status": "pass",
+    "files": 39,
+    "manifest_sha256": "926aa9995523c78666e973f0127f2d9cf77ec7a1393207a3e75c19b2ad991ed5",
+    "scope": "Namespaced derivative integrity; no detector or scientific acceptance verdict."
+  },
+  "initial_test_failure": "Four tests supplied numpy.float64 temperature; reference and new filters both rejected it. Fixture converted to Python float; no numerical implementation change.",
+  "scope": "Local source tests; actual inference and receipt audit separate. No hosted CI.",
+  "public_api_cli_trace_and_llama_fixture_tests": 126,
+  "optional_checks_skipped": 3,
+  "build_note": "First build invocation resolved the local build directory without an installed build frontend. Retained failure log; corrected build used the existing clean-sdk-env frontend with isolated setuptools==81.0.0."
+}

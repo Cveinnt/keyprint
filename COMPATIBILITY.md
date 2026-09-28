@@ -23,12 +23,37 @@ the server process. See [provider usage](PROVIDERS.md) for exact boundaries.
 
 ## Newer Qwen model boundary
 
-Qwen3.5-9B has [eight ordinary upstream MLX outputs](evidence/model-baseline-2026-09-28/README.md),
-not a Keyprint adapter. Its 248,320-token head and NFC normalizer exceed the
-current portable binding's declared scope. Its nested EOS ID also differs from
-the actual runtime stop token. Wider-vocabulary sampling, exact byte rendering,
-Unicode replay and stop-policy identity must be audited before marked inference.
-The pinned Qwen3-8B MLX row above does not imply Qwen-family-wide support.
+Qwen3.5-9B now has a separate opt-in native MLX adapter. All
+[32 ordinary/marked outputs](evidence/wide-mlx-2026-09-28/README.md) completed;
+10,239 sampled tokens reconcile with exact native bytes, returned text and draw
+journals. The 248,320-token head uses an ordered sparse projection with tested
+reference arithmetic, without enlarging the frozen engine's bounds. Runtime EOS
+248046 is explicitly checked; nested model metadata instead names 248044.
+
+This path requires the content-pinned `mlx-community/Qwen3.5-9B-4bit` snapshot
+`8b2b98c00a6b4d291155e4890773ca8f769aee53`, MLX 0.32.2, MLX-LM 0.31.2 and
+Transformers 5.16.1. It is available through the unpublished Python API only:
+
+```python
+from keyprint import Keyprint
+
+with Keyprint.from_mlx(
+    "/path/to/pinned-snapshot",
+    key=Keyprint.new_key(),
+    execution="experimental-wide",
+) as wm:
+    result = wm.generate("Write a short explanation of a rainbow.", max_tokens=192)
+    print(result.text)
+```
+
+Its tokenizer normalizes input to NFC; generated output bytes are never
+normalized or repaired. Literal inspection rejects text changed by tokenization.
+Existing reference/default behavior stays unchanged. No research acceptance,
+detector threshold, provider-client qualification or Qwen-family-wide support
+transfers. The paired study's semantic ratings are pending. JSON grammar, tools,
+reasoning, streaming, batching and concurrent native serving are unqualified.
+The [eight upstream ordinary baselines](evidence/model-baseline-2026-09-28/README.md)
+remain separate evidence and include factual failures.
 
 ## Other application SDKs
 

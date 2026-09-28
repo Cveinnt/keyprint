@@ -1,0 +1,21 @@
+{
+  "wheel_sha256": "c99fb21410fd3f8786d09f94fb01417e2c3e30fda80f5e883474673ba543d44c",
+  "wheel_bytes": 2373863,
+  "matched_study_python_files": 78,
+  "engine": {
+    "status": "pass",
+    "files": 39,
+    "manifest_sha256": "926aa9995523c78666e973f0127f2d9cf77ec7a1393207a3e75c19b2ad991ed5",
+    "scope": "Namespaced derivative integrity; no detector or scientific acceptance verdict."
+  },
+  "experimental_revision": "8b2b98c00a6b4d291155e4890773ca8f769aee53",
+  "wide_sampling_identity": {
+    "implementation": "ordered-wide-head-projection-v1-experimental",
+    "source_sha256": "c722835cbc7c5398e8fa00843d7d57b7f5e31cdf5382246ffd5c1efa5acb579f",
+    "max_vocabulary": 262144,
+    "max_support": 151669,
+    "tie_order": "descending original float32 logit, ascending original token ID",
+    "empirical_acceptance_transfers": false
+  },
+  "scope": "Isolated no-dependency install with existing pinned inference environment; not a fresh dependency-resolution test or registry publication."
+}
