@@ -1,0 +1,9 @@
+{
+  "partial": true,
+  "planned_attempts": 128,
+  "completed_at_snapshot": 45,
+  "verified": 45,
+  "tokens": 8642,
+  "errors": 0,
+  "scope": "Partial receipt/native rendering audit while inference continues; no full schedule, semantic or release acceptance."
+}

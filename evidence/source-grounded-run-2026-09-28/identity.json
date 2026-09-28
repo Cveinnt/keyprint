@@ -1,0 +1,59 @@
+{
+  "profile": "portable-nfc-wide-bytelevel-v1-experimental",
+  "profile_sha256": "c7a8fbe50a23b7393cf5f4f06ee3d462e47a9863f62f1a875f6f8849baa721a9",
+  "tokenizer_binding_sha256": "fc9c8167217ad7d42b98e722e7df629c229fae93571055a121ed09612311ef6f",
+  "model_id": "mlx-community/Qwen3.5-9B-4bit",
+  "model_revision": "8b2b98c00a6b4d291155e4890773ca8f769aee53",
+  "model_assets": {
+    ".gitattributes": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930",
+    "README.md": "1407e3e3337063c280b2fe1a63724908a5051cfbf26cd8b98f247432b0382537",
+    "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "config.json": "a96942cb6a8a1d3f1d17514d81a1925d04362a6a3233b389d13012211baaa9f8",
+    "model-00001-of-00002.safetensors": "a68b87558c6ef43f74c2bd63ce7e9092ceddc3101f3def0030774bae5f42aadd",
+    "model-00002-of-00002.safetensors": "b0a770bf8469c7f3f18756a0e0283f1c1174344a83e059a4e483f6af4907352d",
+    "model.safetensors.index.json": "dd023913fb87cfdae27fb11dcf695117c925833796ccac3c64117d6652d8ff1e",
+    "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+    "processor_config.json": "14932921ca485d458a04dafd8069fbb0a4505622a48208d19ed247115801385b",
+    "tokenizer.json": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+    "tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+    "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+    "vocab.json": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+  },
+  "engine_manifest_sha256": "926aa9995523c78666e973f0127f2d9cf77ec7a1393207a3e75c19b2ad991ed5",
+  "adapter_sha256": "7522f38374870ba584f21f4922405270afbc1bce0f6283c00e457c59279a85ec",
+  "generation_source_sha256": "e118486f1ec12dd6a034e44339555b989144de574e9fbf005f1c04da5a8988ff",
+  "binding_source_sha256": "82ff89519b6211c16042231d487d6e514c4b359a0a59bdca363dc96a6b44e3be",
+  "sampling_execution": {
+    "implementation": "ordered-wide-head-projection-v1-experimental",
+    "source_sha256": "c722835cbc7c5398e8fa00843d7d57b7f5e31cdf5382246ffd5c1efa5acb579f",
+    "max_vocabulary": 262144,
+    "max_support": 151669,
+    "tie_order": "descending original float32 logit, ascending original token ID",
+    "empirical_acceptance_transfers": false
+  },
+  "dependencies": {
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.2",
+    "transformers": "5.16.1",
+    "numpy": "2.5.2",
+    "tokenizers": "0.23.1"
+  },
+  "temperature": 0.7,
+  "top_k": 100,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "termination_policy": {
+    "runtime_eos_ids": [
+      248046
+    ],
+    "nested_config_eos_id": 248044,
+    "source": "mlx_lm tokenizer resolution, explicit checked runtime ID"
+  },
+  "input_normalizer": {
+    "type": "NFC"
+  },
+  "output_normalization": "none",
+  "empirical_acceptance_transfers": false,
+  "limitations": "Experimental local text generation only; no calibrated detector, quality acceptance, tools, JSON grammar, reasoning, streaming or batching"
+}

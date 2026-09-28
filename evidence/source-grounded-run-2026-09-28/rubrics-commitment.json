@@ -1,0 +1,6 @@
+{
+  "cases.json": "1894fa3e143c3552ad4242c4dff6776bf4d8c9ce6e861965746b1c60828b046c",
+  "rubrics.json": "69b430a07f0e31b88d7c9f1419a962933f87291b82ec049d1d5ed59f2ca0ce0c",
+  "criteria": "Assess every generated factual claim against the source and its qualifiers; assess essential task coverage, English and format separately. Full task requires all components plus EOS. Unsupported-claim pass does not imply every essential fact is covered. No minimum output length beyond the original task. Record uncertain interpretations before condition/key/count review; no acceptance transfer or detector thresholds.",
+  "phase": "Frozen before any inference on these sixteen selected sources; source-only authoring, original dataset responses unused."
+}

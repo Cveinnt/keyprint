@@ -1,4 +1,4 @@
-# Natural source-grounded follow-up: selected, not generated
+# Natural source-grounded follow-up: frozen selection
 
 The four long expansion stress tasks produced frequent factual failures even
 without a watermark. Keep those failures; add a different task family to assess
@@ -19,7 +19,9 @@ to choose cases, prompt the model or establish ground truth.
 [Manifest](selection.json) records all selected row IDs, instruction/source
 hashes, length bounds, tie handling, fixed salt and selector source hash.
 Changing reference answers or input file order does not change selected source
-identities in the regression checks. No generation has run on this selection.
+identities in the regression checks. Selection and all sixteen source-only
+rubrics were frozen before generation. The [execution study](../source-grounded-run-2026-09-28/README.md)
+now records the active 128-attempt run and its audit tooling.
 Source text and derived prompts remain in private receipts, separate from the
 MIT SDK. This public manifest does not relicense or republish dataset articles.
 

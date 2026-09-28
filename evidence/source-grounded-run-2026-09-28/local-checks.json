@@ -1,0 +1,26 @@
+{
+  "scope": "Local research tooling checks, not inference quality, complete receipt audit, rendered review QA or launch acceptance.",
+  "passed": 55,
+  "failed": 0,
+  "test_files": [
+    "tests/test_source_grounded_summary.py",
+    "tests/test_source_review.py",
+    "tests/test_source_grounded_audit.py",
+    "tests/test_wide_audit.py",
+    "tests/test_source_grounded_runner.py",
+    "tests/test_source_grounded_selection.py"
+  ],
+  "source_sha256": {
+    "tests/test_source_grounded_summary.py": "653928cea5d8d8c09a665ba1c8655f358417da602ad817fc0690e14158d48f1a",
+    "tests/test_source_review.py": "d539c46cafddada882da58be1c09b5150a755559ab8a59bffe77ace5004aa702",
+    "tests/test_source_grounded_audit.py": "835ea76d5308d80dbba57f61d20429377fccf1610def5c85cd832f2ba004efd2",
+    "tests/test_wide_audit.py": "5aecfde85964d1d5af0b0ab9eaca05317a016ae1f9260ed1ad4a2bee188a11f9",
+    "tests/test_source_grounded_runner.py": "94b616d7b5de288d943b900fe657ad8221a2c2e777d29f9bdaf57cfd5434b42f",
+    "tests/test_source_grounded_selection.py": "1a4f2dcba4c9667b136f641feafc6dd7eb9101f1e435eba0fd0be6b83270c33a",
+    "tools/validate_source_grounded.py": "8eccfa99a349b05bf09e75908eff08946c9cd049a00ded138817c7bbbf8fa55e",
+    "tools/audit_source_grounded.py": "f516c49415193feedb6d7c82cad43ad1b4480634bc578378c7397cc25f8bf2e9",
+    "tools/build_source_review.py": "3444e9fadb386b4f67c6890a1584acaa9914f0aa893514b30eb1a49fa16e2d85",
+    "tools/summarize_source_grounded.py": "54438e0fb8a1c2f820772fe8d9e4a2c65634b081e3dfe28d42d45d90fb092c97"
+  },
+  "command": "PYTHONPATH=src ../../receipts/pydantic-ai-2026-09-28/env/bin/python -m pytest -q tests/test_source_grounded_summary.py tests/test_source_review.py tests/test_source_grounded_audit.py tests/test_wide_audit.py tests/test_source_grounded_runner.py tests/test_source_grounded_selection.py"
+}
