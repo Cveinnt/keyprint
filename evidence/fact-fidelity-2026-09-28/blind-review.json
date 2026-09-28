@@ -1,0 +1,2090 @@
+[
+  {
+    "review_id": "8e839e80583d",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 67
+  },
+  {
+    "review_id": "ea89ec1e5d82",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を10月8日13:00から13:20まで実施予定です。バックアップは完了していますが、復元テストは実施しておりません。予定変更の可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 86
+  },
+  {
+    "review_id": "9efc20082171",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As unidades reservadas ainda não foram enviadas e não são consideradas como vendas despachadas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 37,
+    "chars": 230
+  },
+  {
+    "review_id": "201519ffedb3",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 64
+  },
+  {
+    "review_id": "f7fe97b1b7b2",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "912a7cdfdaa8",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le forfait B offre plus de données, mais le prix par Go est plus élevé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 53,
+    "chars": 262
+  },
+  {
+    "review_id": "0348218d5633",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 64
+  },
+  {
+    "review_id": "7303fa387c05",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address accessibility concerns or claim full keyboard functionality.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 39,
+    "chars": 276
+  },
+  {
+    "review_id": "d79b2daf02b3",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 59,
+    "chars": 326
+  },
+  {
+    "review_id": "ca276e229456",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 67
+  },
+  {
+    "review_id": "ad661de29ea6",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe  \n\nLucía, por favor revisa el borrador del informe, pero no lo publiques. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no equivale a autorización. El informe debe permanecer privado sin autorización explícita.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 42,
+    "chars": 279
+  },
+  {
+    "review_id": "f7c2faa4e6d3",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 34,
+    "chars": 164
+  },
+  {
+    "review_id": "8374163ae7b4",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider the incident resolved. No further updates are provided.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 245
+  },
+  {
+    "review_id": "c15aae32d927",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n’a été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 34,
+    "chars": 161
+  },
+  {
+    "review_id": "efa8c010b55e",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に予定しています。バックアップは完了していますが、復元テストは実施しておりません。予定変更の可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 92
+  },
+  {
+    "review_id": "ef93fa7a6ce1",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 estão disponíveis. As unidades reservadas ainda não foram enviadas e não devem ser consideradas como vendas concluídas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 39,
+    "chars": 241
+  },
+  {
+    "review_id": "63781a31dd87",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Frau Nora,  \nIhre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage in Anspruch nehmen. Eine Auszahlung wurde bislang nicht veranlasst. Wir werden Sie bei Fortschritten informieren.  \nMit freundlichen Grüßen,  \n[Name]",
+    "completion": "eos",
+    "error_type": null,
+    "words": 44,
+    "chars": 305
+  },
+  {
+    "review_id": "d02085b4d858",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR. Ce solde doit être réglé avant le 14 octobre. Aucun rappel n'a été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 37,
+    "chars": 181
+  },
+  {
+    "review_id": "75c83d5b56a4",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "f6e67351d2cd",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Nora,  \nIhre Erstattung für Bestellung R-52 (49 €) wurde erhalten und wird geprüft. Die Prüfung kann bis zu 7 Werktage in Anspruch nehmen. Eine Auszahlung wurde noch nicht veranlaßt. Wir können Ihnen kein festes Auszahlungsdatum nennen. Vielen Dank für Ihr Verständnis.  \nIhre Kundenservice-Team",
+    "completion": "eos",
+    "error_type": null,
+    "words": 45,
+    "chars": 308
+  },
+  {
+    "review_id": "d4abbf4b8835",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Nora,  \nIhre Erstattung für die Bestellung R-52 (49 €) wurde eingereicht, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bisher nicht veranlasst. Wir geben keine festen Auszahlungstermine an. Wir melden uns, sobald der Prozess abgeschlossen ist.  \nMit freundlichen Grüßen,  \n[Name]",
+    "completion": "eos",
+    "error_type": null,
+    "words": 50,
+    "chars": 345
+  },
+  {
+    "review_id": "cd053db6e7ce",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 59,
+    "chars": 326
+  },
+  {
+    "review_id": "2b0c8c7b271e",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "821c773a221f",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing; resolution has not been confirmed. Do not assume the incident is resolved or speculate on causes.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 40,
+    "chars": 232
+  },
+  {
+    "review_id": "6fb0dc1542be",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le forfait B ne garantit pas de stockage illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 49,
+    "chars": 250
+  },
+  {
+    "review_id": "80b5eeb222ae",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "d0483396fcf7",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 47,
+    "chars": 247
+  },
+  {
+    "review_id": "abf573ec5d25",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 59,
+    "chars": 326
+  },
+  {
+    "review_id": "3dec91692c78",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Ihre Bestellung R-52 beträgt 49 €. Der Erstattungsantrag von Nora ist eingegangen und wird derzeit geprüft. Die Prüfung kann bis zu 7 Werktage in Anspruch nehmen. Eine Auszahlung wurde noch nicht veranlasst. Wir können aktuell kein festes Auszahlungsdatum nennen. Wir melden uns bei Fortschritten.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 44,
+    "chars": 297
+  },
+  {
+    "review_id": "e6a9fd1a1148",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 31,
+    "chars": 184
+  },
+  {
+    "review_id": "50278d1a21d6",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 287
+  },
+  {
+    "review_id": "a7a4e3e06cf6",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 59,
+    "chars": 326
+  },
+  {
+    "review_id": "a41b5dbbaae7",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 31,
+    "chars": 184
+  },
+  {
+    "review_id": "2fdb357ab553",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A keyboard navigation issue persists in the settings dialog. Existing projects are preserved. This release does not address full accessibility or resolve the keyboard navigation problem.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 38,
+    "chars": 267
+  },
+  {
+    "review_id": "ece2f6161353",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La entrega está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La fecha exacta de entrega no está confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 194
+  },
+  {
+    "review_id": "b8ea9b121201",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "0d860d9192ea",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を10月8日13:00〜13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは未実施です。予定は変更される可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 90
+  },
+  {
+    "review_id": "feee44b3aa55",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 34,
+    "chars": 164
+  },
+  {
+    "review_id": "6e33c192d3ca",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A keyboard navigation issue in the settings dialog persists. Existing projects are preserved. This release does not address accessibility claims or resolve the navigation concern.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 37,
+    "chars": 260
+  },
+  {
+    "review_id": "3b4613a352be",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard-navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address full accessibility or resolve the keyboard navigation problem.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 39,
+    "chars": 278
+  },
+  {
+    "review_id": "f1daab6d94c1",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 67
+  },
+  {
+    "review_id": "7acaf797001c",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La fecha de salida está prevista para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 191
+  },
+  {
+    "review_id": "771b38323abe",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 57,
+    "chars": 312
+  },
+  {
+    "review_id": "bbe624fbd1e2",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 34,
+    "chars": 164
+  },
+  {
+    "review_id": "ac6f2920f186",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe  \n\nLucía, puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no equivale a autorización. El informe debe permanecer privado sin autorización explícita.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 280
+  },
+  {
+    "review_id": "75b6f9d2f225",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe  \n\nLucía, puedes revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 289
+  },
+  {
+    "review_id": "9a2731116fae",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后方可发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 66
+  },
+  {
+    "review_id": "3a24edff6184",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Das quais, 3 estão reservadas e 9 estão disponíveis. As unidades reservadas não foram enviadas e não são consideradas como vendas despachadas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 38,
+    "chars": 233
+  },
+  {
+    "review_id": "49f62b9fa209",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address accessibility fully or claim the keyboard issue is resolved.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 276
+  },
+  {
+    "review_id": "8e33803908aa",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider the incident resolved. No further updates are provided.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 245
+  },
+  {
+    "review_id": "469403579e40",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing. Resolution has not been confirmed. Do not consider this incident resolved. No further updates are provided.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 40,
+    "chars": 242
+  },
+  {
+    "review_id": "f0996db20a84",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le forfait B offre plus de stockage, mais ne garantit pas de stockage illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 54,
+    "chars": 279
+  },
+  {
+    "review_id": "fe77d6315259",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As unidades reservadas não foram enviadas e não devem ser consideradas como vendas concluídas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 37,
+    "chars": 227
+  },
+  {
+    "review_id": "e7a893982afc",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Frau Nora, Ihre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Wir können kein festes Auszahlungsdatum nennen. Vielen Dank für Ihr Verständnis.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 287
+  },
+  {
+    "review_id": "08e4a6735b8e",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard navigation issue persists in the settings dialog. Existing saved projects are preserved. This release does not address accessibility concerns or claim full keyboard functionality.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 39,
+    "chars": 277
+  },
+  {
+    "review_id": "cd1b06ff7cfe",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Autorización para publicar el informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 290
+  },
+  {
+    "review_id": "867359c73e41",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, the request is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is also rejected. No other conditions or processing are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 61,
+    "chars": 340
+  },
+  {
+    "review_id": "bb8fd001d115",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider this incident resolved. No further details are available.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 247
+  },
+  {
+    "review_id": "7f0551eaf319",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 31,
+    "chars": 184
+  },
+  {
+    "review_id": "2adb716e21eb",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La salida está prevista para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 31,
+    "chars": 182
+  },
+  {
+    "review_id": "8e218bdcfafd",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito possui 12 unidades do item L-9, após receber 6 e enviar 4. Das 12 unidades, 3 estão reservadas e 9 estão disponíveis. As unidades reservadas ainda não foram enviadas e não devem ser consideradas como vendas concluídas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 39,
+    "chars": 229
+  },
+  {
+    "review_id": "e97811b438da",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe\n\nLucía, puedes revisar el borrador del informe, pero no puedes publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no es autorización. El informe debe permanecer privado sin autorización explícita.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 40,
+    "chars": 272
+  },
+  {
+    "review_id": "6b074e84cde6",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "7ec2409c13eb",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider this incident resolved. No further updates are provided.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 246
+  },
+  {
+    "review_id": "95799fab6b7a",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 45,
+    "chars": 238
+  },
+  {
+    "review_id": "ad0f574ff548",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは実施しておりません。予定は変更となる可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 95
+  },
+  {
+    "review_id": "399c287d4cc6",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 31,
+    "chars": 184
+  },
+  {
+    "review_id": "8c73d7e1e523",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito possuía inicialmente 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As reservadas não foram enviadas e não devem ser consideradas como vendas concluídas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 37,
+    "chars": 233
+  },
+  {
+    "review_id": "994c58fa7901",
+    "case": {
+      "id": "shipping_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Escribe una actualización en español de no más de 80 palabras con todos estos hechos y sin añadir otros. El pedido AX-17 contiene 6 teclados. La salida está prevista para el viernes, pero todavía no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada. No inventes una hora, empresa de transporte ni fecha de entrega.",
+      "facts": [
+        "order AX-17 contains 6 keyboards",
+        "dispatch planned for Friday",
+        "not dispatched yet",
+        "tracking number unavailable",
+        "delivery date unconfirmed"
+      ],
+      "forbidden": "Already dispatched/delivered; tracking number; invented carrier/time/delivery date."
+    },
+    "text": "El pedido AX-17 incluye 6 teclados. La salida está prevista para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 32,
+    "chars": 186
+  },
+  {
+    "review_id": "622f54ca6122",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 47,
+    "chars": 247
+  },
+  {
+    "review_id": "a18f99e3265a",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 47,
+    "chars": 247
+  },
+  {
+    "review_id": "08be75201084",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を予定しています。日時：10月8日（金）13:00～13:20（東京時間）。バックアップは既に作成済みですが、復元テストは実施しておりません。予定変更の可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 98
+  },
+  {
+    "review_id": "72704a280edf",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A keyboard navigation issue in the settings dialog persists. Existing saved projects are preserved. This release does not address full accessibility or resolve the keyboard navigation problem.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 39,
+    "chars": 273
+  },
+  {
+    "review_id": "2b616febb963",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは実施しておりません。予定変更の可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 92
+  },
+  {
+    "review_id": "0bcc98b40747",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守を10月8日13:00から13:20まで実施予定です。バックアップは完了していますが、復元テストは未実施です。予定変更の可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 80
+  },
+  {
+    "review_id": "ad492420fef4",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后方可发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 66
+  },
+  {
+    "review_id": "62a8e0d607e7",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 287
+  },
+  {
+    "review_id": "a69e96553f3e",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Frau Nora,  \nIhre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bislang nicht veranlasst. Wir geben keine festen Auszahlungsdatums an. Vielen Dank für Ihr Verständnis.  \nMit freundlichen Grüßen,  \n[Name]",
+    "completion": "eos",
+    "error_type": null,
+    "words": 47,
+    "chars": 325
+  },
+  {
+    "review_id": "9f06c02c17ee",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 57,
+    "chars": 312
+  },
+  {
+    "review_id": "8e4d7a619d52",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 35,
+    "chars": 171
+  },
+  {
+    "review_id": "ef03eda4854b",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "95c45de73201",
+    "case": {
+      "id": "release_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write English release notes of at most 80 words using every fact below and no extra feature claims. Version 1.8 adds dark mode and CSV export. PDF export is not available. A known keyboard-navigation issue remains in the settings dialog. Existing saved projects are retained. Do not describe the release as fully accessible or claim the keyboard issue is fixed.",
+      "facts": [
+        "version 1.8",
+        "dark mode added",
+        "CSV export added",
+        "PDF export unavailable",
+        "keyboard-navigation issue remains in settings dialog",
+        "existing saved projects retained"
+      ],
+      "forbidden": "PDF support; keyboard fix; fully accessible; lost projects; extra features."
+    },
+    "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard-navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address accessibility concerns or claim full compatibility.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 37,
+    "chars": 267
+  },
+  {
+    "review_id": "7640ebaf0338",
+    "case": {
+      "id": "handoff_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English handoff note of at most 80 words using all and only these facts. Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed. Do not swap owners or say all work must stop.",
+      "facts": [
+        "Imani owns database migration",
+        "Theo owns documentation update",
+        "migration blocked until backup verification finishes",
+        "documentation may continue",
+        "verification pending",
+        "migration completion and deployment unconfirmed"
+      ],
+      "forbidden": "Swapped owners; all work stopped; verified backup; completed migration/deployment."
+    },
+    "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 33,
+    "chars": 257
+  },
+  {
+    "review_id": "067a1f2fd7e4",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider this incident resolved.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 36,
+    "chars": 213
+  },
+  {
+    "review_id": "0627c3d06193",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 35,
+    "chars": 171
+  },
+  {
+    "review_id": "02a129125373",
+    "case": {
+      "id": "meeting_zh",
+      "language": "Chinese",
+      "max_chars": 180,
+      "prompt": "请用中文写一段不超过180个字符的会议通知，保留以下全部事实，不添加新事实：会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。只有场地确认后才能发送正式邀请。不要把暂定安排说成已确认，也不要添加年份。",
+      "facts": [
+        "meeting tentative October 6 at 14:30 in room B12",
+        "周宁 must confirm venue; not confirmed",
+        "陈雨 will prepare agenda; not complete",
+        "formal invitation only after venue confirmation"
+      ],
+      "forbidden": "Swapped responsibilities; completed agenda; confirmed venue/meeting; invented year."
+    },
+    "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 67
+  },
+  {
+    "review_id": "89f266d674ad",
+    "case": {
+      "id": "incident_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Write an English incident update of at most 80 words using all and only these facts. Service Orion was rolled back from version 2.4 to version 2.3 at 07:05 UTC. The error rate fell from 1.6% to 0.8%. Monitoring is still ongoing. Resolution has not been confirmed. Do not call the incident resolved or invent a cause, date or next update time.",
+      "facts": [
+        "Orion rolled back from 2.4 to 2.3",
+        "rollback at 07:05 UTC",
+        "error rate fell from 1.6% to 0.8%",
+        "monitoring ongoing",
+        "resolution unconfirmed"
+      ],
+      "forbidden": "Reversed version/rate direction; resolved incident; invented cause/date/update time."
+    },
+    "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider the incident resolved. No further updates are provided.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 245
+  },
+  {
+    "review_id": "70bace141ff9",
+    "case": {
+      "id": "maintenance_ja",
+      "language": "Japanese",
+      "max_chars": 220,
+      "prompt": "次の事実をすべて保ち、220文字以内の日本語で保守のお知らせを書いてください。保守は10月8日13:00から13:20まで東京時間で予定されています。サービス名はKumoです。バックアップは作成済みですが、復元テストはまだ実施していません。予定は変更される可能性があります。年や追加の作業内容を作らず、復元テストが成功したとは書かないでください。",
+      "facts": [
+        "Kumo maintenance planned October 8, 13:00-13:20 Tokyo time",
+        "backup created",
+        "restoration not tested",
+        "schedule may change"
+      ],
+      "forbidden": "Completed/successful restore test; certain schedule; invented year/work."
+    },
+    "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは未実施です。予定は変更される可能性があります。",
+    "completion": "eos",
+    "error_type": null,
+    "words": 1,
+    "chars": 91
+  },
+  {
+    "review_id": "22918ddae5d7",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Destas, 3 estão reservadas e 9 disponíveis. As unidades reservadas não foram enviadas e não são consideradas vendas despachadas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 35,
+    "chars": 217
+  },
+  {
+    "review_id": "4fa7dd25b272",
+    "case": {
+      "id": "inventory_pt",
+      "language": "Portuguese",
+      "max_words": 80,
+      "prompt": "Escreva em português um resumo de inventário com no máximo 80 palavras, mantendo todos os fatos e sem criar outros. O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4. Agora há 12 unidades no depósito, das quais 3 estão reservadas e 9 estão disponíveis para novos pedidos. As unidades reservadas ainda não foram enviadas. Não trate as reservas como vendas já despachadas.",
+      "facts": [
+        "item L-9 started at 10 units",
+        "received 6 and shipped 4",
+        "12 currently in warehouse",
+        "3 reserved, 9 available",
+        "reserved units not yet shipped"
+      ],
+      "forbidden": "Wrong arithmetic or stock status; reserved units already shipped; invented customer/price."
+    },
+    "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As reservas não foram enviadas e não devem ser consideradas como vendas concluídas.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 36,
+    "chars": 218
+  },
+  {
+    "review_id": "90100188d9c3",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Frau Nora, Ihre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bislang nicht veranlasst. Wir geben keine festen Auszahlungsdaten an. Vielen Dank für Ihr Verständnis.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 286
+  },
+  {
+    "review_id": "62262af7f49d",
+    "case": {
+      "id": "consent_es",
+      "language": "Spanish",
+      "max_words": 80,
+      "prompt": "Redacta un correo en español de hasta 80 palabras con todos estos hechos, sin añadir otros. Lucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado. No inventes que alguien ya lo ha revisado o aprobado.",
+      "facts": [
+        "Lucía may review draft but may not publish",
+        "only Omar can authorize publication",
+        "silence is not authorization",
+        "without explicit authorization report remains private"
+      ],
+      "forbidden": "Swapped actors; implied consent; approved/reviewed already; publication without authorization."
+    },
+    "text": "Asunto: Revisión y publicación del informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 43,
+    "chars": 287
+  },
+  {
+    "review_id": "e0f757f97a10",
+    "case": {
+      "id": "refund_de",
+      "language": "German",
+      "max_words": 80,
+      "prompt": "Schreibe auf Deutsch eine Kundendienstnachricht mit höchstens 80 Wörtern. Verwende alle folgenden Fakten und erfinde keine weiteren: Die Bestellung R-52 betrifft 49 EUR. Der Erstattungsantrag von Nora ist eingegangen, wurde aber noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Versprich kein festes Auszahlungsdatum.",
+      "facts": [
+        "order R-52 concerns 49 EUR",
+        "Nora's refund request received",
+        "refund not approved",
+        "review may take up to 7 business days",
+        "payment not initiated"
+      ],
+      "forbidden": "Approved/refunded/completed payment; calendar rather than business days; guaranteed payout date."
+    },
+    "text": "Sehr geehrte Nora,  \n\nIhre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bisher nicht veranlasst. Wir geben keine festen Auszahlungsdatums ab.  \n\nMit freundlichen Grüßen,  \n[Name]",
+    "completion": "eos",
+    "error_type": null,
+    "words": 41,
+    "chars": 288
+  },
+  {
+    "review_id": "cf46d64582be",
+    "case": {
+      "id": "boundary_en",
+      "language": "English",
+      "max_words": 80,
+      "prompt": "Explain this fictional validation rule in English in at most 80 words, preserving every detail. A request is accepted only if retries is an integer from 0 through 3 inclusive and dry_run is true. A request with retries=3 and dry_run=true is accepted. A request with retries=4 and dry_run=true is rejected. A request with retries=0 and dry_run=false is rejected. Do not reverse any result or infer what processing happens after acceptance.",
+      "facts": [
+        "integer retries in inclusive range 0-3 AND dry_run true",
+        "3/true accepted",
+        "4/true rejected",
+        "0/false rejected"
+      ],
+      "forbidden": "OR instead of AND; changed boundary/results; fractional retries allowed; invented downstream processing."
+    },
+    "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 59,
+    "chars": 326
+  },
+  {
+    "review_id": "cc89ead211a7",
+    "case": {
+      "id": "invoice_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Rédige un message en français de 80 mots maximum en conservant tous les faits suivants, sans en inventer. La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu. Le solde restant est de 150 EUR, à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé. Ne dis pas que la facture est entièrement payée et n'ajoute pas de pénalité.",
+      "facts": [
+        "invoice F-218 for Léa totals 240 EUR",
+        "90 EUR received",
+        "150 EUR remains",
+        "payment before October 14",
+        "no reminder sent yet"
+      ],
+      "forbidden": "Fully paid invoice; reminder already sent; invented penalty or year."
+    },
+    "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 34,
+    "chars": 164
+  },
+  {
+    "review_id": "a29a7cebd7c5",
+    "case": {
+      "id": "comparison_fr",
+      "language": "French",
+      "max_words": 80,
+      "prompt": "Écris en français une comparaison de 80 mots maximum qui conserve tous les faits suivants sans conclusion supplémentaire. Le forfait A coûte 12 EUR par mois et inclut 5 Go. Le forfait B coûte 18 EUR par mois et inclut 20 Go. Aucun des deux ne comprend l'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Ne recommande pas un forfait et ne présente pas le stockage comme illimité.",
+      "facts": [
+        "A costs 12 EUR/month with 5 GB",
+        "B costs 18 EUR/month with 20 GB",
+        "neither includes telephone support",
+        "B is not cheaper than A"
+      ],
+      "forbidden": "Swapped prices/storage; unlimited storage; telephone support; recommendation."
+    },
+    "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B, à 18 EUR, offre 20 Go. Aucun ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+    "completion": "eos",
+    "error_type": null,
+    "words": 45,
+    "chars": 237
+  }
+]

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Keyprint · Fidelity review</title><link rel="icon" href="data:,">
+<style>
+:root{color-scheme:light;--paper:#f5f1e8;--ink:#292620;--muted:#676158;--line:#d4cdbf;--accent:#a5442c}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 Georgia,serif}main{max-width:1240px;margin:auto;padding:36px 30px 70px}
+h1{font-size:clamp(34px,5vw,56px);font-weight:400;line-height:1.1;margin:18px 0}h2{font-size:26px;font-weight:400;margin:0 0 18px}.eyebrow,.small{font-size:14px;color:var(--muted)}p{margin:12px 0}.intro{max-width:780px}
+button,select,input,textarea{font:inherit;color:inherit}button,select{border:1px solid var(--line);background:transparent;border-radius:3px;padding:9px 14px;min-height:44px}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}button.primary{background:var(--accent);color:white;border-color:var(--accent)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:22px 0;margin:20px 0;border-block:1px solid var(--line)}.toolbar select{max-width:100%;flex:1;min-width:150px}.columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:42px}.sample{white-space:pre-wrap;overflow-wrap:anywhere;font-size:21px;line-height:1.65;border-top:2px solid var(--accent);padding:22px 0;margin:0 0 22px}
+details{margin:14px 0}summary{cursor:pointer}fieldset{border:0;padding:0;margin:0 0 20px}legend{margin-bottom:8px;padding:0;font-size:17px}.choices{display:flex;gap:8px;flex-wrap:wrap}.choices label{border:1px solid var(--line);padding:6px 11px;border-radius:3px;cursor:pointer;min-height:40px;display:flex;align-items:center;gap:7px}.choices label:has(input:checked){border-color:var(--accent);background:#eee1d7}input[type=radio]{accent-color:var(--accent)}textarea,input[type=text]{width:100%;background:#faf7f0;border:1px solid var(--line);padding:11px;border-radius:3px}textarea{min-height:100px;resize:vertical}.label{display:block;margin:16px 0 6px}.footer{border-top:1px solid var(--line);margin-top:30px;padding-top:24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}.note{color:var(--muted);font-size:14px}#status{min-height:22px}ol{padding-left:22px}#saveWarning{color:var(--accent)}
+@media(max-width:760px){main{padding:22px 20px 50px}.columns{grid-template-columns:1fr;gap:24px}.sample{font-size:19px}.toolbar{gap:8px}.toolbar select{flex-basis:100%;order:-1}h1{max-width:320px}}
+</style></head><body><main>
+<div class="eyebrow">Keyprint / Evidence review</div><h1>Did the meaning survive?</h1>
+<p class="intro">Compare each output with the supplied facts. Sampler and key identity are hidden. Mark omissions, changed facts and invented claims. Your judgments stay in this browser until you export them.</p>
+<p class="note">Blank answers remain unreviewed. “Unsure” is not a pass. This page does not reveal assistant ratings or submit anything.</p>
+<div class="toolbar"><button id="previous">Previous</button><select id="jump" aria-label="Choose sample"></select><button id="next">Next</button></div>
+<p id="status" class="small" aria-live="polite"></p><p id="saveWarning" role="status"></p>
+<div class="columns"><section aria-labelledby="outputTitle"><h2 id="outputTitle">Generated output</h2><div id="sample" class="sample" dir="auto"></div>
+<p id="limit" class="note"></p><details><summary>Original task</summary><p id="prompt" dir="auto"></p></details>
+<label class="label" for="notes">Review notes</label><textarea id="notes" placeholder="What changed, went missing, or felt uncertain?"></textarea></section>
+<section aria-labelledby="factsTitle"><h2 id="factsTitle">Check the facts</h2><div id="facts"></div>
+<button id="allFacts">Mark all listed facts preserved</button><p class="note">This only fills the listed fact checks. Language and unsupported claims need separate answers.</p>
+<div id="otherChecks"></div><p class="small">Watch for: <span id="forbidden"></span></p><button id="advance">Next sample</button></section></div>
+<div class="footer"><div><label for="reviewer">Reviewer name (optional)</label><input id="reviewer" type="text" autocomplete="off"></div><button id="export" class="primary">Export ratings</button><span class="note">JSON download. Partial reviews are explicitly marked incomplete.</span></div>
+</main><script type="application/json" id="review-data">__REVIEW_DATA__</script><script>
+'use strict';
+const study=JSON.parse(document.getElementById('review-data').textContent), rows=study.rows;
+const storageKey='keyprint-fact-review:'+study.study_sha256, $=id=>document.getElementById(id);
+let state={index:0,ratings:{},reviewer:''}, storageOk=true;
+try{const old=JSON.parse(localStorage.getItem(storageKey));if(old&&typeof old==='object'&&old.ratings&&Number.isInteger(old.index))state=old;}catch{storageOk=false;}
+state.index=Math.max(0,Math.min(rows.length-1,state.index));
+const allowed=new Set(['pass','fail','unsure','']);
+function rating(row){let r=state.ratings[row.review_id];if(!r||!Array.isArray(r.facts)||r.facts.length!==row.case.facts.length)r={facts:row.case.facts.map(()=>''),language:'',claims:'',notes:''};r.facts=r.facts.map(x=>allowed.has(x)?x:'');for(const k of ['language','claims'])if(!allowed.has(r[k]))r[k]='';if(typeof r.notes!=='string')r.notes='';state.ratings[row.review_id]=r;return r;}
+function complete(row){const r=rating(row);return r.facts.every(Boolean)&&Boolean(r.language)&&Boolean(r.claims);}
+function status(){const n=rows.filter(complete).length;$('status').textContent=`Sample ${state.index+1} of ${rows.length} · ${n} fully answered · ${storageOk?'Saved in this browser':'Export to retain your ratings'}`;$('saveWarning').textContent=storageOk?'':'Browser storage is unavailable. Keep this page open and export your work.';}
+function save(){try{localStorage.setItem(storageKey,JSON.stringify(state));storageOk=true;}catch{storageOk=false;}status();}
+function question(title,name,value,onChange,positive='Preserved',negative='Failed'){const box=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=title;box.append(legend);const choices=document.createElement('div');choices.className='choices';for(const [v,label] of [['pass',positive],['fail',negative],['unsure','Unsure']]){const l=document.createElement('label'),input=document.createElement('input');input.type='radio';input.name=name;input.value=v;input.checked=value===v;input.addEventListener('change',()=>{onChange(v);save();});l.append(input,document.createTextNode(label));choices.append(l);}box.append(choices);return box;}
+function render(){const row=rows[state.index],r=rating(row);$('jump').value=String(state.index);$('sample').textContent=row.text;$('prompt').textContent=row.case.prompt;$('forbidden').textContent=row.case.forbidden;$('limit').textContent=`Requested language: ${row.case.language}. Limit: ${row.format_limit}. Generation: ${row.completion==='eos'?'completed':row.completion==='length'?'stopped at the length limit':'unavailable'}.`;$('notes').value=r.notes;$('previous').disabled=state.index===0;$('next').disabled=state.index===rows.length-1;$('advance').disabled=state.index===rows.length-1;$('facts').replaceChildren(...row.case.facts.map((fact,i)=>question(`${i+1}. ${fact}`,`fact-${i}`,r.facts[i],v=>r.facts[i]=v)));$('otherChecks').replaceChildren(question('Requested language retained','language',r.language,v=>r.language=v,'Yes','No'),question('No unsupported claims or invented details','claims',r.claims,v=>r.claims=v,'Yes','No'));status();}
+for(let i=0;i<rows.length;i++){const option=document.createElement('option');option.value=String(i);option.textContent=`${i+1}. ${rows[i].case.language} / ${rows[i].title}`;$('jump').append(option);}
+function go(index){state.index=index;save();render();$('outputTitle').scrollIntoView({block:'start',behavior:'auto'});}
+$('previous').addEventListener('click',()=>go(Math.max(0,state.index-1)));$('next').addEventListener('click',()=>go(Math.min(rows.length-1,state.index+1)));$('jump').addEventListener('change',e=>go(Number(e.target.value)));
+$('advance').addEventListener('click',()=>go(Math.min(rows.length-1,state.index+1)));
+$('notes').addEventListener('input',e=>{rating(rows[state.index]).notes=e.target.value;save();});$('reviewer').value=typeof state.reviewer==='string'?state.reviewer:'';$('reviewer').addEventListener('input',e=>{state.reviewer=e.target.value;save();});
+$('allFacts').addEventListener('click',()=>{rating(rows[state.index]).facts.fill('pass');save();render();});
+$('export').addEventListener('click',()=>{const val=v=>v==='pass'?true:v==='fail'?false:null;const output={schema:'keyprint.human-fact-review.v1',study_sha256:study.study_sha256,reviewer:state.reviewer,review_complete:rows.every(complete),ratings:rows.map(row=>{const r=rating(row);return{review_id:row.review_id,answered:complete(row),fact_checks:r.facts.map(val),language_pass:val(r.language),no_unsupported_claims:val(r.claims),answers:{facts:r.facts,language:r.language,claims:r.claims},reason:r.notes};})};const url=URL.createObjectURL(new Blob([JSON.stringify(output,null,2)+'\n'],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='keyprint-fact-ratings.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+render();
+</script></body></html>

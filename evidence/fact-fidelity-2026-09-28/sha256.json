@@ -1,0 +1,12 @@
+{
+  "README.md": "b94eec05be88c0208cae597a259730d6341efb7b669982548ab0daa0bc5ae728",
+  "SAMPLES.md": "0a4a757895a559535a176ebecafd3f216acc0a8b53cec008ee20df9d700c5693",
+  "blind-review.json": "276f4d81e5176d3fb14a7d64f596b3058bc69297a857d0f0e80d29f5f9652d58",
+  "frozen-ratings.json": "ac62b64766947c33bcc0aa19fffdf12b0c8d33199d6ba3ae743c76df05a963ca",
+  "plan.json": "332c5bfb66eb8a98fd4388b6c410467ac7887e0a4bada5b8e6291429722f5cba",
+  "rating-commitment.json": "e6a741fb517d6c253850dfcdcbeaf78fff5b31a8222e11ae40daaf942e062bdc",
+  "results.json": "d9927ecdc2aee7b91aa7384cbe95dc15fd97f4c829867fb37d7a3f7627102b3b",
+  "review.html": "a79a87578773c501f861e6a7600b8e06c46c3be68fd581dd489af24fd8516fd8",
+  "sdk-integrity.json": "ced8f28bbd795176f766fa0ecab85543be90c055911915b9197b52300b551b80",
+  "sensitivity.json": "2b7a794121cdf38379d83202e2ad851c81bebda1cb5cc01ea03e995923a5642d"
+}

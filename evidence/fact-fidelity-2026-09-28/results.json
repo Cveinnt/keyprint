@@ -1,0 +1,4720 @@
+{
+  "summary": {
+    "groups": {
+      "ordinary": {
+        "attempts": 48,
+        "execution_pass": 48,
+        "content_pass": 42,
+        "language_pass": 48,
+        "format_pass": 48,
+        "task_pass": 42,
+        "matching_hits": 0,
+        "other_hits": 0
+      },
+      "marked": {
+        "attempts": 48,
+        "execution_pass": 48,
+        "content_pass": 36,
+        "language_pass": 48,
+        "format_pass": 48,
+        "task_pass": 36,
+        "matching_hits": 1,
+        "other_hits": 0
+      }
+    },
+    "paired": {
+      "content_pass": {
+        "both_pass": 33,
+        "marked_only": 3,
+        "both_fail": 3,
+        "ordinary_only": 9
+      },
+      "task_pass": {
+        "both_pass": 33,
+        "marked_only": 3,
+        "both_fail": 3,
+        "ordinary_only": 9
+      }
+    },
+    "by_case": [
+      {
+        "case": "incident_en",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "incident_en",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 3
+      },
+      {
+        "case": "invoice_fr",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "invoice_fr",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "shipping_es",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "shipping_es",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 3
+      },
+      {
+        "case": "meeting_zh",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "meeting_zh",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "refund_de",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 2,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 2
+      },
+      {
+        "case": "refund_de",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 2,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 2
+      },
+      {
+        "case": "maintenance_ja",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 3
+      },
+      {
+        "case": "maintenance_ja",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 2,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 2
+      },
+      {
+        "case": "release_en",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 3
+      },
+      {
+        "case": "release_en",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 2,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 2
+      },
+      {
+        "case": "inventory_pt",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 3
+      },
+      {
+        "case": "inventory_pt",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 0,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 0
+      },
+      {
+        "case": "boundary_en",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "boundary_en",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "comparison_fr",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 3,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 3
+      },
+      {
+        "case": "comparison_fr",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "consent_es",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "consent_es",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "handoff_en",
+        "condition": "ordinary",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      },
+      {
+        "case": "handoff_en",
+        "condition": "marked",
+        "attempts": 4,
+        "content_pass": 4,
+        "language_pass": 4,
+        "format_pass": 4,
+        "task_pass": 4
+      }
+    ],
+    "judgments": {
+      "89f266d674ad": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "7ec2409c13eb": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "c15aae32d927": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "cc89ead211a7": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "a41b5dbbaae7": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "2adb716e21eb": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "201519ffedb3": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "0348218d5633": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "d4abbf4b8835": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "e0f757f97a10": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "0d860d9192ea": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "2b616febb963": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "6e33c192d3ca": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "72704a280edf": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ef93fa7a6ce1": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "9efc20082171": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "cf46d64582be": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "867359c73e41": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "622f54ca6122": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "912a7cdfdaa8": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "62262af7f49d": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ad661de29ea6": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "2b0c8c7b271e": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "80b5eeb222ae": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "8374163ae7b4": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "469403579e40": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "feee44b3aa55": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "8e4d7a619d52": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "399c287d4cc6": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "7f0551eaf319": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ca276e229456": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ad492420fef4": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "63781a31dd87": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "90100188d9c3": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "0bcc98b40747": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "ea89ec1e5d82": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "95c45de73201": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "08e4a6735b8e": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "fe77d6315259": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "8c73d7e1e523": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "9f06c02c17ee": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "a7a4e3e06cf6": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "a29a7cebd7c5": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "a18f99e3265a": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "e97811b438da": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "cd1b06ff7cfe": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "75c83d5b56a4": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "b8ea9b121201": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "067a1f2fd7e4": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "821c773a221f": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "d02085b4d858": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "0627c3d06193": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "e6a9fd1a1148": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "7acaf797001c": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "02a129125373": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "9a2731116fae": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "e7a893982afc": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "3dec91692c78": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "08be75201084": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "70bace141ff9": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "2fdb357ab553": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "49f62b9fa209": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "8e218bdcfafd": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "22918ddae5d7": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "771b38323abe": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "abf573ec5d25": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "6fb0dc1542be": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "f0996db20a84": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "62a8e0d607e7": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ac6f2920f186": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "f7fe97b1b7b2": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "7640ebaf0338": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "bb8fd001d115": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "8e33803908aa": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "f7c2faa4e6d3": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "bbe624fbd1e2": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ece2f6161353": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "994c58fa7901": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "f1daab6d94c1": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "8e839e80583d": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "a69e96553f3e": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "f6e67351d2cd": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "efa8c010b55e": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ad0f574ff548": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "7303fa387c05": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "3b4613a352be": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "3a24edff6184": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "4fa7dd25b272": {
+        "execution_pass": true,
+        "content_pass": false,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": false
+      },
+      "cd053db6e7ce": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "d79b2daf02b3": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "d0483396fcf7": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "95799fab6b7a": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "50278d1a21d6": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "75b6f9d2f225": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "6b074e84cde6": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      },
+      "ef03eda4854b": {
+        "execution_pass": true,
+        "content_pass": true,
+        "language_pass": true,
+        "format_pass": true,
+        "task_pass": true
+      }
+    },
+    "quality_acceptance": false,
+    "detector_calibrated": false,
+    "scope": "Twelve fresh synthetic source-grounded tasks, seven languages, one Qwen/MLX model and four reused keys. No open-domain factual, framework, scientific or launch acceptance.",
+    "interpretation": "Separate factual preservation from format and execution; descriptive on these source-grounded tasks, not causal harm or a general semantic guarantee."
+  },
+  "runs": [
+    {
+      "key_slot": 0,
+      "case": "incident_en",
+      "condition": "ordinary",
+      "review_id": "89f266d674ad",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider the incident resolved. No further updates are provided.",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.21012302878930972,
+          "centered_sum": 6072,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8950,
+          "events": 60,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "incident_en",
+      "condition": "marked",
+      "review_id": "7ec2409c13eb",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider this incident resolved. No further updates are provided.",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.0816588332477764,
+          "centered_sum": 10500,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4678,
+          "events": 60,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "invoice_fr",
+      "condition": "marked",
+      "review_id": "c15aae32d927",
+      "text": "La facture F-218 de Léa est de 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n’a été envoyé.",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.06405651750448825,
+          "centered_sum": 11650,
+          "events": 62,
+          "lattice_size": 131072,
+          "alias_bound": 2.4391827702725887e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.444488550091411e-13,
+          "support": 296670
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4632,
+          "events": 62,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "invoice_fr",
+      "condition": "ordinary",
+      "review_id": "cc89ead211a7",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4982699278102897,
+          "centered_sum": 35,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4351,
+          "events": 65,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "a41b5dbbaae7",
+      "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2201848291865566,
+          "centered_sum": 5090,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2506,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "2adb716e21eb",
+      "text": "El pedido AX-17 incluye 6 teclados. La salida está prevista para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.12122386869130611,
+          "centered_sum": 7710,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -334,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "meeting_zh",
+      "condition": "marked",
+      "review_id": "201519ffedb3",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后发送正式邀请。",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4971279184330482,
+          "centered_sum": 49,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        },
+        {
+          "reference_tail": 0.2895625429480078,
+          "centered_sum": 3699,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "meeting_zh",
+      "condition": "ordinary",
+      "review_id": "0348218d5633",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后发送正式邀请。",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4971279184330482,
+          "centered_sum": 49,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        },
+        {
+          "reference_tail": 0.2895625429480078,
+          "centered_sum": 3699,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "refund_de",
+      "condition": "ordinary",
+      "review_id": "d4abbf4b8835",
+      "text": "Sehr geehrte Nora,  \nIhre Erstattung für die Bestellung R-52 (49 €) wurde eingereicht, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bisher nicht veranlasst. Wir geben keine festen Auszahlungstermine an. Wir melden uns, sobald der Prozess abgeschlossen ist.  \nMit freundlichen Grüßen,  \n[Name]",
+      "completion": "eos",
+      "tokens": 107,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4618,
+          "events": 102,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1544,
+          "events": 102,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "refund_de",
+      "condition": "marked",
+      "review_id": "e0f757f97a10",
+      "text": "Sehr geehrte Nora,  \n\nIhre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bisher nicht veranlasst. Wir geben keine festen Auszahlungsdatums ab.  \n\nMit freundlichen Grüßen,  \n[Name]",
+      "completion": "eos",
+      "tokens": 90,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4779394672752796,
+          "centered_sum": 497,
+          "events": 85,
+          "lattice_size": 262144,
+          "alias_bound": 7.416860202760337e-47,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 8.993830527479617e-13,
+          "support": 406725
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8297,
+          "events": 85,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "0d860d9192ea",
+      "text": "Kumoサービスの保守作業を10月8日13:00〜13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは未実施です。予定は変更される可能性があります。",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.49459689447721694,
+          "centered_sum": 108,
+          "events": 66,
+          "lattice_size": 131072,
+          "alias_bound": 2.247585394889788e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.526113995942952e-13,
+          "support": 315810
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8424,
+          "events": 66,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "2b616febb963",
+      "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは実施しておりません。予定変更の可能性があります。",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2574314640779954,
+          "centered_sum": 5107,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5635,
+          "events": 65,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "release_en",
+      "condition": "ordinary",
+      "review_id": "6e33c192d3ca",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A keyboard navigation issue in the settings dialog persists. Existing projects are preserved. This release does not address accessibility claims or resolve the navigation concern.",
+      "completion": "eos",
+      "tokens": 46,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.28192683063947405,
+          "centered_sum": 3724,
+          "events": 44,
+          "lattice_size": 131072,
+          "alias_bound": 7.534584436269909e-23,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.84348663123955e-13,
+          "support": 210540
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2232,
+          "events": 44,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "release_en",
+      "condition": "marked",
+      "review_id": "72704a280edf",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A keyboard navigation issue in the settings dialog persists. Existing saved projects are preserved. This release does not address full accessibility or resolve the keyboard navigation problem.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.022748653629735133,
+          "centered_sum": 13188,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        },
+        {
+          "reference_tail": 0.3949756849743471,
+          "centered_sum": 1758,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "inventory_pt",
+      "condition": "marked",
+      "review_id": "ef93fa7a6ce1",
+      "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 estão disponíveis. As unidades reservadas ainda não foram enviadas e não devem ser consideradas como vendas concluídas.",
+      "completion": "eos",
+      "tokens": 71,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -930,
+          "events": 64,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.38852029910968416,
+          "centered_sum": 2204,
+          "events": 64,
+          "lattice_size": 131072,
+          "alias_bound": 7.665670457338955e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.487166072330264e-13,
+          "support": 306240
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "inventory_pt",
+      "condition": "ordinary",
+      "review_id": "9efc20082171",
+      "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As unidades reservadas ainda não foram enviadas e não são consideradas como vendas despachadas.",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.3851319879961406,
+          "centered_sum": 2219,
+          "events": 61,
+          "lattice_size": 131072,
+          "alias_bound": 1.33771196514986e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.421121570951344e-13,
+          "support": 291885
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3763,
+          "events": 61,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "boundary_en",
+      "condition": "ordinary",
+      "review_id": "cf46d64582be",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+      "completion": "eos",
+      "tokens": 99,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.14118982845810446,
+          "centered_sum": 8557,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        },
+        {
+          "reference_tail": 0.10145723233850733,
+          "centered_sum": 10135,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "boundary_en",
+      "condition": "marked",
+      "review_id": "867359c73e41",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, the request is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is also rejected. No other conditions or processing are considered.",
+      "completion": "eos",
+      "tokens": 101,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.015587485000775414,
+          "centered_sum": 17899,
+          "events": 73,
+          "lattice_size": 262144,
+          "alias_bound": 1.7288534920699242e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.836653738197859e-13,
+          "support": 349305
+        },
+        {
+          "reference_tail": 0.3765239577649352,
+          "centered_sum": 2615,
+          "events": 73,
+          "lattice_size": 262144,
+          "alias_bound": 1.7288534920699242e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.836653738197859e-13,
+          "support": 349305
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "622f54ca6122",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+      "completion": "eos",
+      "tokens": 81,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8674,
+          "events": 74,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.21908898880527639,
+          "centered_sum": 6486,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "912a7cdfdaa8",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le forfait B offre plus de données, mais le prix par Go est plus élevé.",
+      "completion": "eos",
+      "tokens": 85,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8384,
+          "events": 76,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.14614477751227015,
+          "centered_sum": 8928,
+          "events": 76,
+          "lattice_size": 262144,
+          "alias_bound": 2.3541531365507445e-52,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.894572949530122e-13,
+          "support": 363660
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "consent_es",
+      "condition": "ordinary",
+      "review_id": "62262af7f49d",
+      "text": "Asunto: Revisión y publicación del informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4868186457750115,
+          "centered_sum": 266,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7660,
+          "events": 68,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "consent_es",
+      "condition": "marked",
+      "review_id": "ad661de29ea6",
+      "text": "Asunto: Revisión y publicación del informe  \n\nLucía, por favor revisa el borrador del informe, pero no lo publiques. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no equivale a autorización. El informe debe permanecer privado sin autorización explícita.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.12090742217751936,
+          "centered_sum": 9386,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        },
+        {
+          "reference_tail": 0.3533700056188838,
+          "centered_sum": 3018,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "2b0c8c7b271e",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.470905080969698,
+          "centered_sum": 450,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7964,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 0,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "80b5eeb222ae",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.470905080969698,
+          "centered_sum": 450,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7964,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "incident_en",
+      "condition": "marked",
+      "review_id": "8374163ae7b4",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider the incident resolved. No further updates are provided.",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8950,
+          "events": 60,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.19353393674283767,
+          "centered_sum": 6516,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "incident_en",
+      "condition": "ordinary",
+      "review_id": "469403579e40",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing. Resolution has not been confirmed. Do not consider this incident resolved. No further updates are provided.",
+      "completion": "eos",
+      "tokens": 65,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4205272745402149,
+          "centered_sum": 1499,
+          "events": 59,
+          "lattice_size": 131072,
+          "alias_bound": 3.7850254327188384e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.371713139435842e-13,
+          "support": 282315
+        },
+        {
+          "reference_tail": 0.0642869605928533,
+          "centered_sum": 11351,
+          "events": 59,
+          "lattice_size": 131072,
+          "alias_bound": 3.7850254327188384e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.371713139435842e-13,
+          "support": 282315
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "invoice_fr",
+      "condition": "ordinary",
+      "review_id": "feee44b3aa55",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4351,
+          "events": 65,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.31250022460677995,
+          "centered_sum": 3833,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "invoice_fr",
+      "condition": "marked",
+      "review_id": "8e4d7a619d52",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé.",
+      "completion": "eos",
+      "tokens": 71,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5370,
+          "events": 66,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.3901777161883597,
+          "centered_sum": 2204,
+          "events": 66,
+          "lattice_size": 131072,
+          "alias_bound": 2.247585394889788e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.526113995942952e-13,
+          "support": 315810
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "399c287d4cc6",
+      "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2506,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5228,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "7f0551eaf319",
+      "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2506,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5228,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "meeting_zh",
+      "condition": "ordinary",
+      "review_id": "ca276e229456",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.21690205302321955,
+          "centered_sum": 5329,
+          "events": 49,
+          "lattice_size": 131072,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.052765908454467e-13,
+          "support": 234465
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2605,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "meeting_zh",
+      "condition": "marked",
+      "review_id": "ad492420fef4",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后方可发送正式邀请。",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.22761629447908568,
+          "centered_sum": 5032,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2392,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "refund_de",
+      "condition": "marked",
+      "review_id": "63781a31dd87",
+      "text": "Sehr geehrte Frau Nora,  \nIhre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage in Anspruch nehmen. Eine Auszahlung wurde bislang nicht veranlasst. Wir werden Sie bei Fortschritten informieren.  \nMit freundlichen Grüßen,  \n[Name]",
+      "completion": "eos",
+      "tokens": 93,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2976577496912167,
+          "centered_sum": 4846,
+          "events": 88,
+          "lattice_size": 262144,
+          "alias_bound": 2.8384981313640376e-45,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.998890293257842e-13,
+          "support": 421080
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -11098,
+          "events": 88,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "refund_de",
+      "condition": "ordinary",
+      "review_id": "90100188d9c3",
+      "text": "Sehr geehrte Frau Nora, Ihre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bislang nicht veranlasst. Wir geben keine festen Auszahlungsdaten an. Vielen Dank für Ihr Verständnis.",
+      "completion": "eos",
+      "tokens": 87,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5481,
+          "events": 85,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.1105681807978626,
+          "centered_sum": 10969,
+          "events": 85,
+          "lattice_size": 262144,
+          "alias_bound": 7.416860202760337e-47,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 8.993830527479617e-13,
+          "support": 406725
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "0bcc98b40747",
+      "text": "Kumoサービスの保守を10月8日13:00から13:20まで実施予定です。バックアップは完了していますが、復元テストは未実施です。予定変更の可能性があります。",
+      "completion": "eos",
+      "tokens": 54,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4744351491772351,
+          "centered_sum": 455,
+          "events": 53,
+          "lattice_size": 131072,
+          "alias_bound": 4.840646672354114e-19,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.195330610382873e-13,
+          "support": 253605
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -10843,
+          "events": 53,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "ea89ec1e5d82",
+      "text": "Kumoサービスの保守作業を10月8日13:00から13:20まで実施予定です。バックアップは完了していますが、復元テストは実施しておりません。予定変更の可能性があります。",
+      "completion": "eos",
+      "tokens": 56,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.24362498926751155,
+          "centered_sum": 5011,
+          "events": 55,
+          "lattice_size": 131072,
+          "alias_bound": 2.300665301111873e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.259199330288933e-13,
+          "support": 263175
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -16643,
+          "events": 55,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "release_en",
+      "condition": "marked",
+      "review_id": "95c45de73201",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard-navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address accessibility concerns or claim full compatibility.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7789,
+          "events": 45,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.19279759248156622,
+          "centered_sum": 5661,
+          "events": 45,
+          "lattice_size": 131072,
+          "alias_bound": 2.3733935838385e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.888291002981161e-13,
+          "support": 215325
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "release_en",
+      "condition": "ordinary",
+      "review_id": "08e4a6735b8e",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard navigation issue persists in the settings dialog. Existing saved projects are preserved. This release does not address accessibility concerns or claim full keyboard functionality.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2692,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.23093107334065616,
+          "centered_sum": 4854,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "inventory_pt",
+      "condition": "ordinary",
+      "review_id": "fe77d6315259",
+      "text": "O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As unidades reservadas não foram enviadas e não devem ser consideradas como vendas concluídas.",
+      "completion": "eos",
+      "tokens": 68,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.3904589881977922,
+          "centered_sum": 2096,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        },
+        {
+          "reference_tail": 0.39117251639962825,
+          "centered_sum": 2082,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "inventory_pt",
+      "condition": "marked",
+      "review_id": "8c73d7e1e523",
+      "text": "O depósito possuía inicialmente 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As reservadas não foram enviadas e não devem ser consideradas como vendas concluídas.",
+      "completion": "eos",
+      "tokens": 71,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.308594093903211,
+          "centered_sum": 3859,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        },
+        {
+          "reference_tail": 0.2835269440310248,
+          "centered_sum": 4419,
+          "events": 63,
+          "lattice_size": 131072,
+          "alias_bound": 4.36359178916464e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.466287212852849e-13,
+          "support": 301455
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "boundary_en",
+      "condition": "marked",
+      "review_id": "9f06c02c17ee",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions are considered.",
+      "completion": "eos",
+      "tokens": 97,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2022967243955072,
+          "centered_sum": 6535,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 0.24219871135881052,
+          "centered_sum": 5483,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "boundary_en",
+      "condition": "ordinary",
+      "review_id": "a7a4e3e06cf6",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+      "completion": "eos",
+      "tokens": 99,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.10145723233850733,
+          "centered_sum": 10135,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        },
+        {
+          "reference_tail": 0.15132748849727273,
+          "centered_sum": 8205,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "a29a7cebd7c5",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B, à 18 EUR, offre 20 Go. Aucun ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+      "completion": "eos",
+      "tokens": 79,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.27069216434807575,
+          "centered_sum": 5075,
+          "events": 73,
+          "lattice_size": 262144,
+          "alias_bound": 1.7288534920699242e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.836653738197859e-13,
+          "support": 349305
+        },
+        {
+          "reference_tail": 0.16772938261991227,
+          "centered_sum": 8003,
+          "events": 73,
+          "lattice_size": 262144,
+          "alias_bound": 1.7288534920699242e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.836653738197859e-13,
+          "support": 349305
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "a18f99e3265a",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+      "completion": "eos",
+      "tokens": 81,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.21908898880527639,
+          "centered_sum": 6486,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        },
+        {
+          "reference_tail": 0.12045606291853624,
+          "centered_sum": 9810,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "consent_es",
+      "condition": "marked",
+      "review_id": "e97811b438da",
+      "text": "Asunto: Revisión y publicación del informe\n\nLucía, puedes revisar el borrador del informe, pero no puedes publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no es autorización. El informe debe permanecer privado sin autorización explícita.",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2621462842337572,
+          "centered_sum": 4993,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 0.1200293301028125,
+          "centered_sum": 9211,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "consent_es",
+      "condition": "ordinary",
+      "review_id": "cd1b06ff7cfe",
+      "text": "Asunto: Autorización para publicar el informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -10104,
+          "events": 68,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5812,
+          "events": 68,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "75c83d5b56a4",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7964,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.2376457948292289,
+          "centered_sum": 4392,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 1,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "b8ea9b121201",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7964,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.2376457948292289,
+          "centered_sum": 4392,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "incident_en",
+      "condition": "ordinary",
+      "review_id": "067a1f2fd7e4",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider this incident resolved.",
+      "completion": "eos",
+      "tokens": 60,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.09512885460695705,
+          "centered_sum": 9360,
+          "events": 54,
+          "lattice_size": 131072,
+          "alias_bound": 1.0706474063469237e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.227837153870374e-13,
+          "support": 258390
+        },
+        {
+          "reference_tail": 0.43304824498547945,
+          "centered_sum": 1206,
+          "events": 54,
+          "lattice_size": 131072,
+          "alias_bound": 1.0706474063469237e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.227837153870374e-13,
+          "support": 258390
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "incident_en",
+      "condition": "marked",
+      "review_id": "821c773a221f",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing; resolution has not been confirmed. Do not assume the incident is resolved or speculate on causes.",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.053734787914934225,
+          "centered_sum": 11920,
+          "events": 58,
+          "lattice_size": 131072,
+          "alias_bound": 1.9486860889156085e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.345551319645101e-13,
+          "support": 277530
+        },
+        {
+          "reference_tail": 0.23656133986780428,
+          "centered_sum": 5314,
+          "events": 58,
+          "lattice_size": 131072,
+          "alias_bound": 1.9486860889156085e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.345551319645101e-13,
+          "support": 277530
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "invoice_fr",
+      "condition": "marked",
+      "review_id": "d02085b4d858",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR. Ce solde doit être réglé avant le 14 octobre. Aucun rappel n'a été envoyé.",
+      "completion": "eos",
+      "tokens": 75,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4918118256079035,
+          "centered_sum": 168,
+          "events": 70,
+          "lattice_size": 262144,
+          "alias_bound": 8.332221920911758e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.767105890025362e-13,
+          "support": 334950
+        },
+        {
+          "reference_tail": 0.06947757507079734,
+          "centered_sum": 12038,
+          "events": 70,
+          "lattice_size": 262144,
+          "alias_bound": 8.332221920911758e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.767105890025362e-13,
+          "support": 334950
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "invoice_fr",
+      "condition": "ordinary",
+      "review_id": "0627c3d06193",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a encore été envoyé.",
+      "completion": "eos",
+      "tokens": 71,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.3901777161883597,
+          "centered_sum": 2204,
+          "events": 66,
+          "lattice_size": 131072,
+          "alias_bound": 2.247585394889788e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.526113995942952e-13,
+          "support": 315810
+        },
+        {
+          "reference_tail": 0.16343873298206738,
+          "centered_sum": 7746,
+          "events": 66,
+          "lattice_size": 131072,
+          "alias_bound": 2.247585394889788e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.526113995942952e-13,
+          "support": 315810
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "e6a9fd1a1148",
+      "text": "El pedido AX-17 incluye 6 teclados. La salida está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5228,
+          "events": 46,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.296628077667004,
+          "centered_sum": 3524,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "7acaf797001c",
+      "text": "El pedido AX-17 incluye 6 teclados. La fecha de salida está prevista para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -804,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.08840034784655953,
+          "centered_sum": 9100,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "meeting_zh",
+      "condition": "marked",
+      "review_id": "02a129125373",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2605,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2997,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "meeting_zh",
+      "condition": "ordinary",
+      "review_id": "9a2731116fae",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。场地确认后方可发送正式邀请。",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2392,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1948,
+          "events": 48,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "refund_de",
+      "condition": "ordinary",
+      "review_id": "e7a893982afc",
+      "text": "Sehr geehrte Frau Nora, Ihre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde noch nicht veranlasst. Wir können kein festes Auszahlungsdatum nennen. Vielen Dank für Ihr Verständnis.",
+      "completion": "eos",
+      "tokens": 86,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.39354933305690526,
+          "centered_sum": 2408,
+          "events": 84,
+          "lattice_size": 262144,
+          "alias_bound": 2.0771715054167172e-47,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.988073972172915e-13,
+          "support": 401940
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -11390,
+          "events": 84,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "refund_de",
+      "condition": "marked",
+      "review_id": "3dec91692c78",
+      "text": "Ihre Bestellung R-52 beträgt 49 €. Der Erstattungsantrag von Nora ist eingegangen und wird derzeit geprüft. Die Prüfung kann bis zu 7 Werktage in Anspruch nehmen. Eine Auszahlung wurde noch nicht veranlasst. Wir können aktuell kein festes Auszahlungsdatum nennen. Wir melden uns bei Fortschritten.",
+      "completion": "eos",
+      "tokens": 91,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.3266634561115299,
+          "centered_sum": 4098,
+          "events": 88,
+          "lattice_size": 262144,
+          "alias_bound": 2.8384981313640376e-45,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.998890293257842e-13,
+          "support": 421080
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -16680,
+          "events": 88,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "08be75201084",
+      "text": "Kumoサービスの保守作業を予定しています。日時：10月8日（金）13:00～13:20（東京時間）。バックアップは既に作成済みですが、復元テストは実施しておりません。予定変更の可能性があります。",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.49059811862903174,
+          "centered_sum": 190,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        },
+        {
+          "reference_tail": 0.2193697971656032,
+          "centered_sum": 6210,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "70bace141ff9",
+      "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは未実施です。予定は変更される可能性があります。",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -6182,
+          "events": 66,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.49883855172588043,
+          "centered_sum": 24,
+          "events": 66,
+          "lattice_size": 131072,
+          "alias_bound": 2.247585394889788e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.526113995942952e-13,
+          "support": 315810
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "release_en",
+      "condition": "ordinary",
+      "review_id": "2fdb357ab553",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A keyboard navigation issue persists in the settings dialog. Existing projects are preserved. This release does not address full accessibility or resolve the keyboard navigation problem.",
+      "completion": "eos",
+      "tokens": 47,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2035,
+          "events": 45,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.3672822548990187,
+          "centered_sum": 2213,
+          "events": 45,
+          "lattice_size": 131072,
+          "alias_bound": 2.3733935838385e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.888291002981161e-13,
+          "support": 215325
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "release_en",
+      "condition": "marked",
+      "review_id": "49f62b9fa209",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address accessibility fully or claim the keyboard issue is resolved.",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.0036777869782883897,
+          "centered_sum": 18048,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        },
+        {
+          "reference_tail": 0.015000589761072804,
+          "centered_sum": 14616,
+          "events": 48,
+          "lattice_size": 131072,
+          "alias_bound": 5.568311577726838e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.013791798378302e-13,
+          "support": 229680
+        }
+      ],
+      "matching_hit": true,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "inventory_pt",
+      "condition": "marked",
+      "review_id": "8e218bdcfafd",
+      "text": "O depósito possui 12 unidades do item L-9, após receber 6 e enviar 4. Das 12 unidades, 3 estão reservadas e 9 estão disponíveis. As unidades reservadas ainda não foram enviadas e não devem ser consideradas como vendas concluídas.",
+      "completion": "eos",
+      "tokens": 65,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.37084676699609453,
+          "centered_sum": 2421,
+          "events": 57,
+          "lattice_size": 131072,
+          "alias_bound": 9.801628407107112e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.317688536912343e-13,
+          "support": 272745
+        },
+        {
+          "reference_tail": 0.22434823265351023,
+          "centered_sum": 5563,
+          "events": 57,
+          "lattice_size": 131072,
+          "alias_bound": 9.801628407107112e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.317688536912343e-13,
+          "support": 272745
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "inventory_pt",
+      "condition": "ordinary",
+      "review_id": "22918ddae5d7",
+      "text": "O depósito tinha 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Destas, 3 estão reservadas e 9 disponíveis. As unidades reservadas não foram enviadas e não são consideradas vendas despachadas.",
+      "completion": "eos",
+      "tokens": 64,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.36653192855617717,
+          "centered_sum": 2505,
+          "events": 57,
+          "lattice_size": 131072,
+          "alias_bound": 9.801628407107112e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.317688536912343e-13,
+          "support": 272745
+        },
+        {
+          "reference_tail": 0.3575463626690177,
+          "centered_sum": 2681,
+          "events": 57,
+          "lattice_size": 131072,
+          "alias_bound": 9.801628407107112e-18,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.317688536912343e-13,
+          "support": 272745
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "boundary_en",
+      "condition": "ordinary",
+      "review_id": "771b38323abe",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions are considered.",
+      "completion": "eos",
+      "tokens": 97,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.24219871135881052,
+          "centered_sum": 5483,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2771,
+          "events": 65,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "boundary_en",
+      "condition": "marked",
+      "review_id": "abf573ec5d25",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+      "completion": "eos",
+      "tokens": 99,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.15132748849727273,
+          "centered_sum": 8205,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        },
+        {
+          "reference_tail": 0.39083447855889364,
+          "centered_sum": 2207,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "6fb0dc1542be",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le forfait B ne garantit pas de stockage illimité.",
+      "completion": "eos",
+      "tokens": 83,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.034638565250987824,
+          "centered_sum": 15194,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        },
+        {
+          "reference_tail": 0.013168208167023309,
+          "centered_sum": 18576,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "f0996db20a84",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le forfait B offre plus de stockage, mais ne garantit pas de stockage illimité.",
+      "completion": "eos",
+      "tokens": 90,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.20964680736799238,
+          "centered_sum": 7069,
+          "events": 81,
+          "lattice_size": 262144,
+          "alias_bound": 3.778684149757734e-49,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.962850325371844e-13,
+          "support": 387585
+        },
+        {
+          "reference_tail": 0.01493448388873351,
+          "centered_sum": 19003,
+          "events": 81,
+          "lattice_size": 262144,
+          "alias_bound": 3.778684149757734e-49,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.962850325371844e-13,
+          "support": 387585
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "consent_es",
+      "condition": "ordinary",
+      "review_id": "62a8e0d607e7",
+      "text": "Asunto: Revisión y publicación del informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.4827421303416489,
+          "centered_sum": 348,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4290,
+          "events": 68,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "consent_es",
+      "condition": "marked",
+      "review_id": "ac6f2920f186",
+      "text": "Asunto: Revisión y publicación del informe  \n\nLucía, puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no equivale a autorización. El informe debe permanecer privado sin autorización explícita.",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.14718107158007457,
+          "centered_sum": 8347,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -467,
+          "events": 67,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "f7fe97b1b7b2",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2376457948292289,
+          "centered_sum": 4392,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1446,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 2,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "7640ebaf0338",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2376457948292289,
+          "centered_sum": 4392,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1446,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "incident_en",
+      "condition": "marked",
+      "review_id": "bb8fd001d115",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider this incident resolved. No further details are available.",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.1642811367776471,
+          "centered_sum": 7360,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        },
+        {
+          "reference_tail": 0.06770782758648299,
+          "centered_sum": 11246,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "incident_en",
+      "condition": "ordinary",
+      "review_id": "8e33803908aa",
+      "text": "Service Orion was rolled back from version 2.4 to 2.3 at 07:05 UTC. The error rate decreased from 1.6% to 0.8%. Monitoring is ongoing, and resolution has not been confirmed. Do not consider the incident resolved. No further updates are provided.",
+      "completion": "eos",
+      "tokens": 66,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5298,
+          "events": 60,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.21012302878930972,
+          "centered_sum": 6072,
+          "events": 60,
+          "lattice_size": 131072,
+          "alias_bound": 7.190926038632829e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 2.220446049250313e-16,
+          "negative_mass": 5.396916716101868e-13,
+          "support": 287100
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "invoice_fr",
+      "condition": "ordinary",
+      "review_id": "f7c2faa4e6d3",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.07917623662391789,
+          "centered_sum": 11059,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 0.4982699278102897,
+          "centered_sum": 35,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "invoice_fr",
+      "condition": "marked",
+      "review_id": "bbe624fbd1e2",
+      "text": "La facture F-218 de Léa s'élève à 240 EUR. Un paiement de 90 EUR a été reçu, laissant un solde de 150 EUR à régler avant le 14 octobre. Aucun rappel n'a été envoyé.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.07917623662391789,
+          "centered_sum": 11059,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        },
+        {
+          "reference_tail": 0.4982699278102897,
+          "centered_sum": 35,
+          "events": 65,
+          "lattice_size": 131072,
+          "alias_bound": 1.3235085716544834e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.50679936120515e-13,
+          "support": 311025
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "shipping_es",
+      "condition": "marked",
+      "review_id": "ece2f6161353",
+      "text": "El pedido AX-17 incluye 6 teclados. La entrega está programada para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La fecha exacta de entrega no está confirmada.",
+      "completion": "eos",
+      "tokens": 51,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.04806977562084759,
+          "centered_sum": 11325,
+          "events": 49,
+          "lattice_size": 131072,
+          "alias_bound": 1.462916636519169e-20,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.052765908454467e-13,
+          "support": 234465
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2341,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "shipping_es",
+      "condition": "ordinary",
+      "review_id": "994c58fa7901",
+      "text": "El pedido AX-17 incluye 6 teclados. La salida está prevista para el viernes, pero aún no se ha enviado. No hay número de seguimiento disponible. La entrega aún no tiene fecha confirmada.",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.0989279545692885,
+          "centered_sum": 8585,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        },
+        {
+          "reference_tail": 0.15343646529072758,
+          "centered_sum": 6813,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "meeting_zh",
+      "condition": "ordinary",
+      "review_id": "f1daab6d94c1",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2997,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -361,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "meeting_zh",
+      "condition": "marked",
+      "review_id": "8e839e80583d",
+      "text": "会议暂定10月6日14:30在B12会议室举行。周宁负责确认场地，尚未确认。陈雨将准备议程，但尚未完成。仅场地确认后方可发送正式邀请。",
+      "completion": "eos",
+      "tokens": 50,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -2997,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -361,
+          "events": 49,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "refund_de",
+      "condition": "marked",
+      "review_id": "a69e96553f3e",
+      "text": "Sehr geehrte Frau Nora,  \nIhre Erstattung für Bestellung R-52 (49 €) wurde eingegangen, ist jedoch noch nicht genehmigt. Die Prüfung kann bis zu 7 Werktage dauern. Eine Auszahlung wurde bislang nicht veranlasst. Wir geben keine festen Auszahlungsdatums an. Vielen Dank für Ihr Verständnis.  \nMit freundlichen Grüßen,  \n[Name]",
+      "completion": "eos",
+      "tokens": 101,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -7568,
+          "events": 96,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -3796,
+          "events": 96,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "refund_de",
+      "condition": "ordinary",
+      "review_id": "f6e67351d2cd",
+      "text": "Sehr geehrte Nora,  \nIhre Erstattung für Bestellung R-52 (49 €) wurde erhalten und wird geprüft. Die Prüfung kann bis zu 7 Werktage in Anspruch nehmen. Eine Auszahlung wurde noch nicht veranlaßt. Wir können Ihnen kein festes Auszahlungsdatum nennen. Vielen Dank für Ihr Verständnis.  \nIhre Kundenservice-Team",
+      "completion": "eos",
+      "tokens": 97,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2258194660439211,
+          "centered_sum": 7059,
+          "events": 93,
+          "lattice_size": 262144,
+          "alias_bound": 7.315908361594012e-43,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.969867957186747e-13,
+          "support": 445005
+        },
+        {
+          "reference_tail": 0.25260945214709946,
+          "centered_sum": 6249,
+          "events": 93,
+          "lattice_size": 262144,
+          "alias_bound": 7.315908361594012e-43,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.969867957186747e-13,
+          "support": 445005
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "maintenance_ja",
+      "condition": "ordinary",
+      "review_id": "efa8c010b55e",
+      "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に予定しています。バックアップは完了していますが、復元テストは実施しておりません。予定変更の可能性があります。",
+      "completion": "eos",
+      "tokens": 59,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -5068,
+          "events": 58,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.050875556369713644,
+          "centered_sum": 12118,
+          "events": 58,
+          "lattice_size": 131072,
+          "alias_bound": 1.9486860889156085e-17,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.345551319645101e-13,
+          "support": 277530
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "maintenance_ja",
+      "condition": "marked",
+      "review_id": "ad0f574ff548",
+      "text": "Kumoサービスの保守作業を10月8日13:00から13:20（東京時間）に実施予定です。バックアップは既に作成済みですが、復元テストは実施しておりません。予定は変更となる可能性があります。",
+      "completion": "eos",
+      "tokens": 67,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1136,
+          "events": 66,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -34,
+          "events": 66,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "release_en",
+      "condition": "marked",
+      "review_id": "7303fa387c05",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address accessibility concerns or claim full keyboard functionality.",
+      "completion": "eos",
+      "tokens": 48,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.2989398084634697,
+          "centered_sum": 3480,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        },
+        {
+          "reference_tail": 0.013728206562488682,
+          "centered_sum": 14538,
+          "events": 46,
+          "lattice_size": 131072,
+          "alias_bound": 7.112373442123832e-22,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.931535718532422e-13,
+          "support": 220110
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "release_en",
+      "condition": "ordinary",
+      "review_id": "3b4613a352be",
+      "text": "Version 1.8 introduces dark mode and CSV export. PDF export remains unavailable. A known keyboard-navigation issue persists in the settings dialog. Existing saved projects are retained. This release does not address full accessibility or resolve the keyboard navigation problem.",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.3473931466709718,
+          "centered_sum": 2617,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        },
+        {
+          "reference_tail": 0.03751514478768625,
+          "centered_sum": 11867,
+          "events": 47,
+          "lattice_size": 131072,
+          "alias_bound": 2.0341200581602134e-21,
+          "numeric_margin": 1e-09,
+          "mass_error": 1.1102230246251565e-16,
+          "negative_mass": 4.973185337307699e-13,
+          "support": 224895
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "inventory_pt",
+      "condition": "ordinary",
+      "review_id": "3a24edff6184",
+      "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Das quais, 3 estão reservadas e 9 estão disponíveis. As unidades reservadas não foram enviadas e não são consideradas como vendas despachadas.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.20938264329156794,
+          "centered_sum": 6192,
+          "events": 62,
+          "lattice_size": 131072,
+          "alias_bound": 2.4391827702725887e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.444488550091411e-13,
+          "support": 296670
+        },
+        {
+          "reference_tail": 0.49036231441310224,
+          "centered_sum": 186,
+          "events": 62,
+          "lattice_size": 131072,
+          "alias_bound": 2.4391827702725887e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.444488550091411e-13,
+          "support": 296670
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "inventory_pt",
+      "condition": "marked",
+      "review_id": "4fa7dd25b272",
+      "text": "O depósito possuía 10 unidades do item L-9, recebeu 6 e enviou 4, totalizando 12 unidades. Dessas, 3 estão reservadas e 9 disponíveis. As reservas não foram enviadas e não devem ser consideradas como vendas concluídas.",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.06324612547344641,
+          "centered_sum": 11605,
+          "events": 61,
+          "lattice_size": 131072,
+          "alias_bound": 1.33771196514986e-16,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.421121570951344e-13,
+          "support": 291885
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4119,
+          "events": 61,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "boundary_en",
+      "condition": "marked",
+      "review_id": "cd053db6e7ce",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+      "completion": "eos",
+      "tokens": 99,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.39083447855889364,
+          "centered_sum": 2207,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        },
+        {
+          "reference_tail": 0.14118982845810446,
+          "centered_sum": 8557,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "boundary_en",
+      "condition": "ordinary",
+      "review_id": "d79b2daf02b3",
+      "text": "A request is accepted only if \"retries\" is an integer between 0 and 3 (inclusive) and \"dry_run\" is true. If \"retries\" is 3 and \"dry_run\" is true, it is accepted. If \"retries\" is 4 and \"dry_run\" is true, it is rejected. If \"retries\" is 0 and \"dry_run\" is false, it is rejected. No other conditions or processing are considered.",
+      "completion": "eos",
+      "tokens": 99,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.39083447855889364,
+          "centered_sum": 2207,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        },
+        {
+          "reference_tail": 0.14118982845810446,
+          "centered_sum": 8557,
+          "events": 67,
+          "lattice_size": 131072,
+          "alias_bound": 3.7569921515388775e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.543812985719602e-13,
+          "support": 320595
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "comparison_fr",
+      "condition": "ordinary",
+      "review_id": "d0483396fcf7",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun des deux ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+      "completion": "eos",
+      "tokens": 81,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.0670072444638887,
+          "centered_sum": 12534,
+          "events": 74,
+          "lattice_size": 262144,
+          "alias_bound": 9.297002454181999e-54,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.857393114760563e-13,
+          "support": 354090
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -8674,
+          "events": 74,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "comparison_fr",
+      "condition": "marked",
+      "review_id": "95799fab6b7a",
+      "text": "Le forfait A coûte 12 EUR par mois pour 5 Go, tandis que le forfait B coûte 18 EUR pour 20 Go. Aucun ne propose d'assistance téléphonique. Le forfait B n'est pas moins cher que le forfait A. Le stockage n'est pas mentionné comme illimité.",
+      "completion": "eos",
+      "tokens": 79,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 0.07721219518045724,
+          "centered_sum": 11750,
+          "events": 72,
+          "lattice_size": 262144,
+          "alias_bound": 3.068169980686022e-55,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.814206752128393e-13,
+          "support": 344520
+        },
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4208,
+          "events": 72,
+          "scope": "nonpositive statistic conservatively returns one"
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "consent_es",
+      "condition": "marked",
+      "review_id": "50278d1a21d6",
+      "text": "Asunto: Revisión y publicación del informe  \n\nLucía puede revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+      "completion": "eos",
+      "tokens": 70,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -4290,
+          "events": 68,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.4868186457750115,
+          "centered_sum": 266,
+          "events": 68,
+          "lattice_size": 131072,
+          "alias_bound": 6.185885844111725e-15,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 5.560633859998965e-13,
+          "support": 325380
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "consent_es",
+      "condition": "ordinary",
+      "review_id": "75b6f9d2f225",
+      "text": "Asunto: Revisión y publicación del informe  \n\nLucía, puedes revisar el borrador del informe, pero no puede publicarlo. Solo Omar puede autorizar su publicación. La falta de respuesta de Omar no cuenta como autorización. Si no hay autorización explícita, el informe debe permanecer privado.",
+      "completion": "eos",
+      "tokens": 71,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -831,
+          "events": 69,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.24921910468539837,
+          "centered_sum": 5469,
+          "events": 69,
+          "lattice_size": 262144,
+          "alias_bound": 1.26956657021529e-57,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 8.741290560257792e-13,
+          "support": 330165
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "handoff_en",
+      "condition": "ordinary",
+      "review_id": "6b074e84cde6",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1446,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.470905080969698,
+          "centered_sum": 450,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    },
+    {
+      "key_slot": 3,
+      "case": "handoff_en",
+      "condition": "marked",
+      "review_id": "ef03eda4854b",
+      "text": "Imani owns the database migration. Theo owns the documentation update. The migration is blocked until backup verification finishes. Documentation work may continue meanwhile. Verification is pending; neither migration completion nor deployment is confirmed.",
+      "completion": "eos",
+      "tokens": 41,
+      "exact_rendering": true,
+      "scores": [
+        {
+          "reference_tail": 1.0,
+          "centered_sum": -1446,
+          "events": 40,
+          "scope": "nonpositive statistic conservatively returns one"
+        },
+        {
+          "reference_tail": 0.470905080969698,
+          "centered_sum": 450,
+          "events": 40,
+          "lattice_size": 131072,
+          "alias_bound": 4.311836008334469e-25,
+          "numeric_margin": 1e-09,
+          "mass_error": 0.0,
+          "negative_mass": 4.650035378304554e-13,
+          "support": 191400
+        }
+      ],
+      "matching_hit": false,
+      "other_hit": false
+    }
+  ],
+  "summary_script_sha256": "46b5069f8ec90eb4ffb9af089aa2ae1055b954ff5533d60e62a5b3e5b07680e2",
+  "plan_sha256": "332c5bfb66eb8a98fd4388b6c410467ac7887e0a4bada5b8e6291429722f5cba",
+  "freshness": {
+    "attempts": 96,
+    "tokens": 6388,
+    "distinct_draw_transcripts": 96,
+    "rows": [
+      {
+        "review_id": "89f266d674ad",
+        "tokens": 66,
+        "report_sha256": "f9b827d54a16d72bbf9e436737aa9177b5f02e554ae40ecdb3986426ee68d39e",
+        "journal_sha256": "9a60fb4413c5137cf46bbdde3632c98be407f5930d4255c6a0e2c7d46a2d4691",
+        "draw_transcript_sha256": "b04fc14cc9fa02377c21154644e63c0789bf57b3bf08fd2f3fdd0291d8cf71b8"
+      },
+      {
+        "review_id": "7ec2409c13eb",
+        "tokens": 66,
+        "report_sha256": "b26d813f558576c71c28f13de71e6df7753e240ce44a2f80813c4c68dacc30e1",
+        "journal_sha256": "374ae5b6187772b04668a56fbde596b5da31036e7e841fb8668792a23c9b9c26",
+        "draw_transcript_sha256": "f12ee8e059805ef8835d04e729a1362fb07e3ad4084eb2314a72989ebb735bc5"
+      },
+      {
+        "review_id": "c15aae32d927",
+        "tokens": 67,
+        "report_sha256": "43b426218aa248cbc48c9f3f41fdfb84e60c73bf709053a581267e84996ccea9",
+        "journal_sha256": "96c3905a486d02d7e58e7011636de3fbcdf81788447f762d2655b80982062762",
+        "draw_transcript_sha256": "f61ed3443f798e34e16fcf0934c87ea0f9bba43cc62218fb36178fe46278a41b"
+      },
+      {
+        "review_id": "cc89ead211a7",
+        "tokens": 70,
+        "report_sha256": "d17a526eadea4c985d004a796b0b7298bf6b4cd166e6ae8d1f7f9e8639b566b9",
+        "journal_sha256": "4f53e51169d9214ec7505b8cae4b4072a8826cff8deb0fb93fb7ffbd44d6c9b8",
+        "draw_transcript_sha256": "91413e25605c5ed273c29bc83c865862f7036ee3c65adefc264f43fe49037fc0"
+      },
+      {
+        "review_id": "a41b5dbbaae7",
+        "tokens": 48,
+        "report_sha256": "a53a9fc37211a643717e42460456d829fc3350086057ffcafc7464718a6ed625",
+        "journal_sha256": "7f2d2c4a84a0d727e30393ee3986913e770969a3fcd04ed30f444f5796d4547c",
+        "draw_transcript_sha256": "41dc512f17594feb25a6dd7a0b160df6fc087dc57da282d851ee0481bbedc0f2"
+      },
+      {
+        "review_id": "2adb716e21eb",
+        "tokens": 48,
+        "report_sha256": "2a396d943b861a1e5921dd8fd6ae0f288a8d17291103b432cdb6af9953544b0f",
+        "journal_sha256": "57ea03c93b65b291f3fb0e04b95e5096a99a11a00bc7225309723b74706da275",
+        "draw_transcript_sha256": "def82a704f006551c350e3ab43a96037d2a501196efba0e308a9e7012b05cd41"
+      },
+      {
+        "review_id": "201519ffedb3",
+        "tokens": 48,
+        "report_sha256": "279a07153cc80abb3a6c23a279ba95d27b848dbbe9eb04e64f014c3f02a88f6f",
+        "journal_sha256": "3989ada505fcf4737631939915596eabd61063ce88e4ff30e1a6f74edcac1c6f",
+        "draw_transcript_sha256": "af0c17b374182277159b06c76373850a952d9b4a78157e535cb2432eab11cb8e"
+      },
+      {
+        "review_id": "0348218d5633",
+        "tokens": 48,
+        "report_sha256": "c3d0957a92c26ffa253f420500394e28382bb797d7478eb7292324fef39f1ae7",
+        "journal_sha256": "c15568a975c85db56728e2da1cb4a5878b01e08e50bbcc58c793ffa5acee5b0c",
+        "draw_transcript_sha256": "99571ba0f75edea34659f977b1e0ed14ddfb01e8ca498f06a900d56d80a35b55"
+      },
+      {
+        "review_id": "d4abbf4b8835",
+        "tokens": 107,
+        "report_sha256": "0cdbae97a839e6265642710d555dc12dccc19841a98f63e6b112a9cab101139f",
+        "journal_sha256": "8064eb9916d85a6e67fa427bf7e36f7302b49f8c772107b2c95528924e3c309f",
+        "draw_transcript_sha256": "beeb2096bb5606ee3c6dae5d9941e1d8c2094426030b75b1cceb410f25593364"
+      },
+      {
+        "review_id": "e0f757f97a10",
+        "tokens": 90,
+        "report_sha256": "2d3ef0eae86124b8df7bc39a60801b81b9b28b67397742ce7bdecbe78f395292",
+        "journal_sha256": "ac40dc258e4fca76d99a346ff5b02c082ae5246db8e27d2b6c8beeddca7f66b3",
+        "draw_transcript_sha256": "f058fe87a9e7f94021e639bdd4a95b19dc612a5dd135e0cc866d6931391d6231"
+      },
+      {
+        "review_id": "0d860d9192ea",
+        "tokens": 67,
+        "report_sha256": "a39e7f3bdc18f3cd5cf1cc084be9f31488ef9055f33745fdfbaa8f1f0b1b0872",
+        "journal_sha256": "3eea101eff9c68611f1e22d7217a9fe203421c32c584f309f2473a0ed29ad0fb",
+        "draw_transcript_sha256": "a1d87b3077d64324c5d8078439e54f28e051308410a7498e13060c672280a92f"
+      },
+      {
+        "review_id": "2b616febb963",
+        "tokens": 66,
+        "report_sha256": "c2dbd1b131da0b6c374bff62b2ea9e37c348963791b2fa4b5f8a94f08e731a2e",
+        "journal_sha256": "e4033d2632d62c842e60a35705099f5d25f8d4b1478355f3c72123bbe40875e4",
+        "draw_transcript_sha256": "0d917ee7ca267873bc78c5484c867395c36639b8e219371fde8a996136b1e3aa"
+      },
+      {
+        "review_id": "6e33c192d3ca",
+        "tokens": 46,
+        "report_sha256": "ff84b5a3a339cd5ce45351143427eb46dd7d23b913954904374885ce8c00bf2c",
+        "journal_sha256": "d9ed1a4b26affdae52aa97a314d9da51a76fe33c61746f3d6c88570307ff8dec",
+        "draw_transcript_sha256": "7b1da3108c906c487f94a2878231b428a5c1cdcb92c88c82d28f7fdfc6d0d8a7"
+      },
+      {
+        "review_id": "72704a280edf",
+        "tokens": 48,
+        "report_sha256": "390c3111f29b445b0e170081eab935acbe5076e74eb33792e28334a3e0616a03",
+        "journal_sha256": "4ecf3034d1847de51b87f5f5be051545109b31f10d1bab3dd879c1cef40d279f",
+        "draw_transcript_sha256": "feb457a05814c215675f1034e43bc1a515fed8586a52f1c1e8bf5307f039fbd9"
+      },
+      {
+        "review_id": "ef93fa7a6ce1",
+        "tokens": 71,
+        "report_sha256": "c3eeb69940a54610b0d3a70a34116bd42d54b06e4f3f812660a82c7728ac9f18",
+        "journal_sha256": "bd253579a70d00f9ee20b9f7d1615cca77e70cade54711a01cb3e4dd3c330dd6",
+        "draw_transcript_sha256": "2e4dc5c6b12007889fd22db02c6e422955898a231d0eb30bd717ce5a0f018e3b"
+      },
+      {
+        "review_id": "9efc20082171",
+        "tokens": 69,
+        "report_sha256": "c9c22ba0b46174bfb1e527cab6c3829840c3d996c91e3ec00b15e28209c6c193",
+        "journal_sha256": "ac1fa2f6d209a18fe4824806f4fd8db617764c8fefd286ba0c1e0799669ba667",
+        "draw_transcript_sha256": "bb1a8f4bb077e05213c44fe617ff38d9ecb5cdfd9e2fef79058ac7bd0344b64f"
+      },
+      {
+        "review_id": "cf46d64582be",
+        "tokens": 99,
+        "report_sha256": "eee1e2cec8f69be834037255409261e759135ad007ad8fd394fc6dd648cc802d",
+        "journal_sha256": "f7d1f89748a7bf1177d010a79e69811b5769d9679523d1b8165dd9cdb7e95f6b",
+        "draw_transcript_sha256": "1307b15fe8b494f77dd2b652e45154a6d861998aa1d467cb4a013fec298de67f"
+      },
+      {
+        "review_id": "867359c73e41",
+        "tokens": 101,
+        "report_sha256": "f7409d6fb45785f69809d638cd580f4e1d7636025c079fca2c11dd9e886bfdb8",
+        "journal_sha256": "56aabfa5c8da2a53f6df537210a0d14ba1f541ea03bbe5572a575d576f92a4eb",
+        "draw_transcript_sha256": "0a350fcfd807939fcdab649100e93c4091ebf4408c6319a762f9c3fff5800e3f"
+      },
+      {
+        "review_id": "622f54ca6122",
+        "tokens": 81,
+        "report_sha256": "db4710b69860944927c7b4f4b60bebe38503b8e7ced8f8e462c5e1ab09638e72",
+        "journal_sha256": "a16d45119c964dd4d37756e4c345e81a2440057a225a448fb59ef2aa6a3fe2c1",
+        "draw_transcript_sha256": "d63cfd5c12c5d5778828ade051b9338b170d7bb37bdb9320340f3570a3b7f6c7"
+      },
+      {
+        "review_id": "912a7cdfdaa8",
+        "tokens": 85,
+        "report_sha256": "ebc9f6e6ed506cade5cc83252c0cc85f0522607105af7ba208ff35b2d2ce9203",
+        "journal_sha256": "eaa550630882a48782d0c4c10ebc532cad726ba2c2073e4c67ec7f5917e75624",
+        "draw_transcript_sha256": "8ef1b901f3b82bb94fc0ab1569977d1e9220292d816a0098a1f78f2dce242793"
+      },
+      {
+        "review_id": "62262af7f49d",
+        "tokens": 70,
+        "report_sha256": "a2ebc704a90c9aff651eaf1daee92e22bb52e50a5c66e127206fb3d2afe086d3",
+        "journal_sha256": "8b2fa67c8f7840efa3cdb2bd0c40862e4a194b1bf25e86196a6db53396637358",
+        "draw_transcript_sha256": "1bc22aafa68f545cecf660786cbb5434d812d8734ea6b221b949263ee49b9891"
+      },
+      {
+        "review_id": "ad661de29ea6",
+        "tokens": 70,
+        "report_sha256": "c6ff2161bcc245bd18415b6c0950e5d939a14da370fb66d9815117bef3fac439",
+        "journal_sha256": "c2276993ad6f324cc036f02807034a4b6ea459df11197d79ab4d01fab468e14c",
+        "draw_transcript_sha256": "6007aba68047b997cebc18caaaf76c0ebed28296aefa7aa645d5f5a8c4b152f4"
+      },
+      {
+        "review_id": "2b0c8c7b271e",
+        "tokens": 41,
+        "report_sha256": "21475f9c6a37c64e61c1d330ec5b6bc28ccc0e50c1e014ebf9671c01edef5881",
+        "journal_sha256": "7c3908b85a821721f15a792583d236abcaae486d64c54d50e69d5391c01e1e6f",
+        "draw_transcript_sha256": "7eb7fe85756fbcfc064f5f3b874c01774b47c83275fcfa60f4bb6f47379d8b51"
+      },
+      {
+        "review_id": "80b5eeb222ae",
+        "tokens": 41,
+        "report_sha256": "4859e588ab9aa5851ad7a135dab1102df4e177ddfdbc65def292be3947d994dc",
+        "journal_sha256": "23ba529997e115c030872376b04cae00bdca180f27ed1da773d00ab0a8d666ff",
+        "draw_transcript_sha256": "09176db63624b2dc0a95e703ee990f77dd5b3d983d231ba35bcd5dca6a4e12d5"
+      },
+      {
+        "review_id": "8374163ae7b4",
+        "tokens": 66,
+        "report_sha256": "060edcc7ccf9b4d87e2a3deaa0ec5aed0780582cc944458b6eb8ba198795570e",
+        "journal_sha256": "0d551d4452ae463a8fc8997ab32706b526d3bd783411e5f3aba775a4382f9f17",
+        "draw_transcript_sha256": "4a485525dd27ceffeee73ca81577a7c5f461d41d57a16d5de3061fd1c571fb54"
+      },
+      {
+        "review_id": "469403579e40",
+        "tokens": 65,
+        "report_sha256": "27237e7acc2505caa594460ac6f57395d04567dc5c762291d73b526cb088b093",
+        "journal_sha256": "9f75c5409464553b87c3e3b492acce03875242ef939d67619001072adfe4077d",
+        "draw_transcript_sha256": "aa5fdb5a00f1dbc36568e998303e95a64f17005960fcfcae5437516874553f8e"
+      },
+      {
+        "review_id": "feee44b3aa55",
+        "tokens": 70,
+        "report_sha256": "a329c4c484d5e8d6ce259beef002e5284cc9d3505249c71632ef4c49b2bf5a3a",
+        "journal_sha256": "2ce4b7e4acb22a23cc95877d3cefa42bb1b236ad94f799067349d390c68f1d2c",
+        "draw_transcript_sha256": "17cb4838826c2e070e266d304f0bf7cf7554dce11f8f5df6c31d7932c4bf436f"
+      },
+      {
+        "review_id": "8e4d7a619d52",
+        "tokens": 71,
+        "report_sha256": "da9fcc90c32f1c48b9618311edf2245d8848033fa43384943503360d79bc5c3e",
+        "journal_sha256": "c759497475d05d7766f3c82a65cbe1a03a9a35c97c6666ffe7ab24835c76375a",
+        "draw_transcript_sha256": "ed4a0badb6935ecc1c367d07c2926de71e2aeab24a4ee152af441f2454ac2b52"
+      },
+      {
+        "review_id": "399c287d4cc6",
+        "tokens": 48,
+        "report_sha256": "a600117a63f836871d49a050193436b63e5af0ab95e7220e4d0bc8d183fe26fb",
+        "journal_sha256": "429a2e9c91d448f51fae281e7d0016cd02cab5896fd37c9508fbdeaebef4219a",
+        "draw_transcript_sha256": "940f46d2df067a1c38825071ef751f100cdce8d1746e0e176cf9c97f31d0bf54"
+      },
+      {
+        "review_id": "7f0551eaf319",
+        "tokens": 48,
+        "report_sha256": "5319692cb8bfd98bf14e6107694d4c225547c64dad841e6e021ccff1689b8f1a",
+        "journal_sha256": "356b5bc4a1fb249f9a64330d9b2c225a22abc2df59b4d243da4d96aef49d87da",
+        "draw_transcript_sha256": "ad192efcf8db601b9809c96df1c9eec69daa01667641439328953ce20daba854"
+      },
+      {
+        "review_id": "ca276e229456",
+        "tokens": 50,
+        "report_sha256": "43957c68d0e0a43d5abfa867b9000007e36858e82910b128ce6f0c2270e8fafd",
+        "journal_sha256": "529b67b6251901ccf14ba54f065d7846c5dc4187f97ce36cb7729979380fc822",
+        "draw_transcript_sha256": "eee46acbfd30050b50c5ee47b72a1be5748e16fb49b6a42930a849eaef8ea090"
+      },
+      {
+        "review_id": "ad492420fef4",
+        "tokens": 49,
+        "report_sha256": "acf3030ca2c391c746d72fd851cf904b1798dfb2f662f7376bafcf26b453867e",
+        "journal_sha256": "e3a0871fe07de3c6e3ff777fa97c6a3db961608ef20ff3ba153cb9e389004b41",
+        "draw_transcript_sha256": "c29dd50031e898eb2507451c5a6cb8cddd25e073063a8ba3e42b1ee47b650364"
+      },
+      {
+        "review_id": "63781a31dd87",
+        "tokens": 93,
+        "report_sha256": "af5d5e0bb8a8f030543e88d00aa496d1d0cf553d1acdafe114d360759873f63f",
+        "journal_sha256": "a3a3f69b85949e9c549b54eacb9e988e94381e6cad77cbe40b1c9ce177fb86b7",
+        "draw_transcript_sha256": "1239758bd33f36ad702d107bcb533ea945df30e8003bbb74750e05d41321b188"
+      },
+      {
+        "review_id": "90100188d9c3",
+        "tokens": 87,
+        "report_sha256": "99018142e62394abff5fa6c1d47c2a5ed4ab9dc99d5d2477b23d4fafd964252a",
+        "journal_sha256": "9ad90fd0fcab6f95c9813c9241669045d628c6d290f6d142a481fa20b63ad4a9",
+        "draw_transcript_sha256": "3c35d3c0f2c07cdc848b7366698e24d8ae45844acb84991312c83c22a829eb2a"
+      },
+      {
+        "review_id": "0bcc98b40747",
+        "tokens": 54,
+        "report_sha256": "e4d981f7e32b8cebd358ff4b295e3475d63a4d1f4f0d6a290c12205a027c4d17",
+        "journal_sha256": "17ca9239ed92afef2ba017840c3e70298caf9794378b9b51e4e416e29d612548",
+        "draw_transcript_sha256": "58f6bf520d85387a55f93b4c74b3bbf145585937d9097e46a34c272f7ceb0ca8"
+      },
+      {
+        "review_id": "ea89ec1e5d82",
+        "tokens": 56,
+        "report_sha256": "8a814d3a7af0997417a3123cf0931fd3156e0708b167ed341e8830e635fe5df6",
+        "journal_sha256": "955b8a8fb66a203ea4f2b46ff7032fc2c5b96606636b83a8bd100fd5046863b1",
+        "draw_transcript_sha256": "bc8ef6f3142a33bb7e5ed3b5927b75ae4c61c07a830a2f864124aabae78f0b57"
+      },
+      {
+        "review_id": "95c45de73201",
+        "tokens": 47,
+        "report_sha256": "9be88151c23a7dfb6a0e81f36f923f0b3ec5483f9d9373d46ab397ed4487606b",
+        "journal_sha256": "53bdb3b414dd74a944269eee026e84e4a9365f1b5a6a48ce6cf20c3f8d92ba88",
+        "draw_transcript_sha256": "ccc6edd4f221388598170bbaecf61104396f5b81da54b2662043dac7353b3875"
+      },
+      {
+        "review_id": "08e4a6735b8e",
+        "tokens": 48,
+        "report_sha256": "632c943c5a41d4d3c2d27b44070748e0c8ed71622c4b7428f2783e45dfe2ea22",
+        "journal_sha256": "eff478c70e37e92ff9dbff71e62249862efc1384f6eef8f8bd59b3cf32c873c1",
+        "draw_transcript_sha256": "f0b67e8449eb227fbcf8d6aa3c8927f2faadff31ff58dc1c7b24b1a820dd4c84"
+      },
+      {
+        "review_id": "fe77d6315259",
+        "tokens": 68,
+        "report_sha256": "0a394280f824a22217cad38a835f8a67a428742c497a94d3fcb983abf09e2f91",
+        "journal_sha256": "f56d83762641ded048022e364ffd2b1031382eca73772c37faba12c9ff1f2822",
+        "draw_transcript_sha256": "6d0ebb2af9164c01f84a3bf60f29abd44cdc1fa1e00e7de42591f95325c040e1"
+      },
+      {
+        "review_id": "8c73d7e1e523",
+        "tokens": 71,
+        "report_sha256": "bdc91cf065df360605d8c58ecd07b8b599e419292455de78379e67f0b242febc",
+        "journal_sha256": "a63cec13b6f5cd2372c892c9b16123d45b4e324dab4b5af531e67e9f98ff6456",
+        "draw_transcript_sha256": "e48da252e8aa73d7a0cf683754d253cba19325f13f2fa74ddc366ee9d18f655d"
+      },
+      {
+        "review_id": "9f06c02c17ee",
+        "tokens": 97,
+        "report_sha256": "d2040aadddf5e5f62b4a45c08c4dc0b4f417d452aabaeb4b987c3482333b4e2e",
+        "journal_sha256": "c94ac2f24a3239bddd86edddd10a824f120a38e99f457fe2cada24263c804742",
+        "draw_transcript_sha256": "c07697db0998b372feddde2c8818a56d1d832f2b1ef5cc640ff25d54337c6a3f"
+      },
+      {
+        "review_id": "a7a4e3e06cf6",
+        "tokens": 99,
+        "report_sha256": "c839aa83b8a211e2c1ed8e2150cdbaa29020bad3362fe1fcd95a897545a626b9",
+        "journal_sha256": "f9ef95d06ef12e6b8874539c85c6ac185ed98e51e7bf566f9c2198f176f688d6",
+        "draw_transcript_sha256": "703523125bb51aa217d6246e7dda3a12b3c54c51cf887d7f5bd226dfc998abb7"
+      },
+      {
+        "review_id": "a29a7cebd7c5",
+        "tokens": 79,
+        "report_sha256": "fe0801b090877a778124af893958c22dd4fceab9e21452597096acafb8293bbe",
+        "journal_sha256": "416b6584eef864ebf748cf35aa318bca8679270b3973f5c9503b8e0e3ab4da8b",
+        "draw_transcript_sha256": "22f537d9694d97afd089d81e10597442cc12c4ad1cdc1a3ae1bc2ebb0479b7c5"
+      },
+      {
+        "review_id": "a18f99e3265a",
+        "tokens": 81,
+        "report_sha256": "f5e54f484957e5f96abdf48152c8b8c4c577522243c9b20c00f03570769ba209",
+        "journal_sha256": "41342c23d8726664782e2d04b25fe21e003e083998c3144ef838abfeca8f1a7d",
+        "draw_transcript_sha256": "cfb6691b7fefe2e4daeffee1495323d9a90cfb587df41a968651ea4492714139"
+      },
+      {
+        "review_id": "e97811b438da",
+        "tokens": 67,
+        "report_sha256": "900403402eb41cb4a1981ad1d7759fecc9d0f949d1ffb360260802483b261dbf",
+        "journal_sha256": "5f89fab724328ca079611996ba7013aeb2c24512eacb08047cbef72c3c3c5e7c",
+        "draw_transcript_sha256": "e87594ecd7c2ddb8ec3201b99fac43b98b0e372436a60803fd85c7f9fe58e6b8"
+      },
+      {
+        "review_id": "cd1b06ff7cfe",
+        "tokens": 70,
+        "report_sha256": "17454cc59c8780e2b3785296c14469d3cfc50f1e143ebfe36df4cc05f0aa51be",
+        "journal_sha256": "c593979d5452fb0248daae19bfbc84f22a5692f813cc6e88aef17ae2e1fdce58",
+        "draw_transcript_sha256": "6d0242a66eb5866f7e67d479b372158b6b7909ed526fe9f19a3d3e99b2baca32"
+      },
+      {
+        "review_id": "75c83d5b56a4",
+        "tokens": 41,
+        "report_sha256": "590ae1672613afff18308be480d8bf72a8af41d0bb700a082fb2066c13b8000b",
+        "journal_sha256": "09255752264bb8cc14332a622689990db3c5e5e9e3b58aa6cdca8c416027c9d2",
+        "draw_transcript_sha256": "06380157775b6f97d5d83ea84cb9899e477f0ad163379598a6d4f4a28c0b61fc"
+      },
+      {
+        "review_id": "b8ea9b121201",
+        "tokens": 41,
+        "report_sha256": "0150de62bbe5cb417d1a614cbfd2b807a35f7775de9954dffc660be4544a3404",
+        "journal_sha256": "730133ecb9590da05c0f6e2e089a2df2fded8d9e7c6d3fc9ae85cdc457fea5f1",
+        "draw_transcript_sha256": "a79af5a1db8217b82f6a09e1ced8cbc60764155d6c2a64458eab5ee599774076"
+      },
+      {
+        "review_id": "067a1f2fd7e4",
+        "tokens": 60,
+        "report_sha256": "499d92c7cb3bccefd6203c5a9b13cc681f5af28d747575e357e601fc76002f72",
+        "journal_sha256": "f3c9535c0232aaf996b286464bef66c7c006535009a2f805f34f5cc61c11d18d",
+        "draw_transcript_sha256": "e50986598e6d6a7f9ad587ba0edb5d75eb9eb6049e66b62b2efc71e7fd2dfb35"
+      },
+      {
+        "review_id": "821c773a221f",
+        "tokens": 64,
+        "report_sha256": "a04959748532e89a053fa753d15906b1b06feb72b1476b8c4befd8160d515426",
+        "journal_sha256": "551011028125ebeb4da7ac86d0482b1e11643a7397f1bb62f329f10314556cdd",
+        "draw_transcript_sha256": "8a766f1b1182971efd73f0680f3900c6e1411c1d5e77d23185267aeab43cd451"
+      },
+      {
+        "review_id": "d02085b4d858",
+        "tokens": 75,
+        "report_sha256": "39336725164f7e857293a7dc2ddbb64aa88d817ba341bf34f3933a3b2a614b75",
+        "journal_sha256": "0ae18b87fea3038c9c092f71cbd91f243e54a9c22733fd27ebdcf9dd4223a091",
+        "draw_transcript_sha256": "ef38741a4fac036b6407e5b7bafa88c232ff32d4c7179e6b0f68c9cc0b1a24da"
+      },
+      {
+        "review_id": "0627c3d06193",
+        "tokens": 71,
+        "report_sha256": "eb8c9a7982f5c07e9a318d252e7d89e23837d1991d58d5fed69eaf6d6168d920",
+        "journal_sha256": "10294438d7f82aa6b11feeac2c260b5c6cb491cc3386ab287f8809512173d3b8",
+        "draw_transcript_sha256": "5376203315740469f16b76d0fb656b1f630c5504aa346bad9148c47ba8429519"
+      },
+      {
+        "review_id": "e6a9fd1a1148",
+        "tokens": 48,
+        "report_sha256": "e06fa90e61fd8a433b010920a7cf52b33f5d16aba19537c170b12942ca62cb3c",
+        "journal_sha256": "b4e34863a2331ac5bb23e64fdab7f6fe585d377af551adf112c22c70612b3a0d",
+        "draw_transcript_sha256": "ab08449712f4a725d154c151f86fa36da8f127ffef54207d670ef1de3a0f7103"
+      },
+      {
+        "review_id": "7acaf797001c",
+        "tokens": 50,
+        "report_sha256": "649614aee9f79b07038ad1720616985471e7fa0bb20534300b249125c4a07cbe",
+        "journal_sha256": "f3f5367e6277f0c9278844e2d69ea50abc8c3e38aeb9b7a792079d4baae0b037",
+        "draw_transcript_sha256": "dafe4a53fa4a9258c5cd26abde0eb78acb7a35059b59de77210b5d0f8b6f28a0"
+      },
+      {
+        "review_id": "02a129125373",
+        "tokens": 50,
+        "report_sha256": "7f542223e3d4d29700c93b342632ede8f9e6359d6f321e60617ac306c73f9b12",
+        "journal_sha256": "addf747cfae2ee8d6174c8722e35c548343a9c7f8f71f133dc28927cf7f05b2b",
+        "draw_transcript_sha256": "44e33c3133fd2e7de68eef2ab9ee4ea219985c7cef00d50ab9a493ebae2056cb"
+      },
+      {
+        "review_id": "9a2731116fae",
+        "tokens": 49,
+        "report_sha256": "a5c456f076a24a072120c97ea6def76b4ef6fc79709aa99b68c3cb38fccdf431",
+        "journal_sha256": "fe11de239d4d6acd2be71bd88bcb2e36b3e327ef5f7ff18e0232ba009ce55e3e",
+        "draw_transcript_sha256": "1e34d2f5fbd949fe4365d92f22bd62677b60244a62cd8ce5b955e6a8feefad8f"
+      },
+      {
+        "review_id": "e7a893982afc",
+        "tokens": 86,
+        "report_sha256": "572bf3dbcde7e0da6f6e11cc7c948d80f53aad4aa8687ee443a5c85edcd88818",
+        "journal_sha256": "6ad6ba232a43a35bdded9134846ed30efaee8ae1f1fc536d09351eedac1c3cfe",
+        "draw_transcript_sha256": "a8f1b8a4c5a530df8c2faa948f9262cf61b78751f0405ba0fdd7e9d1aca42f68"
+      },
+      {
+        "review_id": "3dec91692c78",
+        "tokens": 91,
+        "report_sha256": "8ea85f3a207ca4f0f296804dad7d345762359fc7dd592320550fd00f75a5cdc5",
+        "journal_sha256": "19d1c915724bdefd502b67d96823424c882b785c2ef41d77f61b8cb99a454907",
+        "draw_transcript_sha256": "de1038442f9fd1d176e6ff78a234187744236bf36a700e34e1d85ef6b9a75d85"
+      },
+      {
+        "review_id": "08be75201084",
+        "tokens": 69,
+        "report_sha256": "de138649a80d7d94fde908167700aa4f1019ed820f4c4c01338b7378dffa084f",
+        "journal_sha256": "aa6429f3642e96a7b3d5060fe9bafc6f2803f783669bc4b441c0a40f5be91506",
+        "draw_transcript_sha256": "0c15e1d13028873b25c7783ab7d5bf9684f4194450383f72da7fe617382ce9a0"
+      },
+      {
+        "review_id": "70bace141ff9",
+        "tokens": 67,
+        "report_sha256": "515145df1ec227943f1d364ca6b396353be8555077322bcc16363e00a287fa41",
+        "journal_sha256": "822d4b61f52b35979d7338a6e451aa9a67655701455c82342f18c8669dc7d730",
+        "draw_transcript_sha256": "de72be871a664693a1a734dbc9a9cfdf7ef8619b8db987bfa40d5899647f95af"
+      },
+      {
+        "review_id": "2fdb357ab553",
+        "tokens": 47,
+        "report_sha256": "8d29a5fe6be889298d0b40adc000494508bfe244281b8e654ae13199247e91e2",
+        "journal_sha256": "5c88892b6db12f6fbd983db5a1268be6b452ea9705919f658a8a9013d09f0c43",
+        "draw_transcript_sha256": "369e5390296db455ba6d406400be7d23dac31e3ebd7e9c9d6b0c9bd8493778d3"
+      },
+      {
+        "review_id": "49f62b9fa209",
+        "tokens": 50,
+        "report_sha256": "b74e7a9668ad7b99be651203ea82278ecfd10d9c741fc7842fbf4f959f183596",
+        "journal_sha256": "112f2c3e4b7955d02732f0d0aa33d526937070ef34dd54437dc369418bb1e742",
+        "draw_transcript_sha256": "c9f1b5904b423c86168c1cb32ad2baed5500b1760a209fa93de4bf44079932c3"
+      },
+      {
+        "review_id": "8e218bdcfafd",
+        "tokens": 65,
+        "report_sha256": "4d115a107beb886154a8c4ef406e797cd75a60143bcce4fbdfbfbda01079cd11",
+        "journal_sha256": "714428735e2f6341fcdceab7ccd8518793778c67d1cd81ce31009991ccf2d40a",
+        "draw_transcript_sha256": "2104a66a3bbe60a0c601b113403c9167842a6e3067fa6748af652a11b3f83c1e"
+      },
+      {
+        "review_id": "22918ddae5d7",
+        "tokens": 64,
+        "report_sha256": "c79a407a921e6fd1ffa7b17169b6b4fbd9f80a30bcdb6e5ea8c852727b2304ce",
+        "journal_sha256": "a7e5ac0b00a2383a8df069ac3e4e074fa8db77a4a79e12cdbb114e279aecf12f",
+        "draw_transcript_sha256": "6af9a9b73ddce7a7f8e609dbe3bb03e833a1ab48d250e15e53e7074d445d7d2b"
+      },
+      {
+        "review_id": "771b38323abe",
+        "tokens": 97,
+        "report_sha256": "2d2a19e1514745122aa6c67934a3929733522c44031b7b641395a0be36c0e873",
+        "journal_sha256": "c0f680d986cc2d53b2d9aed9119f7661e34a89f8ab394d0a45879d4006cec6d8",
+        "draw_transcript_sha256": "fd61b823efd563b5b268f7008e58d0b3df4861bb7bf311499b375756980421e8"
+      },
+      {
+        "review_id": "abf573ec5d25",
+        "tokens": 99,
+        "report_sha256": "34ab533d91092c4f4664d178f261202204badefaaab04701259b407764312588",
+        "journal_sha256": "547f457e690ef060b86ff5f17b9462eccfda37ecefb9cdbce6cac6bd94e62398",
+        "draw_transcript_sha256": "416f41def5cbb9c97c1153b088d43f109ba0a24ba7b0498adf4e60ca8581ada8"
+      },
+      {
+        "review_id": "6fb0dc1542be",
+        "tokens": 83,
+        "report_sha256": "4c3360fb39d82781ef4c92de0544cba7dd4418a5aed5a20ae85820b2a33ee7b8",
+        "journal_sha256": "5a6f036ae7c3484e21a3fa6b55f6bf1b2027c79cdcf45a0a2865c374cda0f39b",
+        "draw_transcript_sha256": "be6bb48f166e3d30db73bfe158806326b889f5bd98ea550783710f367ec356dc"
+      },
+      {
+        "review_id": "f0996db20a84",
+        "tokens": 90,
+        "report_sha256": "382bc535c664672604fcba9282bef405c8a4215cea9d26564a3f968bd6c59ceb",
+        "journal_sha256": "3e9ed26819c7863a43c0c1ac4bbedff3707ae66153f060077f028aa6d35146c7",
+        "draw_transcript_sha256": "b70c041d8132f73f5b055758bf75c916941720ed6e88f12cc3c061b1b6d39b73"
+      },
+      {
+        "review_id": "62a8e0d607e7",
+        "tokens": 70,
+        "report_sha256": "8c0a1cf48a7f2a395b94d812c6d8cb346fe4625e0b7da1f5f2be0f296b0a0b35",
+        "journal_sha256": "7596530a55e15de17e6552b8c48ecbd03d6727ef7fee5200cd19b3d9aaebb13d",
+        "draw_transcript_sha256": "dcaafd1726579b17053853df6c09575b9ae779bef5e546516a803e2b983c2a4d"
+      },
+      {
+        "review_id": "ac6f2920f186",
+        "tokens": 69,
+        "report_sha256": "1c1dd3636b7ee1ce75e82e53e55575012577b2efe02fad5e11c3926a7f1cd739",
+        "journal_sha256": "463101ddb4921b5305af201aad8ccb1bdfa3ecf728f5cd736393e2d457293c83",
+        "draw_transcript_sha256": "5950d662a899f641ee1beafbba5da127337021a140753825b68f32d4aa7c296f"
+      },
+      {
+        "review_id": "f7fe97b1b7b2",
+        "tokens": 41,
+        "report_sha256": "10be711c7c51c852333efeed22741cac30fb9f01808692fa8f27d4c2fbf87f2f",
+        "journal_sha256": "87803338e5fba2c976966a8dccfbf8e04498719c4662ab01108d4966f69f1658",
+        "draw_transcript_sha256": "ce89486d776dcb5b2f31517b0bced8d2fee17774dcca451062f77bc0dd3cd427"
+      },
+      {
+        "review_id": "7640ebaf0338",
+        "tokens": 41,
+        "report_sha256": "20394f6da8563f4834f8ea27476e6ceee8f9bef612efee107b34308157f15d2b",
+        "journal_sha256": "656309ab5ef6f32c9bd36bf4ec0b3fe5223131d09ab7f1055b91059bc72b1f75",
+        "draw_transcript_sha256": "43193a2e01958351f9a59db390f4ad69eff4cd9a9031e8d0b0421d86e8231a1a"
+      },
+      {
+        "review_id": "bb8fd001d115",
+        "tokens": 66,
+        "report_sha256": "58d5406bb5c44307df5947b789054163d5c63886e881dd48a5dfd63d2ed571db",
+        "journal_sha256": "82dc99722575e2dc00ce4de0fa922ed79b5eb5f459a94ccaa8022fca8ca0e5de",
+        "draw_transcript_sha256": "bab7e90fb57b89a51305764b1b4a44d1525564e497405636e96b8a9fdeffdc67"
+      },
+      {
+        "review_id": "8e33803908aa",
+        "tokens": 66,
+        "report_sha256": "d3e55c484c2543017b824a7b44a714120b428e73a72ef8748560e9e5c1020ba4",
+        "journal_sha256": "eea196ed3b5a9e12a5ba2074f05e6df9e8f8c2dd4241cd441d81b56fadb6be52",
+        "draw_transcript_sha256": "f63d736683c953571cd9cb1dc6a6759281898500d85c64fb8dd9e71ded005c91"
+      },
+      {
+        "review_id": "f7c2faa4e6d3",
+        "tokens": 70,
+        "report_sha256": "ce073f6f835c03247514132999ab1999bb7fe0e779d33e57878b6720d53d9aaf",
+        "journal_sha256": "426aa9ac40fffe021f8e2ba526545d1297951f1bfa43cc766ea8fc12bfdfb853",
+        "draw_transcript_sha256": "477549c4997ffe25037398c84da075cda14a5df7bcb1f93c316bd599aada9be0"
+      },
+      {
+        "review_id": "bbe624fbd1e2",
+        "tokens": 70,
+        "report_sha256": "fd1d0b5f9990c3fd9297d6bc50815f712204911b48fca665bee9e68b99109562",
+        "journal_sha256": "a7d5487815c3b3c49f4de96ad6c8798f66ad40c2943d82f4957e0d58c8333b7d",
+        "draw_transcript_sha256": "b862c9b68993d1662666ff377d4e969071df139b9708a1307035e857783864a4"
+      },
+      {
+        "review_id": "ece2f6161353",
+        "tokens": 51,
+        "report_sha256": "716fffa2e0b6107634aec944920c3d9a70011b0bead333a2abecb18dc77e13ed",
+        "journal_sha256": "4bf5b5c142e9c7abd790bea682d6b2d7fd0f7121d553c9da7b8951a73a74e6cf",
+        "draw_transcript_sha256": "4db6110d60e0ac1c618701df7c25888a11e1eb1dcccf7263b2bd9ff79d4f03e4"
+      },
+      {
+        "review_id": "994c58fa7901",
+        "tokens": 49,
+        "report_sha256": "26a690246fcc0a70fac1fbcbc0b12a532dd4fd75b21dfbce7158a71446bb930d",
+        "journal_sha256": "d241ca6d51b47b3868d48174e8f2d0fe14be28ae7e37bc7890bf76be46abae86",
+        "draw_transcript_sha256": "dfa305f666515fd2522657389b021c0ed5165eccdab4c5db134724757bb52926"
+      },
+      {
+        "review_id": "f1daab6d94c1",
+        "tokens": 50,
+        "report_sha256": "f5fb413f9312690a4ce54b3dc6fb5f38282aa859295eeb20cdbf9d5279f018e9",
+        "journal_sha256": "7c3c86e66ced11dde01044fb61654000c75b0da539eb05271e7f4713c4bbf0cd",
+        "draw_transcript_sha256": "b16be203f4bb5d90cfca9dc8ba2ead7e505c302f555e8bb0744c0ea99d08751a"
+      },
+      {
+        "review_id": "8e839e80583d",
+        "tokens": 50,
+        "report_sha256": "751031dc15746bb6f336ef67b1bfe71d7baccee21182b8c0621f44134d93a05f",
+        "journal_sha256": "6909f0afaddbb700a82c27f91c60e5787ca19400385e29ab3e579396f1b2a7e1",
+        "draw_transcript_sha256": "89f950b55e55aa4e1cb38c1cfe5b13f54a21f0a500d6298fa0c7572a82099287"
+      },
+      {
+        "review_id": "a69e96553f3e",
+        "tokens": 101,
+        "report_sha256": "88cb41804854c14b1299f8a7394f41426b80e80eb0086f613eda9ceeb2a6ea6d",
+        "journal_sha256": "a86fd58903705010b1112b9f3d682e3626dc04956762f1c2ef930d70b51d6a86",
+        "draw_transcript_sha256": "5364f7526ee67f50568ac3da460c7ade285a57f7d4fa0d6d719ff53fe0e98535"
+      },
+      {
+        "review_id": "f6e67351d2cd",
+        "tokens": 97,
+        "report_sha256": "12ee4a60eb776a73cf563604a62e3c310b72d4f3b2ef203536e65c8b186a20eb",
+        "journal_sha256": "afa58fdb082b5c07fd8803089c9408e494beea422a482e2429c738f7df7d103a",
+        "draw_transcript_sha256": "e0114edee912b7ac10bfe15961ea6a84e2f0a20aade8f33284d1d4aa55dd40a9"
+      },
+      {
+        "review_id": "efa8c010b55e",
+        "tokens": 59,
+        "report_sha256": "c1196510435bc89a20358ccc2677f0739687372f6059e55cd15143f2e72c67a8",
+        "journal_sha256": "42ae0a7474760c2e0ba7f24b915e58cd7abad61e7e73c4701a7615a28c61b918",
+        "draw_transcript_sha256": "b67b7f2d80b5d722aa832ebd6400092653897a4b07833a290254a29c8bdd5740"
+      },
+      {
+        "review_id": "ad0f574ff548",
+        "tokens": 67,
+        "report_sha256": "a8e4e79e0069de9a9397b86693c70f200592a8f86d327172cd3f657b37241049",
+        "journal_sha256": "4431bc4c78e114a74a89b360d43eb8c79652e80dd6d935e253db38a8a5c9653d",
+        "draw_transcript_sha256": "b26d25466fb275fabc8b75d7aeb4db94002b9b70d93c54bb13538f48c81a7349"
+      },
+      {
+        "review_id": "7303fa387c05",
+        "tokens": 48,
+        "report_sha256": "173c6a78af3e7d91e1c39355469230fb8ed9fb30dc2fb2284ef4ea4a0e415bc0",
+        "journal_sha256": "677bc102a029dcad9f6435b50b04bd95fc5b310c94495a879cc5c65a24ecf8dc",
+        "draw_transcript_sha256": "91c82b9cb990a349529c44df4d9d72db2fc39c6a54091643a580ba55816859c6"
+      },
+      {
+        "review_id": "3b4613a352be",
+        "tokens": 49,
+        "report_sha256": "e62f29c94f9917a11df7f7ea7a95ea27cdbfc327232a3bfe0bc349ccfa916d73",
+        "journal_sha256": "e0b19940b7eed78b064710a9a086e11c1ffb409f0d4ab4fb7af3c1329b2bc482",
+        "draw_transcript_sha256": "43b03eee2cc2af074a42e39742a9461ec9ded9edd04c59b66eaf0c5e96739cae"
+      },
+      {
+        "review_id": "3a24edff6184",
+        "tokens": 70,
+        "report_sha256": "9d22454cd27b2c91a7c3d41b79951161bb66c67a4b202cb0422a4bdee708968b",
+        "journal_sha256": "bf9a3b73a8513887f78709da8d43a7bc309cbbc03fda02b85c61b45982db4dc0",
+        "draw_transcript_sha256": "e4a210587b8c829ee195d68b30c9cf26c31d599f487cf41f910c35aaa85b7cac"
+      },
+      {
+        "review_id": "4fa7dd25b272",
+        "tokens": 69,
+        "report_sha256": "0e236b7a6c2fdda149ef6788422b8e503e894590154ead5c8175bb3057719319",
+        "journal_sha256": "5841efc067df5a4acdeb77b66c05b1a1bfe1d123fa39275569cb0273033eb6c4",
+        "draw_transcript_sha256": "3daccac0cf02ca4caa5e3784eccdcf32d7fab4d4b1af7705d671e82b986ef94d"
+      },
+      {
+        "review_id": "cd053db6e7ce",
+        "tokens": 99,
+        "report_sha256": "c0ce2d5ce2270c5a01b81ec0d4f2b89b5847d8bb80506e839faaeb63cad4c24a",
+        "journal_sha256": "0d1974dd58c460e89f2b5e1ec5291d10fbd178018d641f34f34f0daf398ea32c",
+        "draw_transcript_sha256": "7131d375e102d0f1bf6d6bf7daeae591201f96676054e14aeca26b62c57dd539"
+      },
+      {
+        "review_id": "d79b2daf02b3",
+        "tokens": 99,
+        "report_sha256": "c6a9a359d0bb835eb2e5e5d14f95caaf78829170369ae93b99b0e2a35b9af101",
+        "journal_sha256": "1cfa9b58d5a8ab279634a4fd1190ff303ecfdf8d14e62327ee26f7b1d636834a",
+        "draw_transcript_sha256": "44336c2bdabff6f38999e27b2ae5b4d7894eb20406e2e728144ea8a79458e6d0"
+      },
+      {
+        "review_id": "d0483396fcf7",
+        "tokens": 81,
+        "report_sha256": "c2ddaa591286ed4acc3d9642825ed55b00657885bb0030e18e8648a7614ac6b6",
+        "journal_sha256": "580a14f79eab9c73e364805a8eb5f6d75eae75ab3397019efb60c4ef40b561f6",
+        "draw_transcript_sha256": "4c753898aec017e43b842c1471caa9a6c2121c08b98e8995b945923c4e4f0d45"
+      },
+      {
+        "review_id": "95799fab6b7a",
+        "tokens": 79,
+        "report_sha256": "4103e7ef6c45cf541a4d8c56ef196ceab950b9d1e815be6d804b6405b6912802",
+        "journal_sha256": "ccdf0ba748b765d2707452b7c09bba71f6960f7a4734f8673e81b148289a9809",
+        "draw_transcript_sha256": "cacf2f4aba4bd8f19ab835c9a423e590102830a011209634ec521aac28c87dda"
+      },
+      {
+        "review_id": "50278d1a21d6",
+        "tokens": 70,
+        "report_sha256": "d2cadc8d0e3542747d880166d1c63f20d1be110e1fc07b6fc22fa5f9e8c7aa51",
+        "journal_sha256": "4f4a179e65e3274211baa8dfa758e53a776d10baa1f9b27d089da54e2d492fd7",
+        "draw_transcript_sha256": "a8e0d68d63ca8d2be2feae75962d690b9ef89ab1e625b4ae39a9a959270e2f0b"
+      },
+      {
+        "review_id": "75b6f9d2f225",
+        "tokens": 71,
+        "report_sha256": "65133117ac5d824ced272eb1e66c75b096ce4790327bc8ca36f613f534a3aa90",
+        "journal_sha256": "5dd44d811fab700e478520444cf0be747a0fc833589bdcf89ab68c336d39eae3",
+        "draw_transcript_sha256": "257caf6a292bd82479ff1dedc75eef1aabe03b04497526447191df623455c255"
+      },
+      {
+        "review_id": "6b074e84cde6",
+        "tokens": 41,
+        "report_sha256": "4207b361c8168508263f0b89f80eae382ed3218838e066181a78d56a234a8fb8",
+        "journal_sha256": "b3e8be64735f67cace0934f1b42a4baf7b897acb20c23ee8ac4c1d929c43c2b7",
+        "draw_transcript_sha256": "4df2eeb5a6da209514f7408de9f6edd095d7e276b68f180d0f820f1c3deb1f0b"
+      },
+      {
+        "review_id": "ef03eda4854b",
+        "tokens": 41,
+        "report_sha256": "1c1d7e2e21449d1c54fa7422d0ad7ea7eeb9050ab20c9a524e73b511612d71ea",
+        "journal_sha256": "60aeef67890957449fda38a69932f94a50b7fc9f0d58134b4acdffc3690658ad",
+        "draw_transcript_sha256": "4a526e6868a4d4e0ea68f876e6337c0a9f6bb227d0ab553f9c3017863d9f5600"
+      }
+    ]
+  }
+}

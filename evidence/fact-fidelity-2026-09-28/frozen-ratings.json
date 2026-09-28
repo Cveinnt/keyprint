@@ -1,0 +1,1330 @@
+[
+  {
+    "review_id": "8e839e80583d",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ea89ec1e5d82",
+    "fact_checks": [
+      false,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "Tokyo time zone omitted; date, time, backup/test distinction and tentative status retained.",
+    "borderline": false
+  },
+  {
+    "review_id": "9efc20082171",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "201519ffedb3",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "f7fe97b1b7b2",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "912a7cdfdaa8",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Adds the false conclusion that B has a higher price per GB: 18/20 is lower than 12/5. Source facts otherwise retained; monthly billing is understood from parallel comparison.",
+    "borderline": false
+  },
+  {
+    "review_id": "0348218d5633",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "7303fa387c05",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "All listed facts retained, but broadens one known keyboard issue into a blanket claim that this release addresses no accessibility concerns. Conservative unsupported-scope failure.",
+    "borderline": true
+  },
+  {
+    "review_id": "d79b2daf02b3",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ca276e229456",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ad661de29ea6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "f7c2faa4e6d3",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "8374163ae7b4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "c15aae32d927",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "efa8c010b55e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ef93fa7a6ce1",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Numbers and unshipped status preserved, but changes not dispatched sales into not completed sales. Completed sale and shipment are distinct states; conservative scope failure.",
+    "borderline": true
+  },
+  {
+    "review_id": "63781a31dd87",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Core facts retained in context despite ungrammatical refund/request wording. Adds a commitment to inform the customer of progress, absent from the supplied facts.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "d02085b4d858",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "75c83d5b56a4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "f6e67351d2cd",
+    "fact_checks": [
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "Review and no payout are stated, but explicit not-yet-approved status is omitted. Refund/request wording is also awkward; do not infer approval status solely from a review being underway.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "d4abbf4b8835",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Core refund facts retained in context, but adds a promise to contact the customer when the process finishes.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "cd053db6e7ce",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "2b0c8c7b271e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "821c773a221f",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "6fb0dc1542be",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "80b5eeb222ae",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "d0483396fcf7",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "abf573ec5d25",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "3dec91692c78",
+    "fact_checks": [
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Explicit not-yet-approved status omitted; adds a commitment to report progress. Other order, amount, review duration and payout facts retained.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "e6a9fd1a1148",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "50278d1a21d6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "a7a4e3e06cf6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "a41b5dbbaae7",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "2fdb357ab553",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ece2f6161353",
+    "fact_checks": [
+      true,
+      false,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Changes planned Friday dispatch to planned Friday delivery. The closing unconfirmed delivery-date sentence does not repair that invented delivery plan.",
+    "borderline": false
+  },
+  {
+    "review_id": "b8ea9b121201",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "0d860d9192ea",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "feee44b3aa55",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "6e33c192d3ca",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "3b4613a352be",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "f1daab6d94c1",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "7acaf797001c",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "771b38323abe",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "bbe624fbd1e2",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ac6f2920f186",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "75b6f9d2f225",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "9a2731116fae",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "3a24edff6184",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "49f62b9fa209",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "8e33803908aa",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "469403579e40",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "f0996db20a84",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "fe77d6315259",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "All numeric facts retained, but not shipped reservations become not completed sales. Conservative distinction between shipment and sales completion.",
+    "borderline": true
+  },
+  {
+    "review_id": "e7a893982afc",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "08e4a6735b8e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Core release facts retained, but adds blanket no accessibility concerns addressed claim; source only establishes an unresolved keyboard issue.",
+    "borderline": true
+  },
+  {
+    "review_id": "cd1b06ff7cfe",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "867359c73e41",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "bb8fd001d115",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Incident facts retained, but no further details are available asserts an unsupported state of knowledge. Conservative failure; absence from this prompt is not proof of unavailability.",
+    "borderline": true
+  },
+  {
+    "review_id": "7f0551eaf319",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "2adb716e21eb",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "8e218bdcfafd",
+    "fact_checks": [
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Initial 10 units are not stated, although derivable from remaining arithmetic. Also expands unshipped sales into uncompleted sales. Conservative full-detail failure.",
+    "borderline": true
+  },
+  {
+    "review_id": "e97811b438da",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "6b074e84cde6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "7ec2409c13eb",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "95799fab6b7a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ad0f574ff548",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "399c287d4cc6",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "8c73d7e1e523",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "All stock numbers and unshipped status retained, but extends the constraint to sales being uncompleted rather than not dispatched.",
+    "borderline": true
+  },
+  {
+    "review_id": "994c58fa7901",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "622f54ca6122",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "a18f99e3265a",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "08be75201084",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Adds Friday (金) to October 8, although no weekday or year was supplied. All required maintenance facts otherwise preserved.",
+    "borderline": false
+  },
+  {
+    "review_id": "72704a280edf",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "2b616febb963",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "0bcc98b40747",
+    "fact_checks": [
+      false,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "Omits Tokyo time zone while retaining dates/times, created backup, untested restoration and changeable schedule.",
+    "borderline": false
+  },
+  {
+    "review_id": "ad492420fef4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "62a8e0d607e7",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "a69e96553f3e",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "9f06c02c17ee",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "8e4d7a619d52",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "ef03eda4854b",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "95c45de73201",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Core facts retained, but blanket no accessibility concerns addressed claim exceeds the known remaining keyboard issue.",
+    "borderline": true
+  },
+  {
+    "review_id": "7640ebaf0338",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "067a1f2fd7e4",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "0627c3d06193",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "02a129125373",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "89f266d674ad",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "70bace141ff9",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "22918ddae5d7",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "4fa7dd25b272",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": false,
+    "language_pass": true,
+    "reason": "Numbers and unshipped reservation status retained, but changes not dispatched sales to not completed sales. Conservative scope distinction.",
+    "borderline": true
+  },
+  {
+    "review_id": "90100188d9c3",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "62262af7f49d",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "e0f757f97a10",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false,
+    "style_note": "German refund/request terminology and grammar warrant human review. Where explicit nonapproval and no-payout clauses preserve intended request status, awkward wording alone is not counted as a factual failure. No general prose-quality acceptance."
+  },
+  {
+    "review_id": "cf46d64582be",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "cc89ead211a7",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  },
+  {
+    "review_id": "a29a7cebd7c5",
+    "fact_checks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "no_unsupported_claims": true,
+    "language_pass": true,
+    "reason": "All listed facts, actors, quantities, conditions and uncertainty retained; no material unsupported claim. Wording varies without changing these source facts.",
+    "borderline": false
+  }
+]

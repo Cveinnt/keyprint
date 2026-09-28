@@ -1,0 +1,6 @@
+{
+  "plan.json": "332c5bfb66eb8a98fd4388b6c410467ac7887e0a4bada5b8e6291429722f5cba",
+  "blind-review.json": "276f4d81e5176d3fb14a7d64f596b3058bc69297a857d0f0e80d29f5f9652d58",
+  "frozen-ratings.json": "ac62b64766947c33bcc0aa19fffdf12b0c8d33199d6ba3ae743c76df05a963ca",
+  "scope": "96 assistant fact-level ratings frozen before opening key/condition mapping or scores. Not independent human review. Nine conservative ambiguous scope/omission judgments flagged before unblinding; primary ratings remain fixed. Grammar/style not equivalent to factual preservation."
+}

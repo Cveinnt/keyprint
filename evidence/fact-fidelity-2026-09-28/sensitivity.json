@@ -1,0 +1,8 @@
+{
+  "scope": "All nine flagged ambiguous assistant judgments treated as passes; primary fact-level ratings unchanged.",
+  "content_pass": {
+    "ordinary": 44,
+    "marked": 43
+  },
+  "quality_acceptance": false
+}

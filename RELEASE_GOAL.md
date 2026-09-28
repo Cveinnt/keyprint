@@ -26,6 +26,29 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 28 source-grounded fidelity and review
+
+- Ran 96 actual generations through the unchanged public SDK: twelve fresh tasks,
+  seven languages, all four existing keys, ordinary/marked pairs. Every output
+  retains language, meets length limits and reaches EOS. All 6,388 native tokens
+  and 96 distinct draw transcripts reconcile.
+- Assistant fact-level passes are 42/48 ordinary and 36/48 marked. Accepting all
+  nine flagged conservative judgments gives 44/48 and 43/48. This sensitivity
+  matters; do not call the descriptive difference proven causal watermark harm.
+  Clear failures still include dispatch becoming delivery, an invented weekday,
+  omitted time zones/nonapproval and unsupported contact promises.
+- Only 1/48 marked short outputs hits the unchanged diagnostic rule; no ordinary
+  or other-key hits. These tightly constrained short tasks qualify neither
+  detector power nor error rates. Longer factual-preservation tasks need joint
+  content/detection testing; no scientific clue closes.
+- Added an offline, metadata-hidden review page with source facts, blank human
+  ratings, local persistence and explicit JSON export. QA uses separate fixtures,
+  never fake human labels. Desktop/mobile, keyboard, reload, partial export,
+  uncertainty and inert markup checks pass. Production design stays unchanged.
+- [Evidence, all samples and review page](evidence/fact-fidelity-2026-09-28/README.md).
+  29 local checks pass; 90 package files match the prior wheel and all 39 frozen
+  engine files pass integrity. Publicity remains held; SDK behavior unchanged.
+
 ## September 28 five-layer comparison
 
 - Completed 48 new actual generations: ordinary/current/five-layer task passes
