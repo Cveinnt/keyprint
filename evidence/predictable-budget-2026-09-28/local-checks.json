@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "passed": 12,
+  "scope": "Exact-rational finite-case research checks only. No native inference, float implementation, semantic or detector acceptance.",
+  "command": "PYTHONPATH=src ../../receipts/pydantic-ai-2026-09-28/env/bin/python -m pytest -q tests/test_predictable_budget_oracle.py",
+  "sha256": {
+    "tools/predictable_budget_oracle.py": "174e3eacbb19c78fb157a3e909f264e0c6a60d99652aa0a48c45884366ef8526",
+    "tests/test_predictable_budget_oracle.py": "29a07c7d55dce8e17d12dd0a6fb7611ba0a72321af32614a1308410a72ce0215"
+  }
+}
