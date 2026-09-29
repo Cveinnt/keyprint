@@ -1,0 +1,50 @@
+{
+  "tests_passed": 30,
+  "exact_three_layer_paths_per_rule": 1536,
+  "balanced_vertex_comparison_score_assignments": 64,
+  "model_inference": false,
+  "sdk_promoted": false,
+  "runs": {
+    "centered": {
+      "all_rows_and_aggregates_verified": true,
+      "source_hashes_verified": true,
+      "resource": {
+        "status": "completed",
+        "limit_bytes": 1073741824,
+        "interval_seconds": 0.25,
+        "timeout_seconds": 900.0,
+        "disk_floor_bytes": 2147483648,
+        "peak_footprint_bytes": 466797504,
+        "samples": 233,
+        "automatic_restart": false,
+        "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+        "pid": 89253,
+        "cleanup_verified": true,
+        "exit_code": 0,
+        "elapsed_seconds": 64.81614387501031
+      },
+      "normal_pressure_samples": 233
+    },
+    "balanced": {
+      "all_rows_and_aggregates_verified": true,
+      "source_hashes_verified": true,
+      "resource": {
+        "status": "completed",
+        "limit_bytes": 1073741824,
+        "interval_seconds": 0.25,
+        "timeout_seconds": 900.0,
+        "disk_floor_bytes": 2147483648,
+        "peak_footprint_bytes": 458572712,
+        "samples": 241,
+        "automatic_restart": false,
+        "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+        "pid": 91664,
+        "cleanup_verified": true,
+        "exit_code": 0,
+        "elapsed_seconds": 67.5516712499084
+      },
+      "normal_pressure_samples": 241
+    }
+  },
+  "sdk_sources_unchanged": true
+}

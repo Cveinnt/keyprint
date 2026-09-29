@@ -77,9 +77,15 @@ prompt-free filter improved its small development set but its larger null run
 remains incomplete, with eight flags versus five on the same 499 usable controls.
 Neither finding qualifies a detector. See
 [regime audit and historical reconciliation](evidence/paced-regimes-2026-09-29/README.md).
-Next compare bounded generation mechanisms' signal efficiency on saved
-distributions and justify accessible scoring before new inference; do not
-repeat the same study or present privileged native entropy as a text detector.
+Two exact aggregate-score rules have now been compared on every saved marked
+prefix. Centered linear allocation reduces distortion and signal. Balanced
+half-mass allocation yields 2.23 times expected score lift and 5.49 times
+conditional information, but 2.68 times summed probability movement. Exact
+normalization, excluded mass and [p/2,3p/2] bounds hold; none guarantee semantics.
+Thirty tests pass. See [bounded score comparison](evidence/centered-score-2026-09-29/README.md).
+Next bind the balanced rule as a separate experimental profile with exact
+sampling and score replay, then use fresh paired quality and detection material.
+No new text has yet been generated under that rule; it is not SDK promotion.
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.
