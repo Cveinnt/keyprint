@@ -1,0 +1,16 @@
+{
+  "status": "stopped",
+  "limit_bytes": 10737418240,
+  "interval_seconds": 0.25,
+  "timeout_seconds": 600.0,
+  "disk_floor_bytes": 2147483648,
+  "peak_footprint_bytes": 5720970016,
+  "samples": 29,
+  "automatic_restart": false,
+  "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+  "pid": 2912,
+  "reason": "system_pressure",
+  "cleanup_verified": true,
+  "exit_code": -15,
+  "elapsed_seconds": 8.887621250003576
+}

@@ -83,9 +83,15 @@ half-mass allocation yields 2.23 times expected score lift and 5.49 times
 conditional information, but 2.68 times summed probability movement. Exact
 normalization, excluded mass and [p/2,3p/2] bounds hold; none guarantee semantics.
 Thirty tests pass. See [bounded score comparison](evidence/centered-score-2026-09-29/README.md).
-Next bind the balanced rule as a separate experimental profile with exact
-sampling and score replay, then use fresh paired quality and detection material.
-No new text has yet been generated under that rule; it is not SDK promotion.
+The balanced rule now has a separate experimental profile, exact sampling
+session, inference loop and token-path score replay. Thirty-eight new integration
+checks pass; 135 combined new and regression checks pass. A guarded English/Spanish
+native preflight stopped on global memory pressure at 5.33 GiB before any token
+committed. Cleanup was verified and the interrupted attempt is retained without
+automatic restart. See [integration and interruption](evidence/balanced-session-2026-09-29/README.md).
+Next establish memory headroom, complete a separately recorded native preflight,
+and freeze fresh multilingual source/fact material for paired quality and
+detection evaluation. No completed new-rule text exists; it is not SDK promotion.
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.

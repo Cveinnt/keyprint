@@ -1,0 +1,20 @@
+{
+  "new_session_and_inference_checks": 38,
+  "combined_checks": 135,
+  "old_and_new_rules_checked": true,
+  "sdk_source_hashes_unchanged": true,
+  "preflight_helper_hashes_unchanged": true,
+  "native_preflight_completed": false,
+  "completed_native_outputs": 0,
+  "committed_native_tokens": 0,
+  "partial_journal_sha256": "2c1bb3a6f42d76d807f50d887f62b8645232eac8bfbfb95b56c0da7f9487f5a6",
+  "retained_journal_phases": [
+    "start"
+  ],
+  "memory_log_sha256": "2c12d9459b18e7164838628ce002b3256c27f711d59283dd035faeb2ff1c85d5",
+  "mlx_log_sha256": "dfcace22a0e0d9a1f1af4f1cfdda36bca8af41fb7f06dca5c0ad70751ccca518",
+  "maximum_observed_cache_bytes": 0,
+  "stop_pressure": 2,
+  "cleanup_verified": true,
+  "automatic_restart": false
+}
