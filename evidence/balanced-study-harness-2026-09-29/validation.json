@@ -1,0 +1,16 @@
+{
+  "tests_passed": 81,
+  "scope": "Synthetic tests and model-free CLI preflight only; no new inference or quality acceptance",
+  "bundle_manifest_sha256": "824074ea8611e4b29cba1d76eb0bcb92f0614e9756930e84d787b24e7cde8254",
+  "plan_only_sha256": "c04381ddf53286c31f4cfab1b47714af5741c606061be25ff37515dadb499992",
+  "harness_sha256": {
+    "balanced_study.py": "034d6ed3f90a52fc5ef423cebb02ab1af1f1e9d2b215c53230a1b7dffe29720a",
+    "run_balanced_evaluation.py": "c922ad946c7d95621d9f096a12d1b00a87831bf25612e28cef3b6f0adf9446b0",
+    "summarize_balanced_quality.py": "e3df89a68bf4271a877ffe4d568fa69c70d103519384d23db3f20abffcf675a1",
+    "balanced_key_rank.py": "822b6f5764721980d7cf63b9d20fcb0cf8e5ea193030cbdcc744e6cd0eda0162"
+  },
+  "model_loaded": false,
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}
