@@ -1,0 +1,16 @@
+{
+  "schema": "keyprint.balanced-native-preflight-results.v1",
+  "attempts": 4,
+  "failures": 0,
+  "audited_runs": 4,
+  "committed_tokens": 64,
+  "caps": 4,
+  "eos": 0,
+  "plan_sha256": "3f1e0212e63bb1bd58aaac28e10af9500b3130390a0eb021e43c277ae7578b42",
+  "runs_sha256": "2278fd1c2b804e79dc44757b5434878ce82b639aad825a4f2fc887a6b1363c75",
+  "identity_sha256": "504fd6fe95fb5178e62097923726b9c985d9b0976b41b180ebefb11d7db4897f",
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false,
+  "scope": "Four fresh native prefix attempts under the balanced research profile.\n\nExecution preflight only: short capped prefixes cannot establish task quality,\nlanguage preservation, detection power or serving compatibility.\n"
+}

@@ -1,0 +1,909 @@
+{
+  "schema": "keyprint.balanced-evaluation-run.v1",
+  "stage": "study",
+  "model_load_authorized_in_this_invocation": true,
+  "bundle_manifest_sha256": "824074ea8611e4b29cba1d76eb0bcb92f0614e9756930e84d787b24e7cde8254",
+  "bundle_protocol_sha256": "c620425b2029d634df5b3785c9e0e20a910067fea9c2273034ecf8c638e7dce3",
+  "schedule": [
+    {
+      "case": "en-reservoir",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "en-reservoir",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-archive",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "en-sensor",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "en-grant",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "es-biblioteca",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-bicicletas",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "es-muestras",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "es-festival",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-navette",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-exposition",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "fr-routeur",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "fr-bourse",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-shuttle",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-market",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "case": "zh-recorder",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "case": "zh-membership",
+      "key_slot": 3,
+      "condition": "marked"
+    }
+  ],
+  "policy": {
+    "version": "keyprint-balanced-source-integer-v1",
+    "kernel": "exact-balanced-layer-score-half-radius-v1",
+    "ratio_bounds": [
+      "1/2",
+      "3/2"
+    ],
+    "radius": "1/2",
+    "allocation": "descending_score_half_mass_proportional_ties",
+    "excluded_mass": "exact_normalized_integer_identity",
+    "draw": "integer_rejection_gcd_reduced_no_float_conversion",
+    "source_match_bytes": 24,
+    "startup_bytes": 96,
+    "source_alignment": "all_overlapping_canonical_suffix_matches",
+    "canonicalization": "ASCII_whitespace_only_no_Unicode_normalization",
+    "repeated_context": "identity",
+    "single_distinct_label": "identity",
+    "purpose": "explicit_source_request",
+    "detector": "uncalibrated_uniform_layer_bits_with_context_deduplication"
+  },
+  "settings": {
+    "max_tokens": 768,
+    "temperature": 0.7,
+    "top_k": 100,
+    "profile_max_steps": 1024,
+    "enable_thinking": false,
+    "purpose": "general"
+  },
+  "scripts_sha256": {
+    "run_balanced_evaluation.py": "c922ad946c7d95621d9f096a12d1b00a87831bf25612e28cef3b6f0adf9446b0",
+    "balanced_study.py": "034d6ed3f90a52fc5ef423cebb02ab1af1f1e9d2b215c53230a1b7dffe29720a",
+    "freeze_balanced_evaluation.py": "71d26e40ed73402f3a3900d8d3d67ea5ba99b42fc64926d1cfccefacd6d84a27",
+    "balanced_inference.py": "dbcfcb19124d014d519e1044edf6366f8abeab3e27374f18256087b538496268",
+    "balanced_source_session.py": "463d9f2d305f9213791e9158bcfdf1122a71911bf36a537905ee0164cd00ddfa",
+    "balanced_score.py": "5e011b44514b31ca395145085289867c985cd9b4386614194db949dcc2558b79",
+    "centered_score.py": "2fe3915e0c50bbd4510a05542734014720135efa66d5949524575fba2f3a6c48",
+    "paced_source_session.py": "589caa3875f0754e06f0da4cc9c7f255dd7108bbf4b26d42a53b9aebd315f2b2",
+    "paced_integer_kernel.py": "8311ff35595502f13be9c61c37f527dd12488e4d0451eaba1226f37a3b5b5007",
+    "replay_wide_mlx.py": "b86bb5d431e04b9a7440391fae703cb5da64a8c1003d54a69ee17f6a24b6423a",
+    "preflight_balanced.py": "631ae5ae563cd23a096396bce64d9ad87850740c4b1dc66c5b5b6b46ebe60d11",
+    "validate_source_grounded.py": "8eccfa99a349b05bf09e75908eff08946c9cd049a00ded138817c7bbbf8fa55e",
+    "memory_watchdog.py": "01ca91320fa5a530613c3acb764deba1aa8cb64f33f955358096968dc7e9ad37",
+    "mlx_guarded_worker.py": "7a84a03ccc6c8b45ff534abf5687e069de08ff1407716e1ad173e8ddcff8346e"
+  },
+  "sdk_source_sha256": {
+    "__init__.py": "2f038b4d9f683c38bd8cee9d8a100d340bf4db1fcf9e150479d78345a95bc4ea",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "_engine/__init__.py": "798b7414434c4895ad593b93dc970a7f0e364cb5954d2134ee869bea7ddb86da",
+    "_engine/legacy/__init__.py": "704c58b0da63f465aa4f4da075b1d92232e5e8595099ba3d026a5200d9893d8c",
+    "_engine/legacy/_impl/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_engine/legacy/_impl/research/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_engine/legacy/_impl/research/byte_trie_numeric.py": "c448cad55cd74e34dd083204eac1c386090ab55fdeed84ca34441f20b3dd0a37",
+    "_engine/legacy/_impl/research/byte_trie_session.py": "b7ddf1e360b8a745386fe0cf69fa9309ae7c0d029178208ca271ff8a338e1a7a",
+    "_engine/legacy/_impl/research/byte_trie_source_policy.py": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365",
+    "_engine/legacy/_impl/research/byte_trie_tournament.py": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+    "_engine/legacy/_impl/research/check_canonical_event_alignment.py": "f32d8365ccdf3af66f1c7d991cf60ad0888e91418be2f1a1c0a1979f41d0dcd5",
+    "_engine/legacy/_impl/research/grouped_canonical_prototype.py": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+    "_engine/legacy/_impl/research/grouped_model_support_boundary.py": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+    "_engine/legacy/_impl/research/grouped_null_score.py": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+    "_engine/legacy/_impl/research/grouped_tokenizer_binding.py": "6e165e59bbe520c268d2ddbd5c055b6a59760cb6a5c52f2739e1f9cdc5536c15",
+    "_engine/legacy/_impl/research/token_channel_host.py": "dfd9de381512e47d0228ce697a2c9283e3c4f3cdc95ff7076640582d8a41fb3f",
+    "_engine/legacy/_impl/research/token_runtime_binding.py": "6760e294ff594694ec7afb10afca66ae66f93b8c083e9c8ec8466dcf08c9dad6",
+    "_engine/legacy/_impl/research/token_runtime_host.py": "8233754abb7a4ec4a80bb63a2955372468b068e53e32f72324f54a7bd782fdce",
+    "_engine/legacy/_impl/research/token_runtime_profile.py": "fd1db53497a06a273bbf8319277909c790c8149f50d06e7553f83a90d5198a75",
+    "_engine/legacy/_impl/research/token_runtime_scoring.py": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+    "_engine/legacy/_impl/research/token_runtime_sparse_host.py": "28a0b1b8ff5e6265d05fba137d817d13b3acd5f08b206369f703b2f35d90b1b9",
+    "_engine/legacy/_impl/research/token_source_host.py": "9bf4e6ff72c50e1fa9113921a767df1ec92ae59c14ad42973531e78d57f62c10",
+    "_engine/legacy/_impl/research/token_source_policy.py": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68",
+    "_engine/legacy/_impl/research/token_source_sparse_execution.py": "5eeec99a3e50405f707334e3bb1ddc2ed21ee7b80481c1adf241b8800f0bad51",
+    "_engine/legacy/quickstart.py": "0cb5bac9ab79b74deece2451bebece25ce9104e50b3ba486ac83cd20271350ed",
+    "_engine/legacy/verify.py": "ffa9e2d4f5cb698a16ce89a938a4581354563ba8cc414aa13805506cfb2dc78a",
+    "_engine/research/__init__.py": "ad290d0f2bcee1a60b928f6b1efef91a218396c275a7854cd6ca9a98d530b230",
+    "_engine/research/keyprint_candidate_v2/__init__.py": "e034566859a9d2b92832f17dcd0a64baa2ac465ce610e17884e2997c60ec492a",
+    "_engine/research/keyprint_candidate_v2/adapter.py": "97c35dcf4f60a2944f0e4cc68db03d30985ecfd7a732e697cc233952f056d1af",
+    "_engine/research/keyprint_candidate_v3/__init__.py": "97f76413dcab94bdb28cf9d65a6e2a7f63e7e76384431db158ff818846a61f27",
+    "_engine/research/keyprint_candidate_v3/adapter.py": "8683a2c6c8369f98b02c506c9b069e09817de808a0164a49aa30b76c43223d99",
+    "_engine/research/keyprint_candidate_v3_caller.py": "9144c1be47726a5f0ac480609d83d784587e5cd5a152446beda17da25533feda",
+    "_engine/research/keyprint_exact_categorical_v2.py": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37",
+    "_engine/research/keyprint_reporting_v2.py": "36075cd4180fec0fcbffb61b623fe602c4a8837482bc4c98a6b7851670b01582",
+    "_engine/research/keyprint_stable_support_filter_v3.py": "4ef7abbd49ec02db7cdc9b23a8f1905071666f197ac84c5d35ebd357e56da259",
+    "_engine/research/keyprint_v3_public_api.py": "ef6d625f60de0b7aee0d8968fd3cfeb806a7b4ae26c27d51df00b762d22d7cb4",
+    "_engine/research/keyprint_v3_public_api_rc2.py": "9b397623e3658b4268ad59f9c05ef119da78e9966f77f75b2321571b4b170a40",
+    "_engine/research/keyprint_v3_reporting_contract.py": "82f4f4bb7feace1edc5f642a97a8b9b7977cc77edd5f72e4173a4bb8c5fadb72",
+    "api.py": "1c628c72a958429dc9288ed622bdd5e9cd16b01900f72ea8cfe43f8724622824",
+    "backends/__init__.py": "ee1223e0829d2f34c2aff57382ed898d4acd3c734a1c4ee33da57d95461fb6d4",
+    "backends/bytelevel.py": "82ff89519b6211c16042231d487d6e514c4b359a0a59bdca363dc96a6b44e3be",
+    "backends/llama_cpp.py": "a51f8c0b8c0610e4eba64f0ea5319539078900ab035eadf18e84ff71829d7a61",
+    "backends/mlx.py": "eaa05c2467eb2dc8e42988f20338bfdfb0215c28a84118203baeca100cf90f57",
+    "backends/mlx_bounded.py": "84050d6bb34144b209b4145ab1ab18ebb950b20486c64b9aa7e156598df63467",
+    "backends/portable.py": "e118486f1ec12dd6a034e44339555b989144de574e9fbf005f1c04da5a8988ff",
+    "backends/transformers.py": "813c46efb30465dbeed752bd46a386c8608858362d0c4946f0bfe18845154b95",
+    "cancellation.py": "dc60e6babfbe7ea650de5ba6a183aaf45f8324df4fc813104315659129d06d63",
+    "cli.py": "dff12c593f92157ca50fd9d5dab25781d58f3493ffe219df243cb45387be9da6",
+    "comparison.py": "99f3b9fb23a6b39b0284411faf3e737215fab63667625b467c0757a7e4755e50",
+    "errors.py": "249685336e048b778849f25c54a26316b398c30bdbc4c728bbce5604d7f5120d",
+    "experimental/__init__.py": "439b6136bb89af33efacde204884ccde89714cfc32ebdb554b79ebd185f26390",
+    "experimental/batched_tournament.py": "daf7789d9153619131f96e5ca0f2055eb7b68d5a440131af15610355a5032511",
+    "experimental/capped_utf8.py": "fd372ced5c2323e422d846521bcc8ccc7cd6c62dc5c0be2f13c3bd934e683ac1",
+    "experimental/completion.py": "db5ec6b660f337b17f7071821b25d1ac204f42af610023b3841ed218ae51dcf0",
+    "experimental/fast_caller.py": "53133ee8e1f5423ca479178da41c7df9a224a9235fa5aca1007f529835a1058e",
+    "experimental/fast_mlx.py": "3945394bb1e0db08685f45134731821b30cb3a32b9cdab4d29c7495ac3e7a573",
+    "experimental/fast_public.py": "08919ac5806a72856115bb39eb6b27c24237c6f13ceec074bae96d287908ff79",
+    "experimental/fast_reporting.py": "e706e45f6c0ffa15c1e04655db61bf17f61b91f7f46943dbfc282e8116bb8d2d",
+    "experimental/hmac_context.py": "219bfe25e4c7a9f1b1ef9d0d6cf809af0cc6ce363270d926bd736fb86a464fb5",
+    "experimental/native.py": "e47e38a40912c1e20adbd944a172013c23351f734f0189e144071c72deb4f619",
+    "experimental/native_mlx.py": "356dfaeaa961b32fe03c0cb782bf4791c46eec72eac4c7b1a9109cd668a9741d",
+    "experimental/native_reporting.py": "c8b5854932ac05c1bd7b44b6a417cd5ca3f34958695ef15a8fade8445cafab5f",
+    "experimental/partition_filter.py": "fad607a9afd04cb497aa539a17fbabb0d44020ae104be65c2fc5a2a386aa3126",
+    "experimental/prepared_binding.py": "77060e0b8812f7ce66e987d06fc7d4c8a7dbcda13caed6fd94b710d05801811e",
+    "experimental/sglang.py": "8b5e25c80265597ad6462dc5b006575bc2be0e32291ba1777b9cef5eea2cfb44",
+    "experimental/sglang_runtime.py": "29ea6b592efaf228eed9bf56c7684b0fe73c88aa96a34857f4c6f2358358c9f6",
+    "experimental/vector_commitment.py": "e1fa1142b67f36ceb6f097d6da12542184e747d8c9afd67edf7ea36b7397edb1",
+    "experimental/vllm.py": "9df4213032d8ce1c23cb88704b60fbdab98ebfeb5376760845bccafb9ba7d158",
+    "experimental/wide_mlx.py": "7522f38374870ba584f21f4922405270afbc1bce0f6283c00e457c59279a85ec",
+    "experimental/wide_sampling.py": "c722835cbc7c5398e8fa00843d7d57b7f5e31cdf5382246ffd5c1efa5acb579f",
+    "inspection.py": "3de1508956bb4890f3fd53cc9b44158c949ffc53f60070f5a6ca96af4ba1448a",
+    "integrity.py": "d337b4e57c814fa8c4688d58f0df90c271c68be1fed0af8f75336702da8673cc",
+    "playground.py": "5d5801c27e5836b2a077b8d3f35e1724a90a015ed5074f4c5eb2617c49bc1841",
+    "rewrite.py": "81f191c4d868ec92922868800fdd5888ffcbb65f93e2a65d3f799e31e40f1d20",
+    "sampling.py": "446557088e1fcf0736427a17a1d121ae9facda4a1cb0c6610f0613b96bfc859c",
+    "server.py": "251a612576c78edd54d9e9a39e1a3b43ecd0ccb90d2bd436ad91acfcd41ebf1a",
+    "structured.py": "14fac990a11efa0c2392c3e98f703bddc42aea18f878c5829d77a7ebb234f5a3",
+    "trace.py": "8f9c3514637e71c3ebf27e2fa314c53eb7734aa284eea6a1c828713710e278fb"
+  },
+  "model_assets": {
+    ".gitattributes": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930",
+    "README.md": "1407e3e3337063c280b2fe1a63724908a5051cfbf26cd8b98f247432b0382537",
+    "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "config.json": "a96942cb6a8a1d3f1d17514d81a1925d04362a6a3233b389d13012211baaa9f8",
+    "model-00001-of-00002.safetensors": "a68b87558c6ef43f74c2bd63ce7e9092ceddc3101f3def0030774bae5f42aadd",
+    "model-00002-of-00002.safetensors": "b0a770bf8469c7f3f18756a0e0283f1c1174344a83e059a4e483f6af4907352d",
+    "model.safetensors.index.json": "dd023913fb87cfdae27fb11dcf695117c925833796ccac3c64117d6652d8ff1e",
+    "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+    "processor_config.json": "14932921ca485d458a04dafd8069fbb0a4505622a48208d19ed247115801385b",
+    "tokenizer.json": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+    "tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+    "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+    "vocab.json": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+  },
+  "dependencies": {
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.2",
+    "transformers": "5.16.1",
+    "numpy": "2.5.2",
+    "tokenizers": "0.23.1"
+  },
+  "preflight": {
+    "plan_sha256": "3f1e0212e63bb1bd58aaac28e10af9500b3130390a0eb021e43c277ae7578b42",
+    "results_sha256": "c11c023b87c645f1718fef22e5257c41251c165d07fb7291e6a247ee52b25fab",
+    "supervisor_sha256": "26ea17511e09926d237a80ddc1205a28e63db59ac6659a73ec07916665b9559c",
+    "profile_sha256": "7dd8d0a0d58f48b02bcceae2e0c0a4d55032dadcc4458f4d9088446c7d3382c5",
+    "model_assets": {
+      ".gitattributes": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930",
+      "README.md": "1407e3e3337063c280b2fe1a63724908a5051cfbf26cd8b98f247432b0382537",
+      "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "config.json": "a96942cb6a8a1d3f1d17514d81a1925d04362a6a3233b389d13012211baaa9f8",
+      "model-00001-of-00002.safetensors": "a68b87558c6ef43f74c2bd63ce7e9092ceddc3101f3def0030774bae5f42aadd",
+      "model-00002-of-00002.safetensors": "b0a770bf8469c7f3f18756a0e0283f1c1174344a83e059a4e483f6af4907352d",
+      "model.safetensors.index.json": "dd023913fb87cfdae27fb11dcf695117c925833796ccac3c64117d6652d8ff1e",
+      "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "processor_config.json": "14932921ca485d458a04dafd8069fbb0a4505622a48208d19ed247115801385b",
+      "tokenizer.json": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+      "tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+      "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+      "vocab.json": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+    },
+    "dependencies": {
+      "mlx": "0.32.2",
+      "mlx-lm": "0.31.2",
+      "transformers": "5.16.1",
+      "numpy": "2.5.2",
+      "tokenizers": "0.23.1"
+    },
+    "sdk_source_sha256": {
+      "trace.py": "8f9c3514637e71c3ebf27e2fa314c53eb7734aa284eea6a1c828713710e278fb",
+      "server.py": "251a612576c78edd54d9e9a39e1a3b43ecd0ccb90d2bd436ad91acfcd41ebf1a",
+      "playground.py": "5d5801c27e5836b2a077b8d3f35e1724a90a015ed5074f4c5eb2617c49bc1841",
+      "cancellation.py": "dc60e6babfbe7ea650de5ba6a183aaf45f8324df4fc813104315659129d06d63",
+      "__init__.py": "2f038b4d9f683c38bd8cee9d8a100d340bf4db1fcf9e150479d78345a95bc4ea",
+      "inspection.py": "3de1508956bb4890f3fd53cc9b44158c949ffc53f60070f5a6ca96af4ba1448a",
+      "comparison.py": "99f3b9fb23a6b39b0284411faf3e737215fab63667625b467c0757a7e4755e50",
+      "api.py": "1c628c72a958429dc9288ed622bdd5e9cd16b01900f72ea8cfe43f8724622824",
+      "cli.py": "dff12c593f92157ca50fd9d5dab25781d58f3493ffe219df243cb45387be9da6",
+      "sampling.py": "446557088e1fcf0736427a17a1d121ae9facda4a1cb0c6610f0613b96bfc859c",
+      "structured.py": "14fac990a11efa0c2392c3e98f703bddc42aea18f878c5829d77a7ebb234f5a3",
+      "errors.py": "249685336e048b778849f25c54a26316b398c30bdbc4c728bbce5604d7f5120d",
+      "rewrite.py": "81f191c4d868ec92922868800fdd5888ffcbb65f93e2a65d3f799e31e40f1d20",
+      "integrity.py": "d337b4e57c814fa8c4688d58f0df90c271c68be1fed0af8f75336702da8673cc",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "experimental/fast_mlx.py": "3945394bb1e0db08685f45134731821b30cb3a32b9cdab4d29c7495ac3e7a573",
+      "experimental/fast_reporting.py": "e706e45f6c0ffa15c1e04655db61bf17f61b91f7f46943dbfc282e8116bb8d2d",
+      "experimental/vllm.py": "9df4213032d8ce1c23cb88704b60fbdab98ebfeb5376760845bccafb9ba7d158",
+      "experimental/partition_filter.py": "fad607a9afd04cb497aa539a17fbabb0d44020ae104be65c2fc5a2a386aa3126",
+      "experimental/completion.py": "db5ec6b660f337b17f7071821b25d1ac204f42af610023b3841ed218ae51dcf0",
+      "experimental/sglang_runtime.py": "29ea6b592efaf228eed9bf56c7684b0fe73c88aa96a34857f4c6f2358358c9f6",
+      "experimental/wide_sampling.py": "c722835cbc7c5398e8fa00843d7d57b7f5e31cdf5382246ffd5c1efa5acb579f",
+      "experimental/__init__.py": "439b6136bb89af33efacde204884ccde89714cfc32ebdb554b79ebd185f26390",
+      "experimental/fast_caller.py": "53133ee8e1f5423ca479178da41c7df9a224a9235fa5aca1007f529835a1058e",
+      "experimental/native.py": "e47e38a40912c1e20adbd944a172013c23351f734f0189e144071c72deb4f619",
+      "experimental/vector_commitment.py": "e1fa1142b67f36ceb6f097d6da12542184e747d8c9afd67edf7ea36b7397edb1",
+      "experimental/hmac_context.py": "219bfe25e4c7a9f1b1ef9d0d6cf809af0cc6ce363270d926bd736fb86a464fb5",
+      "experimental/fast_public.py": "08919ac5806a72856115bb39eb6b27c24237c6f13ceec074bae96d287908ff79",
+      "experimental/wide_mlx.py": "7522f38374870ba584f21f4922405270afbc1bce0f6283c00e457c59279a85ec",
+      "experimental/native_reporting.py": "c8b5854932ac05c1bd7b44b6a417cd5ca3f34958695ef15a8fade8445cafab5f",
+      "experimental/batched_tournament.py": "daf7789d9153619131f96e5ca0f2055eb7b68d5a440131af15610355a5032511",
+      "experimental/native_mlx.py": "356dfaeaa961b32fe03c0cb782bf4791c46eec72eac4c7b1a9109cd668a9741d",
+      "experimental/prepared_binding.py": "77060e0b8812f7ce66e987d06fc7d4c8a7dbcda13caed6fd94b710d05801811e",
+      "experimental/capped_utf8.py": "fd372ced5c2323e422d846521bcc8ccc7cd6c62dc5c0be2f13c3bd934e683ac1",
+      "experimental/sglang.py": "8b5e25c80265597ad6462dc5b006575bc2be0e32291ba1777b9cef5eea2cfb44",
+      "_engine/__init__.py": "798b7414434c4895ad593b93dc970a7f0e364cb5954d2134ee869bea7ddb86da",
+      "backends/transformers.py": "813c46efb30465dbeed752bd46a386c8608858362d0c4946f0bfe18845154b95",
+      "backends/bytelevel.py": "82ff89519b6211c16042231d487d6e514c4b359a0a59bdca363dc96a6b44e3be",
+      "backends/__init__.py": "ee1223e0829d2f34c2aff57382ed898d4acd3c734a1c4ee33da57d95461fb6d4",
+      "backends/mlx_bounded.py": "84050d6bb34144b209b4145ab1ab18ebb950b20486c64b9aa7e156598df63467",
+      "backends/llama_cpp.py": "a51f8c0b8c0610e4eba64f0ea5319539078900ab035eadf18e84ff71829d7a61",
+      "backends/portable.py": "e118486f1ec12dd6a034e44339555b989144de574e9fbf005f1c04da5a8988ff",
+      "backends/mlx.py": "eaa05c2467eb2dc8e42988f20338bfdfb0215c28a84118203baeca100cf90f57",
+      "_engine/research/keyprint_candidate_v3_caller.py": "9144c1be47726a5f0ac480609d83d784587e5cd5a152446beda17da25533feda",
+      "_engine/research/keyprint_exact_categorical_v2.py": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37",
+      "_engine/research/keyprint_stable_support_filter_v3.py": "4ef7abbd49ec02db7cdc9b23a8f1905071666f197ac84c5d35ebd357e56da259",
+      "_engine/research/keyprint_v3_public_api.py": "ef6d625f60de0b7aee0d8968fd3cfeb806a7b4ae26c27d51df00b762d22d7cb4",
+      "_engine/research/keyprint_v3_public_api_rc2.py": "9b397623e3658b4268ad59f9c05ef119da78e9966f77f75b2321571b4b170a40",
+      "_engine/research/__init__.py": "ad290d0f2bcee1a60b928f6b1efef91a218396c275a7854cd6ca9a98d530b230",
+      "_engine/research/keyprint_v3_reporting_contract.py": "82f4f4bb7feace1edc5f642a97a8b9b7977cc77edd5f72e4173a4bb8c5fadb72",
+      "_engine/research/keyprint_reporting_v2.py": "36075cd4180fec0fcbffb61b623fe602c4a8837482bc4c98a6b7851670b01582",
+      "_engine/legacy/__init__.py": "704c58b0da63f465aa4f4da075b1d92232e5e8595099ba3d026a5200d9893d8c",
+      "_engine/legacy/verify.py": "ffa9e2d4f5cb698a16ce89a938a4581354563ba8cc414aa13805506cfb2dc78a",
+      "_engine/legacy/quickstart.py": "0cb5bac9ab79b74deece2451bebece25ce9104e50b3ba486ac83cd20271350ed",
+      "_engine/legacy/_impl/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "_engine/legacy/_impl/research/byte_trie_source_policy.py": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365",
+      "_engine/legacy/_impl/research/grouped_model_support_boundary.py": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+      "_engine/legacy/_impl/research/token_runtime_host.py": "8233754abb7a4ec4a80bb63a2955372468b068e53e32f72324f54a7bd782fdce",
+      "_engine/legacy/_impl/research/token_source_policy.py": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68",
+      "_engine/legacy/_impl/research/grouped_null_score.py": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+      "_engine/legacy/_impl/research/token_runtime_profile.py": "fd1db53497a06a273bbf8319277909c790c8149f50d06e7553f83a90d5198a75",
+      "_engine/legacy/_impl/research/token_runtime_scoring.py": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+      "_engine/legacy/_impl/research/byte_trie_numeric.py": "c448cad55cd74e34dd083204eac1c386090ab55fdeed84ca34441f20b3dd0a37",
+      "_engine/legacy/_impl/research/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "_engine/legacy/_impl/research/grouped_tokenizer_binding.py": "6e165e59bbe520c268d2ddbd5c055b6a59760cb6a5c52f2739e1f9cdc5536c15",
+      "_engine/legacy/_impl/research/token_source_host.py": "9bf4e6ff72c50e1fa9113921a767df1ec92ae59c14ad42973531e78d57f62c10",
+      "_engine/legacy/_impl/research/byte_trie_tournament.py": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+      "_engine/legacy/_impl/research/byte_trie_session.py": "b7ddf1e360b8a745386fe0cf69fa9309ae7c0d029178208ca271ff8a338e1a7a",
+      "_engine/legacy/_impl/research/check_canonical_event_alignment.py": "f32d8365ccdf3af66f1c7d991cf60ad0888e91418be2f1a1c0a1979f41d0dcd5",
+      "_engine/legacy/_impl/research/token_runtime_sparse_host.py": "28a0b1b8ff5e6265d05fba137d817d13b3acd5f08b206369f703b2f35d90b1b9",
+      "_engine/legacy/_impl/research/token_source_sparse_execution.py": "5eeec99a3e50405f707334e3bb1ddc2ed21ee7b80481c1adf241b8800f0bad51",
+      "_engine/legacy/_impl/research/token_runtime_binding.py": "6760e294ff594694ec7afb10afca66ae66f93b8c083e9c8ec8466dcf08c9dad6",
+      "_engine/legacy/_impl/research/grouped_canonical_prototype.py": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+      "_engine/legacy/_impl/research/token_channel_host.py": "dfd9de381512e47d0228ce697a2c9283e3c4f3cdc95ff7076640582d8a41fb3f",
+      "_engine/research/keyprint_candidate_v3/adapter.py": "8683a2c6c8369f98b02c506c9b069e09817de808a0164a49aa30b76c43223d99",
+      "_engine/research/keyprint_candidate_v3/__init__.py": "97f76413dcab94bdb28cf9d65a6e2a7f63e7e76384431db158ff818846a61f27",
+      "_engine/research/keyprint_candidate_v2/adapter.py": "97c35dcf4f60a2944f0e4cc68db03d30985ecfd7a732e697cc233952f056d1af",
+      "_engine/research/keyprint_candidate_v2/__init__.py": "e034566859a9d2b92832f17dcd0a64baa2ac465ce610e17884e2997c60ec492a"
+    }
+  },
+  "failure_policy": "Exactly one generation attempt per row. No retries, replacement, rewriting, translation, truncation concealment or favorable-subset summaries. Infrastructure interruption means incomplete, not passed.",
+  "scope": "Prospective controlled multilingual development study; not natural-distribution, training-held-out, noninferiority or production qualification.",
+  "random_bits": "Fresh OS SystemRandom per draw; pairs do not share randomness",
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}

@@ -11,10 +11,11 @@ def replace_once(text, old, new):
     return text.replace(old, new)
 
 
-def build(source):
+def build(source, *, expected_rows=128):
     rows = json.loads(source)
-    if not isinstance(rows, list) or len(rows) != 128:
-        raise ValueError("Require all 128 source-grounded review records")
+    if (type(expected_rows) is not int or not 1 <= expected_rows <= 128
+            or not isinstance(rows, list) or len(rows) != expected_rows):
+        raise ValueError("Require the explicitly requested source-grounded review count (default 128)")
     seen, clean = set(), []
     for row in rows:
         if set(row) != {"review_id", "case", "rubric", "text", "completion", "error_type"}:

@@ -121,3 +121,18 @@ The latest resource recheck is stored at
 All 18 guard tests passed again after these runs. No model loading was required
 for that test suite. These safeguards apply to wrapped research workers; they
 do not establish that a ChatGPT application memory leak has been fixed.
+
+## Reduced budget for the balanced study
+
+After the user authorized memory cleanup, the Android emulator and a Gradle
+daemon verified IDLE were stopped gracefully; its Kotlin child also exited.
+An attempt after stopping only the emulator still stopped on system pressure
+before generating any token. Both interruption receipts remain retained.
+
+A separately recorded balanced native preflight then completed all four
+16-token prefixes with 64 audited draws. It peaked at 5.52 GiB under a reduced
+**8 GiB** sampled cutoff, with disabled MLX cache, normal pressure throughout
+and verified cleanup. The full frozen balanced study uses the same reduced
+cutoff. See [preflight evidence](evidence/balanced-native-preflight-2026-09-29/README.md).
+The guard still stops on pressure, disk, deadline or sensor failure. No automatic
+restart, unrelated-app cleanup, quality acceptance or ChatGPT leak fix is implied.
