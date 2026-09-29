@@ -1,0 +1,1630 @@
+{
+  "schema": "keyprint.predictable-budget-capacity.v1",
+  "selection": "Four fixed two-token mathematical fixtures; all label assignments included by exact state propagation",
+  "rows": [
+    {
+      "layers": 30,
+      "base": [
+        {
+          "exact": "1/2",
+          "decimal": 0.5
+        },
+        {
+          "exact": "1/2",
+          "decimal": 0.5
+        }
+      ],
+      "ratio": {
+        "exact": "2",
+        "decimal": 2.0
+      },
+      "expected_matching_bit_fraction": {
+        "exact": "21832750421/42949672960",
+        "decimal": 0.5083333333255723
+      },
+      "ordinary_or_independent_key_bit_fraction": {
+        "exact": "1/2",
+        "decimal": 0.5
+      },
+      "expected_layers_with_positive_strength": {
+        "exact": "1073741823/536870912",
+        "decimal": 1.9999999981373549
+      },
+      "probability_strength_exhausted_after_last_layer": {
+        "exact": "1073741823/1073741824",
+        "decimal": 0.9999999990686774
+      },
+      "exact_final_marginal": [
+        {
+          "exact": "1/2",
+          "decimal": 0.5
+        },
+        {
+          "exact": "1/2",
+          "decimal": 0.5
+        }
+      ],
+      "trace": [
+        {
+          "layer": 1,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1",
+            "decimal": 1.0
+          },
+          "expected_matching_bit": {
+            "exact": "5/8",
+            "decimal": 0.625
+          }
+        },
+        {
+          "layer": 2,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/2",
+            "decimal": 0.5
+          },
+          "expected_matching_bit": {
+            "exact": "9/16",
+            "decimal": 0.5625
+          }
+        },
+        {
+          "layer": 3,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/4",
+            "decimal": 0.25
+          },
+          "expected_matching_bit": {
+            "exact": "17/32",
+            "decimal": 0.53125
+          }
+        },
+        {
+          "layer": 4,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/8",
+            "decimal": 0.125
+          },
+          "expected_matching_bit": {
+            "exact": "33/64",
+            "decimal": 0.515625
+          }
+        },
+        {
+          "layer": 5,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/16",
+            "decimal": 0.0625
+          },
+          "expected_matching_bit": {
+            "exact": "65/128",
+            "decimal": 0.5078125
+          }
+        },
+        {
+          "layer": 6,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/32",
+            "decimal": 0.03125
+          },
+          "expected_matching_bit": {
+            "exact": "129/256",
+            "decimal": 0.50390625
+          }
+        },
+        {
+          "layer": 7,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/64",
+            "decimal": 0.015625
+          },
+          "expected_matching_bit": {
+            "exact": "257/512",
+            "decimal": 0.501953125
+          }
+        },
+        {
+          "layer": 8,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/128",
+            "decimal": 0.0078125
+          },
+          "expected_matching_bit": {
+            "exact": "513/1024",
+            "decimal": 0.5009765625
+          }
+        },
+        {
+          "layer": 9,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/256",
+            "decimal": 0.00390625
+          },
+          "expected_matching_bit": {
+            "exact": "1025/2048",
+            "decimal": 0.50048828125
+          }
+        },
+        {
+          "layer": 10,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/512",
+            "decimal": 0.001953125
+          },
+          "expected_matching_bit": {
+            "exact": "2049/4096",
+            "decimal": 0.500244140625
+          }
+        },
+        {
+          "layer": 11,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/1024",
+            "decimal": 0.0009765625
+          },
+          "expected_matching_bit": {
+            "exact": "4097/8192",
+            "decimal": 0.5001220703125
+          }
+        },
+        {
+          "layer": 12,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/2048",
+            "decimal": 0.00048828125
+          },
+          "expected_matching_bit": {
+            "exact": "8193/16384",
+            "decimal": 0.50006103515625
+          }
+        },
+        {
+          "layer": 13,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/4096",
+            "decimal": 0.000244140625
+          },
+          "expected_matching_bit": {
+            "exact": "16385/32768",
+            "decimal": 0.500030517578125
+          }
+        },
+        {
+          "layer": 14,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/8192",
+            "decimal": 0.0001220703125
+          },
+          "expected_matching_bit": {
+            "exact": "32769/65536",
+            "decimal": 0.5000152587890625
+          }
+        },
+        {
+          "layer": 15,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/16384",
+            "decimal": 6.103515625e-05
+          },
+          "expected_matching_bit": {
+            "exact": "65537/131072",
+            "decimal": 0.5000076293945312
+          }
+        },
+        {
+          "layer": 16,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/32768",
+            "decimal": 3.0517578125e-05
+          },
+          "expected_matching_bit": {
+            "exact": "131073/262144",
+            "decimal": 0.5000038146972656
+          }
+        },
+        {
+          "layer": 17,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/65536",
+            "decimal": 1.52587890625e-05
+          },
+          "expected_matching_bit": {
+            "exact": "262145/524288",
+            "decimal": 0.5000019073486328
+          }
+        },
+        {
+          "layer": 18,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/131072",
+            "decimal": 7.62939453125e-06
+          },
+          "expected_matching_bit": {
+            "exact": "524289/1048576",
+            "decimal": 0.5000009536743164
+          }
+        },
+        {
+          "layer": 19,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/262144",
+            "decimal": 3.814697265625e-06
+          },
+          "expected_matching_bit": {
+            "exact": "1048577/2097152",
+            "decimal": 0.5000004768371582
+          }
+        },
+        {
+          "layer": 20,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/524288",
+            "decimal": 1.9073486328125e-06
+          },
+          "expected_matching_bit": {
+            "exact": "2097153/4194304",
+            "decimal": 0.5000002384185791
+          }
+        },
+        {
+          "layer": 21,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/1048576",
+            "decimal": 9.5367431640625e-07
+          },
+          "expected_matching_bit": {
+            "exact": "4194305/8388608",
+            "decimal": 0.5000001192092896
+          }
+        },
+        {
+          "layer": 22,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/2097152",
+            "decimal": 4.76837158203125e-07
+          },
+          "expected_matching_bit": {
+            "exact": "8388609/16777216",
+            "decimal": 0.5000000596046448
+          }
+        },
+        {
+          "layer": 23,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/4194304",
+            "decimal": 2.384185791015625e-07
+          },
+          "expected_matching_bit": {
+            "exact": "16777217/33554432",
+            "decimal": 0.5000000298023224
+          }
+        },
+        {
+          "layer": 24,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/8388608",
+            "decimal": 1.1920928955078125e-07
+          },
+          "expected_matching_bit": {
+            "exact": "33554433/67108864",
+            "decimal": 0.5000000149011612
+          }
+        },
+        {
+          "layer": 25,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/16777216",
+            "decimal": 5.960464477539063e-08
+          },
+          "expected_matching_bit": {
+            "exact": "67108865/134217728",
+            "decimal": 0.5000000074505806
+          }
+        },
+        {
+          "layer": 26,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/33554432",
+            "decimal": 2.9802322387695312e-08
+          },
+          "expected_matching_bit": {
+            "exact": "134217729/268435456",
+            "decimal": 0.5000000037252903
+          }
+        },
+        {
+          "layer": 27,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/67108864",
+            "decimal": 1.4901161193847656e-08
+          },
+          "expected_matching_bit": {
+            "exact": "268435457/536870912",
+            "decimal": 0.5000000018626451
+          }
+        },
+        {
+          "layer": 28,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/134217728",
+            "decimal": 7.450580596923828e-09
+          },
+          "expected_matching_bit": {
+            "exact": "536870913/1073741824",
+            "decimal": 0.5000000009313226
+          }
+        },
+        {
+          "layer": 29,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/268435456",
+            "decimal": 3.725290298461914e-09
+          },
+          "expected_matching_bit": {
+            "exact": "1073741825/2147483648",
+            "decimal": 0.5000000004656613
+          }
+        },
+        {
+          "layer": 30,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1/536870912",
+            "decimal": 1.862645149230957e-09
+          },
+          "expected_matching_bit": {
+            "exact": "2147483649/4294967296",
+            "decimal": 0.5000000002328306
+          }
+        }
+      ]
+    },
+    {
+      "layers": 30,
+      "base": [
+        {
+          "exact": "3/4",
+          "decimal": 0.75
+        },
+        {
+          "exact": "1/4",
+          "decimal": 0.25
+        }
+      ],
+      "ratio": {
+        "exact": "2",
+        "decimal": 2.0
+      },
+      "expected_matching_bit_fraction": {
+        "exact": "70328005889885570887/138350580552821637120",
+        "decimal": 0.5083318451492486
+      },
+      "ordinary_or_independent_key_bit_fraction": {
+        "exact": "1/2",
+        "decimal": 0.5
+      },
+      "expected_layers_with_positive_strength": {
+        "exact": "1152715613474752327/288230376151711744",
+        "decimal": 3.99928567163932
+      },
+      "probability_strength_exhausted_after_last_layer": {
+        "exact": "1152715613474752327/1152921504606846976",
+        "decimal": 0.99982141790983
+      },
+      "exact_final_marginal": [
+        {
+          "exact": "3/4",
+          "decimal": 0.75
+        },
+        {
+          "exact": "1/4",
+          "decimal": 0.25
+        }
+      ],
+      "trace": [
+        {
+          "layer": 1,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1",
+            "decimal": 1.0
+          },
+          "expected_matching_bit": {
+            "exact": "9/16",
+            "decimal": 0.5625
+          }
+        },
+        {
+          "layer": 2,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "3/4",
+            "decimal": 0.75
+          },
+          "expected_matching_bit": {
+            "exact": "35/64",
+            "decimal": 0.546875
+          }
+        },
+        {
+          "layer": 3,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "9/16",
+            "decimal": 0.5625
+          },
+          "expected_matching_bit": {
+            "exact": "137/256",
+            "decimal": 0.53515625
+          }
+        },
+        {
+          "layer": 4,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "27/64",
+            "decimal": 0.421875
+          },
+          "expected_matching_bit": {
+            "exact": "539/1024",
+            "decimal": 0.5263671875
+          }
+        },
+        {
+          "layer": 5,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "81/256",
+            "decimal": 0.31640625
+          },
+          "expected_matching_bit": {
+            "exact": "2129/4096",
+            "decimal": 0.519775390625
+          }
+        },
+        {
+          "layer": 6,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "243/1024",
+            "decimal": 0.2373046875
+          },
+          "expected_matching_bit": {
+            "exact": "8435/16384",
+            "decimal": 0.51483154296875
+          }
+        },
+        {
+          "layer": 7,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "729/4096",
+            "decimal": 0.177978515625
+          },
+          "expected_matching_bit": {
+            "exact": "33497/65536",
+            "decimal": 0.5111236572265625
+          }
+        },
+        {
+          "layer": 8,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "2187/16384",
+            "decimal": 0.13348388671875
+          },
+          "expected_matching_bit": {
+            "exact": "133259/262144",
+            "decimal": 0.5083427429199219
+          }
+        },
+        {
+          "layer": 9,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "6561/65536",
+            "decimal": 0.1001129150390625
+          },
+          "expected_matching_bit": {
+            "exact": "530849/1048576",
+            "decimal": 0.5062570571899414
+          }
+        },
+        {
+          "layer": 10,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "19683/262144",
+            "decimal": 0.07508468627929688
+          },
+          "expected_matching_bit": {
+            "exact": "2116835/4194304",
+            "decimal": 0.504692792892456
+          }
+        },
+        {
+          "layer": 11,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "59049/1048576",
+            "decimal": 0.056313514709472656
+          },
+          "expected_matching_bit": {
+            "exact": "8447657/16777216",
+            "decimal": 0.503519594669342
+          }
+        },
+        {
+          "layer": 12,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "177147/4194304",
+            "decimal": 0.04223513603210449
+          },
+          "expected_matching_bit": {
+            "exact": "33731579/67108864",
+            "decimal": 0.5026396960020065
+          }
+        },
+        {
+          "layer": 13,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "531441/16777216",
+            "decimal": 0.03167635202407837
+          },
+          "expected_matching_bit": {
+            "exact": "134749169/268435456",
+            "decimal": 0.5019797720015049
+          }
+        },
+        {
+          "layer": 14,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "1594323/67108864",
+            "decimal": 0.023757264018058777
+          },
+          "expected_matching_bit": {
+            "exact": "538465235/1073741824",
+            "decimal": 0.5014848290011287
+          }
+        },
+        {
+          "layer": 15,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "4782969/268435456",
+            "decimal": 0.017817948013544083
+          },
+          "expected_matching_bit": {
+            "exact": "2152266617/4294967296",
+            "decimal": 0.5011136217508465
+          }
+        },
+        {
+          "layer": 16,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "14348907/1073741824",
+            "decimal": 0.013363461010158062
+          },
+          "expected_matching_bit": {
+            "exact": "8604283499/17179869184",
+            "decimal": 0.5008352163131349
+          }
+        },
+        {
+          "layer": 17,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "43046721/4294967296",
+            "decimal": 0.010022595757618546
+          },
+          "expected_matching_bit": {
+            "exact": "34402785089/68719476736",
+            "decimal": 0.5006264122348512
+          }
+        },
+        {
+          "layer": 18,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "129140163/17179869184",
+            "decimal": 0.00751694681821391
+          },
+          "expected_matching_bit": {
+            "exact": "137568093635/274877906944",
+            "decimal": 0.5004698091761384
+          }
+        },
+        {
+          "layer": 19,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "387420489/68719476736",
+            "decimal": 0.005637710113660432
+          },
+          "expected_matching_bit": {
+            "exact": "550143234377/1099511627776",
+            "decimal": 0.5003523568821038
+          }
+        },
+        {
+          "layer": 20,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "1162261467/274877906944",
+            "decimal": 0.004228282585245324
+          },
+          "expected_matching_bit": {
+            "exact": "2200185517019/4398046511104",
+            "decimal": 0.5002642676615778
+          }
+        },
+        {
+          "layer": 21,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "3486784401/1099511627776",
+            "decimal": 0.0031712119389339932
+          },
+          "expected_matching_bit": {
+            "exact": "8799579806609/17592186044416",
+            "decimal": 0.5001982007461834
+          }
+        },
+        {
+          "layer": 22,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "10460353203/4398046511104",
+            "decimal": 0.002378408954200495
+          },
+          "expected_matching_bit": {
+            "exact": "35194832442035/70368744177664",
+            "decimal": 0.5001486505596375
+          }
+        },
+        {
+          "layer": 23,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "31381059609/17592186044416",
+            "decimal": 0.0017838067156503712
+          },
+          "expected_matching_bit": {
+            "exact": "140768869414937/281474976710656",
+            "decimal": 0.5001114879197281
+          }
+        },
+        {
+          "layer": 24,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "94143178827/70368744177664",
+            "decimal": 0.0013378550367377784
+          },
+          "expected_matching_bit": {
+            "exact": "563044096600139/1125899906842624",
+            "decimal": 0.5000836159397961
+          }
+        },
+        {
+          "layer": 25,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "282429536481/281474976710656",
+            "decimal": 0.0010033912775533338
+          },
+          "expected_matching_bit": {
+            "exact": "2252082243221729/4503599627370496",
+            "decimal": 0.5000627119548471
+          }
+        },
+        {
+          "layer": 26,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "847288609443/1125899906842624",
+            "decimal": 0.0007525434581650003
+          },
+          "expected_matching_bit": {
+            "exact": "9008046543350435/18014398509481984",
+            "decimal": 0.5000470339661354
+          }
+        },
+        {
+          "layer": 27,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "2541865828329/4503599627370496",
+            "decimal": 0.0005644075936237503
+          },
+          "expected_matching_bit": {
+            "exact": "36031338884792297/72057594037927936",
+            "decimal": 0.5000352754746015
+          }
+        },
+        {
+          "layer": 28,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "7625597484987/18014398509481984",
+            "decimal": 0.0004233056952178127
+          },
+          "expected_matching_bit": {
+            "exact": "144122813673340859/288230376151711744",
+            "decimal": 0.5000264566059511
+          }
+        },
+        {
+          "layer": 29,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "22876792454961/72057594037927936",
+            "decimal": 0.0003174792714133595
+          },
+          "expected_matching_bit": {
+            "exact": "576483629095878449/1152921504606846976",
+            "decimal": 0.5000198424544633
+          }
+        },
+        {
+          "layer": 30,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "68630377364883/288230376151711744",
+            "decimal": 0.00023810945356001964
+          },
+          "expected_matching_bit": {
+            "exact": "2305911639591058835/4611686018427387904",
+            "decimal": 0.5000148818408475
+          }
+        }
+      ]
+    },
+    {
+      "layers": 30,
+      "base": [
+        {
+          "exact": "99/100",
+          "decimal": 0.99
+        },
+        {
+          "exact": "1/100",
+          "decimal": 0.01
+        }
+      ],
+      "ratio": {
+        "exact": "2",
+        "decimal": 2.0
+      },
+      "expected_matching_bit_fraction": {
+        "exact": "1730534972523745216327/3458764513820540928000",
+        "decimal": 0.5003332738059699
+      },
+      "ordinary_or_independent_key_bit_fraction": {
+        "exact": "1/2",
+        "decimal": 0.5
+      },
+      "expected_layers_with_positive_strength": {
+        "exact": "1152715613474752327/288230376151711744",
+        "decimal": 3.99928567163932
+      },
+      "probability_strength_exhausted_after_last_layer": {
+        "exact": "1152715613474752327/1152921504606846976",
+        "decimal": 0.99982141790983
+      },
+      "exact_final_marginal": [
+        {
+          "exact": "99/100",
+          "decimal": 0.99
+        },
+        {
+          "exact": "1/100",
+          "decimal": 0.01
+        }
+      ],
+      "trace": [
+        {
+          "layer": 1,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1",
+            "decimal": 1.0
+          },
+          "expected_matching_bit": {
+            "exact": "201/400",
+            "decimal": 0.5025
+          }
+        },
+        {
+          "layer": 2,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "3/4",
+            "decimal": 0.75
+          },
+          "expected_matching_bit": {
+            "exact": "803/1600",
+            "decimal": 0.501875
+          }
+        },
+        {
+          "layer": 3,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "9/16",
+            "decimal": 0.5625
+          },
+          "expected_matching_bit": {
+            "exact": "3209/6400",
+            "decimal": 0.50140625
+          }
+        },
+        {
+          "layer": 4,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "27/64",
+            "decimal": 0.421875
+          },
+          "expected_matching_bit": {
+            "exact": "12827/25600",
+            "decimal": 0.5010546875
+          }
+        },
+        {
+          "layer": 5,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "81/256",
+            "decimal": 0.31640625
+          },
+          "expected_matching_bit": {
+            "exact": "51281/102400",
+            "decimal": 0.500791015625
+          }
+        },
+        {
+          "layer": 6,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "243/1024",
+            "decimal": 0.2373046875
+          },
+          "expected_matching_bit": {
+            "exact": "205043/409600",
+            "decimal": 0.50059326171875
+          }
+        },
+        {
+          "layer": 7,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "729/4096",
+            "decimal": 0.177978515625
+          },
+          "expected_matching_bit": {
+            "exact": "819929/1638400",
+            "decimal": 0.5004449462890626
+          }
+        },
+        {
+          "layer": 8,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "2187/16384",
+            "decimal": 0.13348388671875
+          },
+          "expected_matching_bit": {
+            "exact": "3278987/6553600",
+            "decimal": 0.5003337097167969
+          }
+        },
+        {
+          "layer": 9,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "6561/65536",
+            "decimal": 0.1001129150390625
+          },
+          "expected_matching_bit": {
+            "exact": "13113761/26214400",
+            "decimal": 0.5002502822875976
+          }
+        },
+        {
+          "layer": 10,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "19683/262144",
+            "decimal": 0.07508468627929688
+          },
+          "expected_matching_bit": {
+            "exact": "52448483/104857600",
+            "decimal": 0.5001877117156982
+          }
+        },
+        {
+          "layer": 11,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "59049/1048576",
+            "decimal": 0.056313514709472656
+          },
+          "expected_matching_bit": {
+            "exact": "209774249/419430400",
+            "decimal": 0.5001407837867737
+          }
+        },
+        {
+          "layer": 12,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "177147/4194304",
+            "decimal": 0.04223513603210449
+          },
+          "expected_matching_bit": {
+            "exact": "839037947/1677721600",
+            "decimal": 0.5001055878400803
+          }
+        },
+        {
+          "layer": 13,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "531441/16777216",
+            "decimal": 0.03167635202407837
+          },
+          "expected_matching_bit": {
+            "exact": "3355974641/6710886400",
+            "decimal": 0.5000791908800601
+          }
+        },
+        {
+          "layer": 14,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "1594323/67108864",
+            "decimal": 0.023757264018058777
+          },
+          "expected_matching_bit": {
+            "exact": "13423367123/26843545600",
+            "decimal": 0.5000593931600451
+          }
+        },
+        {
+          "layer": 15,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "4782969/268435456",
+            "decimal": 0.017817948013544083
+          },
+          "expected_matching_bit": {
+            "exact": "53691874169/107374182400",
+            "decimal": 0.5000445448700339
+          }
+        },
+        {
+          "layer": 16,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "14348907/1073741824",
+            "decimal": 0.013363461010158062
+          },
+          "expected_matching_bit": {
+            "exact": "214762713707/429496729600",
+            "decimal": 0.5000334086525254
+          }
+        },
+        {
+          "layer": 17,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "43046721/4294967296",
+            "decimal": 0.010022595757618546
+          },
+          "expected_matching_bit": {
+            "exact": "859036505921/1717986918400",
+            "decimal": 0.500025056489394
+          }
+        },
+        {
+          "layer": 18,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "129140163/17179869184",
+            "decimal": 0.00751694681821391
+          },
+          "expected_matching_bit": {
+            "exact": "3436102976963/6871947673600",
+            "decimal": 0.5000187923670455
+          }
+        },
+        {
+          "layer": 19,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "387420489/68719476736",
+            "decimal": 0.005637710113660432
+          },
+          "expected_matching_bit": {
+            "exact": "13744282767689/27487790694400",
+            "decimal": 0.5000140942752842
+          }
+        },
+        {
+          "layer": 20,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "1162261467/274877906944",
+            "decimal": 0.004228282585245324
+          },
+          "expected_matching_bit": {
+            "exact": "54976743650267/109951162777600",
+            "decimal": 0.5000105707064632
+          }
+        },
+        {
+          "layer": 21,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "3486784401/1099511627776",
+            "decimal": 0.0031712119389339932
+          },
+          "expected_matching_bit": {
+            "exact": "219905812339601/439804651110400",
+            "decimal": 0.5000079280298473
+          }
+        },
+        {
+          "layer": 22,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "10460353203/4398046511104",
+            "decimal": 0.002378408954200495
+          },
+          "expected_matching_bit": {
+            "exact": "879619762574003/1759218604441600",
+            "decimal": 0.5000059460223855
+          }
+        },
+        {
+          "layer": 23,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "31381059609/17592186044416",
+            "decimal": 0.0017838067156503712
+          },
+          "expected_matching_bit": {
+            "exact": "3518468589942809/7036874417766400",
+            "decimal": 0.5000044595167892
+          }
+        },
+        {
+          "layer": 24,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "94143178827/70368744177664",
+            "decimal": 0.0013378550367377784
+          },
+          "expected_matching_bit": {
+            "exact": "14073842978711627/28147497671065600",
+            "decimal": 0.5000033446375919
+          }
+        },
+        {
+          "layer": 25,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "282429536481/281474976710656",
+            "decimal": 0.0010033912775533338
+          },
+          "expected_matching_bit": {
+            "exact": "56295277771667681/112589990684262400",
+            "decimal": 0.5000025084781938
+          }
+        },
+        {
+          "layer": 26,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "847288609443/1125899906842624",
+            "decimal": 0.0007525434581650003
+          },
+          "expected_matching_bit": {
+            "exact": "225180828657134243/450359962737049600",
+            "decimal": 0.5000018813586454
+          }
+        },
+        {
+          "layer": 27,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "2541865828329/4503599627370496",
+            "decimal": 0.0005644075936237503
+          },
+          "expected_matching_bit": {
+            "exact": "900722467339927529/1801439850948198400",
+            "decimal": 0.5000014110189841
+          }
+        },
+        {
+          "layer": 28,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "7625597484987/18014398509481984",
+            "decimal": 0.0004233056952178127
+          },
+          "expected_matching_bit": {
+            "exact": "3602887327493881787/7205759403792793600",
+            "decimal": 0.500001058264238
+          }
+        },
+        {
+          "layer": 29,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "22876792454961/72057594037927936",
+            "decimal": 0.0003174792714133595
+          },
+          "expected_matching_bit": {
+            "exact": "14411541684378042161/28823037615171174400",
+            "decimal": 0.5000007936981785
+          }
+        },
+        {
+          "layer": 30,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "68630377364883/288230376151711744",
+            "decimal": 0.00023810945356001964
+          },
+          "expected_matching_bit": {
+            "exact": "57646143860719713683/115292150460684697600",
+            "decimal": 0.5000005952736339
+          }
+        }
+      ]
+    },
+    {
+      "layers": 30,
+      "base": [
+        {
+          "exact": "999/1000",
+          "decimal": 0.999
+        },
+        {
+          "exact": "1/1000",
+          "decimal": 0.001
+        }
+      ],
+      "ratio": {
+        "exact": "2",
+        "decimal": 2.0
+      },
+      "expected_matching_bit_fraction": {
+        "exact": "17294975284716179392327/34587645138205409280000",
+        "decimal": 0.500033327380597
+      },
+      "ordinary_or_independent_key_bit_fraction": {
+        "exact": "1/2",
+        "decimal": 0.5
+      },
+      "expected_layers_with_positive_strength": {
+        "exact": "1152715613474752327/288230376151711744",
+        "decimal": 3.99928567163932
+      },
+      "probability_strength_exhausted_after_last_layer": {
+        "exact": "1152715613474752327/1152921504606846976",
+        "decimal": 0.99982141790983
+      },
+      "exact_final_marginal": [
+        {
+          "exact": "999/1000",
+          "decimal": 0.999
+        },
+        {
+          "exact": "1/1000",
+          "decimal": 0.001
+        }
+      ],
+      "trace": [
+        {
+          "layer": 1,
+          "states": 3,
+          "probability_strength_positive": {
+            "exact": "1",
+            "decimal": 1.0
+          },
+          "expected_matching_bit": {
+            "exact": "2001/4000",
+            "decimal": 0.50025
+          }
+        },
+        {
+          "layer": 2,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "3/4",
+            "decimal": 0.75
+          },
+          "expected_matching_bit": {
+            "exact": "8003/16000",
+            "decimal": 0.5001875
+          }
+        },
+        {
+          "layer": 3,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "9/16",
+            "decimal": 0.5625
+          },
+          "expected_matching_bit": {
+            "exact": "32009/64000",
+            "decimal": 0.500140625
+          }
+        },
+        {
+          "layer": 4,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "27/64",
+            "decimal": 0.421875
+          },
+          "expected_matching_bit": {
+            "exact": "128027/256000",
+            "decimal": 0.50010546875
+          }
+        },
+        {
+          "layer": 5,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "81/256",
+            "decimal": 0.31640625
+          },
+          "expected_matching_bit": {
+            "exact": "512081/1024000",
+            "decimal": 0.5000791015625
+          }
+        },
+        {
+          "layer": 6,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "243/1024",
+            "decimal": 0.2373046875
+          },
+          "expected_matching_bit": {
+            "exact": "2048243/4096000",
+            "decimal": 0.500059326171875
+          }
+        },
+        {
+          "layer": 7,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "729/4096",
+            "decimal": 0.177978515625
+          },
+          "expected_matching_bit": {
+            "exact": "8192729/16384000",
+            "decimal": 0.5000444946289062
+          }
+        },
+        {
+          "layer": 8,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "2187/16384",
+            "decimal": 0.13348388671875
+          },
+          "expected_matching_bit": {
+            "exact": "32770187/65536000",
+            "decimal": 0.5000333709716797
+          }
+        },
+        {
+          "layer": 9,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "6561/65536",
+            "decimal": 0.1001129150390625
+          },
+          "expected_matching_bit": {
+            "exact": "131078561/262144000",
+            "decimal": 0.5000250282287597
+          }
+        },
+        {
+          "layer": 10,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "19683/262144",
+            "decimal": 0.07508468627929688
+          },
+          "expected_matching_bit": {
+            "exact": "524307683/1048576000",
+            "decimal": 0.5000187711715698
+          }
+        },
+        {
+          "layer": 11,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "59049/1048576",
+            "decimal": 0.056313514709472656
+          },
+          "expected_matching_bit": {
+            "exact": "2097211049/4194304000",
+            "decimal": 0.5000140783786774
+          }
+        },
+        {
+          "layer": 12,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "177147/4194304",
+            "decimal": 0.04223513603210449
+          },
+          "expected_matching_bit": {
+            "exact": "8388785147/16777216000",
+            "decimal": 0.500010558784008
+          }
+        },
+        {
+          "layer": 13,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "531441/16777216",
+            "decimal": 0.03167635202407837
+          },
+          "expected_matching_bit": {
+            "exact": "33554963441/67108864000",
+            "decimal": 0.500007919088006
+          }
+        },
+        {
+          "layer": 14,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "1594323/67108864",
+            "decimal": 0.023757264018058777
+          },
+          "expected_matching_bit": {
+            "exact": "134219322323/268435456000",
+            "decimal": 0.5000059393160046
+          }
+        },
+        {
+          "layer": 15,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "4782969/268435456",
+            "decimal": 0.017817948013544083
+          },
+          "expected_matching_bit": {
+            "exact": "536875694969/1073741824000",
+            "decimal": 0.5000044544870034
+          }
+        },
+        {
+          "layer": 16,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "14348907/1073741824",
+            "decimal": 0.013363461010158062
+          },
+          "expected_matching_bit": {
+            "exact": "2147497996907/4294967296000",
+            "decimal": 0.5000033408652526
+          }
+        },
+        {
+          "layer": 17,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "43046721/4294967296",
+            "decimal": 0.010022595757618546
+          },
+          "expected_matching_bit": {
+            "exact": "8589977638721/17179869184000",
+            "decimal": 0.5000025056489394
+          }
+        },
+        {
+          "layer": 18,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "129140163/17179869184",
+            "decimal": 0.00751694681821391
+          },
+          "expected_matching_bit": {
+            "exact": "34359867508163/68719476736000",
+            "decimal": 0.5000018792367046
+          }
+        },
+        {
+          "layer": 19,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "387420489/68719476736",
+            "decimal": 0.005637710113660432
+          },
+          "expected_matching_bit": {
+            "exact": "137439340892489/274877906944000",
+            "decimal": 0.5000014094275285
+          }
+        },
+        {
+          "layer": 20,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "1162261467/274877906944",
+            "decimal": 0.004228282585245324
+          },
+          "expected_matching_bit": {
+            "exact": "549756976149467/1099511627776000",
+            "decimal": 0.5000010570706463
+          }
+        },
+        {
+          "layer": 21,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "3486784401/1099511627776",
+            "decimal": 0.0031712119389339932
+          },
+          "expected_matching_bit": {
+            "exact": "2199026742336401/4398046511104000",
+            "decimal": 0.5000007928029847
+          }
+        },
+        {
+          "layer": 22,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "10460353203/4398046511104",
+            "decimal": 0.002378408954200495
+          },
+          "expected_matching_bit": {
+            "exact": "8796103482561203/17592186044416000",
+            "decimal": 0.5000005946022386
+          }
+        },
+        {
+          "layer": 23,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "31381059609/17592186044416",
+            "decimal": 0.0017838067156503712
+          },
+          "expected_matching_bit": {
+            "exact": "35184403469891609/70368744177664000",
+            "decimal": 0.5000004459516789
+          }
+        },
+        {
+          "layer": 24,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "94143178827/70368744177664",
+            "decimal": 0.0013378550367377784
+          },
+          "expected_matching_bit": {
+            "exact": "140737582498506827/281474976710656000",
+            "decimal": 0.5000003344637591
+          }
+        },
+        {
+          "layer": 25,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "282429536481/281474976710656",
+            "decimal": 0.0010033912775533338
+          },
+          "expected_matching_bit": {
+            "exact": "562950235850848481/1125899906842624000",
+            "decimal": 0.5000002508478194
+          }
+        },
+        {
+          "layer": 26,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "847288609443/1125899906842624",
+            "decimal": 0.0007525434581650003
+          },
+          "expected_matching_bit": {
+            "exact": "2251800660973857443/4503599627370496000",
+            "decimal": 0.5000001881358646
+          }
+        },
+        {
+          "layer": 27,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "2541865828329/4503599627370496",
+            "decimal": 0.0005644075936237503
+          },
+          "expected_matching_bit": {
+            "exact": "9007201796606820329/18014398509481984000",
+            "decimal": 0.5000001411018984
+          }
+        },
+        {
+          "layer": 28,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "7625597484987/18014398509481984",
+            "decimal": 0.0004233056952178127
+          },
+          "expected_matching_bit": {
+            "exact": "36028804644561452987/72057594037927936000",
+            "decimal": 0.5000001058264238
+          }
+        },
+        {
+          "layer": 29,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "22876792454961/72057594037927936",
+            "decimal": 0.0003174792714133595
+          },
+          "expected_matching_bit": {
+            "exact": "144115210952648326961/288230376151711744000",
+            "decimal": 0.5000000793698178
+          }
+        },
+        {
+          "layer": 30,
+          "states": 4,
+          "probability_strength_positive": {
+            "exact": "68630377364883/288230376151711744",
+            "decimal": 0.00023810945356001964
+          },
+          "expected_matching_bit": {
+            "exact": "576460820933800852883/1152921504606846976000",
+            "decimal": 0.5000000595273634
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Ideal independent fair bits at one prefix; no finite-key, grouped-vocabulary, sequence, power or quality claim",
+  "model_inference": false,
+  "detector_calibrated": false,
+  "quality_acceptance": false
+}

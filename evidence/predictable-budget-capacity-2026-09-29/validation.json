@@ -1,0 +1,31 @@
+{
+  "schema": "keyprint.budget-capacity-validation.v1",
+  "focused_checks_passed": 20,
+  "new_capacity_checks": 8,
+  "model_inference": false,
+  "sdk_changed": false,
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "source_sha256": {
+    "tools/predictable_budget_oracle.py": "174e3eacbb19c78fb157a3e909f264e0c6a60d99652aa0a48c45884366ef8526",
+    "tools/predictable_budget_capacity.py": "7bc07fd9907b93763a6b2a8f99878bf18e3b611e46056cc56e16f9f88dfa0952",
+    "tests/test_predictable_budget_oracle.py": "29a07c7d55dce8e17d12dd0a6fb7611ba0a72321af32614a1308410a72ce0215",
+    "tests/test_predictable_budget_capacity.py": "21d8ae4b9e28591e29823af2c2231a1825757f5c6d9366914fc43cf497e98dcc",
+    "evidence/predictable-budget-capacity-2026-09-29/results.json": "455de0ee5a190acc5d616e3479b34d45909bd6a3c0fe9a010d46c1c6f55c67bb"
+  },
+  "supervisor": {
+    "status": "completed",
+    "limit_bytes": 268435456,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 60.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 10813872,
+    "samples": 1,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 9427,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 0.3290472920052707
+  }
+}

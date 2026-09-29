@@ -1,7 +1,8 @@
 # Predictable probability budget: exact-rational oracle only
 
 Status: mathematical prototype, not an SDK path, selected inference candidate,
-accepted watermark or quality fix. The ongoing 128-path diagnosis is unchanged.
+accepted watermark or quality fix. The 128-path diagnosis remains incomplete
+after a resource interruption; its original evidence is unchanged.
 No model output, detector result or clue acceptance follows from this oracle.
 
 ## Motivation and distinction
@@ -55,7 +56,11 @@ all remaining layers contribute no new watermark evidence. This is a material
 capacity risk, not a successful detector result. The oracle neither changes
 post-generation text nor identifies which tokens carry facts or language.
 
-Before any promotion: inspect the complete live diagnosis; decide whether to
+The [exact capacity analysis](../predictable-budget-capacity-2026-09-29/README.md)
+now quantifies early strength exhaustion in four two-token mathematical fixtures.
+It does not qualify this oracle or establish model-level detector performance.
+
+Before any promotion: complete and inspect the guarded diagnosis; decide whether to
 build a separately identified floating-point candidate; verify numerical/support,
 EOS and source-protection behavior; and run actual ordinary/reference/candidate
 inference with every attempt retained. Frozen factual review, multilingual tests,
