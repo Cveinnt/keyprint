@@ -1,0 +1,120 @@
+{
+  "schema": "keyprint.paced-session-validation.v1",
+  "cases": [
+    {
+      "purpose": "general",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "general",
+      "key_slot": 3,
+      "condition": "marked"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 0,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 0,
+      "condition": "marked"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 1,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 1,
+      "condition": "marked"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 2,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 2,
+      "condition": "marked"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 3,
+      "condition": "ordinary"
+    },
+    {
+      "purpose": "proofread",
+      "key_slot": 3,
+      "condition": "marked"
+    }
+  ],
+  "max_steps": 33,
+  "policy": {
+    "version": "keyprint-paced-source-integer-v1",
+    "kernel": "reserved-base-relative-margin-v1",
+    "ratio_bounds": [
+      "1/2",
+      "2"
+    ],
+    "per_layer_base_fraction": "1/8",
+    "rounding_margin": "2^-40",
+    "partition": "exact_integer_product_preserves_excluded_normalized_mass",
+    "draw": "integer_rejection_gcd_reduced_no_float_conversion",
+    "source_match_bytes": 24,
+    "startup_bytes": 96,
+    "source_alignment": "all_overlapping_canonical_suffix_matches",
+    "canonicalization": "ASCII_whitespace_only_no_Unicode_normalization",
+    "repeated_context": "identity",
+    "single_distinct_label": "identity",
+    "purpose": "explicit_source_request",
+    "detector": "uncalibrated_raw_events_only"
+  },
+  "profile_sha256": "89d8dcab9fde866f00153096fe5c6ed7f875c726c4595f76f6f651c9e370eed4",
+  "source_sha256": {
+    "tools/validate_paced_session.py": "20a7cce4446b25e5e7e01da331ae70457ef2bde4e505a3bbf1c8ad764e970ec9",
+    "tools/paced_source_session.py": "589caa3875f0754e06f0da4cc9c7f255dd7108bbf4b26d42a53b9aebd315f2b2",
+    "tools/paced_integer_kernel.py": "8311ff35595502f13be9c61c37f527dd12488e4d0451eaba1226f37a3b5b5007",
+    "src/keyprint/_engine/research/keyprint_exact_categorical_v2.py": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37",
+    "src/keyprint/_engine/legacy/_impl/research/grouped_canonical_prototype.py": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+    "src/keyprint/_engine/legacy/_impl/research/token_source_policy.py": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68",
+    "src/keyprint/_engine/legacy/_impl/research/byte_trie_source_policy.py": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365"
+  },
+  "selection": "All16 synthetic cases, four public test keys, both arms, general/proofread; retain EOS and cap endings",
+  "fixture": "One deterministic prefix then fixed supplied probabilities; not a model or quality corpus",
+  "key_fixture": "32 repetitions of key_slot byte; public test data, never production keys",
+  "randomness": "Python Random seeded by case index, test-only, no production security claim"
+}

@@ -1,0 +1,1083 @@
+[
+  {
+    "step": 0,
+    "base": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "token_ids": [
+      0
+    ],
+    "integer_distribution": {
+      "weights": [
+        1
+      ],
+      "total": 1
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 0,
+      "integer_point": 0,
+      "total_weight": 1,
+      "transcript": []
+    }
+  },
+  {
+    "step": 1,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        106045192408218152198508153667584,
+        106045192408218152198508153667584,
+        123432432752577474347465976053760,
+        151255012918626338451849511698432,
+        97355566097528019836386657121075,
+        64903710731685352562390607908045
+      ],
+      "total": 649037107316853489595109060116480
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 30,
+      "boundary_freezes": 0,
+      "partitioned": true
+    },
+    "draw": {
+      "token_index": 2,
+      "integer_point": 153009790465716139903495786904516,
+      "total_weight": 649037107316853489595109060116480,
+      "transcript": [
+        {
+          "bit_count": 110,
+          "value": 1041442108705429362060768628290037,
+          "accepted": false
+        },
+        {
+          "bit_count": 110,
+          "value": 153009790465716139903495786904516,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        9983338883981255059446108782592,
+        9983338883981255059446108782592,
+        13860952864548814437326635663360,
+        47302007782095366146769406656512,
+        16225927682921337540117701660945,
+        10817285121947559360878384967407
+      ],
+      "total": 108172851219475587603984346513408
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 30,
+      "boundary_freezes": 0,
+      "partitioned": true
+    },
+    "draw": {
+      "token_index": 4,
+      "integer_point": 76649245502214019447842879624571,
+      "total_weight": 108172851219475587603984346513408,
+      "transcript": [
+        {
+          "bit_count": 107,
+          "value": 76649245502214019447842879624571,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        51902392651042147519510968532992,
+        51902392651042147519510968532992,
+        47884913169188845199686564315136,
+        172828855187153595551646773936128,
+        64903710731685344756151253799185,
+        43269140487790233840633837973231
+      ],
+      "total": 432691404877902314387140367089664
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 30,
+      "boundary_freezes": 0,
+      "partitioned": true
+    },
+    "draw": {
+      "token_index": 3,
+      "integer_point": 136255700464151851533384824048667,
+      "total_weight": 432691404877902314387140367089664,
+      "transcript": [
+        {
+          "bit_count": 109,
+          "value": 136255700464151851533384824048667,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        16137463685711745,
+        16137463685711745,
+        9154352666890575,
+        12613915490131887,
+        10808639105689190,
+        7205759403792794
+      ],
+      "total": 72057594037927936
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 30,
+      "boundary_freezes": 0,
+      "partitioned": true
+    },
+    "draw": {
+      "token_index": 3,
+      "integer_point": 35153775144939148,
+      "total_weight": 72057594037927936,
+      "transcript": [
+        {
+          "bit_count": 56,
+          "value": 35153775144939148,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 5,
+      "integer_point": 32185136418244520,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 32185136418244520,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 3,
+      "integer_point": 14044344784040882,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 14044344784040882,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 4,
+      "integer_point": 21885261118558854,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 21885261118558854,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 5,
+      "integer_point": 27639767091169669,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 27639767091169669,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 4,
+      "integer_point": 25070020468540838,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 25070020468540838,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 10,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 2,
+      "integer_point": 9595568737543469,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 9595568737543469,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 11,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 5,
+      "integer_point": 28888842190117118,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 28888842190117118,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 12,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 4,
+      "integer_point": 21298546234894641,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 21298546234894641,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 13,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 1,
+      "integer_point": 3683123199820450,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 3683123199820450,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 14,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 3,
+      "integer_point": 11436608427651897,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 11436608427651897,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 15,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 1,
+      "integer_point": 804237052526300,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 804237052526300,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 16,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 4,
+      "integer_point": 23402362077159097,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 23402362077159097,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 17,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 1,
+      "integer_point": 331642520076830,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 331642520076830,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 18,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 5,
+      "integer_point": 31749798150018122,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 31749798150018122,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 19,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 4,
+      "integer_point": 24733184991599055,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 24733184991599055,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  {
+    "step": 20,
+    "base": [
+      0.0,
+      0.15,
+      0.15,
+      0.2,
+      0.25,
+      0.15,
+      0.1
+    ],
+    "token_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "integer_distribution": {
+      "weights": [
+        5404319552844595,
+        5404319552844595,
+        7205759403792794,
+        9007199254740992,
+        5404319552844595,
+        3602879701896397
+      ],
+      "total": 36028797018963968
+    },
+    "decision": {
+      "mode": "full_mark",
+      "protected_token_ids": [],
+      "alignment_occurrences": 0,
+      "integer_sampling": true,
+      "executed_layers": 0,
+      "boundary_freezes": 0,
+      "partitioned": false
+    },
+    "draw": {
+      "token_index": 6,
+      "integer_point": 34913369172676319,
+      "total_weight": 36028797018963968,
+      "transcript": [
+        {
+          "bit_count": 55,
+          "value": 34913369172676319,
+          "accepted": true
+        }
+      ]
+    }
+  }
+]
