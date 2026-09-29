@@ -68,7 +68,23 @@ The first guard tests exposed macOS EPERM on zombie-only process groups. Cleanup
 now reaps the leader, excludes zombies, and tolerates EPERM only after confirming
 no live group members. Genuine permission failures remain recorded failures.
 
-Before resuming the unfinished replay, perform a separately identified bounded
-model preflight, preserve the interruption and new resource policy in its plan,
-and verify unchanged sampling evidence. The original partial replay must not be
-overwritten. No model preflight or resumed heavy inference is claimed here.
+The separately identified model preflight now passes: the first eight recorded
+steps of the first original ordinary/marked pair match all sixteen native-logit
+hashes, reference-weight hashes, original exact draws and tokens. Pinned local
+Qwen3.5 reached 6.82 GiB peak physical footprint under the 10 GiB guard; cache
+remained disabled and cleanup succeeded. This is prefix qualification, not a
+full-path or sustained-run result.
+
+A separately recorded continuation of the remaining seventeen paths was then
+stopped by system memory pressure during initialization, at 5.09 GiB, before any
+new path completed. TERM and cleanup succeeded; no automatic restart occurred.
+Do not reinterpret that interruption as a sampling mismatch or a passed run.
+All prior 111 completed paths remain unchanged. See the
+[resource validation](evidence/memory-guard-2026-09-29/README.md).
+
+Before another continuation, establish sufficient system headroom. Preserve the
+interruption and changed resource policy; never overwrite an attempt directory.
+`tools/continue_source_sampling.py` verifies the successful guarded preflight,
+original script/study bindings, every completed prefix trace and the unchanged
+SDK/model/runtime before continuing every remaining path in original order.
+It requires the unchanged complete-cohort validator before producing a summary.

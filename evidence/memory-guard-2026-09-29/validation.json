@@ -1,0 +1,60 @@
+{
+  "schema": "keyprint.guarded-replay-resource-validation.v1",
+  "preflight": {
+    "selection": "First original ordinary/marked pair, first eight steps each, fixed before execution",
+    "matched_steps": 16,
+    "passed": true,
+    "supervisor": {
+      "status": "completed",
+      "limit_bytes": 10737418240,
+      "interval_seconds": 0.25,
+      "timeout_seconds": 180.0,
+      "disk_floor_bytes": 2147483648,
+      "peak_footprint_bytes": 7322784544,
+      "samples": 56,
+      "automatic_restart": false,
+      "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+      "pid": 3429,
+      "cleanup_verified": true,
+      "exit_code": 0,
+      "elapsed_seconds": 16.42641920899041
+    }
+  },
+  "continuation": {
+    "supervisor": {
+      "status": "stopped",
+      "limit_bytes": 10737418240,
+      "interval_seconds": 0.25,
+      "timeout_seconds": 1800.0,
+      "disk_floor_bytes": 2147483648,
+      "peak_footprint_bytes": 5461643848,
+      "samples": 29,
+      "automatic_restart": false,
+      "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+      "pid": 6561,
+      "reason": "system_pressure",
+      "cleanup_verified": true,
+      "exit_code": -15,
+      "elapsed_seconds": 9.570587457972579
+    },
+    "new_completed_paths": 0,
+    "original_completed_paths_retained": 111,
+    "original_matched_steps_retained": 21254
+  },
+  "focused_preflight_continuation_summary_checks": 37,
+  "full_sdk_suite": false,
+  "source_sha256": {
+    "tools/preflight_guarded_source.py": "d3cc8b0d4b7cc825d58330eb4491852b237832cd1a4f4f99b9effe0731b5a46a",
+    "tools/continue_source_sampling.py": "1468cdab4c0810d9587e6a25772924fbee0c8103a8fce4fa7810057947c48fcd",
+    "tests/test_guarded_source_replay.py": "87d2310ad98281203971e83a6bb0ab5b0ce65763b16aa1d5a330a2e111303205"
+  },
+  "receipt_sha256": {
+    "model-preflight/result.json": "b572e1d064fcd332ce4ba60e06a0148128f13f439d4243d87c8de1e9e4331120",
+    "model-preflight-supervisor/result.json": "3c907db7e840b3cb1bce46b6e1bec718443d8533f9297796f12089b4a6287cd3",
+    "source-continuation/plan.json": "3d3179a2c51cb344101807345d5ebb94ffb6d145d9a768c83a1f7b74243549e2",
+    "source-continuation-supervisor/result.json": "feea1c8ba267df9f5fc63afc5bae897adbb1fb3ed240c606226f135cc177accd"
+  },
+  "sdk_changed": false,
+  "quality_acceptance": false,
+  "launch_ready": false
+}
