@@ -70,8 +70,16 @@ numerical failures remain retained. Uniform-score lift fell in every fixture
 family, and highly peaked distributions gained little information, so this
 variant is not promoted and does not justify a new model run. See
 [allocation comparison](evidence/complement-paced-2026-09-29/README.md).
-Next inspect the available information across recorded probability regimes,
-including earlier predictability-filter work, before another generation policy.
+The probability-regime audit now covers all 24,421 saved positions: 27.64% of
+marked positions carry 92.34% of measured conditional information, while 98.38%
+of frozen layer calls occur in lower-information positions. The earlier
+prompt-free filter improved its small development set but its larger null run
+remains incomplete, with eight flags versus five on the same 499 usable controls.
+Neither finding qualifies a detector. See
+[regime audit and historical reconciliation](evidence/paced-regimes-2026-09-29/README.md).
+Next compare bounded generation mechanisms' signal efficiency on saved
+distributions and justify accessible scoring before new inference; do not
+repeat the same study or present privileged native entropy as a text detector.
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.

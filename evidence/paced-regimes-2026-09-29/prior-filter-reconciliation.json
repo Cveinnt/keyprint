@@ -1,0 +1,90 @@
+{
+  "source_sha256": {
+    "predictability-fixed-batch-2026-09-19/public/summary.json": "9a16ae38d6a103725cfdcee248133c3047d6d2b53366050cea88b1fda81beca4",
+    "predictability-fixed-batch-2026-09-19/public/integrity.json": "f9f1a98c1e028b6a889e009424cdf1b0e23c4788a2ba73fe0a8ce0c87cbaf98d",
+    "predictability-null-2026-09-19/public/summary.json": "79df734c0b4ae4a707b48404b6171cb0528e03cbf56f11ae4d2ec6b9e113b871",
+    "predictability-null-2026-09-19/public/partial-integrity.json": "171fb72954bccc21133d8105b8a6d1518a1b7f336a698baf8fb33fe097dfa3f3",
+    "predictability-null-2026-09-19/public/integrity.json": "40aa25a21f8c43fff8b99fd4307f875f2ef3581dc6e6934aa44c6ac9a9e90f8e",
+    "predictability-null-2026-09-19/public/plan.json": "db53dfa94d8e260870dee854f91daaaf485422756ba62de281bb44c3b3f09eeb"
+  },
+  "fixed_batch_summary": {
+    "status": "completed",
+    "attempts": 24,
+    "errors": 0,
+    "fatal": null,
+    "groups": {
+      "ordinary": {
+        "matching_flagged": 0,
+        "other_flagged": 0,
+        "baseline_matching": 0,
+        "baseline_other": 0
+      },
+      "marked": {
+        "matching_flagged": 10,
+        "other_flagged": 0,
+        "baseline_matching": 8,
+        "baseline_other": 0
+      }
+    },
+    "short_marked": {
+      "count": 5,
+      "hits": 3,
+      "baseline_hits": 1
+    },
+    "expand_to_null_controls": true,
+    "seconds": 194.87541483296081,
+    "deployment_calibrated": false,
+    "scope": "Opened-data development, not fresh confirmation or deployment calibration"
+  },
+  "partial_null_integrity": {
+    "status": "partial_verified",
+    "counts": {
+      "planned_attempts": 500,
+      "usable_controls": 499,
+      "failed_indices": [
+        5030
+      ],
+      "candidate_hits": 8,
+      "baseline_hits_same_usable_controls": 5,
+      "transitions": {
+        "both_flagged": 3,
+        "candidate_only": 5,
+        "baseline_only": 2,
+        "neither": 489
+      },
+      "flagged_indices": {
+        "both_flagged": [
+          2431,
+          13075,
+          14253
+        ],
+        "candidate_only": [
+          7762,
+          8557,
+          8646,
+          9508,
+          10790
+        ],
+        "baseline_only": [
+          4908,
+          5172
+        ]
+      },
+      "iid_only_upper_97_5": null,
+      "deployment_calibrated": false
+    },
+    "scores_replayed": 998,
+    "max_double_grid_difference": 8.520961713998076e-13,
+    "original_failed_audit_sha256": "40aa25a21f8c43fff8b99fd4307f875f2ef3581dc6e6934aa44c6ac9a9e90f8e",
+    "summary_sha256": "79df734c0b4ae4a707b48404b6171cb0528e03cbf56f11ae4d2ec6b9e113b871",
+    "results_sha256": "1367346906532f5b81a2baa31204cf019ba7037b2cd47b2bcc49e5609885a9be",
+    "script_sha256": "cb1c996770232639eafb63c7dc1f09937823a3b89130bf305d574a48e14eb52c",
+    "helper_sha256": "e5f8d51a04ab7a1f38df14d6ef80d01a5ce626fa9c315185c7118d3d7e46dadf",
+    "complete_run_accepted": false,
+    "production_accepted": false,
+    "scope": "Arithmetic integrity of surviving opened controls only; original run remains incomplete"
+  },
+  "current_receipt_hashes_verified": true,
+  "same_as_current_candidate": false,
+  "production_accepted": false
+}

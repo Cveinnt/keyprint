@@ -1,0 +1,686 @@
+{
+  "schema": "keyprint.paced-regimes-plan.v1",
+  "cohort": {
+    "schema": "keyprint.paced-cohort-audit.v1",
+    "attempts": 128,
+    "successful_runs": 128,
+    "audited_runs": 128,
+    "eos": 128,
+    "caps": 0,
+    "errors": 0,
+    "decode_errors": 0,
+    "audit_errors": 0,
+    "committed_tokens": 24421,
+    "audited_tokens": 24421,
+    "plan_sha256": "fbdd4442de21176b4aee0c8589a5b3dc26ae6049712ceb81b33b2b10f6dbae14",
+    "runs_sha256": "a7a6fa7c726c25ad0252703ed730839b23b772826d9d56b1b20480b3a959f48b",
+    "results_sha256": "e4f7d3436deed1831c8fba3f96fde7dab9363f1cb7363337ef841b03be984512",
+    "identity_sha256": "7e6c7d9e610fa2cd1b3de54547878e08aff6074359d41dce732f2544f4fc0992",
+    "blind_review_sha256": "d630740d42031c1f62e9d0168428e819200fe0d6383ca7beb8b4ab21e8bb95a8",
+    "cases_sha256": "3389d37164f859809751a9cdb237ee884dbdec6779b685e7a9d1dc00b9b25c6e",
+    "rubrics_sha256": "69b430a07f0e31b88d7c9f1419a962933f87291b82ec049d1d5ed59f2ca0ce0c",
+    "outputs": [
+      {
+        "review_id": "05f70ec5187f",
+        "result_sha256": "9743eccdf4f6126a939688d02e22eac0e3b0ef109b6e5007ed157ff66a915b49",
+        "journal_sha256": "7cc98473da2f8fa66d163c531e1badcb9f8c4ce90be4bcc12b7973b52a9f255f"
+      },
+      {
+        "review_id": "8885918b9a9a",
+        "result_sha256": "c1ec64b6ed9825c5e4468c299ec388821c20cfe9b63e00568fa4a44a0663d16e",
+        "journal_sha256": "159189bd98f016c6ce368a10426394522ebd2a2ecfdc75f53261718a3e98295c"
+      },
+      {
+        "review_id": "fcdd6a586aa2",
+        "result_sha256": "92a43747a0ed8a46918b8d80b48a6106b583c8fe1c713aa8fc2be08ec7b1863e",
+        "journal_sha256": "d8be8b61cb29c3ed5e7c57ff48ca07d8e8d7aabc639e942bb8e01a5073905e59"
+      },
+      {
+        "review_id": "660deaee3324",
+        "result_sha256": "8e5944f3305be23bc20f191208fd4d96e0abf58a4793e1560132d2d99dda8237",
+        "journal_sha256": "82bbb4b0e8493d2bdec486d9d31026b49b0277b265708fcc63f0c111acca734d"
+      },
+      {
+        "review_id": "c53674adae18",
+        "result_sha256": "2d1402603b9012c4933345e194298f4b67f3c0a5f95e2e7ecea290edd8d6389c",
+        "journal_sha256": "59c840b5697dc121948e1a2951da1ed0580b4e0d70b151b41c8755cb9f3c25be"
+      },
+      {
+        "review_id": "4f439c49592b",
+        "result_sha256": "e4475e23014551e7e1827764684f92960ef8f8004b417a43b087a400e7fe0eae",
+        "journal_sha256": "233399d6540451a039dccaf19dcc9230330becbbeb003d88b5a5dd443d5c66bf"
+      },
+      {
+        "review_id": "3d63ca048ea7",
+        "result_sha256": "4a68574efdc47cfcfa910fdfe1c4afcdfcef92557b4c0a2ba6f466c141c3fe16",
+        "journal_sha256": "351b1f7c680dc11c231904503792212efd0db41fd0b03c4e261e7f5505ce7e8b"
+      },
+      {
+        "review_id": "471a2d5f9aee",
+        "result_sha256": "4cf816bed53ceacf241b13eab2c96b3d5d5922025e571318972f89b8b99c6e46",
+        "journal_sha256": "d88dfbe1714709ce9da0e0fe30023774abf7a2ae7c61a6d36a4d74662ca92fc0"
+      },
+      {
+        "review_id": "3d7b3ade786a",
+        "result_sha256": "b79dd6e1946259b98630e6339c11dca42b997e10128e469dd6c9cd23c47c3de9",
+        "journal_sha256": "42a966190f6c6d20fd92f9ccd731c78386b2f3601cd8eba8119519acefbd4e77"
+      },
+      {
+        "review_id": "175d9962d3e6",
+        "result_sha256": "79df6f447b01b6181b08a347ea9d62f17df02052ebf13eeb5d0888b6f090bc9d",
+        "journal_sha256": "5ef5866f767afc33e01c64e29d03b3c0bce86be5b8e4136feed7d95878d5f9b2"
+      },
+      {
+        "review_id": "2f87c3a84152",
+        "result_sha256": "964069020296d7f5c7d852ab5c944a68df98e8c0206299a498b77be2c01b6221",
+        "journal_sha256": "81f22b234f2ba0aabd8091144a0ed15fe4ba612f68cfdd5821ca71a6d7d58a0e"
+      },
+      {
+        "review_id": "0320ca042467",
+        "result_sha256": "2a3f7fae1e9917ef290b271b82cdd9568a163e5361bbb2a63dcf8ca81084d901",
+        "journal_sha256": "5703a5fbe254d3f868c8a1b9990669225ba4fd9408e101ea10c736082f4cfd26"
+      },
+      {
+        "review_id": "467ed8a84708",
+        "result_sha256": "dd8b09979da713f3d8293b4f6a906b389e1e30e92b6681d49c795328c4c8e7e3",
+        "journal_sha256": "3acda0041428cae97f15e59cb7a5365723cb82791a2e637bef855f54100bdddc"
+      },
+      {
+        "review_id": "e64f7bedb6cf",
+        "result_sha256": "12ef5061f82c898d7b20f89c6135cb0dec9845717bcedbd847fb6eb106361eff",
+        "journal_sha256": "6cfaec911c6281aef2de13ab794bb304588873411ac7849ec51711fbeed90ab6"
+      },
+      {
+        "review_id": "e03201d835b1",
+        "result_sha256": "a4480b59306efb86557e4c2faace0b917ef28e41ed24d9c1103dc2974cfa285b",
+        "journal_sha256": "6a4a1f18f3d845dfd2811f5acb35e152f16dc8c5d2b13d560ddb28cd42a1532b"
+      },
+      {
+        "review_id": "88e48728af22",
+        "result_sha256": "9c4ad4b883dac33a60eeb5de7c74c63448937c566004a19f0fb7022adf30d0cd",
+        "journal_sha256": "2e2feaa5e2b9e090836381f7b875d46e23dcab7fb4d9d8c0e28d38590ee457b8"
+      },
+      {
+        "review_id": "ddb3ca753729",
+        "result_sha256": "eb0df4517fb5c71462e55a6a8e14902ddb21030d82a7725a4265423e85a95636",
+        "journal_sha256": "052d6365315b6a972b9f1162ce6efbfddef21079cf5fa3372aa971544e67d8ef"
+      },
+      {
+        "review_id": "f5eff7397665",
+        "result_sha256": "ac2ebdb03562196a4334f8df9d2a8ec18ebb7780e4aad41281a45139c37e4a29",
+        "journal_sha256": "2bc81504069e7b23c422e8d55a0fa3a33e181c8dc2e71dde87e1a8a521dfb589"
+      },
+      {
+        "review_id": "ef11a2e8f8fa",
+        "result_sha256": "c92cc6267c9cb360e40b0ffd8d6d3cf516d8cf91ed53b8469303aa5c6898cc22",
+        "journal_sha256": "fcb669be5b2c66176e21574710ce65ffbef0c1a55473e12fea2d6bf0782cd8bd"
+      },
+      {
+        "review_id": "41285d6a479f",
+        "result_sha256": "2d77f8990c2c10bc16beaf9d699042372906a2a9816cc1a169263d013a99e03b",
+        "journal_sha256": "b00a1b5132c4cb73e19da15bdba3416aeb51644f3f7e7599e52fc4351fa226f4"
+      },
+      {
+        "review_id": "4701df6a3217",
+        "result_sha256": "9d9082bfa8da6044e51ee69a016b0263b26738cce004d35e844056e3ac51de19",
+        "journal_sha256": "a0fcf4fff814e4f47f0b920740c9226b85f116744cc13e36895b87426df839bc"
+      },
+      {
+        "review_id": "83315d2f7ae4",
+        "result_sha256": "f9764ad2bce8edba1c7800f28e5b0f98bcdcfea82738adc4685f19dc17ce62dd",
+        "journal_sha256": "9b3a47108a1c22911d9d2e9619324d6106f6c78b2c73e90f8d4170954e5b560e"
+      },
+      {
+        "review_id": "e0a5c65e7238",
+        "result_sha256": "bb25805a853ae2dc4ecfe97d0a2b92dd0b2695401baa17751687c99a58130e40",
+        "journal_sha256": "fd09a066d0c4f119a663875143bc88c4080e35c8cda5dca8eccf1ea99d7dc943"
+      },
+      {
+        "review_id": "a65d589632a6",
+        "result_sha256": "7d88d20d20446308231e75b8fb08fe4ab5e3d69760f96fdc74ee23c2365840df",
+        "journal_sha256": "649e5488b9de1a5b472fa47203f3d02633e7324498e45721c34ffb5ce85089b7"
+      },
+      {
+        "review_id": "dd2100973856",
+        "result_sha256": "8bc888f2b3ced3ca0c00e3211ee34c76f1be1b99b66e9c369f47deea836d26b2",
+        "journal_sha256": "ac47b5ffa4baad57709e08078e55bb6a2e5f34254f93f84a6cb3c9601d3a8630"
+      },
+      {
+        "review_id": "50f5ab749632",
+        "result_sha256": "581ba6ac71c30322d370801a229c13f53c54d3de531fc7e9f15880b0dee37177",
+        "journal_sha256": "0855013a1022010b30bef304b1f7d493f39e38e3ce5b4c0da500f5ab6a42ad79"
+      },
+      {
+        "review_id": "9ef9a11bbca5",
+        "result_sha256": "ae26fb2e767c31bfa6434ae73d3556c2e938fce5bbb186b1a1c3638b0216f024",
+        "journal_sha256": "0e844f647480142424c75c44767938c8c218623eb0d0b1c78be776c816e12a0a"
+      },
+      {
+        "review_id": "7d73417a3dea",
+        "result_sha256": "a02507bb54250c10ba87d9e4aff9913a8095800e95f9f9d11eb4fdee111e5ba4",
+        "journal_sha256": "fb6d3c1ce2b0cb0842b1aacd7f8039a1048fd2538a4d2ab1ba50c6ed5853dd4d"
+      },
+      {
+        "review_id": "9a5e2aa6bf92",
+        "result_sha256": "ee3092986b8d2d92572b3099979e34747244b985f3ab0a26d8561ed35e867228",
+        "journal_sha256": "f3b44537fb37ab15488c9615440fd9060cbadf932d005e6f057d03d477b3c525"
+      },
+      {
+        "review_id": "2e5b09040586",
+        "result_sha256": "8e21d6350e2c87eeb39b066b4786a6c5bb7f1c8f22ffb12774b8d7804d62f834",
+        "journal_sha256": "178f449c9a7ea397e66a0340fb7d4277318ac7164ad615e00c03e726b2f94270"
+      },
+      {
+        "review_id": "8952327eb411",
+        "result_sha256": "97df2c973703a576b7fe5ab266c393a0fcc0378c57b1cfc3cfcb035b81f21aff",
+        "journal_sha256": "59cd874ce6f44c3c5cd37785ebfaeb48b2abac2e3e30e25a80d2347027e84ce0"
+      },
+      {
+        "review_id": "9c491b885bb7",
+        "result_sha256": "fbc0c56542d01d70492e592a9ca7e311d419dcb355c2533d716207224a1fcab4",
+        "journal_sha256": "bfc143c447c3f6a3cb0eff716793c5cf00ff37ada2174fe8de495f5c3e773ace"
+      },
+      {
+        "review_id": "f98438494cdc",
+        "result_sha256": "b7864a4e5b538e163ff63f71631764d6409e25257cf746c7df0fa26efd22d0b8",
+        "journal_sha256": "08f2427c03d0ba7b2718c3c5121c3b61527377f650b2cd6c70f8821c20a3eec7"
+      },
+      {
+        "review_id": "538495b8ee41",
+        "result_sha256": "6fd542a5d4c70247494ca2653b9c82bd19f8b117db0a23950810725649e063c7",
+        "journal_sha256": "a1985d59cd7e05a44b21fe21f82d69e107172fdb8ce09382011d68635f11ad03"
+      },
+      {
+        "review_id": "cde6bbba4b30",
+        "result_sha256": "51fa3d70af84f928dc70ef17d8f19ac46985bf2606ae70de4568fc17aff7149d",
+        "journal_sha256": "f80a8c451e1e7289875dbccbb049387b5d9eb2869132235b661931d1c0d68c59"
+      },
+      {
+        "review_id": "d98fd736e04c",
+        "result_sha256": "10b78418671d05474ed86cec87b143bf40cf1c24c5ac1928eba9621df82e6b7e",
+        "journal_sha256": "2c8d5c1ba578c51240792309b213bdc554ca0bcf2383e58147a22db93888485a"
+      },
+      {
+        "review_id": "78cef37cbc9a",
+        "result_sha256": "f2d7608f7303ee7f7183e07e5b352642e3e589833741a5ca289fe7e879b99f77",
+        "journal_sha256": "081d154987ecf7835c2f8a9d0a115a05a47cdf33f553ed1182f5fd584bc34a3a"
+      },
+      {
+        "review_id": "8493cd4d4845",
+        "result_sha256": "445c69fed96baee99ab6402f2a1a8445a6b702f4b94bcdda316f198d45dfc971",
+        "journal_sha256": "53dafc2008196eb45a5c5d6400d5e152521e00ddb53d4d3d6e1edd748a35dab9"
+      },
+      {
+        "review_id": "bd07d540e0d7",
+        "result_sha256": "22cbf5419558ed89b11365630d360c5a69d85b86de7b4ab39141f9054eee3430",
+        "journal_sha256": "883beddc04db013cabde666d3398b5db04da8c79f13c521e4e2e5252184260a7"
+      },
+      {
+        "review_id": "bd079797457e",
+        "result_sha256": "1adc2e17d8047df79472d81aa9d8a3dfc4d99c2521fb2b7e70e6e8b09ee81e03",
+        "journal_sha256": "929525a0151bcf7e5d2f15a385b1d7fad474a34d977e9e38d8e60bf49717627e"
+      },
+      {
+        "review_id": "3a8cf6ce0615",
+        "result_sha256": "c046480c4b5d171e8daf705b50a5cbdd7226e03310db146695d24594edb80ebf",
+        "journal_sha256": "f0f8f4b75a2951c40b73d5b15f5d63254d1dfff92a8ced0538ee75ad9781ca74"
+      },
+      {
+        "review_id": "775c07425f8a",
+        "result_sha256": "99586402b8fafa6ccf1bb46563574c7f85e425bf92b89e36c6b5153fd877f494",
+        "journal_sha256": "2c1036336ede8b5a508f9f37d0083392f35feb9f428550ac032de7aa9e3041c3"
+      },
+      {
+        "review_id": "87210b576252",
+        "result_sha256": "627718951625c6927bb732aa9b1ea4b426323b59ab5de88a92e1e59552d1bb2e",
+        "journal_sha256": "70bdc0e057f319db7e653d5b0198cd85f04405f2f104312cd14e82b7a365ce42"
+      },
+      {
+        "review_id": "42e73b2c6643",
+        "result_sha256": "da84b4c13334a17a3037030b565a020d7cbc2fc8ba8275eb8acefc51b178a355",
+        "journal_sha256": "d69d8d6796d653868c565428d57e95b7def0a42d1681ac4e2ab56413901b1c81"
+      },
+      {
+        "review_id": "b4653b98cbac",
+        "result_sha256": "2055e1c0e9df00c0126b95f983106d035c964b2c0e9ee511d2879a76001e7605",
+        "journal_sha256": "0ffc78320606ae4209ba38c2c51c17a8b54b0daf69fde44486a35f44178a623b"
+      },
+      {
+        "review_id": "672acc827c37",
+        "result_sha256": "4d2847451b06fddb2bc04b48763d03440120eda72174a3b94201c3c7c6a5da31",
+        "journal_sha256": "ca001a48f3553a65ed0e3ea14a99b8c7adc7802aa88d9ea746235a92b4ff5dfe"
+      },
+      {
+        "review_id": "abe19fe8fd13",
+        "result_sha256": "492c323a24ddd8146dc33a8ac7f97e6f9484c124027d3a5a24ec38a8ae4d50d6",
+        "journal_sha256": "922990f53352afa1554980a51e34a6965dca1b2d1dcdd5e39bc8be7feab2a3b6"
+      },
+      {
+        "review_id": "f67cd251b4c9",
+        "result_sha256": "8a8dd4043302cfda298a79134fa1052f93074fa4506e75028c1ef1d62179deff",
+        "journal_sha256": "53f6d77767349ca868c5925d21605369f778b4e1e3ae5b36abf2432f313a483e"
+      },
+      {
+        "review_id": "8949cf429d13",
+        "result_sha256": "ca686e771eed0c2a9bf385670239c46187f830b5322238cd6233d32d807ee523",
+        "journal_sha256": "5b5d4e821a6b3d76c28304938c5d6d99657fc48cfef31e25a5f25b4f13364481"
+      },
+      {
+        "review_id": "4610b7fbf8f4",
+        "result_sha256": "b1eba1f805a7ffc253eaac444717b55d5e1cd5d302a8dbfde5687b27573de473",
+        "journal_sha256": "26ad9f513fa65f6b74120c38f69294f13670be58729ac83a121c2603b7adbcf1"
+      },
+      {
+        "review_id": "3035406b81bc",
+        "result_sha256": "406f53f0c8485f93f62dd9c6f7ead8cab5e40dd42df78fdc4864866ed31101d7",
+        "journal_sha256": "f2efc0ab5071f2c6819833874d537c2d256e155442af229cb5ae4cecbf17120a"
+      },
+      {
+        "review_id": "82bd71dc763d",
+        "result_sha256": "7caf628e2067b627e3a65b9d11abf854a82501a231196abab1b4b7b1c22b9a89",
+        "journal_sha256": "371d1dee86a34ca0fafed85a8723f300ac916a1e016c9f96af1da3419ba281dc"
+      },
+      {
+        "review_id": "7695316d17e6",
+        "result_sha256": "22295f2912c37122f244cc87e1a810af8793fe98feb239b809e7e2ec81457cb8",
+        "journal_sha256": "bc826c815c66e77631bbbb464131933739100cc5eaecfaf07ae7ddd6b8e1fcc5"
+      },
+      {
+        "review_id": "222f346fbb01",
+        "result_sha256": "0e49afe8be4291283713c1534a87333f4ec5076c46102f328d26a7695483e870",
+        "journal_sha256": "0d663c7557d88a90002ceb32938c6e7dc56a1fcac43b07255578b53fcd4add8d"
+      },
+      {
+        "review_id": "4ff629599583",
+        "result_sha256": "f0cc81eca7e7c5edb4c7b59b802b7ea14ce68a169c3f9cd6495f886bd8cd9a57",
+        "journal_sha256": "2bfbc5e407cb476fd0dc8fd72f043a4ce34357412681b9d360d05f5c0f1cf7bb"
+      },
+      {
+        "review_id": "e029ddca0112",
+        "result_sha256": "f069306426e455e194cb1b6e6a962c779c5fb50c03b7f79ecd223f6683fcff09",
+        "journal_sha256": "3e490471afee57ecea6ff0027cf87deec08d7d9e59acb2cfb07b7c606b62758a"
+      },
+      {
+        "review_id": "0e457ecc330e",
+        "result_sha256": "5bdcbc1358d6a400da0c172e568f856e8c3c3e5280eb48f0133a172ed3cbddaf",
+        "journal_sha256": "3b0fdf79abe2d4a6c593ab168568f1acf1f040c86e338756637b0debe3bfa64d"
+      },
+      {
+        "review_id": "ec40b53a546a",
+        "result_sha256": "cabd22a9dd8f3d94754d922f0fb9f6d6245e5c9679ffe1ab796d3ccaa2b816b4",
+        "journal_sha256": "87d3e16973942d5ad24ff2c5e97822cc95cb126ba6a8d2beff0421e309176922"
+      },
+      {
+        "review_id": "2a30afb19c85",
+        "result_sha256": "e636428aa1df4fa9038df9ecfb85d06cc945da4404094976feb56d360f72e347",
+        "journal_sha256": "30c594dbcaf3c501d13af70a84d4cd634b6ee5fb8b2bfee9b3b23d676349ccab"
+      },
+      {
+        "review_id": "19cb110d781e",
+        "result_sha256": "6469a8e52cb8097a63e6abfec307d6dec1ae71b0b5e813e8a8cd2ca49dfbbce3",
+        "journal_sha256": "91dea8e03e4b3ebdca4a75b4a95b87323e3fbc9448f19068fb8353b67d11f4b6"
+      },
+      {
+        "review_id": "ccbb87b3f5f0",
+        "result_sha256": "44b6fde43d56a9decc6d548a02f67309aad1deb24e1b7f29b508b5fe6b37580d",
+        "journal_sha256": "874d5a40669059f363350cd6a80153ce20b8545b5f3a35339bb4aea632012cde"
+      },
+      {
+        "review_id": "dacb1bebb077",
+        "result_sha256": "6b1a5728b6a1ce9b824ccca0a79712b2cbe413110a180af7647c026a875f1f54",
+        "journal_sha256": "0ee999030c0cc9102c20c84fb5e0117f7cfe83e09f1f4a69aaf39a335df537c6"
+      },
+      {
+        "review_id": "9c6df845a970",
+        "result_sha256": "e4178f90d67a1f25e486637da26bcb116cd2b048da9ea90fc8d05891f851367b",
+        "journal_sha256": "e5489433889b8c47f68b66bb7b66557ef1a6368ef4d33c29b2b2111117b33ac9"
+      },
+      {
+        "review_id": "8ce6bfde5e61",
+        "result_sha256": "baafe8c46546178ac0a2a12c2708d14f4661e0f86b12391d2db52f2c9dd1899e",
+        "journal_sha256": "ce3a9e08ac168baf9ad9f64815cc2a6dabc89243539996bbb96187b9b3a64b31"
+      },
+      {
+        "review_id": "cae167443187",
+        "result_sha256": "d2bf4ff9b6df861722d7906076c44aee1a2bf3f19f93f33ce1c3e244c1060ddb",
+        "journal_sha256": "4ac8638512b152b702725596a632354c55e3d9c98ff9c476c83b589b6ecd19ae"
+      },
+      {
+        "review_id": "e5cb98ca02dc",
+        "result_sha256": "6ebc69356160a133f01e61f6b7f0c80bd07ced07775508395c28816f0dd219af",
+        "journal_sha256": "f4645ef21314d78298ea0028bd61871b1af35eab6a0a57aeaa428111a320ec5d"
+      },
+      {
+        "review_id": "a419a7209fd7",
+        "result_sha256": "9e9949554565b7e6325c13bc9779add0f38d93bf07650a7a4318c2790952669e",
+        "journal_sha256": "7aeb72b9ac320d7ef6d0f87ab7197ef39a458514f232746062bdcb6fccf6d049"
+      },
+      {
+        "review_id": "8420ba5489f9",
+        "result_sha256": "7d0f5a996cdef7de02f55a2221c3243b4b2e8489ff68a71afca127af5bc69b1c",
+        "journal_sha256": "ef057ba07c5a62d260fafa6e00aa85a6bfcbb16d36260d8c8497021505104c55"
+      },
+      {
+        "review_id": "e702d6b62188",
+        "result_sha256": "0d4da95e862381d1c3d669a00cd6856949212360c6cffe636ce79496541266b5",
+        "journal_sha256": "43cf7759c1b5edb64cc6ed0f8c134350992eebb4c6701e367f262113fa624af1"
+      },
+      {
+        "review_id": "8267185ebe01",
+        "result_sha256": "0f15944d5c45142afa791e3704d155eb53c9f60fdc35b4addad813c1d3e96543",
+        "journal_sha256": "3721a32e4fc6dab11ec4e854bc5e82aa6cfea4887faa2ad29250079f66364a05"
+      },
+      {
+        "review_id": "92a9afe8663c",
+        "result_sha256": "c1ab3ca6d1ffe77db75e9190c17b605035250b3bb07e0207a5f559e129e108f5",
+        "journal_sha256": "46a8937bbc5107b9246db97a45297ca9b938cf6f1c738bd6c7819cea2ef50fce"
+      },
+      {
+        "review_id": "8aa7fde1db4f",
+        "result_sha256": "25299fa0fe428df2db78347393ecad9aa8d27c9f921f2cae079bb4eab4a9189a",
+        "journal_sha256": "d3cb7d59884f777982924e90f047fd71f2825353070d642c9c37224ffa41ae3b"
+      },
+      {
+        "review_id": "3533830a1d85",
+        "result_sha256": "57a6e77dc44de38c61d60e0e37a4a7480b67d3e221d9a506f5a517ff0028bc38",
+        "journal_sha256": "2499ebdf183cbf959c3fe614890d7b608783b55cd2df79fd7e7c01e53b6eb975"
+      },
+      {
+        "review_id": "dcee5b0bd8cf",
+        "result_sha256": "1c763ca7ce0a02625749a4cc86473f1d08baba1a1796553128f8366291dbccf6",
+        "journal_sha256": "57b2cc1678e153f3d29be468fc5aeeab7c9bf3b63fc63983b887bd0522baecb6"
+      },
+      {
+        "review_id": "bc020a1ce1d1",
+        "result_sha256": "98b008152f96fde4e88527e671e3cc8c966a9f5b849e575910c9e5cac29afcc6",
+        "journal_sha256": "cb7e87fd3aeab4e32fae694c427bad57184a7b32703cc80c75372e39252c29ae"
+      },
+      {
+        "review_id": "3cf414c09c44",
+        "result_sha256": "538e29f474d239b3f3cc71db42f9e209ec600728e93d0744de7cda01d28bcc98",
+        "journal_sha256": "fb8bf6259e148da3fdb03b564041b4a3e9d7d161ae0222ea2618052ea2321f52"
+      },
+      {
+        "review_id": "bff5359a7a1d",
+        "result_sha256": "919ab989642bec5676913ef04723dbe709711a528b848378d219f6797d790fdf",
+        "journal_sha256": "a4bf027e1bf1d78ca8efc1d614642cbebed5c7bbf394b5a3856aa83f12841671"
+      },
+      {
+        "review_id": "c564499cd45d",
+        "result_sha256": "124430c0e447c32ecf4d6769aaba55ede0beabe0fe7247b8f598cae95379649e",
+        "journal_sha256": "dab7e6f5720733a3957230190e0ea80c3bb79d24cafdb40144aeed8bbab13b50"
+      },
+      {
+        "review_id": "49e631210045",
+        "result_sha256": "be957e2ab1e9d060a15c70bdac1aa33b639ac156e6a2460e028752e81064eefe",
+        "journal_sha256": "29f8a63ef876891e857977cbac608f62ac91d5d37a6b122e1db3d7855d943ba4"
+      },
+      {
+        "review_id": "c150a35b17ae",
+        "result_sha256": "45c00c742eb2af1d1507aafa5c1f3a0d4342e53e580d419ce6ad993e79b662b6",
+        "journal_sha256": "983d8888f0f33bd4052646429f2551d259776b20d6b8c2bdbf03565335fa6593"
+      },
+      {
+        "review_id": "07d6c2b6077f",
+        "result_sha256": "fce2feff785726bf474bbf17de68f3c8870c4de6e23a754c5b3b288c419b78b1",
+        "journal_sha256": "a25f92e91e8b835f1edc7a289c4e3294a4709630f09ac71768d4f6d02b6d5a62"
+      },
+      {
+        "review_id": "d19b2472ad59",
+        "result_sha256": "f4f070db3560866962a2b35cdfb55ce3650d1c619855e7bfe97a6eebfbefdcd5",
+        "journal_sha256": "6825f264fa34d5438f289763761360a33d823199e602b754b8fc23d09e51ca07"
+      },
+      {
+        "review_id": "639b2827ab4b",
+        "result_sha256": "2c2c4b05b3aa2bf0bf6f7e4726f0e45f8da2dfa8a9e7592dfa378619595802b7",
+        "journal_sha256": "25083b1551d12d700660db0b5dcb8eb4cfdf0cd86b44b311ceeadcd8e9876274"
+      },
+      {
+        "review_id": "3ffc4f427643",
+        "result_sha256": "8e607c2b84d94896f5cd75e87ad88c2e4d90ee9f1cb4d291e6e9a60caf4ea002",
+        "journal_sha256": "096119213c161179f57f98d1f92adddea71e4a0c2dd1cea9ece31cd5a4cfb216"
+      },
+      {
+        "review_id": "b5bc7a77292e",
+        "result_sha256": "64fa0d96e9403e2c977e0dd317450b640d1cc60f45fca314642b67e26d588a2f",
+        "journal_sha256": "53a9ba06d8812d577d83ddc997a646061246df3f386cedc07c50f3f87070783e"
+      },
+      {
+        "review_id": "e2c1493fbbbe",
+        "result_sha256": "4b7752aba0f59393757944ffbf99d8dd0fa78cdd88be5e7cec97cf59e6df4a9d",
+        "journal_sha256": "f36b6ef35358456879bd6ee1837c6700e6220ede9ba76e40dff6c9613824e146"
+      },
+      {
+        "review_id": "d245ce7aa037",
+        "result_sha256": "1527fc2697466dff7de282c28bc01e0c6ff1d939e9e407c2f521ce25a27dfe06",
+        "journal_sha256": "4020172a42f8c7c313f892e7874d3c3fc6d7e1eccaf4e059eeebb0e970aa0679"
+      },
+      {
+        "review_id": "d7a58d4cb265",
+        "result_sha256": "5fa0fb8ab3895e903735bab03c36e3a495135eef203283656b490987f6bb47df",
+        "journal_sha256": "f9044ec746ba4808b19fce8b609498c3e1de6837d20d251eeea3357089233552"
+      },
+      {
+        "review_id": "d247645b2725",
+        "result_sha256": "11fcf794c36e688062b8de397fdb084748780654ecf87c874a974aa729f567c4",
+        "journal_sha256": "6a73d58b41f441a8dae2d8abaaed32b16b245a5c628f72a5ced9fb181d62ce6f"
+      },
+      {
+        "review_id": "fe79970af35c",
+        "result_sha256": "f22e07adf7941cd336bdbad55cef3806e8175f36e229348191723809291b6c4c",
+        "journal_sha256": "a10f062ab03fb83a7645cc54eda436fc227343c519f81c9e55d05f17100d3a2a"
+      },
+      {
+        "review_id": "033f1df81bed",
+        "result_sha256": "55c93cde35f906adc60df547db21cf109888b6aa945ab919c467b7959dd7bd37",
+        "journal_sha256": "2207d1205f0b298d163c22d642f7495ef35a97fbcc467468ff821c12949a29f2"
+      },
+      {
+        "review_id": "9f280b1d3d3a",
+        "result_sha256": "2f481a7c5f3780c4979eaf39bc59bd6d9ef481aa923ae4dde11dbad81dbbc712",
+        "journal_sha256": "b7f4298e51fd7a1fad5d09fc354351136b2bb460bb570c264d4a30e243a8ac97"
+      },
+      {
+        "review_id": "39fba71ec30a",
+        "result_sha256": "3c7e44e623c3381caae14c136f5d9b1c63b4b4601f43205c9d74f1abab13a5ba",
+        "journal_sha256": "9925b54e7e2f96cfca808aa1ff4f44313e5466fc8d3d460aa50fc6748f8fe96b"
+      },
+      {
+        "review_id": "d0a43e65df1e",
+        "result_sha256": "353ad15bbb3702e118faa0de78bdbcfb6b2c14f1671656aa0e84109da4032163",
+        "journal_sha256": "b01d5973f14f489b2457100b6d8bb32c14adfa57ca848c44998c2aa8f0ef942f"
+      },
+      {
+        "review_id": "42cb7369f7ca",
+        "result_sha256": "107c54db53a41e220c0dd3cd74c9304d082c9393f3b5dc9d0aeff85cf84255d8",
+        "journal_sha256": "c09fa1b33c1e2eb80ca4a6e060fe31461b805e3e041efbdfcdcb8747b1789f34"
+      },
+      {
+        "review_id": "9f2e2af880dd",
+        "result_sha256": "a1005e1615b3555c59374eaeb50ac62140b9117631a3a1348b79295bb4f4a016",
+        "journal_sha256": "871a1ffc8cb560fea196f8c25dc24ee33316d5a805d1c74482d142a70aacc583"
+      },
+      {
+        "review_id": "5db52554dfb7",
+        "result_sha256": "6b00c672fea3b990b2c9209dbd04605952334b920a398bfa459c783784ec9772",
+        "journal_sha256": "4b70b41e30cae7bcbf48370e45a54f918d7fb280eacaf57df3c9aeaf20553cf4"
+      },
+      {
+        "review_id": "a7ccdee8f0d5",
+        "result_sha256": "2ba35b6cac31b4170a0e01262f8996c210503a30e292be1396ca6a05762cf784",
+        "journal_sha256": "af8bb605c2de241542eaec790de969391267b33815980bd865e0501e2ab0b023"
+      },
+      {
+        "review_id": "814701256e70",
+        "result_sha256": "0d155499604e0d7de3338d436b40ca2dff98a4b10386716c41e017e59a697829",
+        "journal_sha256": "6339c90a345d396e108658fdcac0721c6224e46e9570b98e56721624db53242e"
+      },
+      {
+        "review_id": "c504a2317d58",
+        "result_sha256": "00167200f401a8f7476aa01733c27bedd448fda34d4be3553298fa32467a96ab",
+        "journal_sha256": "e4802ad23bdc429450c2c83a8af51b5876da90ac367a5de0446554fa9b569963"
+      },
+      {
+        "review_id": "d4d5e2ee9bb3",
+        "result_sha256": "129652b5383e01747a73a136826cfdb510a4851225521672dcba6b27387cf718",
+        "journal_sha256": "f34dc641ec658d9d289c908a0521ce64fa25dd9f39c8bc19ee073123cc978c59"
+      },
+      {
+        "review_id": "7a792d0054c5",
+        "result_sha256": "f9d30caf3977367bfe39949ffe8c88af9ef593970de6199f71be17f57af8e1ad",
+        "journal_sha256": "eb8518badd4183cb693486d13139cd2672843cc6b1ccef4634d0ff9d38e82f80"
+      },
+      {
+        "review_id": "a6115e5efc86",
+        "result_sha256": "aa19a473ba488b8a78a884dc36a0dd644e471a0c4770c8420c87eb00a8ee57c0",
+        "journal_sha256": "6661cc8e1a47ec2464fac681c9bdf6b00ed9bab4062436f5c86f6ef4e0cf24a1"
+      },
+      {
+        "review_id": "e4f756e1df69",
+        "result_sha256": "841971a7efe24faf8d2810ab2e749e276b4e7159748009a78b19a58dba27708b",
+        "journal_sha256": "6adc40c99dcb76f423e49d8a84d2567298ad5604b0af11b716a429962f29a333"
+      },
+      {
+        "review_id": "a06be94179d0",
+        "result_sha256": "0356fdbff097411b59e7705f559d0eb62aa9d1765a6aae3014822afb4d69d9f5",
+        "journal_sha256": "d7a8ebde50183ff7ea0f2e38bc49248edae5b46061417bf7dac140b59d4e62a5"
+      },
+      {
+        "review_id": "baf767248768",
+        "result_sha256": "a0e38b628f07c1ba1c203b47348cbfbb355aa0500aba9c933e27faa2fc2730bd",
+        "journal_sha256": "eb378bca6222e5f482b3ec55ae43b3efd7b31d5936b3eb41cbf8c318968f49a6"
+      },
+      {
+        "review_id": "35849e98f6ee",
+        "result_sha256": "1aff7bc5a64253cd1d45b7c97879a10da17a3fdd507a594f30fce8f70c61672e",
+        "journal_sha256": "91b9a1a5a09fc94c0780b1738acb620d694b5027e73068fdde32a4ce15b6dc21"
+      },
+      {
+        "review_id": "4c662bf1d46d",
+        "result_sha256": "8018c1c64f7de7e23ecee9015c3e25f77a3072f3c2eb468c8f6418d6e927677f",
+        "journal_sha256": "47a6f1b9538be3fe0a9614ea2111f83011e8d839243a440d4cf45f469fdbd44d"
+      },
+      {
+        "review_id": "138813f5e2ac",
+        "result_sha256": "9bf86f254083b5092db3b28945bfd1d9405cd6f40ac45110a4cf11a0286891e2",
+        "journal_sha256": "7c80c3606b3a05413ce74593f5f7fa4a38104fbc140df7b0e34c9265f6d44cb7"
+      },
+      {
+        "review_id": "c1f05dd52fad",
+        "result_sha256": "e29936fbe2d662574262e8fdab7b204fb9766534e0c06822836bd61275edbf00",
+        "journal_sha256": "6eb3e66383b9b5ddf23dbe92e6ea66708f0f2a0093acca5f9c65398454ee0807"
+      },
+      {
+        "review_id": "a5be4789f7c6",
+        "result_sha256": "dbe7ee3c13a0c22e52ed24d0c75b08880b7a9f2fda243e6452ad084fc276cc4d",
+        "journal_sha256": "1d4c51cd19317ed590cf4f474c1700afd40fe9f3edd8f9aa2099a7352ed7658e"
+      },
+      {
+        "review_id": "f433dac77766",
+        "result_sha256": "3472c0c6e3eb227e00bed62f0241efa03005c5a5c0eb692c4bac82e1a8ccdd7d",
+        "journal_sha256": "a37efa4165562f1a46761baaddadfc842f7f638a31d7b93528f421ff2f73d000"
+      },
+      {
+        "review_id": "12b789a5f849",
+        "result_sha256": "24577ffb0455301bece7b8e0ccb9ae6b5c93aa6888ff2ab2afa795c0ef975d29",
+        "journal_sha256": "8dd870b3577d210169a63987928a4dd22b1f32d64f9ae0881aa139708b34fc7c"
+      },
+      {
+        "review_id": "3ea9c9b23b20",
+        "result_sha256": "6fb1b6b0a90c4d6faa754866ed64fae5a17a8335513f1c907ce01fa541247a42",
+        "journal_sha256": "2ec8afa3d048cba41fac127e27b76c6dbd80779703c89c8c061b11800afd5751"
+      },
+      {
+        "review_id": "64508beb9a31",
+        "result_sha256": "4eec736828119513c4f629a18f3861601a3d94cd1475209a02b7e3592004c12d",
+        "journal_sha256": "f073acdc9036dfaae05e7e9667fa7184ffaafa4d4ab7e8262fa51d8871540142"
+      },
+      {
+        "review_id": "24644bac6e3b",
+        "result_sha256": "e5a23ccb444c8401616e637f8221229cd0e01f0fcd9706740e1e922640f7a0a7",
+        "journal_sha256": "3e19f96d4bf28a29c779f011acc7a341cc1893efb7a500a2912348944bcbb024"
+      },
+      {
+        "review_id": "148b94d6f415",
+        "result_sha256": "2ce8a7d7f14c5b95bdb3d7077e9f2dea6103bc8d99ef9cae8438e65db7ba1f3c",
+        "journal_sha256": "70626a66bf1cad17ddcd7311d0a8f0785dd44c59fd936469888e72e54580c94f"
+      },
+      {
+        "review_id": "e422f435103e",
+        "result_sha256": "36e727003cc269695743be5182d982e0fbd4d480cb94f2aa910abc96d3e67216",
+        "journal_sha256": "5410b492f321e06f3295ecc985ea2f714c09d7af41c0a622dc8d8cbdd83ec871"
+      },
+      {
+        "review_id": "006c394af092",
+        "result_sha256": "6dee55a9ed0b0fadea334673e6524765a5bb39f3bfafc1bff25198f2b3100246",
+        "journal_sha256": "6a33547268c5d36348f61b6ffcfcba664e5eefa1cc53f85ff7d4517d88eb7481"
+      },
+      {
+        "review_id": "98570aaaad68",
+        "result_sha256": "053885521213abb49b8f05a28d96c9e052b04fdc54a47efc1afe78ffd51bb315",
+        "journal_sha256": "e5eb53b699b8c4c87267a2891590bca57d9e22dfe3d6bbd1f0d3e43736316a9e"
+      },
+      {
+        "review_id": "1897e80a3515",
+        "result_sha256": "02d40ece0ae4683912f7839c81dcb99a96ea5251aaf08015eb9ceff94bce878b",
+        "journal_sha256": "72192127480743cae4b95e39f0135250279e9eaa42fde4bce79c89e5bd1dc0ce"
+      },
+      {
+        "review_id": "e6558378bdd4",
+        "result_sha256": "4b2c4e001829801edfd4794917e50edcac11f81b0d6b5efde0bf7097be2d0bac",
+        "journal_sha256": "b09a23d3adae3562c9640efd2110894177e707f3064f6d217e79e732525c4ef7"
+      },
+      {
+        "review_id": "95a3f969e06f",
+        "result_sha256": "a87c8d43b758380d3aa08eb1ae8dd5b266d14ba879c06770ca102fe26584dbaa",
+        "journal_sha256": "d98ec751aa71e96a1a4cbca5c860f09bdeb4c86ebd147a34d79d41c71d3ef5ec"
+      },
+      {
+        "review_id": "ae267a498900",
+        "result_sha256": "0c65d51ff7636c6ee3008cac002b4620a82752f022d66b7163eb6e92aeeaad54",
+        "journal_sha256": "ad831923db3a8f63648a568852889acd628c4c833e2417f7ea44a508cd47ba4a"
+      },
+      {
+        "review_id": "4eabd297aa30",
+        "result_sha256": "7243b5f7502c00f4259be73667f6fe7baeef5f5e40dde8b78b8850039bf7fe00",
+        "journal_sha256": "f1683adaa720379e8c92d82c4c8d15ea795cc5f3ceaaf53e8a85783cbce9055c"
+      },
+      {
+        "review_id": "df4649b747a6",
+        "result_sha256": "c2539d0eb2fc99b37bcf50bac4b2de4e2bd6b01b9b08a51a489ac21d4c33790e",
+        "journal_sha256": "a24adcdf6380c9845edc0fdc7a669b8e8e582f998a73bab28b0a22e894a4680b"
+      },
+      {
+        "review_id": "8136d3c5e5ee",
+        "result_sha256": "08d382a8af498463b725979284cc69882ad166312d48771f8807b2f3a9d63380",
+        "journal_sha256": "81ff625ed9787084390ef3f4dda8a7f0c1cab2ff4c6e81d049728500d6302805"
+      },
+      {
+        "review_id": "7c5e175db0ae",
+        "result_sha256": "e0ae705851d634ba1288e57e2ae30114c0873706ffd5f2f0177812cfd25f305c",
+        "journal_sha256": "5944d794f9abc380179d246420c788454f496f2d4502f311c93906cbf98cd470"
+      }
+    ],
+    "native_heads_replayed": false,
+    "quality_acceptance": false,
+    "scope": "Complete retained-cohort/hash reconciliation of in-run sampler audits, not independent native model replay or factual review"
+  },
+  "bindings": {
+    "/Users/vincent/GitHub/wm-probe/launch/2026-09-16-audited/growth/github-ready/tools/paced_regimes.py": "20d395ce8c00f457253082f84235509c9dc91860ea04a6fa330078da49ce5ccf",
+    "/Users/vincent/GitHub/wm-probe/launch/2026-09-16-audited/growth/github-ready/tools/paced_information.py": "eecafb5dfbfc50f034e5d6e7d8d573a7d7c6c2deff5c2cdde607e7f653e77863",
+    "../../receipts/memory-guard-2026-09-29/paced-information/results.json": "cd19862da65fd603db5a6b483421121c97dd6d0e064a51ce010a040183bd5fbf",
+    "../../receipts/memory-guard-2026-09-29/paced-information/plan.json": "d73c08cf07fb14a1bd97f23e99d1becb60e0133ab46759d53e006c0afa595085"
+  },
+  "entropy_cuts_bits": [
+    0.1,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "eos_ids": [
+    248046
+  ],
+  "selection": "All 128 opened paths and all steps, including EOS",
+  "model_inference": false,
+  "scope": "Descriptive entropy regimes of every saved candidate path; no inference.\n\nOrdinary rows describe actual ordinary generation, never marked counterfactuals.\nMarked conditional metrics must reconcile the previous complete information run.\nBins are descriptive, not a proposed detector or generation selection rule.\n"
+}
