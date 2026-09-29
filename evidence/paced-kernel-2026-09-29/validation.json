@@ -1,0 +1,30 @@
+{
+  "schema": "keyprint.paced-kernel-validation.v1",
+  "focused_checks_passed": 74,
+  "new_kernel_checks": 21,
+  "source_sha256": {
+    "tools/paced_integer_kernel.py": "8311ff35595502f13be9c61c37f527dd12488e4d0451eaba1226f37a3b5b5007",
+    "tools/paced_reserved_reference.py": "ef0d9141c4b5151565111ad8e9599875d56e81e13d798c90efd83d10e03d2918",
+    "tools/benchmark_paced_kernel.py": "9618243b8c87a1eac96bffc276b6e64d72bdcd7d671b1f842261e124a126dfdf",
+    "tests/test_paced_integer_kernel.py": "776b2ca76e94d240b2e9a029141c98c89ad75d50571fb753525400035ad9fcfb"
+  },
+  "sdk_changed": false,
+  "model_inference": false,
+  "serving_qualified": false,
+  "quality_acceptance": false,
+  "supervisor": {
+    "status": "completed",
+    "limit_bytes": 268435456,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 120.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 19169712,
+    "samples": 138,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 35806,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 38.56627579103224
+  }
+}

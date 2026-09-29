@@ -1,0 +1,181 @@
+{
+  "schema": "keyprint.paced-kernel-benchmark.v1",
+  "cases": [
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 3
+    }
+  ],
+  "layers": 30,
+  "policy": "reserved-base-relative-margin-v1",
+  "rounding_margin": "2^-40",
+  "bounds": "half-to-double total; one-eighth-base per layer; exact categorical checks",
+  "relative_comparison_tolerance": "1e-10",
+  "source_sha256": {
+    "tools/benchmark_paced_kernel.py": "9618243b8c87a1eac96bffc276b6e64d72bdcd7d671b1f842261e124a126dfdf",
+    "tools/paced_integer_kernel.py": "8311ff35595502f13be9c61c37f527dd12488e4d0451eaba1226f37a3b5b5007",
+    "tools/paced_reserved_reference.py": "ef0d9141c4b5151565111ad8e9599875d56e81e13d798c90efd83d10e03d2918",
+    "tools/paced_budget_float_reference.py": "f99ce4f3ce9fc917baa77f2f1fc62d4c22832044dfd10d6f0ba3229f39a2ea0d",
+    "tools/predictable_budget_oracle.py": "174e3eacbb19c78fb157a3e909f264e0c6a60d99652aa0a48c45884366ef8526",
+    "src/keyprint/_engine/research/keyprint_exact_categorical_v2.py": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37"
+  },
+  "timing": "Pair separate fast/reference trajectories; alternate call order each layer; time calls only; setup and comparison excluded",
+  "selection": "Same 32 fixed numerical cases; no retries or dropped failures",
+  "scope": "Synthetic numerical correctness and local microbenchmark only, no model, detector or serving qualification"
+}
