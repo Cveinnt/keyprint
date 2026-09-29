@@ -1,0 +1,30 @@
+{
+  "schema": "keyprint.paced-inference-harness-validation.v1",
+  "focused_checks_passed": 141,
+  "new_harness_checks": 38,
+  "model_inference": false,
+  "actual_outputs": 0,
+  "quality_acceptance": false,
+  "sdk_sources_unchanged": 78,
+  "code_sha256": {
+    "tools/paced_inference.py": "f946c6b79fa8c6eecaa15b0d96765df6e08af35db235c3ce2e13d382f4b8fee9",
+    "tools/run_paced_source.py": "61524e7463fb5a9e04c93f83fbdfe75eab7451684a3a3299c560f504bde54cbb",
+    "tests/test_paced_inference.py": "e8cd79f2044c147b5950d02c64a07822ca3217e42d200ea996511079f2817524"
+  },
+  "supervisor": {
+    "status": "completed",
+    "limit_bytes": 536870912,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 180.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 77398544,
+    "samples": 10,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 77867,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 2.834385833935812
+  },
+  "earlier_planning_receipts_retained": true
+}
