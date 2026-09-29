@@ -5,10 +5,11 @@ footprint reached 22.8 GiB, with a recorded peak of 23.2 GiB. Most allocations
 were attributed to IOAccelerator. This does not establish a ChatGPT application
 leak or distinguish live MLX arrays from retained allocator buffers.
 
-All 111 completed replay paths and 21,254 matched steps remain retained. The
-interrupted path and remaining paths are incomplete. The original 128 generated
-outputs and frozen factual ratings are unchanged. Do not restart the original
-runner or summarize its partial cohort as complete.
+All 111 completed replay paths and 21,254 matched steps remain retained. A
+separate guarded continuation subsequently verified the remaining 17 paths,
+bringing the combined replay to 128 paths and 24,465 matched steps. Original
+generated outputs, frozen factual ratings and interrupted attempt directories
+remain unchanged. Do not restart the original unguarded runner.
 
 ## Guard policy
 
@@ -96,3 +97,27 @@ pressure remained normal and cleanup succeeded. Both prefixes hit their planned
 eight-token cap; this is not full-output quality or sustained serving evidence.
 A separate 128-attempt paced study is subject to the same resource policy. See
 [candidate preflight](evidence/paced-native-preflight-2026-09-29/README.md).
+
+## Completed guarded runs and recovery checkpoint
+
+The full paced study completed 128 EOS outputs and 24,421 audited committed
+tokens. Peak sampled footprint was 6.90 GiB over 29.8 minutes; all 6,304 pressure
+samples were normal, cached bytes stayed zero, and cleanup succeeded. See
+[complete candidate run](evidence/paced-native-run-2026-09-29/README.md).
+
+After that run established headroom, the separately recorded original replay
+continuation completed under the same guard: 6.65 GiB peak over 232.57 seconds,
+824 normal-pressure samples, zero cached bytes and verified cleanup. Earlier
+memory and pressure interruptions remain retained; this was not an automatic
+retry. Completion establishes mechanical replay, not factual quality.
+
+The task-local `../../receipts/source-grounded-next-2026-09-28/CONTINUE.md`
+checkpoint records terminal jobs, evidence paths, review progress and next steps.
+Update it before stopping work or restarting the app. Resume from verified
+receipts; never infer success from a stale LIVE entry or restart a completed job.
+The latest resource recheck is stored at
+`../../receipts/memory-guard-2026-09-29/memory-safeguards-recheck-2026-09-29.json`.
+
+All 18 guard tests passed again after these runs. No model loading was required
+for that test suite. These safeguards apply to wrapped research workers; they
+do not establish that a ChatGPT application memory leak has been fixed.

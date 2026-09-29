@@ -1,0 +1,26 @@
+{
+  "all_original_paths": 128,
+  "matched_steps": 24465,
+  "original_completed_paths_retained": 111,
+  "continued_paths": 17,
+  "all_128_trace_hashes_rechecked": true,
+  "complete_summary_recomputed_and_equal": true,
+  "resource": {
+    "status": "completed",
+    "limit_bytes": 10737418240,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 1800.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 7144117072,
+    "samples": 824,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 11877,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 232.57110608392395
+  },
+  "result_sha256": "ee8aff549aa2b310b00f76af31f8e5276e6c40645704f29e08ff8df722398700",
+  "quality_acceptance": false,
+  "launch_ready": false
+}

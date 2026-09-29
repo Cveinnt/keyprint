@@ -5,12 +5,11 @@ The fixed candidate study completed **128/128 outputs**, all at EOS, with
 the separate complete-cohort reconciliation passed. No generation, decoding or
 sampling-audit errors occurred, and no output reached the 768-token cap.
 
-This completes actual generation and receipt reconciliation, **not quality
-qualification**. Assistant source-only review is in progress. The first 54
-judgments were recorded without joining conditions or signal counts and matched
-against the final packet. They include omissions, unsupported dates and altered
-uncertainty. Until all 128 judgments are frozen, no condition-level quality result
-or candidate-versus-baseline conclusion is claimed.
+This completes actual generation and receipt reconciliation. All 128 assistant
+source-only ratings have since been frozen and summarized in the
+[complete quality review](../paced-quality-2026-09-29/README.md). Strict full-task
+counts are 25/64 ordinary versus 16/64 marked; accepting all preflagged uncertainty
+gives 36/64 versus 34/64. Quality and detection remain unqualified.
 
 ## Scope and invariants
 
@@ -49,15 +48,14 @@ This run does not prove or diagnose the reported ChatGPT application memory leak
 
 A private interactive review page contains all 128 source/output pairs, preserves
 every row, hides assignment metadata and starts with blank human ratings.
-Provisional assistant ratings remain separate and are not human acceptance.
-The [review protocol](../paced-quality-protocol-2026-09-29/README.md) requires all
+Assistant ratings are complete and remain separate from human acceptance.
+The [review protocol](../paced-quality-protocol-2026-09-29/README.md) required all
 ratings and uncertainties to be frozen before the condition/signal join.
 
-Next: finish source-only factual/language review, then inspect the paired results
-and independently qualify detection and serving behavior. The older source-study
-diagnostic replay remains a separate evidence obligation; candidate generation
-does not replace it. No SDK promotion, public deployment, 25/25 conformance or
-launch acceptance follows from this run.
+Next: independent quality and detection qualification on prospectively frozen,
+disjoint material, then serving qualification. The [original replay](../source-replay-complete-2026-09-29/README.md)
+now also verifies all 128 paths; candidate generation does not replace it.
+No SDK promotion, public deployment, 25/25 conformance or launch acceptance follows.
 
 Recorded [plan](plan.json), [profile identity](identity.json),
 [final generation result](results.json) and [resource/audit validation](validation.json).
