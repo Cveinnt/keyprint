@@ -1,0 +1,47 @@
+{
+  "schema": "keyprint.balanced-evaluation-protocol.v1",
+  "scope": "Prospective controlled multilingual development study; not natural-distribution, training-held-out, noninferiority or production qualification.",
+  "provenance": "Assistant-authored fictional sources, not external factual assertions or generated output samples.",
+  "selection": "All sixteen declared cases, four fresh reused owner keys, both ordinary and marked conditions: 128 attempts.",
+  "settings": {
+    "max_tokens": 768,
+    "temperature": 0.7,
+    "top_k": 100,
+    "profile_max_steps": 1024,
+    "enable_thinking": false,
+    "purpose": "general"
+  },
+  "source_policy": "Source text is prompt context, not an attached proofreading-protection request. Do not route automatically.",
+  "failure_policy": "Exactly one generation attempt per row. No retries, replacement, rewriting, translation, truncation concealment or favorable-subset summaries. Infrastructure interruption means incomplete, not passed.",
+  "review": {
+    "order": "Freeze all 128 source-only ratings and uncertainty flags before joining conditions, owner keys or scores.",
+    "reviewer": "Assistant development review; human ratings, if supplied, remain independent.",
+    "fields": [
+      "fact_checks",
+      "no_unsupported_claims",
+      "language_pass",
+      "format_pass",
+      "uncertain_fields",
+      "reason"
+    ],
+    "facts": "Six booleans per output. A fact passes only if all its stated conditions/negations survive. Contradictions or omitted required facts fail; paraphrases preserving meaning may pass.",
+    "language": "Prose must stay in the requested source language. Names, model identifiers and required technical strings may be retained. Language/script heuristics cannot replace source-only review.",
+    "strict": "Full-task pass requires every fact, no unsupported claims, requested language and format, successful execution/decoding and EOS. Caps fail full-task acceptance.",
+    "sensitivity": "Also report accepting every pre-flagged ambiguous failed field. Never invent ambiguity flags after condition/score join.",
+    "uncertainty": "File freezing records workflow, not proof of what the reviewer previously saw."
+  },
+  "detection": {
+    "statistic": "Uniform mean of all eligible keyed layer bits; same canonical context deduplication, no entropy-based selection.",
+    "decoys": 199,
+    "rank": "(1 + number of decoy scores >= owner score) / 200",
+    "cutoff": "rank <= 0.01; conservative ties; fixed before generation; no threshold search.",
+    "denominators": "Retain all scheduled rows. Failed, capped, undecodable or unavailable inspections cannot be silently dropped or counted as clean negatives.",
+    "views": "Report matching key, next-owner-key control and fresh-decoy ranks separately. Never label native-token-path scores as arbitrary-text inspection.",
+    "limits": "Four owner keys and shared decoys create dependence. Sixty-four ordinary outputs and random-key ranks do not establish a production fixed-key FPR or deployment p-values."
+  },
+  "reporting": "Report all arms and per-language/component counts plus paired outcomes; preserve old failures. A favorable development screen still needs broader quality, arbitrary-text replay, fresh null calibration, serving and compatibility evidence.",
+  "preflight": "Require completed independently bound balanced native preflight and memory headroom; a loaded model identity or stopped run is insufficient.",
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}

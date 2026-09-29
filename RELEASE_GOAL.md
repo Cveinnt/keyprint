@@ -90,8 +90,12 @@ native preflight stopped on global memory pressure at 5.33 GiB before any token
 committed. Cleanup was verified and the interrupted attempt is retained without
 automatic restart. See [integration and interruption](evidence/balanced-session-2026-09-29/README.md).
 Next establish memory headroom, complete a separately recorded native preflight,
-and freeze fresh multilingual source/fact material for paired quality and
-detection evaluation. No completed new-rule text exists; it is not SDK promotion.
+and integrate the full study runner and verifier. Fresh multilingual inputs are
+now frozen: sixteen English/Spanish/French/Chinese cases, 96 facts, four fresh
+owner keys, 199 fresh decoys, 128 paired attempts and review/scoring criteria.
+Sixteen input-integrity tests pass. See
+[frozen inputs](evidence/balanced-evaluation-inputs-2026-09-29/README.md).
+No completed new-rule text exists; preparation is not SDK promotion or acceptance.
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.

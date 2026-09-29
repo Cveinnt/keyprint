@@ -1,0 +1,21 @@
+{
+  "tests_passed": 16,
+  "cases": 16,
+  "source_facts": 96,
+  "planned_attempts": 128,
+  "planned_fact_ratings": 768,
+  "languages": {
+    "English": 4,
+    "Spanish": 4,
+    "French": 4,
+    "Chinese": 4
+  },
+  "unique_fresh_keys_including_decoys": 203,
+  "old_and_preflight_keys_do_not_overlap": true,
+  "all_four_keys_both_conditions_all_cases": true,
+  "manifest_sha256": "824074ea8611e4b29cba1d76eb0bcb92f0614e9756930e84d787b24e7cde8254",
+  "all_frozen_hashes_validated": true,
+  "generation_executed": false,
+  "prior_native_interruption_retained": true,
+  "launch_ready": false
+}
