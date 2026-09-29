@@ -1,0 +1,231 @@
+{
+  "schema": "keyprint.complement-paced-comparison.v1",
+  "policy": "complement-symmetric-exact-proposal-eighth-v1",
+  "layers": 30,
+  "cases": [
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 3
+    }
+  ],
+  "source_sha256": {
+    "compare_complement_paced.py": "f535d19afe5a6c6a006bc4713b6be956f46dde70e916652b963a0b0583d21956",
+    "complement_paced.py": "7302f515a905c83bc09e2ede933ee1f7ba1bffee444b77bc1226c72776d87cc9",
+    "paced_integer_kernel.py": "8311ff35595502f13be9c61c37f527dd12488e4d0451eaba1226f37a3b5b5007",
+    "paced_budget_float_reference.py": "f99ce4f3ce9fc917baa77f2f1fc62d4c22832044dfd10d6f0ba3229f39a2ea0d",
+    "predictable_budget_oracle.py": "174e3eacbb19c78fb157a3e909f264e0c6a60d99652aa0a48c45884366ef8526",
+    "paced_information.py": "eecafb5dfbfc50f034e5d6e7d8d573a7d7c6c2deff5c2cdde607e7f653e77863",
+    "paced_source_session.py": "589caa3875f0754e06f0da4cc9c7f255dd7108bbf4b26d42a53b9aebd315f2b2",
+    "paced_key_rank.py": "5c87d4c7474b961c82e5029c60d3bde6f536a80d29df22bd98316da416f403ce",
+    "audit_paced_study.py": "3e93532fbdb851dd63a97a29f29aba37d1254df496c926337eea0a6eb6106aae"
+  },
+  "total_probability_bounds": [
+    "1/2",
+    "2"
+  ],
+  "per_layer_base_fraction": "1/8",
+  "rounding_margin": "2^-40",
+  "relative_tolerance": "1e-10",
+  "selection": "All 32 prior numerical fixtures plus eight predeclared 99%-peaked fixtures; no retries or favorable subset",
+  "coupling": "Same ideal label arrays for both policies; grouped fixtures share labels within pairs",
+  "measurements": "Final conditional KL and expected uniform bit agreement, not sampled detection or semantic quality",
+  "scope": "Synthetic numerical development, not inference, calibration, serving or marginal proof for finite PRF keys",
+  "model_inference": false,
+  "sdk_promotion": false
+}

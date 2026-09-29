@@ -1,0 +1,95 @@
+"""Research alternative: complement-symmetric step size, unchanged budgets.
+
+This is a new policy, not a silent change to the predictable paced candidate.
+The exact oracle is conditionally unbiased under complement-symmetric next-layer
+labels independent of previous layers. Rounded output does not inherit exact
+unbiasedness. No model, detector, semantic or serving acceptance is implied.
+"""
+from fractions import Fraction as F
+
+from predictable_budget_oracle import validate
+from paced_budget_float_reference import normalized, certify, MIN_BASE_PROBABILITY
+from paced_integer_kernel import PacedKernel, distribution, MARGIN_DENOMINATOR
+
+POLICY = 'complement-symmetric-exact-proposal-eighth-v1'
+
+
+def exact_strength(base, current, bits, *, margin=F(0)):
+    validate(base,current,F(2))
+    bits=tuple(bits)
+    if (len(bits)!=len(base) or any(type(g) is not int or g not in (0,1) for g in bits)
+            or type(margin) is not F or not 0<=margin<F(1,8)):
+        raise ValueError('Binary labels and a valid exact margin required')
+    mean=sum(q*g for q,g in zip(current,bits)); limits=[F(1)]; freeze=False
+    for p,q,g in zip(base,current,bits):
+        movement=abs(q*(g-mean))
+        if movement:
+            lower=q-p/2-p*margin; upper=2*p-q-p*margin
+            if min(lower,upper)<=0:
+                freeze=True
+            else:
+                limits.extend((lower/movement,upper/movement,(p/8-p*margin)/movement))
+    return (F(0) if freeze else min(limits)),freeze
+
+
+def exact_step(base,current,bits):
+    bits=tuple(bits);alpha,_=exact_strength(base,current,bits)
+    mean=sum(q*g for q,g in zip(current,bits))
+    out=tuple(q*(1+alpha*(g-mean)) for q,g in zip(current,bits))
+    validate(base,out,F(2))
+    if any(abs(a-b)>p/8 for a,b,p in zip(out,current,base)):
+        raise ArithmeticError('Per-layer budget violated')
+    return out,alpha
+
+
+def reference_step(base,current,bits):
+    """Independent exact Fraction proposal followed by one binary64 rounding."""
+    base,current=tuple(base),tuple(current);p,q=normalized(base),normalized(current)
+    if any(0<v<MIN_BASE_PROBABILITY for v in p):
+        raise ValueError('Base probability below admitted research range')
+    bits=tuple(bits);alpha,freeze=exact_strength(p,q,bits,margin=F(1,MARGIN_DENOMINATOR))
+    mean=sum(v*g for v,g in zip(q,bits))
+    out=current if alpha==0 or len({g for v,g in zip(q,bits) if v})<2 else tuple(
+        float(v*(1+alpha*(g-mean))) for v,g in zip(q,bits))
+    certify(base,current,out)
+    return out,{'strength':alpha,'near_boundary_freeze':freeze}
+
+
+class ComplementPacedKernel(PacedKernel):
+    def _symmetric_strength(self,current,bits):
+        if len(current.weights)!=len(self.weights): raise ValueError('Shape changed')
+        B,Q,G=self.total,current.total,MARGIN_DENOMINATOR
+        S=sum(q*g for q,g in zip(current.weights,bits))
+        numerator,denominator=1,1;freeze=False
+        for b,q,g in zip(self.weights,current.weights,bits):
+            if (b>0)!=(q>0): raise ValueError('Support changed')
+            low,high=2*B*q-b*Q,2*b*Q-B*q
+            if low<0 or high<0: raise ValueError('Current probability outside bounds')
+            delta=q*abs(g*Q-S)
+            if delta:
+                lo_room,hi_room=G*low-2*b*Q,G*high-b*Q
+                if min(lo_room,hi_room)<=0:
+                    freeze=True
+                    continue
+                radius=B*G*delta
+                for n,d in ((Q*lo_room,2*radius),(Q*hi_room,radius),
+                            (b*(G-8)*Q*Q,8*radius)):
+                    if n*denominator<numerator*d:numerator,denominator=n,d
+        if freeze:return (0,1),True
+        return (numerator,denominator),False
+
+    def step(self,current,bits):
+        current=tuple(current);before=distribution(current);bits=tuple(bits)
+        if len(bits)!=len(current) or any(type(g) is not int or g not in (0,1) for g in bits):
+            raise ValueError('Binary labels matching current weights required')
+        (a,b),freeze=self._symmetric_strength(before,bits)
+        if a==0 or len({g for q,g in zip(before.weights,bits) if q})<2:
+            out=current
+        else:
+            Q=before.total;S=sum(q*g for q,g in zip(before.weights,bits))
+            # Exact rational proposal, one final binary64 rounding. Avoid
+            # intermediate rounding that can diverge at a later freeze boundary.
+            denominator=b*Q*Q
+            out=tuple((q*(b*Q+a*(g*Q-S)))/denominator for q,g in zip(before.weights,bits))
+        self._certify(before,distribution(out))
+        return out,{'strength':a/b,'near_boundary_freeze':freeze}

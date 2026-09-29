@@ -1,0 +1,917 @@
+{
+  "schema": "keyprint.complement-paced-results.v1",
+  "plan_sha256": "47a22b770beb6cfb37caaf17c3137b9a00bbca6419ee99dcdf0cc5bf26944354",
+  "rows": [
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03467960153516667,
+        "total_variation": 0.10975283933483126,
+        "expected_matching_bit_fraction": 0.5161992839881248
+      },
+      "previous": {
+        "kl_to_base_nats": 0.02782681669923524,
+        "total_variation": 0.09732952607373706,
+        "expected_matching_bit_fraction": 0.5220538431958883
+      },
+      "base_expected_bit_fraction": 0.5003333333333333
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03916526680805116,
+        "total_variation": 0.11288521419939164,
+        "expected_matching_bit_fraction": 0.5186306760471048
+      },
+      "previous": {
+        "kl_to_base_nats": 0.028075740820069486,
+        "total_variation": 0.0931519875324016,
+        "expected_matching_bit_fraction": 0.5247041293528708
+      },
+      "base_expected_bit_fraction": 0.5026666666666667
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03406858439179272,
+        "total_variation": 0.10704082726188918,
+        "expected_matching_bit_fraction": 0.5153156677474531
+      },
+      "previous": {
+        "kl_to_base_nats": 0.024756443823784387,
+        "total_variation": 0.08619733401762017,
+        "expected_matching_bit_fraction": 0.519699436515004
+      },
+      "base_expected_bit_fraction": 0.501
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03854257233254403,
+        "total_variation": 0.11250293653571317,
+        "expected_matching_bit_fraction": 0.5312039258308098
+      },
+      "previous": {
+        "kl_to_base_nats": 0.027192404451663064,
+        "total_variation": 0.0940975373037063,
+        "expected_matching_bit_fraction": 0.5324290145311409
+      },
+      "base_expected_bit_fraction": 0.513
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.017091782497609335,
+        "total_variation": 0.06540805762648508,
+        "expected_matching_bit_fraction": 0.4609912559791035
+      },
+      "previous": {
+        "kl_to_base_nats": 0.021566368704418432,
+        "total_variation": 0.07845571037419209,
+        "expected_matching_bit_fraction": 0.4684215720534854
+      },
+      "base_expected_bit_fraction": 0.4521080933608744
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 21,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03636429305002247,
+        "total_variation": 0.10743130561057855,
+        "expected_matching_bit_fraction": 0.49302264462974255
+      },
+      "previous": {
+        "kl_to_base_nats": 0.02636557486877379,
+        "total_variation": 0.0901573219872414,
+        "expected_matching_bit_fraction": 0.4968620805544636
+      },
+      "base_expected_bit_fraction": 0.4766344302801837
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 13,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.024630943272527298,
+        "total_variation": 0.09449897498103264,
+        "expected_matching_bit_fraction": 0.5129053869454936
+      },
+      "previous": {
+        "kl_to_base_nats": 0.020098170043687448,
+        "total_variation": 0.06872201829278922,
+        "expected_matching_bit_fraction": 0.5170009109122945
+      },
+      "base_expected_bit_fraction": 0.5014999123224837
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 17,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.022592734709947288,
+        "total_variation": 0.08682746324335598,
+        "expected_matching_bit_fraction": 0.5435695921912537
+      },
+      "previous": {
+        "kl_to_base_nats": 0.01965374207439406,
+        "total_variation": 0.07852483078516989,
+        "expected_matching_bit_fraction": 0.5465225501084373
+      },
+      "base_expected_bit_fraction": 0.531169722523206
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 7,
+      "previous_freezes": 5,
+      "complement": {
+        "kl_to_base_nats": 4.670069584824545e-05,
+        "total_variation": 0.000450130655062587,
+        "expected_matching_bit_fraction": 0.3334595541284955
+      },
+      "previous": {
+        "kl_to_base_nats": 2.631839554441947e-05,
+        "total_variation": 0.0003407653956761205,
+        "expected_matching_bit_fraction": 0.3334668766359076
+      },
+      "base_expected_bit_fraction": 0.33348959020984736
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 6,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.00010612909684585578,
+        "total_variation": 0.0006653271703102902,
+        "expected_matching_bit_fraction": 0.49972342453105734
+      },
+      "previous": {
+        "kl_to_base_nats": 8.673474355616462e-05,
+        "total_variation": 0.0006043345604800813,
+        "expected_matching_bit_fraction": 0.49971327770351226
+      },
+      "base_expected_bit_fraction": 0.49961243805727473
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 2.2405501203438066e-05,
+        "total_variation": 0.0003150504351200683,
+        "expected_matching_bit_fraction": 0.49993310060118645
+      },
+      "previous": {
+        "kl_to_base_nats": 1.0161336760143852e-05,
+        "total_variation": 0.00021382934855249623,
+        "expected_matching_bit_fraction": 0.4999297271131311
+      },
+      "base_expected_bit_fraction": 0.499922596210287
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 8.539955604712035e-05,
+        "total_variation": 0.0006574624945975082,
+        "expected_matching_bit_fraction": 0.5336314967623907
+      },
+      "previous": {
+        "kl_to_base_nats": 4.318929718206673e-05,
+        "total_variation": 0.0004618645701570614,
+        "expected_matching_bit_fraction": 0.5336119443409071
+      },
+      "base_expected_bit_fraction": 0.5335657273840766
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03287506775527237,
+        "total_variation": 0.1041600846775112,
+        "expected_matching_bit_fraction": 0.5147376935302724
+      },
+      "previous": {
+        "kl_to_base_nats": 0.020506839363682607,
+        "total_variation": 0.0802921516105388,
+        "expected_matching_bit_fraction": 0.5160469293709271
+      },
+      "base_expected_bit_fraction": 0.49933333333333335
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.044171079275056147,
+        "total_variation": 0.11993587733891294,
+        "expected_matching_bit_fraction": 0.5206340890004197
+      },
+      "previous": {
+        "kl_to_base_nats": 0.03526362991798988,
+        "total_variation": 0.10453368033793237,
+        "expected_matching_bit_fraction": 0.5298648821881018
+      },
+      "base_expected_bit_fraction": 0.5033333333333333
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03596937824578276,
+        "total_variation": 0.10848355320164675,
+        "expected_matching_bit_fraction": 0.494761134045623
+      },
+      "previous": {
+        "kl_to_base_nats": 0.020718802654169366,
+        "total_variation": 0.08076683968185104,
+        "expected_matching_bit_fraction": 0.4975263413140737
+      },
+      "base_expected_bit_fraction": 0.4826666666666667
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03678513345126344,
+        "total_variation": 0.10128988341120525,
+        "expected_matching_bit_fraction": 0.5318688334096817
+      },
+      "previous": {
+        "kl_to_base_nats": 0.033582779734723955,
+        "total_variation": 0.10422273324541845,
+        "expected_matching_bit_fraction": 0.5366422479845713
+      },
+      "base_expected_bit_fraction": 0.5113333333333333
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 10,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.0004039619649030704,
+        "total_variation": 0.0017733070075101125,
+        "expected_matching_bit_fraction": 0.3354589223452081
+      },
+      "previous": {
+        "kl_to_base_nats": 0.00041650692488020977,
+        "total_variation": 0.0019158832040803288,
+        "expected_matching_bit_fraction": 0.33549755224240224
+      },
+      "base_expected_bit_fraction": 0.335020202020202
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 6,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.00031267736109141754,
+        "total_variation": 0.001522737272133445,
+        "expected_matching_bit_fraction": 0.5002380630603428
+      },
+      "previous": {
+        "kl_to_base_nats": 0.0003262225278416569,
+        "total_variation": 0.0016443831914340888,
+        "expected_matching_bit_fraction": 0.5002380828164632
+      },
+      "base_expected_bit_fraction": 0.500026936026936
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.00025810429406729335,
+        "total_variation": 0.0009277187975485297,
+        "expected_matching_bit_fraction": 0.5002054059462716
+      },
+      "previous": {
+        "kl_to_base_nats": 0.00023165502833495124,
+        "total_variation": 0.0008976334334648374,
+        "expected_matching_bit_fraction": 0.5001976942156539
+      },
+      "base_expected_bit_fraction": 0.500010101010101
+    },
+    {
+      "kind": "peaked",
+      "size": 100,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 3,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.00029400898307560183,
+        "total_variation": 0.0010467847994552431,
+        "expected_matching_bit_fraction": 0.5333355091807522
+      },
+      "previous": {
+        "kl_to_base_nats": 0.00027084685045052125,
+        "total_variation": 0.0009729377964987601,
+        "expected_matching_bit_fraction": 0.5333326147774333
+      },
+      "base_expected_bit_fraction": 0.5331279461279461
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.029916118841730295,
+        "total_variation": 0.09916740235633403,
+        "expected_matching_bit_fraction": 0.5078014164302999
+      },
+      "previous": {
+        "kl_to_base_nats": 0.020617095049533067,
+        "total_variation": 0.08125779252684356,
+        "expected_matching_bit_fraction": 0.514818325519327
+      },
+      "base_expected_bit_fraction": 0.49816666666666665
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03011878783142358,
+        "total_variation": 0.09867589011147913,
+        "expected_matching_bit_fraction": 0.5094087106063235
+      },
+      "previous": {
+        "kl_to_base_nats": 0.017796585954645356,
+        "total_variation": 0.07522265418239225,
+        "expected_matching_bit_fraction": 0.513668573998809
+      },
+      "base_expected_bit_fraction": 0.4993
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03195809150283656,
+        "total_variation": 0.10351551140170707,
+        "expected_matching_bit_fraction": 0.5151406549495462
+      },
+      "previous": {
+        "kl_to_base_nats": 0.021537444194118745,
+        "total_variation": 0.08281048136773246,
+        "expected_matching_bit_fraction": 0.5214780415628819
+      },
+      "base_expected_bit_fraction": 0.5041666666666667
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.02994603967245172,
+        "total_variation": 0.09845611735305876,
+        "expected_matching_bit_fraction": 0.5142270357345751
+      },
+      "previous": {
+        "kl_to_base_nats": 0.0220959421723157,
+        "total_variation": 0.08369849658495299,
+        "expected_matching_bit_fraction": 0.5211717276663468
+      },
+      "base_expected_bit_fraction": 0.5034
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 17,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.024631068848897368,
+        "total_variation": 0.08865818637012342,
+        "expected_matching_bit_fraction": 0.5203312758542162
+      },
+      "previous": {
+        "kl_to_base_nats": 0.016885415966331623,
+        "total_variation": 0.07610442126889115,
+        "expected_matching_bit_fraction": 0.5268873685363934
+      },
+      "base_expected_bit_fraction": 0.5134675415178899
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 19,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.02618150524377185,
+        "total_variation": 0.09801437189197905,
+        "expected_matching_bit_fraction": 0.4958073319257096
+      },
+      "previous": {
+        "kl_to_base_nats": 0.01527752482534376,
+        "total_variation": 0.07223283233629399,
+        "expected_matching_bit_fraction": 0.49620358926572655
+      },
+      "base_expected_bit_fraction": 0.48221793110285993
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 21,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.02342180170714106,
+        "total_variation": 0.07869665197999967,
+        "expected_matching_bit_fraction": 0.5262459827846958
+      },
+      "previous": {
+        "kl_to_base_nats": 0.02032894393097265,
+        "total_variation": 0.08310797210822991,
+        "expected_matching_bit_fraction": 0.5331848187149583
+      },
+      "base_expected_bit_fraction": 0.516672000221078
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 20,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03311164959841971,
+        "total_variation": 0.10893134203951038,
+        "expected_matching_bit_fraction": 0.5056022853725441
+      },
+      "previous": {
+        "kl_to_base_nats": 0.02421776287311345,
+        "total_variation": 0.09486553680641432,
+        "expected_matching_bit_fraction": 0.5086225645499408
+      },
+      "base_expected_bit_fraction": 0.4899479159221332
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 9,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.012748230602153547,
+        "total_variation": 0.0655498221396869,
+        "expected_matching_bit_fraction": 0.5315650754144815
+      },
+      "previous": {
+        "kl_to_base_nats": 0.01637268833238963,
+        "total_variation": 0.08497317851652565,
+        "expected_matching_bit_fraction": 0.5388922882850109
+      },
+      "base_expected_bit_fraction": 0.5297223934952058
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.014902723950817622,
+        "total_variation": 0.06948888989000772,
+        "expected_matching_bit_fraction": 0.4513514049599395
+      },
+      "previous": {
+        "kl_to_base_nats": 0.01646504002232674,
+        "total_variation": 0.07776957982853086,
+        "expected_matching_bit_fraction": 0.45461746368575123
+      },
+      "base_expected_bit_fraction": 0.4392324807082905
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 14,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.013920856333841691,
+        "total_variation": 0.0637323224229736,
+        "expected_matching_bit_fraction": 0.5590523975785462
+      },
+      "previous": {
+        "kl_to_base_nats": 0.0154687708375833,
+        "total_variation": 0.07158726648521196,
+        "expected_matching_bit_fraction": 0.5598883581992227
+      },
+      "base_expected_bit_fraction": 0.5476389160961006
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.019082515539857656,
+        "total_variation": 0.0819326481308955,
+        "expected_matching_bit_fraction": 0.4538796214912268
+      },
+      "previous": {
+        "kl_to_base_nats": 0.028261965524246684,
+        "total_variation": 0.10979403581498588,
+        "expected_matching_bit_fraction": 0.46046535714584447
+      },
+      "base_expected_bit_fraction": 0.4410464475151646
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.0322934474774798,
+        "total_variation": 0.10172472847952246,
+        "expected_matching_bit_fraction": 0.50683143292769
+      },
+      "previous": {
+        "kl_to_base_nats": 0.018954066562480276,
+        "total_variation": 0.08008305538633209,
+        "expected_matching_bit_fraction": 0.510227710881415
+      },
+      "base_expected_bit_fraction": 0.4954
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.03262323332560061,
+        "total_variation": 0.1022497495558219,
+        "expected_matching_bit_fraction": 0.5072457095016615
+      },
+      "previous": {
+        "kl_to_base_nats": 0.017204260990944898,
+        "total_variation": 0.07352326472358385,
+        "expected_matching_bit_fraction": 0.5103439339120212
+      },
+      "base_expected_bit_fraction": 0.4972666666666667
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.030674453533440504,
+        "total_variation": 0.09953947089322183,
+        "expected_matching_bit_fraction": 0.5125669775750814
+      },
+      "previous": {
+        "kl_to_base_nats": 0.01763493033503057,
+        "total_variation": 0.07606020125450728,
+        "expected_matching_bit_fraction": 0.5160271479763697
+      },
+      "base_expected_bit_fraction": 0.5019333333333333
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 0,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.02803259194816094,
+        "total_variation": 0.09612718072070633,
+        "expected_matching_bit_fraction": 0.5180315187504935
+      },
+      "previous": {
+        "kl_to_base_nats": 0.024737073697161473,
+        "total_variation": 0.08818074619110029,
+        "expected_matching_bit_fraction": 0.5282559942015549
+      },
+      "base_expected_bit_fraction": 0.5083333333333333
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 0,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 12,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.0004374259113786923,
+        "total_variation": 0.002417122389616589,
+        "expected_matching_bit_fraction": 0.4671845241892164
+      },
+      "previous": {
+        "kl_to_base_nats": 0.0003988691369580545,
+        "total_variation": 0.0022635401079244095,
+        "expected_matching_bit_fraction": 0.46717973913010624
+      },
+      "base_expected_bit_fraction": 0.466981981981982
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 1,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 1,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.0003269219297198497,
+        "total_variation": 0.0020865278467275747,
+        "expected_matching_bit_fraction": 0.3683570474829678
+      },
+      "previous": {
+        "kl_to_base_nats": 0.00031239025830516004,
+        "total_variation": 0.002025713552377125,
+        "expected_matching_bit_fraction": 0.36835015183764813
+      },
+      "base_expected_bit_fraction": 0.3679943276609943
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 2,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 15,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.0002595140734722312,
+        "total_variation": 0.0017126930989455693,
+        "expected_matching_bit_fraction": 0.6323339092222674
+      },
+      "previous": {
+        "kl_to_base_nats": 0.00024371256965485008,
+        "total_variation": 0.001632542479862036,
+        "expected_matching_bit_fraction": 0.6323274983631403
+      },
+      "base_expected_bit_fraction": 0.6320403737070404
+    },
+    {
+      "kind": "peaked",
+      "size": 1000,
+      "seed": 3,
+      "passed": true,
+      "verified_steps": 30,
+      "maximum_base_relative_difference": 0.0,
+      "complement_freezes": 13,
+      "previous_freezes": 0,
+      "complement": {
+        "kl_to_base_nats": 0.00032483160703057314,
+        "total_variation": 0.0019119009005027078,
+        "expected_matching_bit_fraction": 0.3684129656243473
+      },
+      "previous": {
+        "kl_to_base_nats": 0.00032763951341118386,
+        "total_variation": 0.0019386865943566273,
+        "expected_matching_bit_fraction": 0.3684178530933773
+      },
+      "base_expected_bit_fraction": 0.36803536870203535
+    }
+  ],
+  "attempts": 40,
+  "passed": 40,
+  "verified_steps": 1200,
+  "means_by_kind": {
+    "uniform": {
+      "previous": {
+        "kl_to_base_nats": 0.02373730914567063,
+        "total_variation": 0.0867207261986733,
+        "expected_matching_bit_fraction": 0.5212528865427836
+      },
+      "complement": {
+        "kl_to_base_nats": 0.03354938286449959,
+        "total_variation": 0.10524959231930053,
+        "expected_matching_bit_fraction": 0.5159909214167796
+      }
+    },
+    "zipf": {
+      "previous": {
+        "kl_to_base_nats": 0.0205491879108794,
+        "total_variation": 0.08027133049490275,
+        "expected_matching_bit_fraction": 0.5117131818369625
+      },
+      "complement": {
+        "kl_to_base_nats": 0.026003222366042047,
+        "total_variation": 0.0910582942178831,
+        "expected_matching_bit_fraction": 0.5073094694603448
+      }
+    },
+    "wide-tail": {
+      "previous": {
+        "kl_to_base_nats": 0.009591858561198643,
+        "total_variation": 0.04321810681501501,
+        "expected_matching_bit_fraction": 0.48507316163866093
+      },
+      "complement": {
+        "kl_to_base_nats": 0.007614370159576897,
+        "total_variation": 0.03534895666733177,
+        "expected_matching_bit_fraction": 0.4828245094334155
+      }
+    },
+    "grouped": {
+      "previous": {
+        "kl_to_base_nats": 0.02357529790702288,
+        "total_variation": 0.08595783405390803,
+        "expected_matching_bit_fraction": 0.5181168984786293
+      },
+      "complement": {
+        "kl_to_base_nats": 0.03417804812650707,
+        "total_variation": 0.10418881603481858,
+        "expected_matching_bit_fraction": 0.5133346735926154
+      }
+    },
+    "peaked": {
+      "previous": {
+        "kl_to_base_nats": 0.00031598035122957347,
+        "total_variation": 0.0016614150449997765,
+        "expected_matching_bit_fraction": 0.46319264830952805
+      },
+      "complement": {
+        "kl_to_base_nats": 0.0003271807655923412,
+        "total_variation": 0.0016748490140549713,
+        "expected_matching_bit_fraction": 0.4631907933814217
+      }
+    }
+  },
+  "scope": "Synthetic numerical development, not inference, calibration, serving or marginal proof for finite PRF keys",
+  "model_inference": false,
+  "detector_calibrated": false,
+  "quality_acceptance": false,
+  "sdk_promotion": false,
+  "launch_ready": false
+}

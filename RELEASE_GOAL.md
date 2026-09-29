@@ -63,8 +63,15 @@ the fixed 100:1 diagnostic cutoff. Mean accumulated conditional information is
 is not a population bound or an impossibility result. The privileged-probability
 oracle is not an accessible text detector. See
 [conditional information](evidence/paced-information-2026-09-29/README.md).
-Next compare information allocation within existing probability/excluded-mass
-constraints before committing to another model run.
+A complement-symmetric allocation comparison is also complete. It preserves the
+same exact bounds and ideal-label conditional mean; a one-round integer proposal
+now matches all forty numerical fixtures and 1,200 updates. The initial two
+numerical failures remain retained. Uniform-score lift fell in every fixture
+family, and highly peaked distributions gained little information, so this
+variant is not promoted and does not justify a new model run. See
+[allocation comparison](evidence/complement-paced-2026-09-29/README.md).
+Next inspect the available information across recorded probability regimes,
+including earlier predictability-filter work, before another generation policy.
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.
