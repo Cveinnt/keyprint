@@ -88,3 +88,11 @@ interruption and changed resource policy; never overwrite an attempt directory.
 original script/study bindings, every completed prefix trace and the unchanged
 SDK/model/runtime before continuing every remaining path in original order.
 It requires the unchanged complete-cohort validator before producing a summary.
+
+The separately namespaced paced candidate has now completed its own actual model
+preflight: two eight-token prefixes and sixteen audited integer draws, under the
+same watchdog and cache-disabled MLX wrapper. Sampled peak footprint was 6.48 GiB,
+pressure remained normal and cleanup succeeded. Both prefixes hit their planned
+eight-token cap; this is not full-output quality or sustained serving evidence.
+A separate 128-attempt paced study is subject to the same resource policy. See
+[candidate preflight](evidence/paced-native-preflight-2026-09-29/README.md).

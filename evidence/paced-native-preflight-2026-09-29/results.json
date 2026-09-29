@@ -1,0 +1,14 @@
+{
+  "schema": "keyprint.paced-native-study-results.v1",
+  "plan_sha256": "89027c88f5fe44f2884463072fd3591322c3f45ac9c93a334637a321c3bf7f0a",
+  "runs_sha256": "f7543f788b48843bfc9678e77bd9fcc02106ad34982edc82e1531be1c3e20d0f",
+  "identity_sha256": "7e6c7d9e610fa2cd1b3de54547878e08aff6074359d41dce732f2544f4fc0992",
+  "attempts": 2,
+  "successful_runs": 2,
+  "audited_runs": 2,
+  "eos": 0,
+  "caps": 2,
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false
+}
