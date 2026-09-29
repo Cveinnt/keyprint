@@ -1,0 +1,27 @@
+{
+  "tests_passed": 12,
+  "all_128_progress_rows_equal_results": true,
+  "committed_steps": 24421,
+  "marked_steps_independent_fraction_check": 12462,
+  "max_path_log_ratio_difference": 1.5543122344752192e-15,
+  "all_pressure_samples_normal": true,
+  "pressure_samples": 1089,
+  "resource": {
+    "status": "completed",
+    "limit_bytes": 2147483648,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 1800.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 452608960,
+    "samples": 1089,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 44556,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 303.6008981660707
+  },
+  "model_inference": false,
+  "detector_calibrated": false,
+  "shared_kernel_counterfactual": true
+}

@@ -20,11 +20,54 @@ key, altered threshold or favorable subset cannot substitute for those checks.
 Public-source clue coverage remains evidence-backed; it does not identify
 Anthropic's undisclosed implementation or establish untested guarantees.
 
-The latest size reduction only deferred loading unchanged website comparison
+The website size reduction only deferred loading unchanged comparison
 records. The sampling engine, model bindings, tokenization and detector code
 were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
+
+## September 29 bounded-candidate evaluation: no promotion
+
+The separately named paced research candidate has completed 128 EOS outputs and
+24,421 audited token commits. All assistant source-only ratings were frozen
+before joining conditions, keys or signal counts. Strict full-task passes are
+25/64 ordinary and 16/64 marked; accepting every preflagged ambiguous judgment
+gives 36/64 and 34/64. Every response stayed English in this English-only cohort.
+Both arms contain factual errors. These descriptive results do not establish
+noninferiority, human acceptance or preservation across languages and domains.
+See [complete review](evidence/paced-quality-2026-09-29/README.md).
+
+The uniform token-path score was then checked against 199 fresh random keys,
+using a fixed conservative rank cutoff of 0.01. Only 1/64 marked and 0/64 ordinary
+outputs cleared it. All 256 saved owner/control scores reproduced, and all 128
+ranks were independently recomputed. This opened-cohort diagnostic does not
+establish useful detection or a production false-positive rate. See
+[fresh-key screen](evidence/paced-key-rank-2026-09-29/README.md).
+
+The source passages were model prompts; generation used general-purpose mode,
+with no exact-copy source protection active in this cohort. The candidate's
+source-preservation machinery must not be mistaken for tested semantic fidelity
+on these summarization tasks. Half-to-double probability bounds also do not
+guarantee unchanged meaning.
+
+The original study's separate native replay now verifies all 128 paths and
+24,465 steps, retaining earlier interrupted attempts. This closes mechanical
+replay, not quality. [Complete replay](evidence/source-replay-complete-2026-09-29/README.md).
+Both model jobs finished below 7 GiB under the external memory watchdog, with
+MLX cache disabled and cleanup verified. [Memory policy](MEMORY_SAFETY.md).
+
+The saved-probability diagnosis now reconciles all 128 paths and 24,421 steps.
+Median marked likelihood ratio is approximately 1.52:1; zero marked paths reach
+the fixed 100:1 diagnostic cutoff. Mean accumulated conditional information is
+0.534 nats per marked path. This points to limited per-response information, but
+is not a population bound or an impossibility result. The privileged-probability
+oracle is not an accessible text detector. See
+[conditional information](evidence/paced-information-2026-09-29/README.md).
+Next compare information allocation within existing probability/excluded-mass
+constraints before committing to another model run.
+Any new confirmation needs prospectively frozen, disjoint material; do not
+rerate or tune this development cohort into a pass. SDK defaults, approved site,
+CI-off policy and publication hold remain unchanged.
 
 ## September 28 source-grounded execution and frozen factual review
 

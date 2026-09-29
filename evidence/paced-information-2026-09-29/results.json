@@ -1,0 +1,2217 @@
+{
+  "schema": "keyprint.paced-information-results.v1",
+  "groups": {
+    "ordinary": {
+      "attempts": 64,
+      "steps": 11959,
+      "mean_path_sums": {
+        "selected_log_ratio": -0.6688697214656497,
+        "kl_marked_to_base": 0.5544299890080902,
+        "kl_base_to_marked": 0.5577350088435128,
+        "total_variation": 2.7347151040401316,
+        "base_entropy_bits": 76.28022602149441,
+        "marked_entropy_bits": 75.53555708022664
+      },
+      "median_path_log_ratio": -0.42579791410226975,
+      "oracle_path_ratio_ge_100": 0
+    },
+    "marked": {
+      "attempts": 64,
+      "steps": 12462,
+      "mean_path_sums": {
+        "selected_log_ratio": 0.5224107113856711,
+        "kl_marked_to_base": 0.5341924408780594,
+        "kl_base_to_marked": 0.5382818096592293,
+        "total_variation": 2.6724069386835017,
+        "base_entropy_bits": 76.09370715955657,
+        "marked_entropy_bits": 75.40396759209084
+      },
+      "median_path_log_ratio": 0.4172161765225453,
+      "oracle_path_ratio_ge_100": 0
+    }
+  },
+  "rows": [
+    {
+      "review_id": "05f70ec5187f",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 357,
+      "sums": {
+        "selected_log_ratio": -1.7084771932120695,
+        "kl_marked_to_base": 1.3490358530916742,
+        "kl_base_to_marked": 1.3612099186535163,
+        "total_variation": 6.370963581575211,
+        "base_entropy_bits": 163.75887083298744,
+        "marked_entropy_bits": 161.11962773993278
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 357
+    },
+    {
+      "review_id": "8885918b9a9a",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 460,
+      "sums": {
+        "selected_log_ratio": 0.04146964567648104,
+        "kl_marked_to_base": 1.2792149296080448,
+        "kl_base_to_marked": 1.3090346397517045,
+        "total_variation": 6.492144563054622,
+        "base_entropy_bits": 173.92212387707417,
+        "marked_entropy_bits": 171.25414305895194
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 460
+    },
+    {
+      "review_id": "fcdd6a586aa2",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 187,
+      "sums": {
+        "selected_log_ratio": -0.4031975827518356,
+        "kl_marked_to_base": 0.26034700562815255,
+        "kl_base_to_marked": 0.25098935269842765,
+        "total_variation": 1.3289458022775142,
+        "base_entropy_bits": 40.385393007109265,
+        "marked_entropy_bits": 41.25888938462573
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 187
+    },
+    {
+      "review_id": "660deaee3324",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 274,
+      "sums": {
+        "selected_log_ratio": -0.6555170768509102,
+        "kl_marked_to_base": 0.6298287252771659,
+        "kl_base_to_marked": 0.6555471694014902,
+        "total_variation": 2.9611580012563614,
+        "base_entropy_bits": 82.27135537044633,
+        "marked_entropy_bits": 80.63152414131295
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 274
+    },
+    {
+      "review_id": "c53674adae18",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 200,
+      "sums": {
+        "selected_log_ratio": 0.8986655321067286,
+        "kl_marked_to_base": 0.9709440956609521,
+        "kl_base_to_marked": 0.9702475888910873,
+        "total_variation": 4.389527625908917,
+        "base_entropy_bits": 123.0225305726228,
+        "marked_entropy_bits": 121.67022048474654
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 200
+    },
+    {
+      "review_id": "4f439c49592b",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 208,
+      "sums": {
+        "selected_log_ratio": -1.4798434061313699,
+        "kl_marked_to_base": 1.0714565985086852,
+        "kl_base_to_marked": 1.0739654276846602,
+        "total_variation": 5.006031204067465,
+        "base_entropy_bits": 150.35021140731067,
+        "marked_entropy_bits": 149.3833141819722
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 208
+    },
+    {
+      "review_id": "3d63ca048ea7",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 436,
+      "sums": {
+        "selected_log_ratio": -0.5018084152860468,
+        "kl_marked_to_base": 0.9942223152535422,
+        "kl_base_to_marked": 1.0013961679581223,
+        "total_variation": 5.445059098120124,
+        "base_entropy_bits": 168.37763957599316,
+        "marked_entropy_bits": 166.5644191845417
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 436
+    },
+    {
+      "review_id": "471a2d5f9aee",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 366,
+      "sums": {
+        "selected_log_ratio": -1.7112713671670272,
+        "kl_marked_to_base": 1.0923050599254254,
+        "kl_base_to_marked": 1.102753918196766,
+        "total_variation": 5.661772176045446,
+        "base_entropy_bits": 167.7133913303751,
+        "marked_entropy_bits": 166.87725803940498
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 366
+    },
+    {
+      "review_id": "3d7b3ade786a",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 64,
+      "sums": {
+        "selected_log_ratio": 0.7760478349866791,
+        "kl_marked_to_base": 0.1477701080523341,
+        "kl_base_to_marked": 0.14657568297360446,
+        "total_variation": 0.6805018029101605,
+        "base_entropy_bits": 23.11659621407266,
+        "marked_entropy_bits": 23.2385878233873
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 64
+    },
+    {
+      "review_id": "175d9962d3e6",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 138,
+      "sums": {
+        "selected_log_ratio": -0.5816414305877537,
+        "kl_marked_to_base": 0.5455196817823507,
+        "kl_base_to_marked": 0.5540182322385745,
+        "total_variation": 2.7082068214967956,
+        "base_entropy_bits": 78.5766163055136,
+        "marked_entropy_bits": 77.54214072280182
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 138
+    },
+    {
+      "review_id": "2f87c3a84152",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 104,
+      "sums": {
+        "selected_log_ratio": -0.7772609955496987,
+        "kl_marked_to_base": 0.5912835730957391,
+        "kl_base_to_marked": 0.6020252111296697,
+        "total_variation": 2.7581040585122096,
+        "base_entropy_bits": 75.08896299807449,
+        "marked_entropy_bits": 73.65417130214668
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 104
+    },
+    {
+      "review_id": "0320ca042467",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 97,
+      "sums": {
+        "selected_log_ratio": -0.24760670135430124,
+        "kl_marked_to_base": 0.5384773682309619,
+        "kl_base_to_marked": 0.534305876808574,
+        "total_variation": 2.6322243305130475,
+        "base_entropy_bits": 75.59067195145509,
+        "marked_entropy_bits": 75.75526782082127
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 97
+    },
+    {
+      "review_id": "467ed8a84708",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 209,
+      "sums": {
+        "selected_log_ratio": -1.0125191563720686,
+        "kl_marked_to_base": 0.6484663560580243,
+        "kl_base_to_marked": 0.6421943084432831,
+        "total_variation": 3.584776782867971,
+        "base_entropy_bits": 92.73039364183813,
+        "marked_entropy_bits": 91.79854827596355
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 209
+    },
+    {
+      "review_id": "e64f7bedb6cf",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 154,
+      "sums": {
+        "selected_log_ratio": -1.4225592708173638,
+        "kl_marked_to_base": 0.5274739899037145,
+        "kl_base_to_marked": 0.5471118371658723,
+        "total_variation": 2.50934321386889,
+        "base_entropy_bits": 61.98916867920481,
+        "marked_entropy_bits": 60.594508891844704
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 154
+    },
+    {
+      "review_id": "e03201d835b1",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 199,
+      "sums": {
+        "selected_log_ratio": 1.2346386808547596,
+        "kl_marked_to_base": 0.3239986203074288,
+        "kl_base_to_marked": 0.32697343519535654,
+        "total_variation": 1.9181684896297715,
+        "base_entropy_bits": 58.78343771504595,
+        "marked_entropy_bits": 57.861329120633414
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 199
+    },
+    {
+      "review_id": "88e48728af22",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 251,
+      "sums": {
+        "selected_log_ratio": -2.139418431443975,
+        "kl_marked_to_base": 0.5674530915047841,
+        "kl_base_to_marked": 0.5644736305759666,
+        "total_variation": 3.008694953764292,
+        "base_entropy_bits": 86.7726186570145,
+        "marked_entropy_bits": 85.68430224825381
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 251
+    },
+    {
+      "review_id": "ddb3ca753729",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 159,
+      "sums": {
+        "selected_log_ratio": 0.8191469888197564,
+        "kl_marked_to_base": 0.40968888401237225,
+        "kl_base_to_marked": 0.42115661179930763,
+        "total_variation": 2.219623329962985,
+        "base_entropy_bits": 74.96766512859207,
+        "marked_entropy_bits": 74.0481860443094
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 159
+    },
+    {
+      "review_id": "f5eff7397665",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 389,
+      "sums": {
+        "selected_log_ratio": -0.8250261043167638,
+        "kl_marked_to_base": 0.9890984556614193,
+        "kl_base_to_marked": 0.9979741321561523,
+        "total_variation": 5.227989530583312,
+        "base_entropy_bits": 154.47826366674252,
+        "marked_entropy_bits": 153.50739800847091
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 389
+    },
+    {
+      "review_id": "ef11a2e8f8fa",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 197,
+      "sums": {
+        "selected_log_ratio": 0.6564659928289247,
+        "kl_marked_to_base": 0.4438182664986835,
+        "kl_base_to_marked": 0.44121416964719423,
+        "total_variation": 2.3111417471123463,
+        "base_entropy_bits": 72.30307835930509,
+        "marked_entropy_bits": 72.06438182994594
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 197
+    },
+    {
+      "review_id": "41285d6a479f",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 241,
+      "sums": {
+        "selected_log_ratio": -1.874080166732325,
+        "kl_marked_to_base": 0.8709624187604912,
+        "kl_base_to_marked": 0.8701126098395692,
+        "total_variation": 3.9971619895456585,
+        "base_entropy_bits": 104.60939758151405,
+        "marked_entropy_bits": 103.02303315244059
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 241
+    },
+    {
+      "review_id": "4701df6a3217",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 263,
+      "sums": {
+        "selected_log_ratio": 0.32484961333129725,
+        "kl_marked_to_base": 0.4384627092463665,
+        "kl_base_to_marked": 0.43834345374805217,
+        "total_variation": 2.3852038230366306,
+        "base_entropy_bits": 72.18689428566165,
+        "marked_entropy_bits": 71.92622505604736
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 263
+    },
+    {
+      "review_id": "83315d2f7ae4",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 241,
+      "sums": {
+        "selected_log_ratio": 0.3837078027258885,
+        "kl_marked_to_base": 0.4238920987847663,
+        "kl_base_to_marked": 0.4318748424013578,
+        "total_variation": 2.410753504195943,
+        "base_entropy_bits": 72.65022869755919,
+        "marked_entropy_bits": 71.58954349942935
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 241
+    },
+    {
+      "review_id": "e0a5c65e7238",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 118,
+      "sums": {
+        "selected_log_ratio": 0.3105722911732802,
+        "kl_marked_to_base": 0.2512446114571275,
+        "kl_base_to_marked": 0.25333070749527586,
+        "total_variation": 1.232841099518608,
+        "base_entropy_bits": 37.473681444533256,
+        "marked_entropy_bits": 37.42014800081473
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 118
+    },
+    {
+      "review_id": "a65d589632a6",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 73,
+      "sums": {
+        "selected_log_ratio": -0.369378460462456,
+        "kl_marked_to_base": 0.3095585780571073,
+        "kl_base_to_marked": 0.3174012402871284,
+        "total_variation": 1.3512254266179828,
+        "base_entropy_bits": 30.772214303356645,
+        "marked_entropy_bits": 30.364942864282835
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 73
+    },
+    {
+      "review_id": "dd2100973856",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 192,
+      "sums": {
+        "selected_log_ratio": -0.9509861900599466,
+        "kl_marked_to_base": 0.4173250462245724,
+        "kl_base_to_marked": 0.42126896015645443,
+        "total_variation": 2.2668081449363875,
+        "base_entropy_bits": 60.65494994980854,
+        "marked_entropy_bits": 58.77983410236962
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 192
+    },
+    {
+      "review_id": "50f5ab749632",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 220,
+      "sums": {
+        "selected_log_ratio": -0.9126873086227679,
+        "kl_marked_to_base": 0.5461947550880499,
+        "kl_base_to_marked": 0.553675187745381,
+        "total_variation": 2.88754498014078,
+        "base_entropy_bits": 80.64167863865448,
+        "marked_entropy_bits": 79.58824012079896
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 220
+    },
+    {
+      "review_id": "9ef9a11bbca5",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 39,
+      "sums": {
+        "selected_log_ratio": 0.4507245503192021,
+        "kl_marked_to_base": 0.0603810194415045,
+        "kl_base_to_marked": 0.05836561288938806,
+        "total_variation": 0.40487436740739524,
+        "base_entropy_bits": 13.149412073603635,
+        "marked_entropy_bits": 13.345615695320848
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 39
+    },
+    {
+      "review_id": "7d73417a3dea",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 27,
+      "sums": {
+        "selected_log_ratio": 0.059693821295517896,
+        "kl_marked_to_base": 0.013258661548236517,
+        "kl_base_to_marked": 0.014528395669796067,
+        "total_variation": 0.09264678738750352,
+        "base_entropy_bits": 2.955813729637018,
+        "marked_entropy_bits": 2.806677910468763
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 27
+    },
+    {
+      "review_id": "9a5e2aa6bf92",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 232,
+      "sums": {
+        "selected_log_ratio": 0.19542971637619713,
+        "kl_marked_to_base": 0.3294987276785653,
+        "kl_base_to_marked": 0.33905023054099764,
+        "total_variation": 1.548580947595319,
+        "base_entropy_bits": 44.0689024939536,
+        "marked_entropy_bits": 43.4745335664777
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 232
+    },
+    {
+      "review_id": "2e5b09040586",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 182,
+      "sums": {
+        "selected_log_ratio": -0.07889702167833912,
+        "kl_marked_to_base": 0.08744402130395662,
+        "kl_base_to_marked": 0.09122337572579738,
+        "total_variation": 0.5277059017131368,
+        "base_entropy_bits": 13.308391281547426,
+        "marked_entropy_bits": 12.89845021442754
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 182
+    },
+    {
+      "review_id": "8952327eb411",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 0,
+      "steps": 125,
+      "sums": {
+        "selected_log_ratio": 1.3435103571116838,
+        "kl_marked_to_base": 0.3574636813338168,
+        "kl_base_to_marked": 0.36645059175349415,
+        "total_variation": 1.7443601630931973,
+        "base_entropy_bits": 40.720647314564886,
+        "marked_entropy_bits": 39.79337077555141
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 125
+    },
+    {
+      "review_id": "9c491b885bb7",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "steps": 169,
+      "sums": {
+        "selected_log_ratio": -1.2656662930577476,
+        "kl_marked_to_base": 0.367119879597907,
+        "kl_base_to_marked": 0.3678822796305051,
+        "total_variation": 1.7270525626771729,
+        "base_entropy_bits": 42.009950810418836,
+        "marked_entropy_bits": 41.3975571431007
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 169
+    },
+    {
+      "review_id": "f98438494cdc",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 249,
+      "sums": {
+        "selected_log_ratio": 0.8560986084409762,
+        "kl_marked_to_base": 0.9051631586114331,
+        "kl_base_to_marked": 0.9121991351092358,
+        "total_variation": 4.487459233436185,
+        "base_entropy_bits": 129.01537915822183,
+        "marked_entropy_bits": 126.92819535939476
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 249
+    },
+    {
+      "review_id": "538495b8ee41",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 669,
+      "sums": {
+        "selected_log_ratio": 0.37460032615179967,
+        "kl_marked_to_base": 1.6579438041801864,
+        "kl_base_to_marked": 1.6676420750058485,
+        "total_variation": 7.86554178608311,
+        "base_entropy_bits": 197.33757564334906,
+        "marked_entropy_bits": 195.84673614121377
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 669
+    },
+    {
+      "review_id": "cde6bbba4b30",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 131,
+      "sums": {
+        "selected_log_ratio": -1.0594882505786538,
+        "kl_marked_to_base": 0.2946677598963306,
+        "kl_base_to_marked": 0.2855343797586559,
+        "total_variation": 1.3668453468323658,
+        "base_entropy_bits": 38.80514331439811,
+        "marked_entropy_bits": 38.75581724083901
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 131
+    },
+    {
+      "review_id": "d98fd736e04c",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 179,
+      "sums": {
+        "selected_log_ratio": -0.1561514290849576,
+        "kl_marked_to_base": 0.3111904812713526,
+        "kl_base_to_marked": 0.307943430288986,
+        "total_variation": 1.601979983044176,
+        "base_entropy_bits": 45.61210087248556,
+        "marked_entropy_bits": 45.607937897922085
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 179
+    },
+    {
+      "review_id": "78cef37cbc9a",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 156,
+      "sums": {
+        "selected_log_ratio": 2.113533715248495,
+        "kl_marked_to_base": 0.6797193994282377,
+        "kl_base_to_marked": 0.6952747750059804,
+        "total_variation": 3.275649021454413,
+        "base_entropy_bits": 101.43963676257769,
+        "marked_entropy_bits": 100.14072868009838
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 156
+    },
+    {
+      "review_id": "8493cd4d4845",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 195,
+      "sums": {
+        "selected_log_ratio": -2.769769568370995,
+        "kl_marked_to_base": 0.7812277347132499,
+        "kl_base_to_marked": 0.7936906631231092,
+        "total_variation": 4.063879001121068,
+        "base_entropy_bits": 123.44635213689781,
+        "marked_entropy_bits": 122.606287119374
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 195
+    },
+    {
+      "review_id": "bd07d540e0d7",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 344,
+      "sums": {
+        "selected_log_ratio": -2.2469485513639555,
+        "kl_marked_to_base": 1.4351809509634519,
+        "kl_base_to_marked": 1.44006983863179,
+        "total_variation": 7.04220604609043,
+        "base_entropy_bits": 200.69341929885215,
+        "marked_entropy_bits": 199.15089652517705
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 344
+    },
+    {
+      "review_id": "bd079797457e",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 279,
+      "sums": {
+        "selected_log_ratio": 1.3461749556916471,
+        "kl_marked_to_base": 0.8126503225804311,
+        "kl_base_to_marked": 0.8184827843398809,
+        "total_variation": 4.424960667528609,
+        "base_entropy_bits": 124.51414556567988,
+        "marked_entropy_bits": 123.36309849765689
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 279
+    },
+    {
+      "review_id": "3a8cf6ce0615",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 98,
+      "sums": {
+        "selected_log_ratio": 0.37095677504798086,
+        "kl_marked_to_base": 0.23406751445567717,
+        "kl_base_to_marked": 0.23491020280509164,
+        "total_variation": 1.3269025548011812,
+        "base_entropy_bits": 39.561357789356514,
+        "marked_entropy_bits": 39.48420689121434
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 98
+    },
+    {
+      "review_id": "775c07425f8a",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 71,
+      "sums": {
+        "selected_log_ratio": -1.0439150605873317,
+        "kl_marked_to_base": 0.274259476217421,
+        "kl_base_to_marked": 0.28065747485944154,
+        "total_variation": 1.4602362255447487,
+        "base_entropy_bits": 49.13771102837616,
+        "marked_entropy_bits": 48.23214490787491
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 71
+    },
+    {
+      "review_id": "87210b576252",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 75,
+      "sums": {
+        "selected_log_ratio": -0.06500328101898681,
+        "kl_marked_to_base": 0.351223506119259,
+        "kl_base_to_marked": 0.34314684119379196,
+        "total_variation": 1.6604537211768986,
+        "base_entropy_bits": 50.658276740128905,
+        "marked_entropy_bits": 50.956805001118774
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 75
+    },
+    {
+      "review_id": "42e73b2c6643",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 133,
+      "sums": {
+        "selected_log_ratio": 1.4267620074330822,
+        "kl_marked_to_base": 0.7001876203566456,
+        "kl_base_to_marked": 0.6989569514227639,
+        "total_variation": 3.2302175777773874,
+        "base_entropy_bits": 87.51313081828286,
+        "marked_entropy_bits": 87.87254753867106
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 133
+    },
+    {
+      "review_id": "b4653b98cbac",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 173,
+      "sums": {
+        "selected_log_ratio": 2.202072045914515,
+        "kl_marked_to_base": 0.7580121668780365,
+        "kl_base_to_marked": 0.7785138788202922,
+        "total_variation": 3.7251060172165236,
+        "base_entropy_bits": 92.16694973377554,
+        "marked_entropy_bits": 90.35570110169931
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 173
+    },
+    {
+      "review_id": "672acc827c37",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 136,
+      "sums": {
+        "selected_log_ratio": -0.4311433585361137,
+        "kl_marked_to_base": 0.7325533316205645,
+        "kl_base_to_marked": 0.7497281017028508,
+        "total_variation": 3.292650121131361,
+        "base_entropy_bits": 74.05157161425086,
+        "marked_entropy_bits": 73.12998599181815
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 136
+    },
+    {
+      "review_id": "abe19fe8fd13",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 268,
+      "sums": {
+        "selected_log_ratio": 0.013312180209905057,
+        "kl_marked_to_base": 0.7254056450810226,
+        "kl_base_to_marked": 0.7285540956282435,
+        "total_variation": 3.361352074469497,
+        "base_entropy_bits": 91.00305292289626,
+        "marked_entropy_bits": 90.2986811495915
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 268
+    },
+    {
+      "review_id": "f67cd251b4c9",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 162,
+      "sums": {
+        "selected_log_ratio": -0.799285643166534,
+        "kl_marked_to_base": 0.5500315834531923,
+        "kl_base_to_marked": 0.5541036850856408,
+        "total_variation": 2.7620548798700093,
+        "base_entropy_bits": 63.72151651771143,
+        "marked_entropy_bits": 62.91214654733806
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 162
+    },
+    {
+      "review_id": "8949cf429d13",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 355,
+      "sums": {
+        "selected_log_ratio": 1.7113568326455133,
+        "kl_marked_to_base": 1.0833521716855405,
+        "kl_base_to_marked": 1.0870914494038106,
+        "total_variation": 5.003418519153713,
+        "base_entropy_bits": 142.04084565896673,
+        "marked_entropy_bits": 140.85197951804764
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 355
+    },
+    {
+      "review_id": "4610b7fbf8f4",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 239,
+      "sums": {
+        "selected_log_ratio": -1.1294745692233288,
+        "kl_marked_to_base": 1.3266881129423993,
+        "kl_base_to_marked": 1.346232884204531,
+        "total_variation": 6.1284447356675855,
+        "base_entropy_bits": 171.70838659231453,
+        "marked_entropy_bits": 167.8159837497142
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 239
+    },
+    {
+      "review_id": "3035406b81bc",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 226,
+      "sums": {
+        "selected_log_ratio": -0.37847355211167427,
+        "kl_marked_to_base": 0.5647521808656203,
+        "kl_base_to_marked": 0.5690133507310163,
+        "total_variation": 3.040989592741282,
+        "base_entropy_bits": 95.35316516577015,
+        "marked_entropy_bits": 94.31017962153172
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 226
+    },
+    {
+      "review_id": "82bd71dc763d",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 325,
+      "sums": {
+        "selected_log_ratio": 1.8071519571388335,
+        "kl_marked_to_base": 0.6108043129998059,
+        "kl_base_to_marked": 0.6235142745443532,
+        "total_variation": 3.036305101860687,
+        "base_entropy_bits": 77.75309837643039,
+        "marked_entropy_bits": 76.26792177806094
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 325
+    },
+    {
+      "review_id": "7695316d17e6",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 197,
+      "sums": {
+        "selected_log_ratio": 0.6118588844265731,
+        "kl_marked_to_base": 0.5991797327434776,
+        "kl_base_to_marked": 0.6097059964603705,
+        "total_variation": 3.0239715446309963,
+        "base_entropy_bits": 94.65685905080561,
+        "marked_entropy_bits": 93.9015230980545
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 197
+    },
+    {
+      "review_id": "222f346fbb01",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 232,
+      "sums": {
+        "selected_log_ratio": -0.4273012967515096,
+        "kl_marked_to_base": 0.40472081422669026,
+        "kl_base_to_marked": 0.406533244055432,
+        "total_variation": 2.1393371276918938,
+        "base_entropy_bits": 63.46322832205589,
+        "marked_entropy_bits": 62.90830847417302
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 232
+    },
+    {
+      "review_id": "4ff629599583",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 43,
+      "sums": {
+        "selected_log_ratio": 0.6115789579615214,
+        "kl_marked_to_base": 0.13050034539360336,
+        "kl_base_to_marked": 0.13704814016796074,
+        "total_variation": 0.46964771628613305,
+        "base_entropy_bits": 12.244466449577237,
+        "marked_entropy_bits": 11.69788727210483
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 43
+    },
+    {
+      "review_id": "e029ddca0112",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 45,
+      "sums": {
+        "selected_log_ratio": -0.16852408300115299,
+        "kl_marked_to_base": 0.14294044252509044,
+        "kl_base_to_marked": 0.14817922932848238,
+        "total_variation": 0.5177170517067463,
+        "base_entropy_bits": 11.952983483937317,
+        "marked_entropy_bits": 11.680980270904337
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 45
+    },
+    {
+      "review_id": "0e457ecc330e",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 176,
+      "sums": {
+        "selected_log_ratio": 0.5294806003955868,
+        "kl_marked_to_base": 0.47569797809170106,
+        "kl_base_to_marked": 0.48045176785834826,
+        "total_variation": 2.254809538128426,
+        "base_entropy_bits": 58.486984042652146,
+        "marked_entropy_bits": 57.62894193729025
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 176
+    },
+    {
+      "review_id": "ec40b53a546a",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 203,
+      "sums": {
+        "selected_log_ratio": -0.37851172207182104,
+        "kl_marked_to_base": 0.4357946248786654,
+        "kl_base_to_marked": 0.4331201453762073,
+        "total_variation": 2.4276047624074333,
+        "base_entropy_bits": 67.52545744303893,
+        "marked_entropy_bits": 67.00354024984965
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 203
+    },
+    {
+      "review_id": "2a30afb19c85",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 33,
+      "sums": {
+        "selected_log_ratio": 0.17033461348496473,
+        "kl_marked_to_base": 0.047101610844274514,
+        "kl_base_to_marked": 0.04620697472851405,
+        "total_variation": 0.2815658484513475,
+        "base_entropy_bits": 6.055400955496353,
+        "marked_entropy_bits": 6.333532963477869
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 33
+    },
+    {
+      "review_id": "19cb110d781e",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 46,
+      "sums": {
+        "selected_log_ratio": 0.6498737334279567,
+        "kl_marked_to_base": 0.19755488826616976,
+        "kl_base_to_marked": 0.2026702867241212,
+        "total_variation": 0.81939047247475,
+        "base_entropy_bits": 18.039348150331428,
+        "marked_entropy_bits": 17.86039511219172
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 46
+    },
+    {
+      "review_id": "ccbb87b3f5f0",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 190,
+      "sums": {
+        "selected_log_ratio": 0.8647227843895942,
+        "kl_marked_to_base": 0.7377066411912162,
+        "kl_base_to_marked": 0.7473278066164124,
+        "total_variation": 3.1372731048924196,
+        "base_entropy_bits": 76.297693681836,
+        "marked_entropy_bits": 75.25168692181676
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 190
+    },
+    {
+      "review_id": "dacb1bebb077",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 147,
+      "sums": {
+        "selected_log_ratio": -1.4717792365509208,
+        "kl_marked_to_base": 0.20930321048319217,
+        "kl_base_to_marked": 0.21435250085791524,
+        "total_variation": 1.0723056224516396,
+        "base_entropy_bits": 32.26041173807963,
+        "marked_entropy_bits": 31.45001496207857
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 147
+    },
+    {
+      "review_id": "9c6df845a970",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "steps": 159,
+      "sums": {
+        "selected_log_ratio": -0.4329001551792729,
+        "kl_marked_to_base": 0.20644900335896613,
+        "kl_base_to_marked": 0.21128027620865328,
+        "total_variation": 1.3317413092058699,
+        "base_entropy_bits": 35.78945790226806,
+        "marked_entropy_bits": 35.21715442718646
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 159
+    },
+    {
+      "review_id": "8ce6bfde5e61",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 1,
+      "steps": 147,
+      "sums": {
+        "selected_log_ratio": -0.6595004234376539,
+        "kl_marked_to_base": 0.25585238274800476,
+        "kl_base_to_marked": 0.25397646837287996,
+        "total_variation": 1.5593215645217953,
+        "base_entropy_bits": 38.258506858972375,
+        "marked_entropy_bits": 38.05888480822348
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 147
+    },
+    {
+      "review_id": "cae167443187",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 307,
+      "sums": {
+        "selected_log_ratio": -1.6263806709202033,
+        "kl_marked_to_base": 1.2954350807432424,
+        "kl_base_to_marked": 1.2966269612436219,
+        "total_variation": 5.915764251356481,
+        "base_entropy_bits": 157.7961743033531,
+        "marked_entropy_bits": 157.49219987536878
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 307
+    },
+    {
+      "review_id": "e5cb98ca02dc",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 302,
+      "sums": {
+        "selected_log_ratio": 2.498019177266192,
+        "kl_marked_to_base": 0.8816937608846129,
+        "kl_base_to_marked": 0.8722686777950849,
+        "total_variation": 4.711544691807426,
+        "base_entropy_bits": 135.11325930750402,
+        "marked_entropy_bits": 135.57871416414073
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 302
+    },
+    {
+      "review_id": "a419a7209fd7",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 209,
+      "sums": {
+        "selected_log_ratio": 0.8756727087695862,
+        "kl_marked_to_base": 0.44187132077436364,
+        "kl_base_to_marked": 0.4506840801781612,
+        "total_variation": 2.4401193485805304,
+        "base_entropy_bits": 77.14944748350759,
+        "marked_entropy_bits": 75.69580393628667
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 209
+    },
+    {
+      "review_id": "8420ba5489f9",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 204,
+      "sums": {
+        "selected_log_ratio": -0.9455505695560813,
+        "kl_marked_to_base": 0.31702940196191903,
+        "kl_base_to_marked": 0.33100667363049,
+        "total_variation": 1.7589732820992354,
+        "base_entropy_bits": 58.84766208029438,
+        "marked_entropy_bits": 57.23489650003528
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 204
+    },
+    {
+      "review_id": "e702d6b62188",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 155,
+      "sums": {
+        "selected_log_ratio": -0.019672366931454112,
+        "kl_marked_to_base": 0.5362700599262633,
+        "kl_base_to_marked": 0.5305337088818057,
+        "total_variation": 2.852249750598605,
+        "base_entropy_bits": 96.11685289184274,
+        "marked_entropy_bits": 96.63220188943905
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 155
+    },
+    {
+      "review_id": "8267185ebe01",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 224,
+      "sums": {
+        "selected_log_ratio": -0.4178463051372691,
+        "kl_marked_to_base": 0.8504607066922303,
+        "kl_base_to_marked": 0.8653519691471725,
+        "total_variation": 4.207787309900457,
+        "base_entropy_bits": 128.93932864109038,
+        "marked_entropy_bits": 127.33721562771983
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 224
+    },
+    {
+      "review_id": "92a9afe8663c",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 270,
+      "sums": {
+        "selected_log_ratio": 0.14000307552847946,
+        "kl_marked_to_base": 0.7456647741523642,
+        "kl_base_to_marked": 0.7439721981723593,
+        "total_variation": 3.610842378145303,
+        "base_entropy_bits": 118.01312888113121,
+        "marked_entropy_bits": 118.52145033649174
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 270
+    },
+    {
+      "review_id": "8aa7fde1db4f",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 361,
+      "sums": {
+        "selected_log_ratio": 0.05883360995201181,
+        "kl_marked_to_base": 1.0842112481230295,
+        "kl_base_to_marked": 1.1052808307321198,
+        "total_variation": 5.6291941216004435,
+        "base_entropy_bits": 177.62519455212183,
+        "marked_entropy_bits": 175.88314838098083
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 361
+    },
+    {
+      "review_id": "3533830a1d85",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 123,
+      "sums": {
+        "selected_log_ratio": -0.27616765358885303,
+        "kl_marked_to_base": 0.41657336215216895,
+        "kl_base_to_marked": 0.4057135497360247,
+        "total_variation": 2.1464143074703914,
+        "base_entropy_bits": 60.081619066534444,
+        "marked_entropy_bits": 61.384713799003
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 123
+    },
+    {
+      "review_id": "dcee5b0bd8cf",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 48,
+      "sums": {
+        "selected_log_ratio": 0.28251584257766416,
+        "kl_marked_to_base": 0.12004505916058966,
+        "kl_base_to_marked": 0.12036565826500772,
+        "total_variation": 0.6648652176952942,
+        "base_entropy_bits": 21.251841957178012,
+        "marked_entropy_bits": 21.018845925675464
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 48
+    },
+    {
+      "review_id": "bc020a1ce1d1",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 88,
+      "sums": {
+        "selected_log_ratio": 2.5098109319146196,
+        "kl_marked_to_base": 0.3313411745467718,
+        "kl_base_to_marked": 0.3287899981640807,
+        "total_variation": 1.6441053238122347,
+        "base_entropy_bits": 50.279908855293165,
+        "marked_entropy_bits": 50.02964784874736
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 88
+    },
+    {
+      "review_id": "3cf414c09c44",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 77,
+      "sums": {
+        "selected_log_ratio": -0.37312425973818547,
+        "kl_marked_to_base": 0.34315196129518727,
+        "kl_base_to_marked": 0.35012164201217627,
+        "total_variation": 1.452959261602975,
+        "base_entropy_bits": 34.73825336942957,
+        "marked_entropy_bits": 34.480812942592536
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 77
+    },
+    {
+      "review_id": "bff5359a7a1d",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 177,
+      "sums": {
+        "selected_log_ratio": -0.9177595629791142,
+        "kl_marked_to_base": 0.5499593175687107,
+        "kl_base_to_marked": 0.5520379122522509,
+        "total_variation": 3.0425045674547304,
+        "base_entropy_bits": 74.797245837462,
+        "marked_entropy_bits": 74.10955591179437
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 177
+    },
+    {
+      "review_id": "c564499cd45d",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 181,
+      "sums": {
+        "selected_log_ratio": 2.0118328085764436,
+        "kl_marked_to_base": 0.670333219368857,
+        "kl_base_to_marked": 0.6581039868278465,
+        "total_variation": 3.02919183069603,
+        "base_entropy_bits": 72.5463744341789,
+        "marked_entropy_bits": 73.40003569478937
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 181
+    },
+    {
+      "review_id": "49e631210045",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 196,
+      "sums": {
+        "selected_log_ratio": -0.28697475006585954,
+        "kl_marked_to_base": 0.44069502481995304,
+        "kl_base_to_marked": 0.4503074640609239,
+        "total_variation": 2.2907666151365396,
+        "base_entropy_bits": 59.75244078322499,
+        "marked_entropy_bits": 58.49897405069455
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 196
+    },
+    {
+      "review_id": "c150a35b17ae",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 250,
+      "sums": {
+        "selected_log_ratio": -0.7989073029801144,
+        "kl_marked_to_base": 0.6206012810462412,
+        "kl_base_to_marked": 0.6150053197467165,
+        "total_variation": 2.9449684636193316,
+        "base_entropy_bits": 83.13060955474697,
+        "marked_entropy_bits": 82.84923569749675
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 250
+    },
+    {
+      "review_id": "07d6c2b6077f",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 237,
+      "sums": {
+        "selected_log_ratio": -1.8096091993019439,
+        "kl_marked_to_base": 0.9256132096088758,
+        "kl_base_to_marked": 0.908102650005633,
+        "total_variation": 4.093210307290737,
+        "base_entropy_bits": 113.96912187251635,
+        "marked_entropy_bits": 113.7395732878711
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 237
+    },
+    {
+      "review_id": "d19b2472ad59",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 432,
+      "sums": {
+        "selected_log_ratio": 1.5814344786257588,
+        "kl_marked_to_base": 0.8604834239202689,
+        "kl_base_to_marked": 0.8641440350462876,
+        "total_variation": 4.4472098397050335,
+        "base_entropy_bits": 131.30169763919238,
+        "marked_entropy_bits": 129.28268142184336
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 432
+    },
+    {
+      "review_id": "639b2827ab4b",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 261,
+      "sums": {
+        "selected_log_ratio": 0.30125829012271005,
+        "kl_marked_to_base": 0.5997093021487836,
+        "kl_base_to_marked": 0.6077935999327995,
+        "total_variation": 3.187452428480683,
+        "base_entropy_bits": 89.27895804178958,
+        "marked_entropy_bits": 88.50309268321911
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 261
+    },
+    {
+      "review_id": "3ffc4f427643",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 216,
+      "sums": {
+        "selected_log_ratio": -2.0813935461939224,
+        "kl_marked_to_base": 0.517591725042279,
+        "kl_base_to_marked": 0.5309496150054381,
+        "total_variation": 2.621378326645624,
+        "base_entropy_bits": 74.34766840873026,
+        "marked_entropy_bits": 72.41613106124512
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 216
+    },
+    {
+      "review_id": "b5bc7a77292e",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 184,
+      "sums": {
+        "selected_log_ratio": -2.1096357251078377,
+        "kl_marked_to_base": 0.6237940959342229,
+        "kl_base_to_marked": 0.6173299488513561,
+        "total_variation": 2.82447933763426,
+        "base_entropy_bits": 68.93388413662649,
+        "marked_entropy_bits": 68.43706466631446
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 184
+    },
+    {
+      "review_id": "e2c1493fbbbe",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 245,
+      "sums": {
+        "selected_log_ratio": 1.0552289573607576,
+        "kl_marked_to_base": 0.5499502425775782,
+        "kl_base_to_marked": 0.5547096336096433,
+        "total_variation": 2.8929578537810388,
+        "base_entropy_bits": 101.4586913438066,
+        "marked_entropy_bits": 100.19439701530271
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 245
+    },
+    {
+      "review_id": "d245ce7aa037",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 72,
+      "sums": {
+        "selected_log_ratio": 1.2366780708854765,
+        "kl_marked_to_base": 0.22746371664379272,
+        "kl_base_to_marked": 0.22308787170349464,
+        "total_variation": 1.1805144731628416,
+        "base_entropy_bits": 36.424004697033425,
+        "marked_entropy_bits": 37.49789985020622
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 72
+    },
+    {
+      "review_id": "d7a58d4cb265",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 46,
+      "sums": {
+        "selected_log_ratio": 0.0038227529415819942,
+        "kl_marked_to_base": 0.04247884841860787,
+        "kl_base_to_marked": 0.043216335791009385,
+        "total_variation": 0.31084793828435353,
+        "base_entropy_bits": 12.72692670736179,
+        "marked_entropy_bits": 12.44521019471225
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 46
+    },
+    {
+      "review_id": "d247645b2725",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 188,
+      "sums": {
+        "selected_log_ratio": -1.4435943795796442,
+        "kl_marked_to_base": 0.4199508814081394,
+        "kl_base_to_marked": 0.4322655172077485,
+        "total_variation": 2.3531837342431414,
+        "base_entropy_bits": 69.03755989013085,
+        "marked_entropy_bits": 67.58928951387978
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 188
+    },
+    {
+      "review_id": "fe79970af35c",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 239,
+      "sums": {
+        "selected_log_ratio": -0.710780789826505,
+        "kl_marked_to_base": 0.5061385990565042,
+        "kl_base_to_marked": 0.5019725942904809,
+        "total_variation": 2.8885963331120177,
+        "base_entropy_bits": 92.02824941830885,
+        "marked_entropy_bits": 92.09935384448848
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 239
+    },
+    {
+      "review_id": "033f1df81bed",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 25,
+      "sums": {
+        "selected_log_ratio": 0.06358726295135675,
+        "kl_marked_to_base": 0.013178785569506682,
+        "kl_base_to_marked": 0.014211109164410471,
+        "total_variation": 0.08851888142291661,
+        "base_entropy_bits": 3.62415043210132,
+        "marked_entropy_bits": 3.476189978288394
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 25
+    },
+    {
+      "review_id": "9f280b1d3d3a",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 25,
+      "sums": {
+        "selected_log_ratio": 0.06358726295135675,
+        "kl_marked_to_base": 0.013178785569506682,
+        "kl_base_to_marked": 0.014211109164410471,
+        "total_variation": 0.08851888142291661,
+        "base_entropy_bits": 3.62415043210132,
+        "marked_entropy_bits": 3.476189978288394
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 25
+    },
+    {
+      "review_id": "39fba71ec30a",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 46,
+      "sums": {
+        "selected_log_ratio": 0.254074386236886,
+        "kl_marked_to_base": 0.09696868995462835,
+        "kl_base_to_marked": 0.09495083777050628,
+        "total_variation": 0.43737972443311995,
+        "base_entropy_bits": 10.557340717314453,
+        "marked_entropy_bits": 10.564696790837376
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 46
+    },
+    {
+      "review_id": "d0a43e65df1e",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 179,
+      "sums": {
+        "selected_log_ratio": 2.1925784945318223,
+        "kl_marked_to_base": 0.5952829084564548,
+        "kl_base_to_marked": 0.6074419747897072,
+        "total_variation": 2.685913767250843,
+        "base_entropy_bits": 63.67730424271556,
+        "marked_entropy_bits": 63.56868183328014
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 179
+    },
+    {
+      "review_id": "42cb7369f7ca",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 2,
+      "steps": 175,
+      "sums": {
+        "selected_log_ratio": -0.10228552471289738,
+        "kl_marked_to_base": 0.5471067420622141,
+        "kl_base_to_marked": 0.5568855976223318,
+        "total_variation": 2.517329472698435,
+        "base_entropy_bits": 56.732843467305784,
+        "marked_entropy_bits": 55.38995376139271
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 175
+    },
+    {
+      "review_id": "9f2e2af880dd",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "steps": 147,
+      "sums": {
+        "selected_log_ratio": -0.9415735706098206,
+        "kl_marked_to_base": 0.29466578797363346,
+        "kl_base_to_marked": 0.29049097308844596,
+        "total_variation": 1.6128924904004978,
+        "base_entropy_bits": 38.031028099741995,
+        "marked_entropy_bits": 38.18043959212601
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 147
+    },
+    {
+      "review_id": "5db52554dfb7",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 347,
+      "sums": {
+        "selected_log_ratio": 0.8682688243886391,
+        "kl_marked_to_base": 1.0376145207571588,
+        "kl_base_to_marked": 1.0277617640783723,
+        "total_variation": 4.998630282997945,
+        "base_entropy_bits": 137.18082479561593,
+        "marked_entropy_bits": 137.28923313556177
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 347
+    },
+    {
+      "review_id": "a7ccdee8f0d5",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 336,
+      "sums": {
+        "selected_log_ratio": 0.4944055550323541,
+        "kl_marked_to_base": 1.0483234106628547,
+        "kl_base_to_marked": 1.0364412555102511,
+        "total_variation": 5.623425025056371,
+        "base_entropy_bits": 172.9032978885091,
+        "marked_entropy_bits": 172.01704611825562
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 336
+    },
+    {
+      "review_id": "814701256e70",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 176,
+      "sums": {
+        "selected_log_ratio": -0.8815004434432228,
+        "kl_marked_to_base": 0.3924108294048137,
+        "kl_base_to_marked": 0.39592427791088963,
+        "total_variation": 2.0579954983205706,
+        "base_entropy_bits": 66.30430521356438,
+        "marked_entropy_bits": 64.72014370699773
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 176
+    },
+    {
+      "review_id": "c504a2317d58",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 188,
+      "sums": {
+        "selected_log_ratio": 1.0692170502404765,
+        "kl_marked_to_base": 0.3058624333530798,
+        "kl_base_to_marked": 0.31372904031862175,
+        "total_variation": 1.6186013086721895,
+        "base_entropy_bits": 55.268999279232666,
+        "marked_entropy_bits": 53.80877413936449
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 188
+    },
+    {
+      "review_id": "d4d5e2ee9bb3",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 199,
+      "sums": {
+        "selected_log_ratio": 1.1726354641218675,
+        "kl_marked_to_base": 0.6549091418632607,
+        "kl_base_to_marked": 0.6488665984338294,
+        "total_variation": 3.246986779094965,
+        "base_entropy_bits": 105.71451793025868,
+        "marked_entropy_bits": 105.44594267706016
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 199
+    },
+    {
+      "review_id": "7a792d0054c5",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 135,
+      "sums": {
+        "selected_log_ratio": -0.338692134881422,
+        "kl_marked_to_base": 0.6599151886033694,
+        "kl_base_to_marked": 0.6644428107676987,
+        "total_variation": 3.0810159097415895,
+        "base_entropy_bits": 92.02055051847341,
+        "marked_entropy_bits": 90.25090250584364
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 135
+    },
+    {
+      "review_id": "a6115e5efc86",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 293,
+      "sums": {
+        "selected_log_ratio": -1.1651934547356495,
+        "kl_marked_to_base": 1.0013280421523543,
+        "kl_base_to_marked": 1.0135807813586724,
+        "total_variation": 4.920191964517733,
+        "base_entropy_bits": 137.25466928825645,
+        "marked_entropy_bits": 136.3078617015646
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 293
+    },
+    {
+      "review_id": "e4f756e1df69",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 342,
+      "sums": {
+        "selected_log_ratio": 3.2380314452760204,
+        "kl_marked_to_base": 1.253231369935278,
+        "kl_base_to_marked": 1.2733940889708826,
+        "total_variation": 6.263295073499469,
+        "base_entropy_bits": 182.09654976506926,
+        "marked_entropy_bits": 178.8649807434042
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 342
+    },
+    {
+      "review_id": "a06be94179d0",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 108,
+      "sums": {
+        "selected_log_ratio": 2.338126266196298,
+        "kl_marked_to_base": 0.495715093759842,
+        "kl_base_to_marked": 0.4953281884558845,
+        "total_variation": 2.2933121969740538,
+        "base_entropy_bits": 62.02130237771934,
+        "marked_entropy_bits": 62.5098589747884
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 108
+    },
+    {
+      "review_id": "baf767248768",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 93,
+      "sums": {
+        "selected_log_ratio": 0.539861795744332,
+        "kl_marked_to_base": 0.446989010981571,
+        "kl_base_to_marked": 0.430578738068455,
+        "total_variation": 2.005602988906516,
+        "base_entropy_bits": 55.075705169121306,
+        "marked_entropy_bits": 56.28531421012942
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 93
+    },
+    {
+      "review_id": "35849e98f6ee",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 115,
+      "sums": {
+        "selected_log_ratio": 0.02047689714434584,
+        "kl_marked_to_base": 0.514031230335644,
+        "kl_base_to_marked": 0.5254666602235232,
+        "total_variation": 2.627579188589847,
+        "base_entropy_bits": 78.38810907981873,
+        "marked_entropy_bits": 76.93246502176075
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 115
+    },
+    {
+      "review_id": "4c662bf1d46d",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 61,
+      "sums": {
+        "selected_log_ratio": 0.37318608200091313,
+        "kl_marked_to_base": 0.302871998297808,
+        "kl_base_to_marked": 0.30546221128249296,
+        "total_variation": 1.436180318273925,
+        "base_entropy_bits": 42.96320365732141,
+        "marked_entropy_bits": 42.47566373690305
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 61
+    },
+    {
+      "review_id": "138813f5e2ac",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 205,
+      "sums": {
+        "selected_log_ratio": 0.5770941155807362,
+        "kl_marked_to_base": 0.5642203525627961,
+        "kl_base_to_marked": 0.5590521543248239,
+        "total_variation": 2.954376618731257,
+        "base_entropy_bits": 78.64301542485067,
+        "marked_entropy_bits": 77.22311348096886
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 205
+    },
+    {
+      "review_id": "c1f05dd52fad",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 126,
+      "sums": {
+        "selected_log_ratio": -0.36392933698853425,
+        "kl_marked_to_base": 0.41127327180615086,
+        "kl_base_to_marked": 0.4064076663511012,
+        "total_variation": 1.9269734378499548,
+        "base_entropy_bits": 50.03218454742813,
+        "marked_entropy_bits": 49.28127243859377
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 126
+    },
+    {
+      "review_id": "a5be4789f7c6",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 151,
+      "sums": {
+        "selected_log_ratio": -0.42429453145303,
+        "kl_marked_to_base": 0.31299485885992817,
+        "kl_base_to_marked": 0.30558767912160884,
+        "total_variation": 1.6225493461182157,
+        "base_entropy_bits": 43.51510397392561,
+        "marked_entropy_bits": 43.876540945187735
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 151
+    },
+    {
+      "review_id": "f433dac77766",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 183,
+      "sums": {
+        "selected_log_ratio": 0.7823466121989265,
+        "kl_marked_to_base": 0.33905688542309714,
+        "kl_base_to_marked": 0.33863003289933125,
+        "total_variation": 1.8038931194090364,
+        "base_entropy_bits": 50.378656938048465,
+        "marked_entropy_bits": 49.437353779257926
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 183
+    },
+    {
+      "review_id": "12b789a5f849",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 345,
+      "sums": {
+        "selected_log_ratio": 0.9363037947012679,
+        "kl_marked_to_base": 0.7172238672986505,
+        "kl_base_to_marked": 0.7224355550773192,
+        "total_variation": 3.4795725402439706,
+        "base_entropy_bits": 102.59572087945385,
+        "marked_entropy_bits": 101.34545376800963
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 345
+    },
+    {
+      "review_id": "3ea9c9b23b20",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 408,
+      "sums": {
+        "selected_log_ratio": -1.8353802596880169,
+        "kl_marked_to_base": 1.0608830021088245,
+        "kl_base_to_marked": 1.0755839015291708,
+        "total_variation": 5.288066724079755,
+        "base_entropy_bits": 152.0787983152503,
+        "marked_entropy_bits": 150.51147877855922
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 408
+    },
+    {
+      "review_id": "64508beb9a31",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 252,
+      "sums": {
+        "selected_log_ratio": -2.8451290822652835,
+        "kl_marked_to_base": 0.815335375246021,
+        "kl_base_to_marked": 0.8180574719558739,
+        "total_variation": 3.8028448993298642,
+        "base_entropy_bits": 90.81528919724042,
+        "marked_entropy_bits": 90.5652893824
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 252
+    },
+    {
+      "review_id": "24644bac6e3b",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 298,
+      "sums": {
+        "selected_log_ratio": -0.16031029252513543,
+        "kl_marked_to_base": 0.7730968605482653,
+        "kl_base_to_marked": 0.7853306698242578,
+        "total_variation": 3.78224041012983,
+        "base_entropy_bits": 105.78365014129146,
+        "marked_entropy_bits": 104.8710954020411
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 298
+    },
+    {
+      "review_id": "148b94d6f415",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 220,
+      "sums": {
+        "selected_log_ratio": 1.6845956681439065,
+        "kl_marked_to_base": 0.5348540031134168,
+        "kl_base_to_marked": 0.5335359368105832,
+        "total_variation": 2.7606138238988978,
+        "base_entropy_bits": 86.80910740883144,
+        "marked_entropy_bits": 85.99581307055463
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 220
+    },
+    {
+      "review_id": "e422f435103e",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 226,
+      "sums": {
+        "selected_log_ratio": -1.167841320929865,
+        "kl_marked_to_base": 0.6315327560659759,
+        "kl_base_to_marked": 0.6509819790635508,
+        "total_variation": 3.1574294000493865,
+        "base_entropy_bits": 84.07253348562013,
+        "marked_entropy_bits": 81.42411335925213
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 226
+    },
+    {
+      "review_id": "006c394af092",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 139,
+      "sums": {
+        "selected_log_ratio": -0.060425566527147444,
+        "kl_marked_to_base": 0.3612756276152836,
+        "kl_base_to_marked": 0.3629799521959287,
+        "total_variation": 1.623176790295762,
+        "base_entropy_bits": 38.06368684146761,
+        "marked_entropy_bits": 38.04314609041317
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 139
+    },
+    {
+      "review_id": "98570aaaad68",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 44,
+      "sums": {
+        "selected_log_ratio": 0.3548467200848957,
+        "kl_marked_to_base": 0.07266674743017934,
+        "kl_base_to_marked": 0.07680375846829418,
+        "total_variation": 0.3251016073436044,
+        "base_entropy_bits": 11.962693794606206,
+        "marked_entropy_bits": 11.856194838021516
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 44
+    },
+    {
+      "review_id": "1897e80a3515",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 184,
+      "sums": {
+        "selected_log_ratio": -2.404789275769622,
+        "kl_marked_to_base": 0.592631775377858,
+        "kl_base_to_marked": 0.5812082257514741,
+        "total_variation": 2.4972775264920175,
+        "base_entropy_bits": 60.76583575599908,
+        "marked_entropy_bits": 60.58430838039491
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 184
+    },
+    {
+      "review_id": "e6558378bdd4",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 170,
+      "sums": {
+        "selected_log_ratio": -0.4186588881007279,
+        "kl_marked_to_base": 0.5287237658598538,
+        "kl_base_to_marked": 0.5318452035901484,
+        "total_variation": 2.6821563301625004,
+        "base_entropy_bits": 64.09830218453008,
+        "marked_entropy_bits": 63.8204514115516
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 170
+    },
+    {
+      "review_id": "95a3f969e06f",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 34,
+      "sums": {
+        "selected_log_ratio": -0.11052424432991322,
+        "kl_marked_to_base": 0.018706533270027016,
+        "kl_base_to_marked": 0.019619074568604008,
+        "total_variation": 0.16595190248189148,
+        "base_entropy_bits": 5.415789016996823,
+        "marked_entropy_bits": 5.323010316813672
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 34
+    },
+    {
+      "review_id": "ae267a498900",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 31,
+      "sums": {
+        "selected_log_ratio": -0.11096648984323783,
+        "kl_marked_to_base": 0.004847024096363078,
+        "kl_base_to_marked": 0.004989048605498882,
+        "total_variation": 0.05300198378296203,
+        "base_entropy_bits": 3.0281445647119667,
+        "marked_entropy_bits": 3.006781363138368
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 31
+    },
+    {
+      "review_id": "4eabd297aa30",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 83,
+      "sums": {
+        "selected_log_ratio": -0.26681806514941614,
+        "kl_marked_to_base": 0.0916620730458349,
+        "kl_base_to_marked": 0.09132425442629051,
+        "total_variation": 0.5489143668692194,
+        "base_entropy_bits": 17.016778352761353,
+        "marked_entropy_bits": 17.375025773752654
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 83
+    },
+    {
+      "review_id": "df4649b747a6",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 45,
+      "sums": {
+        "selected_log_ratio": -0.4093518096513404,
+        "kl_marked_to_base": 0.04034848985216057,
+        "kl_base_to_marked": 0.03972737652318592,
+        "total_variation": 0.2736256969037759,
+        "base_entropy_bits": 10.885588966780645,
+        "marked_entropy_bits": 11.066366379712212
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 45
+    },
+    {
+      "review_id": "8136d3c5e5ee",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "steps": 172,
+      "sums": {
+        "selected_log_ratio": -1.3524644989900976,
+        "kl_marked_to_base": 0.46404649225444067,
+        "kl_base_to_marked": 0.4801092902763427,
+        "total_variation": 2.195539506054126,
+        "base_entropy_bits": 49.9139656468466,
+        "marked_entropy_bits": 48.624608475040496
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 172
+    },
+    {
+      "review_id": "7c5e175db0ae",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 3,
+      "steps": 171,
+      "sums": {
+        "selected_log_ratio": -0.3929642267906563,
+        "kl_marked_to_base": 0.2592688875550758,
+        "kl_base_to_marked": 0.2591687958698475,
+        "total_variation": 1.3845789766530217,
+        "base_entropy_bits": 36.967155956626776,
+        "marked_entropy_bits": 37.18445470716307
+      },
+      "oracle_path_ratio_ge_100": false,
+      "distributions_reconciled": 171
+    }
+  ],
+  "plan_sha256": "d73c08cf07fb14a1bd97f23e99d1becb60e0133ab46759d53e006c0afa595085",
+  "progress_sha256": "3f3fd2edfdbcfbb208368779576af8aa462a44440a46094d7db39c37f09d17f5",
+  "scope": "Privileged saved native base weights and original paths. Shared kernel, no independent native-head replay. Reused English tasks/keys; conditional KL sums are realized compensators, not population KL bounds. Not a text detector or semantic-causation result.",
+  "detector_calibrated": false,
+  "quality_acceptance": false,
+  "launch_ready": false
+}
