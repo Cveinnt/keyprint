@@ -1,0 +1,46 @@
+{
+  "schema": "keyprint.paced-native-run-validation.v1",
+  "counts": {
+    "attempts": 128,
+    "audited_runs": 128,
+    "eos": 128,
+    "caps": 0,
+    "errors": 0,
+    "decode_errors": 0,
+    "audit_errors": 0,
+    "committed_tokens": 24421,
+    "audited_tokens": 24421
+  },
+  "cohort_audit_sha256": "31f08c1b9917625b778a1a0d2dd0ea323887076403533487974932fe1e985475",
+  "sdk_sources_unchanged": 78,
+  "supervisor": {
+    "status": "completed",
+    "limit_bytes": 10737418240,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 3600.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 7411962536,
+    "samples": 6304,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 80604,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 1785.4836662500165
+  },
+  "pressure_levels": [
+    1
+  ],
+  "mlx_cache_peak": 0,
+  "final_mlx": {
+    "time": 1790649449.2877781,
+    "active_bytes": 10,
+    "cache_bytes": 0,
+    "peak_bytes": 6760532880
+  },
+  "assistant_source_only_ratings_in_progress": 54,
+  "quality_ratings_complete": false,
+  "quality_acceptance": false,
+  "native_heads_independently_replayed": false,
+  "launch_ready": false
+}
