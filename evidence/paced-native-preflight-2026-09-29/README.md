@@ -9,9 +9,10 @@ EOS behavior, detection performance or sustained serving cost.
 The first original ordinary/marked pair was fixed before execution. Source
 prompts, the original key, frozen SDK, model assets and runtime were verified.
 Fresh OS randomness was recorded; this generates new prefixes, not a replay of
-the old outputs. The sampling audit reconciles native-head hashes, integer draw
-receipts, token commits and exact output bytes. It does not independently rerun
-native model heads. All source-derived text remains in private receipts.
+the old outputs. Receipts retain native-head hashes; the sampling audit reconciles
+integer draw receipts, token commits and exact output bytes. It does not
+independently rerun native model heads. All source-derived text remains in private
+receipts.
 
 ## Resource receipt
 
