@@ -1,0 +1,29 @@
+{
+  "schema": "keyprint.paced-quality-protocol.v1",
+  "status": "Prepared before candidate source-text review; no actual ratings entered",
+  "cohort": "All128 fixed attempts; sixteen existing source tasks, four existing keys, both conditions",
+  "ratings": "Source-only essential fact booleans, supported-claims, language and format booleans; reason and preflagged uncertainty",
+  "failure_policy": "Execution and decoder failures require all-false component ratings, no uncertainty credit; caps stay in denominator and cannot pass full task",
+  "freeze": "All128 unique ratings copied with original bytes and hashes before summary joins condition/key/counts",
+  "summaries": [
+    "Strict unchanged original-source metrics",
+    "Sensitivity accepting all preflagged uncertain fields",
+    "Paired counts, per-source and per-key breakdowns",
+    "Raw token-path counts without detector thresholds"
+  ],
+  "reviewer": "Assistant development review; independent human ratings remain separate",
+  "limits": "Reused tasks and keys, correlated attempts, no powered causal/noninferiority inference, no detection calibration or universal semantic guarantee",
+  "code_sha256": {
+    "tools/summarize_paced_quality.py": "84f3943339eefa89b560742cf8747d696070b6daa5cdeb8070b1e361aa6e9374",
+    "tools/summarize_source_grounded.py": "54438e0fb8a1c2f820772fe8d9e4a2c65634b081e3dfe28d42d45d90fb092c97",
+    "tools/audit_paced_study.py": "3e93532fbdb851dd63a97a29f29aba37d1254df496c926337eea0a6eb6106aae",
+    "tests/test_paced_quality.py": "aae6baa1a2d4f553aeb60e3278b9754cdf61e811230f6c15b4406034f60c702e"
+  },
+  "tests": {
+    "combined_quality_cohort_prior_metric_passed": 43,
+    "new_quality_tests": 17
+  },
+  "actual_ratings": 0,
+  "quality_acceptance": false,
+  "launch_ready": false
+}
