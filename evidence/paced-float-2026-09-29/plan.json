@@ -1,0 +1,176 @@
+{
+  "schema": "keyprint.paced-float-stress.v1",
+  "layers": 30,
+  "cases": [
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "uniform",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "zipf",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "wide-tail",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 0
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 1
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 2
+    },
+    {
+      "kind": "grouped",
+      "size": 100,
+      "seed": 3
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "uniform",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "zipf",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "wide-tail",
+      "size": 1000,
+      "seed": 3
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 0
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 1
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 2
+    },
+    {
+      "kind": "grouped",
+      "size": 1000,
+      "seed": 3
+    }
+  ],
+  "selection": "Fixed 32 synthetic cases, all retained; no model data, tuning or key-power inference",
+  "source_sha256": {
+    "validate_paced_float.py": "607df1c272e7c1116a28946ce7e1f8c42b7aae425801f8fe37e8f4d12a92b857",
+    "paced_budget_float_reference.py": "f99ce4f3ce9fc917baa77f2f1fc62d4c22832044dfd10d6f0ba3229f39a2ea0d",
+    "paced_budget_oracle.py": "c3d6105d5c390c621ca017e498e88870dc24de4799a3a155381f95afb0ab2ab0",
+    "predictable_budget_oracle.py": "174e3eacbb19c78fb157a3e909f264e0c6a60d99652aa0a48c45884366ef8526"
+  },
+  "binary64_output": true,
+  "internal_arithmetic": "Exact Fraction reference, not fast float kernel",
+  "scope": "Normalized represented probability bounds, support, rounding and numerical runtime only"
+}
