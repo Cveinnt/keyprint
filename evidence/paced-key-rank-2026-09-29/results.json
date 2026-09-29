@@ -1,0 +1,1818 @@
+{
+  "groups": {
+    "ordinary": {
+      "attempts": 64,
+      "available": 64,
+      "unavailable": 0,
+      "at_or_below_one_percent": 0,
+      "median_random_key_rank": 0.5425
+    },
+    "marked": {
+      "attempts": 64,
+      "available": 64,
+      "unavailable": 0,
+      "at_or_below_one_percent": 1,
+      "median_random_key_rank": 0.4075
+    }
+  },
+  "detector_calibrated": false,
+  "quality_acceptance": false,
+  "launch_ready": false,
+  "plan_sha256": "7d9e1d86a5e24fa94dad91924dff4b13bfac33c7c14b05f4e0849bf91fae6193",
+  "decoy_scores_sha256": "55eec935e3f24e637b5df516698e1851a287f7292b994481702f4bd4a95ad153",
+  "rows": [
+    {
+      "review_id": "05f70ec5187f",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 5229,
+      "trials": 10440,
+      "rank": {
+        "rank_numerator": 79,
+        "rank_denominator": 200,
+        "random_key_rank": 0.395,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8885918b9a9a",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 6659,
+      "trials": 13320,
+      "rank": {
+        "rank_numerator": 104,
+        "rank_denominator": 200,
+        "random_key_rank": 0.52,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "fcdd6a586aa2",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 2600,
+      "trials": 5280,
+      "rank": {
+        "rank_numerator": 163,
+        "rank_denominator": 200,
+        "random_key_rank": 0.815,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "660deaee3324",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 3742,
+      "trials": 7470,
+      "rank": {
+        "rank_numerator": 92,
+        "rank_denominator": 200,
+        "random_key_rank": 0.46,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "c53674adae18",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 2873,
+      "trials": 5790,
+      "rank": {
+        "rank_numerator": 134,
+        "rank_denominator": 200,
+        "random_key_rank": 0.67,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "4f439c49592b",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 3053,
+      "trials": 6150,
+      "rank": {
+        "rank_numerator": 144,
+        "rank_denominator": 200,
+        "random_key_rank": 0.72,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3d63ca048ea7",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 5973,
+      "trials": 11970,
+      "rank": {
+        "rank_numerator": 119,
+        "rank_denominator": 200,
+        "random_key_rank": 0.595,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "471a2d5f9aee",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 5127,
+      "trials": 10290,
+      "rank": {
+        "rank_numerator": 131,
+        "rank_denominator": 200,
+        "random_key_rank": 0.655,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3d7b3ade786a",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 933,
+      "trials": 1830,
+      "rank": {
+        "rank_numerator": 45,
+        "rank_denominator": 200,
+        "random_key_rank": 0.225,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "175d9962d3e6",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 1962,
+      "trials": 3990,
+      "rank": {
+        "rank_numerator": 167,
+        "rank_denominator": 200,
+        "random_key_rank": 0.835,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "2f87c3a84152",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 1511,
+      "trials": 3030,
+      "rank": {
+        "rank_numerator": 112,
+        "rank_denominator": 200,
+        "random_key_rank": 0.56,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "0320ca042467",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 1446,
+      "trials": 2850,
+      "rank": {
+        "rank_numerator": 52,
+        "rank_denominator": 200,
+        "random_key_rank": 0.26,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "467ed8a84708",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 3157,
+      "trials": 6240,
+      "rank": {
+        "rank_numerator": 44,
+        "rank_denominator": 200,
+        "random_key_rank": 0.22,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e64f7bedb6cf",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 2289,
+      "trials": 4590,
+      "rank": {
+        "rank_numerator": 113,
+        "rank_denominator": 200,
+        "random_key_rank": 0.565,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e03201d835b1",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 2699,
+      "trials": 5310,
+      "rank": {
+        "rank_numerator": 22,
+        "rank_denominator": 200,
+        "random_key_rank": 0.11,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "88e48728af22",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 3378,
+      "trials": 6810,
+      "rank": {
+        "rank_numerator": 150,
+        "rank_denominator": 200,
+        "random_key_rank": 0.75,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "ddb3ca753729",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 2364,
+      "trials": 4620,
+      "rank": {
+        "rank_numerator": 10,
+        "rank_denominator": 200,
+        "random_key_rank": 0.05,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "f5eff7397665",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 5451,
+      "trials": 10920,
+      "rank": {
+        "rank_numerator": 105,
+        "rank_denominator": 200,
+        "random_key_rank": 0.525,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "ef11a2e8f8fa",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 2634,
+      "trials": 5220,
+      "rank": {
+        "rank_numerator": 55,
+        "rank_denominator": 200,
+        "random_key_rank": 0.275,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "41285d6a479f",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 3115,
+      "trials": 6240,
+      "rank": {
+        "rank_numerator": 109,
+        "rank_denominator": 200,
+        "random_key_rank": 0.545,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "4701df6a3217",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 3655,
+      "trials": 7320,
+      "rank": {
+        "rank_numerator": 119,
+        "rank_denominator": 200,
+        "random_key_rank": 0.595,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "83315d2f7ae4",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 3425,
+      "trials": 6750,
+      "rank": {
+        "rank_numerator": 24,
+        "rank_denominator": 200,
+        "random_key_rank": 0.12,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e0a5c65e7238",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 1532,
+      "trials": 3060,
+      "rank": {
+        "rank_numerator": 93,
+        "rank_denominator": 200,
+        "random_key_rank": 0.465,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "a65d589632a6",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 878,
+      "trials": 1740,
+      "rank": {
+        "rank_numerator": 67,
+        "rank_denominator": 200,
+        "random_key_rank": 0.335,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "dd2100973856",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 2767,
+      "trials": 5550,
+      "rank": {
+        "rank_numerator": 115,
+        "rank_denominator": 200,
+        "random_key_rank": 0.575,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "50f5ab749632",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 3096,
+      "trials": 6330,
+      "rank": {
+        "rank_numerator": 189,
+        "rank_denominator": 200,
+        "random_key_rank": 0.945,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "9ef9a11bbca5",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 540,
+      "trials": 1110,
+      "rank": {
+        "rank_numerator": 161,
+        "rank_denominator": 200,
+        "random_key_rank": 0.805,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "7d73417a3dea",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 393,
+      "trials": 750,
+      "rank": {
+        "rank_numerator": 20,
+        "rank_denominator": 200,
+        "random_key_rank": 0.1,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "9a5e2aa6bf92",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 2840,
+      "trials": 5640,
+      "rank": {
+        "rank_numerator": 61,
+        "rank_denominator": 200,
+        "random_key_rank": 0.305,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "2e5b09040586",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 2362,
+      "trials": 4740,
+      "rank": {
+        "rank_numerator": 121,
+        "rank_denominator": 200,
+        "random_key_rank": 0.605,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8952327eb411",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 0,
+      "ones": 1868,
+      "trials": 3660,
+      "rank": {
+        "rank_numerator": 26,
+        "rank_denominator": 200,
+        "random_key_rank": 0.13,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "9c491b885bb7",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 0,
+      "ones": 2427,
+      "trials": 4980,
+      "rank": {
+        "rank_numerator": 191,
+        "rank_denominator": 200,
+        "random_key_rank": 0.955,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "f98438494cdc",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 3741,
+      "trials": 7380,
+      "rank": {
+        "rank_numerator": 24,
+        "rank_denominator": 200,
+        "random_key_rank": 0.12,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "538495b8ee41",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 9368,
+      "trials": 18750,
+      "rank": {
+        "rank_numerator": 111,
+        "rank_denominator": 200,
+        "random_key_rank": 0.555,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "cde6bbba4b30",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 1701,
+      "trials": 3480,
+      "rank": {
+        "rank_numerator": 185,
+        "rank_denominator": 200,
+        "random_key_rank": 0.925,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d98fd736e04c",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2457,
+      "trials": 5040,
+      "rank": {
+        "rank_numerator": 193,
+        "rank_denominator": 200,
+        "random_key_rank": 0.965,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "78cef37cbc9a",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2313,
+      "trials": 4470,
+      "rank": {
+        "rank_numerator": 3,
+        "rank_denominator": 200,
+        "random_key_rank": 0.015,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8493cd4d4845",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 2751,
+      "trials": 5640,
+      "rank": {
+        "rank_numerator": 190,
+        "rank_denominator": 200,
+        "random_key_rank": 0.95,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "bd07d540e0d7",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 4780,
+      "trials": 9690,
+      "rank": {
+        "rank_numerator": 183,
+        "rank_denominator": 200,
+        "random_key_rank": 0.915,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "bd079797457e",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 3953,
+      "trials": 7890,
+      "rank": {
+        "rank_numerator": 80,
+        "rank_denominator": 200,
+        "random_key_rank": 0.4,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3a8cf6ce0615",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 1411,
+      "trials": 2850,
+      "rank": {
+        "rank_numerator": 136,
+        "rank_denominator": 200,
+        "random_key_rank": 0.68,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "775c07425f8a",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 1023,
+      "trials": 2100,
+      "rank": {
+        "rank_numerator": 183,
+        "rank_denominator": 200,
+        "random_key_rank": 0.915,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "87210b576252",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 1082,
+      "trials": 2190,
+      "rank": {
+        "rank_numerator": 148,
+        "rank_denominator": 200,
+        "random_key_rank": 0.74,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "42e73b2c6643",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 1961,
+      "trials": 3900,
+      "rank": {
+        "rank_numerator": 76,
+        "rank_denominator": 200,
+        "random_key_rank": 0.38,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "b4653b98cbac",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2611,
+      "trials": 5160,
+      "rank": {
+        "rank_numerator": 35,
+        "rank_denominator": 200,
+        "random_key_rank": 0.175,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "672acc827c37",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 2005,
+      "trials": 4050,
+      "rank": {
+        "rank_numerator": 145,
+        "rank_denominator": 200,
+        "random_key_rank": 0.725,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "abe19fe8fd13",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 3421,
+      "trials": 6780,
+      "rank": {
+        "rank_numerator": 49,
+        "rank_denominator": 200,
+        "random_key_rank": 0.245,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "f67cd251b4c9",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2233,
+      "trials": 4530,
+      "rank": {
+        "rank_numerator": 166,
+        "rank_denominator": 200,
+        "random_key_rank": 0.83,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8949cf429d13",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 4946,
+      "trials": 9780,
+      "rank": {
+        "rank_numerator": 22,
+        "rank_denominator": 200,
+        "random_key_rank": 0.11,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "4610b7fbf8f4",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 3488,
+      "trials": 6930,
+      "rank": {
+        "rank_numerator": 66,
+        "rank_denominator": 200,
+        "random_key_rank": 0.33,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3035406b81bc",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 3008,
+      "trials": 6030,
+      "rank": {
+        "rank_numerator": 127,
+        "rank_denominator": 200,
+        "random_key_rank": 0.635,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "82bd71dc763d",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 4084,
+      "trials": 8280,
+      "rank": {
+        "rank_numerator": 178,
+        "rank_denominator": 200,
+        "random_key_rank": 0.89,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "7695316d17e6",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2755,
+      "trials": 5490,
+      "rank": {
+        "rank_numerator": 79,
+        "rank_denominator": 200,
+        "random_key_rank": 0.395,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "222f346fbb01",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 3212,
+      "trials": 6480,
+      "rank": {
+        "rank_numerator": 155,
+        "rank_denominator": 200,
+        "random_key_rank": 0.775,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "4ff629599583",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 461,
+      "trials": 870,
+      "rank": {
+        "rank_numerator": 15,
+        "rank_denominator": 200,
+        "random_key_rank": 0.075,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e029ddca0112",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 468,
+      "trials": 930,
+      "rank": {
+        "rank_numerator": 84,
+        "rank_denominator": 200,
+        "random_key_rank": 0.42,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "0e457ecc330e",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2537,
+      "trials": 5070,
+      "rank": {
+        "rank_numerator": 94,
+        "rank_denominator": 200,
+        "random_key_rank": 0.47,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "ec40b53a546a",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 2918,
+      "trials": 5850,
+      "rank": {
+        "rank_numerator": 108,
+        "rank_denominator": 200,
+        "random_key_rank": 0.54,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "2a30afb19c85",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 470,
+      "trials": 930,
+      "rank": {
+        "rank_numerator": 65,
+        "rank_denominator": 200,
+        "random_key_rank": 0.325,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "19cb110d781e",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 683,
+      "trials": 1320,
+      "rank": {
+        "rank_numerator": 25,
+        "rank_denominator": 200,
+        "random_key_rank": 0.125,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "ccbb87b3f5f0",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2709,
+      "trials": 5430,
+      "rank": {
+        "rank_numerator": 115,
+        "rank_denominator": 200,
+        "random_key_rank": 0.575,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "dacb1bebb077",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 2091,
+      "trials": 4230,
+      "rank": {
+        "rank_numerator": 157,
+        "rank_denominator": 200,
+        "random_key_rank": 0.785,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "9c6df845a970",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 1,
+      "ones": 2292,
+      "trials": 4680,
+      "rank": {
+        "rank_numerator": 182,
+        "rank_denominator": 200,
+        "random_key_rank": 0.91,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8ce6bfde5e61",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 1,
+      "ones": 2113,
+      "trials": 4320,
+      "rank": {
+        "rank_numerator": 181,
+        "rank_denominator": 200,
+        "random_key_rank": 0.905,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "cae167443187",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 4515,
+      "trials": 9120,
+      "rank": {
+        "rank_numerator": 166,
+        "rank_denominator": 200,
+        "random_key_rank": 0.83,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e5cb98ca02dc",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 4452,
+      "trials": 8970,
+      "rank": {
+        "rank_numerator": 150,
+        "rank_denominator": 200,
+        "random_key_rank": 0.75,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "a419a7209fd7",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 2937,
+      "trials": 5970,
+      "rank": {
+        "rank_numerator": 175,
+        "rank_denominator": 200,
+        "random_key_rank": 0.875,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8420ba5489f9",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2851,
+      "trials": 5760,
+      "rank": {
+        "rank_numerator": 150,
+        "rank_denominator": 200,
+        "random_key_rank": 0.75,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e702d6b62188",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2207,
+      "trials": 4500,
+      "rank": {
+        "rank_numerator": 180,
+        "rank_denominator": 200,
+        "random_key_rank": 0.9,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8267185ebe01",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 3367,
+      "trials": 6540,
+      "rank": {
+        "rank_numerator": 1,
+        "rank_denominator": 200,
+        "random_key_rank": 0.005,
+        "at_or_below_one_percent": true
+      }
+    },
+    {
+      "review_id": "92a9afe8663c",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 3615,
+      "trials": 7260,
+      "rank": {
+        "rank_numerator": 122,
+        "rank_denominator": 200,
+        "random_key_rank": 0.61,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8aa7fde1db4f",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 5077,
+      "trials": 10050,
+      "rank": {
+        "rank_numerator": 36,
+        "rank_denominator": 200,
+        "random_key_rank": 0.18,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3533830a1d85",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 1820,
+      "trials": 3600,
+      "rank": {
+        "rank_numerator": 51,
+        "rank_denominator": 200,
+        "random_key_rank": 0.255,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "dcee5b0bd8cf",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 688,
+      "trials": 1350,
+      "rank": {
+        "rank_numerator": 51,
+        "rank_denominator": 200,
+        "random_key_rank": 0.255,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "bc020a1ce1d1",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 1318,
+      "trials": 2580,
+      "rank": {
+        "rank_numerator": 27,
+        "rank_denominator": 200,
+        "random_key_rank": 0.135,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3cf414c09c44",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 1128,
+      "trials": 2250,
+      "rank": {
+        "rank_numerator": 101,
+        "rank_denominator": 200,
+        "random_key_rank": 0.505,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "bff5359a7a1d",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2648,
+      "trials": 5280,
+      "rank": {
+        "rank_numerator": 82,
+        "rank_denominator": 200,
+        "random_key_rank": 0.41,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "c564499cd45d",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 2727,
+      "trials": 5400,
+      "rank": {
+        "rank_numerator": 44,
+        "rank_denominator": 200,
+        "random_key_rank": 0.22,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "49e631210045",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 2838,
+      "trials": 5610,
+      "rank": {
+        "rank_numerator": 47,
+        "rank_denominator": 200,
+        "random_key_rank": 0.235,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "c150a35b17ae",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 3379,
+      "trials": 6750,
+      "rank": {
+        "rank_numerator": 97,
+        "rank_denominator": 200,
+        "random_key_rank": 0.485,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "07d6c2b6077f",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 3347,
+      "trials": 6720,
+      "rank": {
+        "rank_numerator": 131,
+        "rank_denominator": 200,
+        "random_key_rank": 0.655,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d19b2472ad59",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 6040,
+      "trials": 12000,
+      "rank": {
+        "rank_numerator": 51,
+        "rank_denominator": 200,
+        "random_key_rank": 0.255,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "639b2827ab4b",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 3449,
+      "trials": 6900,
+      "rank": {
+        "rank_numerator": 106,
+        "rank_denominator": 200,
+        "random_key_rank": 0.53,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3ffc4f427643",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2703,
+      "trials": 5430,
+      "rank": {
+        "rank_numerator": 128,
+        "rank_denominator": 200,
+        "random_key_rank": 0.64,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "b5bc7a77292e",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2580,
+      "trials": 5160,
+      "rank": {
+        "rank_numerator": 106,
+        "rank_denominator": 200,
+        "random_key_rank": 0.53,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e2c1493fbbbe",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 3435,
+      "trials": 6780,
+      "rank": {
+        "rank_numerator": 28,
+        "rank_denominator": 200,
+        "random_key_rank": 0.14,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d245ce7aa037",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 890,
+      "trials": 1770,
+      "rank": {
+        "rank_numerator": 77,
+        "rank_denominator": 200,
+        "random_key_rank": 0.385,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d7a58d4cb265",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 521,
+      "trials": 960,
+      "rank": {
+        "rank_numerator": 4,
+        "rank_denominator": 200,
+        "random_key_rank": 0.02,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d247645b2725",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2659,
+      "trials": 5370,
+      "rank": {
+        "rank_numerator": 143,
+        "rank_denominator": 200,
+        "random_key_rank": 0.715,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "fe79970af35c",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 3451,
+      "trials": 6810,
+      "rank": {
+        "rank_numerator": 19,
+        "rank_denominator": 200,
+        "random_key_rank": 0.095,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "033f1df81bed",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 324,
+      "trials": 690,
+      "rank": {
+        "rank_numerator": 182,
+        "rank_denominator": 200,
+        "random_key_rank": 0.91,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "9f280b1d3d3a",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 324,
+      "trials": 690,
+      "rank": {
+        "rank_numerator": 182,
+        "rank_denominator": 200,
+        "random_key_rank": 0.91,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "39fba71ec30a",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 621,
+      "trials": 1200,
+      "rank": {
+        "rank_numerator": 27,
+        "rank_denominator": 200,
+        "random_key_rank": 0.135,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d0a43e65df1e",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 2554,
+      "trials": 5100,
+      "rank": {
+        "rank_numerator": 106,
+        "rank_denominator": 200,
+        "random_key_rank": 0.53,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "42cb7369f7ca",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 2,
+      "ones": 2595,
+      "trials": 5160,
+      "rank": {
+        "rank_numerator": 61,
+        "rank_denominator": 200,
+        "random_key_rank": 0.305,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "9f2e2af880dd",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 2,
+      "ones": 2128,
+      "trials": 4320,
+      "rank": {
+        "rank_numerator": 171,
+        "rank_denominator": 200,
+        "random_key_rank": 0.855,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "5db52554dfb7",
+      "case": "bdd7d99e55ea1217",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 5085,
+      "trials": 10140,
+      "rank": {
+        "rank_numerator": 83,
+        "rank_denominator": 200,
+        "random_key_rank": 0.415,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "a7ccdee8f0d5",
+      "case": "bdd7d99e55ea1217",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 5007,
+      "trials": 9930,
+      "rank": {
+        "rank_numerator": 43,
+        "rank_denominator": 200,
+        "random_key_rank": 0.215,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "814701256e70",
+      "case": "fdb686ec46ca8003",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 2402,
+      "trials": 4800,
+      "rank": {
+        "rank_numerator": 103,
+        "rank_denominator": 200,
+        "random_key_rank": 0.515,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "c504a2317d58",
+      "case": "fdb686ec46ca8003",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 2662,
+      "trials": 5250,
+      "rank": {
+        "rank_numerator": 23,
+        "rank_denominator": 200,
+        "random_key_rank": 0.115,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "d4d5e2ee9bb3",
+      "case": "4884454d294a782f",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 2952,
+      "trials": 5820,
+      "rank": {
+        "rank_numerator": 31,
+        "rank_denominator": 200,
+        "random_key_rank": 0.155,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "7a792d0054c5",
+      "case": "4884454d294a782f",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 1976,
+      "trials": 3960,
+      "rank": {
+        "rank_numerator": 103,
+        "rank_denominator": 200,
+        "random_key_rank": 0.515,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "a6115e5efc86",
+      "case": "7c398604a53b30a9",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 3940,
+      "trials": 8010,
+      "rank": {
+        "rank_numerator": 186,
+        "rank_denominator": 200,
+        "random_key_rank": 0.93,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e4f756e1df69",
+      "case": "7c398604a53b30a9",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 4929,
+      "trials": 9720,
+      "rank": {
+        "rank_numerator": 20,
+        "rank_denominator": 200,
+        "random_key_rank": 0.1,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "a06be94179d0",
+      "case": "a663a04d3d40d159",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 1605,
+      "trials": 3150,
+      "rank": {
+        "rank_numerator": 26,
+        "rank_denominator": 200,
+        "random_key_rank": 0.13,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "baf767248768",
+      "case": "a663a04d3d40d159",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 1358,
+      "trials": 2700,
+      "rank": {
+        "rank_numerator": 79,
+        "rank_denominator": 200,
+        "random_key_rank": 0.395,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "35849e98f6ee",
+      "case": "4242dee80ddc4b37",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 1666,
+      "trials": 3360,
+      "rank": {
+        "rank_numerator": 138,
+        "rank_denominator": 200,
+        "random_key_rank": 0.69,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "4c662bf1d46d",
+      "case": "4242dee80ddc4b37",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 862,
+      "trials": 1740,
+      "rank": {
+        "rank_numerator": 125,
+        "rank_denominator": 200,
+        "random_key_rank": 0.625,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "138813f5e2ac",
+      "case": "9e4236870ee98870",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 3116,
+      "trials": 6120,
+      "rank": {
+        "rank_numerator": 17,
+        "rank_denominator": 200,
+        "random_key_rank": 0.085,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "c1f05dd52fad",
+      "case": "9e4236870ee98870",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 1884,
+      "trials": 3720,
+      "rank": {
+        "rank_numerator": 46,
+        "rank_denominator": 200,
+        "random_key_rank": 0.23,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "a5be4789f7c6",
+      "case": "5c35b1f44848772d",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 2116,
+      "trials": 4290,
+      "rank": {
+        "rank_numerator": 167,
+        "rank_denominator": 200,
+        "random_key_rank": 0.835,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "f433dac77766",
+      "case": "5c35b1f44848772d",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 2609,
+      "trials": 5190,
+      "rank": {
+        "rank_numerator": 80,
+        "rank_denominator": 200,
+        "random_key_rank": 0.4,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "12b789a5f849",
+      "case": "d207aed5e23cdd2b",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 4737,
+      "trials": 9570,
+      "rank": {
+        "rank_numerator": 164,
+        "rank_denominator": 200,
+        "random_key_rank": 0.82,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "3ea9c9b23b20",
+      "case": "d207aed5e23cdd2b",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 5556,
+      "trials": 11280,
+      "rank": {
+        "rank_numerator": 187,
+        "rank_denominator": 200,
+        "random_key_rank": 0.935,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "64508beb9a31",
+      "case": "070741606692f144",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 3348,
+      "trials": 6690,
+      "rank": {
+        "rank_numerator": 89,
+        "rank_denominator": 200,
+        "random_key_rank": 0.445,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "24644bac6e3b",
+      "case": "070741606692f144",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 3909,
+      "trials": 7770,
+      "rank": {
+        "rank_numerator": 62,
+        "rank_denominator": 200,
+        "random_key_rank": 0.31,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "148b94d6f415",
+      "case": "e579a7acacdcf26d",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 3105,
+      "trials": 6180,
+      "rank": {
+        "rank_numerator": 76,
+        "rank_denominator": 200,
+        "random_key_rank": 0.38,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e422f435103e",
+      "case": "e579a7acacdcf26d",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 3180,
+      "trials": 6300,
+      "rank": {
+        "rank_numerator": 60,
+        "rank_denominator": 200,
+        "random_key_rank": 0.3,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "006c394af092",
+      "case": "bfba6146fa86a934",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 1493,
+      "trials": 3000,
+      "rank": {
+        "rank_numerator": 117,
+        "rank_denominator": 200,
+        "random_key_rank": 0.585,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "98570aaaad68",
+      "case": "bfba6146fa86a934",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 442,
+      "trials": 900,
+      "rank": {
+        "rank_numerator": 143,
+        "rank_denominator": 200,
+        "random_key_rank": 0.715,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "1897e80a3515",
+      "case": "0d4f07a298ed0988",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 2616,
+      "trials": 5310,
+      "rank": {
+        "rank_numerator": 173,
+        "rank_denominator": 200,
+        "random_key_rank": 0.865,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "e6558378bdd4",
+      "case": "0d4f07a298ed0988",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 2524,
+      "trials": 4920,
+      "rank": {
+        "rank_numerator": 8,
+        "rank_denominator": 200,
+        "random_key_rank": 0.04,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "95a3f969e06f",
+      "case": "d7ee277160123eab",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 496,
+      "trials": 960,
+      "rank": {
+        "rank_numerator": 24,
+        "rank_denominator": 200,
+        "random_key_rank": 0.12,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "ae267a498900",
+      "case": "d7ee277160123eab",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 442,
+      "trials": 870,
+      "rank": {
+        "rank_numerator": 60,
+        "rank_denominator": 200,
+        "random_key_rank": 0.3,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "4eabd297aa30",
+      "case": "d0683258137edcee",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 1083,
+      "trials": 2250,
+      "rank": {
+        "rank_numerator": 195,
+        "rank_denominator": 200,
+        "random_key_rank": 0.975,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "df4649b747a6",
+      "case": "d0683258137edcee",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 566,
+      "trials": 1170,
+      "rank": {
+        "rank_numerator": 174,
+        "rank_denominator": 200,
+        "random_key_rank": 0.87,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "8136d3c5e5ee",
+      "case": "1f7317d2eefa0600",
+      "condition": "ordinary",
+      "key_slot": 3,
+      "ones": 2584,
+      "trials": 5070,
+      "rank": {
+        "rank_numerator": 18,
+        "rank_denominator": 200,
+        "random_key_rank": 0.09,
+        "at_or_below_one_percent": false
+      }
+    },
+    {
+      "review_id": "7c5e175db0ae",
+      "case": "1f7317d2eefa0600",
+      "condition": "marked",
+      "key_slot": 3,
+      "ones": 2545,
+      "trials": 5040,
+      "rank": {
+        "rank_numerator": 48,
+        "rank_denominator": 200,
+        "random_key_rank": 0.24,
+        "at_or_below_one_percent": false
+      }
+    }
+  ],
+  "scope": "Opened development cohort; fresh keys but reused outputs, tasks and generation keys. Token-path diagnostic only, not calibrated deployment detection or a p-value."
+}
