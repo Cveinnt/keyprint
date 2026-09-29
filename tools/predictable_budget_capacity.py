@@ -15,7 +15,14 @@ from pathlib import Path
 from predictable_budget_oracle import predictable_strength, step
 
 
-def analyze(base, *, layers=30, max_states=1024):
+def analyze(base, *, layers=30, max_states=1024, policy='maximum'):
+    if policy == 'maximum':
+        strength, update = predictable_strength, step
+    elif policy == 'paced-eighth':
+        from paced_budget_oracle import paced_strength, step as paced_step
+        strength, update = paced_strength, paced_step
+    else:
+        raise ValueError('Unknown exact allocation policy')
     if type(layers) is not int or not 1 <= layers <= 30:
         raise ValueError('Require one to thirty layers')
     if not 1 <= len(base) <= 3 or type(max_states) is not int or max_states < 1:
@@ -32,9 +39,9 @@ def analyze(base, *, layers=30, max_states=1024):
         following = defaultdict(F)
         layer_matches, active = F(0), F(0)
         for q, mass in states.items():
-            if predictable_strength(base, q) > 0: active += mass
+            if strength(base, q) > 0: active += mass
             for bits in labels:
-                out, _ = step(base, q, bits)
+                out, _ = update(base, q, bits)
                 weight = mass * probability
                 following[out] += weight
                 # Predictable bounded updates preserve conditional expectation;
@@ -53,7 +60,7 @@ def analyze(base, *, layers=30, max_states=1024):
         trace.append({'layer': layer+1, 'states': len(states),
             'probability_strength_positive': active,
             'expected_matching_bit': layer_matches})
-    frozen = sum(mass for q, mass in states.items() if predictable_strength(base, q) == 0)
+    frozen = sum(mass for q, mass in states.items() if strength(base, q) == 0)
     return {'layers': layers, 'base': base, 'ratio': F(2),
         'expected_matching_bit_fraction': expected_matches/layers,
         'ordinary_or_independent_key_bit_fraction': F(1, 2),

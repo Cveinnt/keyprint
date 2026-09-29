@@ -1,0 +1,32 @@
+{
+  "schema": "keyprint.paced-budget-validation.v1",
+  "focused_checks_passed": 29,
+  "new_paced_checks": 9,
+  "sdk_changed": false,
+  "model_inference": false,
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "source_sha256": {
+    "tools/paced_budget_oracle.py": "c3d6105d5c390c621ca017e498e88870dc24de4799a3a155381f95afb0ab2ab0",
+    "tools/predictable_budget_capacity.py": "709152e7384e9fc9402db0cfe68b11d3cb21a48a60487d24ad1d176eb4d34e8c",
+    "tools/compare_paced_budget.py": "abf2e6a5a86c3ad156b35459a5e69b674f75600aa69bd0d5ad0c45563f1df3fb",
+    "tests/test_paced_budget_oracle.py": "ae3eba7bb2915c620e992f5f26a1e6e8f770e239cb52e21b32423a9866fc09f1",
+    "evidence/paced-budget-2026-09-29/plan.json": "f3b39b85b9be64126919b92d1e9cbfdb0ff0177a90d87146811d4990ac2f0a9b",
+    "evidence/paced-budget-2026-09-29/results.json": "4bb49c243c658b27c71dc0e7407c42537a61f156cc77b89d26101b0ba3d3fae8"
+  },
+  "supervisor": {
+    "status": "completed",
+    "limit_bytes": 268435456,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 60.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 10731952,
+    "samples": 1,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 15293,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 0.3240821660729125
+  }
+}
