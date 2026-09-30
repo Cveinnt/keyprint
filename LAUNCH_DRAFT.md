@@ -1,8 +1,8 @@
-# Launch copy, held for release verification
+# Community research launch copy
 
-Draft only. Nothing here is scheduled or posted. The GitHub repo is private and
-the new `keyprint` package is not publicly installable. Replace placeholder links
-only after anonymous access and installation have been verified.
+Draft social copy. Nothing here is scheduled or posted. The community preview
+is distributed through its GitHub release; `keyprint` is not published on PyPI.
+Verify anonymous access to the tagged source before using this copy.
 
 The launch should earn attention through a useful, inspectable watermarking
 tool. Pretext is a benchmark for impact and presentation, not a feature or size
@@ -18,7 +18,8 @@ the text and inspect the pattern underneath.
 
 A Python SDK, a local playground, and demos you can remix.
 
-[Verified demo link]
+https://keyprint.vercel.app/
+https://github.com/Cveinnt/keyprint
 
 ## Follow-up
 
@@ -63,5 +64,6 @@ I'd like feedback on the API and the experiments people want to build with it.
   fractions as confidence, or repeated marked outputs as unchanged diversity.
 - Do not claim 25/25 conformance, exact reverse engineering, universal native
   framework support or semantic preservation for every generated response.
-- Keep the original release hold until product verification is complete. No
-  registry or social scheduling action is implied by preparing this copy.
+- Publication as a community research preview does not close the production
+  qualification gaps. Social posts and registry publication require their own
+  verification; this draft is not evidence that either happened.
