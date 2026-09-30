@@ -1,0 +1,24 @@
+{
+  "schema": "keyprint.cli-lifecycle-validation.v1",
+  "syntax_checked": [
+    "src/keyprint/cli.py",
+    "tests/test_cli_first_use.py",
+    "tests/test_llama_cpp.py"
+  ],
+  "new_test_cases": 8,
+  "tests_executed": false,
+  "test_start_refused_for_system_pressure": true,
+  "models_loaded": 0,
+  "research_sdk_snapshot": {
+    "wheel_sha256": "b331fc9d382e1b5c93506bb313e7169385bb93afe90287d687b8fc057bd8b710",
+    "sdk_python_files": 78,
+    "matches_original_study": true
+  },
+  "scientific_acceptance": false,
+  "launch_ready": false,
+  "changed_source_sha256": {
+    "src/keyprint/cli.py": "5f9565716d81070195bc0f8688286c8bd66665ef10dc5b082ee4828148b9c6f5",
+    "tests/test_cli_first_use.py": "534836975fdd43432fca306f4719183bcb21fffd0c2b5e7deee24b8bb415cdb1",
+    "tests/test_llama_cpp.py": "d2f18bb1f5a8013b963f6770303acdc66dcac94019e8417011139986baeaf890"
+  }
+}

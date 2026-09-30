@@ -32,7 +32,7 @@ def test_every_entry_routes_default_to_same_local_backend(monkeypatch, tmp_path,
         import keyprint.server
     calls = []
     result = SimpleNamespace(text="actual loader replaced by routing fixture", artifacts=tmp_path)
-    candidate = SimpleNamespace(generate=lambda *a, **k: result)
+    candidate = SimpleNamespace(generate=lambda *a, **k: result, close=lambda: None)
     def load(backend):
         def fn(path, *, key, **options):
             calls.append((backend, path, key, options))
@@ -79,7 +79,8 @@ def test_explicit_backend_and_model_override_cache_and_platform(monkeypatch, tmp
     monkeypatch.setattr(cli, "cached_model", lambda _: pytest.fail("explicit model must skip cache"))
     def load(path, *, key):
         calls.append(path)
-        return SimpleNamespace(generate=lambda *a, **k: SimpleNamespace(text="fixture", artifacts=tmp_path))
+        return SimpleNamespace(generate=lambda *a, **k: SimpleNamespace(text="fixture", artifacts=tmp_path),
+                               close=lambda: None)
     monkeypatch.setattr(Keyprint, "from_transformers", staticmethod(load))
     assert cli.main(["generate", "--backend", "transformers", "--model", str(tmp_path),
                      "--key", str(private_key), "--prompt", "Hello"]) == 0
@@ -336,3 +337,49 @@ def test_missing_native_wheel_rejected_before_download(monkeypatch):
     monkeypatch.setattr(native_mlx, "native_backend", missing)
     monkeypatch.setattr(cli, "download_model", lambda _: pytest.fail("download started"))
     assert cli.main(["playground", "--backend", "mlx", "--execution", "experimental-native", "--download"]) == 1
+
+
+@pytest.mark.parametrize('outcome', ['success', 'runtime', 'reported', 'interrupt'])
+@pytest.mark.parametrize('cleanup_fails', [False, True])
+def test_generate_closes_backend_once_and_preserves_original_failure(
+        monkeypatch, tmp_path, private_key, capsys, outcome, cleanup_fails):
+    from keyprint import KeyprintError
+    events = []
+    exact_text = 'Original facts: 17:30. 日本語 remains unchanged.'
+    failure = {'runtime': RuntimeError('generation failed'),
+               'reported': KeyprintError({'phase': 'sampling'}, tmp_path/'failed-run'),
+               'interrupt': KeyboardInterrupt()}.get(outcome)
+    def generate(*args, **kwargs):
+        events.append('generate')
+        if failure is not None:
+            raise failure
+        return SimpleNamespace(text=exact_text, artifacts=tmp_path/'complete-run')
+    def close():
+        events.append('close')
+        if cleanup_fails:
+            raise RuntimeError('cleanup failed')
+    def load(*args, **kwargs):
+        events.append('load')
+        return SimpleNamespace(generate=generate, close=close)
+    monkeypatch.setattr(Keyprint, 'from_transformers', staticmethod(load))
+    args = ['generate', '--backend', 'transformers', '--model', str(tmp_path),
+            '--key', str(private_key), '--prompt', 'Preserve all facts.']
+    if outcome == 'interrupt':
+        with pytest.raises(KeyboardInterrupt) as exc:
+            cli.main(args)
+        assert exc.value is failure
+    else:
+        assert cli.main(args) == (0 if outcome == 'success' and not cleanup_fails else 1)
+    assert events == ['load', 'generate', 'close']
+    captured = capsys.readouterr()
+    if outcome == 'success' and not cleanup_fails:
+        assert captured.out == exact_text + '\n'
+        assert str(tmp_path/'complete-run'/'report.json') in captured.err
+    else:
+        assert captured.out == ''
+    if outcome == 'reported':
+        assert str(tmp_path/'failed-run') in captured.err
+    if outcome == 'runtime':
+        assert 'generation failed' in captured.err
+    if cleanup_fails:
+        assert 'cleanup failed' in captured.err

@@ -28,7 +28,7 @@ acceptance and do not resolve existing quality or detection gaps.
 
 ## September 29 core install: verified locally, release still held
 
-The current 2.26 MiB wheel installs into a fresh offline environment outside the
+The 2.26 MiB wheel built from commit `cefce38` installs into a fresh offline environment outside the
 checkout. Dependency checks, console entry point, doctor, engine verification
 and model-free demo pass on macOS arm64/Python 3.13.13. All seven demo assets,
 MIT notices and Vincent Wu (Cveinnt) attribution match source. No optional
@@ -38,6 +38,14 @@ peaked at 300.83 MiB under a 512 MiB guard, with cleanup verified. See
 This does not close public-registry installation, cross-platform inference,
 semantic preservation or detection qualification. Docker remains untouched;
 further local model starts remain held under the user's memory constraint.
+
+The subsequent CLI change explicitly closes its backend after generation,
+including failures and interruption, without hiding the original error when
+cleanup also fails. Eight focused cases are written; their guarded execution was
+refused before startup on elevated pressure. This change is not validated for
+release yet. The research study's exact 78-file SDK snapshot is separately
+preserved, so ongoing SDK edits cannot silently change its environment. See
+[CLI cleanup validation status](evidence/cli-lifecycle-2026-09-29/README.md).
 
 ## September 29 bounded-candidate evaluation: no promotion
 

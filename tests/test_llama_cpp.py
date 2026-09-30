@@ -273,7 +273,8 @@ def test_cli_entry_accepts_gguf_file(monkeypatch, tmp_path, command):
     key.chmod(0o600)
     def loader(path, **kwargs):
         calls.append(path)
-        return SimpleNamespace(generate=lambda *a, **kw: SimpleNamespace(text='fixture', artifacts=tmp_path))
+        return SimpleNamespace(generate=lambda *a, **kw: SimpleNamespace(text='fixture', artifacts=tmp_path),
+                               close=lambda: None)
     monkeypatch.setattr(Keyprint, 'from_llama_cpp', staticmethod(loader))
     args = [command, '--backend', 'llama-cpp', '--model', str(model), '--key', str(key)]
     if command == 'generate':

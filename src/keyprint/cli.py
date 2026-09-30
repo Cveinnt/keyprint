@@ -338,9 +338,20 @@ def main(argv: list[str] | None = None) -> int:
                 return 0
             schema = json.loads(args.json_schema.read_text()) if args.json_schema is not None else None
             candidate = loader(path, key=key)
-            result = candidate.generate(args.prompt, max_tokens=args.max_tokens,
-                                        condition=args.condition, output=args.output,
-                                        **({"json_schema": schema} if args.json_schema is not None else {}))
+            try:
+                result = candidate.generate(args.prompt, max_tokens=args.max_tokens,
+                                            condition=args.condition, output=args.output,
+                                            **({"json_schema": schema} if args.json_schema is not None else {}))
+            except BaseException:
+                try:
+                    candidate.close()
+                except Exception as cleanup_error:
+                    # Retain the generation failure and its artifact path even
+                    # if releasing backend-owned resources also fails.
+                    print(f"Keyprint: backend cleanup also failed: {cleanup_error}", file=sys.stderr)
+                raise
+            else:
+                candidate.close()
             print(result.text)
             print(f"\nPrivate report: {result.artifacts / 'report.json'}", file=sys.stderr)
         elif args.command == "demo":
