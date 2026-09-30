@@ -1,5 +1,8 @@
 # OpenAI and Anthropic clients
 
+New here? [Choose an integration path and run your first request](docs/INFERENCE_PROVIDERS.md).
+This page is the detailed protocol reference.
+
 Community research preview. The supported path uses provider clients with a
 local model. Post-generation rewriting is blocked. Neither path inserts Keyprint
 into OpenAI-hosted GPT or Anthropic-hosted Claude sampling.

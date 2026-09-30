@@ -18,7 +18,11 @@ import socket
 import threading
 import time
 
-from keyprint import Keyprint
+from keyprint import Keyprint, RewriteUnavailableError
+if __package__:
+    from .provider_contract import check_rewrite_rejection
+else:
+    from provider_contract import check_rewrite_rejection
 
 
 def load_cases(path):
@@ -140,6 +144,11 @@ def write_report(output, report):
                         '</p><p><em>' + html.escape(case["review"]) + '</em></p><div class="pair">' + ''.join(columns) + '</div></section>')
     client_sections = []
     for name, result in report.get("clients", {}).items():
+        if result.get("status") == "expected_rejection":
+            client_sections.append('<section><h2>' + html.escape(name.replace('_', ' ')) +
+                '</h2><p>Expected rejection: provider-object rewriting is unavailable. '
+                'This is an unsupported-feature contract check, not hosted-model integration '
+                'or semantic-quality evidence.</p></section>')
         if "original" in result and "text" in result:
             client_sections.append('<section><h2>' + html.escape(name.replace('_', ' ')) +
                 '</h2><p>Constructed provider response object; real local model rewrite. No hosted API call.</p><div class="pair">' +
@@ -305,12 +314,13 @@ def main():
         "openai":ChatCompletion.model_validate({"id":"fixture", "object":"chat.completion", "created":0, "model":"synthetic", "choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","content":source}}]}),
         "anthropic":Message.model_validate({"id":"fixture", "type":"message", "role":"assistant", "model":"synthetic", "stop_reason":"end_turn", "stop_sequence":None,"content":[{"type":"text","text":source}],"usage":{"input_tokens":1,"output_tokens":1}})}
     for provider, response in objects.items():
-        try:
-            result = getattr(candidate, "rewrite_"+provider)(response, max_tokens=192, output=args.output/(provider+"-rewrite"))
-            report["clients"][provider+"_object_local_rewrite"] = {"original":result.original, "text":result.text,
-                "status":result.status, "checks":result.checks, "source":"constructed SDK object; actual local model rewrite; no hosted call"}
-        except Exception as exc:
-            report["clients"][provider+"_object_local_rewrite"] = {"error_type":type(exc).__name__}
+        check, failed = check_rewrite_rejection(
+            lambda: getattr(candidate, "rewrite_"+provider)(
+                response, max_tokens=192, output=args.output/(provider+"-rewrite")),
+            RewriteUnavailableError,
+        )
+        report["clients"][provider+"_object_local_rewrite"] = check
+        if failed:
             report["engineering_failures"].append(provider+"-rewrite")
         write_report(args.output, report)
     if args.http_client:
@@ -327,7 +337,7 @@ def main():
                 f"Engineering failures: {len(report['engineering_failures'])}. " +
                 f"Outputs flagged by mechanical screens: {len(report['screening_failures'])}.\n\n" +
                 "Download the comparison artifact to read both texts. This job gates runtime and protocol contracts, " +
-                "not semantic quality or detector acceptance. Provider object rewrites use real local inference; " +
+                "not semantic quality or detector acceptance. Provider-object rewrite checks require an explicit rejection; " +
                 "they make no hosted GPT/Claude calls. Both local client endpoints support only the documented text subset.\n")
     return int(bool(report["engineering_failures"]))
 

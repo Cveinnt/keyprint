@@ -5,6 +5,7 @@
 | Play immediately | [Recorded gallery](https://keyprint.vercel.app/play/) |
 | Install or use the API | [Usage guide](../USAGE.md) |
 | Remix the frontend without a model | [Demo guide](../demos/README.md) |
+| Try an inference-provider integration | [Provider quickstart](INFERENCE_PROVIDERS.md) |
 | Integrate a runtime or client | [Compatibility](../COMPATIBILITY.md), [providers](../PROVIDERS.md) |
 | Contribute as a person or with an AI | [Contributing](../CONTRIBUTING.md), [agent instructions](../AGENTS.md) |
 | Understand what remains open | [Roadmap](../ROADMAP.md), [quality](../OUTPUT_QUALITY.md) |

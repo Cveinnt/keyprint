@@ -5,6 +5,21 @@ import pytest
 from tools.validate_compatibility import screens, write_report, load_cases
 
 
+def test_expected_provider_rejection_does_not_approve_quality(tmp_path):
+    result = {"status": "expected_rejection", "error_type": "RewriteUnavailableError"}
+    report = {"backend": "fixture", "cases": [], "runs": [],
+              "clients": {"openai_object_local_rewrite": result},
+              "engineering_failures": ["unrelated-runtime-failure"]}
+    write_report(tmp_path, report)
+    saved = json.loads((tmp_path / "public/comparison.json").read_text())
+    assert saved["engineering_failures"] == ["unrelated-runtime-failure"]
+    assert saved["clients"]["openai_object_local_rewrite"] == result
+    assert saved["quality_acceptance"].startswith("not_established")
+    page = (tmp_path / "public/comparison.html").read_text()
+    assert "Expected rejection" in page
+    assert "not hosted-model integration" in page
+
+
 def test_json_screen_rejects_strings_numbers_and_wrappers():
     case = {"expected_json": {"name": "Maya", "count": 3, "enabled": False}}
     assert screens(case, '{"name":"Maya","count":3,"enabled":false}', "eos")["exact_json"]

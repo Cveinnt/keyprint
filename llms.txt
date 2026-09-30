@@ -29,3 +29,5 @@ Never reinterpret diagnostic fractions as AI-authorship probabilities. Do not re
 - [Recorded gallery](https://keyprint.vercel.app/play/): no-install public playback.
 - [Demo source and remixing](demos/README.md): one-command model-free demo server.
 - [Complete usage guide](USAGE.md): full setup, API and lifecycle details.
+
+- [Inference-provider quickstart](docs/INFERENCE_PROVIDERS.md): local trial, native paths and qualification boundaries.

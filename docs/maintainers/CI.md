@@ -13,7 +13,7 @@ Run the same checks locally from the repository root:
 
 ```sh
 python tools/check_community.py
-node --max-old-space-size=128 --test --test-concurrency=1 tests/test_gallery_ui.cjs tests/test_playground_ui.cjs tests/test_reader.cjs tests/test_token_explorer.cjs tests/test_wording_diff.cjs
+node --max-old-space-size=128 --test --test-concurrency=1 tests/test_gallery_ui.cjs tests/test_playground_ui.cjs tests/test_reader.cjs tests/test_token_explorer.cjs tests/test_wording_diff.cjs tests/test_share_ui.cjs
 ```
 
 These check local documentation targets, Python syntax without importing the SDK,

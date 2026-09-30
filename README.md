@@ -6,6 +6,7 @@
   <a href="#start-here">Install</a> ·
   <a href="demos/README.md">Remix a demo</a> ·
   <a href="USAGE.md">API &amp; guide</a> ·
+  <a href="docs/INFERENCE_PROVIDERS.md">Inference providers</a> ·
   <a href="https://github.com/Cveinnt/keyprint/discussions">Community</a>
 </p>
 <p align="center">
@@ -95,6 +96,9 @@ Later runs use `keyprint playground` without downloading again.
 It serves the recordings using Python's standard library. No SDK dependencies or weights.
 
 ## Where it fits
+
+**Running an inference service? [Start with the provider quickstart](docs/INFERENCE_PROVIDERS.md)**
+for a local client request, native integration paths and the exact qualification gaps.
 
 Keyprint operates during generation in supported **local model runtimes**.
 MLX, Transformers and llama.cpp paths have scoped evidence; native vLLM/SGLang pilots
