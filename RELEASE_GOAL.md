@@ -412,7 +412,7 @@ CI-off policy and publication hold remain unchanged.
   viewport. Initial JS fell from 1,004.21 kB to 313.95 kB. All records remain;
   direct links, task filtering and recovery from a missing asset pass in browser.
   Production build and four site checks pass. No deployment or page-speed claim.
-- Prepared concise [launch copy](LAUNCH_DRAFT.md) with explicit local-model and
+- Prepared concise [launch copy](docs/maintainers/LAUNCH_DRAFT.md) with explicit local-model and
   diagnostic scope. It remains unscheduled; no public package or repo exposure.
 - Publicity remains held. Next qualification should explain and quantify
   fixed-key diversity, retain failures, and finish the scoped install/demo and

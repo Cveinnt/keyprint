@@ -20,3 +20,9 @@ recursive-include evidence/vllm-server-2026-09-21 *.json
 include tools/VLLM_SERVING.md
 
 recursive-include evidence/product-experience-2026-09-22 *.json
+
+# Public onboarding and model-free demo tooling ship together in the source archive.
+include USAGE.md COMMUNITY.md AGENTS.md ROADMAP.md llms.txt
+include .github/CODEOWNERS
+recursive-include docs *.md *.svg *.png
+recursive-include demos *.md *.json

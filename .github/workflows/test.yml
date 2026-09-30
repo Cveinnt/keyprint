@@ -1,4 +1,4 @@
-name: SDK checks
+name: Full SDK qualification (manual)
 # Opt-in only. Hosted checks remain disabled by the maintainer.
 on:
   workflow_dispatch:

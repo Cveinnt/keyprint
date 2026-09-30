@@ -1,4 +1,4 @@
-name: Publish audited SDK to PyPI
+name: Legacy PyPI publisher (disabled)
 on:
   workflow_dispatch:
 permissions:

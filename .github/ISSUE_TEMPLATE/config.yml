@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and setup help
+    url: https://github.com/Cveinnt/keyprint/discussions/categories/q-a
+    about: Ask about the API, demos or a supported local setup.
+  - name: Share a demo
+    url: https://github.com/Cveinnt/keyprint/discussions/categories/show-and-tell
+    about: Show a remix with its original outputs and reproducible recipe.

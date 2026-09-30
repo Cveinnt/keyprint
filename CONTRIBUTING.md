@@ -1,5 +1,20 @@
 # Contributing
 
+## Ownership and attribution
+
+Vincent Wu ([Cveinnt](https://github.com/Cveinnt)) maintains Keyprint.
+[CODEOWNERS](.github/CODEOWNERS) routes proposed changes to the maintainer.
+Contributors keep their own Git author identity and receive credit for actual
+work. Do not rewrite history, remove legitimate authors, or add invented
+co-authors to make the contributor list look cleaner. Describe AI assistance
+when relevant to reviewing the patch; the submitting person owns its review.
+
+Questions and demo showcases belong in [Discussions](https://github.com/Cveinnt/keyprint/discussions);
+use Issues for reproducible bugs or bounded research proposals. See the
+[repository guide](docs/README.md) and [workflow policy](docs/maintainers/CI.md).
+
+## Make a focused contribution
+
 Human and AI-assisted contributions are welcome. Pick a scoped task from
 [the roadmap](ROADMAP.md), reproduce the current behavior, and submit the
 smallest change with its evidence. Start with [AGENTS.md](AGENTS.md) when using
