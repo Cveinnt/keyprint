@@ -104,8 +104,11 @@ stopped on global memory pressure below their 8 GiB cutoff, with cleanup verifie
 and no automatic restart. The latest continuation preserved every original
 output and added eight. See [continuation evidence](evidence/balanced-continuation-2026-09-29/README.md).
 This closes evidence-preserving continuation work, not quality or detection
-acceptance. A second continuation is not supported yet and requires its own
-validation before any new model load.
+acceptance. A new chain runner supports multiple interruptions and explicit
+four-output batch boundaries; 83 synthetic/regression tests pass. Its actual-data
+plan-only validation was refused before launch because system pressure was
+elevated, so native use remains pending. No new model was loaded. See
+[bounded-batch validation status](evidence/balanced-chain-2026-09-29/README.md).
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.

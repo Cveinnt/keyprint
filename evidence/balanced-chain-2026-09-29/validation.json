@@ -1,0 +1,17 @@
+{
+  "schema": "keyprint.balanced-chain-harness-validation.v1",
+  "tests": 83,
+  "new_tests": 21,
+  "tests_seconds": 8.03,
+  "models_loaded": 0,
+  "actual_plan_only_validated": false,
+  "actual_plan_refused_for_system_pressure": true,
+  "actual_output_directory_created": false,
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false,
+  "helpers_sha256": {
+    "balanced_chain.py": "d3f091b58f322a1290dcf249ca9915b56b0f9255665f29d2b49100d568d671b5",
+    "continue_balanced_chain.py": "74279f5395d86d2c2d7d213c30b49f27a73c70b26defd2e44de2517c735b94c0"
+  }
+}

@@ -136,3 +136,13 @@ and verified cleanup. The full frozen balanced study uses the same reduced
 cutoff. See [preflight evidence](evidence/balanced-native-preflight-2026-09-29/README.md).
 The guard still stops on pressure, disk, deadline or sensor failure. No automatic
 restart, unrelated-app cleanup, quality acceptance or ChatGPT leak fix is implied.
+
+## Explicit study batches
+
+`continue_balanced_chain.py` adds a fixed per-invocation attempt limit, default
+four, and records a planned pause only after every declared output completes.
+The process then exits; the next batch is never started automatically. Every
+ancestor and interrupted output remains bound. Its synthetic checks pass, but
+the actual-study plan-only validation was refused on elevated system pressure.
+Do not treat this harness as native-qualified yet. See
+[batch validation status](evidence/balanced-chain-2026-09-29/README.md).
