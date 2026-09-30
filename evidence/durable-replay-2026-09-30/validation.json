@@ -1,0 +1,27 @@
+{
+  "status": "implemented_not_validated",
+  "syntax_checked": [
+    "src/keyprint/replay.py",
+    "src/keyprint/server.py",
+    "tests/test_durable_replay.py",
+    "tests/test_server.py",
+    "tests/test_capped_utf8.py",
+    "tools/validate_cancellation.py",
+    "tools/validate_server_lifecycle.py"
+  ],
+  "source_sha256": {
+    "src/keyprint/replay.py": "5231a1c398f339c184dfe36e5b383909ec4f87f13e46b752c1276ba524c135ee",
+    "src/keyprint/server.py": "ccf03b74bff0853d8b737280c90ef3d54ff8d9ac92a8b58ceed3a7c5b333aa3d",
+    "tests/test_durable_replay.py": "15f874bd88a22cdffd8dc7213c5f7ba85bf4089b1909365cb98786bdc7434e6f",
+    "tests/test_server.py": "d9a7947241920c71a7bf6f3ee8218ee69cad9e3165e62dd8bf89b91e075a3266",
+    "tests/test_capped_utf8.py": "5f6686fec06dbd10ce9e53a9d2d59ae847e2616d421f6ef2ec2d046613346c91",
+    "tools/validate_cancellation.py": "034c092d94d2ff7a6a9bc6ca9b9f85b9d7f2952f22d5b69ae1895d6abcdc2549",
+    "tools/validate_server_lifecycle.py": "2ea2b7c94b6397d941b364fc6db1e372e35456411eb2faadf608b7fc8266c457"
+  },
+  "tests_executed": false,
+  "test_start_refused": "System memory pressure before launch",
+  "new_restart_and_fault_cases": 21,
+  "models_loaded": 0,
+  "scientific_acceptance": false,
+  "launch_ready": false
+}

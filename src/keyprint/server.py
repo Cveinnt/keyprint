@@ -17,11 +17,12 @@ from typing import Annotated, Callable, Literal
 import uuid
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from .api import Keyprint, KeyprintCancelled
 from .errors import InputLimitError
+from .replay import ReplayStore
 
 
 class Message(BaseModel):
@@ -158,8 +159,8 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
     """One process, one model worker, finite requests; secret keys stay local.
 
     Requests are retained even after a client disconnect. Explicit cancellation
-    is cooperative and retains its terminal result. Idempotency applies only
-    in this process lifetime. No retry, streaming, tools or logprobs.
+    is cooperative and retains its terminal result. Durable replay survives
+    restart; interrupted work is never rerun. No streaming, tools or logprobs.
     """
     if not isinstance(api_key, str) or not 32 <= len(api_key) <= 256 or not api_key.isascii():
         raise ValueError("API token must be 32 to 256 ASCII characters, distinct from the watermark key")
@@ -177,11 +178,22 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
     cancellations: dict[str, Event] = {}
     attempts: set[asyncio.Task] = set()
     model: list[Keyprint] = []
+    stores: list[ReplayStore] = []
 
     @asynccontextmanager
     async def lifespan(app):
         try:
+            # Acquire ownership before allocating any model resources.
+            stores.append(ReplayStore(output))
             model.append(await asyncio.get_running_loop().run_in_executor(worker, load_model))
+            def binding():
+                candidate = model[0]
+                return {"model": candidate.identity,
+                        "watermark_key_sha256": hashlib.sha256(candidate._key).hexdigest(),
+                        "api_key_sha256": hashlib.sha256(api_key.encode()).hexdigest(),
+                        "server_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                        "protocol": "keyprint-local-replay-v1"}
+            stores[0].bind(await asyncio.get_running_loop().run_in_executor(worker, binding))
             yield
         finally:
             # Accepted work belongs to the service, not to a socket. Graceful
@@ -195,6 +207,20 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
                         await asyncio.get_running_loop().run_in_executor(worker, close)
             finally:
                 worker.shutdown(wait=True, cancel_futures=False)
+                for store in stores:
+                    store.close()
+
+    def previous_attempt(key: str, protocol="openai"):
+        if key in records:
+            return records[key]
+        row = stores[0].get(key)
+        if row is None:
+            return None
+        digest, request_id, status, body, headers = row
+        if status is None:
+            return digest, error("Previous process ended without a durable result; inspect private artifacts. This attempt will not restart.",
+                                 410, request_id, protocol=protocol)
+        return digest, Response(content=body, status_code=status, headers=json.loads(headers))
 
     app = FastAPI(title="Keyprint local preview", lifespan=lifespan,
                   docs_url=None, redoc_url=None, openapi_url=None)
@@ -223,7 +249,10 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
         target = request.headers.get("idempotency-key", "")
         if not target or len(target) > 128 or not target.isascii():
             return error("Supply the original Idempotency-Key to cancel", 400)
-        previous = records.get(target)
+        try:
+            previous = previous_attempt(target)
+        except Exception:
+            return error("Private request journal is unavailable; no work restarted", 503)
         if previous is None:
             return error("No accepted attempt has this idempotency key", 404)
         signal = cancellations.get(target)
@@ -285,16 +314,25 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
         if not idempotency or len(idempotency) > 128 or not idempotency.isascii():
             return fail("Invalid idempotency key", 400)
         digest = hashlib.sha256(json.dumps({"protocol": protocol, "path": request.url.path, "request": params.model_dump()}, sort_keys=True).encode()).hexdigest()
-        previous = records.get(idempotency)
+        try:
+            previous = previous_attempt(idempotency, protocol)
+            request_count = stores[0].count()
+        except Exception:
+            return fail("Private request journal is unavailable; no generation started", 503)
         if previous:
             return previous[1] if previous[0] == digest else fail("Idempotency key was used for another request", 409)
         if lock.locked():
             return fail("Model is busy; no generation started for this request", 503)
-        if len(records) >= max_requests:
-            return fail("Session request limit reached; inspect retained artifacts before restarting", 429)
+        if request_count >= max_requests:
+            return fail("Request journal limit reached; inspect retained artifacts before using a new directory", 429)
         # Acquisition completes without suspension while unlocked. Record and
         # own the attempt before yielding to any model work or HTTP response.
         await lock.acquire()
+        try:
+            stores[0].reserve(idempotency, digest, request_id)
+        except Exception:
+            lock.release()
+            return fail("Request could not be durably reserved; no generation started", 503, request_id)
         cancellation = Event()
         cancellations[idempotency] = cancellation
         records[idempotency] = (digest, fail("Attempt running; repeat the same request ID to recover its result", 409, request_id))
@@ -366,7 +404,13 @@ def create_app(load_model: Callable[[], Keyprint], *, api_key: str, output: Path
             except Exception:
                 response = fail("Attempt could not be recorded; inspect private artifacts. No automatic retry.", 500, request_id)
             finally:
-                records[idempotency] = (digest, response)
+                try:
+                    stores[0].finish(idempotency, response.status_code, response.body, dict(response.headers))
+                except Exception:
+                    response = fail("Attempt has no durable result; inspect private artifacts. No automatic retry.", 500, request_id)
+                    records[idempotency] = (digest, response)
+                else:
+                    records.pop(idempotency, None)
                 cancellations.pop(idempotency, None)
                 lock.release()
             return response

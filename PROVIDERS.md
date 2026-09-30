@@ -69,10 +69,30 @@ generation. Use no automatic retries: a timeout does not cancel the model run.
 Repeat the same idempotency key and body to recover the accepted attempt: 409
 means it is still running; after completion, the original response is replayed.
 A different body or endpoint returns 409. Accepted work survives a disconnected or cancelled
-HTTP handler, and graceful shutdown waits for it to finish. Replay works only
-during this process lifetime; restarting clears that memory.
-The server stops accepting new attempts after 256 records. Inspect private
-artifacts before restarting; do not treat a restart as retry authorization.
+HTTP handler, and graceful shutdown waits for it to finish.
+
+The new durable-replay implementation is **pending local test validation**.
+It records an accepted request before generation and stores the exact terminal
+response in a private SQLite journal under `--output`. Restarting with the same
+directory, model identity, watermark key, API token and server implementation
+replays completed successes or failures without generating again. An attempt
+without a durable terminal response returns 410; it is never silently restarted.
+Use an explicit `Idempotency-Key` before sending a request: a disconnected client
+cannot recover a server-generated ID it never received.
+
+The request limit is 256 accepted attempts per directory, including failures;
+restarting does not reset it. A different request using an existing key returns
+409. One process owns each directory. Model/key/server changes fail startup;
+use a separate directory for new work and preserve the old one. Legacy directories
+without the replay journal are rejected instead of pretending old requests can
+be recovered. Never reissue an uncertain attempt with a new key to bypass recovery.
+
+This implementation requires a local POSIX filesystem and protects the journal
+with mode 600 inside the mode-700 output directory. It stores response text:
+keep it private with the generation artifacts. Network filesystems, multi-host
+failover, power-loss durability and Windows serving are not qualified. Disk or
+integrity failures refuse work; they do not authorize a retry. No hosted-provider
+watermarking or production qualification is implied.
 
 ## Use the Anthropic client with the same local server
 

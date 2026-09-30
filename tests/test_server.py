@@ -20,6 +20,8 @@ SCHEMA = {"type": "object", "properties": {"name": {"type": "string"}},
 
 
 class Model:
+    identity = {"fixture": "server-model"}
+    _key = bytes(32)
     def __init__(self, *, block=False, fail=False):
         self.calls = []
         self.started, self.release = threading.Event(), threading.Event()

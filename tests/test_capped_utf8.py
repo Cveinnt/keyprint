@@ -109,6 +109,8 @@ def test_openai_client_receives_length_and_replays_without_regeneration(tmp_path
     from keyprint.server import create_app
     calls = []
     class LocalModel:
+        identity = {"fixture": "capped-utf8"}
+        _key = bytes(32)
         def __init__(self):
             self.sdk = candidate()
 
