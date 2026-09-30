@@ -1,0 +1,101 @@
+{
+  "checks": [
+    {
+      "condition": "ordinary",
+      "seed": 0,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 1,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 2,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 3,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 4,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 5,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 6,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "ordinary",
+      "seed": 7,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 0,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 1,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 2,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 3,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 4,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 5,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 6,
+      "steps": 16,
+      "exact_match": true
+    },
+    {
+      "condition": "marked",
+      "seed": 7,
+      "steps": 16,
+      "exact_match": true
+    }
+  ],
+  "complete": true
+}

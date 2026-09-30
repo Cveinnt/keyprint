@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.13, pytest-9.1.1, pluggy-1.6.0 -- /Users/vincent/GitHub/wm-probe/launch/2026-09-16-audited/growth/github-ready/../../receipts/pydantic-ai-2026-09-28/env/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/vincent/GitHub/wm-probe/launch/2026-09-16-audited/growth/github-ready
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_llama_cpp.py::test_native_head_commit_cache_reset_and_exact_decode[ordinary] PASSED [100%]
+
+============================== 1 passed in 1.45s ===============================

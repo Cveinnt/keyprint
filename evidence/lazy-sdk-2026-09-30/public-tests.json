@@ -1,0 +1,186 @@
+[
+  {
+    "node": "tests/test_public_api.py::test_import_does_not_pollute_process",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12222896,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.11s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_invalid_key_rejected[short]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 11960752,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.04s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_invalid_key_rejected[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12239280,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.05s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_invalid_key_rejected[key2]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 11895216,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.05s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_invalid_key_rejected[\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12288432,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.07s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_missing_native_accelerator_fails_before_model_loading",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 264078152,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.06s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_incompatible_native_wheel_fails_before_model_loading[old_version]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12517808,
+    "cleanup_verified": true,
+    "summary": "1 skipped in 0.06s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_incompatible_native_wheel_fails_before_model_loading[missing_selection]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12321200,
+    "cleanup_verified": true,
+    "summary": "1 skipped in 0.05s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_incompatible_native_wheel_fails_before_model_loading[missing_method]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12075464,
+    "cleanup_verified": true,
+    "summary": "1 skipped in 0.06s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_reference_parity",
+    "status": "stopped",
+    "exit_code": 1,
+    "peak_footprint_bytes": 546506240,
+    "cleanup_verified": true,
+    "summary": "interrupted before pytest summary"
+  },
+  {
+    "node": "tests/test_public_api.py::test_failure_report_retained_without_retry",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 308429688,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.40s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_generation_does_not_overwrite_outputs",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 255509368,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.29s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_corruption_rejected",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12140976,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.17s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_keygen_never_prints_or_overwrites_key",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12026288,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.13s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_cli_json[demo]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 378275160,
+    "cleanup_verified": true,
+    "summary": "1 passed in 2.04s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_cli_json[doctor]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 11878832,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.16s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_cli_json[verify]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 12272072,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.10s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_unavailable_and_unsupported_backend_errors",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 56492584,
+    "cleanup_verified": true,
+    "summary": "1 passed in 0.13s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_reference_cancel_preserves_consumption_and_releases_candidate[0]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 312558480,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.37s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_reference_cancel_preserves_consumption_and_releases_candidate[1]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 303678352,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.39s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_reference_cancel_preserves_consumption_and_releases_candidate[2]",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 305070920,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.31s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_reference_cancellation_does_not_mask_a_model_failure",
+    "status": "completed",
+    "exit_code": 0,
+    "peak_footprint_bytes": 278856544,
+    "cleanup_verified": true,
+    "summary": "1 passed in 1.15s"
+  },
+  {
+    "node": "tests/test_public_api.py::test_reference_cancellation_during_draw_finishes_that_commit",
+    "status": "worker_failed",
+    "exit_code": 1,
+    "peak_footprint_bytes": 275776352,
+    "cleanup_verified": true,
+    "summary": "1 failed in 1.19s"
+  }
+]

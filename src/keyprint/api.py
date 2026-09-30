@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 import json
 import secrets
 import tempfile
-from threading import Event
+from threading import Event, get_ident
 
 from .integrity import verify
 from .rewrite import Rewrite
@@ -51,11 +51,32 @@ class Keyprint:
         if type(key) is not bytes or len(key) != 32:
             raise ValueError("key must be exactly 32 bytes; use Keyprint.new_key()")
         verify()
-        from ._engine.research.keyprint_v3_public_api_rc2 import PublicCandidate
-        self._candidate = PublicCandidate(temperature=temperature, top_k=top_k)
+        # Validate now, but allocate the pinned reference tokenizer only when
+        # its engine is used. Other backends own their tokenizer and scorer.
+        import numpy as np
+        from ._engine.research.keyprint_stable_support_filter_v3 import stable_support_filter
+        stable_support_filter(np.zeros((1, 1), dtype=np.float32),
+                              temperature=temperature, top_k=top_k)
+        self._reference_settings = dict(temperature=temperature, top_k=top_k)
+        self._reference_owner = get_ident()
+        self._reference_candidate = None
         self._key = key
         self._backend: Any = None
         self._closed = False
+
+    @property
+    def _candidate(self):
+        if self._reference_candidate is None:
+            self._ensure_open()
+            if get_ident() != self._reference_owner:
+                raise RuntimeError("reference candidate belongs to another thread")
+            from ._engine.research.keyprint_v3_public_api_rc2 import PublicCandidate
+            self._reference_candidate = PublicCandidate(**self._reference_settings)
+        return self._reference_candidate
+
+    @_candidate.setter
+    def _candidate(self, value):
+        self._reference_candidate = value
 
     @staticmethod
     def new_key() -> bytes:

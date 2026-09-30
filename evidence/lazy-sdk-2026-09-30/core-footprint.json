@@ -1,0 +1,28 @@
+{
+  "samples": [
+    {
+      "stage": "python_baseline",
+      "physical_footprint_bytes": 9781680,
+      "resident_bytes": 20250624
+    },
+    {
+      "stage": "import_keyprint",
+      "physical_footprint_bytes": 13550000,
+      "resident_bytes": 25608192
+    },
+    {
+      "stage": "twenty_unbound_instances",
+      "physical_footprint_bytes": 40567264,
+      "resident_bytes": 54722560
+    },
+    {
+      "stage": "closed_unbound_instances",
+      "physical_footprint_bytes": 40567264,
+      "resident_bytes": 54722560
+    }
+  ],
+  "model_loaded": false,
+  "reference_tokenizer_loaded": false,
+  "inference_measured": false,
+  "scope": "Point samples in one isolated core-only macOS process; not a peak or a production-inference overhead estimate."
+}

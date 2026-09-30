@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import sys
 from threading import Event
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -235,7 +236,9 @@ def test_reference_cancellation_during_draw_finishes_that_commit(tmp_path, monke
     def draw(bits):
         stop.set()
         return (1 << bits) - 1
-    monkeypatch.setattr("keyprint.api.secrets.randbits", draw)
+    # Replace only this caller's RNG. Patching the shared secrets module also
+    # intercepts dependency initialization in a fresh interpreter.
+    monkeypatch.setattr("keyprint.api.secrets", SimpleNamespace(randbits=draw))
     with pytest.raises(KeyprintCancelled) as caught:
         Keyprint(key=KEY)._run(model, [32], max_tokens=4, condition="ordinary", output=tmp_path / "stopped",
                               backend=FakeBackend, cache_factory=lambda model: [], cancel_event=stop)

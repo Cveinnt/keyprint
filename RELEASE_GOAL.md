@@ -26,7 +26,25 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
-## September 29 core install: verified locally, release still held
+## September 30 memory fix: verified locally, release still held
+
+Backend-owned tokenization no longer allocates an unused Qwen reference engine
+at construction. Keys, integrity and sampling settings still validate eagerly;
+the unchanged reference engine initializes on reference use, retaining its thread
+owner. 119 focused tests and 19 isolated public API tests pass; three optional
+native-wheel tests skip. The full 16-path/256-token supplied-logit parity grid
+matches the preserved implementation exactly. No real model was loaded.
+
+The current wheel installs and passes model-free CLI checks in a fresh core-only
+environment. Twenty unbound instances measure 38.69 MiB process footprint;
+the build/install/check pipeline peaks at 295.38 MiB. Successful checks use
+sequential workers under a 512 MiB guard. Earlier cutoff/test failures remain
+retained. Previously pending CLI cleanup cases now pass. See
+[current evidence](evidence/lazy-sdk-2026-09-30/README.md).
+Research quality/detection counts remain unchanged. Docker is untouched;
+no model jobs resumed and no public deployment or launch occurred.
+
+## September 29 core install: historical check, superseded above
 
 The 2.26 MiB wheel built from commit `cefce38` installs into a fresh offline environment outside the
 checkout. Dependency checks, console entry point, doctor, engine verification
@@ -42,8 +60,8 @@ further local model starts remain held under the user's memory constraint.
 The subsequent CLI change explicitly closes its backend after generation,
 including failures and interruption, without hiding the original error when
 cleanup also fails. Eight focused cases are written; their guarded execution was
-refused before startup on elevated pressure. This change is not validated for
-release yet. The research study's exact 78-file SDK snapshot is separately
+refused before startup on elevated pressure. September 30 validation above
+subsequently passed. The research study's exact 78-file SDK snapshot is separately
 preserved, so ongoing SDK edits cannot silently change its environment. See
 [CLI cleanup validation status](evidence/cli-lifecycle-2026-09-29/README.md).
 
