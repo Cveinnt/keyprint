@@ -1,0 +1,17 @@
+{
+  "model": "mlx-community/Qwen3-8B-4bit",
+  "revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "backend": "MLX reference",
+  "sdk": "0.1.0a1 private development",
+  "recording_sha256": "c058f8f3bbc2fad7e6d868b00295a534ec1cd585fb8185e0aa9a519f7d9c1f2e",
+  "prompt": "In two sentences, explain how a seed becomes a tree to a curious adult.",
+  "completion": {
+    "ordinary": "eos",
+    "marked": "eos"
+  },
+  "model_generated_text_preserved": true,
+  "calibrated_detector": false,
+  "quality_acceptance": false,
+  "notes": "Three retained real pairs. English explanation reused; email and French newly generated. Email has a disclosed time/location constraint failure. No filtering for quality or signal strength.",
+  "gallery_sha256": "7903297d21d7eda634bb5f706ad9a16f79e72ea76a22adb3c11813084edd52d5"
+}

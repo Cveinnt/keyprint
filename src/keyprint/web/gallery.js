@@ -1,6 +1,6 @@
 "use strict";
 
-function mountGallery(doc, data, onSelect) {
+function mountGallery(doc, data, onSelect, initialIndex = 0) {
   if (data?.schema !== 'keyprint-gallery-v1' || !Array.isArray(data.examples) ||
       data.examples.length < 1 || data.examples.length > 12 ||
       data.examples.some(e => typeof e.title !== 'string' || !e.title.trim() ||
@@ -36,7 +36,7 @@ function mountGallery(doc, data, onSelect) {
     buttons.push(button);container.append(button);
   });
   doc.getElementById('gallery').hidden = false;
-  select(0);
+  select(Number.isInteger(initialIndex) && initialIndex >= 0 && initialIndex < data.examples.length ? initialIndex : 0);
   return {select};
 }
 if (typeof module !== 'undefined') module.exports = {mountGallery};

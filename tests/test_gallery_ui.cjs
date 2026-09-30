@@ -37,3 +37,15 @@ test('malformed recordings fail before replacing the prior gallery',()=>{
   assert.throws(()=>mountGallery(doc,{schema:'keyprint-gallery-v1',examples:[example('One','ok'),{}]},()=>{}),/format/);
   assert.deepEqual(get('gallery-cards').children,['old']);
 });
+
+test('deep links select the requested recording; invalid indices fall back safely',()=>{
+  const data={schema:'keyprint-gallery-v1',examples:[example('First','A'),example('French','B')]};
+  for (const index of [1,-1,2,1.5,NaN,Infinity]) {
+    const {doc,get}=setup(),seen=[];
+    mountGallery(doc,data,x=>seen.push(x),index);
+    const expected=index===1 ? 1 : 0;
+    assert.equal(seen.length,1);
+    assert.equal(seen[0],data.examples[expected].recording);
+    assert.equal(get('gallery-cards').children[expected].attrs['aria-pressed'],'true');
+  }
+});

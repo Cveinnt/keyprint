@@ -1,0 +1,1161 @@
+{
+  "schema": "keyprint-comparison-v1",
+  "prompt": "In two sentences, explain how a seed becomes a tree to a curious adult.",
+  "experiment": {
+    "outputs": {
+      "ordinary": {
+        "text": "A seed starts as a tiny package with all the parts a growing plant needs, like food and instructions. When the seed gets the right mix of water, sunlight, and soil, it cracks open, and a new plant grows out of it, eventually becoming a tree.",
+        "completion": "eos",
+        "usage": {
+          "prompt_tokens": 28,
+          "completion_tokens": 55,
+          "total_tokens": 83
+        },
+        "timing": {
+          "generation_seconds": 4.354074375005439,
+          "inspection_seconds": 0.06948600010946393
+        },
+        "inspection": {
+          "events": 54,
+          "ones": 807,
+          "trials": 1620,
+          "fraction": 0.4981481481481482,
+          "control_fraction": 0.48333333333333334,
+          "calibrated": false,
+          "verdict": null,
+          "series": [
+            {
+              "characters": 15,
+              "matching": 0.5583333333333333,
+              "control": 0.4583333333333333
+            },
+            {
+              "characters": 30,
+              "matching": 0.5208333333333334,
+              "control": 0.48333333333333334
+            },
+            {
+              "characters": 45,
+              "matching": 0.5166666666666667,
+              "control": 0.5033333333333333
+            },
+            {
+              "characters": 60,
+              "matching": 0.5307692307692308,
+              "control": 0.48717948717948717
+            },
+            {
+              "characters": 75,
+              "matching": 0.5137254901960784,
+              "control": 0.48823529411764705
+            },
+            {
+              "characters": 90,
+              "matching": 0.5083333333333333,
+              "control": 0.49666666666666665
+            },
+            {
+              "characters": 105,
+              "matching": 0.5075757575757576,
+              "control": 0.5015151515151515
+            },
+            {
+              "characters": 120,
+              "matching": 0.5,
+              "control": 0.49066666666666664
+            },
+            {
+              "characters": 136,
+              "matching": 0.49885057471264366,
+              "control": 0.4804597701149425
+            },
+            {
+              "characters": 151,
+              "matching": 0.5121212121212121,
+              "control": 0.48484848484848486
+            },
+            {
+              "characters": 166,
+              "matching": 0.5036036036036036,
+              "control": 0.4774774774774775
+            },
+            {
+              "characters": 181,
+              "matching": 0.5041666666666667,
+              "control": 0.475
+            },
+            {
+              "characters": 196,
+              "matching": 0.49772727272727274,
+              "control": 0.4765151515151515
+            },
+            {
+              "characters": 211,
+              "matching": 0.49583333333333335,
+              "control": 0.47708333333333336
+            },
+            {
+              "characters": 226,
+              "matching": 0.4980392156862745,
+              "control": 0.47908496732026146
+            },
+            {
+              "characters": 241,
+              "matching": 0.4981481481481482,
+              "control": 0.48333333333333334
+            }
+          ]
+        },
+        "trace": [
+          {
+            "index": 0,
+            "token_id": 32,
+            "bytes_hex": "41",
+            "text": "A",
+            "start": 0,
+            "end": 1,
+            "kind": "text"
+          },
+          {
+            "index": 1,
+            "token_id": 10320,
+            "bytes_hex": "2073656564",
+            "text": " seed",
+            "start": 1,
+            "end": 6,
+            "kind": "text"
+          },
+          {
+            "index": 2,
+            "token_id": 8471,
+            "bytes_hex": "20737461727473",
+            "text": " starts",
+            "start": 6,
+            "end": 13,
+            "kind": "text"
+          },
+          {
+            "index": 3,
+            "token_id": 438,
+            "bytes_hex": "206173",
+            "text": " as",
+            "start": 13,
+            "end": 16,
+            "kind": "text"
+          },
+          {
+            "index": 4,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 16,
+            "end": 18,
+            "kind": "text"
+          },
+          {
+            "index": 5,
+            "token_id": 13673,
+            "bytes_hex": "2074696e79",
+            "text": " tiny",
+            "start": 18,
+            "end": 23,
+            "kind": "text"
+          },
+          {
+            "index": 6,
+            "token_id": 6328,
+            "bytes_hex": "207061636b616765",
+            "text": " package",
+            "start": 23,
+            "end": 31,
+            "kind": "text"
+          },
+          {
+            "index": 7,
+            "token_id": 448,
+            "bytes_hex": "2077697468",
+            "text": " with",
+            "start": 31,
+            "end": 36,
+            "kind": "text"
+          },
+          {
+            "index": 8,
+            "token_id": 678,
+            "bytes_hex": "20616c6c",
+            "text": " all",
+            "start": 36,
+            "end": 40,
+            "kind": "text"
+          },
+          {
+            "index": 9,
+            "token_id": 279,
+            "bytes_hex": "20746865",
+            "text": " the",
+            "start": 40,
+            "end": 44,
+            "kind": "text"
+          },
+          {
+            "index": 10,
+            "token_id": 5479,
+            "bytes_hex": "207061727473",
+            "text": " parts",
+            "start": 44,
+            "end": 50,
+            "kind": "text"
+          },
+          {
+            "index": 11,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 50,
+            "end": 52,
+            "kind": "text"
+          },
+          {
+            "index": 12,
+            "token_id": 7826,
+            "bytes_hex": "2067726f77696e67",
+            "text": " growing",
+            "start": 52,
+            "end": 60,
+            "kind": "text"
+          },
+          {
+            "index": 13,
+            "token_id": 6008,
+            "bytes_hex": "20706c616e74",
+            "text": " plant",
+            "start": 60,
+            "end": 66,
+            "kind": "text"
+          },
+          {
+            "index": 14,
+            "token_id": 3880,
+            "bytes_hex": "206e65656473",
+            "text": " needs",
+            "start": 66,
+            "end": 72,
+            "kind": "text"
+          },
+          {
+            "index": 15,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 72,
+            "end": 73,
+            "kind": "text"
+          },
+          {
+            "index": 16,
+            "token_id": 1075,
+            "bytes_hex": "206c696b65",
+            "text": " like",
+            "start": 73,
+            "end": 78,
+            "kind": "text"
+          },
+          {
+            "index": 17,
+            "token_id": 3607,
+            "bytes_hex": "20666f6f64",
+            "text": " food",
+            "start": 78,
+            "end": 83,
+            "kind": "text"
+          },
+          {
+            "index": 18,
+            "token_id": 323,
+            "bytes_hex": "20616e64",
+            "text": " and",
+            "start": 83,
+            "end": 87,
+            "kind": "text"
+          },
+          {
+            "index": 19,
+            "token_id": 11221,
+            "bytes_hex": "20696e737472756374696f6e73",
+            "text": " instructions",
+            "start": 87,
+            "end": 100,
+            "kind": "text"
+          },
+          {
+            "index": 20,
+            "token_id": 13,
+            "bytes_hex": "2e",
+            "text": ".",
+            "start": 100,
+            "end": 101,
+            "kind": "text"
+          },
+          {
+            "index": 21,
+            "token_id": 3197,
+            "bytes_hex": "205768656e",
+            "text": " When",
+            "start": 101,
+            "end": 106,
+            "kind": "text"
+          },
+          {
+            "index": 22,
+            "token_id": 279,
+            "bytes_hex": "20746865",
+            "text": " the",
+            "start": 106,
+            "end": 110,
+            "kind": "text"
+          },
+          {
+            "index": 23,
+            "token_id": 10320,
+            "bytes_hex": "2073656564",
+            "text": " seed",
+            "start": 110,
+            "end": 115,
+            "kind": "text"
+          },
+          {
+            "index": 24,
+            "token_id": 5221,
+            "bytes_hex": "2067657473",
+            "text": " gets",
+            "start": 115,
+            "end": 120,
+            "kind": "text"
+          },
+          {
+            "index": 25,
+            "token_id": 279,
+            "bytes_hex": "20746865",
+            "text": " the",
+            "start": 120,
+            "end": 124,
+            "kind": "text"
+          },
+          {
+            "index": 26,
+            "token_id": 1290,
+            "bytes_hex": "207269676874",
+            "text": " right",
+            "start": 124,
+            "end": 130,
+            "kind": "text"
+          },
+          {
+            "index": 27,
+            "token_id": 6514,
+            "bytes_hex": "206d6978",
+            "text": " mix",
+            "start": 130,
+            "end": 134,
+            "kind": "text"
+          },
+          {
+            "index": 28,
+            "token_id": 315,
+            "bytes_hex": "206f66",
+            "text": " of",
+            "start": 134,
+            "end": 137,
+            "kind": "text"
+          },
+          {
+            "index": 29,
+            "token_id": 3015,
+            "bytes_hex": "207761746572",
+            "text": " water",
+            "start": 137,
+            "end": 143,
+            "kind": "text"
+          },
+          {
+            "index": 30,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 143,
+            "end": 144,
+            "kind": "text"
+          },
+          {
+            "index": 31,
+            "token_id": 39020,
+            "bytes_hex": "2073756e6c69676874",
+            "text": " sunlight",
+            "start": 144,
+            "end": 153,
+            "kind": "text"
+          },
+          {
+            "index": 32,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 153,
+            "end": 154,
+            "kind": "text"
+          },
+          {
+            "index": 33,
+            "token_id": 323,
+            "bytes_hex": "20616e64",
+            "text": " and",
+            "start": 154,
+            "end": 158,
+            "kind": "text"
+          },
+          {
+            "index": 34,
+            "token_id": 17171,
+            "bytes_hex": "20736f696c",
+            "text": " soil",
+            "start": 158,
+            "end": 163,
+            "kind": "text"
+          },
+          {
+            "index": 35,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 163,
+            "end": 164,
+            "kind": "text"
+          },
+          {
+            "index": 36,
+            "token_id": 432,
+            "bytes_hex": "206974",
+            "text": " it",
+            "start": 164,
+            "end": 167,
+            "kind": "text"
+          },
+          {
+            "index": 37,
+            "token_id": 44863,
+            "bytes_hex": "20637261636b73",
+            "text": " cracks",
+            "start": 167,
+            "end": 174,
+            "kind": "text"
+          },
+          {
+            "index": 38,
+            "token_id": 1787,
+            "bytes_hex": "206f70656e",
+            "text": " open",
+            "start": 174,
+            "end": 179,
+            "kind": "text"
+          },
+          {
+            "index": 39,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 179,
+            "end": 180,
+            "kind": "text"
+          },
+          {
+            "index": 40,
+            "token_id": 323,
+            "bytes_hex": "20616e64",
+            "text": " and",
+            "start": 180,
+            "end": 184,
+            "kind": "text"
+          },
+          {
+            "index": 41,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 184,
+            "end": 186,
+            "kind": "text"
+          },
+          {
+            "index": 42,
+            "token_id": 501,
+            "bytes_hex": "206e6577",
+            "text": " new",
+            "start": 186,
+            "end": 190,
+            "kind": "text"
+          },
+          {
+            "index": 43,
+            "token_id": 6008,
+            "bytes_hex": "20706c616e74",
+            "text": " plant",
+            "start": 190,
+            "end": 196,
+            "kind": "text"
+          },
+          {
+            "index": 44,
+            "token_id": 27715,
+            "bytes_hex": "2067726f7773",
+            "text": " grows",
+            "start": 196,
+            "end": 202,
+            "kind": "text"
+          },
+          {
+            "index": 45,
+            "token_id": 700,
+            "bytes_hex": "206f7574",
+            "text": " out",
+            "start": 202,
+            "end": 206,
+            "kind": "text"
+          },
+          {
+            "index": 46,
+            "token_id": 315,
+            "bytes_hex": "206f66",
+            "text": " of",
+            "start": 206,
+            "end": 209,
+            "kind": "text"
+          },
+          {
+            "index": 47,
+            "token_id": 432,
+            "bytes_hex": "206974",
+            "text": " it",
+            "start": 209,
+            "end": 212,
+            "kind": "text"
+          },
+          {
+            "index": 48,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 212,
+            "end": 213,
+            "kind": "text"
+          },
+          {
+            "index": 49,
+            "token_id": 9583,
+            "bytes_hex": "206576656e7475616c6c79",
+            "text": " eventually",
+            "start": 213,
+            "end": 224,
+            "kind": "text"
+          },
+          {
+            "index": 50,
+            "token_id": 10454,
+            "bytes_hex": "206265636f6d696e67",
+            "text": " becoming",
+            "start": 224,
+            "end": 233,
+            "kind": "text"
+          },
+          {
+            "index": 51,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 233,
+            "end": 235,
+            "kind": "text"
+          },
+          {
+            "index": 52,
+            "token_id": 4916,
+            "bytes_hex": "2074726565",
+            "text": " tree",
+            "start": 235,
+            "end": 240,
+            "kind": "text"
+          },
+          {
+            "index": 53,
+            "token_id": 13,
+            "bytes_hex": "2e",
+            "text": ".",
+            "start": 240,
+            "end": 241,
+            "kind": "text"
+          },
+          {
+            "index": 54,
+            "token_id": 151645,
+            "bytes_hex": null,
+            "text": "",
+            "start": 241,
+            "end": 241,
+            "kind": "control"
+          }
+        ]
+      },
+      "marked": {
+        "text": "A seed starts as a tiny package with all the parts a growing plant needs. When the seed has the right conditions—like water, sunlight, and soil—it sprouts a small plant, which grows taller over time and becomes a tree.",
+        "completion": "eos",
+        "usage": {
+          "prompt_tokens": 28,
+          "completion_tokens": 49,
+          "total_tokens": 77
+        },
+        "timing": {
+          "generation_seconds": 3.486675500171259,
+          "inspection_seconds": 0.0643122079782188
+        },
+        "inspection": {
+          "events": 48,
+          "ones": 745,
+          "trials": 1440,
+          "fraction": 0.5173611111111112,
+          "control_fraction": 0.49166666666666664,
+          "calibrated": false,
+          "verdict": null,
+          "series": [
+            {
+              "characters": 14,
+              "matching": 0.5888888888888889,
+              "control": 0.4888888888888889
+            },
+            {
+              "characters": 27,
+              "matching": 0.47619047619047616,
+              "control": 0.4857142857142857
+            },
+            {
+              "characters": 41,
+              "matching": 0.5111111111111111,
+              "control": 0.5074074074074074
+            },
+            {
+              "characters": 54,
+              "matching": 0.5333333333333333,
+              "control": 0.48205128205128206
+            },
+            {
+              "characters": 68,
+              "matching": 0.5111111111111111,
+              "control": 0.49777777777777776
+            },
+            {
+              "characters": 82,
+              "matching": 0.5259259259259259,
+              "control": 0.4925925925925926
+            },
+            {
+              "characters": 95,
+              "matching": 0.5396825396825397,
+              "control": 0.48253968253968255
+            },
+            {
+              "characters": 109,
+              "matching": 0.5305555555555556,
+              "control": 0.4777777777777778
+            },
+            {
+              "characters": 123,
+              "matching": 0.5371794871794872,
+              "control": 0.4858974358974359
+            },
+            {
+              "characters": 136,
+              "matching": 0.5311111111111111,
+              "control": 0.4888888888888889
+            },
+            {
+              "characters": 150,
+              "matching": 0.5232323232323233,
+              "control": 0.494949494949495
+            },
+            {
+              "characters": 164,
+              "matching": 0.5216216216216216,
+              "control": 0.4963963963963964
+            },
+            {
+              "characters": 177,
+              "matching": 0.5208333333333334,
+              "control": 0.49583333333333335
+            },
+            {
+              "characters": 191,
+              "matching": 0.515079365079365,
+              "control": 0.4936507936507937
+            },
+            {
+              "characters": 204,
+              "matching": 0.5140740740740741,
+              "control": 0.48814814814814816
+            },
+            {
+              "characters": 218,
+              "matching": 0.5173611111111112,
+              "control": 0.49166666666666664
+            }
+          ]
+        },
+        "trace": [
+          {
+            "index": 0,
+            "token_id": 32,
+            "bytes_hex": "41",
+            "text": "A",
+            "start": 0,
+            "end": 1,
+            "kind": "text"
+          },
+          {
+            "index": 1,
+            "token_id": 10320,
+            "bytes_hex": "2073656564",
+            "text": " seed",
+            "start": 1,
+            "end": 6,
+            "kind": "text"
+          },
+          {
+            "index": 2,
+            "token_id": 8471,
+            "bytes_hex": "20737461727473",
+            "text": " starts",
+            "start": 6,
+            "end": 13,
+            "kind": "text"
+          },
+          {
+            "index": 3,
+            "token_id": 438,
+            "bytes_hex": "206173",
+            "text": " as",
+            "start": 13,
+            "end": 16,
+            "kind": "text"
+          },
+          {
+            "index": 4,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 16,
+            "end": 18,
+            "kind": "text"
+          },
+          {
+            "index": 5,
+            "token_id": 13673,
+            "bytes_hex": "2074696e79",
+            "text": " tiny",
+            "start": 18,
+            "end": 23,
+            "kind": "text"
+          },
+          {
+            "index": 6,
+            "token_id": 6328,
+            "bytes_hex": "207061636b616765",
+            "text": " package",
+            "start": 23,
+            "end": 31,
+            "kind": "text"
+          },
+          {
+            "index": 7,
+            "token_id": 448,
+            "bytes_hex": "2077697468",
+            "text": " with",
+            "start": 31,
+            "end": 36,
+            "kind": "text"
+          },
+          {
+            "index": 8,
+            "token_id": 678,
+            "bytes_hex": "20616c6c",
+            "text": " all",
+            "start": 36,
+            "end": 40,
+            "kind": "text"
+          },
+          {
+            "index": 9,
+            "token_id": 279,
+            "bytes_hex": "20746865",
+            "text": " the",
+            "start": 40,
+            "end": 44,
+            "kind": "text"
+          },
+          {
+            "index": 10,
+            "token_id": 5479,
+            "bytes_hex": "207061727473",
+            "text": " parts",
+            "start": 44,
+            "end": 50,
+            "kind": "text"
+          },
+          {
+            "index": 11,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 50,
+            "end": 52,
+            "kind": "text"
+          },
+          {
+            "index": 12,
+            "token_id": 7826,
+            "bytes_hex": "2067726f77696e67",
+            "text": " growing",
+            "start": 52,
+            "end": 60,
+            "kind": "text"
+          },
+          {
+            "index": 13,
+            "token_id": 6008,
+            "bytes_hex": "20706c616e74",
+            "text": " plant",
+            "start": 60,
+            "end": 66,
+            "kind": "text"
+          },
+          {
+            "index": 14,
+            "token_id": 3880,
+            "bytes_hex": "206e65656473",
+            "text": " needs",
+            "start": 66,
+            "end": 72,
+            "kind": "text"
+          },
+          {
+            "index": 15,
+            "token_id": 13,
+            "bytes_hex": "2e",
+            "text": ".",
+            "start": 72,
+            "end": 73,
+            "kind": "text"
+          },
+          {
+            "index": 16,
+            "token_id": 3197,
+            "bytes_hex": "205768656e",
+            "text": " When",
+            "start": 73,
+            "end": 78,
+            "kind": "text"
+          },
+          {
+            "index": 17,
+            "token_id": 279,
+            "bytes_hex": "20746865",
+            "text": " the",
+            "start": 78,
+            "end": 82,
+            "kind": "text"
+          },
+          {
+            "index": 18,
+            "token_id": 10320,
+            "bytes_hex": "2073656564",
+            "text": " seed",
+            "start": 82,
+            "end": 87,
+            "kind": "text"
+          },
+          {
+            "index": 19,
+            "token_id": 702,
+            "bytes_hex": "20686173",
+            "text": " has",
+            "start": 87,
+            "end": 91,
+            "kind": "text"
+          },
+          {
+            "index": 20,
+            "token_id": 279,
+            "bytes_hex": "20746865",
+            "text": " the",
+            "start": 91,
+            "end": 95,
+            "kind": "text"
+          },
+          {
+            "index": 21,
+            "token_id": 1290,
+            "bytes_hex": "207269676874",
+            "text": " right",
+            "start": 95,
+            "end": 101,
+            "kind": "text"
+          },
+          {
+            "index": 22,
+            "token_id": 4682,
+            "bytes_hex": "20636f6e646974696f6e73",
+            "text": " conditions",
+            "start": 101,
+            "end": 112,
+            "kind": "text"
+          },
+          {
+            "index": 23,
+            "token_id": 2293,
+            "bytes_hex": "e28094",
+            "text": "—",
+            "start": 112,
+            "end": 113,
+            "kind": "text"
+          },
+          {
+            "index": 24,
+            "token_id": 4803,
+            "bytes_hex": "6c696b65",
+            "text": "like",
+            "start": 113,
+            "end": 117,
+            "kind": "text"
+          },
+          {
+            "index": 25,
+            "token_id": 3015,
+            "bytes_hex": "207761746572",
+            "text": " water",
+            "start": 117,
+            "end": 123,
+            "kind": "text"
+          },
+          {
+            "index": 26,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 123,
+            "end": 124,
+            "kind": "text"
+          },
+          {
+            "index": 27,
+            "token_id": 39020,
+            "bytes_hex": "2073756e6c69676874",
+            "text": " sunlight",
+            "start": 124,
+            "end": 133,
+            "kind": "text"
+          },
+          {
+            "index": 28,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 133,
+            "end": 134,
+            "kind": "text"
+          },
+          {
+            "index": 29,
+            "token_id": 323,
+            "bytes_hex": "20616e64",
+            "text": " and",
+            "start": 134,
+            "end": 138,
+            "kind": "text"
+          },
+          {
+            "index": 30,
+            "token_id": 17171,
+            "bytes_hex": "20736f696c",
+            "text": " soil",
+            "start": 138,
+            "end": 143,
+            "kind": "text"
+          },
+          {
+            "index": 31,
+            "token_id": 43503,
+            "bytes_hex": "e280946974",
+            "text": "—it",
+            "start": 143,
+            "end": 146,
+            "kind": "text"
+          },
+          {
+            "index": 32,
+            "token_id": 8151,
+            "bytes_hex": "20737072",
+            "text": " spr",
+            "start": 146,
+            "end": 150,
+            "kind": "text"
+          },
+          {
+            "index": 33,
+            "token_id": 11672,
+            "bytes_hex": "6f757473",
+            "text": "outs",
+            "start": 150,
+            "end": 154,
+            "kind": "text"
+          },
+          {
+            "index": 34,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 154,
+            "end": 156,
+            "kind": "text"
+          },
+          {
+            "index": 35,
+            "token_id": 2613,
+            "bytes_hex": "20736d616c6c",
+            "text": " small",
+            "start": 156,
+            "end": 162,
+            "kind": "text"
+          },
+          {
+            "index": 36,
+            "token_id": 6008,
+            "bytes_hex": "20706c616e74",
+            "text": " plant",
+            "start": 162,
+            "end": 168,
+            "kind": "text"
+          },
+          {
+            "index": 37,
+            "token_id": 11,
+            "bytes_hex": "2c",
+            "text": ",",
+            "start": 168,
+            "end": 169,
+            "kind": "text"
+          },
+          {
+            "index": 38,
+            "token_id": 892,
+            "bytes_hex": "207768696368",
+            "text": " which",
+            "start": 169,
+            "end": 175,
+            "kind": "text"
+          },
+          {
+            "index": 39,
+            "token_id": 27715,
+            "bytes_hex": "2067726f7773",
+            "text": " grows",
+            "start": 175,
+            "end": 181,
+            "kind": "text"
+          },
+          {
+            "index": 40,
+            "token_id": 49909,
+            "bytes_hex": "2074616c6c6572",
+            "text": " taller",
+            "start": 181,
+            "end": 188,
+            "kind": "text"
+          },
+          {
+            "index": 41,
+            "token_id": 916,
+            "bytes_hex": "206f766572",
+            "text": " over",
+            "start": 188,
+            "end": 193,
+            "kind": "text"
+          },
+          {
+            "index": 42,
+            "token_id": 882,
+            "bytes_hex": "2074696d65",
+            "text": " time",
+            "start": 193,
+            "end": 198,
+            "kind": "text"
+          },
+          {
+            "index": 43,
+            "token_id": 323,
+            "bytes_hex": "20616e64",
+            "text": " and",
+            "start": 198,
+            "end": 202,
+            "kind": "text"
+          },
+          {
+            "index": 44,
+            "token_id": 9044,
+            "bytes_hex": "206265636f6d6573",
+            "text": " becomes",
+            "start": 202,
+            "end": 210,
+            "kind": "text"
+          },
+          {
+            "index": 45,
+            "token_id": 264,
+            "bytes_hex": "2061",
+            "text": " a",
+            "start": 210,
+            "end": 212,
+            "kind": "text"
+          },
+          {
+            "index": 46,
+            "token_id": 4916,
+            "bytes_hex": "2074726565",
+            "text": " tree",
+            "start": 212,
+            "end": 217,
+            "kind": "text"
+          },
+          {
+            "index": 47,
+            "token_id": 13,
+            "bytes_hex": "2e",
+            "text": ".",
+            "start": 217,
+            "end": 218,
+            "kind": "text"
+          },
+          {
+            "index": 48,
+            "token_id": 151645,
+            "bytes_hex": null,
+            "text": "",
+            "start": 218,
+            "end": 218,
+            "kind": "control"
+          }
+        ]
+      }
+    },
+    "seconds": 7.974551999941468,
+    "max_tokens": 192,
+    "independent_randomness": true,
+    "calibrated": false,
+    "backend": "mlx"
+  }
+}

@@ -70,7 +70,7 @@ as fresh quality samples. Sampling arithmetic is unchanged.
 
 ## Reproduce and inspect
 
-Use the [pinned download recipe](README.md#local-gguf-with-llamacpp) and an
+Use the [pinned download recipe](USAGE.md#local-gguf-with-llamacpp) and an
 installed wheel with `llama-cpp`, `clients` and `server` extras. From the checkout:
 
 ```sh

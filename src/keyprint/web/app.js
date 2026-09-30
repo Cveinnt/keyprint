@@ -808,9 +808,13 @@ async function loadReplay() {
     if (!response.ok) throw new Error("The recording could not be loaded.");
     const data = await response.json();
     if (document.body?.dataset?.gallery === "true") {
-      mountGallery(document, data, showRecording);
+      mountGallery(document, data, showRecording, Number(new URLSearchParams(location.search).get("example") || 0));
     } else {
       showRecording(data);
+    }
+    // Replay sections may be hidden until data arrives, after native hash scrolling.
+    if (["#gallery", "#outputs", "#choices", "#explore", "#setup"].includes(location.hash)) {
+      document.getElementById(location.hash.slice(1))?.scrollIntoView({block: "start"});
     }
   } catch (error) {
     $("status").textContent = "Recording unavailable. " + error.message;

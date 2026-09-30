@@ -20,7 +20,7 @@
       </header>
       <section id="top" class="intro">
         <p id="experience-label" class="eyebrow">
-          The local playground · private development preview
+          The local playground · community research preview
         </p>
         <h1>Ordinary words. A pattern underneath.</h1>
         <div class="intro-bottom">
@@ -294,7 +294,7 @@ In 60 words, explain how a seed becomes a tree to a curious adult.</textarea>
             <option value="transformers">Transformers · qualified local model</option>
             <option value="llama_cpp">llama.cpp · qualified GGUF</option>
           </select>
-          <p>Install this recipe’s backend extra from the private checkout:</p>
+          <p>Install this recipe’s backend extra from your cloned Keyprint checkout:</p>
           <pre id="backend-install">python -m pip install '.[mlx]'</pre>
           <p>Generate, compare, export. The same SDK produces this view and the live local playground.
             Recorded playback needs no model. New prompts and edits run in your local model.</p>
@@ -306,11 +306,11 @@ with Keyprint.from_mlx("path/to/qwen3-8b-4bit", key=Keyprint.new_key()) as wm:
     pair.export("my-demo")</pre>
           <button id="copy-recipe" type="button">Copy Python</button>
           <p id="copy-status" role="status"></p>
-          <p>Local playground · private checkout · Python 3.12–3.13</p>
+          <p>Local playground · source checkout · Python 3.12–3.13</p>
           <pre>python -m pip install '.[playground]'
 keyprint playground --download</pre>
-          <p>The public SDK release remains held. These commands require the private checkout;
-            they are not a public PyPI install. Downloads are explicit: the platform default is
+          <p>Install instructions: <a href="https://github.com/Cveinnt/keyprint#start-here">Keyprint quickstart</a>.
+            These relative commands run from a cloned repository, not PyPI. Downloads are explicit: the platform default is
             Qwen/MLX on Apple silicon (about 4.62 GB), or SmolLM2/Transformers elsewhere
             (about 270 MB). Reuse local weights with <code>--model PATH</code>.
             CPU alternatives and supported models are documented in the README.</p>

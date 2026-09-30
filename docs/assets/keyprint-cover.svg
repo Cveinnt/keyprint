@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" role="img" aria-labelledby="title desc">
+<title id="title">Keyprint: ordinary words, unexpected possibilities</title><desc id="desc">An open playground for text watermarking. Decorative connected paths lead from a prompt through choices to text. Play, inspect, remix.</desc>
+<rect width="1280" height="440" fill="#f5f2eb"/>
+<path d="M42 58H1238M42 390H1238" stroke="#d7d1c5"/>
+<text x="48" y="40" fill="#a3452b" font-family="Georgia,serif" font-size="25">Keyprint /</text>
+<text x="1234" y="38" text-anchor="end" fill="#736f65" font-family="monospace" font-size="12" letter-spacing="2">AN OPEN RESEARCH PLAYGROUND</text>
+<g font-family="Georgia,serif" font-size="64" fill="#302e28"><text x="48" y="156">Ordinary words.</text><text x="48" y="231" font-style="italic">Unexpected</text><text x="48" y="306" font-style="italic">possibilities.</text></g>
+<g fill="none" stroke="#d7d1c5" stroke-width="2"><path d="M693 220C764 220 757 110 838 110S933 220 1002 220S1101 122 1218 122"/><path d="M693 220C764 220 757 330 838 330S930 220 1002 220S1101 318 1218 318"/><path d="M693 220H1218"/></g>
+<path d="M693 220C764 220 757 110 838 110S933 220 1002 220S1101 318 1218 318" fill="none" stroke="#a3452b" stroke-width="3"/>
+<g fill="#f5f2eb" stroke="#d7d1c5"><rect x="668" y="196" width="90" height="48" rx="24"/><rect x="804" y="87" width="88" height="46" rx="23"/><rect x="804" y="307" width="88" height="46" rx="23"/><rect x="971" y="196" width="88" height="48" rx="24"/><rect x="1148" y="99" width="90" height="46" rx="23"/></g>
+<rect x="1139" y="294" width="99" height="48" rx="24" fill="#a3452b"/>
+<g text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#302e28"><text x="713" y="227">a seed</text><text x="848" y="117">grows</text><text x="848" y="337">opens</text><text x="1015" y="227">into</text><text x="1193" y="129">a plant</text></g><text x="1189" y="325" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#fffaf1">a tree</text>
+<text x="48" y="419" fill="#736f65" font-family="monospace" font-size="12" letter-spacing="1">GENERATE / COMPARE / REMIX</text><text x="1234" y="419" text-anchor="end" fill="#a3452b" font-family="monospace" font-size="12" letter-spacing="1">PLAY WITH THE DEMOS →</text>
+</svg>

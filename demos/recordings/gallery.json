@@ -1,0 +1,3914 @@
+{
+  "schema": "keyprint-gallery-v1",
+  "examples": [
+    {
+      "title": "A small explanation",
+      "note": "Two independent responses to the same prompt. Differences alone do not establish a watermark effect or accepted output quality.",
+      "recording": {
+        "schema": "keyprint-comparison-v1",
+        "prompt": "In two sentences, explain how a seed becomes a tree to a curious adult.",
+        "experiment": {
+          "outputs": {
+            "ordinary": {
+              "text": "A seed starts as a tiny package with all the parts a growing plant needs, like food and instructions. When the seed gets the right mix of water, sunlight, and soil, it cracks open, and a new plant grows out of it, eventually becoming a tree.",
+              "completion": "eos",
+              "usage": {
+                "prompt_tokens": 28,
+                "completion_tokens": 55,
+                "total_tokens": 83
+              },
+              "timing": {
+                "generation_seconds": 4.354074375005439,
+                "inspection_seconds": 0.06948600010946393
+              },
+              "inspection": {
+                "events": 54,
+                "ones": 807,
+                "trials": 1620,
+                "fraction": 0.4981481481481482,
+                "control_fraction": 0.48333333333333334,
+                "calibrated": false,
+                "verdict": null,
+                "series": [
+                  {
+                    "characters": 15,
+                    "matching": 0.5583333333333333,
+                    "control": 0.4583333333333333
+                  },
+                  {
+                    "characters": 30,
+                    "matching": 0.5208333333333334,
+                    "control": 0.48333333333333334
+                  },
+                  {
+                    "characters": 45,
+                    "matching": 0.5166666666666667,
+                    "control": 0.5033333333333333
+                  },
+                  {
+                    "characters": 60,
+                    "matching": 0.5307692307692308,
+                    "control": 0.48717948717948717
+                  },
+                  {
+                    "characters": 75,
+                    "matching": 0.5137254901960784,
+                    "control": 0.48823529411764705
+                  },
+                  {
+                    "characters": 90,
+                    "matching": 0.5083333333333333,
+                    "control": 0.49666666666666665
+                  },
+                  {
+                    "characters": 105,
+                    "matching": 0.5075757575757576,
+                    "control": 0.5015151515151515
+                  },
+                  {
+                    "characters": 120,
+                    "matching": 0.5,
+                    "control": 0.49066666666666664
+                  },
+                  {
+                    "characters": 136,
+                    "matching": 0.49885057471264366,
+                    "control": 0.4804597701149425
+                  },
+                  {
+                    "characters": 151,
+                    "matching": 0.5121212121212121,
+                    "control": 0.48484848484848486
+                  },
+                  {
+                    "characters": 166,
+                    "matching": 0.5036036036036036,
+                    "control": 0.4774774774774775
+                  },
+                  {
+                    "characters": 181,
+                    "matching": 0.5041666666666667,
+                    "control": 0.475
+                  },
+                  {
+                    "characters": 196,
+                    "matching": 0.49772727272727274,
+                    "control": 0.4765151515151515
+                  },
+                  {
+                    "characters": 211,
+                    "matching": 0.49583333333333335,
+                    "control": 0.47708333333333336
+                  },
+                  {
+                    "characters": 226,
+                    "matching": 0.4980392156862745,
+                    "control": 0.47908496732026146
+                  },
+                  {
+                    "characters": 241,
+                    "matching": 0.4981481481481482,
+                    "control": 0.48333333333333334
+                  }
+                ]
+              },
+              "trace": [
+                {
+                  "index": 0,
+                  "token_id": 32,
+                  "bytes_hex": "41",
+                  "text": "A",
+                  "start": 0,
+                  "end": 1,
+                  "kind": "text"
+                },
+                {
+                  "index": 1,
+                  "token_id": 10320,
+                  "bytes_hex": "2073656564",
+                  "text": " seed",
+                  "start": 1,
+                  "end": 6,
+                  "kind": "text"
+                },
+                {
+                  "index": 2,
+                  "token_id": 8471,
+                  "bytes_hex": "20737461727473",
+                  "text": " starts",
+                  "start": 6,
+                  "end": 13,
+                  "kind": "text"
+                },
+                {
+                  "index": 3,
+                  "token_id": 438,
+                  "bytes_hex": "206173",
+                  "text": " as",
+                  "start": 13,
+                  "end": 16,
+                  "kind": "text"
+                },
+                {
+                  "index": 4,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 16,
+                  "end": 18,
+                  "kind": "text"
+                },
+                {
+                  "index": 5,
+                  "token_id": 13673,
+                  "bytes_hex": "2074696e79",
+                  "text": " tiny",
+                  "start": 18,
+                  "end": 23,
+                  "kind": "text"
+                },
+                {
+                  "index": 6,
+                  "token_id": 6328,
+                  "bytes_hex": "207061636b616765",
+                  "text": " package",
+                  "start": 23,
+                  "end": 31,
+                  "kind": "text"
+                },
+                {
+                  "index": 7,
+                  "token_id": 448,
+                  "bytes_hex": "2077697468",
+                  "text": " with",
+                  "start": 31,
+                  "end": 36,
+                  "kind": "text"
+                },
+                {
+                  "index": 8,
+                  "token_id": 678,
+                  "bytes_hex": "20616c6c",
+                  "text": " all",
+                  "start": 36,
+                  "end": 40,
+                  "kind": "text"
+                },
+                {
+                  "index": 9,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 40,
+                  "end": 44,
+                  "kind": "text"
+                },
+                {
+                  "index": 10,
+                  "token_id": 5479,
+                  "bytes_hex": "207061727473",
+                  "text": " parts",
+                  "start": 44,
+                  "end": 50,
+                  "kind": "text"
+                },
+                {
+                  "index": 11,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 50,
+                  "end": 52,
+                  "kind": "text"
+                },
+                {
+                  "index": 12,
+                  "token_id": 7826,
+                  "bytes_hex": "2067726f77696e67",
+                  "text": " growing",
+                  "start": 52,
+                  "end": 60,
+                  "kind": "text"
+                },
+                {
+                  "index": 13,
+                  "token_id": 6008,
+                  "bytes_hex": "20706c616e74",
+                  "text": " plant",
+                  "start": 60,
+                  "end": 66,
+                  "kind": "text"
+                },
+                {
+                  "index": 14,
+                  "token_id": 3880,
+                  "bytes_hex": "206e65656473",
+                  "text": " needs",
+                  "start": 66,
+                  "end": 72,
+                  "kind": "text"
+                },
+                {
+                  "index": 15,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 72,
+                  "end": 73,
+                  "kind": "text"
+                },
+                {
+                  "index": 16,
+                  "token_id": 1075,
+                  "bytes_hex": "206c696b65",
+                  "text": " like",
+                  "start": 73,
+                  "end": 78,
+                  "kind": "text"
+                },
+                {
+                  "index": 17,
+                  "token_id": 3607,
+                  "bytes_hex": "20666f6f64",
+                  "text": " food",
+                  "start": 78,
+                  "end": 83,
+                  "kind": "text"
+                },
+                {
+                  "index": 18,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 83,
+                  "end": 87,
+                  "kind": "text"
+                },
+                {
+                  "index": 19,
+                  "token_id": 11221,
+                  "bytes_hex": "20696e737472756374696f6e73",
+                  "text": " instructions",
+                  "start": 87,
+                  "end": 100,
+                  "kind": "text"
+                },
+                {
+                  "index": 20,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 100,
+                  "end": 101,
+                  "kind": "text"
+                },
+                {
+                  "index": 21,
+                  "token_id": 3197,
+                  "bytes_hex": "205768656e",
+                  "text": " When",
+                  "start": 101,
+                  "end": 106,
+                  "kind": "text"
+                },
+                {
+                  "index": 22,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 106,
+                  "end": 110,
+                  "kind": "text"
+                },
+                {
+                  "index": 23,
+                  "token_id": 10320,
+                  "bytes_hex": "2073656564",
+                  "text": " seed",
+                  "start": 110,
+                  "end": 115,
+                  "kind": "text"
+                },
+                {
+                  "index": 24,
+                  "token_id": 5221,
+                  "bytes_hex": "2067657473",
+                  "text": " gets",
+                  "start": 115,
+                  "end": 120,
+                  "kind": "text"
+                },
+                {
+                  "index": 25,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 120,
+                  "end": 124,
+                  "kind": "text"
+                },
+                {
+                  "index": 26,
+                  "token_id": 1290,
+                  "bytes_hex": "207269676874",
+                  "text": " right",
+                  "start": 124,
+                  "end": 130,
+                  "kind": "text"
+                },
+                {
+                  "index": 27,
+                  "token_id": 6514,
+                  "bytes_hex": "206d6978",
+                  "text": " mix",
+                  "start": 130,
+                  "end": 134,
+                  "kind": "text"
+                },
+                {
+                  "index": 28,
+                  "token_id": 315,
+                  "bytes_hex": "206f66",
+                  "text": " of",
+                  "start": 134,
+                  "end": 137,
+                  "kind": "text"
+                },
+                {
+                  "index": 29,
+                  "token_id": 3015,
+                  "bytes_hex": "207761746572",
+                  "text": " water",
+                  "start": 137,
+                  "end": 143,
+                  "kind": "text"
+                },
+                {
+                  "index": 30,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 143,
+                  "end": 144,
+                  "kind": "text"
+                },
+                {
+                  "index": 31,
+                  "token_id": 39020,
+                  "bytes_hex": "2073756e6c69676874",
+                  "text": " sunlight",
+                  "start": 144,
+                  "end": 153,
+                  "kind": "text"
+                },
+                {
+                  "index": 32,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 153,
+                  "end": 154,
+                  "kind": "text"
+                },
+                {
+                  "index": 33,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 154,
+                  "end": 158,
+                  "kind": "text"
+                },
+                {
+                  "index": 34,
+                  "token_id": 17171,
+                  "bytes_hex": "20736f696c",
+                  "text": " soil",
+                  "start": 158,
+                  "end": 163,
+                  "kind": "text"
+                },
+                {
+                  "index": 35,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 163,
+                  "end": 164,
+                  "kind": "text"
+                },
+                {
+                  "index": 36,
+                  "token_id": 432,
+                  "bytes_hex": "206974",
+                  "text": " it",
+                  "start": 164,
+                  "end": 167,
+                  "kind": "text"
+                },
+                {
+                  "index": 37,
+                  "token_id": 44863,
+                  "bytes_hex": "20637261636b73",
+                  "text": " cracks",
+                  "start": 167,
+                  "end": 174,
+                  "kind": "text"
+                },
+                {
+                  "index": 38,
+                  "token_id": 1787,
+                  "bytes_hex": "206f70656e",
+                  "text": " open",
+                  "start": 174,
+                  "end": 179,
+                  "kind": "text"
+                },
+                {
+                  "index": 39,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 179,
+                  "end": 180,
+                  "kind": "text"
+                },
+                {
+                  "index": 40,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 180,
+                  "end": 184,
+                  "kind": "text"
+                },
+                {
+                  "index": 41,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 184,
+                  "end": 186,
+                  "kind": "text"
+                },
+                {
+                  "index": 42,
+                  "token_id": 501,
+                  "bytes_hex": "206e6577",
+                  "text": " new",
+                  "start": 186,
+                  "end": 190,
+                  "kind": "text"
+                },
+                {
+                  "index": 43,
+                  "token_id": 6008,
+                  "bytes_hex": "20706c616e74",
+                  "text": " plant",
+                  "start": 190,
+                  "end": 196,
+                  "kind": "text"
+                },
+                {
+                  "index": 44,
+                  "token_id": 27715,
+                  "bytes_hex": "2067726f7773",
+                  "text": " grows",
+                  "start": 196,
+                  "end": 202,
+                  "kind": "text"
+                },
+                {
+                  "index": 45,
+                  "token_id": 700,
+                  "bytes_hex": "206f7574",
+                  "text": " out",
+                  "start": 202,
+                  "end": 206,
+                  "kind": "text"
+                },
+                {
+                  "index": 46,
+                  "token_id": 315,
+                  "bytes_hex": "206f66",
+                  "text": " of",
+                  "start": 206,
+                  "end": 209,
+                  "kind": "text"
+                },
+                {
+                  "index": 47,
+                  "token_id": 432,
+                  "bytes_hex": "206974",
+                  "text": " it",
+                  "start": 209,
+                  "end": 212,
+                  "kind": "text"
+                },
+                {
+                  "index": 48,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 212,
+                  "end": 213,
+                  "kind": "text"
+                },
+                {
+                  "index": 49,
+                  "token_id": 9583,
+                  "bytes_hex": "206576656e7475616c6c79",
+                  "text": " eventually",
+                  "start": 213,
+                  "end": 224,
+                  "kind": "text"
+                },
+                {
+                  "index": 50,
+                  "token_id": 10454,
+                  "bytes_hex": "206265636f6d696e67",
+                  "text": " becoming",
+                  "start": 224,
+                  "end": 233,
+                  "kind": "text"
+                },
+                {
+                  "index": 51,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 233,
+                  "end": 235,
+                  "kind": "text"
+                },
+                {
+                  "index": 52,
+                  "token_id": 4916,
+                  "bytes_hex": "2074726565",
+                  "text": " tree",
+                  "start": 235,
+                  "end": 240,
+                  "kind": "text"
+                },
+                {
+                  "index": 53,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 240,
+                  "end": 241,
+                  "kind": "text"
+                },
+                {
+                  "index": 54,
+                  "token_id": 151645,
+                  "bytes_hex": null,
+                  "text": "",
+                  "start": 241,
+                  "end": 241,
+                  "kind": "control"
+                }
+              ]
+            },
+            "marked": {
+              "text": "A seed starts as a tiny package with all the parts a growing plant needs. When the seed has the right conditions—like water, sunlight, and soil—it sprouts a small plant, which grows taller over time and becomes a tree.",
+              "completion": "eos",
+              "usage": {
+                "prompt_tokens": 28,
+                "completion_tokens": 49,
+                "total_tokens": 77
+              },
+              "timing": {
+                "generation_seconds": 3.486675500171259,
+                "inspection_seconds": 0.0643122079782188
+              },
+              "inspection": {
+                "events": 48,
+                "ones": 745,
+                "trials": 1440,
+                "fraction": 0.5173611111111112,
+                "control_fraction": 0.49166666666666664,
+                "calibrated": false,
+                "verdict": null,
+                "series": [
+                  {
+                    "characters": 14,
+                    "matching": 0.5888888888888889,
+                    "control": 0.4888888888888889
+                  },
+                  {
+                    "characters": 27,
+                    "matching": 0.47619047619047616,
+                    "control": 0.4857142857142857
+                  },
+                  {
+                    "characters": 41,
+                    "matching": 0.5111111111111111,
+                    "control": 0.5074074074074074
+                  },
+                  {
+                    "characters": 54,
+                    "matching": 0.5333333333333333,
+                    "control": 0.48205128205128206
+                  },
+                  {
+                    "characters": 68,
+                    "matching": 0.5111111111111111,
+                    "control": 0.49777777777777776
+                  },
+                  {
+                    "characters": 82,
+                    "matching": 0.5259259259259259,
+                    "control": 0.4925925925925926
+                  },
+                  {
+                    "characters": 95,
+                    "matching": 0.5396825396825397,
+                    "control": 0.48253968253968255
+                  },
+                  {
+                    "characters": 109,
+                    "matching": 0.5305555555555556,
+                    "control": 0.4777777777777778
+                  },
+                  {
+                    "characters": 123,
+                    "matching": 0.5371794871794872,
+                    "control": 0.4858974358974359
+                  },
+                  {
+                    "characters": 136,
+                    "matching": 0.5311111111111111,
+                    "control": 0.4888888888888889
+                  },
+                  {
+                    "characters": 150,
+                    "matching": 0.5232323232323233,
+                    "control": 0.494949494949495
+                  },
+                  {
+                    "characters": 164,
+                    "matching": 0.5216216216216216,
+                    "control": 0.4963963963963964
+                  },
+                  {
+                    "characters": 177,
+                    "matching": 0.5208333333333334,
+                    "control": 0.49583333333333335
+                  },
+                  {
+                    "characters": 191,
+                    "matching": 0.515079365079365,
+                    "control": 0.4936507936507937
+                  },
+                  {
+                    "characters": 204,
+                    "matching": 0.5140740740740741,
+                    "control": 0.48814814814814816
+                  },
+                  {
+                    "characters": 218,
+                    "matching": 0.5173611111111112,
+                    "control": 0.49166666666666664
+                  }
+                ]
+              },
+              "trace": [
+                {
+                  "index": 0,
+                  "token_id": 32,
+                  "bytes_hex": "41",
+                  "text": "A",
+                  "start": 0,
+                  "end": 1,
+                  "kind": "text"
+                },
+                {
+                  "index": 1,
+                  "token_id": 10320,
+                  "bytes_hex": "2073656564",
+                  "text": " seed",
+                  "start": 1,
+                  "end": 6,
+                  "kind": "text"
+                },
+                {
+                  "index": 2,
+                  "token_id": 8471,
+                  "bytes_hex": "20737461727473",
+                  "text": " starts",
+                  "start": 6,
+                  "end": 13,
+                  "kind": "text"
+                },
+                {
+                  "index": 3,
+                  "token_id": 438,
+                  "bytes_hex": "206173",
+                  "text": " as",
+                  "start": 13,
+                  "end": 16,
+                  "kind": "text"
+                },
+                {
+                  "index": 4,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 16,
+                  "end": 18,
+                  "kind": "text"
+                },
+                {
+                  "index": 5,
+                  "token_id": 13673,
+                  "bytes_hex": "2074696e79",
+                  "text": " tiny",
+                  "start": 18,
+                  "end": 23,
+                  "kind": "text"
+                },
+                {
+                  "index": 6,
+                  "token_id": 6328,
+                  "bytes_hex": "207061636b616765",
+                  "text": " package",
+                  "start": 23,
+                  "end": 31,
+                  "kind": "text"
+                },
+                {
+                  "index": 7,
+                  "token_id": 448,
+                  "bytes_hex": "2077697468",
+                  "text": " with",
+                  "start": 31,
+                  "end": 36,
+                  "kind": "text"
+                },
+                {
+                  "index": 8,
+                  "token_id": 678,
+                  "bytes_hex": "20616c6c",
+                  "text": " all",
+                  "start": 36,
+                  "end": 40,
+                  "kind": "text"
+                },
+                {
+                  "index": 9,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 40,
+                  "end": 44,
+                  "kind": "text"
+                },
+                {
+                  "index": 10,
+                  "token_id": 5479,
+                  "bytes_hex": "207061727473",
+                  "text": " parts",
+                  "start": 44,
+                  "end": 50,
+                  "kind": "text"
+                },
+                {
+                  "index": 11,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 50,
+                  "end": 52,
+                  "kind": "text"
+                },
+                {
+                  "index": 12,
+                  "token_id": 7826,
+                  "bytes_hex": "2067726f77696e67",
+                  "text": " growing",
+                  "start": 52,
+                  "end": 60,
+                  "kind": "text"
+                },
+                {
+                  "index": 13,
+                  "token_id": 6008,
+                  "bytes_hex": "20706c616e74",
+                  "text": " plant",
+                  "start": 60,
+                  "end": 66,
+                  "kind": "text"
+                },
+                {
+                  "index": 14,
+                  "token_id": 3880,
+                  "bytes_hex": "206e65656473",
+                  "text": " needs",
+                  "start": 66,
+                  "end": 72,
+                  "kind": "text"
+                },
+                {
+                  "index": 15,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 72,
+                  "end": 73,
+                  "kind": "text"
+                },
+                {
+                  "index": 16,
+                  "token_id": 3197,
+                  "bytes_hex": "205768656e",
+                  "text": " When",
+                  "start": 73,
+                  "end": 78,
+                  "kind": "text"
+                },
+                {
+                  "index": 17,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 78,
+                  "end": 82,
+                  "kind": "text"
+                },
+                {
+                  "index": 18,
+                  "token_id": 10320,
+                  "bytes_hex": "2073656564",
+                  "text": " seed",
+                  "start": 82,
+                  "end": 87,
+                  "kind": "text"
+                },
+                {
+                  "index": 19,
+                  "token_id": 702,
+                  "bytes_hex": "20686173",
+                  "text": " has",
+                  "start": 87,
+                  "end": 91,
+                  "kind": "text"
+                },
+                {
+                  "index": 20,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 91,
+                  "end": 95,
+                  "kind": "text"
+                },
+                {
+                  "index": 21,
+                  "token_id": 1290,
+                  "bytes_hex": "207269676874",
+                  "text": " right",
+                  "start": 95,
+                  "end": 101,
+                  "kind": "text"
+                },
+                {
+                  "index": 22,
+                  "token_id": 4682,
+                  "bytes_hex": "20636f6e646974696f6e73",
+                  "text": " conditions",
+                  "start": 101,
+                  "end": 112,
+                  "kind": "text"
+                },
+                {
+                  "index": 23,
+                  "token_id": 2293,
+                  "bytes_hex": "e28094",
+                  "text": "—",
+                  "start": 112,
+                  "end": 113,
+                  "kind": "text"
+                },
+                {
+                  "index": 24,
+                  "token_id": 4803,
+                  "bytes_hex": "6c696b65",
+                  "text": "like",
+                  "start": 113,
+                  "end": 117,
+                  "kind": "text"
+                },
+                {
+                  "index": 25,
+                  "token_id": 3015,
+                  "bytes_hex": "207761746572",
+                  "text": " water",
+                  "start": 117,
+                  "end": 123,
+                  "kind": "text"
+                },
+                {
+                  "index": 26,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 123,
+                  "end": 124,
+                  "kind": "text"
+                },
+                {
+                  "index": 27,
+                  "token_id": 39020,
+                  "bytes_hex": "2073756e6c69676874",
+                  "text": " sunlight",
+                  "start": 124,
+                  "end": 133,
+                  "kind": "text"
+                },
+                {
+                  "index": 28,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 133,
+                  "end": 134,
+                  "kind": "text"
+                },
+                {
+                  "index": 29,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 134,
+                  "end": 138,
+                  "kind": "text"
+                },
+                {
+                  "index": 30,
+                  "token_id": 17171,
+                  "bytes_hex": "20736f696c",
+                  "text": " soil",
+                  "start": 138,
+                  "end": 143,
+                  "kind": "text"
+                },
+                {
+                  "index": 31,
+                  "token_id": 43503,
+                  "bytes_hex": "e280946974",
+                  "text": "—it",
+                  "start": 143,
+                  "end": 146,
+                  "kind": "text"
+                },
+                {
+                  "index": 32,
+                  "token_id": 8151,
+                  "bytes_hex": "20737072",
+                  "text": " spr",
+                  "start": 146,
+                  "end": 150,
+                  "kind": "text"
+                },
+                {
+                  "index": 33,
+                  "token_id": 11672,
+                  "bytes_hex": "6f757473",
+                  "text": "outs",
+                  "start": 150,
+                  "end": 154,
+                  "kind": "text"
+                },
+                {
+                  "index": 34,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 154,
+                  "end": 156,
+                  "kind": "text"
+                },
+                {
+                  "index": 35,
+                  "token_id": 2613,
+                  "bytes_hex": "20736d616c6c",
+                  "text": " small",
+                  "start": 156,
+                  "end": 162,
+                  "kind": "text"
+                },
+                {
+                  "index": 36,
+                  "token_id": 6008,
+                  "bytes_hex": "20706c616e74",
+                  "text": " plant",
+                  "start": 162,
+                  "end": 168,
+                  "kind": "text"
+                },
+                {
+                  "index": 37,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 168,
+                  "end": 169,
+                  "kind": "text"
+                },
+                {
+                  "index": 38,
+                  "token_id": 892,
+                  "bytes_hex": "207768696368",
+                  "text": " which",
+                  "start": 169,
+                  "end": 175,
+                  "kind": "text"
+                },
+                {
+                  "index": 39,
+                  "token_id": 27715,
+                  "bytes_hex": "2067726f7773",
+                  "text": " grows",
+                  "start": 175,
+                  "end": 181,
+                  "kind": "text"
+                },
+                {
+                  "index": 40,
+                  "token_id": 49909,
+                  "bytes_hex": "2074616c6c6572",
+                  "text": " taller",
+                  "start": 181,
+                  "end": 188,
+                  "kind": "text"
+                },
+                {
+                  "index": 41,
+                  "token_id": 916,
+                  "bytes_hex": "206f766572",
+                  "text": " over",
+                  "start": 188,
+                  "end": 193,
+                  "kind": "text"
+                },
+                {
+                  "index": 42,
+                  "token_id": 882,
+                  "bytes_hex": "2074696d65",
+                  "text": " time",
+                  "start": 193,
+                  "end": 198,
+                  "kind": "text"
+                },
+                {
+                  "index": 43,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 198,
+                  "end": 202,
+                  "kind": "text"
+                },
+                {
+                  "index": 44,
+                  "token_id": 9044,
+                  "bytes_hex": "206265636f6d6573",
+                  "text": " becomes",
+                  "start": 202,
+                  "end": 210,
+                  "kind": "text"
+                },
+                {
+                  "index": 45,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 210,
+                  "end": 212,
+                  "kind": "text"
+                },
+                {
+                  "index": 46,
+                  "token_id": 4916,
+                  "bytes_hex": "2074726565",
+                  "text": " tree",
+                  "start": 212,
+                  "end": 217,
+                  "kind": "text"
+                },
+                {
+                  "index": 47,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 217,
+                  "end": 218,
+                  "kind": "text"
+                },
+                {
+                  "index": 48,
+                  "token_id": 151645,
+                  "bytes_hex": null,
+                  "text": "",
+                  "start": 218,
+                  "end": 218,
+                  "kind": "control"
+                }
+              ]
+            }
+          },
+          "seconds": 7.974551999941468,
+          "max_tokens": 192,
+          "independent_randomness": true,
+          "calibrated": false,
+          "backend": "mlx"
+        }
+      }
+    },
+    {
+      "title": "An everyday email",
+      "note": "Constraint failure: the marked response invents “the park around noon,” despite the prompt forbidding a time or location. Both responses add details. This run is retained for inspection, not approved as production-quality email.",
+      "recording": {
+        "schema": "keyprint-comparison-v1",
+        "prompt": "Write a warm, brief email inviting a friend to a picnic this weekend. Do not invent a date, time, location, or names. Use at most 60 words.",
+        "experiment": {
+          "outputs": {
+            "ordinary": {
+              "text": "Hi [Name],  \n\nLet’s grab some sunshine this weekend! Join me for a picnic — it’ll be fun, relaxing, and just us. Bring a blanket, snacks, and your smile. I’ll bring the rest. Let me know if you’re in!  \n\nCan’t wait to catch up! 🌳🍴",
+              "completion": "eos",
+              "usage": {
+                "prompt_tokens": 48,
+                "completion_tokens": 67,
+                "total_tokens": 115
+              },
+              "timing": {
+                "generation_seconds": 5.47024229192175,
+                "inspection_seconds": 0.07536895899102092
+              },
+              "inspection": {
+                "events": 64,
+                "ones": 958,
+                "trials": 1920,
+                "fraction": 0.49895833333333334,
+                "control_fraction": 0.49166666666666664,
+                "calibrated": false,
+                "verdict": null,
+                "series": [
+                  {
+                    "characters": 14,
+                    "matching": 0.49166666666666664,
+                    "control": 0.5416666666666666
+                  },
+                  {
+                    "characters": 29,
+                    "matching": 0.5041666666666667,
+                    "control": 0.5291666666666667
+                  },
+                  {
+                    "characters": 43,
+                    "matching": 0.4766666666666667,
+                    "control": 0.5233333333333333
+                  },
+                  {
+                    "characters": 58,
+                    "matching": 0.4666666666666667,
+                    "control": 0.5153846153846153
+                  },
+                  {
+                    "characters": 72,
+                    "matching": 0.4722222222222222,
+                    "control": 0.49074074074074076
+                  },
+                  {
+                    "characters": 86,
+                    "matching": 0.4772727272727273,
+                    "control": 0.5045454545454545
+                  },
+                  {
+                    "characters": 101,
+                    "matching": 0.4807692307692308,
+                    "control": 0.49743589743589745
+                  },
+                  {
+                    "characters": 115,
+                    "matching": 0.4888888888888889,
+                    "control": 0.5077777777777778
+                  },
+                  {
+                    "characters": 129,
+                    "matching": 0.49696969696969695,
+                    "control": 0.5070707070707071
+                  },
+                  {
+                    "characters": 144,
+                    "matching": 0.509009009009009,
+                    "control": 0.5045045045045045
+                  },
+                  {
+                    "characters": 158,
+                    "matching": 0.4991869918699187,
+                    "control": 0.5048780487804878
+                  },
+                  {
+                    "characters": 172,
+                    "matching": 0.4984848484848485,
+                    "control": 0.5022727272727273
+                  },
+                  {
+                    "characters": 187,
+                    "matching": 0.5027777777777778,
+                    "control": 0.4965277777777778
+                  },
+                  {
+                    "characters": 201,
+                    "matching": 0.5018867924528302,
+                    "control": 0.49559748427672956
+                  },
+                  {
+                    "characters": 216,
+                    "matching": 0.5023391812865498,
+                    "control": 0.5
+                  },
+                  {
+                    "characters": 230,
+                    "matching": 0.49895833333333334,
+                    "control": 0.49166666666666664
+                  }
+                ]
+              },
+              "trace": [
+                {
+                  "index": 0,
+                  "token_id": 13048,
+                  "bytes_hex": "4869",
+                  "text": "Hi",
+                  "start": 0,
+                  "end": 2,
+                  "kind": "text"
+                },
+                {
+                  "index": 1,
+                  "token_id": 508,
+                  "bytes_hex": "205b",
+                  "text": " [",
+                  "start": 2,
+                  "end": 4,
+                  "kind": "text"
+                },
+                {
+                  "index": 2,
+                  "token_id": 675,
+                  "bytes_hex": "4e616d65",
+                  "text": "Name",
+                  "start": 4,
+                  "end": 8,
+                  "kind": "text"
+                },
+                {
+                  "index": 3,
+                  "token_id": 1125,
+                  "bytes_hex": "5d2c",
+                  "text": "],",
+                  "start": 8,
+                  "end": 10,
+                  "kind": "text"
+                },
+                {
+                  "index": 4,
+                  "token_id": 18611,
+                  "bytes_hex": "20200a0a",
+                  "text": "  \n\n",
+                  "start": 10,
+                  "end": 14,
+                  "kind": "text"
+                },
+                {
+                  "index": 5,
+                  "token_id": 10061,
+                  "bytes_hex": "4c6574",
+                  "text": "Let",
+                  "start": 14,
+                  "end": 17,
+                  "kind": "text"
+                },
+                {
+                  "index": 6,
+                  "token_id": 748,
+                  "bytes_hex": "e2809973",
+                  "text": "’s",
+                  "start": 17,
+                  "end": 19,
+                  "kind": "text"
+                },
+                {
+                  "index": 7,
+                  "token_id": 11633,
+                  "bytes_hex": "2067726162",
+                  "text": " grab",
+                  "start": 19,
+                  "end": 24,
+                  "kind": "text"
+                },
+                {
+                  "index": 8,
+                  "token_id": 1045,
+                  "bytes_hex": "20736f6d65",
+                  "text": " some",
+                  "start": 24,
+                  "end": 29,
+                  "kind": "text"
+                },
+                {
+                  "index": 9,
+                  "token_id": 51395,
+                  "bytes_hex": "2073756e7368696e65",
+                  "text": " sunshine",
+                  "start": 29,
+                  "end": 38,
+                  "kind": "text"
+                },
+                {
+                  "index": 10,
+                  "token_id": 419,
+                  "bytes_hex": "2074686973",
+                  "text": " this",
+                  "start": 38,
+                  "end": 43,
+                  "kind": "text"
+                },
+                {
+                  "index": 11,
+                  "token_id": 9001,
+                  "bytes_hex": "207765656b656e64",
+                  "text": " weekend",
+                  "start": 43,
+                  "end": 51,
+                  "kind": "text"
+                },
+                {
+                  "index": 12,
+                  "token_id": 0,
+                  "bytes_hex": "21",
+                  "text": "!",
+                  "start": 51,
+                  "end": 52,
+                  "kind": "text"
+                },
+                {
+                  "index": 13,
+                  "token_id": 16471,
+                  "bytes_hex": "204a6f696e",
+                  "text": " Join",
+                  "start": 52,
+                  "end": 57,
+                  "kind": "text"
+                },
+                {
+                  "index": 14,
+                  "token_id": 752,
+                  "bytes_hex": "206d65",
+                  "text": " me",
+                  "start": 57,
+                  "end": 60,
+                  "kind": "text"
+                },
+                {
+                  "index": 15,
+                  "token_id": 369,
+                  "bytes_hex": "20666f72",
+                  "text": " for",
+                  "start": 60,
+                  "end": 64,
+                  "kind": "text"
+                },
+                {
+                  "index": 16,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 64,
+                  "end": 66,
+                  "kind": "text"
+                },
+                {
+                  "index": 17,
+                  "token_id": 54462,
+                  "bytes_hex": "207069636e6963",
+                  "text": " picnic",
+                  "start": 66,
+                  "end": 73,
+                  "kind": "text"
+                },
+                {
+                  "index": 18,
+                  "token_id": 1959,
+                  "bytes_hex": "20e28094",
+                  "text": " —",
+                  "start": 73,
+                  "end": 75,
+                  "kind": "text"
+                },
+                {
+                  "index": 19,
+                  "token_id": 432,
+                  "bytes_hex": "206974",
+                  "text": " it",
+                  "start": 75,
+                  "end": 78,
+                  "kind": "text"
+                },
+                {
+                  "index": 20,
+                  "token_id": 4700,
+                  "bytes_hex": "e280996c6c",
+                  "text": "’ll",
+                  "start": 78,
+                  "end": 81,
+                  "kind": "text"
+                },
+                {
+                  "index": 21,
+                  "token_id": 387,
+                  "bytes_hex": "206265",
+                  "text": " be",
+                  "start": 81,
+                  "end": 84,
+                  "kind": "text"
+                },
+                {
+                  "index": 22,
+                  "token_id": 2464,
+                  "bytes_hex": "2066756e",
+                  "text": " fun",
+                  "start": 84,
+                  "end": 88,
+                  "kind": "text"
+                },
+                {
+                  "index": 23,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 88,
+                  "end": 89,
+                  "kind": "text"
+                },
+                {
+                  "index": 24,
+                  "token_id": 33848,
+                  "bytes_hex": "2072656c6178696e67",
+                  "text": " relaxing",
+                  "start": 89,
+                  "end": 98,
+                  "kind": "text"
+                },
+                {
+                  "index": 25,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 98,
+                  "end": 99,
+                  "kind": "text"
+                },
+                {
+                  "index": 26,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 99,
+                  "end": 103,
+                  "kind": "text"
+                },
+                {
+                  "index": 27,
+                  "token_id": 1101,
+                  "bytes_hex": "206a757374",
+                  "text": " just",
+                  "start": 103,
+                  "end": 108,
+                  "kind": "text"
+                },
+                {
+                  "index": 28,
+                  "token_id": 601,
+                  "bytes_hex": "207573",
+                  "text": " us",
+                  "start": 108,
+                  "end": 111,
+                  "kind": "text"
+                },
+                {
+                  "index": 29,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 111,
+                  "end": 112,
+                  "kind": "text"
+                },
+                {
+                  "index": 30,
+                  "token_id": 39124,
+                  "bytes_hex": "204272696e67",
+                  "text": " Bring",
+                  "start": 112,
+                  "end": 118,
+                  "kind": "text"
+                },
+                {
+                  "index": 31,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 118,
+                  "end": 120,
+                  "kind": "text"
+                },
+                {
+                  "index": 32,
+                  "token_id": 38039,
+                  "bytes_hex": "20626c616e6b6574",
+                  "text": " blanket",
+                  "start": 120,
+                  "end": 128,
+                  "kind": "text"
+                },
+                {
+                  "index": 33,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 128,
+                  "end": 129,
+                  "kind": "text"
+                },
+                {
+                  "index": 34,
+                  "token_id": 42302,
+                  "bytes_hex": "20736e61636b73",
+                  "text": " snacks",
+                  "start": 129,
+                  "end": 136,
+                  "kind": "text"
+                },
+                {
+                  "index": 35,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 136,
+                  "end": 137,
+                  "kind": "text"
+                },
+                {
+                  "index": 36,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 137,
+                  "end": 141,
+                  "kind": "text"
+                },
+                {
+                  "index": 37,
+                  "token_id": 697,
+                  "bytes_hex": "20796f7572",
+                  "text": " your",
+                  "start": 141,
+                  "end": 146,
+                  "kind": "text"
+                },
+                {
+                  "index": 38,
+                  "token_id": 15289,
+                  "bytes_hex": "20736d696c65",
+                  "text": " smile",
+                  "start": 146,
+                  "end": 152,
+                  "kind": "text"
+                },
+                {
+                  "index": 39,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 152,
+                  "end": 153,
+                  "kind": "text"
+                },
+                {
+                  "index": 40,
+                  "token_id": 358,
+                  "bytes_hex": "2049",
+                  "text": " I",
+                  "start": 153,
+                  "end": 155,
+                  "kind": "text"
+                },
+                {
+                  "index": 41,
+                  "token_id": 4700,
+                  "bytes_hex": "e280996c6c",
+                  "text": "’ll",
+                  "start": 155,
+                  "end": 158,
+                  "kind": "text"
+                },
+                {
+                  "index": 42,
+                  "token_id": 4446,
+                  "bytes_hex": "206272696e67",
+                  "text": " bring",
+                  "start": 158,
+                  "end": 164,
+                  "kind": "text"
+                },
+                {
+                  "index": 43,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 164,
+                  "end": 168,
+                  "kind": "text"
+                },
+                {
+                  "index": 44,
+                  "token_id": 2732,
+                  "bytes_hex": "2072657374",
+                  "text": " rest",
+                  "start": 168,
+                  "end": 173,
+                  "kind": "text"
+                },
+                {
+                  "index": 45,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 173,
+                  "end": 174,
+                  "kind": "text"
+                },
+                {
+                  "index": 46,
+                  "token_id": 6771,
+                  "bytes_hex": "204c6574",
+                  "text": " Let",
+                  "start": 174,
+                  "end": 178,
+                  "kind": "text"
+                },
+                {
+                  "index": 47,
+                  "token_id": 752,
+                  "bytes_hex": "206d65",
+                  "text": " me",
+                  "start": 178,
+                  "end": 181,
+                  "kind": "text"
+                },
+                {
+                  "index": 48,
+                  "token_id": 1414,
+                  "bytes_hex": "206b6e6f77",
+                  "text": " know",
+                  "start": 181,
+                  "end": 186,
+                  "kind": "text"
+                },
+                {
+                  "index": 49,
+                  "token_id": 421,
+                  "bytes_hex": "206966",
+                  "text": " if",
+                  "start": 186,
+                  "end": 189,
+                  "kind": "text"
+                },
+                {
+                  "index": 50,
+                  "token_id": 498,
+                  "bytes_hex": "20796f75",
+                  "text": " you",
+                  "start": 189,
+                  "end": 193,
+                  "kind": "text"
+                },
+                {
+                  "index": 51,
+                  "token_id": 3129,
+                  "bytes_hex": "e280997265",
+                  "text": "’re",
+                  "start": 193,
+                  "end": 196,
+                  "kind": "text"
+                },
+                {
+                  "index": 52,
+                  "token_id": 304,
+                  "bytes_hex": "20696e",
+                  "text": " in",
+                  "start": 196,
+                  "end": 199,
+                  "kind": "text"
+                },
+                {
+                  "index": 53,
+                  "token_id": 0,
+                  "bytes_hex": "21",
+                  "text": "!",
+                  "start": 199,
+                  "end": 200,
+                  "kind": "text"
+                },
+                {
+                  "index": 54,
+                  "token_id": 18611,
+                  "bytes_hex": "20200a0a",
+                  "text": "  \n\n",
+                  "start": 200,
+                  "end": 204,
+                  "kind": "text"
+                },
+                {
+                  "index": 55,
+                  "token_id": 6713,
+                  "bytes_hex": "43616e",
+                  "text": "Can",
+                  "start": 204,
+                  "end": 207,
+                  "kind": "text"
+                },
+                {
+                  "index": 56,
+                  "token_id": 1405,
+                  "bytes_hex": "e2809974",
+                  "text": "’t",
+                  "start": 207,
+                  "end": 209,
+                  "kind": "text"
+                },
+                {
+                  "index": 57,
+                  "token_id": 3783,
+                  "bytes_hex": "2077616974",
+                  "text": " wait",
+                  "start": 209,
+                  "end": 214,
+                  "kind": "text"
+                },
+                {
+                  "index": 58,
+                  "token_id": 311,
+                  "bytes_hex": "20746f",
+                  "text": " to",
+                  "start": 214,
+                  "end": 217,
+                  "kind": "text"
+                },
+                {
+                  "index": 59,
+                  "token_id": 2287,
+                  "bytes_hex": "206361746368",
+                  "text": " catch",
+                  "start": 217,
+                  "end": 223,
+                  "kind": "text"
+                },
+                {
+                  "index": 60,
+                  "token_id": 705,
+                  "bytes_hex": "207570",
+                  "text": " up",
+                  "start": 223,
+                  "end": 226,
+                  "kind": "text"
+                },
+                {
+                  "index": 61,
+                  "token_id": 0,
+                  "bytes_hex": "21",
+                  "text": "!",
+                  "start": 226,
+                  "end": 227,
+                  "kind": "text"
+                },
+                {
+                  "index": 62,
+                  "token_id": 11162,
+                  "bytes_hex": "20f09f",
+                  "text": " ",
+                  "start": 227,
+                  "end": 228,
+                  "kind": "text"
+                },
+                {
+                  "index": 63,
+                  "token_id": 234,
+                  "bytes_hex": "8c",
+                  "text": "",
+                  "start": 228,
+                  "end": 228,
+                  "kind": "pending_bytes"
+                },
+                {
+                  "index": 64,
+                  "token_id": 111,
+                  "bytes_hex": "b3",
+                  "text": "🌳",
+                  "start": 228,
+                  "end": 229,
+                  "kind": "text"
+                },
+                {
+                  "index": 65,
+                  "token_id": 145803,
+                  "bytes_hex": "f09f8db4",
+                  "text": "🍴",
+                  "start": 229,
+                  "end": 230,
+                  "kind": "text"
+                },
+                {
+                  "index": 66,
+                  "token_id": 151645,
+                  "bytes_hex": null,
+                  "text": "",
+                  "start": 230,
+                  "end": 230,
+                  "kind": "control"
+                }
+              ]
+            },
+            "marked": {
+              "text": "Hi [Name],  \n\nThis weekend, let’s grab some lunch and enjoy the sunshine! Bring a blanket, snacks, and your good mood. We can meet at the park around noon. It’s been too long — let’s make it happen!  \n\nLooking forward to it!  \n[Your Name]",
+              "completion": "eos",
+              "usage": {
+                "prompt_tokens": 48,
+                "completion_tokens": 62,
+                "total_tokens": 110
+              },
+              "timing": {
+                "generation_seconds": 4.515187625074759,
+                "inspection_seconds": 0.07485608314163983
+              },
+              "inspection": {
+                "events": 58,
+                "ones": 882,
+                "trials": 1740,
+                "fraction": 0.506896551724138,
+                "control_fraction": 0.47988505747126436,
+                "calibrated": false,
+                "verdict": null,
+                "series": [
+                  {
+                    "characters": 15,
+                    "matching": 0.52,
+                    "control": 0.54
+                  },
+                  {
+                    "characters": 30,
+                    "matching": 0.5125,
+                    "control": 0.525
+                  },
+                  {
+                    "characters": 45,
+                    "matching": 0.5111111111111111,
+                    "control": 0.49444444444444446
+                  },
+                  {
+                    "characters": 60,
+                    "matching": 0.5238095238095238,
+                    "control": 0.4714285714285714
+                  },
+                  {
+                    "characters": 74,
+                    "matching": 0.5176470588235295,
+                    "control": 0.4745098039215686
+                  },
+                  {
+                    "characters": 89,
+                    "matching": 0.505,
+                    "control": 0.4666666666666667
+                  },
+                  {
+                    "characters": 104,
+                    "matching": 0.5133333333333333,
+                    "control": 0.4706666666666667
+                  },
+                  {
+                    "characters": 119,
+                    "matching": 0.5059523809523809,
+                    "control": 0.47023809523809523
+                  },
+                  {
+                    "characters": 134,
+                    "matching": 0.5083333333333333,
+                    "control": 0.4708333333333333
+                  },
+                  {
+                    "characters": 149,
+                    "matching": 0.5057142857142857,
+                    "control": 0.47904761904761906
+                  },
+                  {
+                    "characters": 164,
+                    "matching": 0.5041666666666667,
+                    "control": 0.475
+                  },
+                  {
+                    "characters": 178,
+                    "matching": 0.5007575757575757,
+                    "control": 0.47878787878787876
+                  },
+                  {
+                    "characters": 193,
+                    "matching": 0.4909722222222222,
+                    "control": 0.48680555555555555
+                  },
+                  {
+                    "characters": 208,
+                    "matching": 0.4973856209150327,
+                    "control": 0.48562091503267973
+                  },
+                  {
+                    "characters": 223,
+                    "matching": 0.5031446540880503,
+                    "control": 0.4880503144654088
+                  },
+                  {
+                    "characters": 238,
+                    "matching": 0.506896551724138,
+                    "control": 0.47988505747126436
+                  }
+                ]
+              },
+              "trace": [
+                {
+                  "index": 0,
+                  "token_id": 13048,
+                  "bytes_hex": "4869",
+                  "text": "Hi",
+                  "start": 0,
+                  "end": 2,
+                  "kind": "text"
+                },
+                {
+                  "index": 1,
+                  "token_id": 508,
+                  "bytes_hex": "205b",
+                  "text": " [",
+                  "start": 2,
+                  "end": 4,
+                  "kind": "text"
+                },
+                {
+                  "index": 2,
+                  "token_id": 675,
+                  "bytes_hex": "4e616d65",
+                  "text": "Name",
+                  "start": 4,
+                  "end": 8,
+                  "kind": "text"
+                },
+                {
+                  "index": 3,
+                  "token_id": 1125,
+                  "bytes_hex": "5d2c",
+                  "text": "],",
+                  "start": 8,
+                  "end": 10,
+                  "kind": "text"
+                },
+                {
+                  "index": 4,
+                  "token_id": 18611,
+                  "bytes_hex": "20200a0a",
+                  "text": "  \n\n",
+                  "start": 10,
+                  "end": 14,
+                  "kind": "text"
+                },
+                {
+                  "index": 5,
+                  "token_id": 1986,
+                  "bytes_hex": "54686973",
+                  "text": "This",
+                  "start": 14,
+                  "end": 18,
+                  "kind": "text"
+                },
+                {
+                  "index": 6,
+                  "token_id": 9001,
+                  "bytes_hex": "207765656b656e64",
+                  "text": " weekend",
+                  "start": 18,
+                  "end": 26,
+                  "kind": "text"
+                },
+                {
+                  "index": 7,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 26,
+                  "end": 27,
+                  "kind": "text"
+                },
+                {
+                  "index": 8,
+                  "token_id": 1077,
+                  "bytes_hex": "206c6574",
+                  "text": " let",
+                  "start": 27,
+                  "end": 31,
+                  "kind": "text"
+                },
+                {
+                  "index": 9,
+                  "token_id": 748,
+                  "bytes_hex": "e2809973",
+                  "text": "’s",
+                  "start": 31,
+                  "end": 33,
+                  "kind": "text"
+                },
+                {
+                  "index": 10,
+                  "token_id": 11633,
+                  "bytes_hex": "2067726162",
+                  "text": " grab",
+                  "start": 33,
+                  "end": 38,
+                  "kind": "text"
+                },
+                {
+                  "index": 11,
+                  "token_id": 1045,
+                  "bytes_hex": "20736f6d65",
+                  "text": " some",
+                  "start": 38,
+                  "end": 43,
+                  "kind": "text"
+                },
+                {
+                  "index": 12,
+                  "token_id": 15786,
+                  "bytes_hex": "206c756e6368",
+                  "text": " lunch",
+                  "start": 43,
+                  "end": 49,
+                  "kind": "text"
+                },
+                {
+                  "index": 13,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 49,
+                  "end": 53,
+                  "kind": "text"
+                },
+                {
+                  "index": 14,
+                  "token_id": 4669,
+                  "bytes_hex": "20656e6a6f79",
+                  "text": " enjoy",
+                  "start": 53,
+                  "end": 59,
+                  "kind": "text"
+                },
+                {
+                  "index": 15,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 59,
+                  "end": 63,
+                  "kind": "text"
+                },
+                {
+                  "index": 16,
+                  "token_id": 51395,
+                  "bytes_hex": "2073756e7368696e65",
+                  "text": " sunshine",
+                  "start": 63,
+                  "end": 72,
+                  "kind": "text"
+                },
+                {
+                  "index": 17,
+                  "token_id": 0,
+                  "bytes_hex": "21",
+                  "text": "!",
+                  "start": 72,
+                  "end": 73,
+                  "kind": "text"
+                },
+                {
+                  "index": 18,
+                  "token_id": 39124,
+                  "bytes_hex": "204272696e67",
+                  "text": " Bring",
+                  "start": 73,
+                  "end": 79,
+                  "kind": "text"
+                },
+                {
+                  "index": 19,
+                  "token_id": 264,
+                  "bytes_hex": "2061",
+                  "text": " a",
+                  "start": 79,
+                  "end": 81,
+                  "kind": "text"
+                },
+                {
+                  "index": 20,
+                  "token_id": 38039,
+                  "bytes_hex": "20626c616e6b6574",
+                  "text": " blanket",
+                  "start": 81,
+                  "end": 89,
+                  "kind": "text"
+                },
+                {
+                  "index": 21,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 89,
+                  "end": 90,
+                  "kind": "text"
+                },
+                {
+                  "index": 22,
+                  "token_id": 42302,
+                  "bytes_hex": "20736e61636b73",
+                  "text": " snacks",
+                  "start": 90,
+                  "end": 97,
+                  "kind": "text"
+                },
+                {
+                  "index": 23,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 97,
+                  "end": 98,
+                  "kind": "text"
+                },
+                {
+                  "index": 24,
+                  "token_id": 323,
+                  "bytes_hex": "20616e64",
+                  "text": " and",
+                  "start": 98,
+                  "end": 102,
+                  "kind": "text"
+                },
+                {
+                  "index": 25,
+                  "token_id": 697,
+                  "bytes_hex": "20796f7572",
+                  "text": " your",
+                  "start": 102,
+                  "end": 107,
+                  "kind": "text"
+                },
+                {
+                  "index": 26,
+                  "token_id": 1661,
+                  "bytes_hex": "20676f6f64",
+                  "text": " good",
+                  "start": 107,
+                  "end": 112,
+                  "kind": "text"
+                },
+                {
+                  "index": 27,
+                  "token_id": 19671,
+                  "bytes_hex": "206d6f6f64",
+                  "text": " mood",
+                  "start": 112,
+                  "end": 117,
+                  "kind": "text"
+                },
+                {
+                  "index": 28,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 117,
+                  "end": 118,
+                  "kind": "text"
+                },
+                {
+                  "index": 29,
+                  "token_id": 1205,
+                  "bytes_hex": "205765",
+                  "text": " We",
+                  "start": 118,
+                  "end": 121,
+                  "kind": "text"
+                },
+                {
+                  "index": 30,
+                  "token_id": 646,
+                  "bytes_hex": "2063616e",
+                  "text": " can",
+                  "start": 121,
+                  "end": 125,
+                  "kind": "text"
+                },
+                {
+                  "index": 31,
+                  "token_id": 3367,
+                  "bytes_hex": "206d656574",
+                  "text": " meet",
+                  "start": 125,
+                  "end": 130,
+                  "kind": "text"
+                },
+                {
+                  "index": 32,
+                  "token_id": 518,
+                  "bytes_hex": "206174",
+                  "text": " at",
+                  "start": 130,
+                  "end": 133,
+                  "kind": "text"
+                },
+                {
+                  "index": 33,
+                  "token_id": 279,
+                  "bytes_hex": "20746865",
+                  "text": " the",
+                  "start": 133,
+                  "end": 137,
+                  "kind": "text"
+                },
+                {
+                  "index": 34,
+                  "token_id": 6118,
+                  "bytes_hex": "207061726b",
+                  "text": " park",
+                  "start": 137,
+                  "end": 142,
+                  "kind": "text"
+                },
+                {
+                  "index": 35,
+                  "token_id": 2163,
+                  "bytes_hex": "2061726f756e64",
+                  "text": " around",
+                  "start": 142,
+                  "end": 149,
+                  "kind": "text"
+                },
+                {
+                  "index": 36,
+                  "token_id": 37145,
+                  "bytes_hex": "206e6f6f6e",
+                  "text": " noon",
+                  "start": 149,
+                  "end": 154,
+                  "kind": "text"
+                },
+                {
+                  "index": 37,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 154,
+                  "end": 155,
+                  "kind": "text"
+                },
+                {
+                  "index": 38,
+                  "token_id": 1084,
+                  "bytes_hex": "204974",
+                  "text": " It",
+                  "start": 155,
+                  "end": 158,
+                  "kind": "text"
+                },
+                {
+                  "index": 39,
+                  "token_id": 748,
+                  "bytes_hex": "e2809973",
+                  "text": "’s",
+                  "start": 158,
+                  "end": 160,
+                  "kind": "text"
+                },
+                {
+                  "index": 40,
+                  "token_id": 1012,
+                  "bytes_hex": "206265656e",
+                  "text": " been",
+                  "start": 160,
+                  "end": 165,
+                  "kind": "text"
+                },
+                {
+                  "index": 41,
+                  "token_id": 2238,
+                  "bytes_hex": "20746f6f",
+                  "text": " too",
+                  "start": 165,
+                  "end": 169,
+                  "kind": "text"
+                },
+                {
+                  "index": 42,
+                  "token_id": 1293,
+                  "bytes_hex": "206c6f6e67",
+                  "text": " long",
+                  "start": 169,
+                  "end": 174,
+                  "kind": "text"
+                },
+                {
+                  "index": 43,
+                  "token_id": 1959,
+                  "bytes_hex": "20e28094",
+                  "text": " —",
+                  "start": 174,
+                  "end": 176,
+                  "kind": "text"
+                },
+                {
+                  "index": 44,
+                  "token_id": 1077,
+                  "bytes_hex": "206c6574",
+                  "text": " let",
+                  "start": 176,
+                  "end": 180,
+                  "kind": "text"
+                },
+                {
+                  "index": 45,
+                  "token_id": 748,
+                  "bytes_hex": "e2809973",
+                  "text": "’s",
+                  "start": 180,
+                  "end": 182,
+                  "kind": "text"
+                },
+                {
+                  "index": 46,
+                  "token_id": 1281,
+                  "bytes_hex": "206d616b65",
+                  "text": " make",
+                  "start": 182,
+                  "end": 187,
+                  "kind": "text"
+                },
+                {
+                  "index": 47,
+                  "token_id": 432,
+                  "bytes_hex": "206974",
+                  "text": " it",
+                  "start": 187,
+                  "end": 190,
+                  "kind": "text"
+                },
+                {
+                  "index": 48,
+                  "token_id": 3537,
+                  "bytes_hex": "2068617070656e",
+                  "text": " happen",
+                  "start": 190,
+                  "end": 197,
+                  "kind": "text"
+                },
+                {
+                  "index": 49,
+                  "token_id": 0,
+                  "bytes_hex": "21",
+                  "text": "!",
+                  "start": 197,
+                  "end": 198,
+                  "kind": "text"
+                },
+                {
+                  "index": 50,
+                  "token_id": 18611,
+                  "bytes_hex": "20200a0a",
+                  "text": "  \n\n",
+                  "start": 198,
+                  "end": 202,
+                  "kind": "text"
+                },
+                {
+                  "index": 51,
+                  "token_id": 22464,
+                  "bytes_hex": "4c6f6f6b696e67",
+                  "text": "Looking",
+                  "start": 202,
+                  "end": 209,
+                  "kind": "text"
+                },
+                {
+                  "index": 52,
+                  "token_id": 4637,
+                  "bytes_hex": "20666f7277617264",
+                  "text": " forward",
+                  "start": 209,
+                  "end": 217,
+                  "kind": "text"
+                },
+                {
+                  "index": 53,
+                  "token_id": 311,
+                  "bytes_hex": "20746f",
+                  "text": " to",
+                  "start": 217,
+                  "end": 220,
+                  "kind": "text"
+                },
+                {
+                  "index": 54,
+                  "token_id": 432,
+                  "bytes_hex": "206974",
+                  "text": " it",
+                  "start": 220,
+                  "end": 223,
+                  "kind": "text"
+                },
+                {
+                  "index": 55,
+                  "token_id": 0,
+                  "bytes_hex": "21",
+                  "text": "!",
+                  "start": 223,
+                  "end": 224,
+                  "kind": "text"
+                },
+                {
+                  "index": 56,
+                  "token_id": 2303,
+                  "bytes_hex": "20200a",
+                  "text": "  \n",
+                  "start": 224,
+                  "end": 227,
+                  "kind": "text"
+                },
+                {
+                  "index": 57,
+                  "token_id": 58,
+                  "bytes_hex": "5b",
+                  "text": "[",
+                  "start": 227,
+                  "end": 228,
+                  "kind": "text"
+                },
+                {
+                  "index": 58,
+                  "token_id": 7771,
+                  "bytes_hex": "596f7572",
+                  "text": "Your",
+                  "start": 228,
+                  "end": 232,
+                  "kind": "text"
+                },
+                {
+                  "index": 59,
+                  "token_id": 3988,
+                  "bytes_hex": "204e616d65",
+                  "text": " Name",
+                  "start": 232,
+                  "end": 237,
+                  "kind": "text"
+                },
+                {
+                  "index": 60,
+                  "token_id": 60,
+                  "bytes_hex": "5d",
+                  "text": "]",
+                  "start": 237,
+                  "end": 238,
+                  "kind": "text"
+                },
+                {
+                  "index": 61,
+                  "token_id": 151645,
+                  "bytes_hex": null,
+                  "text": "",
+                  "start": 238,
+                  "end": 238,
+                  "kind": "control"
+                }
+              ]
+            }
+          },
+          "seconds": 10.135659249965101,
+          "max_tokens": 192,
+          "independent_randomness": true,
+          "calibrated": false,
+          "backend": "mlx"
+        }
+      }
+    },
+    {
+      "title": "Une idée en français",
+      "note": "Both samples stayed in French. This single pair does not establish multilingual quality or scientific accuracy.",
+      "recording": {
+        "schema": "keyprint-comparison-v1",
+        "prompt": "Explique en français pourquoi le ciel est bleu. Utilise deux phrases simples, sans traduire ta réponse en anglais.",
+        "experiment": {
+          "outputs": {
+            "ordinary": {
+              "text": "Le ciel est bleu parce que la lumière du Soleil est diffusée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée dans toutes les directions, ce qui donne au ciel son apparence bleue.",
+              "completion": "eos",
+              "usage": {
+                "prompt_tokens": 38,
+                "completion_tokens": 57,
+                "total_tokens": 95
+              },
+              "timing": {
+                "generation_seconds": 4.413565875031054,
+                "inspection_seconds": 0.08847312512807548
+              },
+              "inspection": {
+                "events": 56,
+                "ones": 843,
+                "trials": 1680,
+                "fraction": 0.5017857142857143,
+                "control_fraction": 0.5202380952380953,
+                "calibrated": false,
+                "verdict": null,
+                "series": [
+                  {
+                    "characters": 13,
+                    "matching": 0.5,
+                    "control": 0.5533333333333333
+                  },
+                  {
+                    "characters": 26,
+                    "matching": 0.525,
+                    "control": 0.5208333333333334
+                  },
+                  {
+                    "characters": 39,
+                    "matching": 0.5242424242424243,
+                    "control": 0.5151515151515151
+                  },
+                  {
+                    "characters": 52,
+                    "matching": 0.5119047619047619,
+                    "control": 0.5047619047619047
+                  },
+                  {
+                    "characters": 65,
+                    "matching": 0.49444444444444446,
+                    "control": 0.5055555555555555
+                  },
+                  {
+                    "characters": 78,
+                    "matching": 0.4893939393939394,
+                    "control": 0.503030303030303
+                  },
+                  {
+                    "characters": 91,
+                    "matching": 0.4880952380952381,
+                    "control": 0.5011904761904762
+                  },
+                  {
+                    "characters": 104,
+                    "matching": 0.489247311827957,
+                    "control": 0.513978494623656
+                  },
+                  {
+                    "characters": 118,
+                    "matching": 0.492156862745098,
+                    "control": 0.5225490196078432
+                  },
+                  {
+                    "characters": 131,
+                    "matching": 0.4982456140350877,
+                    "control": 0.5236842105263158
+                  },
+                  {
+                    "characters": 144,
+                    "matching": 0.5,
+                    "control": 0.5208333333333334
+                  },
+                  {
+                    "characters": 157,
+                    "matching": 0.5,
+                    "control": 0.5193798449612403
+                  },
+                  {
+                    "characters": 170,
+                    "matching": 0.5,
+                    "control": 0.52
+                  },
+                  {
+                    "characters": 183,
+                    "matching": 0.5027777777777778,
+                    "control": 0.5201388888888889
+                  },
+                  {
+                    "characters": 196,
+                    "matching": 0.5038461538461538,
+                    "control": 0.5205128205128206
+                  },
+                  {
+                    "characters": 209,
+                    "matching": 0.5017857142857143,
+                    "control": 0.5202380952380953
+                  }
+                ]
+              },
+              "trace": [
+                {
+                  "index": 0,
+                  "token_id": 2304,
+                  "bytes_hex": "4c65",
+                  "text": "Le",
+                  "start": 0,
+                  "end": 2,
+                  "kind": "text"
+                },
+                {
+                  "index": 1,
+                  "token_id": 11825,
+                  "bytes_hex": "206369",
+                  "text": " ci",
+                  "start": 2,
+                  "end": 5,
+                  "kind": "text"
+                },
+                {
+                  "index": 2,
+                  "token_id": 301,
+                  "bytes_hex": "656c",
+                  "text": "el",
+                  "start": 5,
+                  "end": 7,
+                  "kind": "text"
+                },
+                {
+                  "index": 3,
+                  "token_id": 1788,
+                  "bytes_hex": "20657374",
+                  "text": " est",
+                  "start": 7,
+                  "end": 11,
+                  "kind": "text"
+                },
+                {
+                  "index": 4,
+                  "token_id": 12422,
+                  "bytes_hex": "20626c65",
+                  "text": " ble",
+                  "start": 11,
+                  "end": 15,
+                  "kind": "text"
+                },
+                {
+                  "index": 5,
+                  "token_id": 84,
+                  "bytes_hex": "75",
+                  "text": "u",
+                  "start": 15,
+                  "end": 16,
+                  "kind": "text"
+                },
+                {
+                  "index": 6,
+                  "token_id": 64921,
+                  "bytes_hex": "207061726365",
+                  "text": " parce",
+                  "start": 16,
+                  "end": 22,
+                  "kind": "text"
+                },
+                {
+                  "index": 7,
+                  "token_id": 1709,
+                  "bytes_hex": "20717565",
+                  "text": " que",
+                  "start": 22,
+                  "end": 26,
+                  "kind": "text"
+                },
+                {
+                  "index": 8,
+                  "token_id": 1187,
+                  "bytes_hex": "206c61",
+                  "text": " la",
+                  "start": 26,
+                  "end": 29,
+                  "kind": "text"
+                },
+                {
+                  "index": 9,
+                  "token_id": 141096,
+                  "bytes_hex": "206c756d69c3a87265",
+                  "text": " lumière",
+                  "start": 29,
+                  "end": 37,
+                  "kind": "text"
+                },
+                {
+                  "index": 10,
+                  "token_id": 3845,
+                  "bytes_hex": "206475",
+                  "text": " du",
+                  "start": 37,
+                  "end": 40,
+                  "kind": "text"
+                },
+                {
+                  "index": 11,
+                  "token_id": 64515,
+                  "bytes_hex": "20536f6c65",
+                  "text": " Sole",
+                  "start": 40,
+                  "end": 45,
+                  "kind": "text"
+                },
+                {
+                  "index": 12,
+                  "token_id": 321,
+                  "bytes_hex": "696c",
+                  "text": "il",
+                  "start": 45,
+                  "end": 47,
+                  "kind": "text"
+                },
+                {
+                  "index": 13,
+                  "token_id": 1788,
+                  "bytes_hex": "20657374",
+                  "text": " est",
+                  "start": 47,
+                  "end": 51,
+                  "kind": "text"
+                },
+                {
+                  "index": 14,
+                  "token_id": 3638,
+                  "bytes_hex": "2064696666",
+                  "text": " diff",
+                  "start": 51,
+                  "end": 56,
+                  "kind": "text"
+                },
+                {
+                  "index": 15,
+                  "token_id": 355,
+                  "bytes_hex": "7573",
+                  "text": "us",
+                  "start": 56,
+                  "end": 58,
+                  "kind": "text"
+                },
+                {
+                  "index": 16,
+                  "token_id": 7888,
+                  "bytes_hex": "c3a965",
+                  "text": "ée",
+                  "start": 58,
+                  "end": 60,
+                  "kind": "text"
+                },
+                {
+                  "index": 17,
+                  "token_id": 1346,
+                  "bytes_hex": "20706172",
+                  "text": " par",
+                  "start": 60,
+                  "end": 64,
+                  "kind": "text"
+                },
+                {
+                  "index": 18,
+                  "token_id": 3541,
+                  "bytes_hex": "206c6573",
+                  "text": " les",
+                  "start": 64,
+                  "end": 68,
+                  "kind": "text"
+                },
+                {
+                  "index": 19,
+                  "token_id": 21609,
+                  "bytes_hex": "206d6f6c",
+                  "text": " mol",
+                  "start": 68,
+                  "end": 72,
+                  "kind": "text"
+                },
+                {
+                  "index": 20,
+                  "token_id": 19667,
+                  "bytes_hex": "c3a963",
+                  "text": "éc",
+                  "start": 72,
+                  "end": 74,
+                  "kind": "text"
+                },
+                {
+                  "index": 21,
+                  "token_id": 2425,
+                  "bytes_hex": "756c6573",
+                  "text": "ules",
+                  "start": 74,
+                  "end": 78,
+                  "kind": "text"
+                },
+                {
+                  "index": 22,
+                  "token_id": 409,
+                  "bytes_hex": "206465",
+                  "text": " de",
+                  "start": 78,
+                  "end": 81,
+                  "kind": "text"
+                },
+                {
+                  "index": 23,
+                  "token_id": 326,
+                  "bytes_hex": "206c",
+                  "text": " l",
+                  "start": 81,
+                  "end": 83,
+                  "kind": "text"
+                },
+                {
+                  "index": 24,
+                  "token_id": 6,
+                  "bytes_hex": "27",
+                  "text": "'",
+                  "start": 83,
+                  "end": 84,
+                  "kind": "text"
+                },
+                {
+                  "index": 25,
+                  "token_id": 1310,
+                  "bytes_hex": "616972",
+                  "text": "air",
+                  "start": 84,
+                  "end": 87,
+                  "kind": "text"
+                },
+                {
+                  "index": 26,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 87,
+                  "end": 88,
+                  "kind": "text"
+                },
+                {
+                  "index": 27,
+                  "token_id": 4929,
+                  "bytes_hex": "204c61",
+                  "text": " La",
+                  "start": 88,
+                  "end": 91,
+                  "kind": "text"
+                },
+                {
+                  "index": 28,
+                  "token_id": 141096,
+                  "bytes_hex": "206c756d69c3a87265",
+                  "text": " lumière",
+                  "start": 91,
+                  "end": 99,
+                  "kind": "text"
+                },
+                {
+                  "index": 29,
+                  "token_id": 12422,
+                  "bytes_hex": "20626c65",
+                  "text": " ble",
+                  "start": 99,
+                  "end": 103,
+                  "kind": "text"
+                },
+                {
+                  "index": 30,
+                  "token_id": 361,
+                  "bytes_hex": "7565",
+                  "text": "ue",
+                  "start": 103,
+                  "end": 105,
+                  "kind": "text"
+                },
+                {
+                  "index": 31,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 105,
+                  "end": 106,
+                  "kind": "text"
+                },
+                {
+                  "index": 32,
+                  "token_id": 138157,
+                  "bytes_hex": "20c3a974616e74",
+                  "text": " étant",
+                  "start": 106,
+                  "end": 112,
+                  "kind": "text"
+                },
+                {
+                  "index": 33,
+                  "token_id": 5519,
+                  "bytes_hex": "20706c7573",
+                  "text": " plus",
+                  "start": 112,
+                  "end": 117,
+                  "kind": "text"
+                },
+                {
+                  "index": 34,
+                  "token_id": 73899,
+                  "bytes_hex": "20636f75727465",
+                  "text": " courte",
+                  "start": 117,
+                  "end": 124,
+                  "kind": "text"
+                },
+                {
+                  "index": 35,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 124,
+                  "end": 125,
+                  "kind": "text"
+                },
+                {
+                  "index": 36,
+                  "token_id": 1788,
+                  "bytes_hex": "20657374",
+                  "text": " est",
+                  "start": 125,
+                  "end": 129,
+                  "kind": "text"
+                },
+                {
+                  "index": 37,
+                  "token_id": 78735,
+                  "bytes_hex": "2064697370657273",
+                  "text": " dispers",
+                  "start": 129,
+                  "end": 137,
+                  "kind": "text"
+                },
+                {
+                  "index": 38,
+                  "token_id": 7888,
+                  "bytes_hex": "c3a965",
+                  "text": "ée",
+                  "start": 137,
+                  "end": 139,
+                  "kind": "text"
+                },
+                {
+                  "index": 39,
+                  "token_id": 6866,
+                  "bytes_hex": "2064616e73",
+                  "text": " dans",
+                  "start": 139,
+                  "end": 144,
+                  "kind": "text"
+                },
+                {
+                  "index": 40,
+                  "token_id": 39644,
+                  "bytes_hex": "20746f75746573",
+                  "text": " toutes",
+                  "start": 144,
+                  "end": 151,
+                  "kind": "text"
+                },
+                {
+                  "index": 41,
+                  "token_id": 3541,
+                  "bytes_hex": "206c6573",
+                  "text": " les",
+                  "start": 151,
+                  "end": 155,
+                  "kind": "text"
+                },
+                {
+                  "index": 42,
+                  "token_id": 17961,
+                  "bytes_hex": "20646972656374696f6e73",
+                  "text": " directions",
+                  "start": 155,
+                  "end": 166,
+                  "kind": "text"
+                },
+                {
+                  "index": 43,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 166,
+                  "end": 167,
+                  "kind": "text"
+                },
+                {
+                  "index": 44,
+                  "token_id": 3761,
+                  "bytes_hex": "206365",
+                  "text": " ce",
+                  "start": 167,
+                  "end": 170,
+                  "kind": "text"
+                },
+                {
+                  "index": 45,
+                  "token_id": 7774,
+                  "bytes_hex": "20717569",
+                  "text": " qui",
+                  "start": 170,
+                  "end": 174,
+                  "kind": "text"
+                },
+                {
+                  "index": 46,
+                  "token_id": 20889,
+                  "bytes_hex": "20646f6e6e65",
+                  "text": " donne",
+                  "start": 174,
+                  "end": 180,
+                  "kind": "text"
+                },
+                {
+                  "index": 47,
+                  "token_id": 7906,
+                  "bytes_hex": "206175",
+                  "text": " au",
+                  "start": 180,
+                  "end": 183,
+                  "kind": "text"
+                },
+                {
+                  "index": 48,
+                  "token_id": 11825,
+                  "bytes_hex": "206369",
+                  "text": " ci",
+                  "start": 183,
+                  "end": 186,
+                  "kind": "text"
+                },
+                {
+                  "index": 49,
+                  "token_id": 301,
+                  "bytes_hex": "656c",
+                  "text": "el",
+                  "start": 186,
+                  "end": 188,
+                  "kind": "text"
+                },
+                {
+                  "index": 50,
+                  "token_id": 4438,
+                  "bytes_hex": "20736f6e",
+                  "text": " son",
+                  "start": 188,
+                  "end": 192,
+                  "kind": "text"
+                },
+                {
+                  "index": 51,
+                  "token_id": 906,
+                  "bytes_hex": "20617070",
+                  "text": " app",
+                  "start": 192,
+                  "end": 196,
+                  "kind": "text"
+                },
+                {
+                  "index": 52,
+                  "token_id": 68677,
+                  "bytes_hex": "6172656e6365",
+                  "text": "arence",
+                  "start": 196,
+                  "end": 202,
+                  "kind": "text"
+                },
+                {
+                  "index": 53,
+                  "token_id": 12422,
+                  "bytes_hex": "20626c65",
+                  "text": " ble",
+                  "start": 202,
+                  "end": 206,
+                  "kind": "text"
+                },
+                {
+                  "index": 54,
+                  "token_id": 361,
+                  "bytes_hex": "7565",
+                  "text": "ue",
+                  "start": 206,
+                  "end": 208,
+                  "kind": "text"
+                },
+                {
+                  "index": 55,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 208,
+                  "end": 209,
+                  "kind": "text"
+                },
+                {
+                  "index": 56,
+                  "token_id": 151645,
+                  "bytes_hex": null,
+                  "text": "",
+                  "start": 209,
+                  "end": 209,
+                  "kind": "control"
+                }
+              ]
+            },
+            "marked": {
+              "text": "Le ciel apparaît bleu car la lumière du Soleil, composée de différentes couleurs, est dispersée par les molécules de l'air. La lumière bleue, étant plus courte, est dispersée davantage que les autres couleurs, ce qui fait qu'elle domine dans le ciel.",
+              "completion": "eos",
+              "usage": {
+                "prompt_tokens": 38,
+                "completion_tokens": 68,
+                "total_tokens": 106
+              },
+              "timing": {
+                "generation_seconds": 5.700034083100036,
+                "inspection_seconds": 0.1229084578808397
+              },
+              "inspection": {
+                "events": 66,
+                "ones": 1028,
+                "trials": 1980,
+                "fraction": 0.5191919191919192,
+                "control_fraction": 0.5055555555555555,
+                "calibrated": false,
+                "verdict": null,
+                "series": [
+                  {
+                    "characters": 16,
+                    "matching": 0.5444444444444444,
+                    "control": 0.5833333333333334
+                  },
+                  {
+                    "characters": 31,
+                    "matching": 0.5181818181818182,
+                    "control": 0.5727272727272728
+                  },
+                  {
+                    "characters": 47,
+                    "matching": 0.4955555555555556,
+                    "control": 0.5177777777777778
+                  },
+                  {
+                    "characters": 62,
+                    "matching": 0.48947368421052634,
+                    "control": 0.5
+                  },
+                  {
+                    "characters": 78,
+                    "matching": 0.5060606060606061,
+                    "control": 0.5
+                  },
+                  {
+                    "characters": 94,
+                    "matching": 0.49733333333333335,
+                    "control": 0.4786666666666667
+                  },
+                  {
+                    "characters": 109,
+                    "matching": 0.506896551724138,
+                    "control": 0.4804597701149425
+                  },
+                  {
+                    "characters": 125,
+                    "matching": 0.5046296296296297,
+                    "control": 0.47685185185185186
+                  },
+                  {
+                    "characters": 141,
+                    "matching": 0.5075,
+                    "control": 0.4975
+                  },
+                  {
+                    "characters": 156,
+                    "matching": 0.5069767441860465,
+                    "control": 0.5023255813953489
+                  },
+                  {
+                    "characters": 172,
+                    "matching": 0.5115942028985507,
+                    "control": 0.5028985507246376
+                  },
+                  {
+                    "characters": 188,
+                    "matching": 0.5102040816326531,
+                    "control": 0.49863945578231295
+                  },
+                  {
+                    "characters": 203,
+                    "matching": 0.5160256410256411,
+                    "control": 0.4980769230769231
+                  },
+                  {
+                    "characters": 219,
+                    "matching": 0.5134502923976608,
+                    "control": 0.5017543859649123
+                  },
+                  {
+                    "characters": 234,
+                    "matching": 0.5136612021857924,
+                    "control": 0.5021857923497268
+                  },
+                  {
+                    "characters": 250,
+                    "matching": 0.5191919191919192,
+                    "control": 0.5055555555555555
+                  }
+                ]
+              },
+              "trace": [
+                {
+                  "index": 0,
+                  "token_id": 2304,
+                  "bytes_hex": "4c65",
+                  "text": "Le",
+                  "start": 0,
+                  "end": 2,
+                  "kind": "text"
+                },
+                {
+                  "index": 1,
+                  "token_id": 11825,
+                  "bytes_hex": "206369",
+                  "text": " ci",
+                  "start": 2,
+                  "end": 5,
+                  "kind": "text"
+                },
+                {
+                  "index": 2,
+                  "token_id": 301,
+                  "bytes_hex": "656c",
+                  "text": "el",
+                  "start": 5,
+                  "end": 7,
+                  "kind": "text"
+                },
+                {
+                  "index": 3,
+                  "token_id": 906,
+                  "bytes_hex": "20617070",
+                  "text": " app",
+                  "start": 7,
+                  "end": 11,
+                  "kind": "text"
+                },
+                {
+                  "index": 4,
+                  "token_id": 5059,
+                  "bytes_hex": "617261",
+                  "text": "ara",
+                  "start": 11,
+                  "end": 14,
+                  "kind": "text"
+                },
+                {
+                  "index": 5,
+                  "token_id": 76322,
+                  "bytes_hex": "c3ae74",
+                  "text": "ît",
+                  "start": 14,
+                  "end": 16,
+                  "kind": "text"
+                },
+                {
+                  "index": 6,
+                  "token_id": 12422,
+                  "bytes_hex": "20626c65",
+                  "text": " ble",
+                  "start": 16,
+                  "end": 20,
+                  "kind": "text"
+                },
+                {
+                  "index": 7,
+                  "token_id": 84,
+                  "bytes_hex": "75",
+                  "text": "u",
+                  "start": 20,
+                  "end": 21,
+                  "kind": "text"
+                },
+                {
+                  "index": 8,
+                  "token_id": 1803,
+                  "bytes_hex": "20636172",
+                  "text": " car",
+                  "start": 21,
+                  "end": 25,
+                  "kind": "text"
+                },
+                {
+                  "index": 9,
+                  "token_id": 1187,
+                  "bytes_hex": "206c61",
+                  "text": " la",
+                  "start": 25,
+                  "end": 28,
+                  "kind": "text"
+                },
+                {
+                  "index": 10,
+                  "token_id": 141096,
+                  "bytes_hex": "206c756d69c3a87265",
+                  "text": " lumière",
+                  "start": 28,
+                  "end": 36,
+                  "kind": "text"
+                },
+                {
+                  "index": 11,
+                  "token_id": 3845,
+                  "bytes_hex": "206475",
+                  "text": " du",
+                  "start": 36,
+                  "end": 39,
+                  "kind": "text"
+                },
+                {
+                  "index": 12,
+                  "token_id": 64515,
+                  "bytes_hex": "20536f6c65",
+                  "text": " Sole",
+                  "start": 39,
+                  "end": 44,
+                  "kind": "text"
+                },
+                {
+                  "index": 13,
+                  "token_id": 321,
+                  "bytes_hex": "696c",
+                  "text": "il",
+                  "start": 44,
+                  "end": 46,
+                  "kind": "text"
+                },
+                {
+                  "index": 14,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 46,
+                  "end": 47,
+                  "kind": "text"
+                },
+                {
+                  "index": 15,
+                  "token_id": 39221,
+                  "bytes_hex": "20636f6d706f73",
+                  "text": " compos",
+                  "start": 47,
+                  "end": 54,
+                  "kind": "text"
+                },
+                {
+                  "index": 16,
+                  "token_id": 7888,
+                  "bytes_hex": "c3a965",
+                  "text": "ée",
+                  "start": 54,
+                  "end": 56,
+                  "kind": "text"
+                },
+                {
+                  "index": 17,
+                  "token_id": 409,
+                  "bytes_hex": "206465",
+                  "text": " de",
+                  "start": 56,
+                  "end": 59,
+                  "kind": "text"
+                },
+                {
+                  "index": 18,
+                  "token_id": 95542,
+                  "bytes_hex": "2064696666c3a972656e746573",
+                  "text": " différentes",
+                  "start": 59,
+                  "end": 71,
+                  "kind": "text"
+                },
+                {
+                  "index": 19,
+                  "token_id": 3933,
+                  "bytes_hex": "20636f75",
+                  "text": " cou",
+                  "start": 71,
+                  "end": 75,
+                  "kind": "text"
+                },
+                {
+                  "index": 20,
+                  "token_id": 76560,
+                  "bytes_hex": "6c65757273",
+                  "text": "leurs",
+                  "start": 75,
+                  "end": 80,
+                  "kind": "text"
+                },
+                {
+                  "index": 21,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 80,
+                  "end": 81,
+                  "kind": "text"
+                },
+                {
+                  "index": 22,
+                  "token_id": 1788,
+                  "bytes_hex": "20657374",
+                  "text": " est",
+                  "start": 81,
+                  "end": 85,
+                  "kind": "text"
+                },
+                {
+                  "index": 23,
+                  "token_id": 78735,
+                  "bytes_hex": "2064697370657273",
+                  "text": " dispers",
+                  "start": 85,
+                  "end": 93,
+                  "kind": "text"
+                },
+                {
+                  "index": 24,
+                  "token_id": 7888,
+                  "bytes_hex": "c3a965",
+                  "text": "ée",
+                  "start": 93,
+                  "end": 95,
+                  "kind": "text"
+                },
+                {
+                  "index": 25,
+                  "token_id": 1346,
+                  "bytes_hex": "20706172",
+                  "text": " par",
+                  "start": 95,
+                  "end": 99,
+                  "kind": "text"
+                },
+                {
+                  "index": 26,
+                  "token_id": 3541,
+                  "bytes_hex": "206c6573",
+                  "text": " les",
+                  "start": 99,
+                  "end": 103,
+                  "kind": "text"
+                },
+                {
+                  "index": 27,
+                  "token_id": 21609,
+                  "bytes_hex": "206d6f6c",
+                  "text": " mol",
+                  "start": 103,
+                  "end": 107,
+                  "kind": "text"
+                },
+                {
+                  "index": 28,
+                  "token_id": 19667,
+                  "bytes_hex": "c3a963",
+                  "text": "éc",
+                  "start": 107,
+                  "end": 109,
+                  "kind": "text"
+                },
+                {
+                  "index": 29,
+                  "token_id": 2425,
+                  "bytes_hex": "756c6573",
+                  "text": "ules",
+                  "start": 109,
+                  "end": 113,
+                  "kind": "text"
+                },
+                {
+                  "index": 30,
+                  "token_id": 409,
+                  "bytes_hex": "206465",
+                  "text": " de",
+                  "start": 113,
+                  "end": 116,
+                  "kind": "text"
+                },
+                {
+                  "index": 31,
+                  "token_id": 326,
+                  "bytes_hex": "206c",
+                  "text": " l",
+                  "start": 116,
+                  "end": 118,
+                  "kind": "text"
+                },
+                {
+                  "index": 32,
+                  "token_id": 6,
+                  "bytes_hex": "27",
+                  "text": "'",
+                  "start": 118,
+                  "end": 119,
+                  "kind": "text"
+                },
+                {
+                  "index": 33,
+                  "token_id": 1310,
+                  "bytes_hex": "616972",
+                  "text": "air",
+                  "start": 119,
+                  "end": 122,
+                  "kind": "text"
+                },
+                {
+                  "index": 34,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 122,
+                  "end": 123,
+                  "kind": "text"
+                },
+                {
+                  "index": 35,
+                  "token_id": 4929,
+                  "bytes_hex": "204c61",
+                  "text": " La",
+                  "start": 123,
+                  "end": 126,
+                  "kind": "text"
+                },
+                {
+                  "index": 36,
+                  "token_id": 141096,
+                  "bytes_hex": "206c756d69c3a87265",
+                  "text": " lumière",
+                  "start": 126,
+                  "end": 134,
+                  "kind": "text"
+                },
+                {
+                  "index": 37,
+                  "token_id": 12422,
+                  "bytes_hex": "20626c65",
+                  "text": " ble",
+                  "start": 134,
+                  "end": 138,
+                  "kind": "text"
+                },
+                {
+                  "index": 38,
+                  "token_id": 361,
+                  "bytes_hex": "7565",
+                  "text": "ue",
+                  "start": 138,
+                  "end": 140,
+                  "kind": "text"
+                },
+                {
+                  "index": 39,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 140,
+                  "end": 141,
+                  "kind": "text"
+                },
+                {
+                  "index": 40,
+                  "token_id": 138157,
+                  "bytes_hex": "20c3a974616e74",
+                  "text": " étant",
+                  "start": 141,
+                  "end": 147,
+                  "kind": "text"
+                },
+                {
+                  "index": 41,
+                  "token_id": 5519,
+                  "bytes_hex": "20706c7573",
+                  "text": " plus",
+                  "start": 147,
+                  "end": 152,
+                  "kind": "text"
+                },
+                {
+                  "index": 42,
+                  "token_id": 73899,
+                  "bytes_hex": "20636f75727465",
+                  "text": " courte",
+                  "start": 152,
+                  "end": 159,
+                  "kind": "text"
+                },
+                {
+                  "index": 43,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 159,
+                  "end": 160,
+                  "kind": "text"
+                },
+                {
+                  "index": 44,
+                  "token_id": 1788,
+                  "bytes_hex": "20657374",
+                  "text": " est",
+                  "start": 160,
+                  "end": 164,
+                  "kind": "text"
+                },
+                {
+                  "index": 45,
+                  "token_id": 78735,
+                  "bytes_hex": "2064697370657273",
+                  "text": " dispers",
+                  "start": 164,
+                  "end": 172,
+                  "kind": "text"
+                },
+                {
+                  "index": 46,
+                  "token_id": 7888,
+                  "bytes_hex": "c3a965",
+                  "text": "ée",
+                  "start": 172,
+                  "end": 174,
+                  "kind": "text"
+                },
+                {
+                  "index": 47,
+                  "token_id": 40769,
+                  "bytes_hex": "20646176",
+                  "text": " dav",
+                  "start": 174,
+                  "end": 178,
+                  "kind": "text"
+                },
+                {
+                  "index": 48,
+                  "token_id": 24806,
+                  "bytes_hex": "616e74616765",
+                  "text": "antage",
+                  "start": 178,
+                  "end": 184,
+                  "kind": "text"
+                },
+                {
+                  "index": 49,
+                  "token_id": 1709,
+                  "bytes_hex": "20717565",
+                  "text": " que",
+                  "start": 184,
+                  "end": 188,
+                  "kind": "text"
+                },
+                {
+                  "index": 50,
+                  "token_id": 3541,
+                  "bytes_hex": "206c6573",
+                  "text": " les",
+                  "start": 188,
+                  "end": 192,
+                  "kind": "text"
+                },
+                {
+                  "index": 51,
+                  "token_id": 45006,
+                  "bytes_hex": "20617574726573",
+                  "text": " autres",
+                  "start": 192,
+                  "end": 199,
+                  "kind": "text"
+                },
+                {
+                  "index": 52,
+                  "token_id": 3933,
+                  "bytes_hex": "20636f75",
+                  "text": " cou",
+                  "start": 199,
+                  "end": 203,
+                  "kind": "text"
+                },
+                {
+                  "index": 53,
+                  "token_id": 76560,
+                  "bytes_hex": "6c65757273",
+                  "text": "leurs",
+                  "start": 203,
+                  "end": 208,
+                  "kind": "text"
+                },
+                {
+                  "index": 54,
+                  "token_id": 11,
+                  "bytes_hex": "2c",
+                  "text": ",",
+                  "start": 208,
+                  "end": 209,
+                  "kind": "text"
+                },
+                {
+                  "index": 55,
+                  "token_id": 3761,
+                  "bytes_hex": "206365",
+                  "text": " ce",
+                  "start": 209,
+                  "end": 212,
+                  "kind": "text"
+                },
+                {
+                  "index": 56,
+                  "token_id": 7774,
+                  "bytes_hex": "20717569",
+                  "text": " qui",
+                  "start": 212,
+                  "end": 216,
+                  "kind": "text"
+                },
+                {
+                  "index": 57,
+                  "token_id": 19694,
+                  "bytes_hex": "2066616974",
+                  "text": " fait",
+                  "start": 216,
+                  "end": 221,
+                  "kind": "text"
+                },
+                {
+                  "index": 58,
+                  "token_id": 922,
+                  "bytes_hex": "207175",
+                  "text": " qu",
+                  "start": 221,
+                  "end": 224,
+                  "kind": "text"
+                },
+                {
+                  "index": 59,
+                  "token_id": 79620,
+                  "bytes_hex": "27656c6c65",
+                  "text": "'elle",
+                  "start": 224,
+                  "end": 229,
+                  "kind": "text"
+                },
+                {
+                  "index": 60,
+                  "token_id": 4719,
+                  "bytes_hex": "20646f6d",
+                  "text": " dom",
+                  "start": 229,
+                  "end": 233,
+                  "kind": "text"
+                },
+                {
+                  "index": 61,
+                  "token_id": 482,
+                  "bytes_hex": "696e65",
+                  "text": "ine",
+                  "start": 233,
+                  "end": 236,
+                  "kind": "text"
+                },
+                {
+                  "index": 62,
+                  "token_id": 6866,
+                  "bytes_hex": "2064616e73",
+                  "text": " dans",
+                  "start": 236,
+                  "end": 241,
+                  "kind": "text"
+                },
+                {
+                  "index": 63,
+                  "token_id": 512,
+                  "bytes_hex": "206c65",
+                  "text": " le",
+                  "start": 241,
+                  "end": 244,
+                  "kind": "text"
+                },
+                {
+                  "index": 64,
+                  "token_id": 11825,
+                  "bytes_hex": "206369",
+                  "text": " ci",
+                  "start": 244,
+                  "end": 247,
+                  "kind": "text"
+                },
+                {
+                  "index": 65,
+                  "token_id": 301,
+                  "bytes_hex": "656c",
+                  "text": "el",
+                  "start": 247,
+                  "end": 249,
+                  "kind": "text"
+                },
+                {
+                  "index": 66,
+                  "token_id": 13,
+                  "bytes_hex": "2e",
+                  "text": ".",
+                  "start": 249,
+                  "end": 250,
+                  "kind": "text"
+                },
+                {
+                  "index": 67,
+                  "token_id": 151645,
+                  "bytes_hex": null,
+                  "text": "",
+                  "start": 250,
+                  "end": 250,
+                  "kind": "control"
+                }
+              ]
+            }
+          },
+          "seconds": 10.324985167011619,
+          "max_tokens": 192,
+          "independent_randomness": true,
+          "calibrated": false,
+          "backend": "mlx"
+        }
+      }
+    }
+  ]
+}

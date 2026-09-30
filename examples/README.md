@@ -1,5 +1,7 @@
 # Build your own Keyprint experiment
 
+[Play with the recorded gallery](https://keyprint.vercel.app/play/) or [remix it without a model](../demos/README.md).
+
 Community research preview. Start with the root README's local install. These
 recipes use real local inference, not the browser teaching illustration.
 

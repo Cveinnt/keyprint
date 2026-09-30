@@ -23,3 +23,9 @@
 - [Quality finding](evidence/paced-quality-2026-09-29/README.md): Retained factual/task failures in both arms.
 
 Never reinterpret diagnostic fractions as AI-authorship probabilities. Do not rewrite, translate, repair or selectively retry outputs to make a demonstration look successful.
+
+## Instant demos and complete guide
+
+- [Recorded gallery](https://keyprint.vercel.app/play/): no-install public playback.
+- [Demo source and remixing](demos/README.md): one-command model-free demo server.
+- [Complete usage guide](USAGE.md): full setup, API and lifecycle details.
