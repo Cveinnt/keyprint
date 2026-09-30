@@ -1,0 +1,79 @@
+{
+  "wheel": "keyprint-0.1.0a1-py3-none-any.whl",
+  "wheel_sha256": "b331fc9d382e1b5c93506bb313e7169385bb93afe90287d687b8fc057bd8b710",
+  "wheel_bytes": 2373918,
+  "asset_count": 7,
+  "all_assets_exact": true,
+  "isolated_import": true,
+  "dependencies_checked": true,
+  "backend_packages_installed": false,
+  "model_loaded": false,
+  "steps": [
+    {
+      "step": "build",
+      "exit_code": 0
+    },
+    {
+      "step": "venv",
+      "exit_code": 0
+    },
+    {
+      "step": "install",
+      "exit_code": 0
+    },
+    {
+      "step": "dependency-check",
+      "exit_code": 0
+    },
+    {
+      "step": "import",
+      "exit_code": 0
+    },
+    {
+      "step": "doctor",
+      "exit_code": 0
+    },
+    {
+      "step": "verify",
+      "exit_code": 0
+    },
+    {
+      "step": "demo",
+      "exit_code": 0
+    },
+    {
+      "step": "help",
+      "exit_code": 0
+    },
+    {
+      "step": "packages",
+      "exit_code": 0
+    }
+  ],
+  "scientific_acceptance": false,
+  "launch_ready": false,
+  "source_commit": "cefce38dc71ae5b1a885a42d34514d9f32a7a2d1",
+  "package_resolution_offline": true,
+  "network_activity_audited": false,
+  "author": "Vincent Wu (Cveinnt)",
+  "license_expression": "MIT",
+  "license_files_exact": [
+    "keyprint-0.1.0a1.dist-info/licenses/LICENSE",
+    "keyprint-0.1.0a1.dist-info/licenses/sdk/THIRD_PARTY_NOTICES.md",
+    "keyprint-0.1.0a1.dist-info/licenses/sdk/licenses/Qwen-Apache-2.0.txt",
+    "keyprint-0.1.0a1.dist-info/licenses/sdk/licenses/SynthID-Text-reference-Apache-2.0.txt"
+  ],
+  "entrypoint_verified": "keyprint = keyprint.cli:main",
+  "assets_sha256": {
+    "index.html": "246f9eb1b1e526393a001d9578742d268c52cdbaa1367f5e75e33d8e70f4f47f",
+    "trace.js": "97871a0af7640e814558632fba82796079359600fa6f554df03e98f71c4710c0",
+    "app.css": "5ea57e8fbcd20f68ce0357f10cf9b4e8302f2d28da35f880d0ffd500cbfe631a",
+    "gallery.js": "9470af43e28b1195c8a64d287f79d42ff1aa27650a9136e1240df0e897145fb6",
+    "reader.js": "4a380d6c5c9c513ec0ba84255b92848673e8fda97f73cd8dba510e4378287f75",
+    "app.js": "c8e1c7c4d549d6302d06f20db56bc2f4e1695dec724812cab23ca0d7a366d2e4",
+    "favicon.svg": "97646080178f73ebd060f7457c0d86277de15b8ab8514dce1bb0e1ebf21c90fb"
+  },
+  "platform": "macOS arm64",
+  "python": "3.13.13",
+  "raw_worker_sha256": "2af77bfde9780255dfecba121e092c60da45d8deb7605d0bd5fbd7a3a1f21395"
+}

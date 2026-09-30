@@ -26,6 +26,19 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 29 core install: verified locally, release still held
+
+The current 2.26 MiB wheel installs into a fresh offline environment outside the
+checkout. Dependency checks, console entry point, doctor, engine verification
+and model-free demo pass on macOS arm64/Python 3.13.13. All seven demo assets,
+MIT notices and Vincent Wu (Cveinnt) attribution match source. No optional
+inference framework or model is loaded. The sequential build/install/check pass
+peaked at 300.83 MiB under a 512 MiB guard, with cleanup verified. See
+[core installation evidence](evidence/offline-core-install-2026-09-29/README.md).
+This does not close public-registry installation, cross-platform inference,
+semantic preservation or detection qualification. Docker remains untouched;
+further local model starts remain held under the user's memory constraint.
+
 ## September 29 bounded-candidate evaluation: no promotion
 
 The separately named paced research candidate has completed 128 EOS outputs and
