@@ -96,19 +96,21 @@ English/Spanish/French/Chinese cases, 96 facts, four fresh
 owner keys, 199 fresh decoys, 128 paired attempts and review/scoring criteria.
 Sixteen input-integrity tests pass. See
 [frozen inputs](evidence/balanced-evaluation-inputs-2026-09-29/README.md).
-The study and one separately audited continuation now retain 71 complete outputs,
-two infrastructure interruptions and 55 unstarted attempts. The 71 texts plus
-the original sealed failure have source-only assistant ratings; the all-128
-rating freeze and condition/score analysis remain incomplete. Both workers
+The study and its separately audited continuations now retain 71 complete outputs,
+three infrastructure interruptions and 54 unstarted attempts. The 71 texts plus
+two sealed failures have source-only assistant ratings; the all-128
+rating freeze and condition/score analysis remain incomplete. The model workers
 stopped on global memory pressure below their 8 GiB cutoff, with cleanup verified
-and no automatic restart. The latest continuation preserved every original
+and no automatic restart. The first continuation preserved every original
 output and added eight. See [continuation evidence](evidence/balanced-continuation-2026-09-29/README.md).
 This closes evidence-preserving continuation work, not quality or detection
 acceptance. A new chain runner supports multiple interruptions and explicit
-four-output batch boundaries; 83 synthetic/regression tests pass. Its actual-data
-plan-only validation was refused before launch because system pressure was
-elevated, so native use remains pending. No new model was loaded. See
-[bounded-batch validation status](evidence/balanced-chain-2026-09-29/README.md).
+four-output batch boundaries; 83 synthetic/regression tests pass. Actual-data
+plan-only validation subsequently passed at 78.44 MiB peak. One native batch
+stopped on pressure before its first token commit, at 5.44 GiB peak. Cleanup was
+verified. Further local model starts are held under the user's low-memory
+constraint; Docker and unrelated applications remain running. See
+[actual chain execution](evidence/balanced-chain-execution-2026-09-29/README.md).
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.

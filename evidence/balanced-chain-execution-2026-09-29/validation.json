@@ -1,0 +1,26 @@
+{
+  "schema": "keyprint.balanced-chain-interruption.v1",
+  "scheduled": 128,
+  "completed_eos": 71,
+  "sealed_interrupted": 2,
+  "new_unfinished_attempts": 1,
+  "new_unfinished_committed_tokens": 0,
+  "unstarted_attempts": 54,
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "launch_ready": false,
+  "lineage": {
+    "preserved_outcomes": 72,
+    "sealed_interrupted": 1,
+    "new_attempts": 0,
+    "first_unstarted_index": 73,
+    "quality_acceptance": false,
+    "detector_calibrated": false,
+    "launch_ready": false
+  },
+  "plan_sha256": "bd1463ee63e94584ef52495a5f03e9589a1c9c2abbe5c9d11ce61580872c22ba",
+  "runs_sha256": "7a4235fe5604e8fa32c07e1d9f4cd5887050187d554e67ae41a05a65f3b3d784",
+  "identity_sha256": "504fd6fe95fb5178e62097923726b9c985d9b0976b41b180ebefb11d7db4897f",
+  "supervisor_sha256": "7531c0c541303debbd9b13d8e11beb134838d2ea4a32bfc9981ce69de4b7b90b",
+  "unfinished_journal_sha256": "e9f84a21cfe006f660ee05dc4fbdeea43730c42ca55522381dc01939a8584bb1"
+}

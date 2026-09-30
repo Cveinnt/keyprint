@@ -29,6 +29,8 @@ function ui(extra = {}) {
     mountGallery:require('../src/keyprint/web/gallery.js').mountGallery,
     location: { hash: '' }, sessionStorage: { getItem: () => null }, URLSearchParams,
     fetch: extra.fetch, renderResponse: (target,text) => {target.textContent=text;},
+    AbortController, setTimeout: extra.setTimeout || setTimeout,
+    clearTimeout: extra.clearTimeout || clearTimeout,
     renderWordingPair: (a,b,x,y) => {a.textContent=x;b.textContent=y;return x===y ? 'Identical wording' : 'Independent samples';},
   });
   // No token: startup reports the normal session instruction without network IO.
@@ -257,4 +259,57 @@ test('gallery selection switches all recorded data with one static fetch', async
   assert.match(app.get('recipe').textContent,/from_transformers/);
   await app.run('run("generate")');
   assert.deepEqual(requests,['./gallery.json']);
+});
+
+test('stopping progress aborts pending status requests without retrying generation', async () => {
+  const timers = new Map(), requests = []; let serial = 0, active = 0;
+  const app = ui({
+    setTimeout: fn => { timers.set(++serial, fn); return serial; },
+    clearTimeout: id => timers.delete(id),
+    fetch: (path, options) => {
+      requests.push({path, options});
+      assert.equal(path, '/api/progress');
+      active++;
+      return new Promise((resolve, reject) => {
+        options.signal.addEventListener('abort', () => {
+          active--; reject(new DOMException('Cancelled', 'AbortError'));
+        }, {once:true});
+      });
+    },
+  });
+  for (let i = 0; i < 20; i++) {
+    const stop = app.run('watchProgress($("status"))');
+    assert.equal(timers.size, 1);
+    const [id, poll] = timers.entries().next().value; timers.delete(id);
+    const pending = poll(); assert.equal(active, 1);
+    stop(); stop(); await pending;
+    assert.equal(active, 0); assert.equal(timers.size, 0);
+    assert.equal(requests.at(-1).options.signal.aborted, true);
+  }
+  assert.equal(requests.length, 20);
+  assert.equal(app.run('experiment'), null);
+});
+
+test('progress cleanup cannot abort the generation request or issue a server cancellation', async () => {
+  const timers = new Map(), requests = []; let serial = 0, completeGeneration;
+  const app = ui({
+    setTimeout: fn => { timers.set(++serial, fn); return serial; },
+    clearTimeout: id => timers.delete(id),
+    fetch: (path, options) => {
+      requests.push({path, options});
+      if (path === '/api/experiment') return new Promise(resolve => {completeGeneration = resolve;});
+      assert.equal(path, '/api/progress');
+      return new Promise((resolve, reject) => options.signal.addEventListener('abort',
+        () => reject(new DOMException('Cancelled', 'AbortError')), {once:true}));
+    },
+  });
+  const generation = app.run('api("/api/experiment", {action:"generate"}, "request-1")');
+  const stop = app.run('watchProgress($("status"))');
+  const [id, poll] = timers.entries().next().value; timers.delete(id);
+  const progress = poll(); stop(); await progress;
+  assert.equal(requests[0].options.signal, undefined);
+  assert.deepEqual(requests.map(r => r.path), ['/api/experiment','/api/progress']);
+  completeGeneration({ok:true,json:async () => ({text:'Exact original response'})});
+  assert.equal((await generation).text, 'Exact original response');
+  assert.equal(timers.size, 0);
 });

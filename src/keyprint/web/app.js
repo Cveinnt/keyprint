@@ -121,7 +121,7 @@ function updateStopControls() {
   }
 }
 
-async function api(path, body, id) {
+async function api(path, body, id, signal) {
   const response = await fetch(path, {
     method: body ? "POST" : "GET",
     headers: {
@@ -131,6 +131,7 @@ async function api(path, body, id) {
         : {}),
     },
     ...(body ? { body: JSON.stringify(body) } : {}),
+    ...(signal ? { signal } : {}),
   });
   const data = await response.json();
   if (!response.ok) {
@@ -143,6 +144,7 @@ async function api(path, body, id) {
 }
 
 function watchProgress(status) {
+  const controller = new AbortController();
   let stopped = false,
     timer;
   const stages = {
@@ -156,7 +158,7 @@ function watchProgress(status) {
   };
   async function poll() {
     try {
-      const progress = await api("/api/progress");
+      const progress = await api("/api/progress", undefined, undefined, controller.signal);
       if (!stopped && progress.active && progress.request_id === activeRequestId) {
         stopAvailable = true;
         stopRequested ||= progress.cancellation_requested;
@@ -175,6 +177,7 @@ function watchProgress(status) {
   return () => {
     stopped = true;
     clearTimeout(timer);
+    controller.abort();
   };
 }
 

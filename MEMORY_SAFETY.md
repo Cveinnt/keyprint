@@ -146,3 +146,17 @@ ancestor and interrupted output remains bound. Its synthetic checks pass, but
 the actual-study plan-only validation was refused on elevated system pressure.
 Do not treat this harness as native-qualified yet. See
 [batch validation status](evidence/balanced-chain-2026-09-29/README.md).
+
+A later actual-data plan-only check passed at 78.44 MiB, but a native batch then
+stopped before its first token commit at 5.44 GiB. The user explicitly declined
+stopping Docker Desktop and reiterated low RAM use and sequential execution.
+Keep Docker and unrelated workloads running. Further local model starts are
+held; a normal-pressure snapshot alone is insufficient justification to repeat
+this attempt. Batch serialization is already enforced and does not remove the
+model's startup footprint. Lightweight CPU checks may continue. See
+[actual chain execution](evidence/balanced-chain-execution-2026-09-29/README.md).
+
+The playground's progress watcher now aborts its outstanding status fetch when
+stopped, in addition to clearing its timer. Its controller is never attached to
+the generation request. Sixteen UI tests pass, including repeated cleanup and
+generation isolation. This is request-lifecycle hygiene, not a ChatGPT leak fix.
