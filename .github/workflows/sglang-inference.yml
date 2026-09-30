@@ -1,29 +1,7 @@
 name: SGLang actual inference
+# Opt-in only. Hosted checks remain disabled by the maintainer.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'src/keyprint/experimental/**'
-      - 'src/keyprint/backends/bytelevel.py'
-      - 'src/keyprint/_engine/**'
-      - 'tools/*sglang*'
-      - 'tools/validate_native_cases.py'
-      - 'tools/validate_compatibility.py'
-      - 'tools/check_native_receipts.py'
-      - 'tools/inference_cases.json'
-      - '.github/workflows/sglang-inference.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'src/keyprint/experimental/**'
-      - 'src/keyprint/backends/bytelevel.py'
-      - 'src/keyprint/_engine/**'
-      - 'tools/*sglang*'
-      - 'tools/validate_native_cases.py'
-      - 'tools/validate_compatibility.py'
-      - 'tools/check_native_receipts.py'
-      - 'tools/inference_cases.json'
-      - '.github/workflows/sglang-inference.yml'
 permissions:
   contents: read
 concurrency:

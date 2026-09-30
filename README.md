@@ -1,11 +1,23 @@
 # Keyprint
 
-**Text watermarking you can inspect, generate and test locally.**
+**A playground for text watermarking. Generate it, inspect it, build on it.**
 
-Private development preview. The launch is postponed while integrations and
-claims are audited. This branch builds **`keyprint 0.1.0a1`**; that name/version
-has not been published to PyPI. The old `keyprint-research-v3` release is a
-separate research reference, not the install command for this branch.
+**Community research preview · MIT · Vincent Wu (Cveinnt).**
+Keyprint exposes local generation, ordinary/marked comparisons, token traces
+and remixable interactive viewers. Bring your own prompt, inspect the original
+outputs, and use the same Python API to build your own experiments.
+
+Reliable calibrated detection and negligible quality impact remain open research
+problems. This is not a production detector, a Claude detector, or a verified
+reconstruction of Anthropic's private implementation. Existing text is never
+silently rewritten to add a watermark. Read [what works and what is open](ROADMAP.md).
+
+[Try a demo](examples/README.md) · [Build with your AI](AGENTS.md) ·
+[Contribute](CONTRIBUTING.md) · [Share an experiment](COMMUNITY.md)
+
+This branch builds **`keyprint 0.1.0a1`**, not yet published to PyPI. Install from
+this repository using the steps below. The old `keyprint-research-v3` release is
+a separate research reference, not the install command for this preview.
 
 [Framework and client compatibility](COMPATIBILITY.md): tested local OpenAI,
 Anthropic, LangChain and Ollama-client requests; optional LiteLLM routing,
@@ -15,14 +27,14 @@ and scoped native vLLM/SGLang pilots.
 
 The interactive playground generates two real responses, lets you change the
 prompt, and shows how edits affect the watermark signal. No hosted API key or
-account is needed. Start from this private checkout with Python 3.12 or 3.13.
+account is needed. Use Python 3.12 or 3.13.
 
 **Recommended first run:**
 
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install '.[playground]'
+python -m pip install 'keyprint[playground] @ git+https://github.com/Cveinnt/keyprint.git@v0.1.0a1'
 keyprint playground --download
 ```
 
@@ -49,7 +61,8 @@ If a download fails, the cache is retained and the demo does not start. Retry
 explicitly when ready. Windows/Linux execution remains subject to the
 [tested compatibility scope](INTEGRATIONS.md), not inferred from CLI routing.
 
-For an optional model-free check: `python -m pip install .`, then `keyprint demo`.
+For an optional model-free check, clone the repository, run
+`python -m pip install .`, then `keyprint demo`.
 That fixture uses A/B/C/D choices and does not generate prose. `keyprint doctor`
 checks package imports and engine integrity; `keyprint verify` checks the engine
 manifest. Neither certifies a model or detector. Add `--json` for reports.

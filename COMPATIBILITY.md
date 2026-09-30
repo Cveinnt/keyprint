@@ -1,7 +1,7 @@
 # Compatibility at a glance
 
-Updated September 28, 2026. Applies to the **private, unpublished Keyprint
-0.1.0a1 development branch**. “Tested” means actual inference through the
+Evidence updated September 28, 2026. Applies to the **Keyprint
+0.1.0a1 community research preview**. “Tested” means actual inference through the
 listed local path. It does not mean production qualification, arbitrary model
 support or transfer of the original research acceptances.
 

@@ -1,6 +1,6 @@
 # OpenAI and Anthropic clients
 
-Private development preview. The supported path uses provider clients with a
+Community research preview. The supported path uses provider clients with a
 local model. Post-generation rewriting is blocked. Neither path inserts Keyprint
 into OpenAI-hosted GPT or Anthropic-hosted Claude sampling.
 

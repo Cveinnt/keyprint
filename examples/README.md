@@ -1,6 +1,6 @@
 # Build your own Keyprint experiment
 
-Private development SDK. Start with the root README's local install. These
+Community research preview. Start with the root README's local install. These
 recipes use real local inference, not the browser teaching illustration.
 
 ## Prefilled interactive gallery
@@ -46,3 +46,8 @@ its own scoped qualification requirements. Use a new output directory.
 All recipes retain original output, including truncation and identical pairs.
 Review prompts and generated text before sharing the exported folders. Private
 journals and keys stay outside the exports. No data is uploaded.
+
+Built something useful? Follow [Share an experiment](../COMMUNITY.md). Include
+the recipe, exact model/version, all sampled pairs and the limits of what the
+visualization measures. A recorded viewer can be shared without running a model
+in each visitor's browser.

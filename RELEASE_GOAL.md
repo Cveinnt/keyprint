@@ -1,5 +1,14 @@
 # Keyprint release goal
 
+## Community research preview scope
+
+The owner approved sharing the research toolkit so contributors and their coding
+agents can build on it. This preview uses the SDK source validated at `bcd2803`;
+unvalidated durable-server changes remain outside this release. Community
+publication does not close production quality, detection or serving gates below.
+Read [ROADMAP.md](ROADMAP.md) for the current public scope. Historical publication
+holds below describe earlier checkpoints; their scientific results remain intact.
+
 ## Priority: watermark fidelity before launch polish
 
 Pretext is the benchmark for launch impact, clarity, creative demonstrations and

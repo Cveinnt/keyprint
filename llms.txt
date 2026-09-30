@@ -1,0 +1,25 @@
+# Keyprint
+
+> MIT-licensed Python toolkit for local text-watermarking experiments, paired generation and interactive recorded viewers. Community research preview; not a calibrated production detector or verified Anthropic reconstruction.
+
+## Start
+- [README](README.md): Installation, playground and comparison API.
+- [Agent instructions](AGENTS.md): Repository map, focused checks and evidence boundaries.
+- [Roadmap](ROADMAP.md): Available behavior, five contribution tracks and known failures.
+- [Contributing](CONTRIBUTING.md): Local checks and backend validation.
+- [Community](COMMUNITY.md): Demos, issues and AI-assisted contributions.
+
+## Build
+- [Examples](examples/README.md): Comparisons, galleries and prefix-data recipes.
+- [Compatibility](COMPATIBILITY.md): Specific tested local model/client paths.
+- [Provider clients](PROVIDERS.md): Local protocol subsets and retry limits.
+- [Inference testing](INFERENCE_TESTING.md): Actual model execution and retained artifacts.
+- [Output quality](OUTPUT_QUALITY.md): Language, meaning and factual-preservation boundaries.
+- [Memory policy](MEMORY_SAFETY.md): Sequential, bounded local model work.
+
+## Evidence
+- [Release history](RELEASE_GOAL.md): Measurements and unresolved qualification gates.
+- [Detection finding](evidence/paced-key-rank-2026-09-29/README.md): Weak current diagnostic, no calibrated detection claim.
+- [Quality finding](evidence/paced-quality-2026-09-29/README.md): Retained factual/task failures in both arms.
+
+Never reinterpret diagnostic fractions as AI-authorship probabilities. Do not rewrite, translate, repair or selectively retry outputs to make a demonstration look successful.

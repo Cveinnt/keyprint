@@ -1,6 +1,18 @@
 # Contributing
 
-The launch is on hold. Keep fixes on a branch and preserve evidence provenance.
+Human and AI-assisted contributions are welcome. Pick a scoped task from
+[the roadmap](ROADMAP.md), reproduce the current behavior, and submit the
+smallest change with its evidence. Start with [AGENTS.md](AGENTS.md) when using
+a coding agent. [Community guide](COMMUNITY.md) explains where to share work.
+
+Good first contributions include a small demo built from exported comparison
+data, a reproducible installation bug, or a targeted Unicode/EOS regression.
+Research changes need fresh evaluations with declared criteria; changing a
+threshold until an existing dataset passes is not qualification.
+
+You remain responsible for reviewing and understanding an AI-assisted patch.
+State which checks ran, which skipped, and which require a model. Retain failures
+and original output. Do not paste private prompts, keys or raw journals into PRs.
 
 Use Python 3.12 or 3.13 and a separate virtual environment. Install
 `pip install '.[test]'` for base tests, or `pip install '.[test,transformers]'`

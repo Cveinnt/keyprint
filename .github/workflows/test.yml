@@ -1,8 +1,6 @@
 name: SDK checks
+# Opt-in only. Hosted checks remain disabled by the maintainer.
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
