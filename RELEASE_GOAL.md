@@ -89,13 +89,23 @@ checks pass; 135 combined new and regression checks pass. A guarded English/Span
 native preflight stopped on global memory pressure at 5.33 GiB before any token
 committed. Cleanup was verified and the interrupted attempt is retained without
 automatic restart. See [integration and interruption](evidence/balanced-session-2026-09-29/README.md).
-Next establish memory headroom, complete a separately recorded native preflight,
-and integrate the full study runner and verifier. Fresh multilingual inputs are
-now frozen: sixteen English/Spanish/French/Chinese cases, 96 facts, four fresh
+The subsequent guarded native preflight completed four prefixes and 64 tokens,
+with zero execution or sampler-audit errors. The full study runner and verifier
+are implemented. Fresh multilingual inputs are frozen: sixteen
+English/Spanish/French/Chinese cases, 96 facts, four fresh
 owner keys, 199 fresh decoys, 128 paired attempts and review/scoring criteria.
 Sixteen input-integrity tests pass. See
 [frozen inputs](evidence/balanced-evaluation-inputs-2026-09-29/README.md).
-No completed new-rule text exists; preparation is not SDK promotion or acceptance.
+The study and one separately audited continuation now retain 71 complete outputs,
+two infrastructure interruptions and 55 unstarted attempts. The 71 texts plus
+the original sealed failure have source-only assistant ratings; the all-128
+rating freeze and condition/score analysis remain incomplete. Both workers
+stopped on global memory pressure below their 8 GiB cutoff, with cleanup verified
+and no automatic restart. The latest continuation preserved every original
+output and added eight. See [continuation evidence](evidence/balanced-continuation-2026-09-29/README.md).
+This closes evidence-preserving continuation work, not quality or detection
+acceptance. A second continuation is not supported yet and requires its own
+validation before any new model load.
 Any new confirmation needs prospectively frozen, disjoint material; do not
 rerate or tune this development cohort into a pass. SDK defaults, approved site,
 CI-off policy and publication hold remain unchanged.
