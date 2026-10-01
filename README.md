@@ -21,6 +21,7 @@ compare their exact wording, replay the model's tokens, and turn the same data i
 
 **Open research preview.** Real outputs, visible failures, MIT code. Reliable detection
 and negligible quality impact remain open. [What works and what is open →](ROADMAP.md)
+[Launch status and remaining clue gaps →](docs/LAUNCH_STATUS.md)
 
 ## Start playing
 
@@ -73,7 +74,8 @@ and `from_llama_cpp` constructors use the same comparison API within their suppo
 ## Start here
 
 Use Python 3.12 or 3.13. `keyprint` is the package and command name.
-This preview installs from its tagged GitHub source; **it is not on PyPI yet**.
+This preview installs from its tagged GitHub source or a prebuilt release wheel;
+**it is not on PyPI yet**.
 
 ```sh
 python -m venv .venv
@@ -91,6 +93,19 @@ Apple Silicon, or **270 MB** for the small SmolLM2 CPU fixture elsewhere. Depend
 and inference RAM are additional. The CPU fixture has limited answer quality.
 Later runs use `keyprint playground` without downloading again.
 [Existing models, setup checks and backend options →](USAGE.md#the-interactive-playground)
+
+**No Git installed?** [Download the prebuilt wheel](https://github.com/Cveinnt/keyprint/releases/download/v0.1.0a1/keyprint-0.1.0a1-py3-none-any.whl),
+then run these commands in the activated environment from the download directory:
+
+```sh
+python -m pip install './keyprint-0.1.0a1-py3-none-any.whl[playground]'
+keyprint doctor
+keyprint playground --download
+```
+
+The [release](https://github.com/Cveinnt/keyprint/releases/tag/v0.1.0a1) includes
+SHA-256 checksums and build provenance. The wheel is built from the unchanged
+release tag; the same backend dependencies and explicit model download apply.
 
 **Just exploring the frontend?** Clone this repo and run `python tools/serve_demos.py`.
 It serves the recordings using Python's standard library. No SDK dependencies or weights.

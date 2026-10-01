@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     docs = ["README.md", "USAGE.md", "CONTRIBUTING.md", "COMMUNITY.md", "AGENTS.md",
-            "ROADMAP.md", "docs/README.md", "docs/INFERENCE_PROVIDERS.md", "docs/maintainers/CI.md",
+            "ROADMAP.md", "docs/README.md", "docs/LAUNCH_STATUS.md", "docs/INFERENCE_PROVIDERS.md", "docs/maintainers/CI.md",
             "demos/README.md", "examples/README.md", "llms.txt"]
     for name in docs:
         source = ROOT / name

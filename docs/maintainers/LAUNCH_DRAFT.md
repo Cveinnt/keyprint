@@ -1,8 +1,8 @@
 # Community research launch copy
 
 Draft social copy. Nothing here is scheduled or posted. The community preview
-is distributed through its GitHub release; `keyprint` is not published on PyPI.
-Verify anonymous access to the tagged source before using this copy.
+is distributed through its GitHub release and prebuilt wheel; `keyprint` is not
+published on PyPI. [Current launch decision](../LAUNCH_STATUS.md).
 
 The launch should earn attention through a useful, inspectable watermarking
 tool. Pretext is a benchmark for impact and presentation, not a feature or size
@@ -11,15 +11,12 @@ speed, smaller assets, stronger-looking signals or a more impressive example.
 
 ## X opening
 
-I built Keyprint to make text watermarking something you can actually play with.
+I built Keyprint to make text watermarking something you can take apart.
 
-Generate two responses. Compare the wording. Replay the model's choices. Edit
-the text and inspect the pattern underneath.
+Play with real outputs. Replay the tokens. Remix the demo.
 
-A Python SDK, a local playground, and demos you can remix.
-
-https://keyprint.vercel.app/
-https://github.com/Cveinnt/keyprint
+Open-source research SDK. No account needed to explore:
+https://keyprint.vercel.app/play/
 
 ## Follow-up
 
@@ -28,6 +25,10 @@ rewriting its response afterward.
 
 The same comparison object powers the demo and your own visualizations. You can
 export a recorded gallery without adding a frontend framework.
+
+The public demo replays recorded runs. Your own prompts and edited-text
+inspection run locally with model weights. Start here:
+https://github.com/Cveinnt/keyprint
 
 This is an independent research implementation. It does not identify Anthropic's
 private algorithm or establish that all its publicly described behavior has been
@@ -55,6 +56,18 @@ factual failures. A wrong-key hit remains visible too; these diagnostic scores
 are not reliable attribution verdicts.
 
 I'd like feedback on the API and the experiments people want to build with it.
+
+## Provider-specific invitation
+
+Run a local inference worker? Keyprint exposes generation-time watermark
+experiments through a small Python API. Compare original samples, export their
+token traces, and build your own viewer. There are scoped MLX, Transformers and
+llama.cpp paths, plus vLLM/SGLang pilots. OpenAI/Anthropic client compatibility
+targets our local endpoint; it does not modify hosted GPT or Claude.
+
+The most useful contribution now is one reproducible runtime qualification or
+one better detection/quality experiment. Setup and exact limits:
+https://github.com/Cveinnt/keyprint/blob/main/docs/INFERENCE_PROVIDERS.md
 
 ## Evidence and publishing conditions
 
