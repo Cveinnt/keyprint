@@ -27,6 +27,11 @@ held until the requested product readiness bar is met.
 
 ## Current source-grounded evidence
 
+The [October 1 recount](evidence/semantic-recheck-2026-10-01/README.md) verifies
+all 224 original outputs and frozen ratings from the multilingual released-SDK
+and Dolly experimental cohorts. Language retention passes in both; factual
+preservation remains unresolved. No new inference or semantic ratings were added.
+
 The September 28 Qwen3.5 English study completed all 128 outputs with no runtime
 errors or truncation. Frozen assistant content checks pass 33/64 ordinary and
 23/64 marked, or 43/64 and 37/64 when all pre-flagged ambiguities are accepted.

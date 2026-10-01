@@ -1,0 +1,64 @@
+{
+  "schema": "keyprint.semantic-evidence-recheck.v1",
+  "multilingual_released_sdk": {
+    "groups": {
+      "ordinary": {
+        "attempts": 48,
+        "content_pass": 42,
+        "language_pass": 48,
+        "complete": 48
+      },
+      "marked": {
+        "attempts": 48,
+        "content_pass": 36,
+        "language_pass": 48,
+        "complete": 48
+      }
+    },
+    "paired_content": {
+      "both_pass": 33,
+      "marked_only": 3,
+      "ordinary_only": 9,
+      "both_fail": 3
+    },
+    "input_hashes": {
+      "plan.json": "332c5bfb66eb8a98fd4388b6c410467ac7887e0a4bada5b8e6291429722f5cba",
+      "blind-review.json": "276f4d81e5176d3fb14a7d64f596b3058bc69297a857d0f0e80d29f5f9652d58",
+      "frozen-ratings.json": "ac62b64766947c33bcc0aa19fffdf12b0c8d33199d6ba3ae743c76df05a963ca"
+    },
+    "runs_sha256": "6dfc076aa7314d5608bfd6ecf0cd61cbee30722dd9e8f2e2cc68b77432e3e6cb",
+    "published_result_sha256": "d9927ecdc2aee7b91aa7384cbe95dc15fd97f4c829867fb37d7a3f7627102b3b"
+  },
+  "dolly_experimental_qwen35": {
+    "groups": {
+      "ordinary": {
+        "attempts": 64,
+        "content_pass": 33,
+        "language_pass": 64,
+        "complete": 64
+      },
+      "marked": {
+        "attempts": 64,
+        "content_pass": 23,
+        "language_pass": 64,
+        "complete": 64
+      }
+    },
+    "paired_content": {
+      "ordinary_only": 17,
+      "both_fail": 24,
+      "both_pass": 16,
+      "marked_only": 7
+    },
+    "input_hashes": {
+      "plan.json": "8bda97cf8faf21d950d16abc83f3e58694567b58417d75f3295d286f6bc5bb77",
+      "blind-review.json": "b786027799e40f04c8fce39d5a8dd6a2fd26921ec12f67de97d94600db5d5253",
+      "frozen-ratings.json": "8648f7ba2dc4de680415edcf66244ff047eb31d95578e94a9751ad80a7d27b5a"
+    },
+    "runs_sha256": "637a6a4878987bb004e5638633277e34dd7b72c74a632e8441eb81d4aa7dca07",
+    "published_result_sha256": "29090f758ccfeee6dc476eb303345c8a65c3b8c6f2e1ad21e2867f1aeb7803db"
+  },
+  "quality_acceptance": false,
+  "scope": "Recounts existing frozen assistant judgments and verifies their commitments and output joins. No new inference, independent semantic rerating, human approval, causal estimate or pooled pass rate. Language retention is distinct from fact preservation.",
+  "script_sha256": "1d199452c498e4bbab604d48393bcc63261e8b2099741c715d815eb89d298625"
+}
