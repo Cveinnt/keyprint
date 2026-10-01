@@ -21,7 +21,16 @@ def verify_assets(model_path):
         raise ValueError("--model must be an existing local model directory")
     if (model_path / "generation_config.json").exists():
         raise ValueError("unexpected generation_config.json; use the pinned revision")
-    if sorted(p.name for p in model_path.glob("*.safetensors")) != ["model.safetensors"]:
+    weight_files = []
+    for path in model_path.glob("*.safetensors"):
+        # macOS stores Finder metadata separately on some external filesystems.
+        # MLX-LM loads model*.safetensors, so this sidecar is never a weight file.
+        if path.name == "._model.safetensors":
+            with path.open("rb") as stream:
+                if stream.read(8) == bytes.fromhex("0005160700020000"):
+                    continue
+        weight_files.append(path.name)
+    if sorted(weight_files) != ["model.safetensors"]:
         raise ValueError("expected exactly the pinned model.safetensors")
     for name, expected in ASSETS.items():
         with (model_path / name).open("rb") as stream:

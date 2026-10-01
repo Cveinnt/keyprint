@@ -88,3 +88,12 @@ directory or quietly retry an interrupted generation. `continue_specialized.py`
 is specific to the retained pre-generation interruption and refuses other states.
 `audit_specialized.py` requires every planned result. This adds research tools
 and evidence only; SDK sampling code is unchanged.
+
+### Subsequent loader fix
+
+Use commit `fa0d6db` to reproduce this frozen study and its source checks. A later
+loader patch recognizes the macOS AppleDouble sidecar header so the original
+external-drive directory can pass preflight without a clean-link workaround.
+All actual model-asset hashes remain mandatory, and extra weight files remain
+rejected. This does not change sampling, repair outputs, rerate the five strict
+misses or alter the already published `v0.1.0a1` wheel.
