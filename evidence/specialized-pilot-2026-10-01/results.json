@@ -1,0 +1,1037 @@
+{
+  "schema": "keyprint.specialized-results.v1",
+  "plan_sha256": "47b85c187a79489fbd9e225d38b98ad4fd634e1609e5129608109120d9458c81",
+  "runs_sha256": "7ed79eec541f5978cf7cd4988580e739cfef4a544a71d12b889ab37f0814ffc5",
+  "groups": {
+    "all": {
+      "ordinary": {
+        "attempts": 16,
+        "passes": 14
+      },
+      "marked": {
+        "attempts": 16,
+        "passes": 13
+      }
+    },
+    "python": {
+      "ordinary": {
+        "attempts": 4,
+        "passes": 4
+      },
+      "marked": {
+        "attempts": 4,
+        "passes": 3
+      }
+    },
+    "sql": {
+      "ordinary": {
+        "attempts": 4,
+        "passes": 4
+      },
+      "marked": {
+        "attempts": 4,
+        "passes": 4
+      }
+    },
+    "json": {
+      "ordinary": {
+        "attempts": 4,
+        "passes": 4
+      },
+      "marked": {
+        "attempts": 4,
+        "passes": 4
+      }
+    },
+    "csv": {
+      "ordinary": {
+        "attempts": 4,
+        "passes": 2
+      },
+      "marked": {
+        "attempts": 4,
+        "passes": 2
+      }
+    }
+  },
+  "paired": {
+    "both_pass": 13,
+    "ordinary_only": 1,
+    "both_fail": 2
+  },
+  "identical_pairs": 9,
+  "tokens": 1220,
+  "runs": [
+    {
+      "key_slot": 0,
+      "case": "python_release",
+      "condition": "ordinary",
+      "attempt": 0,
+      "text": "def can_release(approved, tests_passed, blocked):\n    return approved and tests_passed and not blocked",
+      "completion": "eos",
+      "tokens": 22,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 275,
+        "trials": 600,
+        "events": 20,
+        "fraction": 0.4583333333333333,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.329201209009625
+    },
+    {
+      "key_slot": 0,
+      "case": "python_release",
+      "condition": "marked",
+      "attempt": 1,
+      "text": "def can_release(approved, tests_passed, blocked):\n    return approved and tests_passed and not blocked",
+      "completion": "eos",
+      "tokens": 22,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 275,
+        "trials": 600,
+        "events": 20,
+        "fraction": 0.4583333333333333,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.8108740000752732
+    },
+    {
+      "key_slot": 0,
+      "case": "python_shipping",
+      "condition": "marked",
+      "attempt": 2,
+      "text": "```python\ndef shipping_fee_cents(total_cents, expedited):\n    if expedited:\n        return 1200\n    elif total_cents >= 5000:\n        return 0\n    else:\n        return 500\n```",
+      "completion": "eos",
+      "tokens": 57,
+      "exact_trace": true,
+      "oracle": {
+        "status": "unsupported_or_invalid",
+        "error_type": "SyntaxError",
+        "reason": "invalid syntax (<unknown>, line 1)"
+      },
+      "pass": false,
+      "diagnostic": {
+        "ones": 652,
+        "trials": 1260,
+        "events": 42,
+        "fraction": 0.5174603174603175,
+        "calibrated": false
+      },
+      "elapsed_seconds": 4.2243832079693675
+    },
+    {
+      "key_slot": 0,
+      "case": "python_shipping",
+      "condition": "ordinary",
+      "attempt": 3,
+      "text": "def shipping_fee_cents(total_cents, expedited):\n    if expedited:\n        return 1200\n    if total_cents >= 5000:\n        return 0\n    return 500",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 538,
+        "trials": 1110,
+        "events": 37,
+        "fraction": 0.4846846846846847,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.438919625012204
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_approval",
+      "condition": "ordinary",
+      "attempt": 4,
+      "text": "SELECT id FROM orders WHERE approved = 1 AND blocked = 0 ORDER BY id ASC;",
+      "completion": "eos",
+      "tokens": 20,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 259,
+        "trials": 510,
+        "events": 17,
+        "fraction": 0.5078431372549019,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.5839477089466527
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_approval",
+      "condition": "marked",
+      "attempt": 5,
+      "text": "SELECT id FROM orders WHERE approved = 1 AND blocked = 0 ORDER BY id ASC;",
+      "completion": "eos",
+      "tokens": 20,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 259,
+        "trials": 510,
+        "events": 17,
+        "fraction": 0.5078431372549019,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.6914525410393253
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_inventory",
+      "condition": "marked",
+      "attempt": 6,
+      "text": "SELECT warehouse, SUM(on_hand - reserved) AS available FROM stock GROUP BY warehouse HAVING SUM(on_hand - reserved) > 0 ORDER BY warehouse;",
+      "completion": "eos",
+      "tokens": 32,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 405,
+        "trials": 810,
+        "events": 27,
+        "fraction": 0.5,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.4924702499993145
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_inventory",
+      "condition": "ordinary",
+      "attempt": 7,
+      "text": "SELECT warehouse, SUM(on_hand - reserved) AS available FROM stock GROUP BY warehouse HAVING available > 0 ORDER BY warehouse;",
+      "completion": "eos",
+      "tokens": 27,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 385,
+        "trials": 750,
+        "events": 25,
+        "fraction": 0.5133333333333333,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.0175120420753956
+    },
+    {
+      "key_slot": 0,
+      "case": "json_release",
+      "condition": "ordinary",
+      "attempt": 8,
+      "text": "{\n  \"version\": \"3.2.1\",\n  \"approver\": \"Maya\",\n  \"deadline_utc\": \"2026-10-08T09:30:00Z\",\n  \"approved\": false,\n  \"tests_passed\": true,\n  \"blocked\": true\n}",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 919,
+        "trials": 1830,
+        "events": 61,
+        "fraction": 0.5021857923497268,
+        "calibrated": false
+      },
+      "elapsed_seconds": 4.685622125049122
+    },
+    {
+      "key_slot": 0,
+      "case": "json_release",
+      "condition": "marked",
+      "attempt": 9,
+      "text": "{\n  \"version\": \"3.2.1\",\n  \"approver\": \"Maya\",\n  \"deadline_utc\": \"2026-10-08T09:30:00Z\",\n  \"approved\": false,\n  \"tests_passed\": true,\n  \"blocked\": true\n}",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 919,
+        "trials": 1830,
+        "events": 61,
+        "fraction": 0.5021857923497268,
+        "calibrated": false
+      },
+      "elapsed_seconds": 5.101318125030957
+    },
+    {
+      "key_slot": 0,
+      "case": "json_french",
+      "condition": "marked",
+      "attempt": 10,
+      "text": "{\n  \"client\": \"Élodie Martin\",\n  \"quantite\": 6,\n  \"expedie\": false,\n  \"jour_expedition_prevu\": \"vendredi\",\n  \"livraison_confirmee\": false\n}",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 674,
+        "trials": 1320,
+        "events": 44,
+        "fraction": 0.5106060606060606,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.978778416989371
+    },
+    {
+      "key_slot": 0,
+      "case": "json_french",
+      "condition": "ordinary",
+      "attempt": 11,
+      "text": "{\n  \"client\": \"Élodie Martin\",\n  \"quantite\": 6,\n  \"expedie\": false,\n  \"jour_expedition_prevu\": \"vendredi\",\n  \"livraison_confirmee\": false\n}",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 674,
+        "trials": 1320,
+        "events": 44,
+        "fraction": 0.5106060606060606,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.721103207906708
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_timezone",
+      "condition": "ordinary",
+      "attempt": 12,
+      "text": "system,start,end,timezone,backup_created,restore_tested\nkumo,13:00,13:20,Asia/Tokyo,true,false",
+      "completion": "eos",
+      "tokens": 35,
+      "exact_trace": true,
+      "oracle": {
+        "status": "fail",
+        "details": {
+          "exact_cells": false
+        }
+      },
+      "pass": false,
+      "diagnostic": {
+        "ones": 485,
+        "trials": 960,
+        "events": 32,
+        "fraction": 0.5052083333333334,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.5683952079853043
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_timezone",
+      "condition": "marked",
+      "attempt": 13,
+      "text": "system,start,end,timezone,backup_created,restore_tested\nkumo,13:00,13:20,Asia/Tokyo,true,false",
+      "completion": "eos",
+      "tokens": 35,
+      "exact_trace": true,
+      "oracle": {
+        "status": "fail",
+        "details": {
+          "exact_cells": false
+        }
+      },
+      "pass": false,
+      "diagnostic": {
+        "ones": 485,
+        "trials": 960,
+        "events": 32,
+        "fraction": 0.5052083333333334,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.732105250004679
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_attribution",
+      "condition": "marked",
+      "attempt": 14,
+      "text": "\"name\",\"role\",\"status\"\n\"Maya Chen\",\"approver\",\"pending\"\n\"Ravi Shah\",\"recipient\",\"not_delivered\"",
+      "completion": "eos",
+      "tokens": 28,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_cells": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 408,
+        "trials": 810,
+        "events": 27,
+        "fraction": 0.5037037037037037,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.2607236250769347
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_attribution",
+      "condition": "ordinary",
+      "attempt": 15,
+      "text": "name,role,status\nMaya Chen,approver,pending\nRavi Shah,recipient,not_delivered",
+      "completion": "eos",
+      "tokens": 24,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_cells": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 319,
+        "trials": 630,
+        "events": 21,
+        "fraction": 0.5063492063492063,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.8445844170637429
+    },
+    {
+      "key_slot": 1,
+      "case": "python_release",
+      "condition": "marked",
+      "attempt": 16,
+      "text": "def can_release(approved, tests_passed, blocked):\n    return approved and tests_passed and not blocked",
+      "completion": "eos",
+      "tokens": 22,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 303,
+        "trials": 600,
+        "events": 20,
+        "fraction": 0.505,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.047331416979432
+    },
+    {
+      "key_slot": 1,
+      "case": "python_release",
+      "condition": "ordinary",
+      "attempt": 17,
+      "text": "def can_release(approved, tests_passed, blocked):\n    return approved and tests_passed and not blocked",
+      "completion": "eos",
+      "tokens": 22,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 303,
+        "trials": 600,
+        "events": 20,
+        "fraction": 0.505,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.6596200419589877
+    },
+    {
+      "key_slot": 1,
+      "case": "python_shipping",
+      "condition": "ordinary",
+      "attempt": 18,
+      "text": "def shipping_fee_cents(total_cents, expedited):\n    if expedited:\n        return 1200\n    if total_cents >= 5000:\n        return 0\n    return 500",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 554,
+        "trials": 1110,
+        "events": 37,
+        "fraction": 0.4990990990990991,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.360302999964915
+    },
+    {
+      "key_slot": 1,
+      "case": "python_shipping",
+      "condition": "marked",
+      "attempt": 19,
+      "text": "def shipping_fee_cents(total_cents, expedited):\n    if expedited:\n        return 1200\n    if total_cents >= 5000:\n        return 0\n    return 500",
+      "completion": "eos",
+      "tokens": 49,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "test_cases": 8,
+          "passed": 8
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 554,
+        "trials": 1110,
+        "events": 37,
+        "fraction": 0.4990990990990991,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.5464422499062493
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_approval",
+      "condition": "marked",
+      "attempt": 20,
+      "text": "SELECT id FROM orders WHERE approved = 1 AND blocked = 0 ORDER BY id ASC;",
+      "completion": "eos",
+      "tokens": 20,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 266,
+        "trials": 510,
+        "events": 17,
+        "fraction": 0.5215686274509804,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.6435872920555994
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_approval",
+      "condition": "ordinary",
+      "attempt": 21,
+      "text": "SELECT id FROM orders WHERE approved = 1 AND blocked = 0 ORDER BY id ASC;",
+      "completion": "eos",
+      "tokens": 20,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 266,
+        "trials": 510,
+        "events": 17,
+        "fraction": 0.5215686274509804,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.629976166994311
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_inventory",
+      "condition": "ordinary",
+      "attempt": 22,
+      "text": "SELECT warehouse, SUM(on_hand - reserved) AS available \nFROM stock \nGROUP BY warehouse \nHAVING SUM(on_hand - reserved) > 0 \nORDER BY warehouse;",
+      "completion": "eos",
+      "tokens": 36,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 390,
+        "trials": 810,
+        "events": 27,
+        "fraction": 0.48148148148148145,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.567746083950624
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_inventory",
+      "condition": "marked",
+      "attempt": 23,
+      "text": "SELECT warehouse, SUM(on_hand - reserved) AS available FROM stock GROUP BY warehouse HAVING SUM(on_hand - reserved) > 0 ORDER BY warehouse;",
+      "completion": "eos",
+      "tokens": 32,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "returned_rows": 2
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 397,
+        "trials": 810,
+        "events": 27,
+        "fraction": 0.4901234567901235,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.4289319169474766
+    },
+    {
+      "key_slot": 1,
+      "case": "json_release",
+      "condition": "marked",
+      "attempt": 24,
+      "text": "{\n  \"version\": \"3.2.1\",\n  \"approver\": \"Maya\",\n  \"deadline_utc\": \"2026-10-08T09:30:00Z\",\n  \"approved\": false,\n  \"tests_passed\": true,\n  \"blocked\": true\n}",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 921,
+        "trials": 1830,
+        "events": 61,
+        "fraction": 0.5032786885245901,
+        "calibrated": false
+      },
+      "elapsed_seconds": 5.02835266594775
+    },
+    {
+      "key_slot": 1,
+      "case": "json_release",
+      "condition": "ordinary",
+      "attempt": 25,
+      "text": "{\n  \"version\": \"3.2.1\",\n  \"approver\": \"Maya\",\n  \"deadline_utc\": \"2026-10-08T09:30:00Z\",\n  \"approved\": false,\n  \"tests_passed\": true,\n  \"blocked\": true\n}",
+      "completion": "eos",
+      "tokens": 69,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 921,
+        "trials": 1830,
+        "events": 61,
+        "fraction": 0.5032786885245901,
+        "calibrated": false
+      },
+      "elapsed_seconds": 4.749333541025408
+    },
+    {
+      "key_slot": 1,
+      "case": "json_french",
+      "condition": "ordinary",
+      "attempt": 26,
+      "text": "{\"client\": \"Élodie Martin\", \"quantite\": 6, \"expedie\": false, \"jour_expedition_prevu\": \"vendredi\", \"livraison_confirmee\": false}",
+      "completion": "eos",
+      "tokens": 45,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 650,
+        "trials": 1290,
+        "events": 43,
+        "fraction": 0.5038759689922481,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.359393542050384
+    },
+    {
+      "key_slot": 1,
+      "case": "json_french",
+      "condition": "marked",
+      "attempt": 27,
+      "text": "{\n  \"client\": \"Élodie Martin\",\n  \"quantite\": 6,\n  \"expedie\": false,\n  \"jour_expedition_prevu\": \"vendredi\",\n  \"livraison_confirmee\": false\n}",
+      "completion": "eos",
+      "tokens": 52,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_typed_fields": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 679,
+        "trials": 1320,
+        "events": 44,
+        "fraction": 0.5143939393939394,
+        "calibrated": false
+      },
+      "elapsed_seconds": 3.967594207962975
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_timezone",
+      "condition": "marked",
+      "attempt": 28,
+      "text": "system,start,end,timezone,backup_created,restore_tested\nkumo,13:00,13:20,asia/tokyo,true,false",
+      "completion": "eos",
+      "tokens": 35,
+      "exact_trace": true,
+      "oracle": {
+        "status": "fail",
+        "details": {
+          "exact_cells": false
+        }
+      },
+      "pass": false,
+      "diagnostic": {
+        "ones": 467,
+        "trials": 960,
+        "events": 32,
+        "fraction": 0.4864583333333333,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.7593635409139097
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_timezone",
+      "condition": "ordinary",
+      "attempt": 29,
+      "text": "system,start,end,timezone,backup_created,restore_tested\nkumo,13:00,13:20,Asia/Tokyo,true,false",
+      "completion": "eos",
+      "tokens": 35,
+      "exact_trace": true,
+      "oracle": {
+        "status": "fail",
+        "details": {
+          "exact_cells": false
+        }
+      },
+      "pass": false,
+      "diagnostic": {
+        "ones": 464,
+        "trials": 960,
+        "events": 32,
+        "fraction": 0.48333333333333334,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.6658406250644475
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_attribution",
+      "condition": "ordinary",
+      "attempt": 30,
+      "text": "\"name\",\"role\",\"status\"\n\"Maya Chen\",\"approver\",\"pending\"\n\"Ravi Shah\",\"recipient\",\"not_delivered\"",
+      "completion": "eos",
+      "tokens": 28,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_cells": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 396,
+        "trials": 810,
+        "events": 27,
+        "fraction": 0.4888888888888889,
+        "calibrated": false
+      },
+      "elapsed_seconds": 2.1308394159423187
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_attribution",
+      "condition": "marked",
+      "attempt": 31,
+      "text": "name,role,status\nMaya Chen,approver,pending\nRavi Shah,recipient,not_delivered",
+      "completion": "eos",
+      "tokens": 24,
+      "exact_trace": true,
+      "oracle": {
+        "status": "pass",
+        "details": {
+          "exact_cells": true
+        }
+      },
+      "pass": true,
+      "diagnostic": {
+        "ones": 290,
+        "trials": 630,
+        "events": 21,
+        "fraction": 0.4603174603174603,
+        "calibrated": false
+      },
+      "elapsed_seconds": 1.9793931670719758
+    }
+  ],
+  "receipts": [
+    {
+      "attempt": 0,
+      "report_sha256": "836b48a1bc5dbfc306f6afc867c80819d3c9740bce11062c1566167fab1ed7a2",
+      "journal_sha256": "6540a811ce2800d586bb0f28b66b69ec0c7dccca952506e65fd80291a7c83bfe"
+    },
+    {
+      "attempt": 1,
+      "report_sha256": "4134891c3a2fdf644b32f9d0a49e031e176e3e44b16a120ec5f4e6626a9b952d",
+      "journal_sha256": "e111426e1f69547089bb425809ca9ce3ee63509a008d1424fc636daa4b009121"
+    },
+    {
+      "attempt": 2,
+      "report_sha256": "1c349b6156f7921ddca08ad3613c7b4cda9a3ff524d694868baa96aaea3e48d2",
+      "journal_sha256": "8cbc309ac180900866b31c78e65c622aea54e1e91600afd85611363329015f47"
+    },
+    {
+      "attempt": 3,
+      "report_sha256": "030fba716374d3308c3c4be2e521b3e4bad66ccf488aba4bfd18a298b7ebcc9d",
+      "journal_sha256": "86ea8490ffc853a8a996ba59cc41b1c36826a193276db7d48e6bf5f0d9d1e557"
+    },
+    {
+      "attempt": 4,
+      "report_sha256": "a96fdc18ca6498ddd6884c0f2c0286085a47dd24f5471c6d80147469d444183b",
+      "journal_sha256": "d69241c914ed691b1af62fd5126b1dc0026e26e7eccf208e0f0dc5315d296491"
+    },
+    {
+      "attempt": 5,
+      "report_sha256": "49cadb03527384259dd05977073e951fa4b30be3c6ba6a9cf579c5257ade41f6",
+      "journal_sha256": "1e190dcbbda2111f19cb78a06ae16ff7ef94e38992b411cd89eb758d9476278d"
+    },
+    {
+      "attempt": 6,
+      "report_sha256": "df995db476e669e3ef2dd9f57944f45a5b2229df4e7d71d12625db752ee32ccd",
+      "journal_sha256": "2a64fab702efdfbbbc64f766803febed5ef3d5701e165f96cadd66cba2776822"
+    },
+    {
+      "attempt": 7,
+      "report_sha256": "d1e515e858dcf77c4d7ad04f4594cf80d60f6fa7261ce77db0e77c8775551770",
+      "journal_sha256": "3382530c1a3df4d08177903b60c3ebe8655c13f481c25f2087d7f6b7dd34b109"
+    },
+    {
+      "attempt": 8,
+      "report_sha256": "f3653b31830ec66819b053e4a8c9835c62264dbfd57153a9f905370f73ca548a",
+      "journal_sha256": "5d0881c95ef0dcfc14127e9624517d181e29d86ac6bd79e9160f1b15842ea4c0"
+    },
+    {
+      "attempt": 9,
+      "report_sha256": "f3d079243f4c0e4424647ad419425ff40e4d52c098adb226d6332bfed247dc40",
+      "journal_sha256": "636ce56fedd78bf910d1ed9f720a455aa1c8a873c9106cb26b75c05bedbea4e4"
+    },
+    {
+      "attempt": 10,
+      "report_sha256": "81089b06f84872b9f7c1368403811e5073da931e95a96b128442b037bb19ea02",
+      "journal_sha256": "2d23e637e7a1b5863b92ef14eaecf174905335815a24f896bd106f8e028b9663"
+    },
+    {
+      "attempt": 11,
+      "report_sha256": "4935e55a6eda6d6ebbe0471084d6806b0fe25dc3655f232ba4eff27e264bc76b",
+      "journal_sha256": "2d73235d1d0aac7c0c8fbad48c7176e6941a8bce3422067699bd6e8abff11eef"
+    },
+    {
+      "attempt": 12,
+      "report_sha256": "d040fb8a840218b20d41200767591955f568143518a0d2be031e8bc1c5ee8493",
+      "journal_sha256": "b037a4acade93aaf1c4d3d98d5bbd53f31fa9a56b8b8605ed1ffbd708555db03"
+    },
+    {
+      "attempt": 13,
+      "report_sha256": "47f990ef58064eba6c089f4a58a4d1c08ec5f62bd08fed8c5dcec46c08a7a097",
+      "journal_sha256": "2c5988282c6d9b1e2410007dedcee218a4741bcb68f6ddbbaa9e1a8faf363b25"
+    },
+    {
+      "attempt": 14,
+      "report_sha256": "0b90a5410bbafb24af511703b58a302776ca28e701429dc0d3c9e4f82fd9917b",
+      "journal_sha256": "7be9863f980dd2fc0384b61342ee92e5d924ced5c4ea25fc0c5774e2ecfed9d2"
+    },
+    {
+      "attempt": 15,
+      "report_sha256": "cea37b74bd6aa13206290e5bfda2b7d1d7c2ad64a929cc21b2084159d99ab899",
+      "journal_sha256": "68bfb511b5f2889c95e66db2eade21c78290f85cf0f1b3213840271f9a188d01"
+    },
+    {
+      "attempt": 16,
+      "report_sha256": "7df8b5cfe676d634a9a49ffd79352e798f5eca08bfe458b3789b657686cf9482",
+      "journal_sha256": "1d7663cab9a567062592df63d65050e782e7d182036d51030eb60a21827d86be"
+    },
+    {
+      "attempt": 17,
+      "report_sha256": "30806d0fb8c501e1cf8bb51e86e61e3870c4096fea248ae4a023311f9bc1e7ab",
+      "journal_sha256": "c1bc5bdf232401ce8f1ad54b8793ff44ba026f447e8f33000453436c87209b36"
+    },
+    {
+      "attempt": 18,
+      "report_sha256": "3b7d703b9c70ae4298d9a4910a12203c5864195f241983a324715967f62ea050",
+      "journal_sha256": "0bcac97ac62d80e5f26190c5c19f04b9c9b879b17a1eacbac6ee5ba6051e9362"
+    },
+    {
+      "attempt": 19,
+      "report_sha256": "2f899d4419173c3be3b3550266e6c9736657239ed8cc69ba3989e1e7fb0c30ac",
+      "journal_sha256": "307786bc84caec6cfc1c869b9107a5591d0ca011c2bc125d270f9e9312b50913"
+    },
+    {
+      "attempt": 20,
+      "report_sha256": "ae86ed86edf3d86fb7f12fdd512351254fca93d3e6be55c04dc5912adc4b17a5",
+      "journal_sha256": "eb0ef714063f53f60d77c2fa463fdde26f4d1221a42a6a757eec57f36fd87712"
+    },
+    {
+      "attempt": 21,
+      "report_sha256": "9f2bc048e22165434be2fa0caa693d4f99ba0c5cbdd33126b0c4abdaec45737a",
+      "journal_sha256": "ea111f56461aec5652262014432da4e084048a37cac1d19b1dcd1b343c7023ba"
+    },
+    {
+      "attempt": 22,
+      "report_sha256": "7208e581f4305ad112cff90a82149b8e352e1c7fe0946a854e1de49cd24d986a",
+      "journal_sha256": "1f2ebecffc86e4c7ee0ecdda7db6ef10a089af0535f08f20a9795ec1d5cb9641"
+    },
+    {
+      "attempt": 23,
+      "report_sha256": "9fd56b438fb6351769ce438a7b8321cb88af94b2efa9eb022f8804f138b4b2ea",
+      "journal_sha256": "691eb54e3d64bb6642faa6535ff722324b40f311b519cb106c7073022a5a2659"
+    },
+    {
+      "attempt": 24,
+      "report_sha256": "1bcbf4ded24b7296934a96c927229b5a43ffd780fff936fd7e4f5e092929a9dc",
+      "journal_sha256": "1aa298a0910bc28c8aa184056acdaa13aabd6d275e693169220b425dbf8a5771"
+    },
+    {
+      "attempt": 25,
+      "report_sha256": "adfe7cd9d1f6eb04425d6cba9812a40a31ad7bcef265a754374fe9f69ae30c43",
+      "journal_sha256": "76169f1e08ab79c1cbf7d56cbb24582a80933cd4549d033069d22e8983e27ee0"
+    },
+    {
+      "attempt": 26,
+      "report_sha256": "060188dccd28813c97d647036e21a084bf6996b63d530008e6a820598ec0c382",
+      "journal_sha256": "a609f388c12575a1389a1746224d0b520bf258d916d34304fe1dff3699a471c0"
+    },
+    {
+      "attempt": 27,
+      "report_sha256": "eaaf3c19909b204516ee4705e5eef5493b60458dcef0242d06915b417a4d7ab3",
+      "journal_sha256": "64099acf98af02037aaa37c55514225d1cab883dcd8873ebd09b946224b8b7cd"
+    },
+    {
+      "attempt": 28,
+      "report_sha256": "cecb4852817443982af668ef3910c142fcd9823b2aaac838a6b7f8542996d3f0",
+      "journal_sha256": "56e3a4e5bc190129e6bd3f2045eca294ccc49741958349201a7076a87ca45359"
+    },
+    {
+      "attempt": 29,
+      "report_sha256": "5713bfc86f6b81d16d622f7a80de2d54188be64ab13a7fdebe12282449d774b6",
+      "journal_sha256": "830c6dd3f10864b2b6e52641e0e6ae82934afab874f565d48ae97b9fb176760d"
+    },
+    {
+      "attempt": 30,
+      "report_sha256": "7d945f60c44baae68fbc83990b6e08b4b2c072b5dcb08d20a453a07e8c13ec00",
+      "journal_sha256": "7bcecbf35545d0555b0728cfd114fb0bb24baa52aed8f6a5a082c22d40a0293e"
+    },
+    {
+      "attempt": 31,
+      "report_sha256": "c921e3e3f946613febb2f4c57845252a1ff3fb92d22af15d5b2b3701587a1fc8",
+      "journal_sha256": "060951d11a564ddcd3dda2888bfcd4538865e1e14495666559008801f1cfaa48"
+    }
+  ],
+  "quality_acceptance": false,
+  "detector_calibrated": false,
+  "scope": "Full frozen pilot. Reconciled returned text, original report, token counts, journal chains and oracle results; no independent model-forward replay, general semantic proof or serving benchmark."
+}

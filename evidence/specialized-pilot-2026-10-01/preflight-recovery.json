@@ -1,0 +1,7 @@
+{
+  "first_start": "worker_failed before any generated output",
+  "cause": "AppleDouble ._model.safetensors metadata alongside pinned asset",
+  "recovery": "Clean symlink view of five original assets; strict hash verification unchanged",
+  "cases_keys_sdk_changed": false,
+  "generation_attempts_before_recovery": 0
+}

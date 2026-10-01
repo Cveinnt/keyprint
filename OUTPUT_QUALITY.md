@@ -27,6 +27,12 @@ held until the requested product readiness bar is met.
 
 ## Current source-grounded evidence
 
+The [October 1 code/structured-text pilot](evidence/specialized-pilot-2026-10-01/README.md)
+completed 32 new actual generations: 14/16 ordinary and 13/16 marked strict
+passes. SQL and JSON pass throughout; one marked Python output adds forbidden
+Markdown and maintenance CSV outputs change exact identifier casing. These are
+bounded functional checks, not general semantic or detection acceptance.
+
 The [October 1 recount](evidence/semantic-recheck-2026-10-01/README.md) verifies
 all 224 original outputs and frozen ratings from the multilingual released-SDK
 and Dolly experimental cohorts. Language retention passes in both; factual

@@ -1,0 +1,514 @@
+{
+  "schema": "keyprint.specialized-pilot.v1",
+  "model_revision": "545dc4251c05440727734bcd94334791f6ab0192",
+  "cases": [
+    {
+      "id": "python_release",
+      "domain": "python",
+      "prompt": "Return only Python code, no Markdown. Define can_release(approved, tests_passed, blocked). All inputs are booleans. Return True exactly when approval was received AND tests passed AND release is not blocked. Otherwise return False. Do not import anything or call any functions.",
+      "function": "can_release",
+      "params": [
+        "approved",
+        "tests_passed",
+        "blocked"
+      ],
+      "tests": [
+        [
+          [
+            false,
+            false,
+            false
+          ],
+          false
+        ],
+        [
+          [
+            false,
+            false,
+            true
+          ],
+          false
+        ],
+        [
+          [
+            false,
+            true,
+            false
+          ],
+          false
+        ],
+        [
+          [
+            false,
+            true,
+            true
+          ],
+          false
+        ],
+        [
+          [
+            true,
+            false,
+            false
+          ],
+          false
+        ],
+        [
+          [
+            true,
+            false,
+            true
+          ],
+          false
+        ],
+        [
+          [
+            true,
+            true,
+            false
+          ],
+          true
+        ],
+        [
+          [
+            true,
+            true,
+            true
+          ],
+          false
+        ]
+      ],
+      "reference": "def can_release(approved, tests_passed, blocked):\n    return approved and tests_passed and not blocked"
+    },
+    {
+      "id": "python_shipping",
+      "domain": "python",
+      "prompt": "Return only Python code, no Markdown. Define shipping_fee_cents(total_cents, expedited). total_cents is a nonnegative integer; expedited is boolean. Expedited shipping always costs 1200 cents, even on large orders. Otherwise shipping is free if total_cents is at least 5000, and costs 500 cents below 5000. Return the integer fee. Do not import anything or call any functions.",
+      "function": "shipping_fee_cents",
+      "params": [
+        "total_cents",
+        "expedited"
+      ],
+      "tests": [
+        [
+          [
+            0,
+            false
+          ],
+          500
+        ],
+        [
+          [
+            4999,
+            false
+          ],
+          500
+        ],
+        [
+          [
+            5000,
+            false
+          ],
+          0
+        ],
+        [
+          [
+            5001,
+            false
+          ],
+          0
+        ],
+        [
+          [
+            0,
+            true
+          ],
+          1200
+        ],
+        [
+          [
+            4999,
+            true
+          ],
+          1200
+        ],
+        [
+          [
+            5000,
+            true
+          ],
+          1200
+        ],
+        [
+          [
+            100000,
+            true
+          ],
+          1200
+        ]
+      ],
+      "reference": "def shipping_fee_cents(total_cents, expedited):\n    if expedited:\n        return 1200\n    return 0 if total_cents >= 5000 else 500"
+    },
+    {
+      "id": "sql_approval",
+      "domain": "sql",
+      "prompt": "Return only one SQLite SELECT query, no Markdown. Table orders(id INTEGER, approved INTEGER, blocked INTEGER). Return id for orders with approved exactly 1 and blocked exactly 0, sorted by id ascending. NULL means unknown and must not be treated as approval or an unblocked state. Do not modify the database.",
+      "setup": "CREATE TABLE orders(id INTEGER, approved INTEGER, blocked INTEGER); INSERT INTO orders VALUES (1,1,0),(2,0,0),(3,1,1),(4,NULL,0),(5,1,NULL),(6,1,0),(7,2,0),(8,1,2);",
+      "expected": [
+        [
+          1
+        ],
+        [
+          6
+        ]
+      ],
+      "reference": "SELECT id FROM orders WHERE approved = 1 AND blocked = 0 ORDER BY id;"
+    },
+    {
+      "id": "sql_inventory",
+      "domain": "sql",
+      "prompt": "Return only one SQLite SELECT query, no Markdown. Table stock(warehouse TEXT, on_hand INTEGER, reserved INTEGER). All counts are nonnegative and non-NULL. Return warehouse and SUM(on_hand - reserved) AS available, grouped by warehouse. Include only warehouses whose available total is strictly greater than 0. Sort by warehouse ascending. Do not filter individual rows before summing or modify the database.",
+      "setup": "CREATE TABLE stock(warehouse TEXT,on_hand INTEGER,reserved INTEGER); INSERT INTO stock VALUES ('A',10,3),('A',0,8),('B',9,2),('B',3,3),('C',5,5),('D',20,2),('D',2,5);",
+      "expected": [
+        [
+          "B",
+          7
+        ],
+        [
+          "D",
+          15
+        ]
+      ],
+      "reference": "SELECT warehouse, SUM(on_hand - reserved) AS available FROM stock GROUP BY warehouse HAVING SUM(on_hand - reserved) > 0 ORDER BY warehouse;"
+    },
+    {
+      "id": "json_release",
+      "domain": "json",
+      "prompt": "Return only a JSON object with exactly these keys: version, approver, deadline_utc, approved, tests_passed, blocked. Source: version is 3.2.1. Maya is the approver. Deadline is 2026-10-08T09:30:00Z. Approval is still pending. Tests passed. Release remains blocked. Use JSON booleans for the three status fields; do not infer approval from passed tests.",
+      "expected": {
+        "version": "3.2.1",
+        "approver": "Maya",
+        "deadline_utc": "2026-10-08T09:30:00Z",
+        "approved": false,
+        "tests_passed": true,
+        "blocked": true
+      },
+      "reference": "{\"version\":\"3.2.1\",\"approver\":\"Maya\",\"deadline_utc\":\"2026-10-08T09:30:00Z\",\"approved\":false,\"tests_passed\":true,\"blocked\":true}"
+    },
+    {
+      "id": "json_french",
+      "domain": "json",
+      "prompt": "Renvoyez uniquement un objet JSON avec exactement ces clés : client, quantite, expedie, jour_expedition_prevu, livraison_confirmee. Source : le client est Élodie Martin ; la commande contient 6 claviers ; elle n'est pas encore expédiée ; l'expédition est prévue vendredi ; aucune date de livraison n'est confirmée. quantite doit être un nombre entier ; expedie et livraison_confirmee des booléens JSON. Conservez le nom exact et le mot français vendredi. Ne confondez pas expédition et livraison.",
+      "expected": {
+        "client": "Élodie Martin",
+        "quantite": 6,
+        "expedie": false,
+        "jour_expedition_prevu": "vendredi",
+        "livraison_confirmee": false
+      },
+      "reference": "{\"client\":\"Élodie Martin\",\"quantite\":6,\"expedie\":false,\"jour_expedition_prevu\":\"vendredi\",\"livraison_confirmee\":false}"
+    },
+    {
+      "id": "csv_timezone",
+      "domain": "csv",
+      "prompt": "Return only CSV, no Markdown, exactly the header system,start,end,timezone,backup_created,restore_tested then one data row. Source: Kumo maintenance is planned from 13:00 to 13:20, timezone Asia/Tokyo. Backup has been created; restoration has not been tested. Preserve timezone exactly. Represent the two flags as lowercase true or false. Add no date or weekday.",
+      "expected": [
+        [
+          "system",
+          "start",
+          "end",
+          "timezone",
+          "backup_created",
+          "restore_tested"
+        ],
+        [
+          "Kumo",
+          "13:00",
+          "13:20",
+          "Asia/Tokyo",
+          "true",
+          "false"
+        ]
+      ],
+      "reference": "system,start,end,timezone,backup_created,restore_tested\nKumo,13:00,13:20,Asia/Tokyo,true,false"
+    },
+    {
+      "id": "csv_attribution",
+      "domain": "csv",
+      "prompt": "Return only CSV, no Markdown, with header name,role,status and exactly two rows in the source order. Source: Maya Chen is the approver and approval is pending. Ravi Shah is the recipient and delivery has not happened. Use exact status strings pending and not_delivered, respectively. A recipient is not an approver.",
+      "expected": [
+        [
+          "name",
+          "role",
+          "status"
+        ],
+        [
+          "Maya Chen",
+          "approver",
+          "pending"
+        ],
+        [
+          "Ravi Shah",
+          "recipient",
+          "not_delivered"
+        ]
+      ],
+      "reference": "name,role,status\nMaya Chen,approver,pending\nRavi Shah,recipient,not_delivered"
+    }
+  ],
+  "schedule": [
+    {
+      "key_slot": 0,
+      "case": "python_release",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "python_release",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "python_shipping",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "python_shipping",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_approval",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_approval",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_inventory",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "sql_inventory",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "json_release",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "json_release",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "json_french",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "json_french",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_timezone",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_timezone",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_attribution",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 0,
+      "case": "csv_attribution",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "python_release",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "python_release",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "python_shipping",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "python_shipping",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_approval",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_approval",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_inventory",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "sql_inventory",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "json_release",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "json_release",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "json_french",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "json_french",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_timezone",
+      "condition": "marked"
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_timezone",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_attribution",
+      "condition": "ordinary"
+    },
+    {
+      "key_slot": 1,
+      "case": "csv_attribution",
+      "condition": "marked"
+    }
+  ],
+  "max_tokens": 192,
+  "temperature": 0.7,
+  "top_k": 100,
+  "source_sha256": {
+    "tools/specialized_cases.json": "207e31e7e6b0720e45c9e8a1ab8be9e129901c546927dca48792c553cb5afaf8",
+    "tools/specialized_oracle.py": "60f6b754b4b87bab113b4b572a9a5884b5c858440ce2b7b10514911f75f61b3e",
+    "tools/validate_specialized.py": "75c5f8c4b852dce8ef645247e9a7400baaf5bc435d237c646b4b601bffb65287",
+    "src/keyprint/__init__.py": "2f038b4d9f683c38bd8cee9d8a100d340bf4db1fcf9e150479d78345a95bc4ea",
+    "src/keyprint/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/keyprint/_engine/__init__.py": "798b7414434c4895ad593b93dc970a7f0e364cb5954d2134ee869bea7ddb86da",
+    "src/keyprint/_engine/legacy/__init__.py": "704c58b0da63f465aa4f4da075b1d92232e5e8595099ba3d026a5200d9893d8c",
+    "src/keyprint/_engine/legacy/_impl/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/keyprint/_engine/legacy/_impl/research/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/keyprint/_engine/legacy/_impl/research/byte_trie_numeric.py": "c448cad55cd74e34dd083204eac1c386090ab55fdeed84ca34441f20b3dd0a37",
+    "src/keyprint/_engine/legacy/_impl/research/byte_trie_session.py": "b7ddf1e360b8a745386fe0cf69fa9309ae7c0d029178208ca271ff8a338e1a7a",
+    "src/keyprint/_engine/legacy/_impl/research/byte_trie_source_policy.py": "3eeb879e9c796ac17e059d0b9208eadd1909c8261520fbbe62d0d3e30fb78365",
+    "src/keyprint/_engine/legacy/_impl/research/byte_trie_tournament.py": "e579fcc661af279cb2510e909a2664651d429950611939d7b77981ee12b84bfd",
+    "src/keyprint/_engine/legacy/_impl/research/check_canonical_event_alignment.py": "f32d8365ccdf3af66f1c7d991cf60ad0888e91418be2f1a1c0a1979f41d0dcd5",
+    "src/keyprint/_engine/legacy/_impl/research/grouped_canonical_prototype.py": "d74462e9b6e6d47fd94bfb41e99bfea993a7adf7a3181a692bfa0ab54116fa2c",
+    "src/keyprint/_engine/legacy/_impl/research/grouped_model_support_boundary.py": "cbd7224f0b67b2674c8928ce8970394b73d36de798326421b4d8edc42a6979bb",
+    "src/keyprint/_engine/legacy/_impl/research/grouped_null_score.py": "0762b894169d0a5ac374f9f9a32bddbd0dc29d6449dcd768cd8f17320c9ff60a",
+    "src/keyprint/_engine/legacy/_impl/research/grouped_tokenizer_binding.py": "6e165e59bbe520c268d2ddbd5c055b6a59760cb6a5c52f2739e1f9cdc5536c15",
+    "src/keyprint/_engine/legacy/_impl/research/token_channel_host.py": "dfd9de381512e47d0228ce697a2c9283e3c4f3cdc95ff7076640582d8a41fb3f",
+    "src/keyprint/_engine/legacy/_impl/research/token_runtime_binding.py": "6760e294ff594694ec7afb10afca66ae66f93b8c083e9c8ec8466dcf08c9dad6",
+    "src/keyprint/_engine/legacy/_impl/research/token_runtime_host.py": "8233754abb7a4ec4a80bb63a2955372468b068e53e32f72324f54a7bd782fdce",
+    "src/keyprint/_engine/legacy/_impl/research/token_runtime_profile.py": "fd1db53497a06a273bbf8319277909c790c8149f50d06e7553f83a90d5198a75",
+    "src/keyprint/_engine/legacy/_impl/research/token_runtime_scoring.py": "8e0083f8354d5c265272810719a91bf69ff254649cb603e62f14de08ccb970de",
+    "src/keyprint/_engine/legacy/_impl/research/token_runtime_sparse_host.py": "28a0b1b8ff5e6265d05fba137d817d13b3acd5f08b206369f703b2f35d90b1b9",
+    "src/keyprint/_engine/legacy/_impl/research/token_source_host.py": "9bf4e6ff72c50e1fa9113921a767df1ec92ae59c14ad42973531e78d57f62c10",
+    "src/keyprint/_engine/legacy/_impl/research/token_source_policy.py": "08b67af913b10254e1832e9c2ea12fb928fac0e23f6cdb4c6380c86b804eab68",
+    "src/keyprint/_engine/legacy/_impl/research/token_source_sparse_execution.py": "5eeec99a3e50405f707334e3bb1ddc2ed21ee7b80481c1adf241b8800f0bad51",
+    "src/keyprint/_engine/legacy/quickstart.py": "0cb5bac9ab79b74deece2451bebece25ce9104e50b3ba486ac83cd20271350ed",
+    "src/keyprint/_engine/legacy/verify.py": "ffa9e2d4f5cb698a16ce89a938a4581354563ba8cc414aa13805506cfb2dc78a",
+    "src/keyprint/_engine/research/__init__.py": "ad290d0f2bcee1a60b928f6b1efef91a218396c275a7854cd6ca9a98d530b230",
+    "src/keyprint/_engine/research/keyprint_candidate_v2/__init__.py": "e034566859a9d2b92832f17dcd0a64baa2ac465ce610e17884e2997c60ec492a",
+    "src/keyprint/_engine/research/keyprint_candidate_v2/adapter.py": "97c35dcf4f60a2944f0e4cc68db03d30985ecfd7a732e697cc233952f056d1af",
+    "src/keyprint/_engine/research/keyprint_candidate_v3/__init__.py": "97f76413dcab94bdb28cf9d65a6e2a7f63e7e76384431db158ff818846a61f27",
+    "src/keyprint/_engine/research/keyprint_candidate_v3/adapter.py": "8683a2c6c8369f98b02c506c9b069e09817de808a0164a49aa30b76c43223d99",
+    "src/keyprint/_engine/research/keyprint_candidate_v3_caller.py": "9144c1be47726a5f0ac480609d83d784587e5cd5a152446beda17da25533feda",
+    "src/keyprint/_engine/research/keyprint_exact_categorical_v2.py": "969e3d6924f41783a055c8687ea95c3ae99697343276c09ec14f0c08ee337b37",
+    "src/keyprint/_engine/research/keyprint_reporting_v2.py": "36075cd4180fec0fcbffb61b623fe602c4a8837482bc4c98a6b7851670b01582",
+    "src/keyprint/_engine/research/keyprint_stable_support_filter_v3.py": "4ef7abbd49ec02db7cdc9b23a8f1905071666f197ac84c5d35ebd357e56da259",
+    "src/keyprint/_engine/research/keyprint_v3_public_api.py": "ef6d625f60de0b7aee0d8968fd3cfeb806a7b4ae26c27d51df00b762d22d7cb4",
+    "src/keyprint/_engine/research/keyprint_v3_public_api_rc2.py": "9b397623e3658b4268ad59f9c05ef119da78e9966f77f75b2321571b4b170a40",
+    "src/keyprint/_engine/research/keyprint_v3_reporting_contract.py": "82f4f4bb7feace1edc5f642a97a8b9b7977cc77edd5f72e4173a4bb8c5fadb72",
+    "src/keyprint/api.py": "7f2a38842289e46cd93750a61b8f6258cdd197108a0496ea9ef414d0d4f89279",
+    "src/keyprint/backends/__init__.py": "ee1223e0829d2f34c2aff57382ed898d4acd3c734a1c4ee33da57d95461fb6d4",
+    "src/keyprint/backends/bytelevel.py": "82ff89519b6211c16042231d487d6e514c4b359a0a59bdca363dc96a6b44e3be",
+    "src/keyprint/backends/llama_cpp.py": "a51f8c0b8c0610e4eba64f0ea5319539078900ab035eadf18e84ff71829d7a61",
+    "src/keyprint/backends/mlx.py": "eaa05c2467eb2dc8e42988f20338bfdfb0215c28a84118203baeca100cf90f57",
+    "src/keyprint/backends/mlx_bounded.py": "84050d6bb34144b209b4145ab1ab18ebb950b20486c64b9aa7e156598df63467",
+    "src/keyprint/backends/portable.py": "e118486f1ec12dd6a034e44339555b989144de574e9fbf005f1c04da5a8988ff",
+    "src/keyprint/backends/transformers.py": "813c46efb30465dbeed752bd46a386c8608858362d0c4946f0bfe18845154b95",
+    "src/keyprint/cancellation.py": "dc60e6babfbe7ea650de5ba6a183aaf45f8324df4fc813104315659129d06d63",
+    "src/keyprint/cli.py": "5f9565716d81070195bc0f8688286c8bd66665ef10dc5b082ee4828148b9c6f5",
+    "src/keyprint/comparison.py": "99f3b9fb23a6b39b0284411faf3e737215fab63667625b467c0757a7e4755e50",
+    "src/keyprint/errors.py": "249685336e048b778849f25c54a26316b398c30bdbc4c728bbce5604d7f5120d",
+    "src/keyprint/experimental/__init__.py": "439b6136bb89af33efacde204884ccde89714cfc32ebdb554b79ebd185f26390",
+    "src/keyprint/experimental/batched_tournament.py": "daf7789d9153619131f96e5ca0f2055eb7b68d5a440131af15610355a5032511",
+    "src/keyprint/experimental/capped_utf8.py": "fd372ced5c2323e422d846521bcc8ccc7cd6c62dc5c0be2f13c3bd934e683ac1",
+    "src/keyprint/experimental/completion.py": "db5ec6b660f337b17f7071821b25d1ac204f42af610023b3841ed218ae51dcf0",
+    "src/keyprint/experimental/fast_caller.py": "53133ee8e1f5423ca479178da41c7df9a224a9235fa5aca1007f529835a1058e",
+    "src/keyprint/experimental/fast_mlx.py": "3945394bb1e0db08685f45134731821b30cb3a32b9cdab4d29c7495ac3e7a573",
+    "src/keyprint/experimental/fast_public.py": "08919ac5806a72856115bb39eb6b27c24237c6f13ceec074bae96d287908ff79",
+    "src/keyprint/experimental/fast_reporting.py": "e706e45f6c0ffa15c1e04655db61bf17f61b91f7f46943dbfc282e8116bb8d2d",
+    "src/keyprint/experimental/hmac_context.py": "219bfe25e4c7a9f1b1ef9d0d6cf809af0cc6ce363270d926bd736fb86a464fb5",
+    "src/keyprint/experimental/native.py": "e47e38a40912c1e20adbd944a172013c23351f734f0189e144071c72deb4f619",
+    "src/keyprint/experimental/native_mlx.py": "356dfaeaa961b32fe03c0cb782bf4791c46eec72eac4c7b1a9109cd668a9741d",
+    "src/keyprint/experimental/native_reporting.py": "c8b5854932ac05c1bd7b44b6a417cd5ca3f34958695ef15a8fade8445cafab5f",
+    "src/keyprint/experimental/partition_filter.py": "fad607a9afd04cb497aa539a17fbabb0d44020ae104be65c2fc5a2a386aa3126",
+    "src/keyprint/experimental/prepared_binding.py": "77060e0b8812f7ce66e987d06fc7d4c8a7dbcda13caed6fd94b710d05801811e",
+    "src/keyprint/experimental/sglang.py": "8b5e25c80265597ad6462dc5b006575bc2be0e32291ba1777b9cef5eea2cfb44",
+    "src/keyprint/experimental/sglang_runtime.py": "29ea6b592efaf228eed9bf56c7684b0fe73c88aa96a34857f4c6f2358358c9f6",
+    "src/keyprint/experimental/vector_commitment.py": "e1fa1142b67f36ceb6f097d6da12542184e747d8c9afd67edf7ea36b7397edb1",
+    "src/keyprint/experimental/vllm.py": "9df4213032d8ce1c23cb88704b60fbdab98ebfeb5376760845bccafb9ba7d158",
+    "src/keyprint/experimental/wide_mlx.py": "7522f38374870ba584f21f4922405270afbc1bce0f6283c00e457c59279a85ec",
+    "src/keyprint/experimental/wide_sampling.py": "c722835cbc7c5398e8fa00843d7d57b7f5e31cdf5382246ffd5c1efa5acb579f",
+    "src/keyprint/inspection.py": "3de1508956bb4890f3fd53cc9b44158c949ffc53f60070f5a6ca96af4ba1448a",
+    "src/keyprint/integrity.py": "d337b4e57c814fa8c4688d58f0df90c271c68be1fed0af8f75336702da8673cc",
+    "src/keyprint/playground.py": "5d5801c27e5836b2a077b8d3f35e1724a90a015ed5074f4c5eb2617c49bc1841",
+    "src/keyprint/rewrite.py": "81f191c4d868ec92922868800fdd5888ffcbb65f93e2a65d3f799e31e40f1d20",
+    "src/keyprint/sampling.py": "446557088e1fcf0736427a17a1d121ae9facda4a1cb0c6610f0613b96bfc859c",
+    "src/keyprint/server.py": "251a612576c78edd54d9e9a39e1a3b43ecd0ccb90d2bd436ad91acfcd41ebf1a",
+    "src/keyprint/structured.py": "14fac990a11efa0c2392c3e98f703bddc42aea18f878c5829d77a7ebb234f5a3",
+    "src/keyprint/trace.py": "8f9c3514637e71c3ebf27e2fa314c53eb7734aa284eea6a1c828713710e278fb"
+  },
+  "key_sha256": [
+    "1f37553729d0d29bf63f1aa17cc1153802b6c6ffe5a1f97cfd7af321e1dd1e60",
+    "2ef4400f92f0dd8ba793bfbdeea1d9db4a80a09fcb73c4a0a6c7c5e012decb2b"
+  ],
+  "dataset": "New author-created synthetic fixtures; MIT. No external benchmark or training-held-out claim.",
+  "policy": "All 32 attempts, two fresh fixed keys, no retries, no stripping Markdown, no rewriting. EOS plus oracle pass required. Unsupported Python syntax is reported separately and counts as not passed.",
+  "scope": "Development smoke test: two tasks each in Python, SQL, JSON and CSV. No powered noninferiority, blinded reader, calibrated detection, or serving-overhead acceptance."
+}

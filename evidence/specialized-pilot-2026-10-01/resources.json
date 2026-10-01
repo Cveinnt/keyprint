@@ -1,0 +1,48 @@
+{
+  "supervisor": {
+    "status": "worker_failed",
+    "limit_bytes": 10737418240,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 900.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 264110944,
+    "samples": 9,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 62914,
+    "cleanup_verified": true,
+    "exit_code": 1,
+    "elapsed_seconds": 2.5742206249851733
+  },
+  "supervisor-clean-assets": {
+    "status": "stopped",
+    "limit_bytes": 10737418240,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 900.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 6710842840,
+    "samples": 475,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 63987,
+    "reason": "system_pressure",
+    "cleanup_verified": true,
+    "exit_code": -15,
+    "elapsed_seconds": 133.33061783399899
+  },
+  "supervisor-key1": {
+    "status": "completed",
+    "limit_bytes": 8589934592,
+    "interval_seconds": 0.25,
+    "timeout_seconds": 600.0,
+    "disk_floor_bytes": 2147483648,
+    "peak_footprint_bytes": 5759930928,
+    "samples": 194,
+    "automatic_restart": false,
+    "scope": "Sum of process-group physical footprints; shared pages may be double-counted. Sampled termination allows transient overshoot, not an OS allocation quota.",
+    "pid": 67695,
+    "cleanup_verified": true,
+    "exit_code": 0,
+    "elapsed_seconds": 54.64191587502137
+  }
+}

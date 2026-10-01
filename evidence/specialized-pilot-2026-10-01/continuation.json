@@ -1,0 +1,9 @@
+{
+  "plan_sha256": "47b85c187a79489fbd9e225d38b98ad4fd634e1609e5129608109120d9458c81",
+  "prefix_runs_sha256": "7873bd67553fdf9512d4738e6d1afba71a7a5905dd1c1c61ff59fa3042272414",
+  "original_stop_sha256": "171884038fdf0ff91d1b54185df5b85be062b0ebfd3d97ba9a18bec78057960d",
+  "continuation_script_sha256": "4fb88438129caa6c732808e3cdc637e015a90904009f24a85cf83df2a6e81de1",
+  "first_attempt": 16,
+  "last_attempt": 31,
+  "reason": "Original worker stopped before any second-key attempt. Fresh process avoids retaining prior-key model state. All old outputs unchanged."
+}
