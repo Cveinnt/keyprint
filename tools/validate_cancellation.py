@@ -99,6 +99,9 @@ def main():
         def close(self):
             self.model.close()
 
+        def __getattr__(self, name):
+            return getattr(self.model, name)
+
     token = secrets.token_hex(32)
     server = uvicorn.Server(uvicorn.Config(create_app(ControlledModel, api_key=token,
         output=args.output / "http"), log_level="warning"))

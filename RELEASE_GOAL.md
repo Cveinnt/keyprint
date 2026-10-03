@@ -35,6 +35,22 @@ were untouched. The wording highlighter changes presentation only; generation
 text and exported data remain exact. These changes provide no new scientific
 acceptance and do not resolve existing quality or detection gaps.
 
+## September 30 durable serving: implemented, validation pending
+
+The next software-readiness change replaces process-only replay with a bounded,
+private SQLite request journal. Intended contract: reserve before model work,
+replay exact terminal responses across restart, retain failures, reject uncertain
+attempts without regeneration, bind the directory to model/key/server identity,
+and reject concurrent ownership. Completed responses live on disk rather than
+accumulating in the in-memory request dictionary. No model or sampler changed.
+
+New restart, failure, corruption, ownership and actual subprocess-exit tests are
+written alongside the existing OpenAI/Anthropic/Ollama HTTP suites. Their first
+512 MiB guarded invocation refused startup on global memory pressure; **none of
+these new tests has run yet**. Syntax checks pass, which is not behavioral proof.
+This change cannot be counted as a closed production gate until those tests pass.
+Scientific quality/detection and the overall launch hold remain unchanged.
+
 ## September 30 memory fix: verified locally, release still held
 
 Backend-owned tokenization no longer allocates an unused Qwen reference engine

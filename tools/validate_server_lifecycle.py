@@ -36,6 +36,8 @@ def main():
     class ControlledModel:
         def __init__(self):
             self.model = Keyprint.from_transformers(args.model, key=key)
+        def __getattr__(self, name):
+            return getattr(self.model, name)
         def generate(self, prompt, **kwargs):
             calls.append(prompt)
             started.set()

@@ -18,8 +18,9 @@ support or transfer of the original research acceptances.
 Both provider clients connect to **Keyprint's local model**. They do not add
 Keyprint to hosted GPT/Claude generation. Supported local requests contain one
 user text message, a token cap and an idempotency key. Tools, system/multi-turn
-messages and streaming are rejected before inference. Replay lasts only for
-the server process. See [provider usage](PROVIDERS.md) for exact boundaries.
+messages and streaming are rejected before inference. A new single-host durable
+replay implementation is pending local test validation; it must not yet be
+counted as restart qualification. See [provider usage](PROVIDERS.md) for boundaries.
 
 ## Newer Qwen model boundary
 
