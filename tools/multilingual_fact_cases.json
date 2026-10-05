@@ -1,0 +1,50 @@
+[
+  {
+    "id": "workshop-th",
+    "language": "Thai",
+    "prompt": "เขียนประกาศภาษาไทยหนึ่งย่อหน้าเกี่ยวกับกิจกรรมสมมติโดยใช้ข้อเท็จจริงต่อไปนี้ให้ครบ และห้ามเพิ่มข้อเท็จจริงใหม่: กิจกรรม Luma มีที่นั่งทั้งหมด 18 ที่นั่ง ขณะนี้จองแล้ว 11 ที่นั่ง จึงเหลือที่นั่งที่ยังจองได้ 7 ที่นั่ง กำหนดเริ่มกิจกรรมเบื้องต้นคือวันเสาร์เวลา 10:30 แต่ยังไม่ได้รับการยืนยัน Mira มีหน้าที่ตรวจสอบความพร้อมของห้อง ส่วน Narin มีหน้าที่ส่งประกาศยืนยันให้ผู้เข้าร่วม Narin จะส่งประกาศยืนยันได้ก็ต่อเมื่อ Mira ยืนยันว่าห้องพร้อมแล้วเท่านั้น ขณะนี้ Mira ยังไม่ได้ยืนยันและ Narin ยังไม่ได้ส่งประกาศยืนยัน อย่าสลับหน้าที่ของทั้งสองคน อย่าถือว่าการจองที่นั่งเป็นการยืนยันว่าห้องพร้อม และอย่าเพิ่มวันที่ สถานที่ หรือค่าใช้จ่าย คงชื่อ Luma, Mira, Narin รวมถึงตัวเลข 18, 11, 7 และเวลา 10:30 ไว้ตามเดิม",
+    "max_tokens": 768,
+    "required_literals": ["Luma", "Mira", "Narin", "18", "11", "7", "10:30"],
+    "facts": [
+      "Luma has 18 seats in total; 11 are reserved and 7 remain available.",
+      "The proposed start is Saturday at 10:30; this schedule is not confirmed.",
+      "Mira is responsible for checking that the room is ready.",
+      "Narin is responsible for sending the confirmation notice to participants.",
+      "Narin may send that notice only after Mira confirms that the room is ready.",
+      "Mira has not confirmed room readiness, and Narin has not sent the confirmation notice."
+    ],
+    "review": "Review in Thai against each of the six facts; separately rate language, unsupported claims, actor attribution, negation, numbers, approval condition and one-paragraph format. Seat reservations do not confirm room readiness. Preserve the exact required names/numerals/time. Do not infer a calendar date, location or price. Equivalent wording is acceptable; record ambiguous wording rather than silently passing it. See docs/multilingual-fact-fixtures.md."
+  },
+  {
+    "id": "workshop-id",
+    "language": "Indonesian",
+    "prompt": "Tulis pengumuman dalam bahasa Indonesia sepanjang satu paragraf tentang kegiatan fiktif dengan memuat semua fakta berikut tanpa menambahkan fakta baru. Kegiatan Luma memiliki total 18 kursi; 11 sudah dipesan dan 7 masih tersedia. Kegiatan direncanakan mulai pada hari Sabtu pukul 10:30, tetapi jadwal ini belum dikonfirmasi. Mira bertanggung jawab memeriksa kesiapan ruangan. Narin bertanggung jawab mengirim pemberitahuan konfirmasi kepada peserta. Narin hanya boleh mengirim pemberitahuan tersebut setelah Mira mengonfirmasi bahwa ruangan sudah siap. Mira belum memberikan konfirmasi itu dan Narin belum mengirim pemberitahuan konfirmasi. Jangan menukar tanggung jawab mereka atau menganggap pemesanan kursi sebagai konfirmasi kesiapan ruangan. Jangan menambahkan tanggal kalender, lokasi, atau biaya. Pertahankan penulisan Luma, Mira, Narin, angka 18, 11, 7, serta waktu 10:30 secara persis.",
+    "max_tokens": 768,
+    "required_literals": ["Luma", "Mira", "Narin", "18", "11", "7", "10:30"],
+    "facts": [
+      "Luma has 18 seats in total; 11 are reserved and 7 remain available.",
+      "The proposed start is Saturday at 10:30; this schedule is not confirmed.",
+      "Mira is responsible for checking that the room is ready.",
+      "Narin is responsible for sending the confirmation notice to participants.",
+      "Narin may send that notice only after Mira confirms that the room is ready.",
+      "Mira has not confirmed room readiness, and Narin has not sent the confirmation notice."
+    ],
+    "review": "Review in Indonesian against each of the six facts; separately rate language, unsupported claims, actor attribution, negation, numbers, approval condition and one-paragraph format. Seat reservations do not confirm room readiness. Preserve the exact required names/numerals/time. Do not infer a calendar date, location or price. Equivalent wording is acceptable; record ambiguous wording rather than silently passing it. See docs/multilingual-fact-fixtures.md."
+  },
+  {
+    "id": "workshop-de",
+    "language": "German",
+    "prompt": "Schreibe auf Deutsch eine Ankündigung in einem Absatz über eine fiktive Veranstaltung. Bewahre alle folgenden Fakten und erfinde keine weiteren: Die Veranstaltung Luma hat insgesamt 18 Plätze; 11 sind reserviert und 7 noch verfügbar. Der Beginn ist für Samstag um 10:30 vorgesehen, aber dieser Termin ist noch nicht bestätigt. Mira ist dafür zuständig, zu prüfen, ob der Raum bereit ist. Narin ist dafür zuständig, die Bestätigungsmitteilung an die Teilnehmenden zu senden. Narin darf diese Mitteilung erst senden, nachdem Mira bestätigt hat, dass der Raum bereit ist. Mira hat dies noch nicht bestätigt, und Narin hat die Bestätigungsmitteilung noch nicht gesendet. Vertausche ihre Aufgaben nicht. Eine Platzreservierung ist keine Bestätigung, dass der Raum bereit ist. Füge kein Kalenderdatum, keinen Veranstaltungsort und keine Kosten hinzu. Behalte die Schreibweise Luma, Mira, Narin, die Zahlen 18, 11, 7 und die Uhrzeit 10:30 exakt bei.",
+    "max_tokens": 768,
+    "required_literals": ["Luma", "Mira", "Narin", "18", "11", "7", "10:30"],
+    "facts": [
+      "Luma has 18 seats in total; 11 are reserved and 7 remain available.",
+      "The proposed start is Saturday at 10:30; this schedule is not confirmed.",
+      "Mira is responsible for checking that the room is ready.",
+      "Narin is responsible for sending the confirmation notice to participants.",
+      "Narin may send that notice only after Mira confirms that the room is ready.",
+      "Mira has not confirmed room readiness, and Narin has not sent the confirmation notice."
+    ],
+    "review": "Review in German against each of the six facts; separately rate language, unsupported claims, actor attribution, negation, numbers, approval condition and one-paragraph format. Seat reservations do not confirm room readiness. Preserve the exact required names/numerals/time. Do not infer a calendar date, location or price. Equivalent wording is acceptable; record ambiguous wording rather than silently passing it. See docs/multilingual-fact-fixtures.md."
+  }
+]
